@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>netcoreapp3.1</TargetFramework>
+        <!-- Assembly / Common -->
+        <Copyright>R-Koubou</Copyright>
+        <Company>R-Koubou</Company>
+        <Product>ArticulationManager.Utilities</Product>
+        <AssemblyName>ArticulationManager.Utilities</AssemblyName>
+        <RootNamespace>ArticulationManager.Utilities</RootNamespace>
+        <Version>0.1.0-alpha</Version>
+        <Description>ArticulationManager.Utilities module</Description>
+        <Nullable>enable</Nullable>
+        <!-- Nuget -->
+        <Authors>R-Koubou</Authors>
+        <PackageId>ArticulationManager.Utilities</PackageId>
+        <PackageLicenseExpression>MIT</PackageLicenseExpression>
+        <PackageProjectUrl>https://github.com/r-koubou/ArticulationManager</PackageProjectUrl>
+        <RepositoryUrl>https://github.com/r-koubou/ArticulationManager</RepositoryUrl>
+    </PropertyGroup>
+
+</Project>
