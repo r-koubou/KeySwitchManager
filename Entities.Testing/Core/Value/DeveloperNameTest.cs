@@ -1,4 +1,4 @@
-using ArticulationManager.Entities.Core.Value;
+using ArticulationManager.Entities.ArticulationData.Value;
 using ArticulationManager.Utilities;
 
 using NUnit.Framework;

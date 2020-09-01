@@ -1,4 +1,4 @@
-using ArticulationManager.Entities.MidiEvent.Value;
+using ArticulationManager.Entities.MidiEventData.Value;
 using ArticulationManager.Utilities;
 
 using NUnit.Framework;
