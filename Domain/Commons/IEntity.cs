@@ -4,4 +4,9 @@ namespace ArticulationManager.Domain.Commons
     {
         public EntityId Id { get; }
     }
+
+    public interface IEntityWithoutId : IEntity
+    {
+        EntityId IEntity.Id => EntityId.Zero;
+    }
 }
