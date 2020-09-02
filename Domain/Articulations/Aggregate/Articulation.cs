@@ -6,7 +6,7 @@ using ArticulationManager.Domain.MidiMessages.Aggregate;
 
 namespace ArticulationManager.Domain.Articulations.Aggregate
 {
-    public class Articulation : IEntity
+    public class Articulation : IArticulation
     {
         public EntityId Id { get; }
         public DeveloperName DeveloperName { get; }
@@ -18,6 +18,7 @@ namespace ArticulationManager.Domain.Articulations.Aggregate
         public IReadOnlyList<NoteOn> MidiNoteOns { get; }
         public IReadOnlyList<ControlChange> MidiControlChanges { get; }
         public IReadOnlyList<ProgramChange> MidiProgramChanges { get; }
+
         public Articulation(
             EntityId id,
             DeveloperName developerName,
