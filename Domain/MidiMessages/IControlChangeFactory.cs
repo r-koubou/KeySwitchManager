@@ -1,4 +1,3 @@
-using ArticulationManager.Domain.Commons;
 using ArticulationManager.Domain.MidiMessages.Aggregate;
 using ArticulationManager.Domain.MidiMessages.Value;
 

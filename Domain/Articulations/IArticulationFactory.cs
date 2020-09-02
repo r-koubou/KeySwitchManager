@@ -10,7 +10,7 @@ namespace ArticulationManager.Domain.Articulations
     public interface IArticulationFactory
     {
         public Articulation Create(
-            ulong id,
+            string id,
             string developerName,
             string productName,
             string articulationName,
@@ -19,7 +19,7 @@ namespace ArticulationManager.Domain.Articulations
             int articulationColor );
 
         public Articulation Create(
-            ulong id,
+            string id,
             string developerName,
             string productName,
             string articulationName,
@@ -29,55 +29,57 @@ namespace ArticulationManager.Domain.Articulations
             IEnumerable<NoteOn> midiNoteOns,
             IEnumerable<ControlChange> midiControlChanges,
             IEnumerable<ProgramChange> midiProgramChanges );
-    }
 
-    public class SimpleArticulationFactory : IArticulationFactory
-    {
-        public Articulation Create(
-            ulong id,
-            string developerName,
-            string productName,
-            string articulationName,
-            ArticulationType articulationType,
-            int articulationGroup,
-            int articulationColor )
+        public class DefaultFactory : IArticulationFactory
         {
-            return new Articulation(
-                new EntityId( id ),
-                new DeveloperName( developerName ),
-                new ProductName( productName ),
-                new ArticulationName( articulationName ),
-                articulationType,
-                new ArticulationGroup( articulationGroup ),
-                new ArticulationColor( articulationColor ),
-                new List<NoteOn>(),
-                new List<ControlChange>(),
-                new List<ProgramChange>() );
-        }
+            public Articulation Create(
+                string id,
+                string developerName,
+                string productName,
+                string articulationName,
+                ArticulationType articulationType,
+                int articulationGroup,
+                int articulationColor )
+            {
+                return new Articulation(
+                    new EntityId( id ),
+                    new DeveloperName( developerName ),
+                    new ProductName( productName ),
+                    new ArticulationName( articulationName ),
+                    articulationType,
+                    new ArticulationGroup( articulationGroup ),
+                    new ArticulationColor( articulationColor ),
+                    new List<NoteOn>(),
+                    new List<ControlChange>(),
+                    new List<ProgramChange>()
+                );
+            }
 
-        public Articulation Create(
-            ulong id,
-            string developerName,
-            string productName,
-            string articulationName,
-            ArticulationType articulationType,
-            int articulationGroup,
-            int articulationColor,
-            IEnumerable<NoteOn> midiNoteOns,
-            IEnumerable<ControlChange> midiControlChanges,
-            IEnumerable<ProgramChange> midiProgramChanges )
-        {
-            return new Articulation(
-                new EntityId( id ),
-                new DeveloperName( developerName ),
-                new ProductName( productName ),
-                new ArticulationName( articulationName ),
-                articulationType,
-                new ArticulationGroup( articulationGroup ),
-                new ArticulationColor( articulationColor ),
-                midiNoteOns,
-                midiControlChanges,
-                midiProgramChanges );
+            public Articulation Create(
+                string id,
+                string developerName,
+                string productName,
+                string articulationName,
+                ArticulationType articulationType,
+                int articulationGroup,
+                int articulationColor,
+                IEnumerable<NoteOn> midiNoteOns,
+                IEnumerable<ControlChange> midiControlChanges,
+                IEnumerable<ProgramChange> midiProgramChanges )
+            {
+                return new Articulation(
+                    new EntityId( id ),
+                    new DeveloperName( developerName ),
+                    new ProductName( productName ),
+                    new ArticulationName( articulationName ),
+                    articulationType,
+                    new ArticulationGroup( articulationGroup ),
+                    new ArticulationColor( articulationColor ),
+                    midiNoteOns,
+                    midiControlChanges,
+                    midiProgramChanges
+                );
+            }
         }
     }
 }

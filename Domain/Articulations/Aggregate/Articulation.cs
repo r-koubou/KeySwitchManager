@@ -6,7 +6,7 @@ using ArticulationManager.Domain.MidiMessages.Aggregate;
 
 namespace ArticulationManager.Domain.Articulations.Aggregate
 {
-    public class Articulation : IArticulation
+    public class Articulation
     {
         public EntityId Id { get; }
         public DeveloperName DeveloperName { get; }

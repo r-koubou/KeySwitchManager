@@ -1,20 +1,22 @@
+using System;
+
 using ArticulationManager.Common.Utilities;
 
 namespace ArticulationManager.Domain.Commons
 {
-    public class EntityId
+    public class EntityId : IEquatable<EntityId>
     {
-        public const ulong MinValue = ulong.MinValue;
-        public const ulong MaxValue = ulong.MaxValue;
+        public string Value { get; }
 
-        public static readonly EntityId Zero = new EntityId( 0UL );
-
-        public ulong Value { get; }
-
-        public EntityId( ulong value )
+        public EntityId( string value )
         {
-            RangeValidateHelper.ValidateRange( value, MinValue, MaxValue );
+            StringHelper.ValidateNullOrTrimEmpty( value );
             Value = value;
+        }
+
+        public bool Equals( EntityId? other )
+        {
+            return other != null && Value == other.Value;
         }
     }
 }

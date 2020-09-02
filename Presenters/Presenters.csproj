@@ -1,0 +1,30 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>netcoreapp3.1</TargetFramework>
+        <!-- Assembly / Common -->
+        <Copyright>R-Koubou</Copyright>
+        <Company>R-Koubou</Company>
+        <Product>ArticulationManager.Presenteras</Product>
+        <AssemblyName>ArticulationManager.Presenters</AssemblyName>
+        <RootNamespace>ArticulationManager.Presenters</RootNamespace>
+        <Version>0.1.0-alpha</Version>
+        <Description>ArticulationManager.Presenters module</Description>
+        <Nullable>enable</Nullable>
+        <!-- Nuget -->
+        <Authors>R-Koubou</Authors>
+        <PackageId>ArticulationManager.Presenters</PackageId>
+        <PackageLicenseExpression>MIT</PackageLicenseExpression>
+        <PackageProjectUrl>https://github.com/r-koubou/ArticulationManager</PackageProjectUrl>
+        <RepositoryUrl>https://github.com/r-koubou/ArticulationManager</RepositoryUrl>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\UseCases\UseCases.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="AddingArticulation" />
+    </ItemGroup>
+
+</Project>
