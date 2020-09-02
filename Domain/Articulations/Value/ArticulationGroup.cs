@@ -1,5 +1,4 @@
 using System;
-using System.Diagnostics.CodeAnalysis;
 
 using ArticulationManager.Common.Utilities;
 
@@ -13,11 +12,11 @@ namespace ArticulationManager.Domain.Articulations.Value
 
         public ArticulationGroup( int groupValue )
         {
-            RangeValidateHelper.ValidateIntRange( groupValue, MinValue, MaxValue );
+            RangeValidateHelper.ValidateRange( groupValue, MinValue, MaxValue );
             Value = groupValue;
         }
 
-        public bool Equals( [AllowNull] ArticulationGroup other )
+        public bool Equals( ArticulationGroup? other )
         {
             return other != null && other.Value == Value;
         }

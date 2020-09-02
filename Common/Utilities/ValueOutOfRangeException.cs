@@ -4,15 +4,11 @@ namespace ArticulationManager.Common.Utilities
 {
     public sealed class ValueOutOfRangeException : Exception
     {
-        public ValueOutOfRangeException( int value, int minValue, int maxValue )
-            : base( $"Value is {value}. Min={minValue}, Max={maxValue}" )
-        {
-        }
+        public ValueOutOfRangeException( object value, object minValue, object maxValue )
+            : this( $"Value is {value}. Min={minValue}, Max={maxValue}" )
+        {}
 
-        public ValueOutOfRangeException( int value )
-            : base( $"Value is {value}." )
-        {
-        }
-
+        public ValueOutOfRangeException( string message ) : base( message )
+        {}
     }
 }

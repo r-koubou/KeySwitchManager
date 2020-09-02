@@ -1,5 +1,4 @@
 using System;
-using System.Diagnostics.CodeAnalysis;
 
 using ArticulationManager.Common.Utilities;
 
@@ -21,7 +20,7 @@ namespace ArticulationManager.Domain.Articulations.Value
             Value = name;
         }
 
-        public bool Equals( [AllowNull] ProductName other )
+        public bool Equals( ProductName? other )
         {
             return other != null && other.Value == Value;
         }

@@ -425,7 +425,7 @@ namespace ArticulationManager.Domain.MidiMessages.Value
                 throw new InvalidNameException( nameof( noteName ) );
             }
 
-            RangeValidateHelper.ValidateIntRange( number, NoteNumber.MinValue, NoteNumber.MaxValue );
+            RangeValidateHelper.ValidateRange( number, NoteNumber.MinValue, NoteNumber.MaxValue );
             Value = NoteNameList[ number ];
         }
 
@@ -438,7 +438,7 @@ namespace ArticulationManager.Domain.MidiMessages.Value
             return new NoteNumber( number.First().index );
         }
 
-        public bool Equals( [AllowNull] MidiNoteName other )
+        public bool Equals( MidiNoteName? other )
         {
             return other != null && other.Value == Value;
         }

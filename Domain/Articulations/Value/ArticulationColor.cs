@@ -1,5 +1,4 @@
 using System;
-using System.Diagnostics.CodeAnalysis;
 
 using ArticulationManager.Common.Utilities;
 
@@ -13,11 +12,11 @@ namespace ArticulationManager.Domain.Articulations.Value
 
         public ArticulationColor( int colorValue )
         {
-            RangeValidateHelper.ValidateIntRange( colorValue, MinValue, MaxValue );
+            RangeValidateHelper.ValidateRange( colorValue, MinValue, MaxValue );
             Value = colorValue;
         }
 
-        public bool Equals( [AllowNull] ArticulationColor other )
+        public bool Equals( ArticulationColor? other )
         {
             return other != null && other.Value == Value;
         }

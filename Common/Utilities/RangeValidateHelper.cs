@@ -1,26 +1,19 @@
+using System;
+
 namespace ArticulationManager.Common.Utilities
 {
     public static class RangeValidateHelper
     {
-        public static void ValidateIntRange( int value, int min, int max )
+        public static void ValidateRange<T>( IComparable<T> value, T min, T max ) where T : notnull
         {
-            if( value < min || value > max )
+            if( value.CompareTo( min ) < 0 )
             {
                 throw new ValueOutOfRangeException( value, min, max );
             }
-        }
-        public static void ValidateIntMinValue( int value, int min )
-        {
-            if( value < min )
+
+            if( value.CompareTo( max ) > 0 )
             {
-                throw new ValueOutOfRangeException( value );
-            }
-        }
-        public static void ValidateIntMaxValue( int value, int max )
-        {
-            if( value > max )
-            {
-                throw new ValueOutOfRangeException( value );
+                throw new ValueOutOfRangeException( value, min, max );
             }
         }
     }

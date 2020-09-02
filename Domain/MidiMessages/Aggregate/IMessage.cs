@@ -1,3 +1,4 @@
+using ArticulationManager.Domain.Commons;
 using ArticulationManager.Domain.MidiMessages.Value;
 
 namespace ArticulationManager.Domain.MidiMessages.Aggregate
@@ -6,7 +7,7 @@ namespace ArticulationManager.Domain.MidiMessages.Aggregate
     /// MIDI event aggregation that makes up the sound slot.
     /// Status bytes are not defined because they are not used.
     /// </summary>
-    public interface IMessage
+    public interface IMessage : IEntity
     {
         /// <summary>
         /// MIDI status code

@@ -1,13 +1,14 @@
 using System.Collections.Generic;
 
 using ArticulationManager.Domain.Articulations.Value;
+using ArticulationManager.Domain.Commons;
 using ArticulationManager.Domain.MidiMessages.Aggregate;
 
 namespace ArticulationManager.Domain.Articulations.Aggregate
 {
-    public class Articulation
+    public class Articulation : IEntity
     {
-        public ArticulationId Id { get; }
+        public EntityId Id { get; }
         public DeveloperName DeveloperName { get; }
         public ProductName ProductName { get; }
         public ArticulationName ArticulationName { get; }
@@ -18,7 +19,7 @@ namespace ArticulationManager.Domain.Articulations.Aggregate
         public IReadOnlyList<ControlChange> MidiControlChanges { get; }
         public IReadOnlyList<ProgramChange> MidiProgramChanges { get; }
         public Articulation(
-            ArticulationId id,
+            EntityId id,
             DeveloperName developerName,
             ProductName productName,
             ArticulationName articulationName,

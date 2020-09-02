@@ -2,6 +2,7 @@ using System.Collections.Generic;
 
 using ArticulationManager.Domain.Articulations.Aggregate;
 using ArticulationManager.Domain.Articulations.Value;
+using ArticulationManager.Domain.Commons;
 using ArticulationManager.Domain.MidiMessages.Aggregate;
 
 namespace ArticulationManager.Domain.Articulations
@@ -9,7 +10,7 @@ namespace ArticulationManager.Domain.Articulations
     public interface IArticulationFactory
     {
         public Articulation Create(
-            int id,
+            ulong id,
             string developerName,
             string productName,
             string articulationName,
@@ -18,7 +19,7 @@ namespace ArticulationManager.Domain.Articulations
             int articulationColor );
 
         public Articulation Create(
-            int id,
+            ulong id,
             string developerName,
             string productName,
             string articulationName,
@@ -33,7 +34,7 @@ namespace ArticulationManager.Domain.Articulations
     public class SimpleArticulationFactory : IArticulationFactory
     {
         public Articulation Create(
-            int id,
+            ulong id,
             string developerName,
             string productName,
             string articulationName,
@@ -42,7 +43,7 @@ namespace ArticulationManager.Domain.Articulations
             int articulationColor )
         {
             return new Articulation(
-                new ArticulationId( id ),
+                new EntityId( id ),
                 new DeveloperName( developerName ),
                 new ProductName( productName ),
                 new ArticulationName( articulationName ),
@@ -55,7 +56,7 @@ namespace ArticulationManager.Domain.Articulations
         }
 
         public Articulation Create(
-            int id,
+            ulong id,
             string developerName,
             string productName,
             string articulationName,
@@ -67,7 +68,7 @@ namespace ArticulationManager.Domain.Articulations
             IEnumerable<ProgramChange> midiProgramChanges )
         {
             return new Articulation(
-                new ArticulationId( id ),
+                new EntityId( id ),
                 new DeveloperName( developerName ),
                 new ProductName( productName ),
                 new ArticulationName( articulationName ),
