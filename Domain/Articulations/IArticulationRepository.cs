@@ -4,7 +4,7 @@ using ArticulationManager.Domain.Articulations.Aggregate;
 using ArticulationManager.Domain.Articulations.Value;
 using ArticulationManager.Domain.Commons;
 
-namespace ArticulationManager.Interactors.AddingArticulation
+namespace ArticulationManager.Domain.Articulations
 {
     public interface IArticulationRepository
     {
