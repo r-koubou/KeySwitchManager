@@ -1,16 +1,17 @@
 using System;
 
-using ArticulationManager.Common.Utilities;
-
 namespace ArticulationManager.Domain.Commons
 {
     public class EntityId : IEquatable<EntityId>
     {
-        public string Value { get; }
+        public ulong Value { get; }
 
-        public EntityId( string value )
+        public static readonly EntityId Zero = new EntityId( 0UL );
+        public static readonly EntityId Default = Zero;
+
+        public EntityId( ulong value )
         {
-            StringHelper.ValidateNullOrTrimEmpty( value );
+            // Accept any value
             Value = value;
         }
 

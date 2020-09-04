@@ -9,6 +9,7 @@ namespace ArticulationManager.Domain.Articulations.Aggregate
     public class Articulation
     {
         public EntityId Id { get; }
+        public EntityGuid Guid { get; }
         public DeveloperName DeveloperName { get; }
         public ProductName ProductName { get; }
         public ArticulationName ArticulationName { get; }
@@ -21,6 +22,7 @@ namespace ArticulationManager.Domain.Articulations.Aggregate
 
         public Articulation(
             EntityId id,
+            EntityGuid guid,
             DeveloperName developerName,
             ProductName productName,
             ArticulationName articulationName,
@@ -32,6 +34,7 @@ namespace ArticulationManager.Domain.Articulations.Aggregate
             IEnumerable<ProgramChange> midiProgramChanges )
         {
             Id                 = id;
+            Guid               = guid;
             DeveloperName      = developerName;
             ProductName        = productName;
             ArticulationName   = articulationName;

@@ -10,7 +10,8 @@ namespace ArticulationManager.Domain.Articulations
     public interface IArticulationFactory
     {
         public Articulation Create(
-            string id,
+            ulong id,
+            string guid,
             string developerName,
             string productName,
             string articulationName,
@@ -19,7 +20,8 @@ namespace ArticulationManager.Domain.Articulations
             int articulationColor );
 
         public Articulation Create(
-            string id,
+            ulong id,
+            string guid,
             string developerName,
             string productName,
             string articulationName,
@@ -33,7 +35,8 @@ namespace ArticulationManager.Domain.Articulations
         public class DefaultFactory : IArticulationFactory
         {
             public Articulation Create(
-                string id,
+                ulong id,
+                string guid,
                 string developerName,
                 string productName,
                 string articulationName,
@@ -43,6 +46,7 @@ namespace ArticulationManager.Domain.Articulations
             {
                 return new Articulation(
                     new EntityId( id ),
+                    new EntityGuid( guid ),
                     new DeveloperName( developerName ),
                     new ProductName( productName ),
                     new ArticulationName( articulationName ),
@@ -56,7 +60,8 @@ namespace ArticulationManager.Domain.Articulations
             }
 
             public Articulation Create(
-                string id,
+                ulong id,
+                string guid,
                 string developerName,
                 string productName,
                 string articulationName,
@@ -69,6 +74,7 @@ namespace ArticulationManager.Domain.Articulations
             {
                 return new Articulation(
                     new EntityId( id ),
+                    new EntityGuid( guid ),
                     new DeveloperName( developerName ),
                     new ProductName( productName ),
                     new ArticulationName( articulationName ),

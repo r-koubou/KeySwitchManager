@@ -1,4 +1,6 @@
-namespace ArticulationManager.UseCases.AddingArticulation
+using ArticulationManager.UseCases.AddingArticulation;
+
+namespace ArticulationManager.Presenters.AddingArticulation
 {
     public interface IAddingArticulationPresenter
     {

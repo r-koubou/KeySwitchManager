@@ -5,22 +5,27 @@
         <!-- Assembly / Common -->
         <Copyright>R-Koubou</Copyright>
         <Company>R-Koubou</Company>
-        <Product>ArticulationManager.Presenteras</Product>
-        <AssemblyName>ArticulationManager.Presenters</AssemblyName>
-        <RootNamespace>ArticulationManager.Presenters</RootNamespace>
+        <Product>ArticulationManager.Databases</Product>
+        <AssemblyName>ArticulationManager.Databases</AssemblyName>
+        <RootNamespace>ArticulationManager.Databases</RootNamespace>
         <Version>0.1.0-alpha</Version>
-        <Description>ArticulationManager.Presenters module</Description>
+        <Description>ArticulationManager.Databases module</Description>
         <Nullable>enable</Nullable>
         <!-- Nuget -->
         <Authors>R-Koubou</Authors>
-        <PackageId>ArticulationManager.Presenters</PackageId>
+        <PackageId>ArticulationManager.Databases</PackageId>
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
         <PackageProjectUrl>https://github.com/r-koubou/ArticulationManager</PackageProjectUrl>
         <RepositoryUrl>https://github.com/r-koubou/ArticulationManager</RepositoryUrl>
     </PropertyGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\UseCases\UseCases.csproj" />
+      <ProjectReference Include="..\Gateways\Gateways.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="LiteDB" Version="5.0.9" />
+      <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
     </ItemGroup>
 
 </Project>
