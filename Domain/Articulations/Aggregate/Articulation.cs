@@ -8,7 +8,7 @@ namespace ArticulationManager.Domain.Articulations.Aggregate
 {
     public class Articulation
     {
-        public EntityGuid Guid { get; }
+        public EntityGuid Id { get; }
         public EntityDateTime Created { get; }
         public EntityDateTime LastUpdated { get; }
         public DeveloperName DeveloperName { get; }
@@ -22,7 +22,7 @@ namespace ArticulationManager.Domain.Articulations.Aggregate
         public IReadOnlyList<ProgramChange> MidiProgramChanges { get; }
 
         public Articulation(
-            EntityGuid guid,
+            EntityGuid id,
             EntityDateTime created,
             EntityDateTime lastUpdated,
             DeveloperName developerName,
@@ -35,7 +35,7 @@ namespace ArticulationManager.Domain.Articulations.Aggregate
             IEnumerable<ControlChange> midiControlChanges,
             IEnumerable<ProgramChange> midiProgramChanges )
         {
-            Guid               = guid;
+            Id               = id;
             Created            = created;
             LastUpdated        = lastUpdated;
             DeveloperName      = developerName;

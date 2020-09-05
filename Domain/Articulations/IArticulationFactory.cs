@@ -12,7 +12,7 @@ namespace ArticulationManager.Domain.Articulations
     public interface IArticulationFactory
     {
         public Articulation Create(
-            string guid,
+            string id,
             DateTime created,
             DateTime lastUpdated,
             string developerName,
@@ -23,7 +23,7 @@ namespace ArticulationManager.Domain.Articulations
             int articulationColor );
 
         public Articulation Create(
-            string guid,
+            string id,
             DateTime created,
             DateTime lastUpdated,
             string developerName,
@@ -39,7 +39,7 @@ namespace ArticulationManager.Domain.Articulations
         public class DefaultFactory : IArticulationFactory
         {
             public Articulation Create(
-                string guid,
+                string id,
                 DateTime created,
                 DateTime lastUpdated,
                 string developerName,
@@ -50,7 +50,7 @@ namespace ArticulationManager.Domain.Articulations
                 int articulationColor )
             {
                 return new Articulation(
-                    new EntityGuid( guid ),
+                    new EntityGuid( id ),
                     EntityDateTimeService.FromDateTime( created ),
                     EntityDateTimeService.FromDateTime( lastUpdated ),
                     new DeveloperName( developerName ),
@@ -66,7 +66,7 @@ namespace ArticulationManager.Domain.Articulations
             }
 
             public Articulation Create(
-                string guid,
+                string id,
                 DateTime created,
                 DateTime lastUpdated,
                 string developerName,
@@ -80,7 +80,7 @@ namespace ArticulationManager.Domain.Articulations
                 IEnumerable<ProgramChange> midiProgramChanges )
             {
                 return new Articulation(
-                    new EntityGuid( guid ),
+                    new EntityGuid( id ),
                     EntityDateTimeService.FromDateTime( created ),
                     EntityDateTimeService.FromDateTime( lastUpdated ),
                     new DeveloperName( developerName ),

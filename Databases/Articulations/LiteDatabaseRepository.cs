@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 
+using ArticulationManager.Common.Utilities;
 using ArticulationManager.Databases.Articulations.Model;
 using ArticulationManager.Databases.Articulations.Service;
 using ArticulationManager.Domain.Articulations.Aggregate;
@@ -35,9 +36,13 @@ namespace ArticulationManager.Databases.Articulations
             var translator = new ArticulationTranslationService();
             var entity = translator.Translate( articulation );
 
-            if( table.Exists( x => x.Guid == articulation.Guid.Value ) )
+            if( table.Exists( x => x.Id.ToString() == articulation.Id.Value ) )
             {
-                entity.LastUpdated = DateTime.Now;
+                entity.LastUpdated = DateTimeHelper.NowUtc();
+            }
+            else
+            {
+                entity.Id = ObjectId.NewObjectId();
             }
 
             table.Upsert( entity );
@@ -48,7 +53,7 @@ namespace ArticulationManager.Databases.Articulations
             using var db = OpenDatabase();
             var table = db.GetCollection<ArticulationModel>( ArticulationsTableName );
 
-            table.Delete( new ObjectId( articulation.Guid.Value ) );
+            table.Delete( new ObjectId( articulation.Id.Value ) );
 
         }
 

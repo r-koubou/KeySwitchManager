@@ -1,8 +1,10 @@
+using System;
+
 using ArticulationManager.Common.Utilities;
 
 namespace ArticulationManager.Domain.Commons
 {
-    public class EntityDateTime
+    public class EntityDateTime : IEquatable<EntityDateTime>
     {
         public int Year { get; }
         public int Month { get; }
@@ -38,5 +40,20 @@ namespace ArticulationManager.Domain.Commons
             MilliSecond = milliSecond;
         }
 
+        public bool Equals( EntityDateTime? other )
+        {
+            if( other == null )
+            {
+                return false;
+            }
+
+            return other.Year == Year &&
+                   other.Month == Month &&
+                   other.Day == Day &&
+                   other.Hour == Hour &&
+                   other.Minute == Minute &&
+                   other.Second == Second &&
+                   other.MilliSecond == MilliSecond;
+        }
     }
 }

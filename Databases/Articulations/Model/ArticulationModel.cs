@@ -1,11 +1,14 @@
 using System;
 using System.Collections.Generic;
 
+using LiteDB;
+
 namespace ArticulationManager.Databases.Articulations.Model
 {
     public class ArticulationModel
     {
-        public string Guid { get; set; } = System.Guid.NewGuid().ToString();
+        [BsonId]
+        public ObjectId Id { get; set; }
         public DateTime Created { get; set; }
         public DateTime LastUpdated { get; set; }
         public string DeveloperName { get; set; } = "Unknown";
