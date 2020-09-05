@@ -1,7 +1,6 @@
 using System;
 
 using ArticulationManager.Domain.Articulations;
-using ArticulationManager.Domain.Commons;
 using ArticulationManager.Gateways.Articulations;
 using ArticulationManager.Presenters.AddingArticulation;
 using ArticulationManager.UseCases.AddingArticulation;
@@ -35,10 +34,12 @@ namespace ArticulationManager.Interactors.AddingArticulation
 
         public void Execute( InputData inputData )
         {
+            var created = DateTime.Now;
             var guid = Guid.NewGuid().ToString();
             var entity = ArticulationFactory.Create(
-                EntityId.Default.Value,
                 guid,
+                created,
+                created,
                 inputData.DeveloperName,
                 inputData.ProductName,
                 inputData.ArticulationName,

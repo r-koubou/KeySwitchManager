@@ -9,6 +9,8 @@ namespace ArticulationManager.Databases.Articulations.Service
         public ArticulationModel Translate( Articulation source )
         {
             return new ArticulationModel(
+                EntityDateTimeService.ToDateTime( source.Created ),
+                EntityDateTimeService.ToDateTime( source.LastUpdated ),
                 source.DeveloperName.Value,
                 source.ProductName.Value,
                 source.ArticulationName.Value,

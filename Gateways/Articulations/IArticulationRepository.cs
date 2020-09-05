@@ -2,7 +2,6 @@ using System.Collections.Generic;
 
 using ArticulationManager.Domain.Articulations.Aggregate;
 using ArticulationManager.Domain.Articulations.Value;
-using ArticulationManager.Domain.Commons;
 
 namespace ArticulationManager.Gateways.Articulations
 {
@@ -11,7 +10,6 @@ namespace ArticulationManager.Gateways.Articulations
         public void Save( Articulation articulation );
         public void Remove( Articulation articulation );
         public IReadOnlyList<Articulation> All();
-        public IEnumerable<Articulation> Find( EntityId id );
         public IEnumerable<Articulation> Find( DeveloperName developerName );
         public IEnumerable<Articulation> Find( ProductName productName );
     }

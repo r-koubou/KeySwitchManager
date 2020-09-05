@@ -1,10 +1,10 @@
+using System;
 using System.Collections.Generic;
 
 using ArticulationManager.Databases.Articulations.Model;
 using ArticulationManager.Databases.Articulations.Service;
 using ArticulationManager.Domain.Articulations.Aggregate;
 using ArticulationManager.Domain.Articulations.Value;
-using ArticulationManager.Domain.Commons;
 using ArticulationManager.Gateways.Articulations;
 
 using LiteDB;
@@ -13,7 +13,7 @@ namespace ArticulationManager.Databases.Articulations
 {
     public class LiteDatabaseRepository : IArticulationRepository
     {
-        private const string TableName = @"articulations";
+        private const string ArticulationsTableName = @"articulations";
 
         private string DbFilePath { get; }
 
@@ -30,23 +30,25 @@ namespace ArticulationManager.Databases.Articulations
         public void Save( Articulation articulation )
         {
             using var db = OpenDatabase();
-            var table = db.GetCollection<ArticulationModel>( TableName );
+            var table = db.GetCollection<ArticulationModel>( ArticulationsTableName );
 
-            if( table.Exists( x => x.Id == articulation.Id.Value ) )
-            {}
-            else
+            var translator = new ArticulationTranslationService();
+            var entity = translator.Translate( articulation );
+
+            if( table.Exists( x => x.Guid == articulation.Guid.Value ) )
             {
-                var translator = new ArticulationTranslationService();
-                table.Insert( translator.Translate( articulation ) );
+                entity.LastUpdated = DateTime.Now;
             }
+
+            table.Upsert( entity );
         }
 
         public void Remove( Articulation articulation )
         {
             using var db = OpenDatabase();
-            var table = db.GetCollection<ArticulationModel>( TableName );
+            var table = db.GetCollection<ArticulationModel>( ArticulationsTableName );
 
-            table.Delete( articulation.Id.Value );
+            table.Delete( new ObjectId( articulation.Guid.Value ) );
 
         }
 
@@ -66,23 +68,15 @@ namespace ArticulationManager.Databases.Articulations
         public IReadOnlyList<Articulation> All()
         {
             using var db = OpenDatabase();
+            var table = db.GetCollection<ArticulationModel>( ArticulationsTableName );
 
-            var table = db.GetCollection<ArticulationModel>( TableName );
             return CreateEntities( table.FindAll() );
-        }
-
-        public IEnumerable<Articulation> Find( EntityId id )
-        {
-            using var db = OpenDatabase();
-            var table = db.GetCollection<ArticulationModel>( TableName );
-
-            return CreateEntities( table.Find(x => id.Equals( new EntityId( x.Id ) ) ) );
         }
 
         public IEnumerable<Articulation> Find( DeveloperName developerName )
         {
             using var db = OpenDatabase();
-            var table = db.GetCollection<ArticulationModel>( TableName );
+            var table = db.GetCollection<ArticulationModel>( ArticulationsTableName );
 
             return CreateEntities( table.Find( x => developerName.Equals( new DeveloperName( x.DeveloperName ) ) ) );
         }
@@ -90,7 +84,7 @@ namespace ArticulationManager.Databases.Articulations
         public IEnumerable<Articulation> Find( ProductName productName )
         {
             using var db = OpenDatabase();
-            var table = db.GetCollection<ArticulationModel>( TableName );
+            var table = db.GetCollection<ArticulationModel>( ArticulationsTableName );
 
             return CreateEntities( table.Find( x => productName.Equals( new ProductName( x.ProductName ) ) ) );
         }

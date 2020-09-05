@@ -12,8 +12,9 @@ namespace ArticulationManager.Databases.Articulations.Service
         public Articulation Translate( ArticulationModel source )
         {
             return new IArticulationFactory.DefaultFactory().Create(
-                source.Id,
                 source.Guid,
+                source.Created,
+                source.LastUpdated,
                 source.DeveloperName,
                 source.ProductName,
                 source.ArticulationName,

@@ -1,17 +1,20 @@
+using System;
 using System.Collections.Generic;
 
 using ArticulationManager.Domain.Articulations.Aggregate;
 using ArticulationManager.Domain.Articulations.Value;
 using ArticulationManager.Domain.Commons;
 using ArticulationManager.Domain.MidiMessages.Aggregate;
+using ArticulationManager.Domain.Services;
 
 namespace ArticulationManager.Domain.Articulations
 {
     public interface IArticulationFactory
     {
         public Articulation Create(
-            ulong id,
             string guid,
+            DateTime created,
+            DateTime lastUpdated,
             string developerName,
             string productName,
             string articulationName,
@@ -20,8 +23,9 @@ namespace ArticulationManager.Domain.Articulations
             int articulationColor );
 
         public Articulation Create(
-            ulong id,
             string guid,
+            DateTime created,
+            DateTime lastUpdated,
             string developerName,
             string productName,
             string articulationName,
@@ -35,8 +39,9 @@ namespace ArticulationManager.Domain.Articulations
         public class DefaultFactory : IArticulationFactory
         {
             public Articulation Create(
-                ulong id,
                 string guid,
+                DateTime created,
+                DateTime lastUpdated,
                 string developerName,
                 string productName,
                 string articulationName,
@@ -45,8 +50,9 @@ namespace ArticulationManager.Domain.Articulations
                 int articulationColor )
             {
                 return new Articulation(
-                    new EntityId( id ),
                     new EntityGuid( guid ),
+                    EntityDateTimeService.FromDateTime( created ),
+                    EntityDateTimeService.FromDateTime( lastUpdated ),
                     new DeveloperName( developerName ),
                     new ProductName( productName ),
                     new ArticulationName( articulationName ),
@@ -60,8 +66,9 @@ namespace ArticulationManager.Domain.Articulations
             }
 
             public Articulation Create(
-                ulong id,
                 string guid,
+                DateTime created,
+                DateTime lastUpdated,
                 string developerName,
                 string productName,
                 string articulationName,
@@ -73,8 +80,9 @@ namespace ArticulationManager.Domain.Articulations
                 IEnumerable<ProgramChange> midiProgramChanges )
             {
                 return new Articulation(
-                    new EntityId( id ),
                     new EntityGuid( guid ),
+                    EntityDateTimeService.FromDateTime( created ),
+                    EntityDateTimeService.FromDateTime( lastUpdated ),
                     new DeveloperName( developerName ),
                     new ProductName( productName ),
                     new ArticulationName( articulationName ),
