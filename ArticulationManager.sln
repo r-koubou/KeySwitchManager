@@ -22,7 +22,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Presenters", "Presenters\Pr
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gateways", "Gateways\Gateways.csproj", "{A6DAE468-A33B-4DB6-9EBD-8FAE37362874}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Databases", "Databases\Databases.csproj", "{04DE4B8B-FBC2-4BF6-9670-C2A4C9AF68EB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Databases.LiteDB", "Databases.LiteDB\Databases.LiteDB.csproj", "{04DE4B8B-FBC2-4BF6-9670-C2A4C9AF68EB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

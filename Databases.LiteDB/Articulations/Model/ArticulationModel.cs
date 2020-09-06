@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 using LiteDB;
 
-namespace ArticulationManager.Databases.Articulations.Model
+namespace ArticulationManager.Databases.LiteDB.Articulations.Model
 {
     public class ArticulationModel
     {

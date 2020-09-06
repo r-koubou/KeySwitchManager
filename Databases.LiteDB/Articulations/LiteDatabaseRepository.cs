@@ -1,36 +1,57 @@
 using System;
 using System.Collections.Generic;
+using System.Linq.Expressions;
 
 using ArticulationManager.Common.Utilities;
-using ArticulationManager.Databases.Articulations.Model;
-using ArticulationManager.Databases.Articulations.Service;
+using ArticulationManager.Databases.LiteDB.Articulations.Model;
+using ArticulationManager.Databases.LiteDB.Articulations.Service;
 using ArticulationManager.Domain.Articulations.Aggregate;
 using ArticulationManager.Domain.Articulations.Value;
 using ArticulationManager.Gateways.Articulations;
 
 using LiteDB;
 
-namespace ArticulationManager.Databases.Articulations
+namespace ArticulationManager.Databases.LiteDB.Articulations
 {
-    public class LiteDatabaseRepository : IArticulationRepository
+    public class LiteDatabaseRepository : IArticulationRepository, IDisposable
     {
         private const string ArticulationsTableName = @"articulations";
 
-        private string DbFilePath { get; }
+        private LiteDatabase Database { get; set; } = default!;
 
         public LiteDatabaseRepository( string dbFilePath )
         {
-            DbFilePath = dbFilePath;
+            Open( dbFilePath );
         }
 
-        private LiteDatabase OpenDatabase()
+        public void Dispose()
         {
-            return new LiteDatabase( DbFilePath );
+            Close();
+        }
+
+        private void Open( string dbFilePath )
+        {
+            Close();
+            Database = new LiteDatabase( dbFilePath );
+        }
+
+        public void Close()
+        {
+            lock( this )
+            {
+                if( Database == default! )
+                {
+                    return;
+                }
+
+                Database.Dispose();
+                Database = default!;
+            }
         }
 
         public void Save( Articulation articulation )
         {
-            using var db = OpenDatabase();
+            using var db = Database;
             var table = db.GetCollection<ArticulationModel>( ArticulationsTableName );
 
             var translator = new ArticulationTranslationService();
@@ -50,7 +71,7 @@ namespace ArticulationManager.Databases.Articulations
 
         public void Remove( Articulation articulation )
         {
-            using var db = OpenDatabase();
+            using var db = Database;
             var table = db.GetCollection<ArticulationModel>( ArticulationsTableName );
 
             table.Delete( new ObjectId( articulation.Id.Value ) );
@@ -72,26 +93,26 @@ namespace ArticulationManager.Databases.Articulations
 
         public IReadOnlyList<Articulation> All()
         {
-            using var db = OpenDatabase();
+            using var db = Database;
             var table = db.GetCollection<ArticulationModel>( ArticulationsTableName );
 
             return CreateEntities( table.FindAll() );
         }
 
+        public IEnumerable<T> Find<T>( Expression<Func<T, bool>> predicate, int skip = 0, int limit = 2147483647 )
+        {
+            var table = Database.GetCollection<T>( ArticulationsTableName );
+            return table.Find( predicate, skip, limit );
+        }
+
         public IEnumerable<Articulation> Find( DeveloperName developerName )
         {
-            using var db = OpenDatabase();
-            var table = db.GetCollection<ArticulationModel>( ArticulationsTableName );
-
-            return CreateEntities( table.Find( x => developerName.Equals( new DeveloperName( x.DeveloperName ) ) ) );
+            return CreateEntities( Find<ArticulationModel>( x => developerName.Equals( new DeveloperName( x.DeveloperName ) ) ) );
         }
 
         public IEnumerable<Articulation> Find( ProductName productName )
         {
-            using var db = OpenDatabase();
-            var table = db.GetCollection<ArticulationModel>( ArticulationsTableName );
-
-            return CreateEntities( table.Find( x => productName.Equals( new ProductName( x.ProductName ) ) ) );
+            return CreateEntities( Find<ArticulationModel>( x => productName.Equals( new ProductName( x.ProductName ) ) ) );
         }
     }
 }

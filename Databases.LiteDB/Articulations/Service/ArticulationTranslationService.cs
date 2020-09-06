@@ -1,8 +1,8 @@
-using ArticulationManager.Databases.Articulations.Model;
+using ArticulationManager.Databases.LiteDB.Articulations.Model;
 using ArticulationManager.Domain.Articulations.Aggregate;
 using ArticulationManager.Domain.Services;
 
-namespace ArticulationManager.Databases.Articulations.Service
+namespace ArticulationManager.Databases.LiteDB.Articulations.Service
 {
     public class ArticulationTranslationService : IDataTranslationService<Articulation, ArticulationModel>
     {

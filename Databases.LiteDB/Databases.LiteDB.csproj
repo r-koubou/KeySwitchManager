@@ -5,15 +5,15 @@
         <!-- Assembly / Common -->
         <Copyright>R-Koubou</Copyright>
         <Company>R-Koubou</Company>
-        <Product>ArticulationManager.Databases</Product>
-        <AssemblyName>ArticulationManager.Databases</AssemblyName>
-        <RootNamespace>ArticulationManager.Databases</RootNamespace>
+        <Product>ArticulationManager.Databases.LiteDB</Product>
+        <AssemblyName>ArticulationManager.Databases.LiteDB</AssemblyName>
+        <RootNamespace>ArticulationManager.Databases.LiteDB</RootNamespace>
         <Version>0.1.0-alpha</Version>
-        <Description>ArticulationManager.Databases module</Description>
+        <Description>ArticulationManager.Databases.LiteDB module</Description>
         <Nullable>enable</Nullable>
         <!-- Nuget -->
         <Authors>R-Koubou</Authors>
-        <PackageId>ArticulationManager.Databases</PackageId>
+        <PackageId>ArticulationManager.Databases.LiteDB</PackageId>
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
         <PackageProjectUrl>https://github.com/r-koubou/ArticulationManager</PackageProjectUrl>
         <RepositoryUrl>https://github.com/r-koubou/ArticulationManager</RepositoryUrl>

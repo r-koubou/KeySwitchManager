@@ -1,4 +1,4 @@
-namespace ArticulationManager.Databases.Articulations.Model
+namespace ArticulationManager.Databases.LiteDB.Articulations.Model
 {
     public class MidiMessageModel
     {
