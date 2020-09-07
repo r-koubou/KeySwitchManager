@@ -8,7 +8,7 @@ namespace ArticulationManager.Databases.LiteDB.Articulations.Model
     public class ArticulationModel
     {
         [BsonId]
-        public ObjectId Id { get; set; }
+        public Guid Id { get; set; } = Guid.NewGuid();
         public DateTime Created { get; set; }
         public DateTime LastUpdated { get; set; }
         public string DeveloperName { get; set; } = "Unknown";

@@ -57,13 +57,13 @@ namespace ArticulationManager.Databases.LiteDB.Articulations
             var translator = new ArticulationTranslationService();
             var entity = translator.Translate( articulation );
 
-            if( table.Exists( x => x.Id.ToString() == articulation.Id.Value ) )
+            if( table.Exists( x => x.Id.Equals( Guid.Parse( articulation.Id.Value ) ) ) )
             {
                 entity.LastUpdated = DateTimeHelper.NowUtc();
             }
             else
             {
-                entity.Id = ObjectId.NewObjectId();
+                entity.Id = Guid.Parse( articulation.Id.Value );
             }
 
             table.Upsert( entity );
@@ -89,14 +89,6 @@ namespace ArticulationManager.Databases.LiteDB.Articulations
             }
 
             return result;
-        }
-
-        public IReadOnlyList<Articulation> All()
-        {
-            using var db = Database;
-            var table = db.GetCollection<ArticulationModel>( ArticulationsTableName );
-
-            return CreateEntities( table.FindAll() );
         }
 
         public IEnumerable<T> Find<T>( Expression<Func<T, bool>> predicate, int skip = 0, int limit = 2147483647 )
