@@ -36,9 +36,8 @@ namespace ArticulationManager.Interactors.AddingArticulation
         public void Execute( InputData inputData )
         {
             var created = DateTimeHelper.NowUtc();
-            var id = Guid.NewGuid().ToString( "N" );
             var entity = ArticulationFactory.Create(
-                id,
+                Guid.NewGuid(),
                 created,
                 created,
                 inputData.DeveloperName,

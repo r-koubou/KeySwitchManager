@@ -12,7 +12,7 @@ namespace ArticulationManager.Domain.Articulations
     public interface IArticulationFactory
     {
         public Articulation Create(
-            string id,
+            Guid id,
             DateTime created,
             DateTime lastUpdated,
             string developerName,
@@ -23,7 +23,7 @@ namespace ArticulationManager.Domain.Articulations
             int articulationColor );
 
         public Articulation Create(
-            string id,
+            Guid id,
             DateTime created,
             DateTime lastUpdated,
             string developerName,
@@ -39,7 +39,7 @@ namespace ArticulationManager.Domain.Articulations
         public class DefaultFactory : IArticulationFactory
         {
             public Articulation Create(
-                string id,
+                Guid id,
                 DateTime created,
                 DateTime lastUpdated,
                 string developerName,
@@ -66,7 +66,7 @@ namespace ArticulationManager.Domain.Articulations
             }
 
             public Articulation Create(
-                string id,
+                Guid id,
                 DateTime created,
                 DateTime lastUpdated,
                 string developerName,

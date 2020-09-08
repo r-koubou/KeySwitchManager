@@ -13,35 +13,13 @@ namespace ArticulationManager.Databases.LiteDB.Testing
     [TestFixture]
     public class AddingTest
     {
-        private string? WorkingDirectory;
-
-        [SetUp]
-        public void Setup()
-        {
-            WorkingDirectory = Path.GetDirectoryName( TestContext.CurrentContext.TestDirectory );
-        }
-
         [Test]
         public void AddTest()
         {
-            var dbPath = Path.Combine( WorkingDirectory, "test.db" );
-            var repository = new LiteDatabaseRepository( dbPath );
-            var factory = new IArticulationFactory.DefaultFactory();
-            var date = DateTimeHelper.NowUtc();
-            var record = factory.Create(
-                Guid.NewGuid().ToString("N"),
-                date,
-                date,
-                "DeloperName",
-                "ProductName",
-                "Power Chord",
-                ArticulationType.Direction,
-                0,
-                0
-            );
+            var repository = new LiteDbArticulationRepository( new MemoryStream() );
+            var record = TestDataGenerator.CreateDummy();
 
             repository.Save( record );
-            System.Console.WriteLine( dbPath );
         }
     }
 }

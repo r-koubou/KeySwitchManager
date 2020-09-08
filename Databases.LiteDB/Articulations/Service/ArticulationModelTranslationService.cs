@@ -12,7 +12,7 @@ namespace ArticulationManager.Databases.LiteDB.Articulations.Service
         public Articulation Translate( ArticulationModel source )
         {
             return new IArticulationFactory.DefaultFactory().Create(
-                source.Id.ToString(),
+                source.Id,
                 source.Created,
                 source.LastUpdated,
                 source.DeveloperName,

@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq.Expressions;
 
 using ArticulationManager.Common.Utilities;
@@ -13,15 +14,20 @@ using LiteDB;
 
 namespace ArticulationManager.Databases.LiteDB.Articulations
 {
-    public class LiteDatabaseRepository : IArticulationRepository, IDisposable
+    public class LiteDbArticulationRepository : IArticulationRepository, IDisposable
     {
-        private const string ArticulationsTableName = @"articulations";
+        public const string ArticulationsTableName = @"articulations";
 
-        private LiteDatabase Database { get; set; } = default!;
+        private LiteDatabase Database { get; set; }
 
-        public LiteDatabaseRepository( string dbFilePath )
+        public LiteDbArticulationRepository( string dbFilePath )
         {
-            Open( dbFilePath );
+            Database = new LiteDatabase( dbFilePath );
+        }
+
+        public LiteDbArticulationRepository( Stream stream )
+        {
+            Database = new LiteDatabase( stream );
         }
 
         public void Dispose()
@@ -29,13 +35,7 @@ namespace ArticulationManager.Databases.LiteDB.Articulations
             Close();
         }
 
-        private void Open( string dbFilePath )
-        {
-            Close();
-            Database = new LiteDatabase( dbFilePath );
-        }
-
-        public void Close()
+        private void Close()
         {
             lock( this )
             {
@@ -49,33 +49,41 @@ namespace ArticulationManager.Databases.LiteDB.Articulations
             }
         }
 
+        public int Count()
+        {
+            var table = Database.GetCollection<ArticulationModel>( ArticulationsTableName );
+            return table.Count();
+        }
+
         public void Save( Articulation articulation )
         {
-            using var db = Database;
-            var table = db.GetCollection<ArticulationModel>( ArticulationsTableName );
+            var table = Database.GetCollection<ArticulationModel>( ArticulationsTableName );
 
             var translator = new ArticulationTranslationService();
             var entity = translator.Translate( articulation );
 
-            if( table.Exists( x => x.Id.Equals( Guid.Parse( articulation.Id.Value ) ) ) )
+            if( table.Exists( x => x.Id.Equals( articulation.Id.Value ) ) )
             {
                 entity.LastUpdated = DateTimeHelper.NowUtc();
             }
             else
             {
-                entity.Id = Guid.Parse( articulation.Id.Value );
+                entity.Id = articulation.Id.Value;
             }
 
             table.Upsert( entity );
         }
 
-        public void Remove( Articulation articulation )
+        public void DeleteMany<T>( Expression<Func<T, bool>> predicate )
         {
-            using var db = Database;
-            var table = db.GetCollection<ArticulationModel>( ArticulationsTableName );
+            var table = Database.GetCollection<T>( ArticulationsTableName );
+            table.DeleteMany( predicate );
+        }
 
-            table.Delete( new ObjectId( articulation.Id.Value ) );
-
+        public void Delete( Articulation articulation )
+        {
+            var table = Database.GetCollection<ArticulationModel>( ArticulationsTableName );
+            table.Delete( articulation.Id.Value );
         }
 
         private List<Articulation> CreateEntities( IEnumerable<ArticulationModel> query )
@@ -106,5 +114,12 @@ namespace ArticulationManager.Databases.LiteDB.Articulations
         {
             return CreateEntities( Find<ArticulationModel>( x => productName.Equals( new ProductName( x.ProductName ) ) ) );
         }
+
+        public IEnumerable<Articulation> FindAll()
+        {
+            var table = Database.GetCollection<ArticulationModel>( ArticulationsTableName );
+            return CreateEntities( table.FindAll() );
+        }
+
     }
 }
