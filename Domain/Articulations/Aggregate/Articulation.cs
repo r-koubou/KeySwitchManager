@@ -77,45 +77,6 @@ namespace ArticulationManager.Domain.Articulations.Aggregate
                    MidiControlChanges.SequenceEqual( other.MidiControlChanges ) &&
                    MidiProgramChanges.SequenceEqual( other.MidiProgramChanges );
         }
-
-        public override bool Equals( object? obj )
-        {
-            if( ReferenceEquals( null, obj ) )
-            {
-                return false;
-            }
-
-            if( ReferenceEquals( this, obj ) )
-            {
-                return true;
-            }
-
-            if( obj.GetType() != this.GetType() )
-            {
-                return false;
-            }
-
-            return Equals( (Articulation)obj );
-        }
-
-        public override int GetHashCode()
-        {
-            var hashCode = new HashCode();
-            hashCode.Add( Id );
-            hashCode.Add( Created );
-            hashCode.Add( LastUpdated );
-            hashCode.Add( DeveloperName );
-            hashCode.Add( ProductName );
-            hashCode.Add( ArticulationName );
-            hashCode.Add( (int)ArticulationType );
-            hashCode.Add( ArticulationGroup );
-            hashCode.Add( ArticulationColor );
-            hashCode.Add( MidiNoteOns );
-            hashCode.Add( MidiControlChanges );
-            hashCode.Add( MidiProgramChanges );
-
-            return hashCode.ToHashCode();
-        }
         #endregion Equals
     }
 }

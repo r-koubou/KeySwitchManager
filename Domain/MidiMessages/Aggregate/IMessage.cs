@@ -8,7 +8,7 @@ namespace ArticulationManager.Domain.MidiMessages.Aggregate
     /// MIDI event aggregation that makes up the sound slot.
     /// Status bytes are not defined because they are not used.
     /// </summary>
-    public interface IMessage
+    public interface IMessage : IEquatable<IMessage>
     {
         /// <summary>
         /// MIDI status code
@@ -30,5 +30,14 @@ namespace ArticulationManager.Domain.MidiMessages.Aggregate
         /// MIDI event: 2nd data byte
         /// </summary>
         public IMessageData DataByte2 { get; }
+
+        bool IEquatable<IMessage>.Equals( IMessage? other )
+        {
+            return other != null &&
+                   Status.Value == other.Status.Value &&
+                   Channel.Value == other.Channel.Value &&
+                   DataByte1.Value == other.DataByte1.Value &&
+                   DataByte2.Value == other.DataByte2.Value;
+        }
     }
 }
