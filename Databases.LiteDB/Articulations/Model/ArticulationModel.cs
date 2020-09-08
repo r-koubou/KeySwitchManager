@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
 
+using ArticulationManager.Domain.MidiMessages.Aggregate;
+
 using LiteDB;
 
 namespace ArticulationManager.Databases.LiteDB.Articulations.Model
@@ -31,7 +33,10 @@ namespace ArticulationManager.Databases.LiteDB.Articulations.Model
             string productName,
             string articulationName,
             int articulationGroup,
-            int articulationColor )
+            int articulationColor,
+            IEnumerable<MidiMessageModel> midiNoteOns,
+            IEnumerable<MidiMessageModel> midiControlChanges,
+            IEnumerable<MidiMessageModel> midiProgramChanges )
         {
             DeveloperName     = developerName;
             ProductName       = productName;
@@ -40,6 +45,9 @@ namespace ArticulationManager.Databases.LiteDB.Articulations.Model
             ArticulationColor = articulationColor;
             Created           = created;
             LastUpdated       = lastUpdated;
+            NoteOn            = new List<MidiMessageModel>( midiNoteOns );
+            ControlChange     = new List<MidiMessageModel>( midiControlChanges );
+            ProgramChange     = new List<MidiMessageModel>( midiProgramChanges );
         }
     }
 }

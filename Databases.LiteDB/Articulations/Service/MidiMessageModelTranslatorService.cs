@@ -11,6 +11,7 @@ namespace ArticulationManager.Databases.LiteDB.Articulations.Service
         {
             return new GenericMessage(
                 new StatusCode( source.Status ),
+                new GenericData( source.Channel ),
                 new GenericData( source.DataByte1 ),
                 new GenericData( source.DataByte2 )
             );

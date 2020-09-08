@@ -20,7 +20,7 @@ namespace ArticulationManager.Databases.LiteDB.Testing
             int articulationGroup = 0,
             int articulationColor = 0 )
         {
-            DateTime now = DateTimeHelper.NowUtc();
+            var now = DateTimeHelper.NowUtc();
 
             return new Articulation(
                 new EntityGuid( Guid.NewGuid() ),
@@ -47,5 +47,27 @@ namespace ArticulationManager.Databases.LiteDB.Testing
             );
         }
 
+        public static Articulation CreateDummy(
+            IEnumerable<NoteOn> noteOns,
+            IEnumerable<ControlChange> controlChanges,
+            IEnumerable<ProgramChange> programChanges )
+        {
+            var now = DateTimeHelper.NowUtc();
+
+            return new Articulation(
+                new EntityGuid( Guid.NewGuid() ),
+                EntityDateTimeService.FromDateTime( now ),
+                EntityDateTimeService.FromDateTime( now ),
+                new DeveloperName( "DeveloperName" ),
+                new ProductName( "ProductName" ),
+                new ArticulationName( "Power Chord" ),
+                ArticulationType.Default,
+                new ArticulationGroup( 0 ),
+                new ArticulationColor( 0 ),
+                new List<NoteOn>( noteOns ),
+                new List<ControlChange>( controlChanges ),
+                new List<ProgramChange>( programChanges )
+            );
+        }
     }
 }

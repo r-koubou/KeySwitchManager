@@ -112,7 +112,7 @@ namespace ArticulationManager.Databases.LiteDB.Articulations
 
         public IEnumerable<Articulation> Find( ProductName productName )
         {
-            return CreateEntities( Find<ArticulationModel>( x => productName.Equals( new ProductName( x.ProductName ) ) ) );
+            return CreateEntities( Find<ArticulationModel>( x => productName.Value == x.ProductName ) );
         }
 
         public IEnumerable<Articulation> FindAll()

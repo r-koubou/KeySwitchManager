@@ -32,9 +32,9 @@ namespace ArticulationManager.Domain.Articulations
             ArticulationType articulationType,
             int articulationGroup,
             int articulationColor,
-            IEnumerable<NoteOn> midiNoteOns,
-            IEnumerable<ControlChange> midiControlChanges,
-            IEnumerable<ProgramChange> midiProgramChanges );
+            IEnumerable<IMessage> midiNoteOns,
+            IEnumerable<IMessage> midiControlChanges,
+            IEnumerable<IMessage> midiProgramChanges );
 
         public class DefaultFactory : IArticulationFactory
         {
@@ -75,9 +75,9 @@ namespace ArticulationManager.Domain.Articulations
                 ArticulationType articulationType,
                 int articulationGroup,
                 int articulationColor,
-                IEnumerable<NoteOn> midiNoteOns,
-                IEnumerable<ControlChange> midiControlChanges,
-                IEnumerable<ProgramChange> midiProgramChanges )
+                IEnumerable<IMessage> midiNoteOns,
+                IEnumerable<IMessage> midiControlChanges,
+                IEnumerable<IMessage> midiProgramChanges )
             {
                 return new Articulation(
                     new EntityGuid( id ),

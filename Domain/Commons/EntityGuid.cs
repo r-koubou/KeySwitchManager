@@ -26,7 +26,7 @@ namespace ArticulationManager.Domain.Commons
 
         public bool Equals( EntityGuid? other )
         {
-            return other != null && Value == other.Value;
+            return other != null && Value.Equals( other.Value );
         }
     }
 }

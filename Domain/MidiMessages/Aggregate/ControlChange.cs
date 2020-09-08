@@ -8,6 +8,7 @@ namespace ArticulationManager.Domain.MidiMessages.Aggregate
     public class ControlChange : IMessage
     {
         public IMessageData Status { get; } = StatusCode.ControlChange;
+        public IMessageData Channel { get; } = MidiChannel.Zero;
         public IMessageData DataByte1 { get; }
         public IMessageData DataByte2 { get; }
 
@@ -17,12 +18,12 @@ namespace ArticulationManager.Domain.MidiMessages.Aggregate
             DataByte2 = controlChangeValue;
         }
 
-        public ControlChange( Channel channel, ControlChangeNumber controlChangeNumber, ControlChangeValue controlChangeValue )
+        public ControlChange( MidiChannel midiChannel, ControlChangeNumber controlChangeNumber, ControlChangeValue controlChangeValue )
         {
-            Status    = new StatusCode( channel, StatusCode.ControlChange.Value );
+            Status    = new StatusCode( StatusCode.ControlChange.Value );
+            Channel   = midiChannel;
             DataByte1 = controlChangeNumber;
             DataByte2 = controlChangeValue;
         }
-
     }
 }
