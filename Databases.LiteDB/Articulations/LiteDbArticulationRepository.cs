@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq.Expressions;
 
 using ArticulationManager.Common.Utilities;
 using ArticulationManager.Databases.LiteDB.Articulations.Model;
@@ -19,6 +18,9 @@ namespace ArticulationManager.Databases.LiteDB.Articulations
         public const string ArticulationsTableName = @"articulations";
 
         private LiteDatabase Database { get; set; }
+
+        private ILiteCollection<ArticulationModel> ArticulationTable
+            => Database.GetCollection<ArticulationModel>( ArticulationsTableName );
 
         public LiteDbArticulationRepository( string dbFilePath )
         {
@@ -55,6 +57,7 @@ namespace ArticulationManager.Databases.LiteDB.Articulations
             return table.Count();
         }
 
+        #region Save
         public void Save( Articulation articulation )
         {
             var table = Database.GetCollection<ArticulationModel>( ArticulationsTableName );
@@ -73,19 +76,37 @@ namespace ArticulationManager.Databases.LiteDB.Articulations
 
             table.Upsert( entity );
         }
+        #endregion
 
-        public void DeleteMany<T>( Expression<Func<T, bool>> predicate )
-        {
-            var table = Database.GetCollection<T>( ArticulationsTableName );
-            table.DeleteMany( predicate );
-        }
-
+        #region Delete
         public void Delete( Articulation articulation )
         {
-            var table = Database.GetCollection<ArticulationModel>( ArticulationsTableName );
-            table.Delete( articulation.Id.Value );
+            ArticulationTable.Delete( articulation.Id.Value );
         }
 
+        public void Delete( DeveloperName developerName )
+        {
+            ArticulationTable.DeleteMany( x => x.DeveloperName == developerName.Value );
+        }
+
+        public void Delete( ProductName productName )
+        {
+            ArticulationTable.DeleteMany( x => x.ProductName == productName.Value );
+        }
+
+        public void Delete( ArticulationName articulationName )
+        {
+            ArticulationTable.DeleteMany( x => x.ArticulationName == articulationName.Value );
+        }
+
+        public void DeleteAll()
+        {
+            var table = Database.GetCollection<ArticulationModel>( ArticulationsTableName );
+            table.DeleteAll();
+        }
+        #endregion
+
+        #region Find
         private List<Articulation> CreateEntities( IEnumerable<ArticulationModel> query )
         {
             var result = new List<Articulation>();
@@ -99,27 +120,25 @@ namespace ArticulationManager.Databases.LiteDB.Articulations
             return result;
         }
 
-        public IEnumerable<T> Find<T>( Expression<Func<T, bool>> predicate, int skip = 0, int limit = 2147483647 )
-        {
-            var table = Database.GetCollection<T>( ArticulationsTableName );
-            return table.Find( predicate, skip, limit );
-        }
-
         public IEnumerable<Articulation> Find( DeveloperName developerName )
         {
-            return CreateEntities( Find<ArticulationModel>( x => developerName.Equals( new DeveloperName( x.DeveloperName ) ) ) );
+            return CreateEntities( ArticulationTable.Find( x => x.DeveloperName == developerName.Value ) );
         }
 
         public IEnumerable<Articulation> Find( ProductName productName )
         {
-            return CreateEntities( Find<ArticulationModel>( x => productName.Value == x.ProductName ) );
+            return CreateEntities( ArticulationTable.Find( x => x.ProductName == productName.Value ) );
+        }
+
+        public IEnumerable<Articulation> Find( ArticulationName articulationName )
+        {
+            return CreateEntities( ArticulationTable.Find( x => x.ArticulationName == articulationName.Value ) );
         }
 
         public IEnumerable<Articulation> FindAll()
         {
-            var table = Database.GetCollection<ArticulationModel>( ArticulationsTableName );
-            return CreateEntities( table.FindAll() );
+            return CreateEntities( ArticulationTable.FindAll() );
         }
-
+        #endregion
     }
 }

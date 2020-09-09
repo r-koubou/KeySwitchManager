@@ -12,10 +12,13 @@ namespace ArticulationManager.Gateways.Articulations
         public int Count();
         public void Save( Articulation articulation );
         public void Delete( Articulation articulation );
-        public void DeleteMany<T>( Expression<Func<T, bool>> predicate );
-        public IEnumerable<T> Find<T>( Expression<Func<T, bool>> predicate, int skip = 0, int limit = 2147483647 );
+        public void Delete( DeveloperName developerName );
+        public void Delete( ProductName productName );
+        public void Delete( ArticulationName articulationName );
+        public void DeleteAll();
         public IEnumerable<Articulation> Find( DeveloperName developerName );
         public IEnumerable<Articulation> Find( ProductName productName );
+        public IEnumerable<Articulation> Find( ArticulationName articulationName );
         public IEnumerable<Articulation> FindAll();
     }
 }

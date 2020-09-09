@@ -1,13 +1,8 @@
-using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 
-using ArticulationManager.Common.Utilities;
 using ArticulationManager.Databases.LiteDB.Articulations;
-using ArticulationManager.Domain.Articulations;
-using ArticulationManager.Domain.Articulations.Aggregate;
-using ArticulationManager.Domain.Articulations.Value;
 using ArticulationManager.Domain.MidiMessages.Aggregate;
 using ArticulationManager.Domain.MidiMessages.Value;
 
@@ -35,8 +30,20 @@ namespace ArticulationManager.Databases.LiteDB.Testing
 
             var seq = repository.Find( record.ProductName );
             var cmp = seq.First();
-
             Assert.AreEqual( record, cmp );
+
+            seq = repository.Find( record.DeveloperName );
+            cmp = seq.First();
+            Assert.AreEqual( record, cmp );
+
+            seq = repository.Find( record.ArticulationName );
+            cmp = seq.First();
+            Assert.AreEqual( record, cmp );
+
+            seq = repository.Find( record.ArticulationName );
+            cmp = seq.First();
+            Assert.AreEqual( record, cmp );
+
         }
     }
 }

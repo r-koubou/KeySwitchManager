@@ -1,12 +1,6 @@
-using System;
 using System.IO;
 
-using ArticulationManager.Common.Utilities;
 using ArticulationManager.Databases.LiteDB.Articulations;
-using ArticulationManager.Databases.LiteDB.Articulations.Model;
-using ArticulationManager.Databases.LiteDB.Articulations.Service;
-using ArticulationManager.Domain.Articulations;
-using ArticulationManager.Domain.Articulations.Value;
 
 using NUnit.Framework;
 
@@ -19,21 +13,47 @@ namespace ArticulationManager.Databases.LiteDB.Testing
         public void RemoveTest()
         {
             var repository = new LiteDbArticulationRepository( new MemoryStream() );
-            var toModelTranslator = new ArticulationModelTranslationService();
-            var toTranslator = new ArticulationTranslationService();
+            var record = TestDataGenerator.CreateDummy();
 
-            var date = DateTimeHelper.NowUtc();
+            #region Delete by Id
+            repository.Save( record );
+            Assert.AreEqual( 1, repository.Count() );
 
-            var articulation = TestDataGenerator.CreateDummy();
-
-            repository.Save( articulation );
-            Assert.AreEqual( 1,repository.Count() );
-
-            foreach( var a in repository.Find<ArticulationModel>( x => true ) )
-            {
-                repository.Delete( toModelTranslator.Translate( a ) );
-            }
+            repository.Delete( record );
             Assert.AreEqual( 0, repository.Count() );
+            #endregion
+
+            #region Delete by DeveloperName
+            repository.Save( record );
+            Assert.AreEqual( 1, repository.Count() );
+
+            repository.Delete( record.DeveloperName );
+            Assert.AreEqual( 0, repository.Count() );
+            #endregion
+
+            #region Delete by ProductName
+            repository.Save( record );
+            Assert.AreEqual( 1, repository.Count() );
+
+            repository.Delete( record.ProductName );
+            Assert.AreEqual( 0, repository.Count() );
+            #endregion
+
+            #region Delete by ArticulationName
+            repository.Save( record );
+            Assert.AreEqual( 1, repository.Count() );
+
+            repository.Delete( record.ArticulationName );
+            Assert.AreEqual( 0, repository.Count() );
+            #endregion
+
+            #region Delete All
+            repository.Save( record );
+            Assert.AreEqual( 1, repository.Count() );
+
+            repository.DeleteAll();
+            Assert.AreEqual( 0, repository.Count() );
+            #endregion
 
         }
     }
