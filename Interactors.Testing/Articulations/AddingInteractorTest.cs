@@ -10,10 +10,10 @@ using ArticulationManager.UseCases.Articulations.AddingToDatabase;
 
 using NUnit.Framework;
 
-namespace ArticulationManager.Interactors.Testing
+namespace ArticulationManager.Interactors.Testing.Articulations
 {
     [TestFixture]
-    public class AddingArticulationInteractorTest
+    public class AddingInteractorTest
     {
         [Test]
         public void AddingTest()
