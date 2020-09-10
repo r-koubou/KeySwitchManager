@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using ArticulationManager.Domain.Articulations.Value;
 using ArticulationManager.Domain.MidiMessages.Aggregate;
 
-namespace ArticulationManager.UseCases.AddingArticulation
+namespace ArticulationManager.UseCases.Articulations.AddingToDatabase
 {
     public class InputData
     {

@@ -4,9 +4,9 @@ using System.IO;
 using ArticulationManager.Databases.LiteDB.Articulations;
 using ArticulationManager.Domain.Articulations.Value;
 using ArticulationManager.Domain.MidiMessages.Aggregate;
-using ArticulationManager.Interactors.AddingArticulation;
-using ArticulationManager.Presenters.AddingArticulation;
-using ArticulationManager.UseCases.AddingArticulation;
+using ArticulationManager.Interactors.Articulations;
+using ArticulationManager.Presenters.Articulations;
+using ArticulationManager.UseCases.Articulations.AddingToDatabase;
 
 using NUnit.Framework;
 
