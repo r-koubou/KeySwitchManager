@@ -1,6 +1,4 @@
-using System;
 using System.Collections.Generic;
-using System.Linq.Expressions;
 
 using ArticulationManager.Domain.Articulations.Aggregate;
 using ArticulationManager.Domain.Articulations.Value;

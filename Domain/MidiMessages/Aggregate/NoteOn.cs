@@ -1,5 +1,3 @@
-using System;
-
 using ArticulationManager.Domain.MidiMessages.Value;
 
 namespace ArticulationManager.Domain.MidiMessages.Aggregate
