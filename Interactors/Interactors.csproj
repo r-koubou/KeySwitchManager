@@ -20,6 +20,8 @@
     </PropertyGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\Gateways\Gateways.csproj" />
+      <ProjectReference Include="..\Presenters\Presenters.csproj" />
       <ProjectReference Include="..\UseCases\UseCases.csproj" />
     </ItemGroup>
 

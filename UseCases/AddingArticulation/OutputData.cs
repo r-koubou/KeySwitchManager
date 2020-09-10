@@ -1,6 +1,6 @@
 namespace ArticulationManager.UseCases.AddingArticulation
 {
-    public class OutputData
+    public class OutputData : IOutputData
     {
         //TODO
     }

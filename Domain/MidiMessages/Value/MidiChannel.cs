@@ -1,11 +1,13 @@
 namespace ArticulationManager.Domain.MidiMessages.Value
 {
-    public class Channel : MessageData
+    public class MidiChannel : MessageData
     {
         public const int MinValue = 0x00;
         public const int MaxValue = 0x0F;
 
-        public Channel( int value )
+        public static readonly  MidiChannel Zero = new MidiChannel( MinValue );
+
+        public MidiChannel( int value )
             : base( value, MinValue, MaxValue )
         {}
     }

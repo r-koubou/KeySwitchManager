@@ -7,14 +7,18 @@ namespace ArticulationManager.Domain.MidiMessages.Aggregate
     /// </summary>
     public class ProgramChange : IMessage
     {
-        public IMessageData Status { get; } = StatusCode.ProgramChange;
+        public IMessageData Status { get; }
+        public IMessageData Channel { get; }
+
         public IMessageData DataByte1 { get; }
         public IMessageData DataByte2 { get; }
 
-        public ProgramChange( Channel channel, ProgramChangeNumber number )
+        public ProgramChange( MidiChannel midiChannel, ProgramChangeNumber number )
         {
-            DataByte1 = channel;
-            DataByte2 = number;
+            Status    = new StatusCode( StatusCode.ProgramChange.Value );
+            Channel   = midiChannel;
+            DataByte1 = number;
+            DataByte2 = GenericData.Zero;
         }
     }
 }

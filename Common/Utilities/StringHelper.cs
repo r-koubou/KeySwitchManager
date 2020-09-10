@@ -7,13 +7,21 @@ namespace ArticulationManager.Common.Utilities
             return string.IsNullOrEmpty( text ) || text.Trim().Length == 0;
         }
 
-        public static bool ValidateNullOrTrimEmpty(  string text )
+        public static void ValidateNullOrTrimEmpty(  string text )
         {
             if( IsNullOrTrimEmpty( text ) )
             {
                 throw new NullOrEmptyException();
             }
-            return string.IsNullOrEmpty( text ) || text.Trim().Length == 0;
         }
+
+        public static void ValidateNull(  string text )
+        {
+            if( text == null )
+            {
+                throw new NullOrEmptyException();
+            }
+        }
+
     }
 }

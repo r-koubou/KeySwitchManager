@@ -17,8 +17,5 @@ namespace ArticulationManager.Domain.MidiMessages.Value
         public StatusCode( int value )
             : base( value, MinValue, MaxValue )
         {}
-        public StatusCode( Channel channel, int value )
-            : base( channel.Value + value, MinValue, MaxValue )
-        {}
     }
 }

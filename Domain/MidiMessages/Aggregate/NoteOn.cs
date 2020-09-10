@@ -1,3 +1,5 @@
+using System;
+
 using ArticulationManager.Domain.MidiMessages.Value;
 
 namespace ArticulationManager.Domain.MidiMessages.Aggregate
@@ -8,6 +10,7 @@ namespace ArticulationManager.Domain.MidiMessages.Aggregate
     public class NoteOn : IMessage
     {
         public IMessageData Status { get; } = StatusCode.NoteOn;
+        public IMessageData Channel { get; } = MidiChannel.Zero;
         public IMessageData DataByte1 { get; }
         public IMessageData DataByte2 { get; }
 
@@ -17,12 +20,12 @@ namespace ArticulationManager.Domain.MidiMessages.Aggregate
             DataByte2 = velocity;
         }
 
-        public NoteOn( Channel channel, NoteNumber noteNumber, Velocity velocity )
+        public NoteOn( MidiChannel midiChannel, NoteNumber noteNumber, Velocity velocity )
         {
-            Status    = new StatusCode( channel, StatusCode.NoteOn.Value );
+            Status    = new StatusCode( StatusCode.NoteOn.Value );
+            Channel   = midiChannel;
             DataByte1 = noteNumber;
             DataByte2 = velocity;
         }
-
     }
 }
