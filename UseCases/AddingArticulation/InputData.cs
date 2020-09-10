@@ -5,7 +5,7 @@ using ArticulationManager.Domain.MidiMessages.Aggregate;
 
 namespace ArticulationManager.UseCases.AddingArticulation
 {
-    public class InputData : IInputData
+    public class InputData
     {
         public string DeveloperName { get; }
         public string ProductName { get; }

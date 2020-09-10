@@ -1,6 +1,6 @@
 namespace ArticulationManager.UseCases.AddingArticulation
 {
-    public interface IAddingArticulationUseCase : IUseCase<InputData>
+    public interface IAddingArticulationUseCase
     {
         public void Execute( InputData inputData );
     }
