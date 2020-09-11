@@ -1,6 +1,6 @@
-using ArticulationManager.UseCases.Articulations.Database.Removing;
+using ArticulationManager.UseCases.Articulations.Removing;
 
-namespace ArticulationManager.Presenters.Articulations.Database
+namespace ArticulationManager.Presenters.Articulations
 {
     public interface IRemovingArticulationPresenter
     {

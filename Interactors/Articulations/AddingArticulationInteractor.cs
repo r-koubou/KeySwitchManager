@@ -3,10 +3,10 @@ using System;
 using ArticulationManager.Common.Utilities;
 using ArticulationManager.Domain.Articulations;
 using ArticulationManager.Gateways.Articulations;
-using ArticulationManager.Presenters.Articulations.Database;
-using ArticulationManager.UseCases.Articulations.Database.Adding;
+using ArticulationManager.Presenters.Articulations;
+using ArticulationManager.UseCases.Articulations.Adding;
 
-namespace ArticulationManager.Interactors.Articulations.Database
+namespace ArticulationManager.Interactors.Articulations
 {
     public class AddingArticulationInteractor : IAddingArticulationUseCase
     {
