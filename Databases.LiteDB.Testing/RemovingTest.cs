@@ -23,27 +23,11 @@ namespace ArticulationManager.Databases.LiteDB.Testing
             Assert.AreEqual( 0, repository.Count() );
             #endregion
 
-            #region Delete by DeveloperName
+            #region Delete by DeveloperName and ProductName
             repository.Save( record );
             Assert.AreEqual( 1, repository.Count() );
 
-            repository.Delete( record.DeveloperName );
-            Assert.AreEqual( 0, repository.Count() );
-            #endregion
-
-            #region Delete by ProductName
-            repository.Save( record );
-            Assert.AreEqual( 1, repository.Count() );
-
-            repository.Delete( record.ProductName );
-            Assert.AreEqual( 0, repository.Count() );
-            #endregion
-
-            #region Delete by ArticulationName
-            repository.Save( record );
-            Assert.AreEqual( 1, repository.Count() );
-
-            repository.Delete( record.ArticulationName );
+            repository.Delete( record.DeveloperName, record.ProductName );
             Assert.AreEqual( 0, repository.Count() );
             #endregion
 

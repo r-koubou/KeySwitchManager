@@ -84,19 +84,12 @@ namespace ArticulationManager.Databases.LiteDB.Articulations
             ArticulationTable.Delete( articulation.Id.Value );
         }
 
-        public void Delete( DeveloperName developerName )
+        public void Delete( DeveloperName developerName, ProductName productName )
         {
-            ArticulationTable.DeleteMany( x => x.DeveloperName == developerName.Value );
-        }
-
-        public void Delete( ProductName productName )
-        {
-            ArticulationTable.DeleteMany( x => x.ProductName == productName.Value );
-        }
-
-        public void Delete( ArticulationName articulationName )
-        {
-            ArticulationTable.DeleteMany( x => x.ArticulationName == articulationName.Value );
+            ArticulationTable.DeleteMany(
+                x =>
+                    x.DeveloperName == developerName.Value &&
+                    x.ProductName == productName.Value );
         }
 
         public void DeleteAll()

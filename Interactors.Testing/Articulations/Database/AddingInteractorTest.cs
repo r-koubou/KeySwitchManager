@@ -4,16 +4,16 @@ using System.IO;
 using ArticulationManager.Databases.LiteDB.Articulations;
 using ArticulationManager.Domain.Articulations.Value;
 using ArticulationManager.Domain.MidiMessages.Aggregate;
-using ArticulationManager.Interactors.AddingArticulation;
-using ArticulationManager.Presenters.AddingArticulation;
-using ArticulationManager.UseCases.AddingArticulation;
+using ArticulationManager.Interactors.Articulations.Database;
+using ArticulationManager.Presenters.Articulations.Database;
+using ArticulationManager.UseCases.Articulations.Database.Adding;
 
 using NUnit.Framework;
 
-namespace ArticulationManager.Interactors.Testing
+namespace ArticulationManager.Interactors.Testing.Articulations.Database
 {
     [TestFixture]
-    public class AddingArticulationInteractorTest
+    public class AddingInteractorTest
     {
         [Test]
         public void AddingTest()

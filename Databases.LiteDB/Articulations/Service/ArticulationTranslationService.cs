@@ -1,6 +1,4 @@
-using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 
 using ArticulationManager.Databases.LiteDB.Articulations.Model;
 using ArticulationManager.Domain.Articulations.Aggregate;

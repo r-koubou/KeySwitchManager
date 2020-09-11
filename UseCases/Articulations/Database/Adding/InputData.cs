@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using ArticulationManager.Domain.Articulations.Value;
 using ArticulationManager.Domain.MidiMessages.Aggregate;
 
-namespace ArticulationManager.UseCases.AddingArticulation
+namespace ArticulationManager.UseCases.Articulations.Database.Adding
 {
-    public class InputData : IInputData
+    public class InputData
     {
         public string DeveloperName { get; }
         public string ProductName { get; }

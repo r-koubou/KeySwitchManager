@@ -1,8 +1,6 @@
 using System;
 using System.Collections.Generic;
 
-using ArticulationManager.Domain.MidiMessages.Aggregate;
-
 using LiteDB;
 
 namespace ArticulationManager.Databases.LiteDB.Articulations.Model
