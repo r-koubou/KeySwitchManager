@@ -1,4 +1,4 @@
-namespace ArticulationManager.UseCases.Articulations.AddingToDatabase
+namespace ArticulationManager.UseCases.Articulations.Database.Adding
 {
     public interface IAddingArticulationUseCase
     {

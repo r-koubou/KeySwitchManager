@@ -1,6 +1,6 @@
 using ArticulationManager.Common.Utilities;
 
-namespace ArticulationManager.UseCases.Articulations.RemovingFromDatabase
+namespace ArticulationManager.UseCases.Articulations.Database.Removing
 {
     public class InputData
     {

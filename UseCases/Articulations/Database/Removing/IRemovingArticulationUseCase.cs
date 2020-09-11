@@ -1,4 +1,4 @@
-namespace ArticulationManager.UseCases.Articulations.RemovingFromDatabase
+namespace ArticulationManager.UseCases.Articulations.Database.Removing
 {
     public interface IRemovingArticulationUseCase
     {

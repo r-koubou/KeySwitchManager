@@ -1,6 +1,6 @@
-using ArticulationManager.UseCases.Articulations.AddingToDatabase;
+using ArticulationManager.UseCases.Articulations.Database.Adding;
 
-namespace ArticulationManager.Presenters.Articulations
+namespace ArticulationManager.Presenters.Articulations.Database
 {
     public interface IAddingArticulationPresenter
     {

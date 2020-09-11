@@ -1,10 +1,9 @@
-
 using ArticulationManager.Domain.Articulations.Value;
 using ArticulationManager.Gateways.Articulations;
-using ArticulationManager.Presenters.Articulations;
-using ArticulationManager.UseCases.Articulations.RemovingFromDatabase;
+using ArticulationManager.Presenters.Articulations.Database;
+using ArticulationManager.UseCases.Articulations.Database.Removing;
 
-namespace ArticulationManager.Interactors.Articulations
+namespace ArticulationManager.Interactors.Articulations.Database
 {
     public class RemovingArticulationInteractor : IRemovingArticulationUseCase
     {

@@ -8,13 +8,13 @@ using ArticulationManager.Domain.Articulations.Value;
 using ArticulationManager.Domain.Commons;
 using ArticulationManager.Domain.MidiMessages.Aggregate;
 using ArticulationManager.Domain.Services;
-using ArticulationManager.Interactors.Articulations;
-using ArticulationManager.Presenters.Articulations;
-using ArticulationManager.UseCases.Articulations.RemovingFromDatabase;
+using ArticulationManager.Interactors.Articulations.Database;
+using ArticulationManager.Presenters.Articulations.Database;
+using ArticulationManager.UseCases.Articulations.Database.Removing;
 
 using NUnit.Framework;
 
-namespace ArticulationManager.Interactors.Testing.Articulations
+namespace ArticulationManager.Interactors.Testing.Articulations.Database
 {
     [TestFixture]
     public class RemovingInteractorTest
