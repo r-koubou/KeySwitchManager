@@ -3,16 +3,16 @@ using ArticulationManager.Gateways.Articulations;
 using ArticulationManager.Presenters.Articulations;
 using ArticulationManager.UseCases.Articulations.Removing;
 
-namespace ArticulationManager.Interactors.Articulations
+namespace ArticulationManager.Interactors.Articulations.Removing
 {
-    public class RemovingArticulationInteractor : IRemovingArticulationUseCase
+    public class RemovingInteractor : IRemovingUseCase
     {
         private IArticulationRepository Repository { get; }
-        private IRemovingArticulationPresenter Presenter { get; }
+        private IRemovingPresenter Presenter { get; }
 
-        public RemovingArticulationInteractor(
+        public RemovingInteractor(
             IArticulationRepository repository,
-            IRemovingArticulationPresenter presenter )
+            IRemovingPresenter presenter )
         {
             Repository = repository;
             Presenter  = presenter;
@@ -25,8 +25,7 @@ namespace ArticulationManager.Interactors.Articulations
 
             Repository.Delete( developerName, productName );
 
-            //TODO
-            Presenter.Output( new OutputData() );
+            Presenter.Output( new OutputData( true ) );
         }
     }
 }

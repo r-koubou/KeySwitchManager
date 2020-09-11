@@ -113,6 +113,17 @@ namespace ArticulationManager.Databases.LiteDB.Articulations
             return result;
         }
 
+        public IEnumerable<Articulation> Find( DeveloperName developerName, ProductName productName )
+        {
+            return CreateEntities(
+                ArticulationTable.Find(
+                    x =>
+                        x.DeveloperName == developerName.Value &&
+                        x.ProductName   == productName.Value
+                )
+            );
+        }
+
         public IEnumerable<Articulation> Find( DeveloperName developerName )
         {
             return CreateEntities( ArticulationTable.Find( x => x.DeveloperName == developerName.Value ) );

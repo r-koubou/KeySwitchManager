@@ -6,27 +6,27 @@ using ArticulationManager.Gateways.Articulations;
 using ArticulationManager.Presenters.Articulations;
 using ArticulationManager.UseCases.Articulations.Adding;
 
-namespace ArticulationManager.Interactors.Articulations
+namespace ArticulationManager.Interactors.Articulations.Adding
 {
-    public class AddingArticulationInteractor : IAddingArticulationUseCase
+    public class AddingInteractor : IAddingUseCase
     {
         private IArticulationRepository Repository { get; }
         private IArticulationFactory ArticulationFactory { get; }
-        private IAddingArticulationPresenter Presenter { get; }
+        private IAddingPresenter Presenter { get; }
 
-        public AddingArticulationInteractor(
+        public AddingInteractor(
             IArticulationRepository repository,
-            IAddingArticulationPresenter presenter )
+            IAddingPresenter presenter )
             : this(
                 repository,
                 new IArticulationFactory.DefaultFactory(),
                 presenter )
         {}
 
-        public AddingArticulationInteractor(
+        public AddingInteractor(
             IArticulationRepository repository,
             IArticulationFactory articulationFactory,
-            IAddingArticulationPresenter presenter )
+            IAddingPresenter presenter )
         {
             Repository          = repository;
             ArticulationFactory = articulationFactory;
@@ -53,8 +53,7 @@ namespace ArticulationManager.Interactors.Articulations
 
             Repository.Save( entity );
 
-            //TODO
-            Presenter.Output( new OutputData() );
+            Presenter.Output( new OutputData( true ) );
         }
     }
 }

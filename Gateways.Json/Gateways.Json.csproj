@@ -5,23 +5,25 @@
         <!-- Assembly / Common -->
         <Copyright>R-Koubou</Copyright>
         <Company>R-Koubou</Company>
-        <Product>ArticulationManager.Interactors</Product>
-        <AssemblyName>ArticulationManager.Interactors</AssemblyName>
-        <RootNamespace>ArticulationManager.Interactors</RootNamespace>
+        <Product>ArticulationManager.Gateways.Json</Product>
+        <AssemblyName>ArticulationManager.Gateways.Json</AssemblyName>
+        <RootNamespace>ArticulationManager.Gateways.Json</RootNamespace>
         <Version>0.1.0-alpha</Version>
-        <Description>ArticulationManager.Interactors module</Description>
+        <Description>ArticulationManager.Gateways.Json module</Description>
         <Nullable>enable</Nullable>
         <!-- Nuget -->
         <Authors>R-Koubou</Authors>
-        <PackageId>ArticulationManager.Interactors</PackageId>
+        <PackageId>ArticulationManager.Gateways.Json</PackageId>
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
         <PackageProjectUrl>https://github.com/r-koubou/ArticulationManager</PackageProjectUrl>
         <RepositoryUrl>https://github.com/r-koubou/ArticulationManager</RepositoryUrl>
     </PropertyGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\Gateways.Articulations\Gateways.Articulations.csproj" />
-      <ProjectReference Include="..\Presenters\Presenters.csproj" />
+      <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+    </ItemGroup>
+
+    <ItemGroup>
       <ProjectReference Include="..\UseCases\UseCases.csproj" />
     </ItemGroup>
 

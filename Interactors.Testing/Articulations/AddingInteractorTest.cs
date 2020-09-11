@@ -5,6 +5,7 @@ using ArticulationManager.Databases.LiteDB.Articulations;
 using ArticulationManager.Domain.Articulations.Value;
 using ArticulationManager.Domain.MidiMessages.Aggregate;
 using ArticulationManager.Interactors.Articulations;
+using ArticulationManager.Interactors.Articulations.Adding;
 using ArticulationManager.Presenters.Articulations;
 using ArticulationManager.UseCases.Articulations.Adding;
 
@@ -30,9 +31,9 @@ namespace ArticulationManager.Interactors.Testing.Articulations
                 new List<ProgramChange>()
             );
 
-            var presenter = new IAddingArticulationPresenter.Null();
+            var presenter = new IAddingPresenter.Null();
             var repository = new LiteDbArticulationRepository( new MemoryStream() );
-            var interactor = new AddingArticulationInteractor( repository, presenter );
+            var interactor = new AddingInteractor( repository, presenter );
 
             interactor.Execute( inputData );
 

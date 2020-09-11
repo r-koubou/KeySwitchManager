@@ -9,6 +9,7 @@ using ArticulationManager.Domain.Commons;
 using ArticulationManager.Domain.MidiMessages.Aggregate;
 using ArticulationManager.Domain.Services;
 using ArticulationManager.Interactors.Articulations;
+using ArticulationManager.Interactors.Articulations.Removing;
 using ArticulationManager.Presenters.Articulations;
 using ArticulationManager.UseCases.Articulations.Removing;
 
@@ -30,9 +31,9 @@ namespace ArticulationManager.Interactors.Testing.Articulations
                 productName
             );
 
-            var presenter = new IRemovingArticulationPresenter.Null();
+            var presenter = new IRemovingPresenter.Null();
             var repository = new LiteDbArticulationRepository( new MemoryStream() );
-            var interactor = new RemovingArticulationInteractor( repository, presenter );
+            var interactor = new RemovingInteractor( repository, presenter );
 
             #region Adding Test data for removing
             var now = DateTime.Now;

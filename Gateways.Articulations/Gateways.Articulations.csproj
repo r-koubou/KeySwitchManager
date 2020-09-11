@@ -5,15 +5,15 @@
         <!-- Assembly / Common -->
         <Copyright>R-Koubou</Copyright>
         <Company>R-Koubou</Company>
-        <Product>ArticulationManager.Gateways</Product>
-        <AssemblyName>ArticulationManager.Gateways</AssemblyName>
-        <RootNamespace>ArticulationManager.Gateways</RootNamespace>
+        <Product>ArticulationManager.Gateways.Articulations</Product>
+        <AssemblyName>ArticulationManager.Gateways.Articulations</AssemblyName>
+        <RootNamespace>ArticulationManager.Gateways.Articulations</RootNamespace>
         <Version>0.1.0-alpha</Version>
-        <Description>ArticulationManager.Gateways module</Description>
+        <Description>ArticulationManager.Gateways.Articulations module</Description>
         <Nullable>enable</Nullable>
         <!-- Nuget -->
         <Authors>R-Koubou</Authors>
-        <PackageId>ArticulationManager.Gateways</PackageId>
+        <PackageId>ArticulationManager.Gateways.Articulations</PackageId>
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
         <PackageProjectUrl>https://github.com/r-koubou/ArticulationManager</PackageProjectUrl>
         <RepositoryUrl>https://github.com/r-koubou/ArticulationManager</RepositoryUrl>

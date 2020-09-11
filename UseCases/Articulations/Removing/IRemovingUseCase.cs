@@ -1,6 +1,6 @@
 namespace ArticulationManager.UseCases.Articulations.Removing
 {
-    public interface IRemovingArticulationUseCase
+    public interface IRemovingUseCase
     {
         public void Execute( InputData inputData );
     }

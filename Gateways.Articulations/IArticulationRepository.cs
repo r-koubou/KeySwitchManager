@@ -9,9 +9,10 @@ namespace ArticulationManager.Gateways.Articulations
     {
         public int Count();
         public void Save( Articulation articulation );
-        public void Delete( Articulation articulation );
         public void Delete( DeveloperName developerName, ProductName productName );
+        public void Delete( Articulation articulation );
         public void DeleteAll();
+        public IEnumerable<Articulation> Find( DeveloperName developerName, ProductName productName );
         public IEnumerable<Articulation> Find( DeveloperName developerName );
         public IEnumerable<Articulation> Find( ProductName productName );
         public IEnumerable<Articulation> Find( ArticulationName articulationName );
