@@ -11,9 +11,9 @@ using ArticulationManager.UseCases.Articulations.Exporting.Text;
 
 using Newtonsoft.Json;
 
-namespace ArticulationManager.Json.Articulations
+namespace ArticulationManager.Json.Articulations.Service
 {
-    public class EntitiesToJsonTranslator : IEntitiesToJsonTranslator
+    public class ArticulationTranslationService : IEntitiesToJsonTranslator
     {
         public IEnumerable<IText> Translate( IEnumerable<Articulation> source )
         {
