@@ -1,13 +1,17 @@
 using Newtonsoft.Json;
 
-namespace ArticulationManager.Gateways.Json.Articulations.Model
+namespace ArticulationManager.Json.Articulations.Model
 {
     [JsonObject("midi_message")]
     public class MidiMessageModel
     {
+        [JsonProperty( "status")]
         public int Status { get; set; }
+        [JsonProperty( "channel")]
         public int Channel { get; set; }
+        [JsonProperty( "data_byte_1")]
         public int DataByte1 { get; set; }
+        [JsonProperty( "data_byte_2")]
         public int DataByte2 { get; set; }
 
         public MidiMessageModel()

@@ -16,7 +16,7 @@ namespace ArticulationManager.Domain.Services
                 dateTime.Hour,
                 dateTime.Minute,
                 dateTime.Second,
-                dateTime.Minute
+                dateTime.Millisecond
             );
         }
 
@@ -29,7 +29,22 @@ namespace ArticulationManager.Domain.Services
                 hour: dateTime.Hour,
                 minute: dateTime.Minute,
                 second: dateTime.Second,
-                millisecond: dateTime.MilliSecond
+                millisecond: dateTime.MilliSecond,
+                DateTimeKind.Utc
+            );
+        }
+
+        public static DateTime ToLocalDateTime( EntityDateTime dateTime )
+        {
+            return new DateTime(
+                year: dateTime.Year,
+                month: dateTime.Month,
+                day: dateTime.Day,
+                hour: dateTime.Hour,
+                minute: dateTime.Minute,
+                second: dateTime.Second,
+                millisecond: dateTime.MilliSecond,
+                DateTimeKind.Local
             );
         }
 

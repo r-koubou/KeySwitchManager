@@ -79,6 +79,9 @@ namespace ArticulationManager.Domain.Articulations
                 IEnumerable<IMessage> midiControlChanges,
                 IEnumerable<IMessage> midiProgramChanges )
             {
+                created     = TimeZoneInfo.ConvertTimeToUtc( created );
+                lastUpdated = TimeZoneInfo.ConvertTimeToUtc( lastUpdated );
+
                 return new Articulation(
                     new EntityGuid( id ),
                     EntityDateTimeService.FromDateTime( created ),

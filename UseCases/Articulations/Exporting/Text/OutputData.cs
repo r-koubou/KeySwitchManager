@@ -1,12 +1,16 @@
+using System.Collections.Generic;
+
+using ArticulationManager.Domain.Commons;
+
 namespace ArticulationManager.UseCases.Articulations.Exporting.Text
 {
     public class OutputData
     {
-        public string Text { get; }
+        public IEnumerable<IText> TextDataList { get; }
 
-        public OutputData( string text )
+        public OutputData( IEnumerable<IText> textDataList )
         {
-            Text = text;
+            TextDataList = new List<IText>( textDataList );
         }
     }
 }
