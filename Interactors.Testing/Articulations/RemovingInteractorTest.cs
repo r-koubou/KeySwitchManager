@@ -8,7 +8,6 @@ using ArticulationManager.Domain.Articulations.Value;
 using ArticulationManager.Domain.Commons;
 using ArticulationManager.Domain.MidiMessages.Aggregate;
 using ArticulationManager.Domain.Services;
-using ArticulationManager.Interactors.Articulations;
 using ArticulationManager.Interactors.Articulations.Removing;
 using ArticulationManager.Presenters.Articulations;
 using ArticulationManager.UseCases.Articulations.Removing;

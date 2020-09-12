@@ -24,7 +24,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\Gateways.Articulations\Gateways.Articulations.csproj" />
+      <ProjectReference Include="..\..\Gateways.Articulations\Gateways.Articulations.csproj" />
     </ItemGroup>
 
 </Project>
