@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 
+using ArticulationManager.Common.Testing;
 using ArticulationManager.Databases.LiteDB.Articulations;
 using ArticulationManager.Domain.MidiMessages.Aggregate;
 using ArticulationManager.Domain.MidiMessages.Value;

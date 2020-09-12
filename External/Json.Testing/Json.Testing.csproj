@@ -4,12 +4,6 @@
         <TargetFramework>netcoreapp3.1</TargetFramework>
 
         <IsPackable>false</IsPackable>
-
-        <AssemblyName>ArticulationManager.Databases.LiteDB.Testing</AssemblyName>
-
-        <RootNamespace>ArticulationManager.Databases.LiteDB.Testing</RootNamespace>
-
-        <Nullable>enable</Nullable>
     </PropertyGroup>
 
     <ItemGroup>
@@ -20,7 +14,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\..\Common.Testing\Common.Testing.csproj" />
-      <ProjectReference Include="..\Databases.LiteDB\Databases.LiteDB.csproj" />
+      <ProjectReference Include="..\Json\Json.csproj" />
     </ItemGroup>
 
 </Project>

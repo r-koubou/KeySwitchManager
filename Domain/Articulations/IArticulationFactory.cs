@@ -36,7 +36,7 @@ namespace ArticulationManager.Domain.Articulations
             IEnumerable<IMessage> midiControlChanges,
             IEnumerable<IMessage> midiProgramChanges );
 
-        public class DefaultFactory : IArticulationFactory
+        public class Default : IArticulationFactory
         {
             public Articulation Create(
                 Guid id,

@@ -8,7 +8,7 @@ using ArticulationManager.Domain.Commons;
 using ArticulationManager.Domain.MidiMessages.Aggregate;
 using ArticulationManager.Domain.Services;
 
-namespace ArticulationManager.Databases.LiteDB.Testing
+namespace ArticulationManager.Common.Testing
 {
     public static class TestDataGenerator
     {

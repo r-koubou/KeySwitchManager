@@ -5,9 +5,8 @@
 
         <IsPackable>false</IsPackable>
 
-        <AssemblyName>ArticulationManager.Databases.LiteDB.Testing</AssemblyName>
-
-        <RootNamespace>ArticulationManager.Databases.LiteDB.Testing</RootNamespace>
+        <AssemblyName>ArticulationManager.Common.Testing</AssemblyName>
+        <RootNamespace>ArticulationManager.Common.Testing</RootNamespace>
 
         <Nullable>enable</Nullable>
     </PropertyGroup>
@@ -19,8 +18,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\..\Common.Testing\Common.Testing.csproj" />
-      <ProjectReference Include="..\Databases.LiteDB\Databases.LiteDB.csproj" />
+      <ProjectReference Include="..\Domain\Domain.csproj" />
     </ItemGroup>
 
 </Project>

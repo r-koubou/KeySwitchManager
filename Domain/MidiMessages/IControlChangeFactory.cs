@@ -8,7 +8,7 @@ namespace ArticulationManager.Domain.MidiMessages
         public ControlChange Create( int ccNumber, int ccValue );
         public ControlChange Create( int channel, int ccNumber, int ccValue );
 
-        public class DefaultFactory : IControlChangeFactory
+        public class Default : IControlChangeFactory
         {
             public IMessage Create( int status, int channel, int data1, int data2 )
             {

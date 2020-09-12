@@ -17,11 +17,11 @@ namespace ArticulationManager.Json.Articulations.Service
             List<IMessage> controlChange = new List<IMessage>();
             List<IMessage> programChange = new List<IMessage>();
 
-            ConvertMessageList( source.NoteOn,        noteOn,        new INoteOnFactory.DefaultFactory() );
-            ConvertMessageList( source.ControlChange, controlChange, new IControlChangeFactory.DefaultFactory() );
-            ConvertMessageList( source.ProgramChange, programChange, new IProgramChangeFactory.DefaultFactory() );
+            ConvertMessageList( source.MidiMessage.NoteOn,        noteOn,        new INoteOnFactory.Default() );
+            ConvertMessageList( source.MidiMessage.ControlChange, controlChange, new IControlChangeFactory.Default() );
+            ConvertMessageList( source.MidiMessage.ProgramChange, programChange, new IProgramChangeFactory.Default() );
 
-            return new IArticulationFactory.DefaultFactory().Create(
+            return new IArticulationFactory.Default().Create(
                 source.Id,
                 source.Created,
                 source.LastUpdated,

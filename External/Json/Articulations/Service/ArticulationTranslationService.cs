@@ -44,9 +44,11 @@ namespace ArticulationManager.Json.Articulations.Service
                     articulation.ArticulationType,
                     articulation.ArticulationGroup.Value,
                     articulation.ArticulationColor.Value,
-                    noteOn,
-                    controlChange,
-                    programChange
+                    new MidiModel(
+                        noteOn,
+                        controlChange,
+                        programChange
+                    )
                 );
 
                 serializer.Serialize( writer, jsonObject );

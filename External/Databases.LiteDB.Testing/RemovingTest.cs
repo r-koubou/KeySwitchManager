@@ -1,5 +1,6 @@
 using System.IO;
 
+using ArticulationManager.Common.Testing;
 using ArticulationManager.Databases.LiteDB.Articulations;
 
 using NUnit.Framework;

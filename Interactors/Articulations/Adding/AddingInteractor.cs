@@ -19,7 +19,7 @@ namespace ArticulationManager.Interactors.Articulations.Adding
             IAddingPresenter presenter )
             : this(
                 repository,
-                new IArticulationFactory.DefaultFactory(),
+                new IArticulationFactory.Default(),
                 presenter )
         {}
 

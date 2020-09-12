@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 
 using ArticulationManager.Domain.Articulations.Value;
 
@@ -28,9 +27,8 @@ namespace ArticulationManager.Json.Articulations.Model
         public int ArticulationGroup { get; set; }
         [JsonProperty( "articulation_color")]
         public int ArticulationColor { get; set; }
-        public List<MidiMessageModel> NoteOn { get; set; } = default!;
-        public List<MidiMessageModel> ControlChange { get; set; } = default!;
-        public List<MidiMessageModel> ProgramChange { get; set; } = default!;
+        [JsonProperty("midi_message")]
+        public MidiModel MidiMessage { get; set; } = default!;
 
         public ArticulationModel()
         {}
@@ -45,9 +43,7 @@ namespace ArticulationManager.Json.Articulations.Model
             ArticulationType articulationType,
             int articulationGroup,
             int articulationColor,
-            List<MidiMessageModel> noteOn,
-            List<MidiMessageModel> controlChange,
-            List<MidiMessageModel> programChange )
+            MidiModel midiMessage )
         {
             Id                = id;
             Created           = created;
@@ -58,9 +54,7 @@ namespace ArticulationManager.Json.Articulations.Model
             ArticulationType  = articulationType;
             ArticulationGroup = articulationGroup;
             ArticulationColor = articulationColor;
-            NoteOn            = new List<MidiMessageModel>( noteOn );
-            ControlChange     = new List<MidiMessageModel>( controlChange );
-            ProgramChange     = new List<MidiMessageModel>( programChange );
+            MidiMessage       = midiMessage;
         }
     }
 }

@@ -8,7 +8,7 @@ namespace ArticulationManager.Domain.MidiMessages
         public NoteOn Create( int noteNumber, int velocity );
         public NoteOn Create( int channel, int noteNumber, int velocity );
 
-        public class DefaultFactory : INoteOnFactory
+        public class Default : INoteOnFactory
         {
             public IMessage Create( int status, int channel, int data1, int data2 )
             {

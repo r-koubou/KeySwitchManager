@@ -12,6 +12,8 @@ namespace ArticulationManager.Domain.Commons
             {
                 Text = text;
             }
+
+            public override string ToString() => Text;
         }
     }
 }
