@@ -6,6 +6,7 @@ using ArticulationManager.Domain.Articulations.Aggregate;
 using ArticulationManager.Domain.Commons;
 using ArticulationManager.Domain.MidiMessages.Aggregate;
 using ArticulationManager.Domain.Services;
+using ArticulationManager.Domain.Translations;
 using ArticulationManager.Json.Articulations.Model;
 using ArticulationManager.UseCases.Articulations.Exporting.Text;
 
@@ -13,17 +14,16 @@ using Newtonsoft.Json;
 
 namespace ArticulationManager.Json.Articulations.Translations
 {
-    public class EntityTranslator : IEntityTranslator
+    public class EntityTranslator : IArticulationToText
     {
-        public IEnumerable<IText> Translate( IEnumerable<Articulation> source )
+        public IText Translate( IEnumerable<Articulation> source )
         {
-            var result = new List<IText>();
+            var builder = new StringBuilder();
 
             foreach( var articulation in source )
             {
                 var serializer = new JsonSerializer();
 
-                var builder = new StringBuilder();
                 using var writer = new StringWriter( builder );
 
                 List<MidiMessageModel> noteOn = new List<MidiMessageModel>();
@@ -52,10 +52,9 @@ namespace ArticulationManager.Json.Articulations.Translations
                 );
 
                 serializer.Serialize( writer, jsonObject );
-                result.Add( new IText.PlainText( builder.ToString() ) );
             }
 
-            return result;
+            return new PlainText( builder.ToString() );
         }
 
         private static void ConvertMessageList(

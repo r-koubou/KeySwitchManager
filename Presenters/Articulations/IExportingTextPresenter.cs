@@ -16,10 +16,7 @@ namespace ArticulationManager.Presenters.Articulations
         {
             public void Output( OutputData outputData )
             {
-                foreach( var text in outputData.TextDataList )
-                {
-                    System.Console.WriteLine( text.Text );
-                }
+                System.Console.WriteLine( outputData.Text.Value );
             }
         }
 

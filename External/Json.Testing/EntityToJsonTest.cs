@@ -34,10 +34,7 @@ namespace Json.Testing
                 }
             );
 
-            foreach( var text in json )
-            {
-                Console.WriteLine( text );
-            }
+            Console.WriteLine( json );
         }
     }
 }

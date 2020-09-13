@@ -2,16 +2,29 @@ using System.Collections.Generic;
 
 using ArticulationManager.Domain.Articulations;
 using ArticulationManager.Domain.Articulations.Aggregate;
+using ArticulationManager.Domain.Commons;
 using ArticulationManager.Domain.MidiMessages;
 using ArticulationManager.Domain.MidiMessages.Aggregate;
 using ArticulationManager.Domain.Translations;
 using ArticulationManager.Json.Articulations.Model;
 
+using Newtonsoft.Json;
+
 namespace ArticulationManager.Json.Articulations.Translations
 {
-    public class EntityModelTranslator : IDataTranslator<ArticulationModel, Articulation>
+    public class EntityModelTranslator : ITextToArticulation
     {
-        public Articulation Translate( ArticulationModel source )
+        public IEnumerable<Articulation> Translate( IText source )
+        {
+            var result = new List<Articulation>();
+            var model = JsonConvert.DeserializeObject<ArticulationModel>( source.Value );#
+#error TODO エンティティの構造修正に合わせて変換の修正必須
+            result.Add( TranslateImpl( model ) );
+
+            return result;
+        }
+
+        private Articulation TranslateImpl( ArticulationModel source )
         {
             List<IMessage> noteOn = new List<IMessage>();
             List<IMessage> controlChange = new List<IMessage>();

@@ -6,11 +6,11 @@ namespace ArticulationManager.UseCases.Articulations.Exporting.Text
 {
     public class OutputData
     {
-        public IEnumerable<IText> TextDataList { get; }
+        public IText Text { get; }
 
-        public OutputData( IEnumerable<IText> textDataList )
+        public OutputData( IText text )
         {
-            TextDataList = new List<IText>( textDataList );
+            Text = text;
         }
     }
 }
