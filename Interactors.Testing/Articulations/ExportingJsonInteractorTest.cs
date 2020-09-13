@@ -27,7 +27,7 @@ namespace ArticulationManager.Interactors.Testing.Articulations
             var interactor = new ExportingJsonInteractor(
                 dbRepository,
                 new IExportingTextPresenter.Null(),
-                new EntityTranslator()
+                new EntityTranslationService()
             );
 
             interactor.Execute( inputData );

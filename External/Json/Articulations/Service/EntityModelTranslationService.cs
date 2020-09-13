@@ -9,7 +9,7 @@ using ArticulationManager.Json.Articulations.Model;
 
 namespace ArticulationManager.Json.Articulations.Service
 {
-    public class ArticulationModelTranslationService : IDataTranslationService<ArticulationModel, Articulation>
+    public class EntityModelTranslationService : IDataTranslationService<ArticulationModel, Articulation>
     {
         public Articulation Translate( ArticulationModel source )
         {

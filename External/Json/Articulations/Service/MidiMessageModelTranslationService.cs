@@ -5,7 +5,7 @@ using ArticulationManager.Json.Articulations.Model;
 
 namespace ArticulationManager.Json.Articulations.Service
 {
-    public class MidiMessageModelTranslatorService : IDataTranslationService<MidiMessageModel, IMessage>
+    public class MidiMessageModelTranslationService : IDataTranslationService<MidiMessageModel, IMessage>
     {
         public IMessage Translate( MidiMessageModel source )
         {
