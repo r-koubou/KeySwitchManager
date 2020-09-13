@@ -62,7 +62,7 @@ namespace ArticulationManager.Databases.LiteDB.Articulations
         {
             var table = Database.GetCollection<ArticulationModel>( ArticulationsTableName );
 
-            var translator = new ArticulationTranslationService();
+            var translator = new EntityTranslationService();
             var entity = translator.Translate( articulation );
 
             if( table.Exists( x => x.Id.Equals( articulation.Id.Value ) ) )
@@ -103,7 +103,7 @@ namespace ArticulationManager.Databases.LiteDB.Articulations
         private List<Articulation> CreateEntities( IEnumerable<ArticulationModel> query )
         {
             var result = new List<Articulation>();
-            var translator = new ArticulationModelTranslationService();
+            var translator = new EntityModelTranslationService();
 
             foreach( var item in query )
             {

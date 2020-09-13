@@ -7,7 +7,7 @@ using ArticulationManager.Domain.Services;
 
 namespace ArticulationManager.Databases.LiteDB.Articulations.Service
 {
-    public class ArticulationTranslationService : IDataTranslationService<Articulation, ArticulationModel>
+    public class EntityTranslationService : IDataTranslationService<Articulation, ArticulationModel>
     {
         public ArticulationModel Translate( Articulation source )
         {

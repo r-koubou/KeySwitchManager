@@ -11,7 +11,7 @@ using ArticulationManager.Domain.Services;
 
 namespace ArticulationManager.Databases.LiteDB.Articulations.Service
 {
-    public class ArticulationModelTranslationService : IDataTranslationService<ArticulationModel, Articulation>
+    public class EntityModelTranslationService : IDataTranslationService<ArticulationModel, Articulation>
     {
         public Articulation Translate( ArticulationModel source )
         {

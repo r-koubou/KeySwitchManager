@@ -4,7 +4,7 @@ using ArticulationManager.Domain.Services;
 
 namespace ArticulationManager.Databases.LiteDB.Articulations.Service
 {
-    public class MidiMessageTranslatorService : IDataTranslationService<IMessage, MidiMessageModel>
+    public class MidiMessageTranslationService : IDataTranslationService<IMessage, MidiMessageModel>
     {
         public MidiMessageModel Translate( IMessage source )
         {
