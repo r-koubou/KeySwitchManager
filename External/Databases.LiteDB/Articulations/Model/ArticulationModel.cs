@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
 
+using ArticulationManager.Common.Utilities;
+
 using LiteDB;
 
 namespace ArticulationManager.Databases.LiteDB.Articulations.Model
@@ -9,8 +11,9 @@ namespace ArticulationManager.Databases.LiteDB.Articulations.Model
     {
         [BsonId]
         public Guid Id { get; set; } = Guid.NewGuid();
-        public DateTime Created { get; set; }
-        public DateTime LastUpdated { get; set; }
+
+        public DateTime Created { get; set; } = DateTimeHelper.NowUtc();
+        public DateTime LastUpdated { get; set; } = DateTimeHelper.NowUtc();
         public string DeveloperName { get; set; } = "Unknown";
         public string ProductName { get; set; } = "Unknown";
         public string ArticulationName { get; set; } = "Unknown";

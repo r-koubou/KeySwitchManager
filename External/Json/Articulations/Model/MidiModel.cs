@@ -8,11 +8,11 @@ namespace ArticulationManager.Json.Articulations.Model
     public class MidiModel
     {
         [JsonProperty( "note_on")]
-        public List<MidiMessageModel> NoteOn { get; set; } = default!;
+        public List<MidiMessageModel> NoteOn { get; set; } = new List<MidiMessageModel>();
         [JsonProperty( "control_change")]
-        public List<MidiMessageModel> ControlChange { get; set; } = default!;
+        public List<MidiMessageModel> ControlChange { get; set; } = new List<MidiMessageModel>();
         [JsonProperty( "program_change")]
-        public List<MidiMessageModel> ProgramChange { get; set; } = default!;
+        public List<MidiMessageModel> ProgramChange { get; set; } = new List<MidiMessageModel>();
 
         public MidiModel()
         {}

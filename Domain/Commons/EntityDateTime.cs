@@ -58,5 +58,8 @@ namespace ArticulationManager.Domain.Commons
                    other.Second == Second &&
                    other.MilliSecond == MilliSecond;
         }
+
+        public override string ToString()
+            => $"{Year:D4}-{Month:D2}-{Day:D2}-{Hour:D2}:{Minute:D2}:{Second:D2}";
     }
 }

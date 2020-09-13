@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 
+using ArticulationManager.Common.Utilities;
 using ArticulationManager.Domain.Articulations.Aggregate;
 using ArticulationManager.Domain.Articulations.Value;
 using ArticulationManager.Domain.Commons;
@@ -49,6 +50,9 @@ namespace ArticulationManager.Domain.Articulations
                 int articulationGroup,
                 int articulationColor )
             {
+                created     = DateTimeHelper.ToUtc( created );
+                lastUpdated = DateTimeHelper.ToUtc( lastUpdated );
+
                 return new Articulation(
                     new EntityGuid( id ),
                     EntityDateTimeService.FromDateTime( created ),
@@ -79,8 +83,8 @@ namespace ArticulationManager.Domain.Articulations
                 IEnumerable<IMessage> midiControlChanges,
                 IEnumerable<IMessage> midiProgramChanges )
             {
-                created     = TimeZoneInfo.ConvertTimeToUtc( created );
-                lastUpdated = TimeZoneInfo.ConvertTimeToUtc( lastUpdated );
+                created     = DateTimeHelper.ToUtc( created );
+                lastUpdated = DateTimeHelper.ToUtc( lastUpdated );
 
                 return new Articulation(
                     new EntityGuid( id ),
