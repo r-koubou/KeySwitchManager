@@ -26,7 +26,7 @@ namespace ArticulationManager.Interactors.Testing.Articulations
             var inputData = new InputData( entity.DeveloperName.Value, entity.ProductName.Value );
             var interactor = new ExportingJsonInteractor(
                 dbRepository,
-                new IExportingTextPresenter.Null(),
+                new IExportingTextPresenter.Console(),
                 new EntityTranslationService()
             );
 
