@@ -8,13 +8,13 @@ namespace ArticulationManager.Interactors.Articulations.Exporting.Text
     public class ExportingJsonInteractor : IExportingTextUseCase
     {
         private IArticulationRepository Repository { get; }
-        private IEntitiesToJsonTranslator Translator { get; }
+        private IEntityTranslator Translator { get; }
         private IExportingTextPresenter Presenter { get; }
 
         public ExportingJsonInteractor(
             IArticulationRepository repository,
             IExportingTextPresenter presenter,
-            IEntitiesToJsonTranslator translator )
+            IEntityTranslator translator )
         {
             Repository = repository;
             Presenter  = presenter;

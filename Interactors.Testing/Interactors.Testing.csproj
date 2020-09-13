@@ -19,7 +19,9 @@
     </ItemGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\Common.Testing\Common.Testing.csproj" />
       <ProjectReference Include="..\External\Databases.LiteDB\Databases.LiteDB.csproj" />
+      <ProjectReference Include="..\External\Json\Json.csproj" />
       <ProjectReference Include="..\Interactors\Interactors.csproj" />
     </ItemGroup>
 

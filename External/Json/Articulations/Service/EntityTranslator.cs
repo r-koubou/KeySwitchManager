@@ -13,7 +13,7 @@ using Newtonsoft.Json;
 
 namespace ArticulationManager.Json.Articulations.Service
 {
-    public class ArticulationTranslationService : IEntitiesToJsonTranslator
+    public class EntityTranslator : IEntityTranslator
     {
         public IEnumerable<IText> Translate( IEnumerable<Articulation> source )
         {

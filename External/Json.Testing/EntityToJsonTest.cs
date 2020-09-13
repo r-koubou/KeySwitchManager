@@ -27,7 +27,7 @@ namespace Json.Testing
                 new List<ProgramChange> { midiPcFactory.Create( 3, 45 ) }
             );
 
-            var translator = new ArticulationTranslationService();
+            var translator = new EntityTranslator();
             var json = translator.Translate( new List<Articulation>()
                 {
                     entity

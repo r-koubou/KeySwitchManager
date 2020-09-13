@@ -6,6 +6,6 @@ using ArticulationManager.Domain.Services;
 
 namespace ArticulationManager.UseCases.Articulations.Exporting.Text
 {
-    public interface IEntitiesToJsonTranslator : IDataTranslationService<IEnumerable<Articulation>, IEnumerable<IText>>
+    public interface IEntityTranslator : IDataTranslationService<IEnumerable<Articulation>, IEnumerable<IText>>
     {}
 }
