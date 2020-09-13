@@ -1,11 +1,11 @@
 using ArticulationManager.Domain.MidiMessages.Aggregate;
 using ArticulationManager.Domain.MidiMessages.Value;
-using ArticulationManager.Domain.Services;
+using ArticulationManager.Domain.Translations;
 using ArticulationManager.Json.Articulations.Model;
 
-namespace ArticulationManager.Json.Articulations.Service
+namespace ArticulationManager.Json.Articulations.Translations
 {
-    public class MidiMessageModelTranslationService : IDataTranslationService<MidiMessageModel, IMessage>
+    public class MidiMessageModelTranslator : IDataTranslator<MidiMessageModel, IMessage>
     {
         public IMessage Translate( MidiMessageModel source )
         {

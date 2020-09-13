@@ -1,11 +1,11 @@
 using ArticulationManager.Databases.LiteDB.Articulations.Model;
 using ArticulationManager.Domain.MidiMessages.Aggregate;
 using ArticulationManager.Domain.MidiMessages.Value;
-using ArticulationManager.Domain.Services;
+using ArticulationManager.Domain.Translations;
 
-namespace ArticulationManager.Databases.LiteDB.Articulations.Service
+namespace ArticulationManager.Databases.LiteDB.Translations
 {
-    public class MidiMessageModelTranslationService : IDataTranslationService<MidiMessageModel, IMessage>
+    public class DbModelToMidiMessage : IDataTranslator<MidiMessageModel, IMessage>
     {
         public IMessage Translate( MidiMessageModel source )
         {

@@ -4,7 +4,7 @@ using System.IO;
 
 using ArticulationManager.Common.Utilities;
 using ArticulationManager.Databases.LiteDB.Articulations.Model;
-using ArticulationManager.Databases.LiteDB.Articulations.Service;
+using ArticulationManager.Databases.LiteDB.Translations;
 using ArticulationManager.Domain.Articulations.Aggregate;
 using ArticulationManager.Domain.Articulations.Value;
 using ArticulationManager.Gateways.Articulations;
@@ -62,7 +62,7 @@ namespace ArticulationManager.Databases.LiteDB.Articulations
         {
             var table = Database.GetCollection<ArticulationModel>( ArticulationsTableName );
 
-            var translator = new EntityTranslationService();
+            var translator = new EntityToDbModel();
             var entity = translator.Translate( articulation );
 
             if( table.Exists( x => x.Id.Equals( articulation.Id.Value ) ) )
@@ -103,7 +103,7 @@ namespace ArticulationManager.Databases.LiteDB.Articulations
         private List<Articulation> CreateEntities( IEnumerable<ArticulationModel> query )
         {
             var result = new List<Articulation>();
-            var translator = new EntityModelTranslationService();
+            var translator = new DbModelToEntity();
 
             foreach( var item in query )
             {

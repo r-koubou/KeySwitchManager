@@ -8,17 +8,17 @@ namespace ArticulationManager.Interactors.Articulations.Exporting.Text
     public class ExportingJsonInteractor : IExportingTextUseCase
     {
         private IArticulationRepository Repository { get; }
-        private IEntityTranslationService TranslationService { get; }
+        private IEntityTranslator Translator { get; }
         private IExportingTextPresenter Presenter { get; }
 
         public ExportingJsonInteractor(
             IArticulationRepository repository,
             IExportingTextPresenter presenter,
-            IEntityTranslationService translationService )
+            IEntityTranslator translator )
         {
             Repository = repository;
             Presenter  = presenter;
-            TranslationService = translationService;
+            Translator = translator;
         }
 
         public void Execute( InputData inputData )
@@ -28,7 +28,7 @@ namespace ArticulationManager.Interactors.Articulations.Exporting.Text
 
             var entities = Repository.Find( developerName, productName );
 
-            Presenter.Output( new OutputData( TranslationService.Translate( entities ) ) );
+            Presenter.Output( new OutputData( Translator.Translate( entities ) ) );
         }
     }
 }

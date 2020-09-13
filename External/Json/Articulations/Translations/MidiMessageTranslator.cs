@@ -1,10 +1,10 @@
 using ArticulationManager.Domain.MidiMessages.Aggregate;
-using ArticulationManager.Domain.Services;
+using ArticulationManager.Domain.Translations;
 using ArticulationManager.Json.Articulations.Model;
 
-namespace ArticulationManager.Json.Articulations.Service
+namespace ArticulationManager.Json.Articulations.Translations
 {
-    public class MidiMessageTranslationService : IDataTranslationService<IMessage, MidiMessageModel>
+    public class MidiMessageTranslator : IDataTranslator<IMessage, MidiMessageModel>
     {
         public MidiMessageModel Translate( IMessage source )
         {

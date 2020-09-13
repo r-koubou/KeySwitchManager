@@ -5,7 +5,7 @@ using ArticulationManager.Common.Testing;
 using ArticulationManager.Domain.Articulations.Aggregate;
 using ArticulationManager.Domain.MidiMessages;
 using ArticulationManager.Domain.MidiMessages.Aggregate;
-using ArticulationManager.Json.Articulations.Service;
+using ArticulationManager.Json.Articulations.Translations;
 
 using NUnit.Framework;
 
@@ -27,7 +27,7 @@ namespace Json.Testing
                 new List<ProgramChange> { midiPcFactory.Create( 3, 45 ) }
             );
 
-            var translator = new EntityTranslationService();
+            var translator = new EntityTranslator();
             var json = translator.Translate( new List<Articulation>()
                 {
                     entity

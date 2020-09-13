@@ -1,17 +1,15 @@
 using System.Collections.Generic;
 
-using ArticulationManager.Common.Utilities;
-using ArticulationManager.Databases.LiteDB.Articulations.Model;
 using ArticulationManager.Domain.Articulations;
 using ArticulationManager.Domain.Articulations.Aggregate;
-using ArticulationManager.Domain.Articulations.Value;
 using ArticulationManager.Domain.MidiMessages;
 using ArticulationManager.Domain.MidiMessages.Aggregate;
-using ArticulationManager.Domain.Services;
+using ArticulationManager.Domain.Translations;
+using ArticulationManager.Json.Articulations.Model;
 
-namespace ArticulationManager.Databases.LiteDB.Articulations.Service
+namespace ArticulationManager.Json.Articulations.Translations
 {
-    public class EntityModelTranslationService : IDataTranslationService<ArticulationModel, Articulation>
+    public class EntityModelTranslator : IDataTranslator<ArticulationModel, Articulation>
     {
         public Articulation Translate( ArticulationModel source )
         {
@@ -19,9 +17,9 @@ namespace ArticulationManager.Databases.LiteDB.Articulations.Service
             List<IMessage> controlChange = new List<IMessage>();
             List<IMessage> programChange = new List<IMessage>();
 
-            ConvertMessageList( source.NoteOn,        noteOn,        new INoteOnFactory.Default() );
-            ConvertMessageList( source.ControlChange, controlChange, new IControlChangeFactory.Default() );
-            ConvertMessageList( source.ProgramChange, programChange, new IProgramChangeFactory.Default() );
+            ConvertMessageList( source.MidiMessage.NoteOn,        noteOn,        new INoteOnFactory.Default() );
+            ConvertMessageList( source.MidiMessage.ControlChange, controlChange, new IControlChangeFactory.Default() );
+            ConvertMessageList( source.MidiMessage.ProgramChange, programChange, new IProgramChangeFactory.Default() );
 
             return new IArticulationFactory.Default().Create(
                 source.Id,
@@ -30,7 +28,7 @@ namespace ArticulationManager.Databases.LiteDB.Articulations.Service
                 source.DeveloperName,
                 source.ProductName,
                 source.ArticulationName,
-                EnumHelper.Parse<ArticulationType>( source.ArticulationType ),
+                source.ArticulationType,
                 source.ArticulationGroup,
                 source.ArticulationColor,
                 noteOn,
@@ -41,7 +39,7 @@ namespace ArticulationManager.Databases.LiteDB.Articulations.Service
 
         private static void ConvertMessageList(
             IEnumerable<MidiMessageModel> src,
-            ICollection<IMessage> dest,
+            List<IMessage> dest,
             IMidiMessageFactory messageFactory )
         {
             foreach( var i in src )

@@ -3,7 +3,7 @@ using System.IO;
 using ArticulationManager.Common.Testing;
 using ArticulationManager.Databases.LiteDB.Articulations;
 using ArticulationManager.Interactors.Articulations.Exporting.Text;
-using ArticulationManager.Json.Articulations.Service;
+using ArticulationManager.Json.Articulations.Translations;
 using ArticulationManager.Presenters.Articulations;
 using ArticulationManager.UseCases.Articulations.Exporting.Text;
 
@@ -27,7 +27,7 @@ namespace ArticulationManager.Interactors.Testing.Articulations
             var interactor = new ExportingJsonInteractor(
                 dbRepository,
                 new IExportingTextPresenter.Console(),
-                new EntityTranslationService()
+                new EntityTranslator()
             );
 
             interactor.Execute( inputData );
