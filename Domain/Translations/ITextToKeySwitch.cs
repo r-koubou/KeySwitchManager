@@ -1,7 +1,5 @@
-using System.Collections.Generic;
-
-using ArticulationManager.Domain.Articulations.Aggregate;
 using ArticulationManager.Domain.Commons;
+using ArticulationManager.Domain.KeySwitches.Aggregate;
 
 namespace ArticulationManager.Domain.Translations
 {

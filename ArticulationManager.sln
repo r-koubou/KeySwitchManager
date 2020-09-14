@@ -20,7 +20,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Interactors", "Interactors\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Presenters", "Presenters\Presenters.csproj", "{A31FB6E0-791C-494B-99E7-B6F91505C3C9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gateways.Articulations", "Gateways.Articulations\Gateways.Articulations.csproj", "{A6DAE468-A33B-4DB6-9EBD-8FAE37362874}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gateways", "Gateways\Gateways.csproj", "{A6DAE468-A33B-4DB6-9EBD-8FAE37362874}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Interactors.Testing", "Interactors.Testing\Interactors.Testing.csproj", "{C6EF264F-FD28-49F8-9767-549EC6E048A7}"
 EndProject

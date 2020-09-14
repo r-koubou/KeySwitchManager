@@ -2,9 +2,9 @@ using System;
 using System.Collections.Generic;
 
 using ArticulationManager.Common.Utilities;
-using ArticulationManager.Domain.Articulations.Aggregate;
-using ArticulationManager.Domain.Articulations.Value;
 using ArticulationManager.Domain.Commons;
+using ArticulationManager.Domain.KeySwitches.Aggregate;
+using ArticulationManager.Domain.KeySwitches.Value;
 using ArticulationManager.Domain.MidiMessages.Aggregate;
 using ArticulationManager.Domain.Services;
 

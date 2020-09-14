@@ -20,7 +20,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\Gateways.Articulations\Gateways.Articulations.csproj" />
+      <ProjectReference Include="..\Gateways\Gateways.csproj" />
       <ProjectReference Include="..\Presenters\Presenters.csproj" />
       <ProjectReference Include="..\UseCases\UseCases.csproj" />
     </ItemGroup>
