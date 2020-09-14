@@ -37,6 +37,7 @@ namespace ArticulationManager.Databases.LiteDB.Translations
             }
 
             return new KeySwitchModel(
+                source.Id.Value,
                 EntityDateTimeService.ToDateTime( source.Created ),
                 EntityDateTimeService.ToDateTime( source.LastUpdated ),
                 source.DeveloperName.Value,
@@ -53,6 +54,7 @@ namespace ArticulationManager.Databases.LiteDB.Translations
                 dest.Add(
                     new MidiMessageModel(
                         i.Status.Value,
+                        i.Channel.Value,
                         i.DataByte1.Value,
                         i.DataByte2.Value
                     )

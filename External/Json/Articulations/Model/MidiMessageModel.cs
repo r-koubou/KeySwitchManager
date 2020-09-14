@@ -23,14 +23,6 @@ namespace ArticulationManager.Json.Articulations.Model
 
         public MidiMessageModel(
             int status,
-            int dataByte1,
-            int dataByte2 )
-            : this( status, 0x00, dataByte1, dataByte2 )
-        {
-        }
-
-        public MidiMessageModel(
-            int status,
             int channel,
             int dataByte1,
             int dataByte2 )

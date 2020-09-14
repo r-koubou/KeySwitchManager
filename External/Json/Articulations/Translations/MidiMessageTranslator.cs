@@ -10,6 +10,7 @@ namespace ArticulationManager.Json.Articulations.Translations
         {
             return new MidiMessageModel(
                 source.Status.Value,
+                source.Channel.Value,
                 source.DataByte1.Value,
                 source.DataByte2.Value
             );

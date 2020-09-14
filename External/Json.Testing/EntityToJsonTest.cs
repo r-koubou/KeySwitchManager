@@ -31,6 +31,11 @@ namespace Json.Testing
             var translator = new EntityToJsonModel();
             var json = translator.Translate( entity );
 
+            var translator2 = new JsonModelToEntity();
+            var cmp = translator2.Translate( json );
+
+            Assert.AreEqual( entity, cmp );
+
             Console.WriteLine( json );
         }
     }

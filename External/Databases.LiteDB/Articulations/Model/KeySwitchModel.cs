@@ -22,6 +22,7 @@ namespace ArticulationManager.Databases.LiteDB.Articulations.Model
         {}
 
         public KeySwitchModel(
+            Guid id,
             DateTime created,
             DateTime lastUpdated,
             string developerName,
@@ -29,6 +30,7 @@ namespace ArticulationManager.Databases.LiteDB.Articulations.Model
             string instrumentName,
             IEnumerable<ArticulationModel> articulations )
         {
+            Id             = id;
             Created        = created;
             LastUpdated    = lastUpdated;
             DeveloperName  = developerName;

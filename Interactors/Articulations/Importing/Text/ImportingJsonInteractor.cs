@@ -1,11 +1,12 @@
+
 using ArticulationManager.Domain.Translations;
 using ArticulationManager.Gateways.Articulations;
 using ArticulationManager.Presenters.Articulations;
-using ArticulationManager.UseCases.Articulations.Exporting.Text;
+using ArticulationManager.UseCases.Articulations.Importing.Text;
 
 namespace ArticulationManager.Interactors.Articulations.Importing.Text
 {
-    public class ImportingJsonInteractor : IExportingTextUseCase
+    public class ImportingJsonInteractor : IImportingTextUseCase
     {
         private IKeySwitchRepository Repository { get; }
         private ITextToKeySwitch Translator { get; }
@@ -23,6 +24,9 @@ namespace ArticulationManager.Interactors.Articulations.Importing.Text
 
         public void Execute( InputData inputData )
         {
+            var keySwitch = Translator.Translate( inputData.JsonText );
+            Repository.Save( keySwitch );
+            Presenter.Output( new OutputData() );
         }
     }
 }
