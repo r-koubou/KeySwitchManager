@@ -7,7 +7,7 @@ namespace ArticulationManager.Domain.MidiMessages
     {
         public GenericMessage Create( int status, int data1, int data2 );
 
-        public class DefaultFactory : IGenericMessageFactory
+        public class Default : IGenericMessageFactory
         {
             public IMessage Create( int status, int channel, int data1, int data2 )
             {

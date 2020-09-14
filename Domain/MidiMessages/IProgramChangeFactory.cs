@@ -8,7 +8,7 @@ namespace ArticulationManager.Domain.MidiMessages
         public ProgramChange Create( int pcNumber );
         public ProgramChange Create( int channel, int pcNumber );
 
-        public class DefaultFactory : IProgramChangeFactory
+        public class Default : IProgramChangeFactory
         {
             public IMessage Create( int status, int channel, int data1, int data2 )
             {

@@ -4,6 +4,9 @@ using ArticulationManager.Common.Utilities;
 
 namespace ArticulationManager.Domain.Commons
 {
+    /// <summary>
+    /// Represents a date and time. The time zone is assumed to be handled in UTC.
+    /// </summary>
     public class EntityDateTime : IEquatable<EntityDateTime>
     {
         public int Year { get; }
@@ -23,12 +26,12 @@ namespace ArticulationManager.Domain.Commons
             int second,
             int milliSecond )
         {
-            RangeValidateHelper.ValidateRange( year,   0, int.MaxValue );
-            RangeValidateHelper.ValidateRange( month,  1, 12 );
-            RangeValidateHelper.ValidateRange( day,    1, 31 );
-            RangeValidateHelper.ValidateRange( hour,   0, 23 );
-            RangeValidateHelper.ValidateRange( minute, 0, 59 );
-            RangeValidateHelper.ValidateRange( second, 0, 59 );
+            RangeValidateHelper.ValidateRange( year,        0, int.MaxValue );
+            RangeValidateHelper.ValidateRange( month,       1, 12 );
+            RangeValidateHelper.ValidateRange( day,         1, 31 );
+            RangeValidateHelper.ValidateRange( hour,        0, 23 );
+            RangeValidateHelper.ValidateRange( minute,      0, 59 );
+            RangeValidateHelper.ValidateRange( second,      0, 59 );
             RangeValidateHelper.ValidateRange( milliSecond, 0, 9999 );
 
             Year        = year;
@@ -55,5 +58,8 @@ namespace ArticulationManager.Domain.Commons
                    other.Second == Second &&
                    other.MilliSecond == MilliSecond;
         }
+
+        public override string ToString()
+            => $"{Year:D4}-{Month:D2}-{Day:D2}-{Hour:D2}:{Minute:D2}:{Second:D2}";
     }
 }

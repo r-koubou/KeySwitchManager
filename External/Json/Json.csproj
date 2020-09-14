@@ -1,0 +1,31 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>netcoreapp3.1</TargetFramework>
+        <!-- Assembly / Common -->
+        <Copyright>R-Koubou</Copyright>
+        <Company>R-Koubou</Company>
+        <Product>ArticulationManager.Json</Product>
+        <AssemblyName>ArticulationManager.Json</AssemblyName>
+        <RootNamespace>ArticulationManager.Json</RootNamespace>
+        <Version>0.1.0-alpha</Version>
+        <Description>ArticulationManager.Json module</Description>
+        <Nullable>enable</Nullable>
+        <!-- Nuget -->
+        <Authors>R-Koubou</Authors>
+        <PackageId>ArticulationManager.Json</PackageId>
+        <PackageLicenseExpression>MIT</PackageLicenseExpression>
+        <PackageProjectUrl>https://github.com/r-koubou/ArticulationManager</PackageProjectUrl>
+        <RepositoryUrl>https://github.com/r-koubou/ArticulationManager</RepositoryUrl>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\..\Domain\Domain.csproj" />
+      <ProjectReference Include="..\..\UseCases\UseCases.csproj" />
+    </ItemGroup>
+
+</Project>
