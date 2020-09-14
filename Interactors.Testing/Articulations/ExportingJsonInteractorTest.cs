@@ -18,8 +18,8 @@ namespace ArticulationManager.Interactors.Testing.Articulations
         public void ExportTest()
         {
             #region Adding To DB
-            var dbRepository = new LiteDbArticulationRepository( new MemoryStream() );
-            var entity = TestDataGenerator.CreateDummy();
+            var dbRepository = new LiteDbKeySwitchRepository( new MemoryStream() );
+            var entity = TestDataGenerator.CreateKeySwitch();
             dbRepository.Save( entity );
             #endregion
 
@@ -27,7 +27,7 @@ namespace ArticulationManager.Interactors.Testing.Articulations
             var interactor = new ExportingJsonInteractor(
                 dbRepository,
                 new IExportingTextPresenter.Console(),
-                new EntityTranslator()
+                new EntityToJsonModel()
             );
 
             interactor.Execute( inputData );

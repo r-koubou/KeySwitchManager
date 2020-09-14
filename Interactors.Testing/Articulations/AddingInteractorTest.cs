@@ -21,6 +21,7 @@ namespace ArticulationManager.Interactors.Testing.Articulations
             var inputData = new InputData(
                 "Developer",
                 "Product",
+                "E.Guitar",
                 "Power Chord",
                 ArticulationType.Direction,
                 0,
@@ -31,7 +32,7 @@ namespace ArticulationManager.Interactors.Testing.Articulations
             );
 
             var presenter = new IAddingPresenter.Null();
-            var repository = new LiteDbArticulationRepository( new MemoryStream() );
+            var repository = new LiteDbKeySwitchRepository( new MemoryStream() );
             var interactor = new AddingInteractor( repository, presenter );
 
             interactor.Execute( inputData );

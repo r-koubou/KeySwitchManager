@@ -8,14 +8,14 @@ namespace ArticulationManager.Interactors.Articulations.Exporting.Text
 {
     public class ExportingJsonInteractor : IExportingTextUseCase
     {
-        private IArticulationRepository Repository { get; }
-        private IArticulationToText Translator { get; }
+        private IKeySwitchRepository Repository { get; }
+        private IKeySwitchToText Translator { get; }
         private IExportingTextPresenter Presenter { get; }
 
         public ExportingJsonInteractor(
-            IArticulationRepository repository,
+            IKeySwitchRepository repository,
             IExportingTextPresenter presenter,
-            IArticulationToText translator )
+            IKeySwitchToText translator )
         {
             Repository = repository;
             Presenter  = presenter;
@@ -29,7 +29,10 @@ namespace ArticulationManager.Interactors.Articulations.Exporting.Text
 
             var entities = Repository.Find( developerName, productName );
 
-            Presenter.Output( new OutputData( Translator.Translate( entities ) ) );
+            foreach( var i in entities )
+            {
+                Presenter.Output( new OutputData( Translator.Translate( i ) ) );
+            }
         }
     }
 }

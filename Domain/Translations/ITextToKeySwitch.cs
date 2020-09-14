@@ -5,6 +5,6 @@ using ArticulationManager.Domain.Commons;
 
 namespace ArticulationManager.Domain.Translations
 {
-    public interface IArticulationToText : IDataTranslator<IEnumerable<Articulation>, IText>
+    public interface ITextToKeySwitch : IDataTranslator<IText, KeySwitch>
     {}
 }

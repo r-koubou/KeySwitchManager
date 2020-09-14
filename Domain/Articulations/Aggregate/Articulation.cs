@@ -10,11 +10,6 @@ namespace ArticulationManager.Domain.Articulations.Aggregate
 {
     public class Articulation : IEquatable<Articulation>
     {
-        public EntityGuid Id { get; }
-        public EntityDateTime Created { get; }
-        public EntityDateTime LastUpdated { get; }
-        public DeveloperName DeveloperName { get; }
-        public ProductName ProductName { get; }
         public ArticulationName ArticulationName { get; }
         public ArticulationType ArticulationType { get; }
         public ArticulationGroup ArticulationGroup { get; }
@@ -24,11 +19,6 @@ namespace ArticulationManager.Domain.Articulations.Aggregate
         public IReadOnlyList<IMessage> MidiProgramChanges { get; }
 
         public Articulation(
-            EntityGuid id,
-            EntityDateTime created,
-            EntityDateTime lastUpdated,
-            DeveloperName developerName,
-            ProductName productName,
             ArticulationName articulationName,
             ArticulationType articulationType,
             ArticulationGroup articulationGroup,
@@ -37,11 +27,6 @@ namespace ArticulationManager.Domain.Articulations.Aggregate
             IEnumerable<IMessage> midiControlChanges,
             IEnumerable<IMessage> midiProgramChanges )
         {
-            Id                 = id;
-            Created            = created;
-            LastUpdated        = lastUpdated;
-            DeveloperName      = developerName;
-            ProductName        = productName;
             ArticulationName   = articulationName;
             ArticulationType   = articulationType;
             ArticulationGroup  = articulationGroup;
@@ -64,12 +49,7 @@ namespace ArticulationManager.Domain.Articulations.Aggregate
                 return true;
             }
 
-            return Id.Equals( other.Id ) &&
-                   Created.Equals( other.Created ) &&
-                   LastUpdated.Equals( other.LastUpdated ) &&
-                   DeveloperName.Equals( other.DeveloperName ) &&
-                   ProductName.Equals( other.ProductName ) &&
-                   ArticulationName.Equals( other.ArticulationName ) &&
+            return ArticulationName.Equals( other.ArticulationName ) &&
                    ArticulationType == other.ArticulationType &&
                    ArticulationGroup.Equals( other.ArticulationGroup ) &&
                    ArticulationColor.Equals( other.ArticulationColor ) &&

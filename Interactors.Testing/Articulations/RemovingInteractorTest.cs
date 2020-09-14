@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 
+using ArticulationManager.Common.Testing;
 using ArticulationManager.Databases.LiteDB.Articulations;
 using ArticulationManager.Domain.Articulations.Aggregate;
 using ArticulationManager.Domain.Articulations.Value;
@@ -31,25 +32,13 @@ namespace ArticulationManager.Interactors.Testing.Articulations
             );
 
             var presenter = new IRemovingPresenter.Null();
-            var repository = new LiteDbArticulationRepository( new MemoryStream() );
+            var repository = new LiteDbKeySwitchRepository( new MemoryStream() );
             var interactor = new RemovingInteractor( repository, presenter );
 
             #region Adding Test data for removing
             var now = DateTime.Now;
-            var entity = new Articulation(
-                new EntityGuid( Guid.NewGuid() ),
-                EntityDateTimeService.FromDateTime( now ),
-                EntityDateTimeService.FromDateTime( now ),
-                new DeveloperName( developerName ),
-                new ProductName( productName ),
-                new ArticulationName( "Power Chord" ),
-                ArticulationType.Default,
-                new ArticulationGroup( 0 ),
-                new ArticulationColor( 0 ),
-                new List<NoteOn>(),
-                new List<ControlChange>(),
-                new List<ProgramChange>()
-            );
+            var entity = TestDataGenerator.CreateKeySwitch( inputData.DeveloperName, inputData.ProductName );
+
             repository.Save( entity );
             #endregion
             Assert.AreEqual( 1, repository.Count() );

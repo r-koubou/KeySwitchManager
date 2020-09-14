@@ -13,8 +13,8 @@ namespace ArticulationManager.Databases.LiteDB.Testing
         [Test]
         public void RemoveTest()
         {
-            var repository = new LiteDbArticulationRepository( new MemoryStream() );
-            var record = TestDataGenerator.CreateDummy();
+            var repository = new LiteDbKeySwitchRepository( new MemoryStream() );
+            var record = TestDataGenerator.CreateKeySwitch();
 
             #region Delete by Id
             repository.Save( record );

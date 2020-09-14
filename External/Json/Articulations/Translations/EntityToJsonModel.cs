@@ -1,17 +1,26 @@
 using System.Collections.Generic;
+using System.IO;
+using System.Text;
 
-using ArticulationManager.Databases.LiteDB.Articulations.Model;
 using ArticulationManager.Domain.Articulations.Aggregate;
+using ArticulationManager.Domain.Commons;
 using ArticulationManager.Domain.MidiMessages.Aggregate;
 using ArticulationManager.Domain.Services;
 using ArticulationManager.Domain.Translations;
+using ArticulationManager.Json.Articulations.Model;
 
-namespace ArticulationManager.Databases.LiteDB.Translations
+using Newtonsoft.Json;
+
+namespace ArticulationManager.Json.Articulations.Translations
 {
-    public class EntityToDbModel : IDataTranslator<KeySwitch, KeySwitchModel>
+    public class EntityToJsonModel : IKeySwitchToText
     {
-        public KeySwitchModel Translate( KeySwitch source )
+        public IText Translate( KeySwitch source )
         {
+            var builder = new StringBuilder();
+            var serializer = new JsonSerializer();
+            using var writer = new StringWriter( builder );
+
             var articulationModels = new List<ArticulationModel>();
 
             foreach( var i in source.Articulations )
@@ -24,19 +33,22 @@ namespace ArticulationManager.Databases.LiteDB.Translations
                 ConvertMessageList( i.MidiControlChanges, controlChange );
                 ConvertMessageList( i.MidiProgramChanges, programChange );
 
-                var articulation = new ArticulationModel(
+                var jsonObject = new ArticulationModel(
                     i.ArticulationName.Value,
+                    i.ArticulationType,
                     i.ArticulationGroup.Value,
                     i.ArticulationColor.Value,
-                    noteOn,
-                    controlChange,
-                    programChange
+                    new MidiModel(
+                        noteOn,
+                        controlChange,
+                        programChange
+                    )
                 );
 
-                articulationModels.Add( articulation );
+                articulationModels.Add( jsonObject );
             }
 
-            return new KeySwitchModel(
+            var jsonRoot = new KeySwitchModel(
                 EntityDateTimeService.ToDateTime( source.Created ),
                 EntityDateTimeService.ToDateTime( source.LastUpdated ),
                 source.DeveloperName.Value,
@@ -44,20 +56,28 @@ namespace ArticulationManager.Databases.LiteDB.Translations
                 source.InstrumentName.Value,
                 articulationModels
             );
+
+            serializer.Serialize( writer, jsonRoot );
+
+            return new PlainText( builder.ToString() );
         }
 
-        private static void ConvertMessageList( IEnumerable<IMessage> src, List<MidiMessageModel> dest )
+        private static void ConvertMessageList(
+            IEnumerable<IMessage> src,
+            ICollection<MidiMessageModel> dest )
         {
             foreach( var i in src )
             {
                 dest.Add(
                     new MidiMessageModel(
                         i.Status.Value,
+                        i.Channel.Value,
                         i.DataByte1.Value,
                         i.DataByte2.Value
                     )
                 );
             }
         }
+
     }
 }

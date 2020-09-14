@@ -11,32 +11,45 @@ using ArticulationManager.Domain.Translations;
 
 namespace ArticulationManager.Databases.LiteDB.Translations
 {
-    public class DbModelToEntity : IDataTranslator<ArticulationModel, Articulation>
+    public class DbModelToEntity : IDataTranslator<KeySwitchModel, KeySwitch>
     {
-        public Articulation Translate( ArticulationModel source )
+        public KeySwitch Translate( KeySwitchModel source )
         {
-            List<IMessage> noteOn = new List<IMessage>();
-            List<IMessage> controlChange = new List<IMessage>();
-            List<IMessage> programChange = new List<IMessage>();
+            var articulations = new List<Articulation>();
 
-            ConvertMessageList( source.NoteOn,        noteOn,        new INoteOnFactory.Default() );
-            ConvertMessageList( source.ControlChange, controlChange, new IControlChangeFactory.Default() );
-            ConvertMessageList( source.ProgramChange, programChange, new IProgramChangeFactory.Default() );
+            foreach( var i in source.Articulations )
+            {
+                var noteOn = new List<IMessage>();
+                var controlChange = new List<IMessage>();
+                var programChange = new List<IMessage>();
 
-            return new IArticulationFactory.Default().Create(
+                ConvertMessageList( i.NoteOn,        noteOn,        new INoteOnFactory.Default() );
+                ConvertMessageList( i.ControlChange, controlChange, new IControlChangeFactory.Default() );
+                ConvertMessageList( i.ProgramChange, programChange, new IProgramChangeFactory.Default() );
+
+                var articulation = new IArticulationFactory.Default().Create(
+                    i.ArticulationName,
+                    EnumHelper.Parse<ArticulationType>( i.ArticulationType ),
+                    i.ArticulationGroup,
+                    i.ArticulationColor,
+                    noteOn,
+                    controlChange,
+                    programChange
+                );
+
+                articulations.Add( articulation );
+            }
+
+            return new IKeySwitchFactory.Default().Create(
                 source.Id,
                 source.Created,
                 source.LastUpdated,
                 source.DeveloperName,
                 source.ProductName,
-                source.ArticulationName,
-                EnumHelper.Parse<ArticulationType>( source.ArticulationType ),
-                source.ArticulationGroup,
-                source.ArticulationColor,
-                noteOn,
-                controlChange,
-                programChange
+                source.InstrumentName,
+                articulations
             );
+
         }
 
         private static void ConvertMessageList(

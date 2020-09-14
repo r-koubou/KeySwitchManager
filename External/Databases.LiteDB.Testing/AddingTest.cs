@@ -17,8 +17,8 @@ namespace ArticulationManager.Databases.LiteDB.Testing
         [Test]
         public void AddTest()
         {
-            var repository = new LiteDbArticulationRepository( new MemoryStream() );
-            var record = TestDataGenerator.CreateDummy(
+            var repository = new LiteDbKeySwitchRepository( new MemoryStream() );
+            var articulation = TestDataGenerator.CreateArticulation(
                 new List<NoteOn>()
                 {
                     new NoteOn( new NoteNumber( 1 ), new Velocity( 100 ) )
@@ -26,6 +26,7 @@ namespace ArticulationManager.Databases.LiteDB.Testing
                 new List<ControlChange>(),
                 new List<ProgramChange>()
             );
+            var record = TestDataGenerator.CreateKeySwitch( articulation );
 
             repository.Save( record );
 
@@ -37,11 +38,11 @@ namespace ArticulationManager.Databases.LiteDB.Testing
             cmp = seq.First();
             Assert.AreEqual( record, cmp );
 
-            seq = repository.Find( record.ArticulationName );
+            seq = repository.Find( record.ProductName );
             cmp = seq.First();
             Assert.AreEqual( record, cmp );
 
-            seq = repository.Find( record.ArticulationName );
+            seq = repository.Find( record.DeveloperName, record.ProductName, record.InstrumentName );
             cmp = seq.First();
             Assert.AreEqual( record, cmp );
 

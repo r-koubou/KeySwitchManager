@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 
 using ArticulationManager.Common.Testing;
-using ArticulationManager.Domain.Articulations.Aggregate;
 using ArticulationManager.Domain.MidiMessages;
 using ArticulationManager.Domain.MidiMessages.Aggregate;
 using ArticulationManager.Json.Articulations.Translations;
@@ -21,18 +20,16 @@ namespace Json.Testing
             var midiCcFactory = new IControlChangeFactory.Default();
             var midiPcFactory = new IProgramChangeFactory.Default();
 
-            var entity = TestDataGenerator.CreateDummy(
+            var articulation = TestDataGenerator.CreateArticulation(
                 new List<NoteOn> { midiNoteFactory.Create( 1, 23 ) },
                 new List<ControlChange> { midiCcFactory.Create( 2, 34 ) },
                 new List<ProgramChange> { midiPcFactory.Create( 3, 45 ) }
             );
 
-            var translator = new EntityTranslator();
-            var json = translator.Translate( new List<Articulation>()
-                {
-                    entity
-                }
-            );
+            var entity = TestDataGenerator.CreateKeySwitch( articulation );
+
+            var translator = new EntityToJsonModel();
+            var json = translator.Translate( entity );
 
             Console.WriteLine( json );
         }

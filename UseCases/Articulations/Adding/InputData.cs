@@ -9,6 +9,7 @@ namespace ArticulationManager.UseCases.Articulations.Adding
     {
         public string DeveloperName { get; }
         public string ProductName { get; }
+        public string InstrumentName { get; }
         public string ArticulationName { get; }
         public ArticulationType ArticulationType { get; }
         public int ArticulationGroup { get; }
@@ -20,6 +21,7 @@ namespace ArticulationManager.UseCases.Articulations.Adding
         public InputData(
             string developerName,
             string productName,
+            string instrumentName,
             string articulationName,
             ArticulationType articulationType,
             int articulationGroup,
@@ -30,6 +32,7 @@ namespace ArticulationManager.UseCases.Articulations.Adding
         {
             DeveloperName      = developerName;
             ProductName        = productName;
+            InstrumentName     = instrumentName;
             ArticulationName   = articulationName;
             ArticulationType   = articulationType;
             ArticulationGroup  = articulationGroup;

@@ -7,14 +7,14 @@ namespace ArticulationManager.Interactors.Articulations.Importing.Text
 {
     public class ImportingJsonInteractor : IExportingTextUseCase
     {
-        private IArticulationRepository Repository { get; }
-        private ITextToArticulation Translator { get; }
+        private IKeySwitchRepository Repository { get; }
+        private ITextToKeySwitch Translator { get; }
         private IImportingTextPresenter Presenter { get; }
 
         public ImportingJsonInteractor(
-            IArticulationRepository repository,
+            IKeySwitchRepository repository,
             IImportingTextPresenter presenter,
-            ITextToArticulation translator )
+            ITextToKeySwitch translator )
         {
             Repository = repository;
             Presenter  = presenter;

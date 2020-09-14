@@ -7,11 +7,11 @@ namespace ArticulationManager.Interactors.Articulations.Removing
 {
     public class RemovingInteractor : IRemovingUseCase
     {
-        private IArticulationRepository Repository { get; }
+        private IKeySwitchRepository Repository { get; }
         private IRemovingPresenter Presenter { get; }
 
         public RemovingInteractor(
-            IArticulationRepository repository,
+            IKeySwitchRepository repository,
             IRemovingPresenter presenter )
         {
             Repository = repository;
