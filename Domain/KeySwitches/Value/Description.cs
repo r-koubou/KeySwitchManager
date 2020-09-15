@@ -5,22 +5,24 @@ using ArticulationManager.Common.Utilities;
 namespace ArticulationManager.Domain.KeySwitches.Value
 {
     /// <summary>
-    /// An Instrument name
+    /// A description of keyswitch
     /// </summary>
-    public class InstrumentName : IEquatable<InstrumentName>
+    public class Description : IEquatable<Description>
     {
+        public static readonly Description Empty = new Description( string.Empty );
+
         public string Value { get; }
 
-        public InstrumentName( string name )
+        public Description( string name )
         {
             if( StringHelper.IsNullOrTrimEmpty( name ) )
             {
-                throw new InvalidNameException( nameof( name ) );
+                name = string.Empty;
             }
             Value = name;
         }
 
-        public bool Equals( InstrumentName? other )
+        public bool Equals( Description? other )
         {
             return other != null && other.Value == Value;
         }

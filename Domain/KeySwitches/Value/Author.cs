@@ -5,22 +5,24 @@ using ArticulationManager.Common.Utilities;
 namespace ArticulationManager.Domain.KeySwitches.Value
 {
     /// <summary>
-    /// An Instrument name
+    /// A created author name
     /// </summary>
-    public class InstrumentName : IEquatable<InstrumentName>
+    public class Author : IEquatable<Author>
     {
+        public static readonly Author Empty = new Author( string.Empty );
+
         public string Value { get; }
 
-        public InstrumentName( string name )
+        public Author( string name )
         {
             if( StringHelper.IsNullOrTrimEmpty( name ) )
             {
-                throw new InvalidNameException( nameof( name ) );
+                name = string.Empty;
             }
             Value = name;
         }
 
-        public bool Equals( InstrumentName? other )
+        public bool Equals( Author? other )
         {
             return other != null && other.Value == Value;
         }

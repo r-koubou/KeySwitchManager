@@ -22,6 +22,8 @@ namespace ArticulationManager.Common.Testing
 
             return new KeySwitch(
                 new EntityGuid( Guid.NewGuid() ),
+                new Author( "Author" ),
+                new Description( "Description" ),
                 EntityDateTimeService.FromDateTime( now ),
                 EntityDateTimeService.FromDateTime( now ),
                 new DeveloperName( developerName ),
@@ -42,6 +44,8 @@ namespace ArticulationManager.Common.Testing
 
             return new KeySwitch(
                 new EntityGuid( Guid.NewGuid() ),
+                new Author( "Author" ),
+                new Description( "Description" ),
                 EntityDateTimeService.FromDateTime( now ),
                 EntityDateTimeService.FromDateTime( now ),
                 new DeveloperName( "DeveloperName" ),

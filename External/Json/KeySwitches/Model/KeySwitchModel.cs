@@ -13,6 +13,12 @@ namespace ArticulationManager.Json.KeySwitches.Model
         [JsonProperty( "id")]
         public Guid Id { get; set; } = Guid.NewGuid();
 
+        [JsonProperty( "author")]
+        public string Author { get; set; } = default!;
+
+        [JsonProperty( "description")]
+        public string Description { get; set; } = default!;
+
         [JsonProperty( "created" )]
         public DateTime Created { get; set; } = DateTimeHelper.NowUtc();
 
@@ -39,6 +45,8 @@ namespace ArticulationManager.Json.KeySwitches.Model
 
         public KeySwitchModel(
             Guid id,
+            string author,
+            string description,
             DateTime created,
             DateTime lastUpdated,
             string developerName,
@@ -47,6 +55,8 @@ namespace ArticulationManager.Json.KeySwitches.Model
             IEnumerable<ArticulationModel> articulations )
         {
             Id             = id;
+            Author         = author;
+            Description    = description;
             Created        = created;
             LastUpdated    = lastUpdated;
             DeveloperName  = developerName;

@@ -7,6 +7,8 @@ namespace ArticulationManager.UseCases.KeySwitches.Adding
 {
     public class InputData
     {
+        public string Author { get; }
+        public string Description { get; }
         public string DeveloperName { get; }
         public string ProductName { get; }
         public string InstrumentName { get; }
@@ -19,6 +21,8 @@ namespace ArticulationManager.UseCases.KeySwitches.Adding
         public IEnumerable<ProgramChange> MidiProgramChanges { get; }
 
         public InputData(
+            string author,
+            string description,
             string developerName,
             string productName,
             string instrumentName,
@@ -30,6 +34,8 @@ namespace ArticulationManager.UseCases.KeySwitches.Adding
             IEnumerable<ControlChange> midiControlChanges,
             IEnumerable<ProgramChange> midiProgramChanges )
         {
+            Author             = author;
+            Description        = description;
             DeveloperName      = developerName;
             ProductName        = productName;
             InstrumentName     = instrumentName;

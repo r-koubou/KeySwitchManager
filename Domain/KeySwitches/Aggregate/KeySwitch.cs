@@ -13,6 +13,8 @@ namespace ArticulationManager.Domain.KeySwitches.Aggregate
     public class KeySwitch : IEquatable<KeySwitch>, IDuplicatable<KeySwitch>
     {
         public EntityGuid Id { get; }
+        public Author Author { get; }
+        public Description Description { get; }
         public EntityDateTime Created { get; }
         public EntityDateTime LastUpdated { get; }
         public DeveloperName DeveloperName { get; }
@@ -22,6 +24,8 @@ namespace ArticulationManager.Domain.KeySwitches.Aggregate
 
         public KeySwitch(
             EntityGuid id,
+            Author author,
+            Description description,
             EntityDateTime created,
             EntityDateTime lastUpdated,
             DeveloperName developerName,
@@ -30,6 +34,8 @@ namespace ArticulationManager.Domain.KeySwitches.Aggregate
             IEnumerable<Articulation> articulations )
         {
             Id             = id;
+            Author         = author;
+            Description    = description;
             Created        = created;
             LastUpdated    = lastUpdated;
             DeveloperName  = developerName;
@@ -42,6 +48,8 @@ namespace ArticulationManager.Domain.KeySwitches.Aggregate
         {
             return new KeySwitch(
                 new EntityGuid(),
+                source.Author,
+                source.Description,
                 source.Created,
                 source.LastUpdated,
                 source.DeveloperName,

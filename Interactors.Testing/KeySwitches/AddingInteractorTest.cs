@@ -19,6 +19,8 @@ namespace ArticulationManager.Interactors.Testing.KeySwitches
         public void AddingTest()
         {
             var inputData = new InputData(
+                "Author",
+                "Description",
                 "Developer",
                 "Product",
                 "E.Guitar",

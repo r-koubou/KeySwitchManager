@@ -13,6 +13,8 @@ namespace ArticulationManager.Domain.KeySwitches
     {
         public KeySwitch Create(
             Guid id,
+            string author,
+            string description,
             DateTime created,
             DateTime lastUpdated,
             string developerName,
@@ -24,6 +26,8 @@ namespace ArticulationManager.Domain.KeySwitches
         {
             public KeySwitch Create(
                 Guid id,
+                string author,
+                string description,
                 DateTime created,
                 DateTime lastUpdated,
                 string developerName,
@@ -36,6 +40,8 @@ namespace ArticulationManager.Domain.KeySwitches
 
                 return new KeySwitch(
                     new EntityGuid( id ),
+                    new Author( author ),
+                    new Description( description ),
                     EntityDateTimeService.FromDateTime( created ),
                     EntityDateTimeService.FromDateTime( lastUpdated ),
                     new DeveloperName( developerName ),

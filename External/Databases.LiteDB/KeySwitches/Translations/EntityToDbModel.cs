@@ -38,6 +38,8 @@ namespace ArticulationManager.Databases.LiteDB.KeySwitches.Translations
 
             return new KeySwitchModel(
                 source.Id.Value,
+                source.Author.Value,
+                source.Description.Value,
                 EntityDateTimeService.ToDateTime( source.Created ),
                 EntityDateTimeService.ToDateTime( source.LastUpdated ),
                 source.DeveloperName.Value,
