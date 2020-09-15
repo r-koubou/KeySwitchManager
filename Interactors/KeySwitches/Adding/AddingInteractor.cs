@@ -51,6 +51,8 @@ namespace ArticulationManager.Interactors.KeySwitches.Adding
             );
             var keySwitch = KeySwitchFactory.Create(
                 Guid.NewGuid(),
+                inputData.Author,
+                inputData.Description,
                 created,
                 created,
                 inputData.DeveloperName,

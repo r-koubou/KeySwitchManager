@@ -21,6 +21,8 @@ namespace ArticulationManager.Json.KeySwitches.Translations
 
             return new IKeySwitchFactory.Default().Create(
                 model.Id,
+                model.Author,
+                model.Description,
                 model.Created,
                 model.LastUpdated,
                 model.DeveloperName,

@@ -11,6 +11,9 @@ namespace ArticulationManager.Databases.LiteDB.KeySwitches.Model
     {
         [BsonId]
         public Guid Id { get; set; } = Guid.NewGuid();
+
+        public string Author { get; set; } = "Unknwon";
+        public string Description { get; set; } = string.Empty;
         public DateTime Created { get; set; } = DateTimeHelper.NowUtc();
         public DateTime LastUpdated { get; set; } = DateTimeHelper.NowUtc();
         public string DeveloperName { get; set; } = "Unknown";
@@ -23,6 +26,8 @@ namespace ArticulationManager.Databases.LiteDB.KeySwitches.Model
 
         public KeySwitchModel(
             Guid id,
+            string author,
+            string description,
             DateTime created,
             DateTime lastUpdated,
             string developerName,
@@ -31,6 +36,8 @@ namespace ArticulationManager.Databases.LiteDB.KeySwitches.Model
             IEnumerable<ArticulationModel> articulations )
         {
             Id             = id;
+            Author         = author;
+            Description    = description;
             Created        = created;
             LastUpdated    = lastUpdated;
             DeveloperName  = developerName;

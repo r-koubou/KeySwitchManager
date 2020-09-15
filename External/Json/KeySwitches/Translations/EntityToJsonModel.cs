@@ -50,6 +50,8 @@ namespace ArticulationManager.Json.KeySwitches.Translations
 
             var jsonRoot = new KeySwitchModel(
                 source.Id.Value,
+                source.Author.Value,
+                source.Description.Value,
                 EntityDateTimeService.ToDateTime( source.Created ),
                 EntityDateTimeService.ToDateTime( source.LastUpdated ),
                 source.DeveloperName.Value,

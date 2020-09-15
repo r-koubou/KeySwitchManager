@@ -42,6 +42,8 @@ namespace ArticulationManager.Databases.LiteDB.KeySwitches.Translations
 
             return new IKeySwitchFactory.Default().Create(
                 source.Id,
+                source.Author,
+                source.Description,
                 source.Created,
                 source.LastUpdated,
                 source.DeveloperName,
