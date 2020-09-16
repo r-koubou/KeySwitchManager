@@ -7,19 +7,19 @@ namespace KeySwitchManager.Json.KeySwitches.Model
     [JsonObject("articulation")]
     public class ArticulationModel
     {
-        [JsonProperty( "articulation_name")]
+        [JsonProperty( "name")]
         [JsonRequired]
-        public string ArticulationName { get; set; } = default!;
+        public string Name { get; set; } = default!;
 
-        [JsonProperty( "articulation_type" )]
+        [JsonProperty( "type" )]
         [JsonRequired]
-        public ArticulationType ArticulationType { get; set; } = ArticulationType.Default;
+        public ArticulationType Type { get; set; } = ArticulationType.Default;
 
-        [JsonProperty( "articulation_group" )]
-        public int ArticulationGroup { get; set; }
+        [JsonProperty( "group" )]
+        public int Group { get; set; }
 
-        [JsonProperty( "articulation_color")]
-        public int ArticulationColor { get; set; }
+        [JsonProperty( "color")]
+        public int Color { get; set; }
 
         [JsonProperty("midi_message")]
         public MidiModel MidiMessage { get; set; } = new MidiModel();
@@ -28,17 +28,17 @@ namespace KeySwitchManager.Json.KeySwitches.Model
         {}
 
         public ArticulationModel(
-            string articulationName,
-            ArticulationType articulationType,
-            int articulationGroup,
-            int articulationColor,
+            string name,
+            ArticulationType type,
+            int group,
+            int color,
             MidiModel midiMessage )
         {
-            ArticulationName  = articulationName;
-            ArticulationType  = articulationType;
-            ArticulationGroup = articulationGroup;
-            ArticulationColor = articulationColor;
-            MidiMessage       = midiMessage;
+            Name        = name;
+            Type        = type;
+            Group       = group;
+            Color       = color;
+            MidiMessage = midiMessage;
         }
     }
 }

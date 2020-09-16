@@ -5,18 +5,18 @@ namespace KeySwitchManager.Json.KeySwitches.Model
     [JsonObject("midi_message")]
     public class MidiMessageModel
     {
-        [JsonProperty( "status")]
+        [JsonProperty( "status" )]
         [JsonRequired]
         public int Status { get; set; }
-        [JsonProperty( "channel")]
-        [JsonRequired]
+
+        [JsonProperty( "channel" )]
         public int Channel { get; set; }
-        [JsonProperty( "data_byte_1")]
-        [JsonRequired]
-        public int DataByte1 { get; set; }
-        [JsonProperty( "data_byte_2")]
-        [JsonRequired]
-        public int DataByte2 { get; set; }
+
+        [JsonProperty( "data1" )]
+        public int Data1 { get; set; }
+
+        [JsonProperty( "data2" )]
+        public int Data2 { get; set; }
 
         public MidiMessageModel()
         {}
@@ -24,13 +24,13 @@ namespace KeySwitchManager.Json.KeySwitches.Model
         public MidiMessageModel(
             int status,
             int channel,
-            int dataByte1,
-            int dataByte2 )
+            int data1,
+            int data2 )
         {
             Status    = status;
             Channel   = channel;
-            DataByte1 = dataByte1;
-            DataByte2 = dataByte2;
+            Data1 = data1;
+            Data2 = data2;
         }
 
     }
