@@ -1,11 +1,11 @@
 using System;
 using System.Collections.Generic;
 
-using ArticulationManager.Common.Utilities;
+using KeySwitchManager.Common.Utilities;
 
 using Newtonsoft.Json;
 
-namespace ArticulationManager.Json.KeySwitches.Model
+namespace KeySwitchManager.Json.KeySwitches.Model
 {
     [JsonObject("instrument")]
     public class KeySwitchModel

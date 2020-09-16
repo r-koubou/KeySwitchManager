@@ -1,12 +1,12 @@
 using System;
 
-using ArticulationManager.Common.Utilities;
-using ArticulationManager.Domain.KeySwitches;
-using ArticulationManager.Gateways.KeySwitches;
-using ArticulationManager.Presenters.KeySwitches;
-using ArticulationManager.UseCases.KeySwitches.Adding;
+using KeySwitchManager.Common.Utilities;
+using KeySwitchManager.Domain.KeySwitches;
+using KeySwitchManager.Gateways.KeySwitches;
+using KeySwitchManager.Presenters.KeySwitches;
+using KeySwitchManager.UseCases.KeySwitches.Adding;
 
-namespace ArticulationManager.Interactors.KeySwitches.Adding
+namespace KeySwitchManager.Interactors.KeySwitches.Adding
 {
     public class AddingInteractor : IAddingUseCase
     {

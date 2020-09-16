@@ -1,6 +1,6 @@
-using ArticulationManager.UseCases.KeySwitches.Adding;
+using KeySwitchManager.UseCases.KeySwitches.Adding;
 
-namespace ArticulationManager.Presenters.KeySwitches
+namespace KeySwitchManager.Presenters.KeySwitches
 {
     public interface IAddingPresenter
     {

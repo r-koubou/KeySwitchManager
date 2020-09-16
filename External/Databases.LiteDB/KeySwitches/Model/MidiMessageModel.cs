@@ -1,4 +1,4 @@
-namespace ArticulationManager.Databases.LiteDB.KeySwitches.Model
+namespace KeySwitchManager.Databases.LiteDB.KeySwitches.Model
 {
     public class MidiMessageModel
     {

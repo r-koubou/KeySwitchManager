@@ -1,10 +1,10 @@
 using System;
 using System.Collections.Generic;
 
-using ArticulationManager.Common.Testing;
-using ArticulationManager.Domain.MidiMessages;
-using ArticulationManager.Domain.MidiMessages.Aggregate;
-using ArticulationManager.Json.KeySwitches.Translations;
+using KeySwitchManager.Common.Testing;
+using KeySwitchManager.Domain.MidiMessages;
+using KeySwitchManager.Domain.MidiMessages.Aggregate;
+using KeySwitchManager.Json.KeySwitches.Translations;
 
 using NUnit.Framework;
 

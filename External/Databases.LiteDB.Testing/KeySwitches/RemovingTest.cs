@@ -1,7 +1,7 @@
 using System.IO;
 
-using ArticulationManager.Common.Testing;
-using ArticulationManager.Databases.LiteDB.KeySwitches;
+using KeySwitchManager.Common.Testing;
+using KeySwitchManager.Databases.LiteDB.KeySwitches;
 
 using NUnit.Framework;
 

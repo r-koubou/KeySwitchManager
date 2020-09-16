@@ -1,11 +1,11 @@
 using System;
 using System.Collections.Generic;
 
-using ArticulationManager.Common.Utilities;
+using KeySwitchManager.Common.Utilities;
 
 using LiteDB;
 
-namespace ArticulationManager.Databases.LiteDB.KeySwitches.Model
+namespace KeySwitchManager.Databases.LiteDB.KeySwitches.Model
 {
     public class KeySwitchModel
     {

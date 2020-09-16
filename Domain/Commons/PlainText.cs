@@ -1,4 +1,4 @@
-namespace ArticulationManager.Domain.Commons
+namespace KeySwitchManager.Domain.Commons
 {
     public class PlainText : IText
     {

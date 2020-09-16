@@ -2,16 +2,16 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 
-using ArticulationManager.Common.Utilities;
-using ArticulationManager.Databases.LiteDB.KeySwitches.Model;
-using ArticulationManager.Databases.LiteDB.KeySwitches.Translations;
-using ArticulationManager.Domain.KeySwitches.Aggregate;
-using ArticulationManager.Domain.KeySwitches.Value;
-using ArticulationManager.Gateways.KeySwitches;
+using KeySwitchManager.Common.Utilities;
+using KeySwitchManager.Databases.LiteDB.KeySwitches.Model;
+using KeySwitchManager.Databases.LiteDB.KeySwitches.Translations;
+using KeySwitchManager.Domain.KeySwitches.Aggregate;
+using KeySwitchManager.Domain.KeySwitches.Value;
+using KeySwitchManager.Gateways.KeySwitches;
 
 using LiteDB;
 
-namespace ArticulationManager.Databases.LiteDB.KeySwitches
+namespace KeySwitchManager.Databases.LiteDB.KeySwitches
 {
     public class LiteDbKeySwitchRepository : IKeySwitchRepository, IDisposable
     {

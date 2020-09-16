@@ -1,16 +1,16 @@
 using System.Collections.Generic;
 using System.IO;
 
-using ArticulationManager.Databases.LiteDB.KeySwitches;
-using ArticulationManager.Domain.KeySwitches.Value;
-using ArticulationManager.Domain.MidiMessages.Aggregate;
-using ArticulationManager.Interactors.KeySwitches.Adding;
-using ArticulationManager.Presenters.KeySwitches;
-using ArticulationManager.UseCases.KeySwitches.Adding;
+using KeySwitchManager.Databases.LiteDB.KeySwitches;
+using KeySwitchManager.Domain.KeySwitches.Value;
+using KeySwitchManager.Domain.MidiMessages.Aggregate;
+using KeySwitchManager.Interactors.KeySwitches.Adding;
+using KeySwitchManager.Presenters.KeySwitches;
+using KeySwitchManager.UseCases.KeySwitches.Adding;
 
 using NUnit.Framework;
 
-namespace ArticulationManager.Interactors.Testing.KeySwitches
+namespace KeySwitchManager.Interactors.Testing.KeySwitches
 {
     [TestFixture]
     public class AddingInteractorTest

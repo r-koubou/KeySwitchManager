@@ -1,8 +1,8 @@
 using System;
 
-using ArticulationManager.Common.Utilities;
+using KeySwitchManager.Common.Utilities;
 
-namespace ArticulationManager.Domain.MidiMessages.Value
+namespace KeySwitchManager.Domain.MidiMessages.Value
 {
     public abstract class MessageData
         : IMessageData,

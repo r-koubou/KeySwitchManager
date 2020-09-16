@@ -1,4 +1,4 @@
-namespace ArticulationManager.UseCases.KeySwitches.Removing
+namespace KeySwitchManager.UseCases.KeySwitches.Removing
 {
     public class OutputData
     {

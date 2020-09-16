@@ -2,16 +2,16 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text;
 
-using ArticulationManager.Domain.Commons;
-using ArticulationManager.Domain.KeySwitches.Aggregate;
-using ArticulationManager.Domain.MidiMessages.Aggregate;
-using ArticulationManager.Domain.Services;
-using ArticulationManager.Domain.Translations;
-using ArticulationManager.Json.KeySwitches.Model;
+using KeySwitchManager.Domain.Commons;
+using KeySwitchManager.Domain.KeySwitches.Aggregate;
+using KeySwitchManager.Domain.MidiMessages.Aggregate;
+using KeySwitchManager.Domain.Services;
+using KeySwitchManager.Domain.Translations;
+using KeySwitchManager.Json.KeySwitches.Model;
 
 using Newtonsoft.Json;
 
-namespace ArticulationManager.Json.KeySwitches.Translations
+namespace KeySwitchManager.Json.KeySwitches.Translations
 {
     public class EntityToJsonModel : IKeySwitchToText
     {

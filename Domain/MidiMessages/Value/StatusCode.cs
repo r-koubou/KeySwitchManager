@@ -1,4 +1,4 @@
-namespace ArticulationManager.Domain.MidiMessages.Value
+namespace KeySwitchManager.Domain.MidiMessages.Value
 {
     /// <summary>
     /// Generic MIDI message data.

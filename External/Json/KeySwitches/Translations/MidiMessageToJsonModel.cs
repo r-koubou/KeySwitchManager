@@ -1,8 +1,8 @@
-using ArticulationManager.Domain.MidiMessages.Aggregate;
-using ArticulationManager.Domain.Translations;
-using ArticulationManager.Json.KeySwitches.Model;
+using KeySwitchManager.Domain.MidiMessages.Aggregate;
+using KeySwitchManager.Domain.Translations;
+using KeySwitchManager.Json.KeySwitches.Model;
 
-namespace ArticulationManager.Json.KeySwitches.Translations
+namespace KeySwitchManager.Json.KeySwitches.Translations
 {
     public class MidiMessageToJsonModel : IDataTranslator<IMessage, MidiMessageModel>
     {

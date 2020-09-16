@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 
-using ArticulationManager.Common.Utilities;
+using KeySwitchManager.Common.Utilities;
 
-namespace ArticulationManager.Domain.MidiMessages.Value
+namespace KeySwitchManager.Domain.MidiMessages.Value
 {
     public class MidiNoteName : IEquatable<MidiNoteName>
     {

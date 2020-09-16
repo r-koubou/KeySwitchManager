@@ -1,5 +1,5 @@
-using ArticulationManager.Common.Utilities;
-using ArticulationManager.Domain.MidiMessages.Value;
+using KeySwitchManager.Common.Utilities;
+using KeySwitchManager.Domain.MidiMessages.Value;
 
 using NUnit.Framework;
 

@@ -1,8 +1,8 @@
 using System;
 
-using ArticulationManager.Common.Utilities;
+using KeySwitchManager.Common.Utilities;
 
-namespace ArticulationManager.Domain.KeySwitches.Value
+namespace KeySwitchManager.Domain.KeySwitches.Value
 {
     /// <summary>
     /// An Instrument name

@@ -1,15 +1,15 @@
 using System;
 using System.IO;
 
-using ArticulationManager.Common.Testing;
-using ArticulationManager.Databases.LiteDB.KeySwitches;
-using ArticulationManager.Interactors.KeySwitches.Removing;
-using ArticulationManager.Presenters.KeySwitches;
-using ArticulationManager.UseCases.KeySwitches.Removing;
+using KeySwitchManager.Common.Testing;
+using KeySwitchManager.Databases.LiteDB.KeySwitches;
+using KeySwitchManager.Interactors.KeySwitches.Removing;
+using KeySwitchManager.Presenters.KeySwitches;
+using KeySwitchManager.UseCases.KeySwitches.Removing;
 
 using NUnit.Framework;
 
-namespace ArticulationManager.Interactors.Testing.KeySwitches
+namespace KeySwitchManager.Interactors.Testing.KeySwitches
 {
     [TestFixture]
     public class RemovingInteractorTest

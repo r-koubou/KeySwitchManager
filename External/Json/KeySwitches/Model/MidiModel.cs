@@ -2,7 +2,7 @@ using System.Collections.Generic;
 
 using Newtonsoft.Json;
 
-namespace ArticulationManager.Json.KeySwitches.Model
+namespace KeySwitchManager.Json.KeySwitches.Model
 {
     [JsonObject("midi_message")]
     public class MidiModel

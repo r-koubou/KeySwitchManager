@@ -1,16 +1,16 @@
 using System.IO;
 using System.Linq;
 
-using ArticulationManager.Databases.LiteDB.KeySwitches;
-using ArticulationManager.Domain.KeySwitches.Value;
-using ArticulationManager.Interactors.KeySwitches.Importing.Text;
-using ArticulationManager.Json.KeySwitches.Translations;
-using ArticulationManager.Presenters.KeySwitches;
-using ArticulationManager.UseCases.KeySwitches.Importing.Text;
+using KeySwitchManager.Databases.LiteDB.KeySwitches;
+using KeySwitchManager.Domain.KeySwitches.Value;
+using KeySwitchManager.Interactors.KeySwitches.Importing.Text;
+using KeySwitchManager.Json.KeySwitches.Translations;
+using KeySwitchManager.Presenters.KeySwitches;
+using KeySwitchManager.UseCases.KeySwitches.Importing.Text;
 
 using NUnit.Framework;
 
-namespace ArticulationManager.Interactors.Testing.KeySwitches
+namespace KeySwitchManager.Interactors.Testing.KeySwitches
 {
     [TestFixture]
     public class ImportingJsonInteractorTest

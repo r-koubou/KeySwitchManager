@@ -1,9 +1,9 @@
 using System.Collections.Generic;
 
-using ArticulationManager.Domain.KeySwitches.Aggregate;
-using ArticulationManager.Domain.KeySwitches.Value;
+using KeySwitchManager.Domain.KeySwitches.Aggregate;
+using KeySwitchManager.Domain.KeySwitches.Value;
 
-namespace ArticulationManager.Gateways.KeySwitches
+namespace KeySwitchManager.Gateways.KeySwitches
 {
     public interface IKeySwitchRepository
     {

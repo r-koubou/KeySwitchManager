@@ -1,9 +1,9 @@
 using System.Collections.Generic;
 
-using ArticulationManager.Domain.KeySwitches.Value;
-using ArticulationManager.Domain.MidiMessages.Aggregate;
+using KeySwitchManager.Domain.KeySwitches.Value;
+using KeySwitchManager.Domain.MidiMessages.Aggregate;
 
-namespace ArticulationManager.UseCases.KeySwitches.Adding
+namespace KeySwitchManager.UseCases.KeySwitches.Adding
 {
     public class InputData
     {

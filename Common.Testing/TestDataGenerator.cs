@@ -1,14 +1,14 @@
 using System;
 using System.Collections.Generic;
 
-using ArticulationManager.Common.Utilities;
-using ArticulationManager.Domain.Commons;
-using ArticulationManager.Domain.KeySwitches.Aggregate;
-using ArticulationManager.Domain.KeySwitches.Value;
-using ArticulationManager.Domain.MidiMessages.Aggregate;
-using ArticulationManager.Domain.Services;
+using KeySwitchManager.Common.Utilities;
+using KeySwitchManager.Domain.Commons;
+using KeySwitchManager.Domain.KeySwitches.Aggregate;
+using KeySwitchManager.Domain.KeySwitches.Value;
+using KeySwitchManager.Domain.MidiMessages.Aggregate;
+using KeySwitchManager.Domain.Services;
 
-namespace ArticulationManager.Common.Testing
+namespace KeySwitchManager.Common.Testing
 {
     public static class TestDataGenerator
     {

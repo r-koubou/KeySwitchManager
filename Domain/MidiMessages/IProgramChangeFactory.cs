@@ -1,7 +1,7 @@
-using ArticulationManager.Domain.MidiMessages.Aggregate;
-using ArticulationManager.Domain.MidiMessages.Value;
+using KeySwitchManager.Domain.MidiMessages.Aggregate;
+using KeySwitchManager.Domain.MidiMessages.Value;
 
-namespace ArticulationManager.Domain.MidiMessages
+namespace KeySwitchManager.Domain.MidiMessages
 {
     public interface IProgramChangeFactory : IMidiMessageFactory
     {

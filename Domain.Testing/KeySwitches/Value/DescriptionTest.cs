@@ -1,4 +1,4 @@
-using ArticulationManager.Domain.KeySwitches.Value;
+using KeySwitchManager.Domain.KeySwitches.Value;
 
 using NUnit.Framework;
 

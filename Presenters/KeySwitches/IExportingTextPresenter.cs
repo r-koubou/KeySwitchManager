@@ -1,6 +1,6 @@
-using ArticulationManager.UseCases.KeySwitches.Exporting.Text;
+using KeySwitchManager.UseCases.KeySwitches.Exporting.Text;
 
-namespace ArticulationManager.Presenters.KeySwitches
+namespace KeySwitchManager.Presenters.KeySwitches
 {
     public interface IExportingTextPresenter
     {
