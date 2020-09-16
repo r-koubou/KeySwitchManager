@@ -6,7 +6,6 @@ using KeySwitchManager.Domain.Commons;
 using KeySwitchManager.Domain.KeySwitches.Aggregate;
 using KeySwitchManager.Domain.KeySwitches.Value;
 using KeySwitchManager.Domain.MidiMessages.Aggregate;
-using KeySwitchManager.Domain.Services;
 
 namespace KeySwitchManager.Common.Testing
 {
@@ -24,8 +23,8 @@ namespace KeySwitchManager.Common.Testing
                 new EntityGuid( Guid.NewGuid() ),
                 new Author( "Author" ),
                 new Description( "Description" ),
-                EntityDateTimeService.FromDateTime( now ),
-                EntityDateTimeService.FromDateTime( now ),
+                new EntityDateTime( now ),
+                new EntityDateTime( now ),
                 new DeveloperName( developerName ),
                 new ProductName( productName ),
                 new InstrumentName( instrumentName ),
@@ -46,8 +45,8 @@ namespace KeySwitchManager.Common.Testing
                 new EntityGuid( Guid.NewGuid() ),
                 new Author( "Author" ),
                 new Description( "Description" ),
-                EntityDateTimeService.FromDateTime( now ),
-                EntityDateTimeService.FromDateTime( now ),
+                new EntityDateTime( now ),
+                new EntityDateTime( now ),
                 new DeveloperName( "DeveloperName" ),
                 new ProductName( "ProductName" ),
                 new InstrumentName( "E.Guitar" ),

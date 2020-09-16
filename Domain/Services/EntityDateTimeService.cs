@@ -6,19 +6,6 @@ namespace KeySwitchManager.Domain.Services
 {
     public static class EntityDateTimeService
     {
-        public static EntityDateTime FromDateTime( DateTime dateTime )
-        {
-            return new EntityDateTime(
-                dateTime.Year,
-                dateTime.Month,
-                dateTime.Day,
-                dateTime.Hour,
-                dateTime.Minute,
-                dateTime.Second,
-                dateTime.Millisecond
-            );
-        }
-
         public static DateTime ToDateTime( EntityDateTime dateTime )
         {
             return new DateTime(
