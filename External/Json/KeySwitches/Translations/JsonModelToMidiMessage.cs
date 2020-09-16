@@ -12,8 +12,8 @@ namespace KeySwitchManager.Json.KeySwitches.Translations
             return new GenericMessage(
                 new StatusCode( source.Status ),
                 new GenericData( source.Channel ),
-                new GenericData( source.DataByte1 ),
-                new GenericData( source.DataByte2 )
+                new GenericData( source.Data1 ),
+                new GenericData( source.Data2 )
             );
         }
     }

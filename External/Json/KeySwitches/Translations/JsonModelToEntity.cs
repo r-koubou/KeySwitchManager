@@ -73,8 +73,8 @@ namespace KeySwitchManager.Json.KeySwitches.Translations
                     messageFactory.Create(
                         i.Status,
                         i.Channel,
-                        i.DataByte1,
-                        i.DataByte2
+                        i.Data1,
+                        i.Data2
                     )
                 );
             }
