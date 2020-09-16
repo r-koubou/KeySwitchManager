@@ -9,6 +9,23 @@ namespace KeySwitchManager.Domain.Commons
     /// </summary>
     public class EntityDateTime : IEquatable<EntityDateTime>
     {
+        public static EntityDateTime Now
+        {
+            get
+            {
+                var now = TimeZoneInfo.ConvertTimeToUtc( DateTime.Now );
+
+                return new EntityDateTime(
+                    now.Year,
+                    now.Month,
+                    now.Day,
+                    now.Hour,
+                    now.Minute,
+                    now.Second,
+                    now.Millisecond
+                );
+            }
+        }
         public int Year { get; }
         public int Month { get; }
         public int Day { get; }
@@ -16,6 +33,17 @@ namespace KeySwitchManager.Domain.Commons
         public int Minute { get; }
         public int Second { get; }
         public int MilliSecond { get; }
+
+        public EntityDateTime( DateTime dateTime )
+            : this( dateTime.Year,
+                    dateTime.Month,
+                    dateTime.Day,
+                    dateTime.Hour,
+                    dateTime.Minute,
+                    dateTime.Second,
+                    dateTime.Millisecond
+            )
+        {}
 
         public EntityDateTime(
             int year,

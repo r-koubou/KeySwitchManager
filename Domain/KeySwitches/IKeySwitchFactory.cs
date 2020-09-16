@@ -5,7 +5,6 @@ using KeySwitchManager.Common.Utilities;
 using KeySwitchManager.Domain.Commons;
 using KeySwitchManager.Domain.KeySwitches.Aggregate;
 using KeySwitchManager.Domain.KeySwitches.Value;
-using KeySwitchManager.Domain.Services;
 
 namespace KeySwitchManager.Domain.KeySwitches
 {
@@ -42,8 +41,8 @@ namespace KeySwitchManager.Domain.KeySwitches
                     new EntityGuid( id ),
                     new Author( author ),
                     new Description( description ),
-                    EntityDateTimeService.FromDateTime( created ),
-                    EntityDateTimeService.FromDateTime( lastUpdated ),
+                    new EntityDateTime( created ),
+                    new EntityDateTime( lastUpdated ),
                     new DeveloperName( developerName ),
                     new ProductName( productName ),
                     new InstrumentName( instrumentName ),
