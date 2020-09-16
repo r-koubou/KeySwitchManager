@@ -20,7 +20,7 @@ namespace KeySwitchManager.Interactors.Testing.KeySwitches
             const string developerName = "Developer";
             const string productName = "Product";
 
-            var inputData = new InputData(
+            var inputData = new RemovingRequest(
                 developerName,
                 productName
             );

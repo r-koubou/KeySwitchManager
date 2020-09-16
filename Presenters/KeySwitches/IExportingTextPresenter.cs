@@ -2,23 +2,20 @@ using KeySwitchManager.UseCases.KeySwitches.Exporting.Text;
 
 namespace KeySwitchManager.Presenters.KeySwitches
 {
-    public interface IExportingTextPresenter
+    public interface IExportingTextPresenter : IPresenter<ExportingTextResponse>
     {
-        public void Output( OutputData outputData );
-
         public class Null : IExportingTextPresenter
         {
-            public void Output( OutputData outputData )
+            public void Complete( ExportingTextResponse response )
             {}
         }
 
         public class Console : IExportingTextPresenter
         {
-            public void Output( OutputData outputData )
+            public void Presemt<T>( T param )
             {
-                System.Console.WriteLine( outputData.Text.Value );
+                System.Console.WriteLine( param );
             }
         }
-
     }
 }

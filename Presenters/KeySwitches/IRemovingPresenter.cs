@@ -2,14 +2,9 @@ using KeySwitchManager.UseCases.KeySwitches.Removing;
 
 namespace KeySwitchManager.Presenters.KeySwitches
 {
-    public interface IRemovingPresenter
+    public interface IRemovingPresenter : IPresenter<RemovingResponse>
     {
-        public void Output( OutputData outputData );
-
         public class Null : IRemovingPresenter
-        {
-            public void Output( OutputData outputData )
-            {}
-        }
+        {}
     }
 }

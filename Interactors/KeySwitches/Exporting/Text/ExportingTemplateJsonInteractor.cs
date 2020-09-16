@@ -7,7 +7,6 @@ using KeySwitchManager.Domain.KeySwitches.Value;
 using KeySwitchManager.Domain.MidiMessages;
 using KeySwitchManager.Domain.MidiMessages.Aggregate;
 using KeySwitchManager.Domain.Translations;
-using KeySwitchManager.Gateways.KeySwitches;
 using KeySwitchManager.Presenters.KeySwitches;
 using KeySwitchManager.UseCases.KeySwitches.Exporting.Text;
 
@@ -26,7 +25,7 @@ namespace KeySwitchManager.Interactors.KeySwitches.Exporting.Text
             Translator = translator;
         }
 
-        public void Execute()
+        public ExportingTextResponse Execute()
         {
             var entity = new IKeySwitchFactory.Default().Create(
                 Guid.NewGuid(),
@@ -51,7 +50,8 @@ namespace KeySwitchManager.Interactors.KeySwitches.Exporting.Text
                 }
             );
 
-            Presenter.Output( new OutputData( Translator.Translate( entity ) ) );
+            Presenter.Present( Translator.Translate( entity ).Value );
+            return new ExportingTextResponse();
         }
     }
 }

@@ -22,17 +22,19 @@ namespace KeySwitchManager.Interactors.KeySwitches.Exporting.Text
             Translator = translator;
         }
 
-        public void Execute( InputData inputData )
+        public ExportingTextResponse Execute( ExportingTextRequest request )
         {
-            var developerName = new DeveloperName( inputData.DeveloperName );
-            var productName = new ProductName( inputData.ProductName );
+            var developerName = new DeveloperName( request.DeveloperName );
+            var productName = new ProductName( request.ProductName );
 
             var entities = Repository.Find( developerName, productName );
 
             foreach( var i in entities )
             {
-                Presenter.Output( new OutputData( Translator.Translate( i ) ) );
+                Presenter.Present( Translator.Translate( i ).Value );
             }
+
+            return new ExportingTextResponse();
         }
     }
 }

@@ -5,7 +5,7 @@ using KeySwitchManager.Domain.MidiMessages.Aggregate;
 
 namespace KeySwitchManager.UseCases.KeySwitches.Adding
 {
-    public class InputData
+    public class KeySwitchAddingRequest
     {
         public string Author { get; }
         public string Description { get; }
@@ -20,7 +20,7 @@ namespace KeySwitchManager.UseCases.KeySwitches.Adding
         public IEnumerable<ControlChange> MidiControlChanges { get; }
         public IEnumerable<ProgramChange> MidiProgramChanges { get; }
 
-        public InputData(
+        public KeySwitchAddingRequest(
             string author,
             string description,
             string developerName,

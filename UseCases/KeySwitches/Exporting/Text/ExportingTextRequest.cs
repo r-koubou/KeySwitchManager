@@ -1,11 +1,11 @@
 namespace KeySwitchManager.UseCases.KeySwitches.Exporting.Text
 {
-    public class InputData
+    public class ExportingTextRequest
     {
         public string DeveloperName { get; }
         public string ProductName { get; }
 
-        public InputData(
+        public ExportingTextRequest(
             string developerName,
             string productName )
         {

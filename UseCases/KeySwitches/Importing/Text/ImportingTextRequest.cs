@@ -2,15 +2,15 @@ using KeySwitchManager.Domain.Commons;
 
 namespace KeySwitchManager.UseCases.KeySwitches.Importing.Text
 {
-    public class InputData
+    public class ImportingTextRequest
     {
         public IText JsonText { get; }
 
-        public InputData( IText jsonText )
+        public ImportingTextRequest( IText jsonText )
         {
             JsonText = jsonText;
         }
-        public InputData( string jsonText )
+        public ImportingTextRequest( string jsonText )
         {
             JsonText = new PlainText( jsonText );
         }

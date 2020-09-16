@@ -21,7 +21,7 @@ namespace KeySwitchManager.Interactors.Testing.KeySwitches
             var jsonText = "{\"id\":\"419db555-cc1d-405c-8b28-281ded630a45\",\"author\":\"Author\",\"description\":\"Description\",\"created\":\"2020-09-15T16:21:11.354Z\",\"last_updated\":\"2020-09-15T16:21:11.354Z\",\"developer_name\":\"DeveloperName\",\"product_name\":\"ProductName\",\"instrument_name\":\"E.Guitar\",\"articulation\":[{\"articulation_name\":\"Power Chord\",\"articulation_type\":1,\"articulation_group\":0,\"articulation_color\":0,\"midi_message\":{\"note_on\":[],\"control_change\":[],\"program_change\":[]}}]}";
 
             var dbRepository = new LiteDbKeySwitchRepository( new MemoryStream() );
-            var inputData = new InputData( jsonText );
+            var inputData = new ImportingTextRequest( jsonText );
             var translator = new JsonModelToEntity();
             var interactor = new ImportingJsonInteractor(
                 dbRepository,
