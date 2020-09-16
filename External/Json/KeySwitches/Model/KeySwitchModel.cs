@@ -37,7 +37,7 @@ namespace KeySwitchManager.Json.KeySwitches.Model
         [JsonRequired]
         public string InstrumentName { get; set; } = default!;
 
-        [JsonProperty( "articulation")]
+        [JsonProperty( "articulations")]
         public List<ArticulationModel> Articulations { get; set; } = new List<ArticulationModel>();
 
         public KeySwitchModel()

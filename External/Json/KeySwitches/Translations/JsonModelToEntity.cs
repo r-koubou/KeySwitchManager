@@ -47,10 +47,10 @@ namespace KeySwitchManager.Json.KeySwitches.Translations
                 ConvertMessageList( i.MidiMessage.ProgramChange, programChange, new IProgramChangeFactory.Default() );
 
                 var articulation = new IArticulationFactory.Default().Create(
-                    i.ArticulationName,
-                    i.ArticulationType,
-                    i.ArticulationGroup,
-                    i.ArticulationColor,
+                    i.Name,
+                    i.Type,
+                    i.Group,
+                    i.Color,
                     noteOn,
                     controlChange,
                     programChange
