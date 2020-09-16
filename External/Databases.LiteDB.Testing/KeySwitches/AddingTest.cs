@@ -2,10 +2,10 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 
-using ArticulationManager.Common.Testing;
-using ArticulationManager.Databases.LiteDB.KeySwitches;
-using ArticulationManager.Domain.MidiMessages.Aggregate;
-using ArticulationManager.Domain.MidiMessages.Value;
+using KeySwitchManager.Common.Testing;
+using KeySwitchManager.Databases.LiteDB.KeySwitches;
+using KeySwitchManager.Domain.MidiMessages.Aggregate;
+using KeySwitchManager.Domain.MidiMessages.Value;
 
 using NUnit.Framework;
 

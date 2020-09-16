@@ -1,4 +1,4 @@
-namespace ArticulationManager.UseCases.KeySwitches.Importing.Text
+namespace KeySwitchManager.UseCases.KeySwitches.Importing.Text
 {
     public interface IImportingTextUseCase
     {

@@ -1,10 +1,10 @@
-using ArticulationManager.Domain.KeySwitches.Value;
-using ArticulationManager.Domain.Translations;
-using ArticulationManager.Gateways.KeySwitches;
-using ArticulationManager.Presenters.KeySwitches;
-using ArticulationManager.UseCases.KeySwitches.Exporting.Text;
+using KeySwitchManager.Domain.KeySwitches.Value;
+using KeySwitchManager.Domain.Translations;
+using KeySwitchManager.Gateways.KeySwitches;
+using KeySwitchManager.Presenters.KeySwitches;
+using KeySwitchManager.UseCases.KeySwitches.Exporting.Text;
 
-namespace ArticulationManager.Interactors.KeySwitches.Exporting.Text
+namespace KeySwitchManager.Interactors.KeySwitches.Exporting.Text
 {
     public class ExportingJsonInteractor : IExportingTextUseCase
     {

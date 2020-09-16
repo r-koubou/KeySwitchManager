@@ -1,8 +1,8 @@
-using ArticulationManager.Domain.KeySwitches.Value;
+using KeySwitchManager.Domain.KeySwitches.Value;
 
 using Newtonsoft.Json;
 
-namespace ArticulationManager.Json.KeySwitches.Model
+namespace KeySwitchManager.Json.KeySwitches.Model
 {
     [JsonObject("articulation")]
     public class ArticulationModel

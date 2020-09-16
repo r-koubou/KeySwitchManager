@@ -1,7 +1,7 @@
-using ArticulationManager.Domain.Commons;
-using ArticulationManager.Domain.KeySwitches.Aggregate;
+using KeySwitchManager.Domain.Commons;
+using KeySwitchManager.Domain.KeySwitches.Aggregate;
 
-namespace ArticulationManager.Domain.Translations
+namespace KeySwitchManager.Domain.Translations
 {
     public interface ITextToKeySwitch : IDataTranslator<IText, KeySwitch>
     {}

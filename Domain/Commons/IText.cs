@@ -1,6 +1,6 @@
 using System;
 
-namespace ArticulationManager.Domain.Commons
+namespace KeySwitchManager.Domain.Commons
 {
     public interface IText : IEquatable<IText>
     {

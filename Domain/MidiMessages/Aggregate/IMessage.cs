@@ -1,8 +1,8 @@
 using System;
 
-using ArticulationManager.Domain.MidiMessages.Value;
+using KeySwitchManager.Domain.MidiMessages.Value;
 
-namespace ArticulationManager.Domain.MidiMessages.Aggregate
+namespace KeySwitchManager.Domain.MidiMessages.Aggregate
 {
     /// <summary>
     /// MIDI event aggregation that makes up the sound slot.

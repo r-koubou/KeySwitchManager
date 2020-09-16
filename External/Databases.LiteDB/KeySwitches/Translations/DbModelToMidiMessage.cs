@@ -1,9 +1,9 @@
-using ArticulationManager.Databases.LiteDB.KeySwitches.Model;
-using ArticulationManager.Domain.MidiMessages.Aggregate;
-using ArticulationManager.Domain.MidiMessages.Value;
-using ArticulationManager.Domain.Translations;
+using KeySwitchManager.Databases.LiteDB.KeySwitches.Model;
+using KeySwitchManager.Domain.MidiMessages.Aggregate;
+using KeySwitchManager.Domain.MidiMessages.Value;
+using KeySwitchManager.Domain.Translations;
 
-namespace ArticulationManager.Databases.LiteDB.KeySwitches.Translations
+namespace KeySwitchManager.Databases.LiteDB.KeySwitches.Translations
 {
     public class DbModelToMidiMessage : IDataTranslator<MidiMessageModel, IMessage>
     {

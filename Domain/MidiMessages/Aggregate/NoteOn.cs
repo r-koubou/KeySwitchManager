@@ -1,6 +1,6 @@
-using ArticulationManager.Domain.MidiMessages.Value;
+using KeySwitchManager.Domain.MidiMessages.Value;
 
-namespace ArticulationManager.Domain.MidiMessages.Aggregate
+namespace KeySwitchManager.Domain.MidiMessages.Aggregate
 {
     /// <summary>
     /// Representing a MIDI note on.

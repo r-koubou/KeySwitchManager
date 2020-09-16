@@ -1,4 +1,4 @@
-namespace ArticulationManager.UseCases.KeySwitches.Adding
+namespace KeySwitchManager.UseCases.KeySwitches.Adding
 {
     public interface IAddingUseCase
     {

@@ -1,4 +1,4 @@
-namespace ArticulationManager.Domain.MidiMessages.Value
+namespace KeySwitchManager.Domain.MidiMessages.Value
 {
     public class Velocity : MessageData
     {

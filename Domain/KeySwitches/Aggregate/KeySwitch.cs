@@ -2,10 +2,10 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-using ArticulationManager.Domain.Commons;
-using ArticulationManager.Domain.KeySwitches.Value;
+using KeySwitchManager.Domain.Commons;
+using KeySwitchManager.Domain.KeySwitches.Value;
 
-namespace ArticulationManager.Domain.KeySwitches.Aggregate
+namespace KeySwitchManager.Domain.KeySwitches.Aggregate
 {
     /// <summary>
     /// Represents the top element of the articulation structure.

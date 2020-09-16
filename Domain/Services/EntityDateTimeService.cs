@@ -1,9 +1,8 @@
-
 using System;
 
-using ArticulationManager.Domain.Commons;
+using KeySwitchManager.Domain.Commons;
 
-namespace ArticulationManager.Domain.Services
+namespace KeySwitchManager.Domain.Services
 {
     public static class EntityDateTimeService
     {

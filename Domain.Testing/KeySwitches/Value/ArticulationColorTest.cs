@@ -1,5 +1,5 @@
-using ArticulationManager.Common.Utilities;
-using ArticulationManager.Domain.KeySwitches.Value;
+using KeySwitchManager.Common.Utilities;
+using KeySwitchManager.Domain.KeySwitches.Value;
 
 using NUnit.Framework;
 

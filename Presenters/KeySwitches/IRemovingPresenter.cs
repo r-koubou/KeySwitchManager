@@ -1,6 +1,6 @@
-using ArticulationManager.UseCases.KeySwitches.Removing;
+using KeySwitchManager.UseCases.KeySwitches.Removing;
 
-namespace ArticulationManager.Presenters.KeySwitches
+namespace KeySwitchManager.Presenters.KeySwitches
 {
     public interface IRemovingPresenter
     {

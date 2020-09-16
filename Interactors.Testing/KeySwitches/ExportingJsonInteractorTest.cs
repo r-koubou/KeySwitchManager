@@ -1,15 +1,15 @@
 using System.IO;
 
-using ArticulationManager.Common.Testing;
-using ArticulationManager.Databases.LiteDB.KeySwitches;
-using ArticulationManager.Interactors.KeySwitches.Exporting.Text;
-using ArticulationManager.Json.KeySwitches.Translations;
-using ArticulationManager.Presenters.KeySwitches;
-using ArticulationManager.UseCases.KeySwitches.Exporting.Text;
+using KeySwitchManager.Common.Testing;
+using KeySwitchManager.Databases.LiteDB.KeySwitches;
+using KeySwitchManager.Interactors.KeySwitches.Exporting.Text;
+using KeySwitchManager.Json.KeySwitches.Translations;
+using KeySwitchManager.Presenters.KeySwitches;
+using KeySwitchManager.UseCases.KeySwitches.Exporting.Text;
 
 using NUnit.Framework;
 
-namespace ArticulationManager.Interactors.Testing.KeySwitches
+namespace KeySwitchManager.Interactors.Testing.KeySwitches
 {
     [TestFixture]
     public class ExportingJsonInteractorTest

@@ -1,6 +1,6 @@
 using System;
 
-namespace ArticulationManager.Common.Utilities
+namespace KeySwitchManager.Common.Utilities
 {
     public sealed class ValueOutOfRangeException : Exception
     {

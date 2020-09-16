@@ -1,4 +1,4 @@
-namespace ArticulationManager.UseCases.KeySwitches.Exporting.Text
+namespace KeySwitchManager.UseCases.KeySwitches.Exporting.Text
 {
     public class InputData
     {

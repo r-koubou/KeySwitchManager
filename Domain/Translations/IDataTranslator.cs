@@ -1,4 +1,4 @@
-namespace ArticulationManager.Domain.Translations
+namespace KeySwitchManager.Domain.Translations
 {
     public interface IDataTranslator<in TSource, out TTarget>
     {

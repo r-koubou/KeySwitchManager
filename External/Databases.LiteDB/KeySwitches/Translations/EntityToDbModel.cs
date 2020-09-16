@@ -1,12 +1,12 @@
 using System.Collections.Generic;
 
-using ArticulationManager.Databases.LiteDB.KeySwitches.Model;
-using ArticulationManager.Domain.KeySwitches.Aggregate;
-using ArticulationManager.Domain.MidiMessages.Aggregate;
-using ArticulationManager.Domain.Services;
-using ArticulationManager.Domain.Translations;
+using KeySwitchManager.Databases.LiteDB.KeySwitches.Model;
+using KeySwitchManager.Domain.KeySwitches.Aggregate;
+using KeySwitchManager.Domain.MidiMessages.Aggregate;
+using KeySwitchManager.Domain.Services;
+using KeySwitchManager.Domain.Translations;
 
-namespace ArticulationManager.Databases.LiteDB.KeySwitches.Translations
+namespace KeySwitchManager.Databases.LiteDB.KeySwitches.Translations
 {
     public class EntityToDbModel : IDataTranslator<KeySwitch, KeySwitchModel>
     {

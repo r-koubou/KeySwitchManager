@@ -1,8 +1,8 @@
 using System;
 
-using ArticulationManager.Common.Utilities;
+using KeySwitchManager.Common.Utilities;
 
-namespace ArticulationManager.Domain.Commons
+namespace KeySwitchManager.Domain.Commons
 {
     public class EntityGuid : IEquatable<EntityGuid>
     {

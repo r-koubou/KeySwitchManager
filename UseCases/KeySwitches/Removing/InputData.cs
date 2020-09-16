@@ -1,6 +1,6 @@
-using ArticulationManager.Common.Utilities;
+using KeySwitchManager.Common.Utilities;
 
-namespace ArticulationManager.UseCases.KeySwitches.Removing
+namespace KeySwitchManager.UseCases.KeySwitches.Removing
 {
     public class InputData
     {

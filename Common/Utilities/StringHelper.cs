@@ -1,4 +1,4 @@
-namespace ArticulationManager.Common.Utilities
+namespace KeySwitchManager.Common.Utilities
 {
     public static class StringHelper
     {

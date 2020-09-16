@@ -1,6 +1,6 @@
-using ArticulationManager.Domain.Commons;
+using KeySwitchManager.Domain.Commons;
 
-namespace ArticulationManager.UseCases.KeySwitches.Importing.Text
+namespace KeySwitchManager.UseCases.KeySwitches.Importing.Text
 {
     public class InputData
     {

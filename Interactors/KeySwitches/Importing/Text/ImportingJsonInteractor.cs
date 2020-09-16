@@ -1,9 +1,9 @@
-using ArticulationManager.Domain.Translations;
-using ArticulationManager.Gateways.KeySwitches;
-using ArticulationManager.Presenters.KeySwitches;
-using ArticulationManager.UseCases.KeySwitches.Importing.Text;
+using KeySwitchManager.Domain.Translations;
+using KeySwitchManager.Gateways.KeySwitches;
+using KeySwitchManager.Presenters.KeySwitches;
+using KeySwitchManager.UseCases.KeySwitches.Importing.Text;
 
-namespace ArticulationManager.Interactors.KeySwitches.Importing.Text
+namespace KeySwitchManager.Interactors.KeySwitches.Importing.Text
 {
     public class ImportingJsonInteractor : IImportingTextUseCase
     {

@@ -1,5 +1,5 @@
-using ArticulationManager.Domain.Commons;
-using ArticulationManager.Json.KeySwitches.Translations;
+using KeySwitchManager.Domain.Commons;
+using KeySwitchManager.Json.KeySwitches.Translations;
 
 using NUnit.Framework;
 

@@ -1,9 +1,9 @@
-using ArticulationManager.Domain.KeySwitches.Value;
-using ArticulationManager.Gateways.KeySwitches;
-using ArticulationManager.Presenters.KeySwitches;
-using ArticulationManager.UseCases.KeySwitches.Removing;
+using KeySwitchManager.Domain.KeySwitches.Value;
+using KeySwitchManager.Gateways.KeySwitches;
+using KeySwitchManager.Presenters.KeySwitches;
+using KeySwitchManager.UseCases.KeySwitches.Removing;
 
-namespace ArticulationManager.Interactors.KeySwitches.Removing
+namespace KeySwitchManager.Interactors.KeySwitches.Removing
 {
     public class RemovingInteractor : IRemovingUseCase
     {

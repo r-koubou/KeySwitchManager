@@ -1,4 +1,4 @@
-namespace ArticulationManager.Domain.KeySwitches.Value
+namespace KeySwitchManager.Domain.KeySwitches.Value
 {
     public enum ArticulationType
     {

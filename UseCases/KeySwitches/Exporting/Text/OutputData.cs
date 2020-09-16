@@ -1,6 +1,6 @@
-using ArticulationManager.Domain.Commons;
+using KeySwitchManager.Domain.Commons;
 
-namespace ArticulationManager.UseCases.KeySwitches.Exporting.Text
+namespace KeySwitchManager.UseCases.KeySwitches.Exporting.Text
 {
     public class OutputData
     {

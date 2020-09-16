@@ -1,6 +1,6 @@
-using ArticulationManager.Domain.MidiMessages.Aggregate;
+using KeySwitchManager.Domain.MidiMessages.Aggregate;
 
-namespace ArticulationManager.Domain.MidiMessages
+namespace KeySwitchManager.Domain.MidiMessages
 {
     public interface IMidiMessageFactory
     {

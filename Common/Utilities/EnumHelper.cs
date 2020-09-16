@@ -1,7 +1,7 @@
 using System;
 using System.Diagnostics.CodeAnalysis;
 
-namespace ArticulationManager.Common.Utilities
+namespace KeySwitchManager.Common.Utilities
 {
     public static class EnumHelper
     {

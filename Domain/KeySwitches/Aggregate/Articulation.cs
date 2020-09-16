@@ -2,10 +2,10 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-using ArticulationManager.Domain.KeySwitches.Value;
-using ArticulationManager.Domain.MidiMessages.Aggregate;
+using KeySwitchManager.Domain.KeySwitches.Value;
+using KeySwitchManager.Domain.MidiMessages.Aggregate;
 
-namespace ArticulationManager.Domain.KeySwitches.Aggregate
+namespace KeySwitchManager.Domain.KeySwitches.Aggregate
 {
     public class Articulation : IEquatable<Articulation>
     {
