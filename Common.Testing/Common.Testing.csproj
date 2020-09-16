@@ -5,8 +5,8 @@
 
         <IsPackable>false</IsPackable>
 
-        <AssemblyName>ArticulationManager.Common.Testing</AssemblyName>
-        <RootNamespace>ArticulationManager.Common.Testing</RootNamespace>
+        <AssemblyName>KeySwitchManager.Common.Testing</AssemblyName>
+        <RootNamespace>KeySwitchManager.Common.Testing</RootNamespace>
 
         <Nullable>enable</Nullable>
     </PropertyGroup>

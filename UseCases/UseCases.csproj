@@ -5,18 +5,18 @@
         <!-- Assembly / Common -->
         <Copyright>R-Koubou</Copyright>
         <Company>R-Koubou</Company>
-        <Product>ArticulationManager.UseCases</Product>
-        <AssemblyName>ArticulationManager.UseCases</AssemblyName>
-        <RootNamespace>ArticulationManager.UseCases</RootNamespace>
+        <Product>KeySwitchManager.UseCases</Product>
+        <AssemblyName>KeySwitchManager.UseCases</AssemblyName>
+        <RootNamespace>KeySwitchManager.UseCases</RootNamespace>
         <Version>0.1.0-alpha</Version>
-        <Description>ArticulationManager.UseCases module</Description>
+        <Description>KeySwitchManager.UseCases module</Description>
         <Nullable>enable</Nullable>
         <!-- Nuget -->
         <Authors>R-Koubou</Authors>
-        <PackageId>ArticulationManager.UseCases</PackageId>
+        <PackageId>KeySwitchManager.UseCases</PackageId>
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
-        <PackageProjectUrl>https://github.com/r-koubou/ArticulationManager</PackageProjectUrl>
-        <RepositoryUrl>https://github.com/r-koubou/ArticulationManager</RepositoryUrl>
+        <PackageProjectUrl>https://github.com/r-koubou/KeySwitchManager</PackageProjectUrl>
+        <RepositoryUrl>https://github.com/r-koubou/KeySwitchManager</RepositoryUrl>
     </PropertyGroup>
 
     <ItemGroup>

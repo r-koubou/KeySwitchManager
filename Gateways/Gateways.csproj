@@ -5,18 +5,18 @@
         <!-- Assembly / Common -->
         <Copyright>R-Koubou</Copyright>
         <Company>R-Koubou</Company>
-        <Product>ArticulationManager.Gateways</Product>
-        <AssemblyName>ArticulationManager.Gateways</AssemblyName>
-        <RootNamespace>ArticulationManager.Gateways</RootNamespace>
+        <Product>KeySwitchManager.Gateways</Product>
+        <AssemblyName>KeySwitchManager.Gateways</AssemblyName>
+        <RootNamespace>KeySwitchManager.Gateways</RootNamespace>
         <Version>0.1.0-alpha</Version>
-        <Description>ArticulationManager.Gateways module</Description>
+        <Description>KeySwitchManager.Gateways module</Description>
         <Nullable>enable</Nullable>
         <!-- Nuget -->
         <Authors>R-Koubou</Authors>
-        <PackageId>ArticulationManager.Gateways</PackageId>
+        <PackageId>KeySwitchManager.Gateways</PackageId>
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
-        <PackageProjectUrl>https://github.com/r-koubou/ArticulationManager</PackageProjectUrl>
-        <RepositoryUrl>https://github.com/r-koubou/ArticulationManager</RepositoryUrl>
+        <PackageProjectUrl>https://github.com/r-koubou/KeySwitchManager</PackageProjectUrl>
+        <RepositoryUrl>https://github.com/r-koubou/KeySwitchManager</RepositoryUrl>
     </PropertyGroup>
 
     <ItemGroup>

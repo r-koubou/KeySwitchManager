@@ -5,18 +5,18 @@
         <!-- Assembly / Common -->
         <Copyright>R-Koubou</Copyright>
         <Company>R-Koubou</Company>
-        <Product>ArticulationManager.Common</Product>
-        <AssemblyName>ArticulationManager.Common</AssemblyName>
-        <RootNamespace>ArticulationManager.Common</RootNamespace>
+        <Product>KeySwitchManager.Common</Product>
+        <AssemblyName>KeySwitchManager.Common</AssemblyName>
+        <RootNamespace>KeySwitchManager.Common</RootNamespace>
         <Version>0.1.0-alpha</Version>
-        <Description>ArticulationManager.Common module</Description>
+        <Description>KeySwitchManager.Common module</Description>
         <Nullable>enable</Nullable>
         <!-- Nuget -->
         <Authors>R-Koubou</Authors>
-        <PackageId>ArticulationManager.Common</PackageId>
+        <PackageId>KeySwitchManager.Common</PackageId>
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
-        <PackageProjectUrl>https://github.com/r-koubou/ArticulationManager</PackageProjectUrl>
-        <RepositoryUrl>https://github.com/r-koubou/ArticulationManager</RepositoryUrl>
+        <PackageProjectUrl>https://github.com/r-koubou/KeySwitchManager</PackageProjectUrl>
+        <RepositoryUrl>https://github.com/r-koubou/KeySwitchManager</RepositoryUrl>
     </PropertyGroup>
 
 </Project>

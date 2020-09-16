@@ -5,9 +5,9 @@
 
         <IsPackable>false</IsPackable>
 
-        <AssemblyName>ArticulationManager.Databases.LiteDB.Testing</AssemblyName>
+        <AssemblyName>KeySwitchManager.Databases.LiteDB.Testing</AssemblyName>
 
-        <RootNamespace>ArticulationManager.Databases.LiteDB.Testing</RootNamespace>
+        <RootNamespace>KeySwitchManager.Databases.LiteDB.Testing</RootNamespace>
 
         <Nullable>enable</Nullable>
     </PropertyGroup>

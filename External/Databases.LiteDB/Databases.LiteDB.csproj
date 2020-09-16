@@ -5,18 +5,18 @@
         <!-- Assembly / Common -->
         <Copyright>R-Koubou</Copyright>
         <Company>R-Koubou</Company>
-        <Product>ArticulationManager.Databases.LiteDB</Product>
-        <AssemblyName>ArticulationManager.Databases.LiteDB</AssemblyName>
-        <RootNamespace>ArticulationManager.Databases.LiteDB</RootNamespace>
+        <Product>KeySwitchManager.Databases.LiteDB</Product>
+        <AssemblyName>KeySwitchManager.Databases.LiteDB</AssemblyName>
+        <RootNamespace>KeySwitchManager.Databases.LiteDB</RootNamespace>
         <Version>0.1.0-alpha</Version>
-        <Description>ArticulationManager.Databases.LiteDB module</Description>
+        <Description>KeySwitchManager.Databases.LiteDB module</Description>
         <Nullable>enable</Nullable>
         <!-- Nuget -->
         <Authors>R-Koubou</Authors>
-        <PackageId>ArticulationManager.Databases.LiteDB</PackageId>
+        <PackageId>KeySwitchManager.Databases.LiteDB</PackageId>
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
-        <PackageProjectUrl>https://github.com/r-koubou/ArticulationManager</PackageProjectUrl>
-        <RepositoryUrl>https://github.com/r-koubou/ArticulationManager</RepositoryUrl>
+        <PackageProjectUrl>https://github.com/r-koubou/KeySwitchManager</PackageProjectUrl>
+        <RepositoryUrl>https://github.com/r-koubou/KeySwitchManager</RepositoryUrl>
     </PropertyGroup>
 
     <ItemGroup>

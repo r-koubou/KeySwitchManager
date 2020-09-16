@@ -5,9 +5,9 @@
 
         <IsPackable>false</IsPackable>
 
-        <AssemblyName>ArticulationManager.Interactors.Testing</AssemblyName>
+        <AssemblyName>KeySwitchManager.Interactors.Testing</AssemblyName>
 
-        <RootNamespace>ArticulationManager.Interactors.Testing</RootNamespace>
+        <RootNamespace>KeySwitchManager.Interactors.Testing</RootNamespace>
 
         <Nullable>enable</Nullable>
     </PropertyGroup>
