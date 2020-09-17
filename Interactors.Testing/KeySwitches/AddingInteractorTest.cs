@@ -18,7 +18,7 @@ namespace KeySwitchManager.Interactors.Testing.KeySwitches
         [Test]
         public void AddingTest()
         {
-            var inputData = new InputData(
+            var inputData = new KeySwitchAddingRequest(
                 "Author",
                 "Description",
                 "Developer",

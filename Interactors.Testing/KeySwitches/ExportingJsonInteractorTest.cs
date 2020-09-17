@@ -23,7 +23,7 @@ namespace KeySwitchManager.Interactors.Testing.KeySwitches
             dbRepository.Save( entity );
             #endregion
 
-            var inputData = new InputData( entity.DeveloperName.Value, entity.ProductName.Value );
+            var inputData = new ExportingTextRequest( entity.DeveloperName.Value, entity.ProductName.Value );
             var interactor = new ExportingJsonInteractor(
                 dbRepository,
                 new IExportingTextPresenter.Console(),

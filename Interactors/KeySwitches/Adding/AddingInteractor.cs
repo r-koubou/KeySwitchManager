@@ -37,33 +37,36 @@ namespace KeySwitchManager.Interactors.KeySwitches.Adding
             Presenter           = presenter;
         }
 
-        public void Execute( InputData inputData )
+        public KeySwitchAddingResponse Execute( KeySwitchAddingRequest request )
         {
             var created = DateTimeHelper.NowUtc();
             var articulation = ArticulationFactory.Create(
-                inputData.ArticulationName,
-                inputData.ArticulationType,
-                inputData.ArticulationGroup,
-                inputData.ArticulationColor,
-                inputData.MidiNoteOns,
-                inputData.MidiControlChanges,
-                inputData.MidiProgramChanges
+                request.ArticulationName,
+                request.ArticulationType,
+                request.ArticulationGroup,
+                request.ArticulationColor,
+                request.MidiNoteOns,
+                request.MidiControlChanges,
+                request.MidiProgramChanges
             );
             var keySwitch = KeySwitchFactory.Create(
                 Guid.NewGuid(),
-                inputData.Author,
-                inputData.Description,
+                request.Author,
+                request.Description,
                 created,
                 created,
-                inputData.DeveloperName,
-                inputData.ProductName,
-                inputData.InstrumentName,
+                request.DeveloperName,
+                request.ProductName,
+                request.InstrumentName,
                 new []{ articulation }
             );
 
             Repository.Save( keySwitch );
 
-            Presenter.Output( new OutputData( true ) );
+            var response = new KeySwitchAddingResponse( true );
+            Presenter.Complete( response );
+
+            return response;
         }
     }
 }

@@ -1,10 +1,10 @@
 namespace KeySwitchManager.UseCases.KeySwitches.Adding
 {
-    public class OutputData
+    public class KeySwitchAddingResponse
     {
         public bool Result { get; }
 
-        public OutputData( bool result )
+        public KeySwitchAddingResponse( bool result )
         {
             Result = result;
         }

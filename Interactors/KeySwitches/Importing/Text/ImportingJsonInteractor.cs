@@ -21,11 +21,12 @@ namespace KeySwitchManager.Interactors.KeySwitches.Importing.Text
             Translator = translator;
         }
 
-        public void Execute( InputData inputData )
+        public ImportingTextResponse Execute( ImportingTextRequest request )
         {
-            var keySwitch = Translator.Translate( inputData.JsonText );
+            var keySwitch = Translator.Translate( request.JsonText );
             Repository.Save( keySwitch );
-            Presenter.Output( new OutputData() );
+
+            return new ImportingTextResponse();
         }
     }
 }

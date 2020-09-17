@@ -1,10 +1,10 @@
 namespace KeySwitchManager.UseCases.KeySwitches.Removing
 {
-    public class OutputData
+    public class RemovingResponse
     {
         public bool Result { get; }
 
-        public OutputData( bool result )
+        public RemovingResponse( bool result )
         {
             Result = result;
         }

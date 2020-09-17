@@ -2,22 +2,17 @@ using KeySwitchManager.UseCases.KeySwitches.Importing.Text;
 
 namespace KeySwitchManager.Presenters.KeySwitches
 {
-    public interface IImportingTextPresenter
+    public interface IImportingTextPresenter : IPresenter<ImportingTextResponse>
     {
-        public void Output( OutputData outputData );
-
         public class Null : IImportingTextPresenter
-        {
-            public void Output( OutputData outputData )
-            {}
-        }
+        {}
 
         public class Console : IImportingTextPresenter
         {
-            public void Output( OutputData outputData )
+            public void Present<T>( T param )
             {
+                System.Console.WriteLine( param );
             }
         }
-
     }
 }

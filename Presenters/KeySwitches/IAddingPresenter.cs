@@ -2,13 +2,11 @@ using KeySwitchManager.UseCases.KeySwitches.Adding;
 
 namespace KeySwitchManager.Presenters.KeySwitches
 {
-    public interface IAddingPresenter
+    public interface IAddingPresenter : IPresenter<KeySwitchAddingResponse>
     {
-        public void Output( OutputData outputData );
-
         public class Null : IAddingPresenter
         {
-            public void Output( OutputData outputData )
+            public void Complete( KeySwitchAddingResponse response )
             {}
         }
     }

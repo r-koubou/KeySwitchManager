@@ -18,14 +18,14 @@ namespace KeySwitchManager.Interactors.KeySwitches.Removing
             Presenter  = presenter;
         }
 
-        public void Execute( InputData inputData )
+        public RemovingResponse Execute( RemovingRequest request )
         {
-            var developerName = new DeveloperName( inputData.DeveloperName );
-            var productName = new ProductName( inputData.ProductName );
+            var developerName = new DeveloperName( request.DeveloperName );
+            var productName = new ProductName( request.ProductName );
 
             Repository.Delete( developerName, productName );
 
-            Presenter.Output( new OutputData( true ) );
+            return new RemovingResponse( true );
         }
     }
 }

@@ -2,7 +2,7 @@ import os
 import sys
 import re
 
-PROJECT_NAME_PREFIX = 'ArticulationManager.'
+PROJECT_NAME_PREFIX = 'KeySwitchManager.'
 
 THIS_DIR = os.path.dirname( sys.argv[ 0 ] )
 SUFFIX = '.csproj'
