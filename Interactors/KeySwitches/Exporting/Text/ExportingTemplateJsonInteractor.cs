@@ -6,26 +6,26 @@ using KeySwitchManager.Domain.KeySwitches.Aggregate;
 using KeySwitchManager.Domain.KeySwitches.Value;
 using KeySwitchManager.Domain.MidiMessages;
 using KeySwitchManager.Domain.MidiMessages.Aggregate;
-using KeySwitchManager.Domain.Translations;
 using KeySwitchManager.Presenters.KeySwitches;
 using KeySwitchManager.UseCases.KeySwitches.Exporting.Text;
+using KeySwitchManager.UseCases.KeySwitches.Translations;
 
 namespace KeySwitchManager.Interactors.KeySwitches.Exporting.Text
 {
     public class ExportingTemplateJsonInteractor : IExportingTemplateAsTextUseCase
     {
-        private IKeySwitchToText Translator { get; }
+        private IKeySwitchListToJsonListText Translator { get; }
         private IExportingTextPresenter Presenter { get; }
 
         public ExportingTemplateJsonInteractor(
             IExportingTextPresenter presenter,
-            IKeySwitchToText translator )
+            IKeySwitchListToJsonListText translator )
         {
             Presenter  = presenter;
             Translator = translator;
         }
 
-        public ExportingTextResponse Execute()
+        public ExportingTemplateAsTextResponse Execute()
         {
             var entity = new IKeySwitchFactory.Default().Create(
                 Guid.NewGuid(),
@@ -50,8 +50,8 @@ namespace KeySwitchManager.Interactors.KeySwitches.Exporting.Text
                 }
             );
 
-            Presenter.Present( Translator.Translate( entity ).Value );
-            return new ExportingTextResponse();
+            var jsonText = Translator.Translate( new[] { entity } );
+            return new ExportingTemplateAsTextResponse( jsonText.Value );
         }
     }
 }

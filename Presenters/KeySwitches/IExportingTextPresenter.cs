@@ -12,7 +12,7 @@ namespace KeySwitchManager.Presenters.KeySwitches
 
         public class Console : IExportingTextPresenter
         {
-            public void Presemt<T>( T param )
+            public void Present<T>( T param )
             {
                 System.Console.WriteLine( param );
             }

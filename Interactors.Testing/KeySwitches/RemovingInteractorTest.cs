@@ -15,17 +15,19 @@ namespace KeySwitchManager.Interactors.Testing.KeySwitches
     public class RemovingInteractorTest
     {
         [Test]
-        public void AddingTest()
+        public void RemovingTest()
         {
             const string developerName = "Developer";
             const string productName = "Product";
+            const string instrumentName = "E.Guitar";
 
             var inputData = new RemovingRequest(
                 developerName,
-                productName
+                productName,
+                instrumentName
             );
 
-            var presenter = new IRemovingPresenter.Null();
+            var presenter = new IRemovingPresenter.Console();
             var repository = new LiteDbKeySwitchRepository( new MemoryStream() );
             var interactor = new RemovingInteractor( repository, presenter );
 

@@ -5,7 +5,7 @@ using KeySwitchManager.Databases.LiteDB.KeySwitches;
 
 using NUnit.Framework;
 
-namespace ArticulationManager.Databases.LiteDB.Testing.KeySwitches
+namespace KeySwitchManager.Databases.LiteDB.Testing.KeySwitches
 {
     [TestFixture]
     public class RemovingTest
@@ -20,7 +20,7 @@ namespace ArticulationManager.Databases.LiteDB.Testing.KeySwitches
             repository.Save( record );
             Assert.AreEqual( 1, repository.Count() );
 
-            repository.Delete( record );
+            repository.Delete( record.Id );
             Assert.AreEqual( 0, repository.Count() );
             #endregion
 

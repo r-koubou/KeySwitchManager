@@ -6,5 +6,13 @@ namespace KeySwitchManager.Presenters.KeySwitches
     {
         public class Null : IRemovingPresenter
         {}
+
+        public class Console : IRemovingPresenter
+        {
+            public void Present<T>( T param )
+            {
+                System.Console.WriteLine( param );
+            }
+        }
     }
 }

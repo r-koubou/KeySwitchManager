@@ -22,10 +22,14 @@ namespace KeySwitchManager.Interactors.KeySwitches.Removing
         {
             var developerName = new DeveloperName( request.DeveloperName );
             var productName = new ProductName( request.ProductName );
+            var instrumentName = new InstrumentName( request.InstrumentName );
 
-            Repository.Delete( developerName, productName );
+            Presenter.Present( $"Removing keyswitch: Developer={developerName}, Product={productName}, Instrument={instrumentName}" );
 
-            return new RemovingResponse( true );
+            var removedCount = Repository.Delete( developerName, productName, instrumentName );
+            Presenter.Present( $"{removedCount} record(s) removed" );
+
+            return new RemovingResponse( removedCount );
         }
     }
 }

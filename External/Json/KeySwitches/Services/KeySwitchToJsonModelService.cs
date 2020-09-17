@@ -1,26 +1,16 @@
 using System.Collections.Generic;
-using System.IO;
-using System.Text;
 
-using KeySwitchManager.Domain.Commons;
 using KeySwitchManager.Domain.KeySwitches.Aggregate;
 using KeySwitchManager.Domain.MidiMessages.Aggregate;
 using KeySwitchManager.Domain.Services;
-using KeySwitchManager.Domain.Translations;
 using KeySwitchManager.Json.KeySwitches.Model;
 
-using Newtonsoft.Json;
-
-namespace KeySwitchManager.Json.KeySwitches.Translations
+namespace KeySwitchManager.Json.KeySwitches.Services
 {
-    public class EntityToJsonModel : IKeySwitchToText
+    internal static class KeySwitchToJsonModelService
     {
-        public IText Translate( KeySwitch source )
+        public static KeySwitchModel Translate( KeySwitch source )
         {
-            var builder = new StringBuilder();
-            var serializer = new JsonSerializer();
-            using var writer = new StringWriter( builder );
-
             var articulationModels = new List<ArticulationModel>();
 
             foreach( var i in source.Articulations )
@@ -48,7 +38,7 @@ namespace KeySwitchManager.Json.KeySwitches.Translations
                 articulationModels.Add( jsonObject );
             }
 
-            var jsonRoot = new KeySwitchModel(
+            return new KeySwitchModel(
                 source.Id.Value,
                 source.Author.Value,
                 source.Description.Value,
@@ -59,10 +49,6 @@ namespace KeySwitchManager.Json.KeySwitches.Translations
                 source.InstrumentName.Value,
                 articulationModels
             );
-
-            serializer.Serialize( writer, jsonRoot );
-
-            return new PlainText( builder.ToString() );
         }
 
         private static void ConvertMessageList(
@@ -81,6 +67,5 @@ namespace KeySwitchManager.Json.KeySwitches.Translations
                 );
             }
         }
-
     }
 }
