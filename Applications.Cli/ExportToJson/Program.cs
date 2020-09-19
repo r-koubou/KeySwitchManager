@@ -7,10 +7,10 @@ using CommandLine;
 using Databases.LiteDB.KeySwitches.KeySwitches;
 
 using KeySwitchManager.Cli.Commons;
-using KeySwitchManager.Interactors.KeySwitches.Exporting.Text;
+using KeySwitchManager.Interactors.KeySwitches.Exporting;
 using KeySwitchManager.Json.KeySwitches.Translations;
 using KeySwitchManager.Presenters.KeySwitches;
-using KeySwitchManager.UseCases.KeySwitches.Exporting.Text;
+using KeySwitchManager.UseCases.KeySwitches.Exporting;
 
 namespace KeySwitchManager.App.ExportToJson
 {

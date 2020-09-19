@@ -7,10 +7,10 @@ using KeySwitchManager.Domain.KeySwitches.Value;
 using KeySwitchManager.Domain.MidiMessages;
 using KeySwitchManager.Domain.MidiMessages.Aggregate;
 using KeySwitchManager.Presenters.KeySwitches;
-using KeySwitchManager.UseCases.KeySwitches.Exporting.Text;
+using KeySwitchManager.UseCases.KeySwitches.Exporting;
 using KeySwitchManager.UseCases.KeySwitches.Translations;
 
-namespace KeySwitchManager.Interactors.KeySwitches.Exporting.Text
+namespace KeySwitchManager.Interactors.KeySwitches.Exporting
 {
     public class ExportingTemplateJsonInteractor : IExportingTemplateAsTextUseCase
     {

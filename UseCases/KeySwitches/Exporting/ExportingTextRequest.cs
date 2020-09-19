@@ -1,6 +1,6 @@
 using System;
 
-namespace KeySwitchManager.UseCases.KeySwitches.Exporting.Text
+namespace KeySwitchManager.UseCases.KeySwitches.Exporting
 {
     public class ExportingTextRequest
     {
