@@ -1,4 +1,3 @@
-using KeySwitchManager.Domain.Translations;
 using KeySwitchManager.Gateways.KeySwitches;
 using KeySwitchManager.Presenters.KeySwitches;
 using KeySwitchManager.UseCases.KeySwitches.Importing.Text;

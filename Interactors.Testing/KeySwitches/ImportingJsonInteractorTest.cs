@@ -1,7 +1,8 @@
 using System.IO;
 using System.Linq;
 
-using KeySwitchManager.Databases.LiteDB.KeySwitches;
+using Databases.LiteDB.KeySwitches.KeySwitches;
+
 using KeySwitchManager.Domain.KeySwitches.Value;
 using KeySwitchManager.Interactors.KeySwitches.Importing.Text;
 using KeySwitchManager.Json.KeySwitches.Translations;

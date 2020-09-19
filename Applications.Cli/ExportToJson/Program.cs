@@ -4,8 +4,9 @@ using System.IO;
 
 using CommandLine;
 
+using Databases.LiteDB.KeySwitches.KeySwitches;
+
 using KeySwitchManager.Cli.Commons;
-using KeySwitchManager.Databases.LiteDB.KeySwitches;
 using KeySwitchManager.Interactors.KeySwitches.Exporting.Text;
 using KeySwitchManager.Json.KeySwitches.Translations;
 using KeySwitchManager.Presenters.KeySwitches;
