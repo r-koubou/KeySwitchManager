@@ -1,4 +1,8 @@
+using System.Collections.Generic;
+using System.Linq;
+
 using KeySwitchManager.Domain.Commons;
+using KeySwitchManager.Domain.KeySwitches.Aggregate;
 using KeySwitchManager.Domain.KeySwitches.Value;
 using KeySwitchManager.Gateways.KeySwitches;
 using KeySwitchManager.Presenters.KeySwitches;
@@ -23,22 +27,23 @@ namespace KeySwitchManager.Interactors.KeySwitches.Exporting
             Translator = translator;
         }
 
+        private ExportingTextResponse CreateResponse( IEnumerable<KeySwitch> query )
+        {
+            var keySwitches = query.ToList();
+
+            return new ExportingTextResponse( Translator.Translate( keySwitches ) )
+            {
+                Found = keySwitches.Any()
+            };
+        }
+
         public ExportingTextResponse Execute( ExportingTextRequest request )
         {
             #region By Guid
             if( request.Guid != default )
             {
-                //Presenter.Present( $"Finding keyswitch: Guid={request.Guid}" );
-                return new ExportingTextResponse(
-                    Translator.Translate(
-                        Repository.Find(
-                            new EntityGuid( request.Guid )
-                        )
-                    )
-                )
-                {
-                    Found = true
-                };
+                var keySwitches = Repository.Find( new EntityGuid( request.Guid ) );
+                return CreateResponse( keySwitches );
             }
             #endregion
 
@@ -47,18 +52,13 @@ namespace KeySwitchManager.Interactors.KeySwitches.Exporting
                 !string.IsNullOrEmpty( request.ProductName ) &&
                 !string.IsNullOrEmpty( request.InstrumentName ) )
             {
-                //Presenter.Present( $"Finding keyswitch: Developer={request.DeveloperName}, Product={request.ProductName}, InstrumentName={request.InstrumentName}" );
-                return new ExportingTextResponse(
-                    Translator.Translate(
-                        Repository.Find(
-                            new DeveloperName( request.DeveloperName ),
-                            new ProductName( request.ProductName ),
-                            new InstrumentName( request.InstrumentName )
-                        ))
-                )
-                {
-                    Found = true
-                };
+                var keySwitches = Repository.Find(
+                    new DeveloperName( request.DeveloperName ),
+                    new ProductName( request.ProductName ),
+                    new InstrumentName( request.InstrumentName )
+                );
+
+                return CreateResponse( keySwitches );
             }
             #endregion
 
@@ -66,33 +66,23 @@ namespace KeySwitchManager.Interactors.KeySwitches.Exporting
             if( !string.IsNullOrEmpty( request.DeveloperName ) &&
                 !string.IsNullOrEmpty( request.ProductName ) )
             {
-                //Presenter.Present( $"Finding keyswitch: Developer={request.DeveloperName}, Product={request.ProductName}" );
-                return new ExportingTextResponse(
-                    Translator.Translate(
-                        Repository.Find(
-                            new DeveloperName( request.DeveloperName ),
-                            new ProductName( request.ProductName )
-                        )
-                    )
-                )
-                {
-                    Found = true
-                };
+                var keySwitches = Repository.Find(
+                    new DeveloperName( request.DeveloperName ),
+                    new ProductName( request.ProductName )
+                );
+
+                return CreateResponse( keySwitches );
             }
             #endregion
 
             #region By Developer
             if( !string.IsNullOrEmpty( request.DeveloperName ) )
             {
-                Presenter.Present( $"Finding keyswitch: Developer={request.DeveloperName}" );
-                return new ExportingTextResponse(
-                    Translator.Translate(
-                        Repository.Find( new DeveloperName( request.DeveloperName ) )
-                    )
-                )
-                {
-                    Found = true
-                };
+                var keySwitches = Repository.Find(
+                    new DeveloperName( request.DeveloperName )
+                );
+
+                return CreateResponse( keySwitches );
             }
             #endregion
 
