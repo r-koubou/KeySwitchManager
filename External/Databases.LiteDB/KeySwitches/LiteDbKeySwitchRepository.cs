@@ -5,6 +5,7 @@ using System.IO;
 using KeySwitchManager.Common.Utilities;
 using KeySwitchManager.Databases.LiteDB.KeySwitches.Model;
 using KeySwitchManager.Databases.LiteDB.KeySwitches.Translations;
+using KeySwitchManager.Domain.Commons;
 using KeySwitchManager.Domain.KeySwitches.Aggregate;
 using KeySwitchManager.Domain.KeySwitches.Value;
 using KeySwitchManager.Gateways.KeySwitches;
@@ -58,7 +59,7 @@ namespace KeySwitchManager.Databases.LiteDB.KeySwitches
         }
 
         #region Save
-        public void Save( KeySwitch keySwitch )
+        public int Save( KeySwitch keySwitch )
         {
             var table = Database.GetCollection<KeySwitchModel>( KeySwitchesTableName );
 
@@ -74,40 +75,43 @@ namespace KeySwitchManager.Databases.LiteDB.KeySwitches
                 entity.Id = keySwitch.Id.Value;
             }
 
-            table.Upsert( entity );
+            var result = table.Upsert( entity );
+
+            return result ? 1 : 0;
         }
         #endregion
 
         #region Delete
-        public void Delete( KeySwitch keySwitch )
+        public int Delete( EntityGuid guid )
         {
-            KeySwitchTable.Delete( keySwitch.Id.Value );
+            var result = KeySwitchTable.Delete( guid.Value );
+            return result ? 1 : 0;
         }
 
-        public void Delete(
+        public int Delete(
             DeveloperName developerName,
             ProductName productName,
             InstrumentName instrumentName )
         {
-            KeySwitchTable.DeleteMany(
+            return KeySwitchTable.DeleteMany(
                 x =>
                     x.DeveloperName == developerName.Value &&
                     x.ProductName == productName.Value &&
                     x.InstrumentName == instrumentName.Value );
         }
 
-        public void Delete( DeveloperName developerName, ProductName productName )
+        public int Delete( DeveloperName developerName, ProductName productName )
         {
-            KeySwitchTable.DeleteMany(
+            return KeySwitchTable.DeleteMany(
                 x =>
                     x.DeveloperName == developerName.Value &&
                     x.ProductName == productName.Value );
         }
 
-        public void DeleteAll()
+        public int DeleteAll()
         {
             var table = Database.GetCollection<ArticulationModel>( KeySwitchesTableName );
-            table.DeleteAll();
+            return table.DeleteAll();
         }
         #endregion
 
@@ -123,6 +127,16 @@ namespace KeySwitchManager.Databases.LiteDB.KeySwitches
             }
 
             return result;
+        }
+
+        public IEnumerable<KeySwitch> Find( EntityGuid guid )
+        {
+            return CreateEntities( KeySwitchTable.Find( x => x.Id == guid.Value ) );
+        }
+
+        public IEnumerable<KeySwitch> Find( Guid guid )
+        {
+            return CreateEntities( KeySwitchTable.Find( x => x.Id == guid ) );
         }
 
         public IEnumerable<KeySwitch> Find(

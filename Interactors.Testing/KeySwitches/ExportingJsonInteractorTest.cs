@@ -1,3 +1,4 @@
+using System;
 using System.IO;
 
 using KeySwitchManager.Common.Testing;
@@ -26,11 +27,12 @@ namespace KeySwitchManager.Interactors.Testing.KeySwitches
             var inputData = new ExportingTextRequest( entity.DeveloperName.Value, entity.ProductName.Value );
             var interactor = new ExportingJsonInteractor(
                 dbRepository,
-                new IExportingTextPresenter.Console(),
-                new EntityToJsonModel()
+                new KeySwitchListListToJsonModelList{ Formatted = true },
+                new IExportingTextPresenter.Console()
             );
 
-            interactor.Execute( inputData );
+            var response = interactor.Execute( inputData );
+            Console.WriteLine( response );
         }
     }
 }

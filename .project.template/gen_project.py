@@ -3,6 +3,8 @@ import sys
 import re
 
 PROJECT_NAME_PREFIX = 'KeySwitchManager.'
+PROJECT_TYPE_MODULE = 'module'
+PROJECT_TYPE_CLI    = 'cliapp'
 
 THIS_DIR = os.path.dirname( sys.argv[ 0 ] )
 SUFFIX = '.csproj'
@@ -15,7 +17,10 @@ def generate( project_type, project_name ):
     with open( template_file ) as f:
         template = f.read()
 
-    new_text = template.replace( PROJECTNAME_PATTERN, PROJECT_NAME_PREFIX + project_name )
+    if project_type == PROJECT_TYPE_CLI:
+        new_text = template.replace( PROJECTNAME_PATTERN, PROJECT_NAME_PREFIX + 'App.'+ project_name )
+    else:
+        new_text = template.replace( PROJECTNAME_PATTERN, PROJECT_NAME_PREFIX + project_name )
 
     if not os.path.exists( project_name ):
         os.mkdir( project_name )

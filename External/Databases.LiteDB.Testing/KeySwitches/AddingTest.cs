@@ -9,7 +9,7 @@ using KeySwitchManager.Domain.MidiMessages.Value;
 
 using NUnit.Framework;
 
-namespace ArticulationManager.Databases.LiteDB.Testing.KeySwitches
+namespace KeySwitchManager.Databases.LiteDB.Testing.KeySwitches
 {
     [TestFixture]
     public class AddingTest

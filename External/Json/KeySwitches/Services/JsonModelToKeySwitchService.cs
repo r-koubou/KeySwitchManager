@@ -1,22 +1,17 @@
 using System.Collections.Generic;
 
-using KeySwitchManager.Domain.Commons;
 using KeySwitchManager.Domain.KeySwitches;
 using KeySwitchManager.Domain.KeySwitches.Aggregate;
 using KeySwitchManager.Domain.MidiMessages;
 using KeySwitchManager.Domain.MidiMessages.Aggregate;
-using KeySwitchManager.Domain.Translations;
 using KeySwitchManager.Json.KeySwitches.Model;
 
-using Newtonsoft.Json;
-
-namespace KeySwitchManager.Json.KeySwitches.Translations
+namespace KeySwitchManager.Json.KeySwitches.Services
 {
-    public class JsonModelToEntity : ITextToKeySwitch
+    internal static class JsonModelToKeySwitchService
     {
-        public KeySwitch Translate( IText source )
+        public static KeySwitch Translate( KeySwitchModel model )
         {
-            var model = JsonConvert.DeserializeObject<KeySwitchModel>( source.Value );
             var articulations = TranslateImpl( model );
 
             return new IKeySwitchFactory.Default().Create(
@@ -32,7 +27,7 @@ namespace KeySwitchManager.Json.KeySwitches.Translations
             );
         }
 
-        private IEnumerable<Articulation> TranslateImpl( KeySwitchModel source )
+        private static IEnumerable<Articulation> TranslateImpl( KeySwitchModel source )
         {
             var articulations = new List<Articulation>();
 
@@ -79,5 +74,6 @@ namespace KeySwitchManager.Json.KeySwitches.Translations
                 );
             }
         }
+
     }
 }

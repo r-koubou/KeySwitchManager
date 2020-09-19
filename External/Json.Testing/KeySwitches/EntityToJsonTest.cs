@@ -28,10 +28,10 @@ namespace Json.Testing.KeySwitches
 
             var entity = TestDataGenerator.CreateKeySwitch( articulation );
 
-            var translator = new EntityToJsonModel();
+            var translator = new KeySwitchToJsonModel();
             var json = translator.Translate( entity );
 
-            var translator2 = new JsonModelToEntity();
+            var translator2 = new JsonModelToKeySwitch();
             var cmp = translator2.Translate( json );
 
             Assert.AreEqual( entity, cmp );

@@ -2,11 +2,11 @@ namespace KeySwitchManager.UseCases.KeySwitches.Removing
 {
     public class RemovingResponse
     {
-        public bool Result { get; }
+        public int RemovedCount { get; }
 
-        public RemovingResponse( bool result )
+        public RemovingResponse( int removedCount )
         {
-            Result = result;
+            RemovedCount = removedCount;
         }
     }
 }

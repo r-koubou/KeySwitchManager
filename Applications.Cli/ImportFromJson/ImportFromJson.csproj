@@ -1,0 +1,25 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <!-- Assembly / Common -->
+        <OutputType>Exe</OutputType>
+        <TargetFramework>netcoreapp3.1</TargetFramework>
+        <AssemblyName>KeySwitchManager.App.ImportFromJson</AssemblyName>
+        <RootNamespace>KeySwitchManager.App.ImportFromJson</RootNamespace>
+        <Company>R-Koubou</Company>
+        <Product>KeySwitchManager.App.ImportFromJson</Product>
+        <Version>0.1.0-alpha</Version>
+        <Description>KeySwitchManager.App.ImportFromJson app</Description>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\..\External\Databases.LiteDB\Databases.LiteDB.csproj" />
+      <ProjectReference Include="..\..\External\Json\Json.csproj" />
+      <ProjectReference Include="..\..\Gateways\Gateways.csproj" />
+      <ProjectReference Include="..\..\Interactors\Interactors.csproj" />
+      <ProjectReference Include="..\..\Presenters\Presenters.csproj" />
+      <ProjectReference Include="..\Cli.Commons\Cli.Commons.csproj" />
+    </ItemGroup>
+
+</Project>

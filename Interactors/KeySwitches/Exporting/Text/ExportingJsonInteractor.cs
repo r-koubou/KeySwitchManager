@@ -1,21 +1,22 @@
+using KeySwitchManager.Domain.Commons;
 using KeySwitchManager.Domain.KeySwitches.Value;
-using KeySwitchManager.Domain.Translations;
 using KeySwitchManager.Gateways.KeySwitches;
 using KeySwitchManager.Presenters.KeySwitches;
 using KeySwitchManager.UseCases.KeySwitches.Exporting.Text;
+using KeySwitchManager.UseCases.KeySwitches.Translations;
 
 namespace KeySwitchManager.Interactors.KeySwitches.Exporting.Text
 {
     public class ExportingJsonInteractor : IExportingTextUseCase
     {
         private IKeySwitchRepository Repository { get; }
-        private IKeySwitchToText Translator { get; }
+        private IKeySwitchListToJsonListText Translator { get; }
         private IExportingTextPresenter Presenter { get; }
 
         public ExportingJsonInteractor(
             IKeySwitchRepository repository,
-            IExportingTextPresenter presenter,
-            IKeySwitchToText translator )
+            IKeySwitchListToJsonListText translator,
+            IExportingTextPresenter presenter )
         {
             Repository = repository;
             Presenter  = presenter;
@@ -24,17 +25,78 @@ namespace KeySwitchManager.Interactors.KeySwitches.Exporting.Text
 
         public ExportingTextResponse Execute( ExportingTextRequest request )
         {
-            var developerName = new DeveloperName( request.DeveloperName );
-            var productName = new ProductName( request.ProductName );
-
-            var entities = Repository.Find( developerName, productName );
-
-            foreach( var i in entities )
+            #region By Guid
+            if( request.Guid != default )
             {
-                Presenter.Present( Translator.Translate( i ).Value );
+                //Presenter.Present( $"Finding keyswitch: Guid={request.Guid}" );
+                return new ExportingTextResponse(
+                    Translator.Translate(
+                        Repository.Find(
+                            new EntityGuid( request.Guid )
+                        )
+                    )
+                )
+                {
+                    Found = true
+                };
             }
+            #endregion
 
-            return new ExportingTextResponse();
+            #region By Developer, Product, Instrument
+            if( !string.IsNullOrEmpty( request.DeveloperName ) &&
+                !string.IsNullOrEmpty( request.ProductName ) &&
+                !string.IsNullOrEmpty( request.InstrumentName ) )
+            {
+                //Presenter.Present( $"Finding keyswitch: Developer={request.DeveloperName}, Product={request.ProductName}, InstrumentName={request.InstrumentName}" );
+                return new ExportingTextResponse(
+                    Translator.Translate(
+                        Repository.Find(
+                            new DeveloperName( request.DeveloperName ),
+                            new ProductName( request.ProductName ),
+                            new InstrumentName( request.InstrumentName )
+                        ))
+                )
+                {
+                    Found = true
+                };
+            }
+            #endregion
+
+            #region By Developer, Product
+            if( !string.IsNullOrEmpty( request.DeveloperName ) &&
+                !string.IsNullOrEmpty( request.ProductName ) )
+            {
+                //Presenter.Present( $"Finding keyswitch: Developer={request.DeveloperName}, Product={request.ProductName}" );
+                return new ExportingTextResponse(
+                    Translator.Translate(
+                        Repository.Find(
+                            new DeveloperName( request.DeveloperName ),
+                            new ProductName( request.ProductName )
+                        )
+                    )
+                )
+                {
+                    Found = true
+                };
+            }
+            #endregion
+
+            #region By Developer
+            if( !string.IsNullOrEmpty( request.DeveloperName ) )
+            {
+                Presenter.Present( $"Finding keyswitch: Developer={request.DeveloperName}" );
+                return new ExportingTextResponse(
+                    Translator.Translate(
+                        Repository.Find( new DeveloperName( request.DeveloperName ) )
+                    )
+                )
+                {
+                    Found = true
+                };
+            }
+            #endregion
+
+            return new ExportingTextResponse( new PlainText( "" ) );
         }
     }
 }
