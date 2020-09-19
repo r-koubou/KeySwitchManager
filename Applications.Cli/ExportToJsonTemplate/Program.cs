@@ -1,6 +1,6 @@
 using System;
 
-using KeySwitchManager.Interactors.KeySwitches.Exporting.Text;
+using KeySwitchManager.Interactors.KeySwitches.Exporting;
 using KeySwitchManager.Json.KeySwitches.Translations;
 using KeySwitchManager.Presenters.KeySwitches;
 

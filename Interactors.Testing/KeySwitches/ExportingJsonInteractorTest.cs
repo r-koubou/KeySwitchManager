@@ -4,10 +4,10 @@ using System.IO;
 using Databases.LiteDB.KeySwitches.KeySwitches;
 
 using KeySwitchManager.Common.Testing;
-using KeySwitchManager.Interactors.KeySwitches.Exporting.Text;
+using KeySwitchManager.Interactors.KeySwitches.Exporting;
 using KeySwitchManager.Json.KeySwitches.Translations;
 using KeySwitchManager.Presenters.KeySwitches;
-using KeySwitchManager.UseCases.KeySwitches.Exporting.Text;
+using KeySwitchManager.UseCases.KeySwitches.Exporting;
 
 using NUnit.Framework;
 
