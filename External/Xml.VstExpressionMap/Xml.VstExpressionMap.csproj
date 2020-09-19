@@ -5,22 +5,22 @@
         <!-- Assembly / Common -->
         <Copyright>R-Koubou</Copyright>
         <Company>R-Koubou</Company>
-        <Product>KeySwitchManager.XML</Product>
-        <AssemblyName>KeySwitchManager.XML</AssemblyName>
-        <RootNamespace>KeySwitchManager.XML</RootNamespace>
+        <Product>Xml.VstExpressionMap</Product>
+        <AssemblyName>Xml.VstExpressionMap</AssemblyName>
+        <RootNamespace>Xml.VstExpressionMap</RootNamespace>
         <Version>0.1.0-alpha</Version>
-        <Description>KeySwitchManager.XML module</Description>
+        <Description>Xml.VstExpressionMap module</Description>
         <Nullable>enable</Nullable>
         <!-- Nuget -->
         <Authors>R-Koubou</Authors>
-        <PackageId>KeySwitchManager.XML</PackageId>
+        <PackageId>Xml.VstExpressionMap</PackageId>
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
         <PackageProjectUrl>https://github.com/r-koubou/KeySwitchManager</PackageProjectUrl>
         <RepositoryUrl>https://github.com/r-koubou/KeySwitchManager</RepositoryUrl>
     </PropertyGroup>
 
     <ItemGroup>
-      <Folder Include="VstExpressionMap\Models" />
+      <Folder Include="Models" />
     </ItemGroup>
 
     <ItemGroup>
