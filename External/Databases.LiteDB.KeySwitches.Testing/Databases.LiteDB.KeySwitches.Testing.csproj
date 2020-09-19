@@ -5,9 +5,9 @@
 
         <IsPackable>false</IsPackable>
 
-        <AssemblyName>KeySwitchManager.Interactors.Testing</AssemblyName>
+        <AssemblyName>Databases.LiteDB.KeySwitches.Testing</AssemblyName>
 
-        <RootNamespace>KeySwitchManager.Interactors.Testing</RootNamespace>
+        <RootNamespace>Databases.LiteDB.KeySwitches.Testing</RootNamespace>
 
         <Nullable>enable</Nullable>
     </PropertyGroup>
@@ -19,10 +19,8 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\Common.Testing\Common.Testing.csproj" />
-      <ProjectReference Include="..\External\Databases.LiteDB.KeySwitches\Databases.LiteDB.KeySwitches.csproj" />
-      <ProjectReference Include="..\External\Json.KeySwitches\Json.KeySwitches.csproj" />
-      <ProjectReference Include="..\Interactors\Interactors.csproj" />
+      <ProjectReference Include="..\..\Common.Testing\Common.Testing.csproj" />
+      <ProjectReference Include="..\Databases.LiteDB.KeySwitches\Databases.LiteDB.KeySwitches.csproj" />
     </ItemGroup>
 
 </Project>

@@ -14,7 +14,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\..\External\Json\Json.csproj" />
+      <ProjectReference Include="..\..\External\Json.KeySwitches\Json.KeySwitches.csproj" />
       <ProjectReference Include="..\..\Interactors\Interactors.csproj" />
       <ProjectReference Include="..\..\Presenters\Presenters.csproj" />
     </ItemGroup>

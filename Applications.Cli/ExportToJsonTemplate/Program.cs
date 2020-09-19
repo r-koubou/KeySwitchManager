@@ -1,5 +1,4 @@
 using System;
-using System.IO;
 
 using KeySwitchManager.Interactors.KeySwitches.Exporting.Text;
 using KeySwitchManager.Json.KeySwitches.Translations;

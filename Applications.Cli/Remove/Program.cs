@@ -2,8 +2,9 @@ using System.IO;
 
 using CommandLine;
 
+using Databases.LiteDB.KeySwitches.KeySwitches;
+
 using KeySwitchManager.Cli.Commons;
-using KeySwitchManager.Databases.LiteDB.KeySwitches;
 using KeySwitchManager.Interactors.KeySwitches.Removing;
 using KeySwitchManager.Presenters.KeySwitches;
 using KeySwitchManager.UseCases.KeySwitches.Removing;
