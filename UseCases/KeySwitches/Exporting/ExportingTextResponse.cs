@@ -4,13 +4,18 @@ namespace KeySwitchManager.UseCases.KeySwitches.Exporting
 {
     public class ExportingTextResponse
     {
-        public bool Found { get; set; }
+        public int Count { get; }
 
         public IText Text { get; }
 
-        public ExportingTextResponse( IText text )
+        public ExportingTextResponse()
+            : this( new PlainText( "" ), 0 )
+        {}
+
+        public ExportingTextResponse( IText text, int count )
         {
-            Text = text;
+            Text  = text;
+            Count = count;
         }
     }
 }

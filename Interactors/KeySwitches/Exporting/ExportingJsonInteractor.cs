@@ -30,11 +30,7 @@ namespace KeySwitchManager.Interactors.KeySwitches.Exporting
         private ExportingTextResponse CreateResponse( IEnumerable<KeySwitch> query )
         {
             var keySwitches = query.ToList();
-
-            return new ExportingTextResponse( Translator.Translate( keySwitches ) )
-            {
-                Found = keySwitches.Any()
-            };
+            return new ExportingTextResponse( Translator.Translate( keySwitches ), keySwitches.Count );
         }
 
         public ExportingTextResponse Execute( ExportingTextRequest request )
@@ -86,7 +82,7 @@ namespace KeySwitchManager.Interactors.KeySwitches.Exporting
             }
             #endregion
 
-            return new ExportingTextResponse( new PlainText( "" ) );
+            return new ExportingTextResponse();
         }
     }
 }

@@ -13,4 +13,16 @@
         <Nullable>enable</Nullable>
     </PropertyGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\External\Databases.LiteDB.KeySwitches\Databases.LiteDB.KeySwitches.csproj" />
+      <ProjectReference Include="..\External\Json.KeySwitches\Json.KeySwitches.csproj" />
+      <ProjectReference Include="..\External\Xml.VstExpressionMap\Xml.VstExpressionMap.csproj" />
+      <ProjectReference Include="..\Interactors\Interactors.csproj" />
+      <ProjectReference Include="..\Presenters\Presenters.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="CommandLineParser" Version="2.8.0" />
+    </ItemGroup>
+
 </Project>
