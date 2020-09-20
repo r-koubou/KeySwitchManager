@@ -1,15 +1,10 @@
 using System;
 using System.IO;
-using System.Text;
 
 using CommandLine;
 
-using Databases.LiteDB.KeySwitches.KeySwitches;
-
 using KeySwitchManager.Interactors.KeySwitches.Exporting;
 using KeySwitchManager.Json.KeySwitches.Translations;
-using KeySwitchManager.Presenters.KeySwitches;
-using KeySwitchManager.UseCases.KeySwitches.Exporting;
 
 namespace KeySwitchManager.Apps.CLI.Commands
 {
