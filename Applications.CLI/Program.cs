@@ -12,11 +12,13 @@ namespace KeySwitchManager.Apps.CLI
             Parser.Default.ParseArguments
                    <
                        Export.CommandOption,
-                       Import.CommandOption
+                       Import.CommandOption,
+                       Delete.CommandOption
                    >( args )
                   .MapResult(
                        ( Export.CommandOption option ) => new Export().Execute( option ),
                        ( Import.CommandOption option ) => new Import().Execute( option ),
+                       ( Delete.CommandOption option ) => new Delete().Execute( option ),
                        errors => 1
                    );
     }
