@@ -1,3 +1,4 @@
+using System;
 using System.IO;
 using System.Text;
 
@@ -14,7 +15,7 @@ namespace KeySwitchManager.Apps.CLI.Commands
 {
     public class Export : ICommand
     {
-        [Verb( "export", false, HelpText = "aaaaaa")]
+        [Verb( "export", false, HelpText = "export to generic json format")]
         public class CommandOption : ICommandOption
         {
             [Option( 'd', "developer", Required = true)]
@@ -39,22 +40,24 @@ namespace KeySwitchManager.Apps.CLI.Commands
 
             var repository = new LiteDbKeySwitchRepository( option.DatabasePath );
             var translator = new KeySwitchListListToJsonModelList{ Formatted = true };
-            var presenter = new IExportingTextPresenter.Console();
+            var presenter = new IExportingTextPresenter.Null();
             var interactor = new ExportingJsonInteractor( repository, translator, presenter );
 
             var input = new ExportingTextRequest( option.Developer, option.Product, option.Instrument );
+
+            Console.WriteLine( $"Developer=\"{option.Developer}\", Product=\"{option.Product}\", Instrument=\"{option.Instrument}\"" );
 
             var response = interactor.Execute( input );
 
             if( response.Count > 0 )
             {
                 File.WriteAllText( option.OutputPath, response.Text.Value, Encoding.UTF8 );
-                System.Console.WriteLine( $"{response.Count} records exported to {option.OutputPath}" );
+                Console.WriteLine( $"{response.Count} records exported to {option.OutputPath}" );
 
                 return 0;
             }
 
-            System.Console.WriteLine( "records not found" );
+            Console.WriteLine( "records not found" );
             return 0;
         }
     }
