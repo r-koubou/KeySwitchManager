@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <!-- Assembly / Common -->
+        <OutputType>Exe</OutputType>
+        <TargetFramework>netcoreapp3.1</TargetFramework>
+        <AssemblyName>KeySwitchManager.App.Application.CLI</AssemblyName>
+        <RootNamespace>KeySwitchManager.App.Application.CLI</RootNamespace>
+        <Company>R-Koubou</Company>
+        <Product>KeySwitchManager.App.Application.CLI</Product>
+        <Version>0.1.0-alpha</Version>
+        <Description>KeySwitchManager.App.Application.CLI app</Description>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+</Project>
