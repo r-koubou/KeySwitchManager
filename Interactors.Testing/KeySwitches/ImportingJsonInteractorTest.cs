@@ -26,8 +26,7 @@ namespace KeySwitchManager.Interactors.Testing.KeySwitches
             var translator = new JsonModelListToKeySwitchList();
             var interactor = new ImportingJsonInteractor(
                 dbRepository,
-                new IImportingTextPresenter.Console(),
-                translator
+                translator, new IImportingTextPresenter.Console()
             );
 
             interactor.Execute( inputData );

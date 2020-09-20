@@ -8,13 +8,13 @@ namespace KeySwitchManager.Interactors.KeySwitches.Importing.Text
     public class ImportingJsonInteractor : IImportingTextUseCase
     {
         private IKeySwitchRepository Repository { get; }
-        private IImportingTextPresenter Presenter { get; }
         private IJsonListToKeySwitchList Translator { get; }
+        private IImportingTextPresenter Presenter { get; }
 
         public ImportingJsonInteractor(
             IKeySwitchRepository repository,
-            IImportingTextPresenter presenter,
-            IJsonListToKeySwitchList translator )
+            IJsonListToKeySwitchList translator,
+            IImportingTextPresenter presenter )
         {
             Repository = repository;
             Presenter  = presenter;

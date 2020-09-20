@@ -9,6 +9,10 @@ namespace KeySwitchManager.UseCases.KeySwitches.Exporting
         public string ProductName { get; }
         public string InstrumentName { get; }
 
+        public ExportingTextRequest()
+            : this( default, "", "", "")
+        {}
+
         public ExportingTextRequest(
             string developerName = "",
             string productName = "",

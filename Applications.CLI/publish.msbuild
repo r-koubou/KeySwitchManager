@@ -1,0 +1,97 @@
+<Project>
+
+    <PropertyGroup>
+        <ProjectName>KeySwitchManager.CLI</ProjectName>
+        <ProjectFile>Applications.CLI.csproj</ProjectFile>
+        <BuildDate>$([System.DateTime]::Now.ToString("yyyyMMdd"))</BuildDate>
+        <OtherDeployingFiles>
+            ../NOTICE.md;
+            README.md;
+            VERSION.md
+        </OtherDeployingFiles>
+    </PropertyGroup>
+
+    <Import Project="GenerateDotnetVersionLaunchShellScript.msbuild.proj" />
+
+    <Target Name="Initialize">
+        <!-- Build for Specific OS native code -->
+        <PropertyGroup Condition="$(RID) != ''">
+            <Prefix>$(ProjectName)-$(RID)</Prefix>
+            <ForDotNetCore>false</ForDotNetCore>
+        </PropertyGroup>
+        <!-- Build for .net Core code -->
+        <PropertyGroup Condition="$(RID) == ''">
+            <Prefix>$(ProjectName)-dotnet</Prefix>
+            <ForDotNetCore>true</ForDotNetCore>
+        </PropertyGroup>
+
+        <PropertyGroup>
+            <PublishDir>publish/$(Prefix)</PublishDir>
+        </PropertyGroup>
+
+        <!--#region Value check -->
+        <Error
+                Condition="$(Configuration) == ''"
+                Text="Property: `Configuration` is not set."/>
+        <Error
+                Condition="$(ProjectName) == ''"
+                Text="Property: `ProjectName` is not set."/>
+        <Error
+                Condition="$(ProjectFile) == ''"
+                Text="Property: `ProjectFile` is not set."/>
+        <Error
+                Condition="$(PublishDir) == ''"
+                Text="Property: `PublishDir` is not set."/>
+        <!--#endregion-->
+
+    </Target>
+
+    <Target Name="Build" DependsOnTargets="Initialize">
+
+        <!-- Build for Specific OS native code -->
+        <PropertyGroup Condition="$(ForDotNetCore) == 'false'">
+            <ProprtyArgs>
+                PublishDir=$(PublishDir);Configuration=$(Configuration);SelfContained=true;RuntimeIdentifier=$(RID)
+            </ProprtyArgs>
+        </PropertyGroup>
+        <!-- Build for .net Core code -->
+        <PropertyGroup Condition="$(ForDotNetCore) == 'true'">
+            <ProprtyArgs>
+                PublishDir=$(PublishDir);Configuration=$(Configuration)
+            </ProprtyArgs>
+        </PropertyGroup>
+
+        <MSBuild
+                Projects="$(ProjectFile)"
+                Targets="restore;publish"
+                Properties="$(ProprtyArgs)"/>
+
+    </Target>
+
+    <Target Name="GenerateDotnetLauncer" Condition="$(ForDotNetCore) == 'true'">
+        <WriteLinesToFile
+                File="$(PublishDir)/$(ProjectName).sh"
+                Overwrite="true"
+                Lines="$(BashLauncherText)"/>
+
+        <WriteLinesToFile
+                File="$(PublishDir)/$(ProjectName).bat"
+                Overwrite="true"
+                Lines="$(DosLauncherText)"/>
+    </Target>
+
+    <Target Name="Archive" DependsOnTargets="Build;GenerateDotnetLauncer">
+
+        <Copy
+                SourceFiles="$(OtherDeployingFiles)"
+                DestinationFolder="$(PublishDir)" />
+
+        <ZipDirectory
+                SourceDirectory="$(PublishDir)"
+                DestinationFile="Publish/$(Prefix)-$(BuildDate).zip"
+                Overwrite="true" />
+        <RemoveDir
+                Directories="$(PublishDir)/"/>
+    </Target>
+
+</Project>

@@ -18,7 +18,7 @@ def generate( project_type, project_name ):
         template = f.read()
 
     if project_type == PROJECT_TYPE_CLI:
-        new_text = template.replace( PROJECTNAME_PATTERN, PROJECT_NAME_PREFIX + 'App.'+ project_name )
+        new_text = template.replace( PROJECTNAME_PATTERN, PROJECT_NAME_PREFIX + 'Apps.'+ project_name )
     else:
         new_text = template.replace( PROJECTNAME_PATTERN, PROJECT_NAME_PREFIX + project_name )
 

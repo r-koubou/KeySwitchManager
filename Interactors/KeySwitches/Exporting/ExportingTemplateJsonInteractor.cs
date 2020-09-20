@@ -17,9 +17,13 @@ namespace KeySwitchManager.Interactors.KeySwitches.Exporting
         private IKeySwitchListToJsonListText Translator { get; }
         private IExportingTextPresenter Presenter { get; }
 
+        public ExportingTemplateJsonInteractor( IKeySwitchListToJsonListText translator )
+            : this( translator, new IExportingTextPresenter.Null() )
+        {}
+
         public ExportingTemplateJsonInteractor(
-            IExportingTextPresenter presenter,
-            IKeySwitchListToJsonListText translator )
+            IKeySwitchListToJsonListText translator,
+            IExportingTextPresenter presenter )
         {
             Presenter  = presenter;
             Translator = translator;
