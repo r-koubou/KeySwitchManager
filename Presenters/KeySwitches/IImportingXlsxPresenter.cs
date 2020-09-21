@@ -1,8 +1,8 @@
-using KeySwitchManager.UseCases.KeySwitches.Importing.Text;
+using KeySwitchManager.UseCases.KeySwitches.Importing.Xlsx;
 
 namespace KeySwitchManager.Presenters.KeySwitches
 {
-    public interface IImportingXlsxPresenter : IPresenter<ImportingTextResponse>
+    public interface IImportingXlsxPresenter : IPresenter<ImportingXlsxRequest>
     {
         public class Null : IImportingXlsxPresenter
         {}

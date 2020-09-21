@@ -9,6 +9,7 @@ namespace KeySwitchManager.Apps.CLI
         public static int Main( string[] args ) =>
             Parser.Default.ParseArguments
                    <
+                       Search.CommandOption,
                        Export.CommandOption,
                        Import.CommandOption,
                        Delete.CommandOption,
@@ -17,6 +18,7 @@ namespace KeySwitchManager.Apps.CLI
                        ImportXlsx.CommandOption
                    >( args )
                   .MapResult(
+                       ( Search.CommandOption option ) => new Search().Execute( option ),
                        ( Export.CommandOption option ) => new Export().Execute( option ),
                        ( Import.CommandOption option ) => new Import().Execute( option ),
                        ( Delete.CommandOption option ) => new Delete().Execute( option ),
