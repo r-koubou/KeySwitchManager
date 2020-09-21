@@ -7,5 +7,10 @@ using KeySwitchManager.Domain.Translations;
 namespace KeySwitchManager.UseCases.KeySwitches.Translations
 {
     public interface IXlsxWorkbookToKeySwitchList : IDataTranslator<FilePath, IEnumerable<KeySwitch>>
-    {}
+    {
+        public string DeveloperName { get; }
+        public string ProductName { get; }
+        public string Author { get; }
+        public string Description { get; }
+    }
 }

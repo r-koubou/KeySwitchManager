@@ -19,7 +19,6 @@ namespace KeySwitchManager.Xlsx.KeySwitches.Translators
     {
         public string DeveloperName { get; }
         public string ProductName { get; }
-
         public string Author { get; }
         public string Description { get; }
 

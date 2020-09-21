@@ -1,29 +1,30 @@
 using KeySwitchManager.Gateways.KeySwitches;
 using KeySwitchManager.Presenters.KeySwitches;
 using KeySwitchManager.UseCases.KeySwitches.Importing.Text;
+using KeySwitchManager.UseCases.KeySwitches.Importing.Xlsx;
 using KeySwitchManager.UseCases.KeySwitches.Translations;
 
-namespace KeySwitchManager.Interactors.KeySwitches.Importing.Text
+namespace KeySwitchManager.Interactors.KeySwitches.Importing.Xlsx
 {
-    public class ImportingJsonInteractor : IImportingTextUseCase
+    public class ImportingXlsxInteractor : IImportingXlsxUseCase
     {
         private IKeySwitchRepository Repository { get; }
-        private IJsonListToKeySwitchList Translator { get; }
-        private IImportingTextPresenter Presenter { get; }
+        private IXlsxWorkbookToKeySwitchList Translator { get; }
+        private IImportingXlsxPresenter Presenter { get; }
 
-        public ImportingJsonInteractor(
+        public ImportingXlsxInteractor(
             IKeySwitchRepository repository,
-            IJsonListToKeySwitchList translator,
-            IImportingTextPresenter presenter )
+            IXlsxWorkbookToKeySwitchList translator,
+            IImportingXlsxPresenter presenter )
         {
             Repository = repository;
             Presenter  = presenter;
             Translator = translator;
         }
 
-        public ImportingTextResponse Execute( ImportingTextRequest request )
+        public ImportingXlsxResponse Execute( ImportingXlsxRequest request )
         {
-            var keySwitches = Translator.Translate( request.JsonText );
+            var keySwitches = Translator.Translate( request.FilePath );
             var updatedCount = 0;
 
             foreach( var i in keySwitches )
@@ -33,7 +34,7 @@ namespace KeySwitchManager.Interactors.KeySwitches.Importing.Text
 
             Presenter.Present( $"{updatedCount} record(s) updated" );
 
-            return new ImportingTextResponse( updatedCount );
+            return new ImportingXlsxResponse( updatedCount );
         }
     }
 }
