@@ -20,13 +20,13 @@ namespace Databases.LiteDB.KeySwitches.KeySwitches.Translations
 
             foreach( var i in source.Articulations )
             {
-                var noteOn = new List<IMessage>();
-                var controlChange = new List<IMessage>();
-                var programChange = new List<IMessage>();
+                var noteOn = new List<IMidiMessage>();
+                var controlChange = new List<IMidiMessage>();
+                var programChange = new List<IMidiMessage>();
 
-                ConvertMessageList( i.NoteOn,        noteOn,        INoteOnFactory.Default );
-                ConvertMessageList( i.ControlChange, controlChange, IControlChangeFactory.Default );
-                ConvertMessageList( i.ProgramChange, programChange, IProgramChangeFactory.Default );
+                ConvertMessageList( i.NoteOn,        noteOn,        IMidiNoteOnFactory.Default );
+                ConvertMessageList( i.ControlChange, controlChange, IMidiControlChangeFactory.Default );
+                ConvertMessageList( i.ProgramChange, programChange, IMidiProgramChangeFactory.Default );
 
                 var articulation = IArticulationFactory.Default.Create(
                     i.ArticulationName,
@@ -57,7 +57,7 @@ namespace Databases.LiteDB.KeySwitches.KeySwitches.Translations
 
         private static void ConvertMessageList(
             IEnumerable<MidiMessageModel> src,
-            ICollection<IMessage> dest,
+            ICollection<IMidiMessage> dest,
             IMidiMessageFactory messageFactory )
         {
             foreach( var i in src )

@@ -8,30 +8,30 @@ namespace KeySwitchManager.Domain.MidiMessages.Aggregate
     /// MIDI event aggregation that makes up the sound slot.
     /// Status bytes are not defined because they are not used.
     /// </summary>
-    public interface IMessage : IEquatable<IMessage>
+    public interface IMidiMessage : IEquatable<IMidiMessage>
     {
         /// <summary>
         /// MIDI status code
         /// </summary>
-        public IMessageData Status { get; }
+        public IMidiMessageData Status { get; }
 
         /// <summary>
         /// MIDI channel code which is included status byte.
         /// Set to Zero if message has no channel data.
         /// </summary>
-        public IMessageData Channel { get; }
+        public IMidiMessageData Channel { get; }
 
         /// <summary>
         /// MIDI event: 1st data byte
         /// </summary>
 
-        public IMessageData DataByte1 { get; }
+        public IMidiMessageData DataByte1 { get; }
         /// <summary>
         /// MIDI event: 2nd data byte
         /// </summary>
-        public IMessageData DataByte2 { get; }
+        public IMidiMessageData DataByte2 { get; }
 
-        bool IEquatable<IMessage>.Equals( IMessage? other )
+        bool IEquatable<IMidiMessage>.Equals( IMidiMessage? other )
         {
             return other != null &&
                    Status.Value == other.Status.Value &&

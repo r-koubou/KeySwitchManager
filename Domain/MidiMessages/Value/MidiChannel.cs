@@ -1,6 +1,6 @@
 namespace KeySwitchManager.Domain.MidiMessages.Value
 {
-    public class MidiChannel : MessageData
+    public class MidiChannel : MidiMessageData
     {
         public const int MinValue = 0x00;
         public const int MaxValue = 0x0F;

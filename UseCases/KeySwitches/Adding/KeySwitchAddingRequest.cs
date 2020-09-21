@@ -16,9 +16,9 @@ namespace KeySwitchManager.UseCases.KeySwitches.Adding
         public ArticulationType ArticulationType { get; }
         public int ArticulationGroup { get; }
         public int ArticulationColor { get; }
-        public IEnumerable<NoteOn> MidiNoteOns { get; }
-        public IEnumerable<ControlChange> MidiControlChanges { get; }
-        public IEnumerable<ProgramChange> MidiProgramChanges { get; }
+        public IEnumerable<MidiNoteOn> MidiNoteOns { get; }
+        public IEnumerable<MidiControlChange> MidiControlChanges { get; }
+        public IEnumerable<MidiProgramChange> MidiProgramChanges { get; }
 
         public KeySwitchAddingRequest(
             string author,
@@ -30,9 +30,9 @@ namespace KeySwitchManager.UseCases.KeySwitches.Adding
             ArticulationType articulationType,
             int articulationGroup,
             int articulationColor,
-            IEnumerable<NoteOn> midiNoteOns,
-            IEnumerable<ControlChange> midiControlChanges,
-            IEnumerable<ProgramChange> midiProgramChanges )
+            IEnumerable<MidiNoteOn> midiNoteOns,
+            IEnumerable<MidiControlChange> midiControlChanges,
+            IEnumerable<MidiProgramChange> midiProgramChanges )
         {
             Author             = author;
             Description        = description;

@@ -29,9 +29,9 @@ namespace KeySwitchManager.Interactors.Testing.KeySwitches
                 ArticulationType.Direction,
                 0,
                 0,
-                new List<NoteOn>(),
-                new List<ControlChange>(),
-                new List<ProgramChange>()
+                new List<MidiNoteOn>(),
+                new List<MidiControlChange>(),
+                new List<MidiProgramChange>()
             );
 
             var presenter = new IAddingPresenter.Null();

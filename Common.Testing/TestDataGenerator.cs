@@ -69,16 +69,16 @@ namespace KeySwitchManager.Common.Testing
                 articulationType,
                 new ArticulationGroup( articulationGroup ),
                 new ArticulationColor( articulationColor ),
-                new List<NoteOn>(),
-                new List<ControlChange>(),
-                new List<ProgramChange>()
+                new List<MidiNoteOn>(),
+                new List<MidiControlChange>(),
+                new List<MidiProgramChange>()
             );
         }
 
         public static Articulation CreateArticulation(
-            IEnumerable<NoteOn> noteOns,
-            IEnumerable<ControlChange> controlChanges,
-            IEnumerable<ProgramChange> programChanges )
+            IEnumerable<MidiNoteOn> noteOns,
+            IEnumerable<MidiControlChange> controlChanges,
+            IEnumerable<MidiProgramChange> programChanges )
         {
             var now = DateTimeHelper.NowUtc();
 
@@ -87,9 +87,9 @@ namespace KeySwitchManager.Common.Testing
                 ArticulationType.Default,
                 new ArticulationGroup( 0 ),
                 new ArticulationColor( 0 ),
-                new List<NoteOn>( noteOns ),
-                new List<ControlChange>( controlChanges ),
-                new List<ProgramChange>( programChanges )
+                new List<MidiNoteOn>( noteOns ),
+                new List<MidiControlChange>( controlChanges ),
+                new List<MidiProgramChange>( programChanges )
             );
         }
         #endregion

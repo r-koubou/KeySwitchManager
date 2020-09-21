@@ -23,7 +23,7 @@ namespace KeySwitchManager.Json.KeySwitches.Translations
         }
 
         private static void ConvertMessageList(
-            IEnumerable<IMessage> src,
+            IEnumerable<IMidiMessage> src,
             ICollection<MidiMessageModel> dest )
         {
             foreach( var i in src )

@@ -33,13 +33,13 @@ namespace KeySwitchManager.Json.KeySwitches.Services
 
             foreach( var i in source.Articulations )
             {
-                List<IMessage> noteOn = new List<IMessage>();
-                List<IMessage> controlChange = new List<IMessage>();
-                List<IMessage> programChange = new List<IMessage>();
+                List<IMidiMessage> noteOn = new List<IMidiMessage>();
+                List<IMidiMessage> controlChange = new List<IMidiMessage>();
+                List<IMidiMessage> programChange = new List<IMidiMessage>();
 
-                ConvertMessageList( i.MidiMessage.NoteOn,        noteOn,        INoteOnFactory.Default );
-                ConvertMessageList( i.MidiMessage.ControlChange, controlChange, IControlChangeFactory.Default );
-                ConvertMessageList( i.MidiMessage.ProgramChange, programChange, IProgramChangeFactory.Default );
+                ConvertMessageList( i.MidiMessage.NoteOn,        noteOn,        IMidiNoteOnFactory.Default );
+                ConvertMessageList( i.MidiMessage.ControlChange, controlChange, IMidiControlChangeFactory.Default );
+                ConvertMessageList( i.MidiMessage.ProgramChange, programChange, IMidiProgramChangeFactory.Default );
 
                 var articulation = IArticulationFactory.Default.Create(
                     i.Name,
@@ -59,7 +59,7 @@ namespace KeySwitchManager.Json.KeySwitches.Services
 
         private static void ConvertMessageList(
             IEnumerable<MidiMessageModel> src,
-            List<IMessage> dest,
+            List<IMidiMessage> dest,
             IMidiMessageFactory messageFactory )
         {
             foreach( var i in src )

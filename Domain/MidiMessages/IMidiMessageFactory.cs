@@ -4,6 +4,6 @@ namespace KeySwitchManager.Domain.MidiMessages
 {
     public interface IMidiMessageFactory
     {
-        public IMessage Create( int status, int channel, int data1, int data2 );
+        public IMidiMessage Create( int status, int channel, int data1, int data2 );
     }
 }

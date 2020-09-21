@@ -3,7 +3,7 @@ namespace KeySwitchManager.Domain.MidiMessages.Value
     /// <summary>
     /// An interface for MIDI Event data byte
     /// </summary>
-    public interface IMessageData
+    public interface IMidiMessageData
     {
         /// <summary>
         /// MIDI event data values presented as integer values.

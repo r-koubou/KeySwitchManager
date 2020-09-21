@@ -4,25 +4,25 @@ using KeySwitchManager.Common.Utilities;
 
 namespace KeySwitchManager.Domain.MidiMessages.Value
 {
-    public abstract class MessageData
-        : IMessageData,
-          IEquatable<MessageData>,
-          IComparable<MessageData>
+    public abstract class MidiMessageData
+        : IMidiMessageData,
+          IEquatable<MidiMessageData>,
+          IComparable<MidiMessageData>
     {
         public int Value { get; }
 
-        protected MessageData( int value, int min, int max )
+        protected MidiMessageData( int value, int min, int max )
         {
             RangeValidateHelper.ValidateRange( value, min, max );
             Value = value;
         }
 
-        public bool Equals( MessageData? other )
+        public bool Equals( MidiMessageData? other )
         {
             return other != null && other.Value == Value;
         }
 
-        public int CompareTo( MessageData? other )
+        public int CompareTo( MidiMessageData? other )
         {
             if( other == null )
             {

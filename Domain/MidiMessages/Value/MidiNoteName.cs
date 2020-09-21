@@ -405,9 +405,9 @@ namespace KeySwitchManager.Domain.MidiMessages.Value
 
         public string Value { get; }
 
-        public static MidiNoteName FromMidiNoteNumber( NoteNumber noteNumber )
+        public static MidiNoteName FromMidiNoteNumber( MidiNoteNumber midiNoteNumber )
         {
-            return new MidiNoteName( NoteNameList[ noteNumber.Value ] );
+            return new MidiNoteName( NoteNameList[ midiNoteNumber.Value ] );
         }
 
         public MidiNoteName( string noteName )
@@ -425,17 +425,17 @@ namespace KeySwitchManager.Domain.MidiMessages.Value
                 throw new InvalidNameException( nameof( noteName ) );
             }
 
-            RangeValidateHelper.ValidateRange( number, NoteNumber.MinValue, NoteNumber.MaxValue );
+            RangeValidateHelper.ValidateRange( number, MidiNoteNumber.MinValue, MidiNoteNumber.MaxValue );
             Value = NoteNameList[ number ];
         }
 
-        public NoteNumber ToMidiNoteNumber()
+        public MidiNoteNumber ToMidiNoteNumber()
         {
             var number =
                 NoteNameList.Select( ( n, i ) => new { name = n, index = i } )
                             .Where( obj => obj.name == Value );
 
-            return new NoteNumber( number.First().index );
+            return new MidiNoteNumber( number.First().index );
         }
 
         public bool Equals( MidiNoteName? other )

@@ -47,9 +47,9 @@ namespace KeySwitchManager.Interactors.KeySwitches.Exporting
                         ArticulationType.Default,
                         0,
                         0,
-                        new List<IMessage>{ INoteOnFactory.Default.Create( 0, 100 )},
-                        new List<IMessage>{ IControlChangeFactory.Default.Create( 1, 100 )},
-                        new List<IMessage>{ IProgramChangeFactory.Default.Create( 2, 34 )}
+                        new List<IMidiMessage>{ IMidiNoteOnFactory.Default.Create( 0, 100 )},
+                        new List<IMidiMessage>{ IMidiControlChangeFactory.Default.Create( 1, 100 )},
+                        new List<IMidiMessage>{ IMidiProgramChangeFactory.Default.Create( 2, 34 )}
                         )
                 }
             );

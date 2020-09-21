@@ -84,10 +84,10 @@ namespace KeySwitchManager.Xlsx.KeySwitches.Translators
             );
         }
 
-        private IEnumerable<NoteOn> TranslateMidiNoteMapping( Row row )
+        private IEnumerable<MidiNoteOn> TranslateMidiNoteMapping( Row row )
         {
-            var result = new List<NoteOn>();
-            var factory = INoteOnFactory.Default;
+            var result = new List<MidiNoteOn>();
+            var factory = IMidiNoteOnFactory.Default;
 
             foreach( var midiNote in row.MidiNoteList )
             {
@@ -100,10 +100,10 @@ namespace KeySwitchManager.Xlsx.KeySwitches.Translators
             return result;
         }
 
-        private IEnumerable<ControlChange> TranslateMidiControlChangeMapping( Row row )
+        private IEnumerable<MidiControlChange> TranslateMidiControlChangeMapping( Row row )
         {
-            var result = new List<ControlChange>();
-            var factory = IControlChangeFactory.Default;
+            var result = new List<MidiControlChange>();
+            var factory = IMidiControlChangeFactory.Default;
 
             foreach( var cc in row.MidiControlChangeList )
             {
@@ -118,10 +118,10 @@ namespace KeySwitchManager.Xlsx.KeySwitches.Translators
             return result;
         }
 
-        private IEnumerable<ProgramChange> TranslateMidiProgramChangeMapping( Row row )
+        private IEnumerable<MidiProgramChange> TranslateMidiProgramChangeMapping( Row row )
         {
-            var result = new List<ProgramChange>();
-            var factory = IProgramChangeFactory.Default;
+            var result = new List<MidiProgramChange>();
+            var factory = IMidiProgramChangeFactory.Default;
 
             foreach( var pc in row.MidiProgramChangeList )
             {
