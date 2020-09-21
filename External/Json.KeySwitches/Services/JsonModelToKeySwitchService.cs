@@ -14,7 +14,7 @@ namespace KeySwitchManager.Json.KeySwitches.Services
         {
             var articulations = TranslateImpl( model );
 
-            return new IKeySwitchFactory.Default().Create(
+            return IKeySwitchFactory.Default.Create(
                 model.Id,
                 model.Author,
                 model.Description,
@@ -37,11 +37,11 @@ namespace KeySwitchManager.Json.KeySwitches.Services
                 List<IMessage> controlChange = new List<IMessage>();
                 List<IMessage> programChange = new List<IMessage>();
 
-                ConvertMessageList( i.MidiMessage.NoteOn,        noteOn,        new INoteOnFactory.Default() );
-                ConvertMessageList( i.MidiMessage.ControlChange, controlChange, new IControlChangeFactory.Default() );
-                ConvertMessageList( i.MidiMessage.ProgramChange, programChange, new IProgramChangeFactory.Default() );
+                ConvertMessageList( i.MidiMessage.NoteOn,        noteOn,        INoteOnFactory.Default );
+                ConvertMessageList( i.MidiMessage.ControlChange, controlChange, IControlChangeFactory.Default );
+                ConvertMessageList( i.MidiMessage.ProgramChange, programChange, IProgramChangeFactory.Default );
 
-                var articulation = new IArticulationFactory.Default().Create(
+                var articulation = IArticulationFactory.Default.Create(
                     i.Name,
                     i.Type,
                     i.Group,

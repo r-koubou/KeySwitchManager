@@ -31,7 +31,7 @@ namespace KeySwitchManager.Interactors.KeySwitches.Exporting
 
         public ExportingTemplateAsTextResponse Execute()
         {
-            var entity = new IKeySwitchFactory.Default().Create(
+            var entity = IKeySwitchFactory.Default.Create(
                 Guid.NewGuid(),
                 "Author",
                 "Description",
@@ -42,14 +42,14 @@ namespace KeySwitchManager.Interactors.KeySwitches.Exporting
                 "Instrument name",
                 new List<Articulation>
                 {
-                    new IArticulationFactory.Default().Create(
+                    IArticulationFactory.Default.Create(
                         "name",
                         ArticulationType.Default,
                         0,
                         0,
-                        new List<IMessage>{ new INoteOnFactory.Default().Create( 0, 100 )},
-                        new List<IMessage>{ new IControlChangeFactory.Default().Create( 1, 100 )},
-                        new List<IMessage>{ new IProgramChangeFactory.Default().Create( 2, 34 )}
+                        new List<IMessage>{ INoteOnFactory.Default.Create( 0, 100 )},
+                        new List<IMessage>{ IControlChangeFactory.Default.Create( 1, 100 )},
+                        new List<IMessage>{ IProgramChangeFactory.Default.Create( 2, 34 )}
                         )
                 }
             );

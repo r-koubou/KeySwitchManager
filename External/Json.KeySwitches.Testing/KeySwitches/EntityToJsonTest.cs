@@ -16,9 +16,9 @@ namespace Json.KeySwitches.Testing.KeySwitches
         [Test]
         public void ConvertToJsonTest()
         {
-            var midiNoteFactory = new INoteOnFactory.Default();
-            var midiCcFactory = new IControlChangeFactory.Default();
-            var midiPcFactory = new IProgramChangeFactory.Default();
+            var midiNoteFactory = INoteOnFactory.Default;
+            var midiCcFactory = IControlChangeFactory.Default;
+            var midiPcFactory = IProgramChangeFactory.Default;
 
             var articulation = TestDataGenerator.CreateArticulation(
                 new List<NoteOn> { midiNoteFactory.Create( 1, 23 ) },

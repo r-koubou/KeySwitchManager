@@ -7,7 +7,9 @@ namespace KeySwitchManager.Domain.MidiMessages
     {
         public GenericMessage Create( int status, int data1, int data2 );
 
-        public class Default : IGenericMessageFactory
+        public static IGenericMessageFactory Default => new DefaultFactory();
+
+        private class DefaultFactory : IGenericMessageFactory
         {
             public IMessage Create( int status, int channel, int data1, int data2 )
             {

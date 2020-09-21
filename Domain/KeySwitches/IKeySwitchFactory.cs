@@ -21,7 +21,9 @@ namespace KeySwitchManager.Domain.KeySwitches
             string instrumentName,
             IEnumerable<Articulation> articulations );
 
-        public class Default : IKeySwitchFactory
+        public static IKeySwitchFactory Default => new DefaultFactory();
+
+        private class DefaultFactory : IKeySwitchFactory
         {
             public KeySwitch Create(
                 Guid id,

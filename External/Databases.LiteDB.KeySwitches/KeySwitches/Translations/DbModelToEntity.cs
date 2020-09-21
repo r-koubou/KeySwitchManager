@@ -24,11 +24,11 @@ namespace Databases.LiteDB.KeySwitches.KeySwitches.Translations
                 var controlChange = new List<IMessage>();
                 var programChange = new List<IMessage>();
 
-                ConvertMessageList( i.NoteOn,        noteOn,        new INoteOnFactory.Default() );
-                ConvertMessageList( i.ControlChange, controlChange, new IControlChangeFactory.Default() );
-                ConvertMessageList( i.ProgramChange, programChange, new IProgramChangeFactory.Default() );
+                ConvertMessageList( i.NoteOn,        noteOn,        INoteOnFactory.Default );
+                ConvertMessageList( i.ControlChange, controlChange, IControlChangeFactory.Default );
+                ConvertMessageList( i.ProgramChange, programChange, IProgramChangeFactory.Default );
 
-                var articulation = new IArticulationFactory.Default().Create(
+                var articulation = IArticulationFactory.Default.Create(
                     i.ArticulationName,
                     EnumHelper.Parse<ArticulationType>( i.ArticulationType ),
                     i.ArticulationGroup,
@@ -41,7 +41,7 @@ namespace Databases.LiteDB.KeySwitches.KeySwitches.Translations
                 articulations.Add( articulation );
             }
 
-            return new IKeySwitchFactory.Default().Create(
+            return IKeySwitchFactory.Default.Create(
                 source.Id,
                 source.Author,
                 source.Description,

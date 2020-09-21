@@ -8,9 +8,9 @@ namespace KeySwitchManager.Domain.MidiMessages
         public ProgramChange Create( int pcNumber );
         public ProgramChange Create( int channel, int pcNumber );
 
-        public static IProgramChangeFactory DefaultFactory => new Default();
+        public static IProgramChangeFactory Default => new DefaultFactory();
 
-        public class Default : IProgramChangeFactory
+        private class DefaultFactory : IProgramChangeFactory
         {
             public IMessage Create( int status, int channel, int data1, int data2 )
             {

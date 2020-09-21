@@ -8,7 +8,9 @@ namespace KeySwitchManager.Domain.MidiMessages
         public NoteOn Create( int noteNumber, int velocity );
         public NoteOn Create( int channel, int noteNumber, int velocity );
 
-        public class Default : INoteOnFactory
+        public static INoteOnFactory Default => new DefaultFactory();
+
+        private class DefaultFactory : INoteOnFactory
         {
             public IMessage Create( int status, int channel, int data1, int data2 )
             {

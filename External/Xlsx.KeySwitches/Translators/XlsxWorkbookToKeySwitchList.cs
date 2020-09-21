@@ -58,7 +58,7 @@ namespace KeySwitchManager.Xlsx.KeySwitches.Translators
                 articulations.Add( TranslateArticulation( row ) );
             }
 
-            return new IKeySwitchFactory.Default().Create(
+            return IKeySwitchFactory.Default.Create(
                 Guid.NewGuid(),
                 Author,
                 Description,
@@ -73,7 +73,7 @@ namespace KeySwitchManager.Xlsx.KeySwitches.Translators
 
         private Articulation TranslateArticulation( Row row )
         {
-            return new IArticulationFactory.Default().Create(
+            return IArticulationFactory.Default.Create(
                 row.ArticulationName.Value,
                 EnumHelper.Parse<ArticulationType>( row.ArticulationType.Value ),
                 row.GroupIndex.Value,
@@ -87,7 +87,7 @@ namespace KeySwitchManager.Xlsx.KeySwitches.Translators
         private IEnumerable<NoteOn> TranslateMidiNoteMapping( Row row )
         {
             var result = new List<NoteOn>();
-            var factory = new INoteOnFactory.Default();
+            var factory = INoteOnFactory.Default;
 
             foreach( var midiNote in row.MidiNoteList )
             {
@@ -103,7 +103,7 @@ namespace KeySwitchManager.Xlsx.KeySwitches.Translators
         private IEnumerable<ControlChange> TranslateMidiControlChangeMapping( Row row )
         {
             var result = new List<ControlChange>();
-            var factory = IControlChangeFactory.DefaultFactory;
+            var factory = IControlChangeFactory.Default;
 
             foreach( var cc in row.MidiControlChangeList )
             {
@@ -121,7 +121,7 @@ namespace KeySwitchManager.Xlsx.KeySwitches.Translators
         private IEnumerable<ProgramChange> TranslateMidiProgramChangeMapping( Row row )
         {
             var result = new List<ProgramChange>();
-            var factory = IProgramChangeFactory.DefaultFactory;
+            var factory = IProgramChangeFactory.Default;
 
             foreach( var pc in row.MidiProgramChangeList )
             {

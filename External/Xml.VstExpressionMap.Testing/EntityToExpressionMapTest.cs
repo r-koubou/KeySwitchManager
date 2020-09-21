@@ -19,7 +19,7 @@ namespace KeySwitchManager.Xml.VstExpressionMap.Testing
             var articulation = TestDataGenerator.CreateArticulation(
                 new List<NoteOn>
                 {
-                    new INoteOnFactory.Default().Create( 0, 10, 20 )
+                    INoteOnFactory.Default.Create( 0, 10, 20 )
                 },
                 new List<ControlChange>{},
                 new List<ProgramChange>{}

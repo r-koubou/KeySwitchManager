@@ -23,7 +23,9 @@ namespace KeySwitchManager.Domain.KeySwitches
             IEnumerable<IMessage> midiControlChanges,
             IEnumerable<IMessage> midiProgramChanges );
 
-        public class Default : IArticulationFactory
+        public static IArticulationFactory Default => new DefaultFactory();
+
+        private class DefaultFactory : IArticulationFactory
         {
             public Articulation Create(
                 string articulationName,
