@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
+using KeySwitchManager.Common.Utilities;
 using KeySwitchManager.Domain.Commons;
 using KeySwitchManager.Domain.KeySwitches.Aggregate;
 using KeySwitchManager.Domain.KeySwitches.Value;
@@ -35,6 +36,10 @@ namespace KeySwitchManager.Interactors.KeySwitches.Exporting
 
         public ExportingTextResponse Execute( ExportingTextRequest request )
         {
+            var developerName = request.DeveloperName;
+            var productName = request.ProductName;
+            var instrumentName = request.InstrumentName;
+
             #region By Guid
             if( request.Guid != default )
             {
@@ -44,9 +49,7 @@ namespace KeySwitchManager.Interactors.KeySwitches.Exporting
             #endregion
 
             #region By Developer, Product, Instrument
-            if( !string.IsNullOrEmpty( request.DeveloperName ) &&
-                !string.IsNullOrEmpty( request.ProductName ) &&
-                !string.IsNullOrEmpty( request.InstrumentName ) )
+            if( !StringHelper.IsNullOrTrimEmpty( developerName, productName, instrumentName ) )
             {
                 var keySwitches = Repository.Find(
                     new DeveloperName( request.DeveloperName ),
@@ -59,8 +62,7 @@ namespace KeySwitchManager.Interactors.KeySwitches.Exporting
             #endregion
 
             #region By Developer, Product
-            if( !string.IsNullOrEmpty( request.DeveloperName ) &&
-                !string.IsNullOrEmpty( request.ProductName ) )
+            if( !StringHelper.IsNullOrTrimEmpty( developerName, productName ) )
             {
                 var keySwitches = Repository.Find(
                     new DeveloperName( request.DeveloperName ),
@@ -72,7 +74,7 @@ namespace KeySwitchManager.Interactors.KeySwitches.Exporting
             #endregion
 
             #region By Developer
-            if( !string.IsNullOrEmpty( request.DeveloperName ) )
+            if( !StringHelper.IsNullOrTrimEmpty( developerName ) )
             {
                 var keySwitches = Repository.Find(
                     new DeveloperName( request.DeveloperName )

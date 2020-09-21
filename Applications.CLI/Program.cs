@@ -13,7 +13,8 @@ namespace KeySwitchManager.Apps.CLI
                        Import.CommandOption,
                        Delete.CommandOption,
                        Template.CommandOption,
-                       ExportVstExpressionMap.CommandOption
+                       ExportVstExpressionMap.CommandOption,
+                       ImportXlsx.CommandOption
                    >( args )
                   .MapResult(
                        ( Export.CommandOption option ) => new Export().Execute( option ),
@@ -21,6 +22,7 @@ namespace KeySwitchManager.Apps.CLI
                        ( Delete.CommandOption option ) => new Delete().Execute( option ),
                        ( Template.CommandOption option ) => new Template().Execute( option ),
                        ( ExportVstExpressionMap.CommandOption option ) => new ExportVstExpressionMap().Execute( option ),
+                       ( ImportXlsx.CommandOption option ) => new ImportXlsx().Execute( option ),
                        errors => 1
                    );
     }
