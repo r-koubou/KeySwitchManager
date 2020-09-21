@@ -8,6 +8,8 @@ namespace KeySwitchManager.Domain.MidiMessages
         public ControlChange Create( int ccNumber, int ccValue );
         public ControlChange Create( int channel, int ccNumber, int ccValue );
 
+        public static IControlChangeFactory DefaultFactory => new Default();
+
         public class Default : IControlChangeFactory
         {
             public IMessage Create( int status, int channel, int data1, int data2 )
