@@ -1,6 +1,5 @@
 using KeySwitchManager.Gateways.KeySwitches;
 using KeySwitchManager.Presenters.KeySwitches;
-using KeySwitchManager.UseCases.KeySwitches.Importing.Text;
 using KeySwitchManager.UseCases.KeySwitches.Importing.Xlsx;
 using KeySwitchManager.UseCases.KeySwitches.Translations;
 

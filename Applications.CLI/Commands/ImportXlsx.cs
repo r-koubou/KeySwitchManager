@@ -1,15 +1,10 @@
-using System.IO;
-
 using CommandLine;
 
 using Databases.LiteDB.KeySwitches.KeySwitches;
 
 using KeySwitchManager.Domain.Commons;
-using KeySwitchManager.Domain.KeySwitches.Value;
-using KeySwitchManager.Interactors.KeySwitches.Importing.Text;
 using KeySwitchManager.Interactors.KeySwitches.Importing.Xlsx;
 using KeySwitchManager.Presenters.KeySwitches;
-using KeySwitchManager.UseCases.KeySwitches.Importing.Text;
 using KeySwitchManager.UseCases.KeySwitches.Importing.Xlsx;
 using KeySwitchManager.Xlsx.KeySwitches.Translators;
 
@@ -37,7 +32,7 @@ namespace KeySwitchManager.Apps.CLI.Commands
         {
             var option = (CommandOption)opt;
 
-            var repository = new LiteDbKeySwitchRepository( option.DatabasePath );
+            using var repository = new LiteDbKeySwitchRepository( option.DatabasePath );
             var translator = new XlsxWorkbookToKeySwitchList( option.Developer, option.Product );
             var presenter = new IImportingXlsxPresenter.Console();
             var interactor = new ImportingXlsxInteractor( repository, translator, presenter );

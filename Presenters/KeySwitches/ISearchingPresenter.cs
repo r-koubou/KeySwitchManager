@@ -1,4 +1,3 @@
-using KeySwitchManager.UseCases.KeySwitches.Removing;
 using KeySwitchManager.UseCases.KeySwitches.Searching;
 
 namespace KeySwitchManager.Presenters.KeySwitches

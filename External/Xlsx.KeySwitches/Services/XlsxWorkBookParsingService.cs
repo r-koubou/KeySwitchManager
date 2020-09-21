@@ -43,7 +43,8 @@ namespace KeySwitchManager.Xlsx.KeySwitches.Services
             foreach( SourceSheet? s in book )
             {
                 // Ignore sheet
-                if( s.TableName == CommonSheetConstants.DefinitionSheetName ||
+                if( s == null ||
+                    s.TableName == CommonSheetConstants.DefinitionSheetName ||
                     s.TableName.Contains( CommonSheetConstants.IgnoreSheetNameRule ) )
                 {
                     continue;

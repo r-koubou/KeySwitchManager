@@ -33,7 +33,7 @@ namespace KeySwitchManager.Apps.CLI.Commands
         {
             var option = (CommandOption)opt;
 
-            var repository = new LiteDbKeySwitchRepository( option.DatabasePath );
+            using var repository = new LiteDbKeySwitchRepository( option.DatabasePath );
             var translator = new KeySwitchListListToJsonModelList{ Formatted = true };
             var presenter =  new IRemovingPresenter.Null();
             var interactor = new RemovingInteractor( repository, presenter );
