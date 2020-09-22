@@ -8,16 +8,16 @@ using CommandLine;
 using Databases.LiteDB.KeySwitches.KeySwitches;
 
 using KeySwitchManager.Common.IO;
-using KeySwitchManager.Interactors.VstExpressionMap.Exporting;
-using KeySwitchManager.Presenters.VstExpressionMap;
-using KeySwitchManager.UseCases.VstExpressionMap.Exporting;
-using KeySwitchManager.Xml.VstExpressionMap.Translations;
+using KeySwitchManager.Interactors.StudioOneKeySwitch.Exporting;
+using KeySwitchManager.Presenters.StudioOneKeySwitch;
+using KeySwitchManager.UseCases.StudioOneKeySwitch.Exporting;
+using KeySwitchManager.Xml.StudioOne.KeySwitch.Translations;
 
 namespace KeySwitchManager.Apps.CLI.Commands
 {
-    public class ExportVstExpressionMap : ICommand
+    public class ExportStudioOneKeySwitch : ICommand
     {
-        [Verb( "vst-expressionmap", false, HelpText = "export to VST Expression Map format")]
+        [Verb( "studio-one", false, HelpText = "export to Studio One KeySwitch format")]
         public class CommandOption : ICommandOption
         {
             [Option( 'd', "developer", Required = true)]
@@ -41,11 +41,11 @@ namespace KeySwitchManager.Apps.CLI.Commands
             var option = (CommandOption)opt;
 
             using var repository = new LiteDbKeySwitchRepository( option.DatabasePath );
-            var translator = new KeySwitchToVstExpressionMapModel();
-            var presenter = new IExportingVstExpressionMapPresenter.Null();
-            var interactor = new ExportingVstExpressionMapInteractor( repository, translator, presenter );
+            var translator = new KeySwitchToStudioOneKeySwitchModel();
+            var presenter = new IExportingStudioOneKeySwitchPresenter.Null();
+            var interactor = new ExportingStudioOneKeySwitchInteractor( repository, translator, presenter );
 
-            var input = new ExportingVstExpressionMapRequest( option.Developer, option.Product, option.Instrument );
+            var input = new ExportingStudioOneKeySwitchRequest( option.Developer, option.Product, option.Instrument );
 
             Console.WriteLine( $"Developer=\"{option.Developer}\", Product=\"{option.Product}\", Instrument=\"{option.Instrument}\"" );
 
@@ -60,7 +60,7 @@ namespace KeySwitchManager.Apps.CLI.Commands
 
                 foreach( var i in response.Elements )
                 {
-                    var path = Path.Combine( option.OutputDirectory, i.KeySwitch.InstrumentName + ".expressionmap" );
+                    var path = Path.Combine( option.OutputDirectory, i.KeySwitch.InstrumentName + ".keyswitch" );
                     path = PathUtility.GenerateFilePathWhenExist( path, option.OutputDirectory );
 
                     Console.Out.WriteLine( $"export to {path}" );

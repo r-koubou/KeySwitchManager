@@ -21,7 +21,7 @@ namespace KeySwitchManager.Xml.StudioOne.KeySwitch.Translations
             {
                 if( !i.MidiNoteOns.Any() )
                 {
-                    throw new InvalidOperationException( $"MIDI note(s) is not contained in articulation : {i.ArticulationName}" );
+                    continue;
                 }
 
                 var attr = new Attributes
