@@ -8,9 +8,9 @@ namespace Databases.LiteDB.KeySwitches.KeySwitches.Models
         public string ArticulationType { get; set; } = KeySwitchManager.Domain.KeySwitches.Value.ArticulationType.Default.ToString();
         public int ArticulationGroup { get; set; }
         public int ArticulationColor { get; set; }
-        public List<MidiMessageModel> NoteOn { get; set; } = new List<MidiMessageModel>();
-        public List<MidiMessageModel> ControlChange { get; set; } = new List<MidiMessageModel>();
-        public List<MidiMessageModel> ProgramChange { get; set; } = new List<MidiMessageModel>();
+        public IReadOnlyCollection<MidiMessageModel> NoteOn { get; set; } = new List<MidiMessageModel>();
+        public IReadOnlyCollection<MidiMessageModel> ControlChange { get; set; } = new List<MidiMessageModel>();
+        public IReadOnlyCollection<MidiMessageModel> ProgramChange { get; set; } = new List<MidiMessageModel>();
 
         public ArticulationModel()
         {}
@@ -19,16 +19,16 @@ namespace Databases.LiteDB.KeySwitches.KeySwitches.Models
             string articulationName,
             int articulationGroup,
             int articulationColor,
-            IEnumerable<MidiMessageModel> midiNoteOns,
-            IEnumerable<MidiMessageModel> midiControlChanges,
-            IEnumerable<MidiMessageModel> midiProgramChanges )
+            IReadOnlyCollection<MidiMessageModel> midiNoteOns,
+            IReadOnlyCollection<MidiMessageModel> midiControlChanges,
+            IReadOnlyCollection<MidiMessageModel> midiProgramChanges )
         {
             ArticulationName  = articulationName;
             ArticulationGroup = articulationGroup;
             ArticulationColor = articulationColor;
-            NoteOn            = new List<MidiMessageModel>( midiNoteOns );
-            ControlChange     = new List<MidiMessageModel>( midiControlChanges );
-            ProgramChange     = new List<MidiMessageModel>( midiProgramChanges );
+            NoteOn            = midiNoteOns;
+            ControlChange     = midiControlChanges;
+            ProgramChange     = midiProgramChanges;
         }
     }
 }

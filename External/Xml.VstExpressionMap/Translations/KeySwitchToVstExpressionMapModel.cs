@@ -117,7 +117,7 @@ namespace KeySwitchManager.Xml.VstExpressionMap.Translations
             ConvertOutputMappingsImpl( articulation.MidiProgramChanges, listOfPOutputEvent );
         }
 
-        private static void ConvertOutputMappingsImpl( IEnumerable<IMessage> midiEventList, ListElement listOfPOutputEvent )
+        private static void ConvertOutputMappingsImpl( IEnumerable<IMidiMessage> midiEventList, ListElement listOfPOutputEvent )
         {
             foreach( var i in midiEventList )
             {

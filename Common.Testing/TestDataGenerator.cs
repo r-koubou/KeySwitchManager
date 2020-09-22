@@ -37,7 +37,7 @@ namespace KeySwitchManager.Common.Testing
             return CreateKeySwitch( new[] { articulation } );
         }
 
-        public static KeySwitch CreateKeySwitch( IEnumerable<Articulation> articulations )
+        public static KeySwitch CreateKeySwitch( IReadOnlyCollection<Articulation> articulations )
         {
             var now = DateTimeHelper.NowUtc();
 
@@ -62,23 +62,21 @@ namespace KeySwitchManager.Common.Testing
             int articulationGroup = 0,
             int articulationColor = 0 )
         {
-            var now = DateTimeHelper.NowUtc();
-
             return new Articulation(
                 new ArticulationName( articulationName ),
                 articulationType,
                 new ArticulationGroup( articulationGroup ),
                 new ArticulationColor( articulationColor ),
-                new List<NoteOn>(),
-                new List<ControlChange>(),
-                new List<ProgramChange>()
+                new List<MidiNoteOn>(),
+                new List<MidiControlChange>(),
+                new List<MidiProgramChange>()
             );
         }
 
         public static Articulation CreateArticulation(
-            IEnumerable<NoteOn> noteOns,
-            IEnumerable<ControlChange> controlChanges,
-            IEnumerable<ProgramChange> programChanges )
+            IReadOnlyCollection<MidiNoteOn> noteOns,
+            IReadOnlyCollection<MidiControlChange> controlChanges,
+            IReadOnlyCollection<MidiProgramChange> programChanges )
         {
             var now = DateTimeHelper.NowUtc();
 
@@ -87,9 +85,9 @@ namespace KeySwitchManager.Common.Testing
                 ArticulationType.Default,
                 new ArticulationGroup( 0 ),
                 new ArticulationColor( 0 ),
-                new List<NoteOn>( noteOns ),
-                new List<ControlChange>( controlChanges ),
-                new List<ProgramChange>( programChanges )
+                noteOns,
+                controlChanges,
+                programChanges
             );
         }
         #endregion

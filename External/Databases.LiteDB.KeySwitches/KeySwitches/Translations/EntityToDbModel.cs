@@ -50,7 +50,7 @@ namespace Databases.LiteDB.KeySwitches.KeySwitches.Translations
             );
         }
 
-        private static void ConvertMessageList( IEnumerable<IMessage> src, List<MidiMessageModel> dest )
+        private static void ConvertMessageList( IReadOnlyCollection<IMidiMessage> src, ICollection<MidiMessageModel> dest )
         {
             foreach( var i in src )
             {

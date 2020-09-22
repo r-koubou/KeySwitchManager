@@ -40,7 +40,7 @@ namespace KeySwitchManager.Apps.CLI.Commands
         {
             var option = (CommandOption)opt;
 
-            var repository = new LiteDbKeySwitchRepository( option.DatabasePath );
+            using var repository = new LiteDbKeySwitchRepository( option.DatabasePath );
             var translator = new KeySwitchToVstExpressionMapModel();
             var presenter = new IExportingVstExpressionMapPresenter.Null();
             var interactor = new ExportingVstExpressionMapInteractor( repository, translator, presenter );

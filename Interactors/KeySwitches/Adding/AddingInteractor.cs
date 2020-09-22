@@ -20,8 +20,8 @@ namespace KeySwitchManager.Interactors.KeySwitches.Adding
             IAddingPresenter presenter )
             : this(
                 repository,
-                new IKeySwitchFactory.Default(),
-                new IArticulationFactory.Default(),
+                IKeySwitchFactory.Default,
+                IArticulationFactory.Default,
                 presenter )
         {}
 

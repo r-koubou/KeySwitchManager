@@ -19,10 +19,10 @@ namespace KeySwitchManager.Apps.CLI.Commands
             [Option( 'd', "developer", Required = true )]
             public string Developer { get; set; } = string.Empty;
 
-            [Option( 'p', "product", Required = true )]
+            [Option( 'p', "product" )]
             public string Product { get; set; } = string.Empty;
 
-            [Option( 'i', "instrument", Required = true )]
+            [Option( 'i', "instrument" )]
             public string Instrument { get; set; } = string.Empty;
 
             [Option( 'f', "database", Required = true )]
@@ -33,7 +33,7 @@ namespace KeySwitchManager.Apps.CLI.Commands
         {
             var option = (CommandOption)opt;
 
-            var repository = new LiteDbKeySwitchRepository( option.DatabasePath );
+            using var repository = new LiteDbKeySwitchRepository( option.DatabasePath );
             var translator = new KeySwitchListListToJsonModelList{ Formatted = true };
             var presenter =  new IRemovingPresenter.Null();
             var interactor = new RemovingInteractor( repository, presenter );

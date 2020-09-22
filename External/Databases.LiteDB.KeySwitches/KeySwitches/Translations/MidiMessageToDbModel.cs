@@ -5,9 +5,9 @@ using KeySwitchManager.Domain.Translations;
 
 namespace Databases.LiteDB.KeySwitches.KeySwitches.Translations
 {
-    public class MidiMessageToDbModel : IDataTranslator<IMessage, MidiMessageModel>
+    public class MidiMessageToDbModel : IDataTranslator<IMidiMessage, MidiMessageModel>
     {
-        public MidiMessageModel Translate( IMessage source )
+        public MidiMessageModel Translate( IMidiMessage source )
         {
             return new MidiMessageModel(
                 source.Status.Value,

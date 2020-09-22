@@ -6,6 +6,6 @@ using KeySwitchManager.Domain.Translations;
 
 namespace KeySwitchManager.UseCases.KeySwitches.Translations
 {
-    public interface IJsonListToKeySwitchList : IDataTranslator<IText, IEnumerable<KeySwitch>>
+    public interface IJsonListToKeySwitchList : IDataTranslator<IText, IReadOnlyCollection<KeySwitch>>
     {}
 }

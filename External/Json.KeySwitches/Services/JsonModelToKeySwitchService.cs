@@ -14,7 +14,7 @@ namespace KeySwitchManager.Json.KeySwitches.Services
         {
             var articulations = TranslateImpl( model );
 
-            return new IKeySwitchFactory.Default().Create(
+            return IKeySwitchFactory.Default.Create(
                 model.Id,
                 model.Author,
                 model.Description,
@@ -27,21 +27,21 @@ namespace KeySwitchManager.Json.KeySwitches.Services
             );
         }
 
-        private static IEnumerable<Articulation> TranslateImpl( KeySwitchModel source )
+        private static IReadOnlyCollection<Articulation> TranslateImpl( KeySwitchModel source )
         {
             var articulations = new List<Articulation>();
 
             foreach( var i in source.Articulations )
             {
-                List<IMessage> noteOn = new List<IMessage>();
-                List<IMessage> controlChange = new List<IMessage>();
-                List<IMessage> programChange = new List<IMessage>();
+                List<IMidiMessage> noteOn = new List<IMidiMessage>();
+                List<IMidiMessage> controlChange = new List<IMidiMessage>();
+                List<IMidiMessage> programChange = new List<IMidiMessage>();
 
-                ConvertMessageList( i.MidiMessage.NoteOn,        noteOn,        new INoteOnFactory.Default() );
-                ConvertMessageList( i.MidiMessage.ControlChange, controlChange, new IControlChangeFactory.Default() );
-                ConvertMessageList( i.MidiMessage.ProgramChange, programChange, new IProgramChangeFactory.Default() );
+                ConvertMessageList( i.MidiMessage.NoteOn,        noteOn,        IMidiNoteOnFactory.Default );
+                ConvertMessageList( i.MidiMessage.ControlChange, controlChange, IMidiControlChangeFactory.Default );
+                ConvertMessageList( i.MidiMessage.ProgramChange, programChange, IMidiProgramChangeFactory.Default );
 
-                var articulation = new IArticulationFactory.Default().Create(
+                var articulation = IArticulationFactory.Default.Create(
                     i.Name,
                     i.Type,
                     i.Group,
@@ -59,7 +59,7 @@ namespace KeySwitchManager.Json.KeySwitches.Services
 
         private static void ConvertMessageList(
             IEnumerable<MidiMessageModel> src,
-            List<IMessage> dest,
+            ICollection<IMidiMessage> dest,
             IMidiMessageFactory messageFactory )
         {
             foreach( var i in src )

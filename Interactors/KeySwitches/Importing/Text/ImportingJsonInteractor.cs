@@ -33,7 +33,7 @@ namespace KeySwitchManager.Interactors.KeySwitches.Importing.Text
 
             Presenter.Present( $"{updatedCount} record(s) updated" );
 
-            return new ImportingTextResponse();
+            return new ImportingTextResponse( updatedCount );
         }
     }
 }

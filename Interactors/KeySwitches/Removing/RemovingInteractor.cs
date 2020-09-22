@@ -1,3 +1,4 @@
+using KeySwitchManager.Common.Utilities;
 using KeySwitchManager.Domain.KeySwitches.Value;
 using KeySwitchManager.Gateways.KeySwitches;
 using KeySwitchManager.Presenters.KeySwitches;
@@ -20,14 +21,38 @@ namespace KeySwitchManager.Interactors.KeySwitches.Removing
 
         public RemovingResponse Execute( RemovingRequest request )
         {
-            var developerName = new DeveloperName( request.DeveloperName );
-            var productName = new ProductName( request.ProductName );
-            var instrumentName = new InstrumentName( request.InstrumentName );
+            var developerName = request.DeveloperName;
+            var productName = request.ProductName;
+            var instrumentName = request.InstrumentName;
+
+            var removedCount = 0;
 
             Presenter.Present( $"Removing keyswitch: Developer={developerName}, Product={productName}, Instrument={instrumentName}" );
 
-            var removedCount = Repository.Delete( developerName, productName, instrumentName );
-            Presenter.Present( $"{removedCount} record(s) removed" );
+            if( !StringHelper.IsNullOrTrimEmpty( developerName, productName, instrumentName ) )
+            {
+                removedCount = Repository.Delete(
+                    new DeveloperName( developerName ),
+                    new ProductName( productName ),
+                    new InstrumentName( instrumentName )
+                );
+            }
+            else if( !StringHelper.IsNullOrTrimEmpty( developerName, productName ) )
+            {
+                removedCount = Repository.Delete(
+                    new DeveloperName( developerName ),
+                    new ProductName( productName )
+                );
+            }
+
+            if( removedCount > 0 )
+            {
+                Presenter.Present( $"{removedCount} record(s) removed" );
+            }
+            else
+            {
+                Presenter.Present( $"record not found" );
+            }
 
             return new RemovingResponse( removedCount );
         }

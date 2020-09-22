@@ -16,14 +16,14 @@ namespace Json.KeySwitches.Testing.KeySwitches
         [Test]
         public void ConvertToJsonTest()
         {
-            var midiNoteFactory = new INoteOnFactory.Default();
-            var midiCcFactory = new IControlChangeFactory.Default();
-            var midiPcFactory = new IProgramChangeFactory.Default();
+            var midiNoteFactory = IMidiNoteOnFactory.Default;
+            var midiCcFactory = IMidiControlChangeFactory.Default;
+            var midiPcFactory = IMidiProgramChangeFactory.Default;
 
             var articulation = TestDataGenerator.CreateArticulation(
-                new List<NoteOn> { midiNoteFactory.Create( 1, 23 ) },
-                new List<ControlChange> { midiCcFactory.Create( 2, 34 ) },
-                new List<ProgramChange> { midiPcFactory.Create( 3, 45 ) }
+                new List<MidiNoteOn> { midiNoteFactory.Create( 1, 23 ) },
+                new List<MidiControlChange> { midiCcFactory.Create( 2, 34 ) },
+                new List<MidiProgramChange> { midiPcFactory.Create( 3, 45 ) }
             );
 
             var entity = TestDataGenerator.CreateKeySwitch( articulation );

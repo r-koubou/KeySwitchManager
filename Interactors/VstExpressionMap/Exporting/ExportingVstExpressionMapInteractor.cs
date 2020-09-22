@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 
+using KeySwitchManager.Common.Utilities;
 using KeySwitchManager.Domain.Commons;
 using KeySwitchManager.Domain.KeySwitches.Aggregate;
 using KeySwitchManager.Domain.KeySwitches.Value;
@@ -42,6 +43,10 @@ namespace KeySwitchManager.Interactors.VstExpressionMap.Exporting
 
         public ExportingVstExpressionMapResponse Execute( ExportingVstExpressionMapRequest request )
         {
+            var developerName = request.DeveloperName;
+            var productName = request.ProductName;
+            var instrumentName = request.InstrumentName;
+
             #region By Guid
             if( request.Guid != default )
             {
@@ -52,9 +57,7 @@ namespace KeySwitchManager.Interactors.VstExpressionMap.Exporting
             #endregion
 
             #region By Developer, Product, Instrument
-            if( !string.IsNullOrEmpty( request.DeveloperName ) &&
-                !string.IsNullOrEmpty( request.ProductName ) &&
-                !string.IsNullOrEmpty( request.InstrumentName ) )
+            if( !StringHelper.IsNullOrTrimEmpty( developerName, productName, instrumentName ) )
             {
                 return CreateResponse(
                     Repository.Find(
@@ -66,8 +69,7 @@ namespace KeySwitchManager.Interactors.VstExpressionMap.Exporting
             #endregion
 
             #region By Developer, Product
-            if( !string.IsNullOrEmpty( request.DeveloperName ) &&
-                !string.IsNullOrEmpty( request.ProductName ) )
+            if( !StringHelper.IsNullOrTrimEmpty( developerName, productName ) )
             {
                 return CreateResponse(
                     Repository.Find(
@@ -78,7 +80,7 @@ namespace KeySwitchManager.Interactors.VstExpressionMap.Exporting
             #endregion
 
             #region By Developer
-            if( !string.IsNullOrEmpty( request.DeveloperName ) )
+            if( !StringHelper.IsNullOrTrimEmpty( developerName ) )
             {
                 return CreateResponse(
                     Repository.Find(

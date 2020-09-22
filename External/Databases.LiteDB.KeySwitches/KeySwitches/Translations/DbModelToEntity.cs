@@ -20,15 +20,15 @@ namespace Databases.LiteDB.KeySwitches.KeySwitches.Translations
 
             foreach( var i in source.Articulations )
             {
-                var noteOn = new List<IMessage>();
-                var controlChange = new List<IMessage>();
-                var programChange = new List<IMessage>();
+                var noteOn = new List<IMidiMessage>();
+                var controlChange = new List<IMidiMessage>();
+                var programChange = new List<IMidiMessage>();
 
-                ConvertMessageList( i.NoteOn,        noteOn,        new INoteOnFactory.Default() );
-                ConvertMessageList( i.ControlChange, controlChange, new IControlChangeFactory.Default() );
-                ConvertMessageList( i.ProgramChange, programChange, new IProgramChangeFactory.Default() );
+                ConvertMessageList( i.NoteOn,        noteOn,        IMidiNoteOnFactory.Default );
+                ConvertMessageList( i.ControlChange, controlChange, IMidiControlChangeFactory.Default );
+                ConvertMessageList( i.ProgramChange, programChange, IMidiProgramChangeFactory.Default );
 
-                var articulation = new IArticulationFactory.Default().Create(
+                var articulation = IArticulationFactory.Default.Create(
                     i.ArticulationName,
                     EnumHelper.Parse<ArticulationType>( i.ArticulationType ),
                     i.ArticulationGroup,
@@ -41,7 +41,7 @@ namespace Databases.LiteDB.KeySwitches.KeySwitches.Translations
                 articulations.Add( articulation );
             }
 
-            return new IKeySwitchFactory.Default().Create(
+            return IKeySwitchFactory.Default.Create(
                 source.Id,
                 source.Author,
                 source.Description,
@@ -57,7 +57,7 @@ namespace Databases.LiteDB.KeySwitches.KeySwitches.Translations
 
         private static void ConvertMessageList(
             IEnumerable<MidiMessageModel> src,
-            ICollection<IMessage> dest,
+            ICollection<IMidiMessage> dest,
             IMidiMessageFactory messageFactory )
         {
             foreach( var i in src )

@@ -6,15 +6,15 @@ using KeySwitchManager.Domain.Translations;
 
 namespace Databases.LiteDB.KeySwitches.KeySwitches.Translations
 {
-    public class DbModelToMidiMessage : IDataTranslator<MidiMessageModel, IMessage>
+    public class DbModelToMidiMessage : IDataTranslator<MidiMessageModel, IMidiMessage>
     {
-        public IMessage Translate( MidiMessageModel source )
+        public IMidiMessage Translate( MidiMessageModel source )
         {
-            return new GenericMessage(
-                new StatusCode( source.Status ),
-                new GenericData( source.Channel ),
-                new GenericData( source.DataByte1 ),
-                new GenericData( source.DataByte2 )
+            return new GenericMidiMessage(
+                new MidiStatusCode( source.Status ),
+                new GenericMidiData( source.Channel ),
+                new GenericMidiData( source.DataByte1 ),
+                new GenericMidiData( source.DataByte2 )
             );
         }
     }

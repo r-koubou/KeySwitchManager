@@ -21,11 +21,11 @@ namespace KeySwitchManager.UseCases.VstExpressionMap.Exporting
         }
         public bool Empty => !Elements.Any();
 
-        public IEnumerable<Element> Elements { get; }
+        public IReadOnlyCollection<Element> Elements { get; }
 
-        public ExportingVstExpressionMapResponse( IEnumerable<Element> elements )
+        public ExportingVstExpressionMapResponse( IReadOnlyCollection<Element> elements )
         {
-            Elements  = new List<Element>( elements );
+            Elements  = elements;
         }
     }
 }

@@ -19,11 +19,13 @@ namespace KeySwitchManager.Domain.KeySwitches
             ArticulationType articulationType,
             int articulationGroup,
             int articulationColor,
-            IEnumerable<IMessage> midiNoteOns,
-            IEnumerable<IMessage> midiControlChanges,
-            IEnumerable<IMessage> midiProgramChanges );
+            IReadOnlyCollection<IMidiMessage> midiNoteOns,
+            IReadOnlyCollection<IMidiMessage> midiControlChanges,
+            IReadOnlyCollection<IMidiMessage> midiProgramChanges );
 
-        public class Default : IArticulationFactory
+        public static IArticulationFactory Default => new DefaultFactory();
+
+        private class DefaultFactory : IArticulationFactory
         {
             public Articulation Create(
                 string articulationName,
@@ -36,9 +38,9 @@ namespace KeySwitchManager.Domain.KeySwitches
                     articulationType,
                     new ArticulationGroup( articulationGroup ),
                     new ArticulationColor( articulationColor ),
-                    new List<NoteOn>(),
-                    new List<ControlChange>(),
-                    new List<ProgramChange>()
+                    new List<MidiNoteOn>(),
+                    new List<MidiControlChange>(),
+                    new List<MidiProgramChange>()
                 );
             }
 
@@ -47,9 +49,9 @@ namespace KeySwitchManager.Domain.KeySwitches
                 ArticulationType articulationType,
                 int articulationGroup,
                 int articulationColor,
-                IEnumerable<IMessage> midiNoteOns,
-                IEnumerable<IMessage> midiControlChanges,
-                IEnumerable<IMessage> midiProgramChanges )
+                IReadOnlyCollection<IMidiMessage> midiNoteOns,
+                IReadOnlyCollection<IMidiMessage> midiControlChanges,
+                IReadOnlyCollection<IMidiMessage> midiProgramChanges )
             {
                 return new Articulation(
                     new ArticulationName( articulationName ),

@@ -8,23 +8,23 @@ namespace KeySwitchManager.Json.KeySwitches.Models
     public class MidiModel
     {
         [JsonProperty( "note_on")]
-        public List<MidiMessageModel> NoteOn { get; set; } = new List<MidiMessageModel>();
+        public IReadOnlyCollection<MidiMessageModel> NoteOn { get; set; } = new List<MidiMessageModel>();
         [JsonProperty( "control_change")]
-        public List<MidiMessageModel> ControlChange { get; set; } = new List<MidiMessageModel>();
+        public IReadOnlyCollection<MidiMessageModel> ControlChange { get; set; } = new List<MidiMessageModel>();
         [JsonProperty( "program_change")]
-        public List<MidiMessageModel> ProgramChange { get; set; } = new List<MidiMessageModel>();
+        public IReadOnlyCollection<MidiMessageModel> ProgramChange { get; set; } = new List<MidiMessageModel>();
 
         public MidiModel()
         {}
 
         public MidiModel(
-            IEnumerable<MidiMessageModel> noteOn,
-            IEnumerable<MidiMessageModel> controlChange,
-            IEnumerable<MidiMessageModel> programChange )
+            IReadOnlyCollection<MidiMessageModel> noteOn,
+            IReadOnlyCollection<MidiMessageModel> controlChange,
+            IReadOnlyCollection<MidiMessageModel> programChange )
         {
-            NoteOn        = new List<MidiMessageModel>( noteOn );
-            ControlChange = new List<MidiMessageModel>( controlChange );
-            ProgramChange = new List<MidiMessageModel>( programChange );
+            NoteOn        = noteOn;
+            ControlChange = controlChange;
+            ProgramChange = programChange;
         }
     }
 }

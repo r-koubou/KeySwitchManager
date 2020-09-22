@@ -34,8 +34,11 @@ namespace KeySwitchManager.Interactors.Testing.KeySwitches
             var entities = dbRepository.Find( new DeveloperName( "DeveloperName" ) );
             var cmp = translator.Translate( inputData.JsonText );
 
-            Assert.AreEqual( entities.Count(), cmp.Count() );
-            Assert.AreEqual( entities.First(), cmp.First() );
+            var keySwitches = entities.ToList();
+            var cmpList = cmp.ToList();
+
+            Assert.AreEqual( keySwitches.Count(), cmpList.Count() );
+            Assert.AreEqual( keySwitches.First(), cmpList.First() );
 
         }
     }

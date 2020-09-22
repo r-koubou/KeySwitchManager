@@ -20,16 +20,17 @@ namespace Databases.LiteDB.KeySwitches.Testing.KeySwitches
         {
             var repository = new LiteDbKeySwitchRepository( new MemoryStream() );
             var articulation = TestDataGenerator.CreateArticulation(
-                new List<NoteOn>()
+                new List<MidiNoteOn>()
                 {
-                    new NoteOn( new NoteNumber( 1 ), new Velocity( 100 ) )
+                    new MidiNoteOn( new MidiNoteNumber( 1 ), new MidiVelocity( 100 ) )
                 },
-                new List<ControlChange>(),
-                new List<ProgramChange>()
+                new List<MidiControlChange>(),
+                new List<MidiProgramChange>()
             );
             var record = TestDataGenerator.CreateKeySwitch( articulation );
 
-            repository.Save( record );
+            var result = repository.Save( record );
+            Assert.AreEqual( 1, result );
 
             var seq = repository.Find( record.ProductName );
             var cmp = seq.First();

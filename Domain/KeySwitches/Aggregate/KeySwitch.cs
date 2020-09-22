@@ -20,7 +20,7 @@ namespace KeySwitchManager.Domain.KeySwitches.Aggregate
         public DeveloperName DeveloperName { get; }
         public ProductName ProductName { get; }
         public InstrumentName InstrumentName { get; }
-        public IEnumerable<Articulation> Articulations { get; }
+        public IReadOnlyCollection<Articulation> Articulations { get; }
 
         public KeySwitch(
             EntityGuid id,
@@ -31,7 +31,7 @@ namespace KeySwitchManager.Domain.KeySwitches.Aggregate
             DeveloperName developerName,
             ProductName productName,
             InstrumentName instrumentName,
-            IEnumerable<Articulation> articulations )
+            IReadOnlyCollection<Articulation> articulations )
         {
             Id             = id;
             Author         = author;
@@ -41,7 +41,7 @@ namespace KeySwitchManager.Domain.KeySwitches.Aggregate
             DeveloperName  = developerName;
             ProductName    = productName;
             InstrumentName = instrumentName;
-            Articulations  = new List<Articulation>( articulations );
+            Articulations  = articulations;
         }
 
         public KeySwitch Duplicate( KeySwitch source )
