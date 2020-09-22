@@ -58,14 +58,14 @@ namespace KeySwitchManager.Xlsx.KeySwitches.Translators
             }
 
             return IKeySwitchFactory.Default.Create(
-                Guid.NewGuid(),
+                Guid.TryParse( sheet.GuidCell.Value, out var guid ) ? guid : Guid.NewGuid(),
                 Author,
                 Description,
                 now,
                 now,
                 DeveloperName,
                 ProductName,
-                sheet.Name,
+                sheet.OutputNameCell.Value,
                 articulations
             );
         }

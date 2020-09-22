@@ -18,8 +18,12 @@ namespace KeySwitchManager.Xlsx.KeySwitches.Services
         public static readonly int RowOutputIndex = 0;
         public static readonly int ColumnOutputNameIndex = 1;
 
+        // Position of Guid cell
+        public static readonly int RowGuidIndex = 1;
+        public static readonly int ColumnGuidIndex = 1;
+
         // Start of data entry row index (2==header)
-        public static readonly int HeaderRowIndex = 2;
-        public static readonly int StartRowIndex = 3;
+        public static readonly int HeaderRowIndex = 3;
+        public static readonly int StartRowIndex = 4;
     }
 }

@@ -81,6 +81,12 @@ namespace KeySwitchManager.Xlsx.KeySwitches.Services
             worksheet.OutputNameCell = outputName == null ?
                 OutputNameCell.Empty : new OutputNameCell( outputName );
 
+            var guid = rows[ SpreadsheetConstants.RowGuidIndex ]
+                            .ItemArray[ SpreadsheetConstants.ColumnGuidIndex ].ToString();
+
+            worksheet.GuidCell = guid == null ?
+                GuidCell.Empty : new GuidCell( guid );
+
             return worksheet;
         }
 
