@@ -5,16 +5,18 @@ using Databases.LiteDB.KeySwitches.KeySwitches;
 
 using KeySwitchManager.Common.Testing;
 using KeySwitchManager.Interactors.KeySwitches.Exporting;
+using KeySwitchManager.Interactors.KeySwitches.Searching;
 using KeySwitchManager.Json.KeySwitches.Translations;
 using KeySwitchManager.Presenters.KeySwitches;
 using KeySwitchManager.UseCases.KeySwitches.Exporting;
+using KeySwitchManager.UseCases.KeySwitches.Searching;
 
 using NUnit.Framework;
 
 namespace KeySwitchManager.Interactors.Testing.KeySwitches
 {
     [TestFixture]
-    public class ExportingJsonInteractorTest
+    public class SearchingInteractorTest
     {
         [Test]
         public void ExportTest()
@@ -25,11 +27,11 @@ namespace KeySwitchManager.Interactors.Testing.KeySwitches
             dbRepository.Save( entity );
             #endregion
 
-            var inputData = new ExportingTextRequest( entity.DeveloperName.Value, entity.ProductName.Value );
-            var interactor = new ExportingJsonInteractor(
+            var inputData = new SearchingRequest( entity.DeveloperName.Value, entity.ProductName.Value );
+            var interactor = new SearchingInteractor(
                 dbRepository,
                 new KeySwitchListListToJsonModelList{ Formatted = true },
-                new IExportingTextPresenter.Console()
+                new ISearchingPresenter.Console()
             );
 
             var response = interactor.Execute( inputData );

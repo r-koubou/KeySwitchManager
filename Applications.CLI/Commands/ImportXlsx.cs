@@ -1,4 +1,6 @@
+using System;
 using System.Collections.Generic;
+using System.IO;
 
 using CommandLine;
 
@@ -7,6 +9,7 @@ using Databases.LiteDB.KeySwitches.KeySwitches;
 using KeySwitchManager.Domain.Commons;
 using KeySwitchManager.Domain.KeySwitches.Aggregate;
 using KeySwitchManager.Interactors.KeySwitches.Importing.Xlsx;
+using KeySwitchManager.Json.KeySwitches.Translations;
 using KeySwitchManager.Presenters.KeySwitches;
 using KeySwitchManager.UseCases.KeySwitches.Importing.Xlsx;
 using KeySwitchManager.Xlsx.KeySwitches.Translators;
@@ -49,6 +52,14 @@ namespace KeySwitchManager.Apps.CLI.Commands
         }
 
         private void OutputToJson( IReadOnlyCollection<KeySwitch> entities )
-        {}
+        {
+            var translator = new KeySwitchListListToJsonModelList
+            {
+                Formatted = true
+            };
+
+            var json = translator.Translate( entities );
+            File.WriteAllText( "result.json", json.Value );
+        }
     }
 }

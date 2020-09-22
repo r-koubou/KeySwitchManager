@@ -10,7 +10,6 @@ namespace KeySwitchManager.Apps.CLI
             Parser.Default.ParseArguments
                    <
                        Search.CommandOption,
-                       Export.CommandOption,
                        Import.CommandOption,
                        Delete.CommandOption,
                        Template.CommandOption,
@@ -19,7 +18,6 @@ namespace KeySwitchManager.Apps.CLI
                    >( args )
                   .MapResult(
                        ( Search.CommandOption option ) => new Search().Execute( option ),
-                       ( Export.CommandOption option ) => new Export().Execute( option ),
                        ( Import.CommandOption option ) => new Import().Execute( option ),
                        ( Delete.CommandOption option ) => new Delete().Execute( option ),
                        ( Template.CommandOption option ) => new Template().Execute( option ),

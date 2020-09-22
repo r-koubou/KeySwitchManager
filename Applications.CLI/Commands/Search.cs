@@ -1,10 +1,13 @@
 using System;
+using System.IO;
+using System.Text;
 
 using CommandLine;
 
 using Databases.LiteDB.KeySwitches.KeySwitches;
 
 using KeySwitchManager.Interactors.KeySwitches.Searching;
+using KeySwitchManager.Json.KeySwitches.Translations;
 using KeySwitchManager.Presenters.KeySwitches;
 using KeySwitchManager.UseCases.KeySwitches.Searching;
 
@@ -26,6 +29,9 @@ namespace KeySwitchManager.Apps.CLI.Commands
 
             [Option( 'f', "database", Required = true )]
             public string DatabasePath { get; set; } = string.Empty;
+
+            [Option( 'o', "output", Required = true )]
+            public string OutputPath { get; set; } = string.Empty;
         }
 
         public int Execute( ICommandOption opt )
@@ -33,25 +39,22 @@ namespace KeySwitchManager.Apps.CLI.Commands
             var option = (CommandOption)opt;
 
             using var repository = new LiteDbKeySwitchRepository( option.DatabasePath );
+            var translator = new KeySwitchListListToJsonModelList
+            {
+                Formatted = true
+            };
+
             var presenter = new ISearchingPresenter.Console();
-            var interactor = new SearchingInteractor( repository, presenter );
+            var interactor = new SearchingInteractor( repository, translator, presenter );
 
             var input = new SearchingRequest( option.Developer, option.Product, option.Instrument );
 
             var response = interactor.Execute( input );
 
-            if( response.FoundCount > 0 )
-            {
-                foreach( var i in response.Result )
-                {
-                    Console.Out.WriteLine( $"{i.DeveloperName}, {i.ProductName}, {i.InstrumentName}, {i.LastUpdated}" );
-                }
-                Console.Out.WriteLine( $"{response.FoundCount} record(s) found" );
-            }
-            else
-            {
-                Console.Out.WriteLine( "record not found" );
-            }
+            File.WriteAllText( option.OutputPath, response.Text.Value, Encoding.UTF8 );
+
+            Console.Out.WriteLine( $"Output json to {option.OutputPath}" );
+            Console.Out.WriteLine( $"{response.FoundCount} record(s) found" );
 
             return 0;
         }

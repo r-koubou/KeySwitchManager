@@ -70,15 +70,13 @@ namespace Databases.LiteDB.KeySwitches.KeySwitches
             if( table.Exists( x => x.Id.Equals( keySwitch.Id.Value ) ) )
             {
                 entity.LastUpdated = DateTimeHelper.NowUtc();
-            }
-            else
-            {
-                entity.Id = keySwitch.Id.Value;
+                return table.Update( entity ) ? 1 : 0;
             }
 
-            var result = table.Upsert( entity );
+            entity.Id = keySwitch.Id.Value;
 
-            return result ? 1 : 0;
+            var result = table.Insert( entity ).AsGuid;
+            return result == entity.Id ? 1 : 0;
         }
         #endregion
 

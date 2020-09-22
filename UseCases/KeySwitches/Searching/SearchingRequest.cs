@@ -6,7 +6,10 @@ namespace KeySwitchManager.UseCases.KeySwitches.Searching
         public string ProductName { get; }
         public string InstrumentName { get; }
 
-        public SearchingRequest( string developerName, string productName, string instrumentName )
+        public SearchingRequest(
+            string developerName = "",
+            string productName = "",
+            string instrumentName = "" )
         {
             DeveloperName  = developerName;
             ProductName    = productName;
