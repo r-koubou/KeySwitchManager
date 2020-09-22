@@ -1,6 +1,7 @@
 using System;
 
-using KeySwitchManager.Common.Utilities;
+using KeySwitchManager.Common.Exceptions;
+using KeySwitchManager.Common.Text;
 
 namespace KeySwitchManager.Domain.KeySwitches.Value
 {

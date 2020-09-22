@@ -1,4 +1,4 @@
-using KeySwitchManager.Common.Utilities;
+using KeySwitchManager.Common.Text;
 
 namespace KeySwitchManager.Xlsx.KeySwitches.Models
 {

@@ -1,3 +1,5 @@
+using KeySwitchManager.Common.Exceptions;
+
 namespace KeySwitchManager.Common.Utilities
 {
     public static class NotNullValidator

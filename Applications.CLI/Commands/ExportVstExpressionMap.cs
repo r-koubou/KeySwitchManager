@@ -17,7 +17,7 @@ namespace KeySwitchManager.Apps.CLI.Commands
 {
     public class ExportVstExpressionMap : ICommand
     {
-        [Verb( "vst-expressionmap", false, HelpText = "export to generic json format")]
+        [Verb( "vst-expressionmap", false, HelpText = "export to VST Expression Map format")]
         public class CommandOption : ICommandOption
         {
             [Option( 'd', "developer", Required = true)]

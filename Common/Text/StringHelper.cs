@@ -1,4 +1,6 @@
-namespace KeySwitchManager.Common.Utilities
+using KeySwitchManager.Common.Exceptions;
+
+namespace KeySwitchManager.Common.Text
 {
     public static class StringHelper
     {

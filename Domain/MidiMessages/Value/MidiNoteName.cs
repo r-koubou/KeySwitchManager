@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 
-using KeySwitchManager.Common.Utilities;
+using KeySwitchManager.Common.Exceptions;
+using KeySwitchManager.Common.Numbers;
+using KeySwitchManager.Common.Text;
 
 namespace KeySwitchManager.Domain.MidiMessages.Value
 {
