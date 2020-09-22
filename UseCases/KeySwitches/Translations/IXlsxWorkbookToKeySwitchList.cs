@@ -6,7 +6,7 @@ using KeySwitchManager.Domain.Translations;
 
 namespace KeySwitchManager.UseCases.KeySwitches.Translations
 {
-    public interface IXlsxWorkbookToKeySwitchList : IDataTranslator<FilePath, IEnumerable<KeySwitch>>
+    public interface IXlsxWorkbookToKeySwitchList : IDataTranslator<FilePath, IReadOnlyCollection<KeySwitch>>
     {
         public string DeveloperName { get; }
         public string ProductName { get; }

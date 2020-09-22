@@ -34,7 +34,7 @@ namespace KeySwitchManager.Xlsx.KeySwitches.Translators
             Description   = description;
         }
 
-        public IEnumerable<KeySwitch> Translate( FilePath source )
+        public IReadOnlyCollection<KeySwitch> Translate( FilePath source )
         {
             var result = new List<KeySwitch>();
             var workbook = XlsxWorkBookParsingService.Parse( source );
@@ -83,7 +83,7 @@ namespace KeySwitchManager.Xlsx.KeySwitches.Translators
             );
         }
 
-        private IEnumerable<MidiNoteOn> TranslateMidiNoteMapping( Row row )
+        private IReadOnlyCollection<MidiNoteOn> TranslateMidiNoteMapping( Row row )
         {
             var result = new List<MidiNoteOn>();
             var factory = IMidiNoteOnFactory.Default;
@@ -99,7 +99,7 @@ namespace KeySwitchManager.Xlsx.KeySwitches.Translators
             return result;
         }
 
-        private IEnumerable<MidiControlChange> TranslateMidiControlChangeMapping( Row row )
+        private IReadOnlyCollection<MidiControlChange> TranslateMidiControlChangeMapping( Row row )
         {
             var result = new List<MidiControlChange>();
             var factory = IMidiControlChangeFactory.Default;
@@ -117,7 +117,7 @@ namespace KeySwitchManager.Xlsx.KeySwitches.Translators
             return result;
         }
 
-        private IEnumerable<MidiProgramChange> TranslateMidiProgramChangeMapping( Row row )
+        private IReadOnlyCollection<MidiProgramChange> TranslateMidiProgramChangeMapping( Row row )
         {
             var result = new List<MidiProgramChange>();
             var factory = IMidiProgramChangeFactory.Default;

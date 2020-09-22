@@ -19,7 +19,7 @@ namespace Databases.LiteDB.KeySwitches.KeySwitches.Models
         public string DeveloperName { get; set; } = "Unknown";
         public string ProductName { get; set; } = "Unknown";
         public string InstrumentName { get; set; } = "Unknown";
-        public List<ArticulationModel> Articulations { get; set; } = new List<ArticulationModel>();
+        public IReadOnlyCollection<ArticulationModel> Articulations { get; set; } = new List<ArticulationModel>();
 
         public KeySwitchModel()
         {}
@@ -33,7 +33,7 @@ namespace Databases.LiteDB.KeySwitches.KeySwitches.Models
             string developerName,
             string productName,
             string instrumentName,
-            IEnumerable<ArticulationModel> articulations )
+            IReadOnlyCollection<ArticulationModel> articulations )
         {
             Id             = id;
             Author         = author;
@@ -43,7 +43,7 @@ namespace Databases.LiteDB.KeySwitches.KeySwitches.Models
             DeveloperName  = developerName;
             ProductName    = productName;
             InstrumentName = instrumentName;
-            Articulations  = new List<ArticulationModel>( articulations );
+            Articulations  = articulations;
         }
     }
 }

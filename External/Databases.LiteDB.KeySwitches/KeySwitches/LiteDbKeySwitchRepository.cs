@@ -117,7 +117,7 @@ namespace Databases.LiteDB.KeySwitches.KeySwitches
         #endregion
 
         #region Find
-        private List<KeySwitch> CreateEntities( IEnumerable<KeySwitchModel> query )
+        private IReadOnlyCollection<KeySwitch> CreateEntities( IEnumerable<KeySwitchModel> query )
         {
             var result = new List<KeySwitch>();
             var translator = new DbModelToEntity();
@@ -130,17 +130,17 @@ namespace Databases.LiteDB.KeySwitches.KeySwitches
             return result;
         }
 
-        public IEnumerable<KeySwitch> Find( EntityGuid guid )
+        public IReadOnlyCollection<KeySwitch> Find( EntityGuid guid )
         {
             return CreateEntities( KeySwitchTable.Find( x => x.Id == guid.Value ) );
         }
 
-        public IEnumerable<KeySwitch> Find( Guid guid )
+        public IReadOnlyCollection<KeySwitch> Find( Guid guid )
         {
             return CreateEntities( KeySwitchTable.Find( x => x.Id == guid ) );
         }
 
-        public IEnumerable<KeySwitch> Find(
+        public IReadOnlyCollection<KeySwitch> Find(
             DeveloperName developerName,
             ProductName productName,
             InstrumentName instrumentName )
@@ -155,7 +155,7 @@ namespace Databases.LiteDB.KeySwitches.KeySwitches
             );
         }
 
-        public IEnumerable<KeySwitch> Find( DeveloperName developerName, ProductName productName )
+        public IReadOnlyCollection<KeySwitch> Find( DeveloperName developerName, ProductName productName )
         {
             return CreateEntities(
                 KeySwitchTable.Find(
@@ -166,17 +166,17 @@ namespace Databases.LiteDB.KeySwitches.KeySwitches
             );
         }
 
-        public IEnumerable<KeySwitch> Find( DeveloperName developerName )
+        public IReadOnlyCollection<KeySwitch> Find( DeveloperName developerName )
         {
             return CreateEntities( KeySwitchTable.Find( x => x.DeveloperName == developerName.Value ) );
         }
 
-        public IEnumerable<KeySwitch> Find( ProductName productName )
+        public IReadOnlyCollection<KeySwitch> Find( ProductName productName )
         {
             return CreateEntities( KeySwitchTable.Find( x => x.ProductName == productName.Value ) );
         }
 
-        public IEnumerable<KeySwitch> FindAll()
+        public IReadOnlyCollection<KeySwitch> FindAll()
         {
             return CreateEntities( KeySwitchTable.FindAll() );
         }

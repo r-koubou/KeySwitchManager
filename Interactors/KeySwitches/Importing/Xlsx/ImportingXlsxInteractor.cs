@@ -33,7 +33,7 @@ namespace KeySwitchManager.Interactors.KeySwitches.Importing.Xlsx
 
             Presenter.Present( $"{updatedCount} record(s) updated" );
 
-            return new ImportingXlsxResponse( updatedCount );
+            return new ImportingXlsxResponse( keySwitches );
         }
     }
 }

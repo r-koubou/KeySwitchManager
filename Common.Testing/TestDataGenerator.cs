@@ -37,7 +37,7 @@ namespace KeySwitchManager.Common.Testing
             return CreateKeySwitch( new[] { articulation } );
         }
 
-        public static KeySwitch CreateKeySwitch( IEnumerable<Articulation> articulations )
+        public static KeySwitch CreateKeySwitch( IReadOnlyCollection<Articulation> articulations )
         {
             var now = DateTimeHelper.NowUtc();
 
@@ -62,8 +62,6 @@ namespace KeySwitchManager.Common.Testing
             int articulationGroup = 0,
             int articulationColor = 0 )
         {
-            var now = DateTimeHelper.NowUtc();
-
             return new Articulation(
                 new ArticulationName( articulationName ),
                 articulationType,
@@ -76,9 +74,9 @@ namespace KeySwitchManager.Common.Testing
         }
 
         public static Articulation CreateArticulation(
-            IEnumerable<MidiNoteOn> noteOns,
-            IEnumerable<MidiControlChange> controlChanges,
-            IEnumerable<MidiProgramChange> programChanges )
+            IReadOnlyCollection<MidiNoteOn> noteOns,
+            IReadOnlyCollection<MidiControlChange> controlChanges,
+            IReadOnlyCollection<MidiProgramChange> programChanges )
         {
             var now = DateTimeHelper.NowUtc();
 
@@ -87,9 +85,9 @@ namespace KeySwitchManager.Common.Testing
                 ArticulationType.Default,
                 new ArticulationGroup( 0 ),
                 new ArticulationColor( 0 ),
-                new List<MidiNoteOn>( noteOns ),
-                new List<MidiControlChange>( controlChanges ),
-                new List<MidiProgramChange>( programChanges )
+                noteOns,
+                controlChanges,
+                programChanges
             );
         }
         #endregion

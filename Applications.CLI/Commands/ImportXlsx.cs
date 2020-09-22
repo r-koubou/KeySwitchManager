@@ -1,8 +1,11 @@
+using System.Collections.Generic;
+
 using CommandLine;
 
 using Databases.LiteDB.KeySwitches.KeySwitches;
 
 using KeySwitchManager.Domain.Commons;
+using KeySwitchManager.Domain.KeySwitches.Aggregate;
 using KeySwitchManager.Interactors.KeySwitches.Importing.Xlsx;
 using KeySwitchManager.Presenters.KeySwitches;
 using KeySwitchManager.UseCases.KeySwitches.Importing.Xlsx;
@@ -39,9 +42,13 @@ namespace KeySwitchManager.Apps.CLI.Commands
 
             var input = new ImportingXlsxRequest( new FilePath( option.InputPath ) );
 
-            _ = interactor.Execute( input );
+            var response = interactor.Execute( input );
+            OutputToJson( response.Imported );
 
             return 0;
         }
+
+        private void OutputToJson( IReadOnlyCollection<KeySwitch> entities )
+        {}
     }
 }

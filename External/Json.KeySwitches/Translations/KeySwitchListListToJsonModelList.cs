@@ -14,7 +14,7 @@ namespace KeySwitchManager.Json.KeySwitches.Translations
     {
         public bool Formatted { get; set; }
 
-        public IText Translate( IEnumerable<KeySwitch> source )
+        public IText Translate( IReadOnlyCollection<KeySwitch> source )
         {
             var keySwitchList = new List<KeySwitchModel>();
 

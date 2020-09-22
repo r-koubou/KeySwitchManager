@@ -7,12 +7,12 @@ namespace KeySwitchManager.UseCases.KeySwitches.Searching
 {
     public class SearchingResponse
     {
-        public IEnumerable<KeySwitch> Result { get; }
+        public IReadOnlyCollection<KeySwitch> Result { get; }
         public int FoundCount { get; }
 
-        public SearchingResponse( IEnumerable<KeySwitch> result )
+        public SearchingResponse( IReadOnlyCollection<KeySwitch> result )
         {
-            Result       = new List<KeySwitch>( result );
+            Result     = result;
             FoundCount = Result.Count();
         }
     }

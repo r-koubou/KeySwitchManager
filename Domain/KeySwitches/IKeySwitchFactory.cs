@@ -19,7 +19,7 @@ namespace KeySwitchManager.Domain.KeySwitches
             string developerName,
             string productName,
             string instrumentName,
-            IEnumerable<Articulation> articulations );
+            IReadOnlyCollection<Articulation> articulations );
 
         public static IKeySwitchFactory Default => new DefaultFactory();
 
@@ -34,7 +34,7 @@ namespace KeySwitchManager.Domain.KeySwitches
                 string developerName,
                 string productName,
                 string instrumentName,
-                IEnumerable<Articulation> articulations )
+                IReadOnlyCollection<Articulation> articulations )
             {
                 created     = DateTimeHelper.ToUtc( created );
                 lastUpdated = DateTimeHelper.ToUtc( lastUpdated );

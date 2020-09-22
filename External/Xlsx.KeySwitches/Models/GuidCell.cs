@@ -17,7 +17,7 @@ namespace KeySwitchManager.Xlsx.KeySwitches.Models
         {
             if( StringHelper.IsNullOrTrimEmpty( name ) )
             {
-                throw new InvalidNameException( nameof( name ) );
+                Value = string.Empty;
             }
 
             Value = name;

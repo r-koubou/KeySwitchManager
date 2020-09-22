@@ -13,26 +13,26 @@ namespace KeySwitchManager.Domain.KeySwitches.Aggregate
         public ArticulationType ArticulationType { get; }
         public ArticulationGroup ArticulationGroup { get; }
         public ArticulationColor ArticulationColor { get; }
-        public IReadOnlyList<IMidiMessage> MidiNoteOns { get; }
-        public IReadOnlyList<IMidiMessage> MidiControlChanges { get; }
-        public IReadOnlyList<IMidiMessage> MidiProgramChanges { get; }
+        public IReadOnlyCollection<IMidiMessage> MidiNoteOns { get; }
+        public IReadOnlyCollection<IMidiMessage> MidiControlChanges { get; }
+        public IReadOnlyCollection<IMidiMessage> MidiProgramChanges { get; }
 
         public Articulation(
             ArticulationName articulationName,
             ArticulationType articulationType,
             ArticulationGroup articulationGroup,
             ArticulationColor articulationColor,
-            IEnumerable<IMidiMessage> midiNoteOns,
-            IEnumerable<IMidiMessage> midiControlChanges,
-            IEnumerable<IMidiMessage> midiProgramChanges )
+            IReadOnlyCollection<IMidiMessage> midiNoteOns,
+            IReadOnlyCollection<IMidiMessage> midiControlChanges,
+            IReadOnlyCollection<IMidiMessage> midiProgramChanges )
         {
             ArticulationName   = articulationName;
             ArticulationType   = articulationType;
             ArticulationGroup  = articulationGroup;
             ArticulationColor  = articulationColor;
-            MidiNoteOns        = new List<IMidiMessage>( midiNoteOns );
-            MidiControlChanges = new List<IMidiMessage>( midiControlChanges );
-            MidiProgramChanges = new List<IMidiMessage>( midiProgramChanges );
+            MidiNoteOns        = midiNoteOns;
+            MidiControlChanges = midiControlChanges;
+            MidiProgramChanges = midiProgramChanges;
         }
 
         #region Equals

@@ -1,12 +1,17 @@
+using System.Collections.Generic;
+
+using KeySwitchManager.Domain.KeySwitches.Aggregate;
+
 namespace KeySwitchManager.UseCases.KeySwitches.Importing.Xlsx
 {
     public class ImportingXlsxResponse
     {
-        public int UpdatedCount { get; }
+        public IReadOnlyCollection<KeySwitch> Imported { get; }
+        public int Count => Imported.Count;
 
-        public ImportingXlsxResponse( int updatedCount )
+        public ImportingXlsxResponse( IReadOnlyCollection<KeySwitch> imported )
         {
-            UpdatedCount = updatedCount;
+            Imported = imported;
         }
     }
 }

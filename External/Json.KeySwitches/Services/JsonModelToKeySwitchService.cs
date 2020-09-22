@@ -27,7 +27,7 @@ namespace KeySwitchManager.Json.KeySwitches.Services
             );
         }
 
-        private static IEnumerable<Articulation> TranslateImpl( KeySwitchModel source )
+        private static IReadOnlyCollection<Articulation> TranslateImpl( KeySwitchModel source )
         {
             var articulations = new List<Articulation>();
 
@@ -59,7 +59,7 @@ namespace KeySwitchManager.Json.KeySwitches.Services
 
         private static void ConvertMessageList(
             IEnumerable<MidiMessageModel> src,
-            List<IMidiMessage> dest,
+            ICollection<IMidiMessage> dest,
             IMidiMessageFactory messageFactory )
         {
             foreach( var i in src )

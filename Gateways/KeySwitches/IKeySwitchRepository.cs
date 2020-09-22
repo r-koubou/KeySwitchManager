@@ -15,12 +15,12 @@ namespace KeySwitchManager.Gateways.KeySwitches
         public int Delete( DeveloperName developerName, ProductName productName, InstrumentName instrumentName );
         public int Delete( EntityGuid guid );
         public int DeleteAll();
-        public IEnumerable<KeySwitch> Find( EntityGuid guid );
-        public IEnumerable<KeySwitch> Find( Guid guid );
-        public IEnumerable<KeySwitch> Find( DeveloperName developerName, ProductName productName, InstrumentName instrumentName );
-        public IEnumerable<KeySwitch> Find( DeveloperName developerName, ProductName productName );
-        public IEnumerable<KeySwitch> Find( DeveloperName developerName );
-        public IEnumerable<KeySwitch> Find( ProductName productName );
-        public IEnumerable<KeySwitch> FindAll();
+        public IReadOnlyCollection<KeySwitch> Find( EntityGuid guid );
+        public IReadOnlyCollection<KeySwitch> Find( Guid guid );
+        public IReadOnlyCollection<KeySwitch> Find( DeveloperName developerName, ProductName productName, InstrumentName instrumentName );
+        public IReadOnlyCollection<KeySwitch> Find( DeveloperName developerName, ProductName productName );
+        public IReadOnlyCollection<KeySwitch> Find( DeveloperName developerName );
+        public IReadOnlyCollection<KeySwitch> Find( ProductName productName );
+        public IReadOnlyCollection<KeySwitch> FindAll();
     }
 }

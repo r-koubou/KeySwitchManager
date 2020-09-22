@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using System.Linq;
 
 using KeySwitchManager.Common.Utilities;
 using KeySwitchManager.Domain.Commons;
@@ -28,10 +27,9 @@ namespace KeySwitchManager.Interactors.KeySwitches.Exporting
             Translator = translator;
         }
 
-        private ExportingTextResponse CreateResponse( IEnumerable<KeySwitch> query )
+        private ExportingTextResponse CreateResponse( IReadOnlyCollection<KeySwitch> query )
         {
-            var keySwitches = query.ToList();
-            return new ExportingTextResponse( Translator.Translate( keySwitches ), keySwitches.Count );
+            return new ExportingTextResponse( Translator.Translate( query ), query.Count );
         }
 
         public ExportingTextResponse Execute( ExportingTextRequest request )
