@@ -1,3 +1,4 @@
+using System;
 using System.Linq;
 
 using KeySwitchManager.Common.Text.Xml;
@@ -18,6 +19,11 @@ namespace KeySwitchManager.Xml.StudioOne.KeySwitch.Translations
 
             foreach( var i in source.Articulations )
             {
+                if( !i.MidiNoteOns.Any() )
+                {
+                    throw new InvalidOperationException( $"MIDI note(s) is not contained in articulation : {i.ArticulationName}" );
+                }
+
                 var attr = new Attributes
                 {
                     Name  = i.ArticulationName.Value,
