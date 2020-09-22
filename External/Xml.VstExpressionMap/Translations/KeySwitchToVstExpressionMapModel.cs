@@ -1,9 +1,6 @@
 using System.Collections.Generic;
-using System.Text;
-using System.Xml;
-using System.Xml.Serialization;
 
-using KeySwitchManager.Common.IO;
+using KeySwitchManager.Common.Xml;
 using KeySwitchManager.Domain.Commons;
 using KeySwitchManager.Domain.KeySwitches.Aggregate;
 using KeySwitchManager.Domain.MidiMessages.Aggregate;
@@ -87,27 +84,7 @@ namespace KeySwitchManager.Xml.VstExpressionMap.Translations
             rootElement.StringElement.Value = instrumentName;
             #endregion
 
-            return ConvertToXmlText( rootElement );
-        }
-
-        private static IText ConvertToXmlText( RootElement rootElement )
-        {
-            var serializer = new XmlSerializer( typeof( RootElement ) );
-
-            // no xmlns adding
-            // see: https://stackoverflow.com/a/8882612
-            var xmlNamespaces = new XmlSerializerNamespaces();
-            xmlNamespaces.Add( "", "" );
-            var stringWriter = new StringWriterWithEncoding( Encoding.UTF8 );
-            var xmlWriterSettings = new XmlWriterSettings
-            {
-                Indent = true
-            };
-
-            using var xmlWriter = XmlWriter.Create( stringWriter, xmlWriterSettings );
-            serializer.Serialize( xmlWriter, rootElement, xmlNamespaces );
-
-            return new PlainText( stringWriter.ToString() );
+            return new PlainText( XmlHelper.ToXmlString( rootElement ) );
         }
 
         private static void ConvertOutputMappings( Articulation articulation, ListElement listOfPOutputEvent )
