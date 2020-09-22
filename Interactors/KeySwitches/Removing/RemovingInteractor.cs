@@ -1,4 +1,4 @@
-using KeySwitchManager.Common.Utilities;
+using KeySwitchManager.Common.Text;
 using KeySwitchManager.Domain.KeySwitches.Value;
 using KeySwitchManager.Gateways.KeySwitches;
 using KeySwitchManager.Presenters.KeySwitches;

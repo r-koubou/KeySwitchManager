@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-using KeySwitchManager.Common.Xml;
+using KeySwitchManager.Common.Text.Xml;
 using KeySwitchManager.Domain.Commons;
 using KeySwitchManager.Domain.KeySwitches.Aggregate;
 using KeySwitchManager.Domain.MidiMessages.Aggregate;

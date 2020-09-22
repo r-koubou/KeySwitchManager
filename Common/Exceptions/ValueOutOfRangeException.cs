@@ -1,6 +1,6 @@
 using System;
 
-namespace KeySwitchManager.Common.Utilities
+namespace KeySwitchManager.Common.Exceptions
 {
     public sealed class ValueOutOfRangeException : Exception
     {

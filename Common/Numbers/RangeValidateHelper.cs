@@ -1,6 +1,8 @@
 using System;
 
-namespace KeySwitchManager.Common.Utilities
+using KeySwitchManager.Common.Exceptions;
+
+namespace KeySwitchManager.Common.Numbers
 {
     public static class RangeValidateHelper
     {

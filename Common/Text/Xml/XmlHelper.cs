@@ -4,7 +4,7 @@ using System.Xml.Serialization;
 
 using KeySwitchManager.Common.IO;
 
-namespace KeySwitchManager.Common.Xml
+namespace KeySwitchManager.Common.Text.Xml
 {
     public static class XmlHelper
     {

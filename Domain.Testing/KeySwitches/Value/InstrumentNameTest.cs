@@ -1,4 +1,4 @@
-using KeySwitchManager.Common.Utilities;
+using KeySwitchManager.Common.Exceptions;
 using KeySwitchManager.Domain.KeySwitches.Value;
 
 using NUnit.Framework;
