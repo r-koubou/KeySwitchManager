@@ -8,12 +8,14 @@ using CommandLine;
 using Databases.LiteDB.KeySwitches.KeySwitches;
 
 using KeySwitchManager.Common.IO;
+using KeySwitchManager.Domain.Commons;
+using KeySwitchManager.Domain.Services;
 using KeySwitchManager.Interactors.VstExpressionMap.Exporting;
 using KeySwitchManager.Presenters.VstExpressionMap;
 using KeySwitchManager.UseCases.VstExpressionMap.Exporting;
 using KeySwitchManager.Xml.VstExpressionMap.Translations;
 
-namespace KeySwitchManager.Apps.CLI.Commands
+namespace KeySwitchManager.CLI.Commands
 {
     public class ExportVstExpressionMap : ICommand
     {
@@ -32,8 +34,10 @@ namespace KeySwitchManager.Apps.CLI.Commands
             [Option( 'f', "database", Required = true )]
             public string DatabasePath { get; set; } = string.Empty;
 
-            [Option( 'o', "output directory", Required = true )]
+            [Option( 'o', "outputdir", Required = true )]
             public string OutputDirectory { get; set; } = string.Empty;
+            [Option( 's', "structure-dir" )]
+            public bool DirectoryStructure { get; set; } = false;
         }
 
         public int Execute( ICommandOption opt )
@@ -51,26 +55,32 @@ namespace KeySwitchManager.Apps.CLI.Commands
 
             var response = interactor.Execute( input );
 
-            if( response.Elements.Any() )
+            if( !response.Elements.Any() )
             {
-                if( !Directory.Exists( option.OutputDirectory ) )
-                {
-                    Directory.CreateDirectory( option.OutputDirectory );
-                }
-
-                foreach( var i in response.Elements )
-                {
-                    var path = Path.Combine( option.OutputDirectory, i.KeySwitch.InstrumentName + ".expressionmap" );
-                    path = PathUtility.GenerateFilePathWhenExist( path, option.OutputDirectory );
-
-                    Console.Out.WriteLine( $"export to {path}" );
-                    File.WriteAllText( path, i.XmlText.Value, Encoding.UTF8 );
-                }
-
+                Console.WriteLine( "records not found" );
                 return 0;
             }
 
-            Console.WriteLine( "records not found" );
+            foreach( var i in response.Elements )
+            {
+                var outputDirectory = option.OutputDirectory;
+
+                if( option.DirectoryStructure )
+                {
+                    outputDirectory = EntityDirectoryService.CreateDirectoryTree(
+                        i.KeySwitch,
+                        new DirectoryPath( option.OutputDirectory ),
+                        new DirectoryPath( "VST Expressionmap" )
+                    ).Path;
+                }
+
+                var path = Path.Combine( outputDirectory, i.KeySwitch.InstrumentName + ".expressionmap" );
+                path = PathUtility.GenerateFilePathWhenExist( path, outputDirectory );
+
+                Console.Out.WriteLine( $"export to {path}" );
+                File.WriteAllText( path, i.XmlText.Value, Encoding.UTF8 );
+            }
+
             return 0;
         }
     }

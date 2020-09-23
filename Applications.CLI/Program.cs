@@ -1,8 +1,8 @@
 using CommandLine;
 
-using KeySwitchManager.Apps.CLI.Commands;
+using KeySwitchManager.CLI.Commands;
 
-namespace KeySwitchManager.Apps.CLI
+namespace KeySwitchManager.CLI
 {
     public class Program
     {

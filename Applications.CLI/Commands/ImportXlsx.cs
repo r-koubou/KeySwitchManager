@@ -13,7 +13,7 @@ using KeySwitchManager.Presenters.KeySwitches;
 using KeySwitchManager.UseCases.KeySwitches.Importing.Xlsx;
 using KeySwitchManager.Xlsx.KeySwitches.Translators;
 
-namespace KeySwitchManager.Apps.CLI.Commands
+namespace KeySwitchManager.CLI.Commands
 {
     public class ImportXlsx : ICommand
     {
@@ -31,6 +31,8 @@ namespace KeySwitchManager.Apps.CLI.Commands
 
             [Option( 'i', "input", Required = true )]
             public string InputPath { get; set; } = string.Empty;
+            [Option( 'l', "log" )]
+            public string LogFilePath { get; set; } = string.Empty;
         }
 
         public int Execute( ICommandOption opt )
@@ -45,12 +47,12 @@ namespace KeySwitchManager.Apps.CLI.Commands
             var input = new ImportingXlsxRequest( new FilePath( option.InputPath ) );
 
             var response = interactor.Execute( input );
-            OutputToJson( response.Imported );
+            OutputToJson( response.Imported, option );
 
             return 0;
         }
 
-        private void OutputToJson( IReadOnlyCollection<KeySwitch> entities )
+        private void OutputToJson( IReadOnlyCollection<KeySwitch> entities, CommandOption option )
         {
             var translator = new KeySwitchListListToJsonModelList
             {
@@ -58,7 +60,11 @@ namespace KeySwitchManager.Apps.CLI.Commands
             };
 
             var json = translator.Translate( entities );
-            File.WriteAllText( "result.json", json.Value );
+
+            if( !string.IsNullOrEmpty( option.LogFilePath ) )
+            {
+                File.WriteAllText( option.LogFilePath, json.Value );
+            }
         }
     }
 }

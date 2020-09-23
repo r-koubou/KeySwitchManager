@@ -6,7 +6,7 @@ using CommandLine;
 using KeySwitchManager.Interactors.KeySwitches.Exporting;
 using KeySwitchManager.Json.KeySwitches.Translations;
 
-namespace KeySwitchManager.Apps.CLI.Commands
+namespace KeySwitchManager.CLI.Commands
 {
     public class Template : ICommand
     {

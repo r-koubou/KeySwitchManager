@@ -9,7 +9,7 @@ using KeySwitchManager.Json.KeySwitches.Translations;
 using KeySwitchManager.Presenters.KeySwitches;
 using KeySwitchManager.UseCases.KeySwitches.Importing.Text;
 
-namespace KeySwitchManager.Apps.CLI.Commands
+namespace KeySwitchManager.CLI.Commands
 {
     public class Import : ICommand
     {
