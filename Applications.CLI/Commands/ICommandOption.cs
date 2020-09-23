@@ -1,4 +1,4 @@
-namespace KeySwitchManager.Apps.CLI.Commands
+namespace KeySwitchManager.CLI.Commands
 {
     public interface ICommandOption
     {}

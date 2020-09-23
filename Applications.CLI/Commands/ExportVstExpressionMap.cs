@@ -13,7 +13,7 @@ using KeySwitchManager.Presenters.VstExpressionMap;
 using KeySwitchManager.UseCases.VstExpressionMap.Exporting;
 using KeySwitchManager.Xml.VstExpressionMap.Translations;
 
-namespace KeySwitchManager.Apps.CLI.Commands
+namespace KeySwitchManager.CLI.Commands
 {
     public class ExportVstExpressionMap : ICommand
     {

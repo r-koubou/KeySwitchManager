@@ -13,7 +13,7 @@ using KeySwitchManager.Presenters.StudioOneKeySwitch;
 using KeySwitchManager.UseCases.StudioOneKeySwitch.Exporting;
 using KeySwitchManager.Xml.StudioOne.KeySwitch.Translations;
 
-namespace KeySwitchManager.Apps.CLI.Commands
+namespace KeySwitchManager.CLI.Commands
 {
     public class ExportStudioOneKeySwitch : ICommand
     {

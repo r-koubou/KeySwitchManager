@@ -13,7 +13,7 @@ using KeySwitchManager.Presenters.KeySwitches;
 using KeySwitchManager.UseCases.KeySwitches.Importing.Xlsx;
 using KeySwitchManager.Xlsx.KeySwitches.Translators;
 
-namespace KeySwitchManager.Apps.CLI.Commands
+namespace KeySwitchManager.CLI.Commands
 {
     public class ImportXlsx : ICommand
     {
