@@ -84,11 +84,11 @@
 
         <Copy
                 SourceFiles="$(OtherDeployingFiles)"
-                DestinationFolder="$(PublishDir)" />
+                DestinationFolder="$(PublishDir)/$(Prefix)" />
 
         <ZipDirectory
                 SourceDirectory="$(PublishDir)"
-                DestinationFile="Publish/$(Prefix)-$(BuildDate).zip"
+                DestinationFile="publish/$(Prefix)-$(BuildDate).zip"
                 Overwrite="true" />
         <RemoveDir
                 Directories="$(PublishDir)/"/>

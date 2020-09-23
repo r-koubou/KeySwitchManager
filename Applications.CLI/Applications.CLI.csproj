@@ -4,10 +4,10 @@
         <!-- Assembly / Common -->
         <OutputType>Exe</OutputType>
         <TargetFramework>netcoreapp3.1</TargetFramework>
-        <AssemblyName>KeySwitchManager.Apps.CLI</AssemblyName>
-        <RootNamespace>KeySwitchManager.Apps.CLI</RootNamespace>
+        <AssemblyName>KeySwitchManager.CLI</AssemblyName>
+        <RootNamespace>KeySwitchManager.CLI</RootNamespace>
         <Company>R-Koubou</Company>
-        <Product>KeySwitchManager.Apps.CLI</Product>
+        <Product>KeySwitchManager CLI Application</Product>
         <Version>0.1.0-alpha</Version>
         <Description>KeySwitchManager.Apps.CLI app</Description>
         <Nullable>enable</Nullable>
