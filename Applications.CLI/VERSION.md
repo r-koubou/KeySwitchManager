@@ -1,4 +1,4 @@
-KeySwitchManager.Apps.CLI
+KeySwitchManager CLI Application
 ==============================
 
 ## Assembly Version
@@ -7,4 +7,4 @@ KeySwitchManager.Apps.CLI
 
 ## Build At
 
-2020-09-23 02:25:03 +09:00
+2020-09-23 22:52:10 +09:00

@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 
 using Databases.LiteDB.KeySwitches.KeySwitches.Models;
 using Databases.LiteDB.KeySwitches.KeySwitches.Translations;
@@ -66,9 +67,11 @@ namespace Databases.LiteDB.KeySwitches.KeySwitches
 
             var translator = new EntityToDbModel();
             var entity = translator.Translate( keySwitch );
+            var exist = table.Find( x => x.Id.Equals( keySwitch.Id.Value ), 0, 1 ).ToList();
 
-            if( table.Exists( x => x.Id.Equals( keySwitch.Id.Value ) ) )
+            if( exist.Count > 0 )
             {
+                entity.Created     = DateTimeHelper.ToUtc( exist[ 0 ].Created );
                 entity.LastUpdated = DateTimeHelper.NowUtc();
                 return table.Update( entity ) ? 1 : 0;
             }
