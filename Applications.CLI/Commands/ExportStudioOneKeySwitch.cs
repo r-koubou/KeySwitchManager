@@ -73,7 +73,8 @@ namespace KeySwitchManager.CLI.Commands
                     ).Path;
                 }
 
-                var path = Path.Combine( outputDirectory, i.KeySwitch.InstrumentName + ".keyswitch" );
+                var prefix = $"{i.KeySwitch.ProductName} {i.KeySwitch.InstrumentName}";
+                var path = Path.Combine( outputDirectory, prefix + ".keyswitch" );
                 path = Common.IO.PathUtility.GenerateFilePathWhenExist( path, outputDirectory );
 
                 Console.Out.WriteLine( $"export to {path}" );

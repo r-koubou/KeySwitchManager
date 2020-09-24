@@ -74,7 +74,8 @@ namespace KeySwitchManager.CLI.Commands
                     ).Path;
                 }
 
-                var path = Path.Combine( outputDirectory, i.KeySwitch.InstrumentName + ".expressionmap" );
+                var prefix = $"{i.KeySwitch.ProductName} {i.KeySwitch.InstrumentName}";
+                var path = Path.Combine( outputDirectory, prefix + ".expressionmap" );
                 path = PathUtility.GenerateFilePathWhenExist( path, outputDirectory );
 
                 Console.Out.WriteLine( $"export to {path}" );
