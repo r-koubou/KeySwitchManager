@@ -77,7 +77,7 @@ namespace KeySwitchManager.Xml.VstExpressionMap.Translations
             var slots = InstrumentMap.Slots( listOfPSoundSlot );
             var slotVisuals = InstrumentMap.SlotVisuals( listOfUSlotVisuals );
 
-            var instrumentName = source.InstrumentName.Value;
+            var instrumentName = $"{source.ProductName.Value} {source.InstrumentName.Value}";
             var rootElement = InstrumentMap.New( instrumentName );
             rootElement.Member.Add( slotVisuals );
             rootElement.Member.Add( slots );

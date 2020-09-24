@@ -2,7 +2,7 @@ namespace KeySwitchManager.Xml.VstExpressionMap.Models.XmlClasses
 {
     public static class InstrumentMap
     {
-        public static RootElement New( string mapName)
+        public static RootElement New( string mapName )
         {
             var obj = new RootElement( mapName );
 

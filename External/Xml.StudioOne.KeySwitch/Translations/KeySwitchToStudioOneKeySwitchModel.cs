@@ -14,7 +14,7 @@ namespace KeySwitchManager.Xml.StudioOne.KeySwitch.Translations
         {
             var xml = new RootElement
             {
-                Name = source.InstrumentName.Value
+                Name = $"{source.ProductName.Value} {source.InstrumentName.Value}"
             };
 
             foreach( var i in source.Articulations )
