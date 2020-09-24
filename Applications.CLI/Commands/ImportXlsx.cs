@@ -20,6 +20,12 @@ namespace KeySwitchManager.CLI.Commands
         [Verb( "import-xlsx", false, HelpText = "import a xlsx to database")]
         public class CommandOption : ICommandOption
         {
+            [Option( 'a', "author" )]
+            public string Author { get; set; } = string.Empty;
+
+            [Option( 'n', "description" )]
+            public string Description { get; set; } = string.Empty;
+
             [Option( 'd', "developer", Required = true)]
             public string Developer { get; set; } = string.Empty;
 
@@ -40,7 +46,12 @@ namespace KeySwitchManager.CLI.Commands
             var option = (CommandOption)opt;
 
             using var repository = new LiteDbKeySwitchRepository( option.DatabasePath );
-            var translator = new XlsxWorkbookToKeySwitchList( option.Developer, option.Product );
+            var translator = new XlsxWorkbookToKeySwitchList(
+                option.Developer,
+                option.Product,
+                option.Author,
+                option.Description
+            );
             var presenter = new IImportingXlsxPresenter.Console();
             var interactor = new ImportingXlsxInteractor( repository, translator, presenter );
 
