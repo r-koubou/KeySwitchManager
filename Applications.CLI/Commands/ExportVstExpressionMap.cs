@@ -19,7 +19,7 @@ namespace KeySwitchManager.CLI.Commands
 {
     public class ExportVstExpressionMap : ICommand
     {
-        [Verb( "vst-expressionmap", false, HelpText = "export to VST Expression Map format")]
+        [Verb( "expressionmap", false, HelpText = "export to VST Expression Map format")]
         public class CommandOption : ICommandOption
         {
             [Option( 'd', "developer", Required = true)]
@@ -36,6 +36,8 @@ namespace KeySwitchManager.CLI.Commands
 
             [Option( 'o', "outputdir", Required = true )]
             public string OutputDirectory { get; set; } = string.Empty;
+            [Option( 'w', "overwrite" )]
+            public bool OverWrite { get; set; } = true;
             [Option( 's', "structure-dir" )]
             public bool DirectoryStructure { get; set; } = false;
         }
@@ -75,8 +77,8 @@ namespace KeySwitchManager.CLI.Commands
                 }
 
                 var prefix = $"{i.KeySwitch.ProductName} {i.KeySwitch.InstrumentName}";
-                var path = Path.Combine( outputDirectory, prefix + ".expressionmap" );
-                path = PathUtility.GenerateFilePathWhenExist( path, outputDirectory );
+                var path = $"{prefix}.expressionmap";
+                path = PathUtility.GenerateFilePathWhenExist( path, outputDirectory, option.OverWrite );
 
                 Console.Out.WriteLine( $"export to {path}" );
                 File.WriteAllText( path, i.XmlText.Value, Encoding.UTF8 );

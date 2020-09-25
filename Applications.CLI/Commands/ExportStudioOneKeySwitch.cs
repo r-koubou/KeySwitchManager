@@ -35,6 +35,8 @@ namespace KeySwitchManager.CLI.Commands
 
             [Option( 'o', "outputdir", Required = true )]
             public string OutputDirectory { get; set; } = string.Empty;
+            [Option( 'w', "overwrite" )]
+            public bool OverWrite { get; set; } = true;
             [Option( 's', "structure-dir" )]
             public bool DirectoryStructure { get; set; } = false;
         }
@@ -74,8 +76,8 @@ namespace KeySwitchManager.CLI.Commands
                 }
 
                 var prefix = $"{i.KeySwitch.ProductName} {i.KeySwitch.InstrumentName}";
-                var path = Path.Combine( outputDirectory, prefix + ".keyswitch" );
-                path = Common.IO.PathUtility.GenerateFilePathWhenExist( path, outputDirectory );
+                var path = $"{prefix}.keyswitch";
+                path = Common.IO.PathUtility.GenerateFilePathWhenExist( path, outputDirectory, option.OverWrite );
 
                 Console.Out.WriteLine( $"export to {path}" );
                 File.WriteAllText( path, i.XmlText.Value, Encoding.UTF8 );

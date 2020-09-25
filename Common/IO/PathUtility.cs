@@ -5,11 +5,18 @@ namespace KeySwitchManager.Common.IO
 {
     public static class PathUtility
     {
-        public static string GenerateFilePathWhenExist( string path, string baseDirectory )
+        public static string GenerateFilePathWhenExist( string fileName, string baseDirectory, bool overwriteWhenExist )
         {
-            var pathExtension = Path.GetExtension( path );
-            var pathWithoutExtension = Path.GetFileNameWithoutExtension( path );
+            var pathExtension = Path.GetExtension( fileName );
+            var pathWithoutExtension = Path.GetFileNameWithoutExtension( fileName );
             var duplicate = 0;
+
+            if( overwriteWhenExist )
+            {
+                return Path.Combine( baseDirectory, fileName );
+            }
+
+            var path = Path.Combine( baseDirectory, fileName );
 
             while( File.Exists( path ) )
             {
@@ -21,7 +28,7 @@ namespace KeySwitchManager.Common.IO
                 path = Path.Combine( baseDirectory, $"{pathWithoutExtension} ({duplicate}){pathExtension}" );
             }
 
-            return path;
+            return fileName;
         }
     }
 }
