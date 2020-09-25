@@ -3,9 +3,9 @@
 
         <BashLauncherText>
 #/bin/bash
-pushd `dirname $0`
+pushd `dirname $0` > /dev/null
     this_dir=`pwd`
-popd
+popd > /dev/null
 dotnet $this_dir/$(ProjectName).dll "${@/#prefix:/}"
         </BashLauncherText>
 
