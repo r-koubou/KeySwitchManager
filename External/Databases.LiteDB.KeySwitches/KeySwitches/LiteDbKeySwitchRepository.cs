@@ -11,6 +11,7 @@ using KeySwitchManager.Domain.Commons;
 using KeySwitchManager.Domain.KeySwitches.Aggregate;
 using KeySwitchManager.Domain.KeySwitches.Value;
 using KeySwitchManager.Gateways.KeySwitches;
+using KeySwitchManager.Gateways.KeySwitches.Value;
 
 using LiteDB;
 
@@ -61,7 +62,7 @@ namespace Databases.LiteDB.KeySwitches.KeySwitches
         }
 
         #region Save
-        public int Save( KeySwitch keySwitch )
+        public SaveResult Save( KeySwitch keySwitch )
         {
             var table = Database.GetCollection<KeySwitchModel>( KeySwitchesTableName );
 
@@ -73,13 +74,21 @@ namespace Databases.LiteDB.KeySwitches.KeySwitches
             {
                 entity.Created     = DateTimeHelper.ToUtc( exist[ 0 ].Created );
                 entity.LastUpdated = DateTimeHelper.NowUtc();
-                return table.Update( entity ) ? 1 : 0;
+                var updated = table.Update( entity ) ? 1 : 0;
+
+                return new SaveResult(
+                    inserted: 0,
+                    updated: updated
+                );
             }
 
             entity.Id = keySwitch.Id.Value;
 
-            var result = table.Insert( entity ).AsGuid;
-            return result == entity.Id ? 1 : 0;
+            var insertedId = table.Insert( entity ).AsGuid;
+            return new SaveResult(
+                inserted: insertedId == entity.Id ? 1 : 0,
+                updated: 0
+            );
         }
         #endregion
 

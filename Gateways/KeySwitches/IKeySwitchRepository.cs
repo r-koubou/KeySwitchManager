@@ -4,13 +4,14 @@ using System.Collections.Generic;
 using KeySwitchManager.Domain.Commons;
 using KeySwitchManager.Domain.KeySwitches.Aggregate;
 using KeySwitchManager.Domain.KeySwitches.Value;
+using KeySwitchManager.Gateways.KeySwitches.Value;
 
 namespace KeySwitchManager.Gateways.KeySwitches
 {
     public interface IKeySwitchRepository
     {
         public int Count();
-        public int Save( KeySwitch keySwitch );
+        public SaveResult Save( KeySwitch keySwitch );
         public int Delete( DeveloperName developerName, ProductName productName );
         public int Delete( DeveloperName developerName, ProductName productName, InstrumentName instrumentName );
         public int Delete( EntityGuid guid );

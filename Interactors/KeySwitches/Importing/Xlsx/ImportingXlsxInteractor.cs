@@ -24,14 +24,17 @@ namespace KeySwitchManager.Interactors.KeySwitches.Importing.Xlsx
         public ImportingXlsxResponse Execute( ImportingXlsxRequest request )
         {
             var keySwitches = Translator.Translate( request.FilePath );
+            var insertedCount = 0;
             var updatedCount = 0;
 
             foreach( var i in keySwitches )
             {
-                updatedCount += Repository.Save( i );
+                var r = Repository.Save( i );
+                insertedCount += r.Inserted;
+                updatedCount  += r.Updated;
             }
 
-            Presenter.Present( $"{updatedCount} record(s) updated" );
+            Presenter.Present( $"{insertedCount} record(s) inserted, {updatedCount} record(s) updated" );
 
             return new ImportingXlsxResponse( keySwitches );
         }
