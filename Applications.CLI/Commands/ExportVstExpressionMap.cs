@@ -71,8 +71,7 @@ namespace KeySwitchManager.CLI.Commands
                 {
                     outputDirectory = EntityDirectoryService.CreateDirectoryTree(
                         i.KeySwitch,
-                        new DirectoryPath( option.OutputDirectory ),
-                        new DirectoryPath( "VST Expressionmap" )
+                        new DirectoryPath( option.OutputDirectory )
                     ).Path;
                 }
 

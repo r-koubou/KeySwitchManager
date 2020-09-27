@@ -7,6 +7,7 @@ using CommandLine;
 
 using Databases.LiteDB.KeySwitches.KeySwitches;
 
+using KeySwitchManager.Common.IO;
 using KeySwitchManager.Domain.Commons;
 using KeySwitchManager.Domain.Services;
 using KeySwitchManager.Interactors.StudioOneKeySwitch.Exporting;
@@ -70,14 +71,13 @@ namespace KeySwitchManager.CLI.Commands
                 {
                     outputDirectory = EntityDirectoryService.CreateDirectoryTree(
                         i.KeySwitch,
-                        new DirectoryPath( option.OutputDirectory ),
-                        new DirectoryPath( "Studio One 5" )
+                        new DirectoryPath( option.OutputDirectory )
                     ).Path;
                 }
 
                 var prefix = $"{i.KeySwitch.ProductName} {i.KeySwitch.InstrumentName}";
                 var path = $"{prefix}.keyswitch";
-                path = Common.IO.PathUtility.GenerateFilePathWhenExist( path, outputDirectory, option.OverWrite );
+                path = PathUtility.GenerateFilePathWhenExist( path, outputDirectory, option.OverWrite );
 
                 Console.Out.WriteLine( $"export to {path}" );
                 File.WriteAllText( path, i.XmlText.Value, Encoding.UTF8 );

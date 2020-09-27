@@ -34,7 +34,7 @@ namespace KeySwitchManager.Interactors.KeySwitches.Importing.Xlsx
                 updatedCount  += r.Updated;
             }
 
-            Presenter.Present( $"{insertedCount} record(s) inserted, {updatedCount} record(s) updated" );
+            Presenter.Present( $"{request.FilePath}: {insertedCount} record(s) inserted, {updatedCount} record(s) updated" );
 
             return new ImportingXlsxResponse( keySwitches );
         }

@@ -70,7 +70,7 @@ namespace Databases.LiteDB.KeySwitches.KeySwitches
             var entity = translator.Translate( keySwitch );
             var exist = table.Find( x => x.Id.Equals( keySwitch.Id.Value ), 0, 1 ).ToList();
 
-            if( exist.Count > 0 )
+            if( exist.Any() )
             {
                 entity.Created     = DateTimeHelper.ToUtc( exist[ 0 ].Created );
                 entity.LastUpdated = DateTimeHelper.NowUtc();

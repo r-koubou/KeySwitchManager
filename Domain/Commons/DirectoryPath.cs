@@ -11,5 +11,8 @@ namespace KeySwitchManager.Domain.Commons
         {
             Path   = path;
         }
+
+        public override string ToString() => Path;
+
     }
 }
