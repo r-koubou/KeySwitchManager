@@ -1,0 +1,2636 @@
+﻿[
+  {
+    "id": "1542dbe6-fb8a-4db3-92d6-18e08bf0352d",
+    "author": "",
+    "description": "",
+    "created": "2020-09-23T13:35:32.321Z",
+    "last_updated": "2020-09-23T13:35:36.865Z",
+    "developer_name": "Fujiya Instruments",
+    "product_name": "VHG",
+    "instrument_name": "VHG Poly (Other)",
+    "articulations": [
+      {
+        "name": "IDLE",
+        "type": 1,
+        "group": 0,
+        "color": 0,
+        "midi_message": {
+          "note_on": [],
+          "control_change": [],
+          "program_change": []
+        }
+      },
+      {
+        "name": "Auto Alternate",
+        "type": 1,
+        "group": 0,
+        "color": 1,
+        "midi_message": {
+          "note_on": [
+            {
+              "status": 144,
+              "channel": 0,
+              "data1": 6,
+              "data2": 120
+            }
+          ],
+          "control_change": [],
+          "program_change": []
+        }
+      },
+      {
+        "name": "Always Down",
+        "type": 1,
+        "group": 0,
+        "color": 1,
+        "midi_message": {
+          "note_on": [
+            {
+              "status": 144,
+              "channel": 0,
+              "data1": 7,
+              "data2": 120
+            }
+          ],
+          "control_change": [],
+          "program_change": []
+        }
+      },
+      {
+        "name": "Always Up",
+        "type": 1,
+        "group": 0,
+        "color": 1,
+        "midi_message": {
+          "note_on": [
+            {
+              "status": 144,
+              "channel": 0,
+              "data1": 8,
+              "data2": 120
+            }
+          ],
+          "control_change": [],
+          "program_change": []
+        }
+      },
+      {
+        "name": "Pull Off",
+        "type": 1,
+        "group": 0,
+        "color": 1,
+        "midi_message": {
+          "note_on": [
+            {
+              "status": 144,
+              "channel": 0,
+              "data1": 33,
+              "data2": 64
+            }
+          ],
+          "control_change": [],
+          "program_change": []
+        }
+      },
+      {
+        "name": "Hammer On",
+        "type": 1,
+        "group": 0,
+        "color": 1,
+        "midi_message": {
+          "note_on": [
+            {
+              "status": 144,
+              "channel": 0,
+              "data1": 33,
+              "data2": 65
+            }
+          ],
+          "control_change": [],
+          "program_change": []
+        }
+      }
+    ]
+  },
+  {
+    "id": "21136fc3-02fc-4b50-90a0-a02c21dd477c",
+    "author": "",
+    "description": "",
+    "created": "2020-09-23T13:35:32.322Z",
+    "last_updated": "2020-09-23T13:35:36.868Z",
+    "developer_name": "Fujiya Instruments",
+    "product_name": "VHG",
+    "instrument_name": "VHG Mono (Stop)",
+    "articulations": [
+      {
+        "name": "IDLE",
+        "type": 1,
+        "group": 0,
+        "color": 0,
+        "midi_message": {
+          "note_on": [],
+          "control_change": [],
+          "program_change": []
+        }
+      },
+      {
+        "name": "Noiseless Vel 15",
+        "type": 1,
+        "group": 0,
+        "color": 1,
+        "midi_message": {
+          "note_on": [
+            {
+              "status": 144,
+              "channel": 0,
+              "data1": 31,
+              "data2": 15
+            }
+          ],
+          "control_change": [],
+          "program_change": []
+        }
+      },
+      {
+        "name": "Noiseless Vel 31",
+        "type": 1,
+        "group": 0,
+        "color": 1,
+        "midi_message": {
+          "note_on": [
+            {
+              "status": 144,
+              "channel": 0,
+              "data1": 31,
+              "data2": 31
+            }
+          ],
+          "control_change": [],
+          "program_change": []
+        }
+      },
+      {
+        "name": "Noiseless Vel 47",
+        "type": 1,
+        "group": 0,
+        "color": 1,
+        "midi_message": {
+          "note_on": [
+            {
+              "status": 144,
+              "channel": 0,
+              "data1": 31,
+              "data2": 47
+            }
+          ],
+          "control_change": [],
+          "program_change": []
+        }
+      },
+      {
+        "name": "Noiseless Vel 63",
+        "type": 1,
+        "group": 0,
+        "color": 1,
+        "midi_message": {
+          "note_on": [
+            {
+              "status": 144,
+              "channel": 0,
+              "data1": 31,
+              "data2": 63
+            }
+          ],
+          "control_change": [],
+          "program_change": []
+        }
+      },
+      {
+        "name": "Noiseless Vel 79",
+        "type": 1,
+        "group": 0,
+        "color": 1,
+        "midi_message": {
+          "note_on": [
+            {
+              "status": 144,
+              "channel": 0,
+              "data1": 31,
+              "data2": 79
+            }
+          ],
+          "control_change": [],
+          "program_change": []
+        }
+      },
+      {
+        "name": "Noiseless Vel 95",
+        "type": 1,
+        "group": 0,
+        "color": 1,
+        "midi_message": {
+          "note_on": [
+            {
+              "status": 144,
+              "channel": 0,
+              "data1": 31,
+              "data2": 95
+            }
+          ],
+          "control_change": [],
+          "program_change": []
+        }
+      },
+      {
+        "name": "Noiseless Vel 111",
+        "type": 1,
+        "group": 0,
+        "color": 1,
+        "midi_message": {
+          "note_on": [
+            {
+              "status": 144,
+              "channel": 0,
+              "data1": 31,
+              "data2": 111
+            }
+          ],
+          "control_change": [],
+          "program_change": []
+        }
+      },
+      {
+        "name": "Noiseless Vel 127",
+        "type": 1,
+        "group": 0,
+        "color": 1,
+        "midi_message": {
+          "note_on": [
+            {
+              "status": 144,
+              "channel": 0,
+              "data1": 31,
+              "data2": 127
+            }
+          ],
+          "control_change": [],
+          "program_change": []
+        }
+      },
+      {
+        "name": "Pick Vel 15",
+        "type": 1,
+        "group": 0,
+        "color": 2,
+        "midi_message": {
+          "note_on": [
+            {
+              "status": 144,
+              "channel": 0,
+              "data1": 32,
+              "data2": 15
+            }
+          ],
+          "control_change": [],
+          "program_change": []
+        }
+      },
+      {
+        "name": "Pick Vel 31",
+        "type": 1,
+        "group": 0,
+        "color": 2,
+        "midi_message": {
+          "note_on": [
+            {
+              "status": 144,
+              "channel": 0,
+              "data1": 32,
+              "data2": 31
+            }
+          ],
+          "control_change": [],
+          "program_change": []
+        }
+      },
+      {
+        "name": "Pick Vel 47",
+        "type": 1,
+        "group": 0,
+        "color": 2,
+        "midi_message": {
+          "note_on": [
+            {
+              "status": 144,
+              "channel": 0,
+              "data1": 32,
+              "data2": 47
+            }
+          ],
+          "control_change": [],
+          "program_change": []
+        }
+      },
+      {
+        "name": "Pick Vel 63",
+        "type": 1,
+        "group": 0,
+        "color": 2,
+        "midi_message": {
+          "note_on": [
+            {
+              "status": 144,
+              "channel": 0,
+              "data1": 32,
+              "data2": 63
+            }
+          ],
+          "control_change": [],
+          "program_change": []
+        }
+      },
+      {
+        "name": "Pick Vel 79",
+        "type": 1,
+        "group": 0,
+        "color": 2,
+        "midi_message": {
+          "note_on": [
+            {
+              "status": 144,
+              "channel": 0,
+              "data1": 32,
+              "data2": 79
+            }
+          ],
+          "control_change": [],
+          "program_change": []
+        }
+      },
+      {
+        "name": "Pick Vel 95",
+        "type": 1,
+        "group": 0,
+        "color": 2,
+        "midi_message": {
+          "note_on": [
+            {
+              "status": 144,
+              "channel": 0,
+              "data1": 32,
+              "data2": 95
+            }
+          ],
+          "control_change": [],
+          "program_change": []
+        }
+      },
+      {
+        "name": "Pick Vel 111",
+        "type": 1,
+        "group": 0,
+        "color": 2,
+        "midi_message": {
+          "note_on": [
+            {
+              "status": 144,
+              "channel": 0,
+              "data1": 32,
+              "data2": 111
+            }
+          ],
+          "control_change": [],
+          "program_change": []
+        }
+      },
+      {
+        "name": "Pick Vel 127",
+        "type": 1,
+        "group": 0,
+        "color": 2,
+        "midi_message": {
+          "note_on": [
+            {
+              "status": 144,
+              "channel": 0,
+              "data1": 32,
+              "data2": 127
+            }
+          ],
+          "control_change": [],
+          "program_change": []
+        }
+      }
+    ]
+  },
+  {
+    "id": "4c4d0353-7114-4ae4-8bb5-72294bfed697",
+    "author": "",
+    "description": "",
+    "created": "2020-09-23T13:35:32.322Z",
+    "last_updated": "2020-09-23T13:35:36.867Z",
+    "developer_name": "Fujiya Instruments",
+    "product_name": "VHG",
+    "instrument_name": "VHG Mono (Other)",
+    "articulations": [
+      {
+        "name": "IDLE",
+        "type": 1,
+        "group": 0,
+        "color": 0,
+        "midi_message": {
+          "note_on": [],
+          "control_change": [],
+          "program_change": []
+        }
+      },
+      {
+        "name": "Auto Alternate",
+        "type": 1,
+        "group": 0,
+        "color": 1,
+        "midi_message": {
+          "note_on": [
+            {
+              "status": 144,
+              "channel": 0,
+              "data1": 6,
+              "data2": 120
+            }
+          ],
+          "control_change": [],
+          "program_change": []
+        }
+      },
+      {
+        "name": "Always Down",
+        "type": 1,
+        "group": 0,
+        "color": 1,
+        "midi_message": {
+          "note_on": [
+            {
+              "status": 144,
+              "channel": 0,
+              "data1": 7,
+              "data2": 120
+            }
+          ],
+          "control_change": [],
+          "program_change": []
+        }
+      },
+      {
+        "name": "Always Up",
+        "type": 1,
+        "group": 0,
+        "color": 1,
+        "midi_message": {
+          "note_on": [
+            {
+              "status": 144,
+              "channel": 0,
+              "data1": 8,
+              "data2": 120
+            }
+          ],
+          "control_change": [],
+          "program_change": []
+        }
+      }
+    ]
+  },
+  {
+    "id": "69b04206-1db3-40ac-aa1e-f8ca9c8eb5d0",
+    "author": "",
+    "description": "",
+    "created": "2020-09-23T13:35:32.322Z",
+    "last_updated": "2020-09-23T13:35:36.873Z",
+    "developer_name": "Fujiya Instruments",
+    "product_name": "VHG",
+    "instrument_name": "VHG Riff (Main)",
+    "articulations": [
+      {
+        "name": "IDLE",
+        "type": 1,
+        "group": 0,
+        "color": 0,
+        "midi_message": {
+          "note_on": [],
+          "control_change": [],
+          "program_change": []
+        }
+      },
+      {
+        "name": "P Harmonics",
+        "type": 1,
+        "group": 0,
+        "color": 1,
+        "midi_message": {
+          "note_on": [
+            {
+              "status": 144,
+              "channel": 0,
+              "data1": 21,
+              "data2": 120
+            }
+          ],
+          "control_change": [],
+          "program_change": []
+        }
+      },
+      {
+        "name": "Pick Scrape",
+        "type": 1,
+        "group": 0,
+        "color": 1,
+        "midi_message": {
+          "note_on": [
+            {
+              "status": 144,
+              "channel": 0,
+              "data1": 22,
+              "data2": 120
+            }
+          ],
+          "control_change": [],
+          "program_change": []
+        }
+      },
+      {
+        "name": "Glissando Up/Down",
+        "type": 1,
+        "group": 0,
+        "color": 1,
+        "midi_message": {
+          "note_on": [
+            {
+              "status": 144,
+              "channel": 0,
+              "data1": 23,
+              "data2": 120
+            }
+          ],
+          "control_change": [],
+          "program_change": []
+        }
+      },
+      {
+        "name": "Sustain(H&P)",
+        "type": 1,
+        "group": 0,
+        "color": 1,
+        "midi_message": {
+          "note_on": [
+            {
+              "status": 144,
+              "channel": 0,
+              "data1": 24,
+              "data2": 120
+            }
+          ],
+          "control_change": [],
+          "program_change": []
+        }
+      },
+      {
+        "name": "Sustain(Slide)",
+        "type": 1,
+        "group": 0,
+        "color": 1,
+        "midi_message": {
+          "note_on": [
+            {
+              "status": 144,
+              "channel": 0,
+              "data1": 25,
+              "data2": 120
+            }
+          ],
+          "control_change": [],
+          "program_change": []
+        }
+      },
+      {
+        "name": "Palm Mute (hard)",
+        "type": 1,
+        "group": 0,
+        "color": 1,
+        "midi_message": {
+          "note_on": [
+            {
+              "status": 144,
+              "channel": 0,
+              "data1": 26,
+              "data2": 120
+            }
+          ],
+          "control_change": [],
+          "program_change": []
+        }
+      },
+      {
+        "name": "Palm Mute (soft)",
+        "type": 1,
+        "group": 0,
+        "color": 1,
+        "midi_message": {
+          "note_on": [
+            {
+              "status": 144,
+              "channel": 0,
+              "data1": 27,
+              "data2": 120
+            }
+          ],
+          "control_change": [],
+          "program_change": []
+        }
+      },
+      {
+        "name": "Brush",
+        "type": 1,
+        "group": 0,
+        "color": 1,
+        "midi_message": {
+          "note_on": [
+            {
+              "status": 144,
+              "channel": 0,
+              "data1": 28,
+              "data2": 120
+            }
+          ],
+          "control_change": [],
+          "program_change": []
+        }
+      }
+    ]
+  },
+  {
+    "id": "84e87372-347a-4e05-909d-a347434d56f9",
+    "author": "",
+    "description": "",
+    "created": "2020-09-23T13:35:32.321Z",
+    "last_updated": "2020-09-23T13:35:36.866Z",
+    "developer_name": "Fujiya Instruments",
+    "product_name": "VHG",
+    "instrument_name": "VHG Mono (Main)",
+    "articulations": [
+      {
+        "name": "IDLE",
+        "type": 1,
+        "group": 0,
+        "color": 0,
+        "midi_message": {
+          "note_on": [],
+          "control_change": [],
+          "program_change": []
+        }
+      },
+      {
+        "name": "Stop",
+        "type": 1,
+        "group": 0,
+        "color": 1,
+        "midi_message": {
+          "note_on": [
+            {
+              "status": 144,
+              "channel": 0,
+              "data1": 31,
+              "data2": 15
+            }
+          ],
+          "control_change": [],
+          "program_change": []
+        }
+      },
+      {
+        "name": "Octave",
+        "type": 1,
+        "group": 0,
+        "color": 1,
+        "midi_message": {
+          "note_on": [
+            {
+              "status": 144,
+              "channel": 0,
+              "data1": 9,
+              "data2": 120
+            }
+          ],
+          "control_change": [],
+          "program_change": []
+        }
+      },
+      {
+        "name": "4th Mute",
+        "type": 1,
+        "group": 0,
+        "color": 1,
+        "midi_message": {
+          "note_on": [
+            {
+              "status": 144,
+              "channel": 0,
+              "data1": 10,
+              "data2": 120
+            }
+          ],
+          "control_change": [],
+          "program_change": []
+        }
+      },
+      {
+        "name": "4th Sustain",
+        "type": 1,
+        "group": 0,
+        "color": 1,
+        "midi_message": {
+          "note_on": [
+            {
+              "status": 144,
+              "channel": 0,
+              "data1": 11,
+              "data2": 120
+            }
+          ],
+          "control_change": [],
+          "program_change": []
+        }
+      },
+      {
+        "name": "5th Mute",
+        "type": 1,
+        "group": 0,
+        "color": 1,
+        "midi_message": {
+          "note_on": [
+            {
+              "status": 144,
+              "channel": 0,
+              "data1": 12,
+              "data2": 120
+            }
+          ],
+          "control_change": [],
+          "program_change": []
+        }
+      },
+      {
+        "name": "5th Sustain",
+        "type": 1,
+        "group": 0,
+        "color": 1,
+        "midi_message": {
+          "note_on": [
+            {
+              "status": 144,
+              "channel": 0,
+              "data1": 13,
+              "data2": 120
+            }
+          ],
+          "control_change": [],
+          "program_change": []
+        }
+      },
+      {
+        "name": "Tremolo",
+        "type": 1,
+        "group": 0,
+        "color": 1,
+        "midi_message": {
+          "note_on": [
+            {
+              "status": 144,
+              "channel": 0,
+              "data1": 14,
+              "data2": 120
+            }
+          ],
+          "control_change": [],
+          "program_change": []
+        }
+      },
+      {
+        "name": "Trill (Half)",
+        "type": 1,
+        "group": 0,
+        "color": 1,
+        "midi_message": {
+          "note_on": [
+            {
+              "status": 144,
+              "channel": 0,
+              "data1": 15,
+              "data2": 120
+            }
+          ],
+          "control_change": [],
+          "program_change": []
+        }
+      },
+      {
+        "name": "Trill (Whole)",
+        "type": 1,
+        "group": 0,
+        "color": 1,
+        "midi_message": {
+          "note_on": [
+            {
+              "status": 144,
+              "channel": 0,
+              "data1": 16,
+              "data2": 120
+            }
+          ],
+          "control_change": [],
+          "program_change": []
+        }
+      },
+      {
+        "name": "Unison Bend",
+        "type": 1,
+        "group": 0,
+        "color": 1,
+        "midi_message": {
+          "note_on": [
+            {
+              "status": 144,
+              "channel": 0,
+              "data1": 17,
+              "data2": 120
+            }
+          ],
+          "control_change": [],
+          "program_change": []
+        }
+      },
+      {
+        "name": "Quarter Bend",
+        "type": 1,
+        "group": 0,
+        "color": 1,
+        "midi_message": {
+          "note_on": [
+            {
+              "status": 144,
+              "channel": 0,
+              "data1": 18,
+              "data2": 120
+            }
+          ],
+          "control_change": [],
+          "program_change": []
+        }
+      },
+      {
+        "name": "Chop",
+        "type": 1,
+        "group": 0,
+        "color": 1,
+        "midi_message": {
+          "note_on": [
+            {
+              "status": 144,
+              "channel": 0,
+              "data1": 19,
+              "data2": 120
+            }
+          ],
+          "control_change": [],
+          "program_change": []
+        }
+      },
+      {
+        "name": "N Harmonics",
+        "type": 1,
+        "group": 0,
+        "color": 1,
+        "midi_message": {
+          "note_on": [
+            {
+              "status": 144,
+              "channel": 0,
+              "data1": 20,
+              "data2": 120
+            }
+          ],
+          "control_change": [],
+          "program_change": []
+        }
+      },
+      {
+        "name": "P Harmonics",
+        "type": 1,
+        "group": 0,
+        "color": 1,
+        "midi_message": {
+          "note_on": [
+            {
+              "status": 144,
+              "channel": 0,
+              "data1": 21,
+              "data2": 120
+            }
+          ],
+          "control_change": [],
+          "program_change": []
+        }
+      },
+      {
+        "name": "Pick Scrape",
+        "type": 1,
+        "group": 0,
+        "color": 1,
+        "midi_message": {
+          "note_on": [
+            {
+              "status": 144,
+              "channel": 0,
+              "data1": 22,
+              "data2": 120
+            }
+          ],
+          "control_change": [],
+          "program_change": []
+        }
+      },
+      {
+        "name": "Glissando Up/Down",
+        "type": 1,
+        "group": 0,
+        "color": 1,
+        "midi_message": {
+          "note_on": [
+            {
+              "status": 144,
+              "channel": 0,
+              "data1": 23,
+              "data2": 120
+            }
+          ],
+          "control_change": [],
+          "program_change": []
+        }
+      },
+      {
+        "name": "Sustain(H&P)",
+        "type": 1,
+        "group": 0,
+        "color": 1,
+        "midi_message": {
+          "note_on": [
+            {
+              "status": 144,
+              "channel": 0,
+              "data1": 24,
+              "data2": 120
+            }
+          ],
+          "control_change": [],
+          "program_change": []
+        }
+      },
+      {
+        "name": "Sustain(Slide)",
+        "type": 1,
+        "group": 0,
+        "color": 1,
+        "midi_message": {
+          "note_on": [
+            {
+              "status": 144,
+              "channel": 0,
+              "data1": 25,
+              "data2": 120
+            }
+          ],
+          "control_change": [],
+          "program_change": []
+        }
+      },
+      {
+        "name": "Palm Mute (hard)",
+        "type": 1,
+        "group": 0,
+        "color": 1,
+        "midi_message": {
+          "note_on": [
+            {
+              "status": 144,
+              "channel": 0,
+              "data1": 26,
+              "data2": 120
+            }
+          ],
+          "control_change": [],
+          "program_change": []
+        }
+      },
+      {
+        "name": "Palm Mute (soft)",
+        "type": 1,
+        "group": 0,
+        "color": 1,
+        "midi_message": {
+          "note_on": [
+            {
+              "status": 144,
+              "channel": 0,
+              "data1": 27,
+              "data2": 120
+            }
+          ],
+          "control_change": [],
+          "program_change": []
+        }
+      },
+      {
+        "name": "Brush",
+        "type": 1,
+        "group": 0,
+        "color": 1,
+        "midi_message": {
+          "note_on": [
+            {
+              "status": 144,
+              "channel": 0,
+              "data1": 28,
+              "data2": 120
+            }
+          ],
+          "control_change": [],
+          "program_change": []
+        }
+      }
+    ]
+  },
+  {
+    "id": "92638a3d-37fe-4692-9b24-943b694b745a",
+    "author": "",
+    "description": "",
+    "created": "2020-09-23T13:35:32.322Z",
+    "last_updated": "2020-09-23T13:35:36.869Z",
+    "developer_name": "Fujiya Instruments",
+    "product_name": "VHG",
+    "instrument_name": "VHG Real Chord (Stop)",
+    "articulations": [
+      {
+        "name": "IDLE",
+        "type": 1,
+        "group": 0,
+        "color": 0,
+        "midi_message": {
+          "note_on": [],
+          "control_change": [],
+          "program_change": []
+        }
+      },
+      {
+        "name": "H Noise (Rnd) Vel 15",
+        "type": 1,
+        "group": 0,
+        "color": 1,
+        "midi_message": {
+          "note_on": [
+            {
+              "status": 144,
+              "channel": 0,
+              "data1": 83,
+              "data2": 15
+            }
+          ],
+          "control_change": [],
+          "program_change": []
+        }
+      },
+      {
+        "name": "H Noise (Rnd) Vel 31",
+        "type": 1,
+        "group": 0,
+        "color": 1,
+        "midi_message": {
+          "note_on": [
+            {
+              "status": 144,
+              "channel": 0,
+              "data1": 83,
+              "data2": 31
+            }
+          ],
+          "control_change": [],
+          "program_change": []
+        }
+      },
+      {
+        "name": "H Noise (Rnd) Vel 47",
+        "type": 1,
+        "group": 0,
+        "color": 1,
+        "midi_message": {
+          "note_on": [
+            {
+              "status": 144,
+              "channel": 0,
+              "data1": 83,
+              "data2": 47
+            }
+          ],
+          "control_change": [],
+          "program_change": []
+        }
+      },
+      {
+        "name": "H Noise (Rnd) Vel 63",
+        "type": 1,
+        "group": 0,
+        "color": 1,
+        "midi_message": {
+          "note_on": [
+            {
+              "status": 144,
+              "channel": 0,
+              "data1": 83,
+              "data2": 63
+            }
+          ],
+          "control_change": [],
+          "program_change": []
+        }
+      },
+      {
+        "name": "H Noise (Rnd) Vel 79",
+        "type": 1,
+        "group": 0,
+        "color": 1,
+        "midi_message": {
+          "note_on": [
+            {
+              "status": 144,
+              "channel": 0,
+              "data1": 83,
+              "data2": 79
+            }
+          ],
+          "control_change": [],
+          "program_change": []
+        }
+      },
+      {
+        "name": "H Noise (Rnd) Vel 95",
+        "type": 1,
+        "group": 0,
+        "color": 1,
+        "midi_message": {
+          "note_on": [
+            {
+              "status": 144,
+              "channel": 0,
+              "data1": 83,
+              "data2": 95
+            }
+          ],
+          "control_change": [],
+          "program_change": []
+        }
+      },
+      {
+        "name": "H Noise (Rnd) Vel 111",
+        "type": 1,
+        "group": 0,
+        "color": 1,
+        "midi_message": {
+          "note_on": [
+            {
+              "status": 144,
+              "channel": 0,
+              "data1": 83,
+              "data2": 111
+            }
+          ],
+          "control_change": [],
+          "program_change": []
+        }
+      },
+      {
+        "name": "H Noise (Rnd) Vel 127",
+        "type": 1,
+        "group": 0,
+        "color": 2,
+        "midi_message": {
+          "note_on": [
+            {
+              "status": 144,
+              "channel": 0,
+              "data1": 83,
+              "data2": 127
+            }
+          ],
+          "control_change": [],
+          "program_change": []
+        }
+      },
+      {
+        "name": "H Noise Vel 15",
+        "type": 1,
+        "group": 0,
+        "color": 2,
+        "midi_message": {
+          "note_on": [
+            {
+              "status": 144,
+              "channel": 0,
+              "data1": 84,
+              "data2": 15
+            }
+          ],
+          "control_change": [],
+          "program_change": []
+        }
+      },
+      {
+        "name": "H Noise Vel 31",
+        "type": 1,
+        "group": 0,
+        "color": 2,
+        "midi_message": {
+          "note_on": [
+            {
+              "status": 144,
+              "channel": 0,
+              "data1": 84,
+              "data2": 31
+            }
+          ],
+          "control_change": [],
+          "program_change": []
+        }
+      },
+      {
+        "name": "H Noise Vel 47",
+        "type": 1,
+        "group": 0,
+        "color": 2,
+        "midi_message": {
+          "note_on": [
+            {
+              "status": 144,
+              "channel": 0,
+              "data1": 84,
+              "data2": 47
+            }
+          ],
+          "control_change": [],
+          "program_change": []
+        }
+      },
+      {
+        "name": "H Noise Vel 63",
+        "type": 1,
+        "group": 0,
+        "color": 2,
+        "midi_message": {
+          "note_on": [
+            {
+              "status": 144,
+              "channel": 0,
+              "data1": 84,
+              "data2": 63
+            }
+          ],
+          "control_change": [],
+          "program_change": []
+        }
+      },
+      {
+        "name": "H Noise Vel 79",
+        "type": 1,
+        "group": 0,
+        "color": 2,
+        "midi_message": {
+          "note_on": [
+            {
+              "status": 144,
+              "channel": 0,
+              "data1": 84,
+              "data2": 79
+            }
+          ],
+          "control_change": [],
+          "program_change": []
+        }
+      },
+      {
+        "name": "H Noise Vel 95",
+        "type": 1,
+        "group": 0,
+        "color": 2,
+        "midi_message": {
+          "note_on": [
+            {
+              "status": 144,
+              "channel": 0,
+              "data1": 84,
+              "data2": 95
+            }
+          ],
+          "control_change": [],
+          "program_change": []
+        }
+      },
+      {
+        "name": "H Noise Vel 111",
+        "type": 1,
+        "group": 0,
+        "color": 2,
+        "midi_message": {
+          "note_on": [
+            {
+              "status": 144,
+              "channel": 0,
+              "data1": 84,
+              "data2": 111
+            }
+          ],
+          "control_change": [],
+          "program_change": []
+        }
+      },
+      {
+        "name": "H Noise Vel 127",
+        "type": 1,
+        "group": 0,
+        "color": 3,
+        "midi_message": {
+          "note_on": [
+            {
+              "status": 144,
+              "channel": 0,
+              "data1": 84,
+              "data2": 127
+            }
+          ],
+          "control_change": [],
+          "program_change": []
+        }
+      },
+      {
+        "name": "Pick Noise Vel 15",
+        "type": 1,
+        "group": 0,
+        "color": 3,
+        "midi_message": {
+          "note_on": [
+            {
+              "status": 144,
+              "channel": 0,
+              "data1": 85,
+              "data2": 15
+            }
+          ],
+          "control_change": [],
+          "program_change": []
+        }
+      },
+      {
+        "name": "Pick Noise Vel 31",
+        "type": 1,
+        "group": 0,
+        "color": 3,
+        "midi_message": {
+          "note_on": [
+            {
+              "status": 144,
+              "channel": 0,
+              "data1": 85,
+              "data2": 31
+            }
+          ],
+          "control_change": [],
+          "program_change": []
+        }
+      },
+      {
+        "name": "Pick Noise Vel 47",
+        "type": 1,
+        "group": 0,
+        "color": 3,
+        "midi_message": {
+          "note_on": [
+            {
+              "status": 144,
+              "channel": 0,
+              "data1": 85,
+              "data2": 47
+            }
+          ],
+          "control_change": [],
+          "program_change": []
+        }
+      },
+      {
+        "name": "Pick Noise Vel 63",
+        "type": 1,
+        "group": 0,
+        "color": 3,
+        "midi_message": {
+          "note_on": [
+            {
+              "status": 144,
+              "channel": 0,
+              "data1": 85,
+              "data2": 63
+            }
+          ],
+          "control_change": [],
+          "program_change": []
+        }
+      },
+      {
+        "name": "Pick Noise Vel 79",
+        "type": 1,
+        "group": 0,
+        "color": 3,
+        "midi_message": {
+          "note_on": [
+            {
+              "status": 144,
+              "channel": 0,
+              "data1": 85,
+              "data2": 79
+            }
+          ],
+          "control_change": [],
+          "program_change": []
+        }
+      },
+      {
+        "name": "Pick Noise Vel 95",
+        "type": 1,
+        "group": 0,
+        "color": 3,
+        "midi_message": {
+          "note_on": [
+            {
+              "status": 144,
+              "channel": 0,
+              "data1": 85,
+              "data2": 95
+            }
+          ],
+          "control_change": [],
+          "program_change": []
+        }
+      },
+      {
+        "name": "Pick Noise Vel 111",
+        "type": 1,
+        "group": 0,
+        "color": 3,
+        "midi_message": {
+          "note_on": [
+            {
+              "status": 144,
+              "channel": 0,
+              "data1": 85,
+              "data2": 111
+            }
+          ],
+          "control_change": [],
+          "program_change": []
+        }
+      },
+      {
+        "name": "Pick Noise Vel 127",
+        "type": 1,
+        "group": 0,
+        "color": 3,
+        "midi_message": {
+          "note_on": [
+            {
+              "status": 144,
+              "channel": 0,
+              "data1": 85,
+              "data2": 127
+            }
+          ],
+          "control_change": [],
+          "program_change": []
+        }
+      }
+    ]
+  },
+  {
+    "id": "acae3740-f7a7-4a66-87f0-5d0f4ef7c7a1",
+    "author": "",
+    "description": "",
+    "created": "2020-09-23T13:35:32.322Z",
+    "last_updated": "2020-09-23T13:35:36.874Z",
+    "developer_name": "Fujiya Instruments",
+    "product_name": "VHG",
+    "instrument_name": "VHG Riff (Other)",
+    "articulations": [
+      {
+        "name": "IDLE",
+        "type": 1,
+        "group": 0,
+        "color": 0,
+        "midi_message": {
+          "note_on": [],
+          "control_change": [],
+          "program_change": []
+        }
+      },
+      {
+        "name": "Auto Alternate",
+        "type": 1,
+        "group": 0,
+        "color": 1,
+        "midi_message": {
+          "note_on": [
+            {
+              "status": 144,
+              "channel": 0,
+              "data1": 18,
+              "data2": 120
+            }
+          ],
+          "control_change": [],
+          "program_change": []
+        }
+      },
+      {
+        "name": "Always Down",
+        "type": 1,
+        "group": 0,
+        "color": 1,
+        "midi_message": {
+          "note_on": [
+            {
+              "status": 144,
+              "channel": 0,
+              "data1": 19,
+              "data2": 120
+            }
+          ],
+          "control_change": [],
+          "program_change": []
+        }
+      },
+      {
+        "name": "Always Up",
+        "type": 1,
+        "group": 0,
+        "color": 1,
+        "midi_message": {
+          "note_on": [
+            {
+              "status": 144,
+              "channel": 0,
+              "data1": 20,
+              "data2": 120
+            }
+          ],
+          "control_change": [],
+          "program_change": []
+        }
+      }
+    ]
+  },
+  {
+    "id": "af161806-000a-4321-a8fc-7f91e31c8534",
+    "author": "",
+    "description": "",
+    "created": "2020-09-23T13:35:32.312Z",
+    "last_updated": "2020-09-23T13:35:36.836Z",
+    "developer_name": "Fujiya Instruments",
+    "product_name": "VHG",
+    "instrument_name": "VHG Poly (Main)2",
+    "articulations": [
+      {
+        "name": "IDLE",
+        "type": 1,
+        "group": 0,
+        "color": 0,
+        "midi_message": {
+          "note_on": [],
+          "control_change": [],
+          "program_change": []
+        }
+      },
+      {
+        "name": "Slide Up",
+        "type": 1,
+        "group": 0,
+        "color": 1,
+        "midi_message": {
+          "note_on": [
+            {
+              "status": 144,
+              "channel": 0,
+              "data1": 12,
+              "data2": 120
+            }
+          ],
+          "control_change": [],
+          "program_change": []
+        }
+      },
+      {
+        "name": "Slide Down",
+        "type": 1,
+        "group": 0,
+        "color": 1,
+        "midi_message": {
+          "note_on": [
+            {
+              "status": 144,
+              "channel": 0,
+              "data1": 13,
+              "data2": 120
+            }
+          ],
+          "control_change": [],
+          "program_change": []
+        }
+      },
+      {
+        "name": "Tremolo",
+        "type": 1,
+        "group": 0,
+        "color": 1,
+        "midi_message": {
+          "note_on": [
+            {
+              "status": 144,
+              "channel": 0,
+              "data1": 14,
+              "data2": 120
+            }
+          ],
+          "control_change": [],
+          "program_change": []
+        }
+      },
+      {
+        "name": "Trill (Half)",
+        "type": 1,
+        "group": 0,
+        "color": 1,
+        "midi_message": {
+          "note_on": [
+            {
+              "status": 144,
+              "channel": 0,
+              "data1": 15,
+              "data2": 120
+            }
+          ],
+          "control_change": [],
+          "program_change": []
+        }
+      },
+      {
+        "name": "Trill (Whole)",
+        "type": 1,
+        "group": 0,
+        "color": 1,
+        "midi_message": {
+          "note_on": [
+            {
+              "status": 144,
+              "channel": 0,
+              "data1": 16,
+              "data2": 120
+            }
+          ],
+          "control_change": [],
+          "program_change": []
+        }
+      },
+      {
+        "name": "Unison Bend",
+        "type": 1,
+        "group": 0,
+        "color": 1,
+        "midi_message": {
+          "note_on": [
+            {
+              "status": 144,
+              "channel": 0,
+              "data1": 17,
+              "data2": 120
+            }
+          ],
+          "control_change": [],
+          "program_change": []
+        }
+      },
+      {
+        "name": "Quarter Bend",
+        "type": 1,
+        "group": 0,
+        "color": 1,
+        "midi_message": {
+          "note_on": [
+            {
+              "status": 144,
+              "channel": 0,
+              "data1": 18,
+              "data2": 120
+            }
+          ],
+          "control_change": [],
+          "program_change": []
+        }
+      },
+      {
+        "name": "Chop",
+        "type": 1,
+        "group": 0,
+        "color": 1,
+        "midi_message": {
+          "note_on": [
+            {
+              "status": 144,
+              "channel": 0,
+              "data1": 19,
+              "data2": 120
+            }
+          ],
+          "control_change": [],
+          "program_change": []
+        }
+      },
+      {
+        "name": "N Harmonics",
+        "type": 1,
+        "group": 0,
+        "color": 1,
+        "midi_message": {
+          "note_on": [
+            {
+              "status": 144,
+              "channel": 0,
+              "data1": 20,
+              "data2": 120
+            }
+          ],
+          "control_change": [],
+          "program_change": []
+        }
+      },
+      {
+        "name": "P Harmonics",
+        "type": 1,
+        "group": 0,
+        "color": 1,
+        "midi_message": {
+          "note_on": [
+            {
+              "status": 144,
+              "channel": 0,
+              "data1": 21,
+              "data2": 120
+            }
+          ],
+          "control_change": [],
+          "program_change": []
+        }
+      },
+      {
+        "name": "Pick Scrape",
+        "type": 1,
+        "group": 0,
+        "color": 1,
+        "midi_message": {
+          "note_on": [
+            {
+              "status": 144,
+              "channel": 0,
+              "data1": 22,
+              "data2": 120
+            }
+          ],
+          "control_change": [],
+          "program_change": []
+        }
+      },
+      {
+        "name": "Glissando Up/Down",
+        "type": 1,
+        "group": 0,
+        "color": 1,
+        "midi_message": {
+          "note_on": [
+            {
+              "status": 144,
+              "channel": 0,
+              "data1": 23,
+              "data2": 120
+            }
+          ],
+          "control_change": [],
+          "program_change": []
+        }
+      },
+      {
+        "name": "Sustain",
+        "type": 1,
+        "group": 0,
+        "color": 1,
+        "midi_message": {
+          "note_on": [
+            {
+              "status": 144,
+              "channel": 0,
+              "data1": 24,
+              "data2": 120
+            }
+          ],
+          "control_change": [],
+          "program_change": []
+        }
+      },
+      {
+        "name": "Palm Mute (hard)",
+        "type": 1,
+        "group": 0,
+        "color": 1,
+        "midi_message": {
+          "note_on": [
+            {
+              "status": 144,
+              "channel": 0,
+              "data1": 26,
+              "data2": 120
+            }
+          ],
+          "control_change": [],
+          "program_change": []
+        }
+      },
+      {
+        "name": "Palm Mute (soft)",
+        "type": 1,
+        "group": 0,
+        "color": 1,
+        "midi_message": {
+          "note_on": [
+            {
+              "status": 144,
+              "channel": 0,
+              "data1": 27,
+              "data2": 120
+            }
+          ],
+          "control_change": [],
+          "program_change": []
+        }
+      },
+      {
+        "name": "Brush",
+        "type": 1,
+        "group": 0,
+        "color": 1,
+        "midi_message": {
+          "note_on": [
+            {
+              "status": 144,
+              "channel": 0,
+              "data1": 28,
+              "data2": 120
+            }
+          ],
+          "control_change": [],
+          "program_change": []
+        }
+      }
+    ]
+  },
+  {
+    "id": "c1e9b53c-25d0-4978-9f33-ccd2a4b80645",
+    "author": "",
+    "description": "",
+    "created": "2020-09-23T13:35:32.322Z",
+    "last_updated": "2020-09-23T13:35:36.871Z",
+    "developer_name": "Fujiya Instruments",
+    "product_name": "VHG",
+    "instrument_name": "VHG Arpeggio",
+    "articulations": [
+      {
+        "name": "IDLE",
+        "type": 1,
+        "group": 0,
+        "color": 0,
+        "midi_message": {
+          "note_on": [],
+          "control_change": [],
+          "program_change": []
+        }
+      },
+      {
+        "name": "Sustain",
+        "type": 1,
+        "group": 0,
+        "color": 1,
+        "midi_message": {
+          "note_on": [
+            {
+              "status": 144,
+              "channel": 0,
+              "data1": 34,
+              "data2": 120
+            }
+          ],
+          "control_change": [],
+          "program_change": []
+        }
+      },
+      {
+        "name": "Mute",
+        "type": 1,
+        "group": 0,
+        "color": 1,
+        "midi_message": {
+          "note_on": [
+            {
+              "status": 144,
+              "channel": 0,
+              "data1": 35,
+              "data2": 120
+            }
+          ],
+          "control_change": [],
+          "program_change": []
+        }
+      }
+    ]
+  },
+  {
+    "id": "d7828667-12d1-4d95-bca3-3b1ec80792d8",
+    "author": "",
+    "description": "",
+    "created": "2020-09-23T13:35:32.322Z",
+    "last_updated": "2020-09-23T13:35:36.873Z",
+    "developer_name": "Fujiya Instruments",
+    "product_name": "VHG",
+    "instrument_name": "VHG Riff (Chord)",
+    "articulations": [
+      {
+        "name": "IDLE",
+        "type": 1,
+        "group": 0,
+        "color": 0,
+        "midi_message": {
+          "note_on": [],
+          "control_change": [],
+          "program_change": []
+        }
+      },
+      {
+        "name": "Single",
+        "type": 1,
+        "group": 0,
+        "color": 1,
+        "midi_message": {
+          "note_on": [
+            {
+              "status": 144,
+              "channel": 0,
+              "data1": 0,
+              "data2": 120
+            }
+          ],
+          "control_change": [],
+          "program_change": []
+        }
+      },
+      {
+        "name": "Minor 2nd",
+        "type": 1,
+        "group": 0,
+        "color": 1,
+        "midi_message": {
+          "note_on": [
+            {
+              "status": 144,
+              "channel": 0,
+              "data1": 1,
+              "data2": 120
+            }
+          ],
+          "control_change": [],
+          "program_change": []
+        }
+      },
+      {
+        "name": "Major 2nd",
+        "type": 1,
+        "group": 0,
+        "color": 1,
+        "midi_message": {
+          "note_on": [
+            {
+              "status": 144,
+              "channel": 0,
+              "data1": 2,
+              "data2": 120
+            }
+          ],
+          "control_change": [],
+          "program_change": []
+        }
+      },
+      {
+        "name": "Minor 3rd",
+        "type": 1,
+        "group": 0,
+        "color": 1,
+        "midi_message": {
+          "note_on": [
+            {
+              "status": 144,
+              "channel": 0,
+              "data1": 3,
+              "data2": 120
+            }
+          ],
+          "control_change": [],
+          "program_change": []
+        }
+      },
+      {
+        "name": "Major 3rd",
+        "type": 1,
+        "group": 0,
+        "color": 1,
+        "midi_message": {
+          "note_on": [
+            {
+              "status": 144,
+              "channel": 0,
+              "data1": 4,
+              "data2": 120
+            }
+          ],
+          "control_change": [],
+          "program_change": []
+        }
+      },
+      {
+        "name": "Perfect 4th",
+        "type": 1,
+        "group": 0,
+        "color": 1,
+        "midi_message": {
+          "note_on": [
+            {
+              "status": 144,
+              "channel": 0,
+              "data1": 5,
+              "data2": 120
+            }
+          ],
+          "control_change": [],
+          "program_change": []
+        }
+      },
+      {
+        "name": "Diminished 5th",
+        "type": 1,
+        "group": 0,
+        "color": 1,
+        "midi_message": {
+          "note_on": [
+            {
+              "status": 144,
+              "channel": 0,
+              "data1": 6,
+              "data2": 120
+            }
+          ],
+          "control_change": [],
+          "program_change": []
+        }
+      },
+      {
+        "name": "Perfect 5th",
+        "type": 1,
+        "group": 0,
+        "color": 1,
+        "midi_message": {
+          "note_on": [
+            {
+              "status": 144,
+              "channel": 0,
+              "data1": 7,
+              "data2": 120
+            }
+          ],
+          "control_change": [],
+          "program_change": []
+        }
+      },
+      {
+        "name": "Augmented 5th",
+        "type": 1,
+        "group": 0,
+        "color": 1,
+        "midi_message": {
+          "note_on": [
+            {
+              "status": 144,
+              "channel": 0,
+              "data1": 8,
+              "data2": 120
+            }
+          ],
+          "control_change": [],
+          "program_change": []
+        }
+      },
+      {
+        "name": "Major 6th",
+        "type": 1,
+        "group": 0,
+        "color": 1,
+        "midi_message": {
+          "note_on": [
+            {
+              "status": 144,
+              "channel": 0,
+              "data1": 9,
+              "data2": 120
+            }
+          ],
+          "control_change": [],
+          "program_change": []
+        }
+      },
+      {
+        "name": "Minor 7th",
+        "type": 1,
+        "group": 0,
+        "color": 1,
+        "midi_message": {
+          "note_on": [
+            {
+              "status": 144,
+              "channel": 0,
+              "data1": 10,
+              "data2": 120
+            }
+          ],
+          "control_change": [],
+          "program_change": []
+        }
+      },
+      {
+        "name": "Major 7th",
+        "type": 1,
+        "group": 0,
+        "color": 1,
+        "midi_message": {
+          "note_on": [
+            {
+              "status": 144,
+              "channel": 0,
+              "data1": 11,
+              "data2": 120
+            }
+          ],
+          "control_change": [],
+          "program_change": []
+        }
+      },
+      {
+        "name": "Perfect Octave",
+        "type": 1,
+        "group": 0,
+        "color": 1,
+        "midi_message": {
+          "note_on": [
+            {
+              "status": 144,
+              "channel": 0,
+              "data1": 12,
+              "data2": 120
+            }
+          ],
+          "control_change": [],
+          "program_change": []
+        }
+      }
+    ]
+  },
+  {
+    "id": "dd5d0a5f-c601-4a98-9c01-7ed54bd73ee3",
+    "author": "",
+    "description": "",
+    "created": "2020-09-23T13:35:32.322Z",
+    "last_updated": "2020-09-23T13:35:36.87Z",
+    "developer_name": "Fujiya Instruments",
+    "product_name": "VHG",
+    "instrument_name": "VHG Simulate Chord",
+    "articulations": [
+      {
+        "name": "IDLE",
+        "type": 1,
+        "group": 0,
+        "color": 0,
+        "midi_message": {
+          "note_on": [],
+          "control_change": [],
+          "program_change": []
+        }
+      },
+      {
+        "name": "Position 1",
+        "type": 1,
+        "group": 0,
+        "color": 1,
+        "midi_message": {
+          "note_on": [
+            {
+              "status": 144,
+              "channel": 0,
+              "data1": 72,
+              "data2": 120
+            }
+          ],
+          "control_change": [],
+          "program_change": []
+        }
+      },
+      {
+        "name": "Position 2",
+        "type": 1,
+        "group": 0,
+        "color": 1,
+        "midi_message": {
+          "note_on": [
+            {
+              "status": 144,
+              "channel": 0,
+              "data1": 73,
+              "data2": 120
+            }
+          ],
+          "control_change": [],
+          "program_change": []
+        }
+      },
+      {
+        "name": "Position 3",
+        "type": 1,
+        "group": 0,
+        "color": 1,
+        "midi_message": {
+          "note_on": [
+            {
+              "status": 144,
+              "channel": 0,
+              "data1": 74,
+              "data2": 120
+            }
+          ],
+          "control_change": [],
+          "program_change": []
+        }
+      },
+      {
+        "name": "Position 4",
+        "type": 1,
+        "group": 0,
+        "color": 1,
+        "midi_message": {
+          "note_on": [
+            {
+              "status": 144,
+              "channel": 0,
+              "data1": 75,
+              "data2": 120
+            }
+          ],
+          "control_change": [],
+          "program_change": []
+        }
+      }
+    ]
+  },
+  {
+    "id": "e62cc8b5-fcbf-4b8a-a198-1971db35d030",
+    "author": "",
+    "description": "",
+    "created": "2020-09-23T13:35:32.322Z",
+    "last_updated": "2020-09-23T13:35:36.876Z",
+    "developer_name": "Fujiya Instruments",
+    "product_name": "VHG",
+    "instrument_name": "VHG Riff (Stop)",
+    "articulations": [
+      {
+        "name": "IDLE",
+        "type": 1,
+        "group": 0,
+        "color": 0,
+        "midi_message": {
+          "note_on": [],
+          "control_change": [],
+          "program_change": []
+        }
+      },
+      {
+        "name": "Noiseless Vel 15",
+        "type": 1,
+        "group": 0,
+        "color": 1,
+        "midi_message": {
+          "note_on": [
+            {
+              "status": 144,
+              "channel": 0,
+              "data1": 31,
+              "data2": 15
+            }
+          ],
+          "control_change": [],
+          "program_change": []
+        }
+      },
+      {
+        "name": "Noiseless Vel 31",
+        "type": 1,
+        "group": 0,
+        "color": 1,
+        "midi_message": {
+          "note_on": [
+            {
+              "status": 144,
+              "channel": 0,
+              "data1": 31,
+              "data2": 31
+            }
+          ],
+          "control_change": [],
+          "program_change": []
+        }
+      },
+      {
+        "name": "Noiseless Vel 47",
+        "type": 1,
+        "group": 0,
+        "color": 1,
+        "midi_message": {
+          "note_on": [
+            {
+              "status": 144,
+              "channel": 0,
+              "data1": 31,
+              "data2": 47
+            }
+          ],
+          "control_change": [],
+          "program_change": []
+        }
+      },
+      {
+        "name": "Noiseless Vel 63",
+        "type": 1,
+        "group": 0,
+        "color": 1,
+        "midi_message": {
+          "note_on": [
+            {
+              "status": 144,
+              "channel": 0,
+              "data1": 31,
+              "data2": 63
+            }
+          ],
+          "control_change": [],
+          "program_change": []
+        }
+      },
+      {
+        "name": "Noiseless Vel 79",
+        "type": 1,
+        "group": 0,
+        "color": 1,
+        "midi_message": {
+          "note_on": [
+            {
+              "status": 144,
+              "channel": 0,
+              "data1": 31,
+              "data2": 79
+            }
+          ],
+          "control_change": [],
+          "program_change": []
+        }
+      },
+      {
+        "name": "Noiseless Vel 95",
+        "type": 1,
+        "group": 0,
+        "color": 1,
+        "midi_message": {
+          "note_on": [
+            {
+              "status": 144,
+              "channel": 0,
+              "data1": 31,
+              "data2": 95
+            }
+          ],
+          "control_change": [],
+          "program_change": []
+        }
+      },
+      {
+        "name": "Noiseless Vel 111",
+        "type": 1,
+        "group": 0,
+        "color": 1,
+        "midi_message": {
+          "note_on": [
+            {
+              "status": 144,
+              "channel": 0,
+              "data1": 31,
+              "data2": 111
+            }
+          ],
+          "control_change": [],
+          "program_change": []
+        }
+      },
+      {
+        "name": "Noiseless Vel 127",
+        "type": 1,
+        "group": 0,
+        "color": 1,
+        "midi_message": {
+          "note_on": [
+            {
+              "status": 144,
+              "channel": 0,
+              "data1": 31,
+              "data2": 127
+            }
+          ],
+          "control_change": [],
+          "program_change": []
+        }
+      },
+      {
+        "name": "Noise (Rnd) Vel 15",
+        "type": 1,
+        "group": 0,
+        "color": 1,
+        "midi_message": {
+          "note_on": [
+            {
+              "status": 144,
+              "channel": 0,
+              "data1": 32,
+              "data2": 15
+            }
+          ],
+          "control_change": [],
+          "program_change": []
+        }
+      },
+      {
+        "name": "Noise (Rnd) Vel 31",
+        "type": 1,
+        "group": 0,
+        "color": 1,
+        "midi_message": {
+          "note_on": [
+            {
+              "status": 144,
+              "channel": 0,
+              "data1": 32,
+              "data2": 31
+            }
+          ],
+          "control_change": [],
+          "program_change": []
+        }
+      },
+      {
+        "name": "Noise (Rnd) Vel 47",
+        "type": 1,
+        "group": 0,
+        "color": 1,
+        "midi_message": {
+          "note_on": [
+            {
+              "status": 144,
+              "channel": 0,
+              "data1": 32,
+              "data2": 47
+            }
+          ],
+          "control_change": [],
+          "program_change": []
+        }
+      },
+      {
+        "name": "Noise (Rnd) Vel 63",
+        "type": 1,
+        "group": 0,
+        "color": 1,
+        "midi_message": {
+          "note_on": [
+            {
+              "status": 144,
+              "channel": 0,
+              "data1": 32,
+              "data2": 63
+            }
+          ],
+          "control_change": [],
+          "program_change": []
+        }
+      },
+      {
+        "name": "Noise (Rnd) Vel 79",
+        "type": 1,
+        "group": 0,
+        "color": 1,
+        "midi_message": {
+          "note_on": [
+            {
+              "status": 144,
+              "channel": 0,
+              "data1": 32,
+              "data2": 79
+            }
+          ],
+          "control_change": [],
+          "program_change": []
+        }
+      },
+      {
+        "name": "Noise (Rnd) Vel 95",
+        "type": 1,
+        "group": 0,
+        "color": 1,
+        "midi_message": {
+          "note_on": [
+            {
+              "status": 144,
+              "channel": 0,
+              "data1": 32,
+              "data2": 95
+            }
+          ],
+          "control_change": [],
+          "program_change": []
+        }
+      },
+      {
+        "name": "Noise (Rnd) Vel 111",
+        "type": 1,
+        "group": 0,
+        "color": 1,
+        "midi_message": {
+          "note_on": [
+            {
+              "status": 144,
+              "channel": 0,
+              "data1": 32,
+              "data2": 111
+            }
+          ],
+          "control_change": [],
+          "program_change": []
+        }
+      },
+      {
+        "name": "Noise (Rnd) Vel 127",
+        "type": 1,
+        "group": 0,
+        "color": 1,
+        "midi_message": {
+          "note_on": [
+            {
+              "status": 144,
+              "channel": 0,
+              "data1": 32,
+              "data2": 127
+            }
+          ],
+          "control_change": [],
+          "program_change": []
+        }
+      }
+    ]
+  }
+]

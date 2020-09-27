@@ -6,6 +6,7 @@ using CommandLine;
 
 using Databases.LiteDB.KeySwitches.KeySwitches;
 
+using KeySwitchManager.Common.Text;
 using KeySwitchManager.Interactors.KeySwitches.Searching;
 using KeySwitchManager.Json.KeySwitches.Translations;
 using KeySwitchManager.Presenters.KeySwitches;
@@ -30,7 +31,7 @@ namespace KeySwitchManager.CLI.Commands
             [Option( 'f', "database", Required = true )]
             public string DatabasePath { get; set; } = string.Empty;
 
-            [Option( 'o', "output", Required = true )]
+            [Option( 'o', "output" )]
             public string OutputPath { get; set; } = string.Empty;
         }
 
@@ -51,10 +52,17 @@ namespace KeySwitchManager.CLI.Commands
 
             var response = interactor.Execute( input );
 
-            File.WriteAllText( option.OutputPath, response.Text.Value, Encoding.UTF8 );
+            if( StringHelper.IsNullOrTrimEmpty( option.OutputPath ) )
+            {
+                Console.Out.WriteLine( $"{response.Text}" );
+            }
+            else
+            {
+                File.WriteAllText( option.OutputPath, response.Text.Value, Encoding.UTF8 );
+                Console.Out.WriteLine( $"Output json to {option.OutputPath}" );
+            }
 
-            Console.Out.WriteLine( $"Output json to {option.OutputPath}" );
-            Console.Out.WriteLine( $"{response.FoundCount} record(s) found" );
+            Console.Error.WriteLine( $"{response.FoundCount} record(s) found" );
 
             return 0;
         }

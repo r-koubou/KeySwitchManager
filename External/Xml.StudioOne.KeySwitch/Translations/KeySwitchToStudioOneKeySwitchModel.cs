@@ -1,4 +1,3 @@
-using System;
 using System.Linq;
 
 using KeySwitchManager.Common.Text.Xml;
