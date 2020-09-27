@@ -24,14 +24,17 @@ namespace KeySwitchManager.Interactors.KeySwitches.Importing.Text
         public ImportingTextResponse Execute( ImportingTextRequest request )
         {
             var keySwitches = Translator.Translate( request.JsonText );
+            var insertedCount = 0;
             var updatedCount = 0;
 
             foreach( var i in keySwitches )
             {
-                updatedCount += Repository.Save( i );
+                var r = Repository.Save( i );
+                updatedCount += r.Updated;
+                insertedCount += r.Inserted;
             }
 
-            Presenter.Present( $"{updatedCount} record(s) updated" );
+            Presenter.Present( $"{insertedCount} record(s) inserted, {updatedCount} record(s) updated" );
 
             return new ImportingTextResponse( updatedCount );
         }
