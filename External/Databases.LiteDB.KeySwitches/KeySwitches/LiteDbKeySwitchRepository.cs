@@ -158,9 +158,9 @@ namespace Databases.LiteDB.KeySwitches.KeySwitches
             return CreateEntities(
                 KeySwitchTable.Find(
                     x =>
-                        x.DeveloperName == developerName.Value &&
-                        x.ProductName == productName.Value &&
-                        x.InstrumentName == instrumentName.Value
+                        x.DeveloperName.Contains( developerName.Value ) &&
+                        x.ProductName.Contains( productName.Value ) &&
+                        x.InstrumentName.Contains( instrumentName.Value )
                 )
             );
         }
@@ -170,20 +170,30 @@ namespace Databases.LiteDB.KeySwitches.KeySwitches
             return CreateEntities(
                 KeySwitchTable.Find(
                     x =>
-                        x.DeveloperName == developerName.Value &&
-                        x.ProductName == productName.Value
+                        x.DeveloperName.Contains( developerName.Value ) &&
+                        x.ProductName.Contains( productName.Value )
                 )
             );
         }
 
         public IReadOnlyCollection<KeySwitch> Find( DeveloperName developerName )
         {
-            return CreateEntities( KeySwitchTable.Find( x => x.DeveloperName == developerName.Value ) );
+            return CreateEntities(
+                KeySwitchTable.Find(
+                    x =>
+                        x.DeveloperName.Contains( developerName.Value )
+                )
+            );
         }
 
         public IReadOnlyCollection<KeySwitch> Find( ProductName productName )
         {
-            return CreateEntities( KeySwitchTable.Find( x => x.ProductName == productName.Value ) );
+            return CreateEntities(
+                KeySwitchTable.Find(
+                    x =>
+                        x.ProductName.Contains( productName.Value )
+                )
+            );
         }
 
         public IReadOnlyCollection<KeySwitch> FindAll()

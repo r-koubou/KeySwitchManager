@@ -38,5 +38,18 @@ namespace KeySwitchManager.Common.Text
             }
         }
 
+        public static bool Contains( string search, params string[] texts )
+        {
+            foreach( var i in texts )
+            {
+                if( i.Contains( search ) )
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
     }
 }

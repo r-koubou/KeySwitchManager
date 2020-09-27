@@ -3,6 +3,7 @@ using System.IO;
 
 using CommandLine;
 
+using KeySwitchManager.Common.Text;
 using KeySwitchManager.Interactors.KeySwitches.Exporting;
 using KeySwitchManager.Json.KeySwitches.Translations;
 
@@ -13,7 +14,7 @@ namespace KeySwitchManager.CLI.Commands
         [Verb( "template", false, HelpText = "export a template generic json to file")]
         public class CommandOption : ICommandOption
         {
-            [Option( 'o', "output", Required = true )]
+            [Option( 'o', "output" )]
             public string OutputPath { get; set; } = string.Empty;
         }
 
@@ -26,8 +27,15 @@ namespace KeySwitchManager.CLI.Commands
 
             var response = interactor.Execute();
 
-            Console.WriteLine( $"generating json to {option.OutputPath}" );
-            File.WriteAllText( option.OutputPath, response.Text );
+            if( StringHelper.IsNullOrTrimEmpty( option.OutputPath ) )
+            {
+                Console.Out.WriteLine( response.Text );
+            }
+            else
+            {
+                Console.WriteLine( $"generating json to {option.OutputPath}" );
+                File.WriteAllText( option.OutputPath, response.Text );
+            }
 
             return 0;
         }
