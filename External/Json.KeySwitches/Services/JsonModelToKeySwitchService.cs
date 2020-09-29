@@ -49,7 +49,8 @@ namespace KeySwitchManager.Json.KeySwitches.Services
                     i.Color,
                     noteOn,
                     controlChange,
-                    programChange
+                    programChange,
+                    i.ExtraData
                 );
 
                 articulations.Add( articulation );
@@ -75,6 +76,5 @@ namespace KeySwitchManager.Json.KeySwitches.Services
                 );
             }
         }
-
     }
 }

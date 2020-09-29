@@ -6,6 +6,9 @@ namespace KeySwitchManager.Domain.KeySwitches.Value
 {
     public class ExtraData : IEquatable<ExtraData>
     {
+        public static readonly ExtraData Empty =
+            new ExtraData( new Dictionary<ExtraDataKey, ExtraDataValue>() );
+
         private IReadOnlyDictionary<ExtraDataKey, ExtraDataValue> Value { get; }
 
         public ExtraDataValue this[ ExtraDataKey key ] => Value[ key ];

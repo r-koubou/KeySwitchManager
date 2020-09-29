@@ -47,7 +47,8 @@ namespace KeySwitchManager.Interactors.KeySwitches.Adding
                 request.ArticulationColor,
                 request.MidiNoteOns,
                 request.MidiControlChanges,
-                request.MidiProgramChanges
+                request.MidiProgramChanges,
+                request.ExtraData
             );
             var keySwitch = KeySwitchFactory.Create(
                 Guid.NewGuid(),

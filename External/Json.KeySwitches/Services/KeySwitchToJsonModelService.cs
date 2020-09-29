@@ -2,6 +2,7 @@ using System.Collections.Generic;
 
 using KeySwitchManager.Domain.KeySwitches;
 using KeySwitchManager.Domain.KeySwitches.Aggregate;
+using KeySwitchManager.Domain.KeySwitches.Value;
 using KeySwitchManager.Domain.MidiMessages.Aggregate;
 using KeySwitchManager.Domain.Services;
 using KeySwitchManager.Json.KeySwitches.Models;
@@ -33,7 +34,8 @@ namespace KeySwitchManager.Json.KeySwitches.Services
                         noteOn,
                         controlChange,
                         programChange
-                    )
+                    ),
+                    ConvertExtraData( i.ExtraData )
                 );
 
                 articulationModels.Add( jsonObject );
@@ -69,5 +71,20 @@ namespace KeySwitchManager.Json.KeySwitches.Services
                 );
             }
         }
+
+        private static Dictionary<string, string> ConvertExtraData( ExtraData source )
+        {
+            var extra = new Dictionary<string, string>();
+
+            foreach( var key in source.Keys )
+            {
+                var k = key.Value;
+                var v = source[ key ].Value;
+                extra.Add( key.Value, v );
+            }
+
+            return extra;
+        }
+
     }
 }

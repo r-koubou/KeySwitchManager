@@ -21,7 +21,8 @@ namespace KeySwitchManager.Domain.KeySwitches
             int articulationColor,
             IReadOnlyCollection<IMidiMessage> midiNoteOns,
             IReadOnlyCollection<IMidiMessage> midiControlChanges,
-            IReadOnlyCollection<IMidiMessage> midiProgramChanges );
+            IReadOnlyCollection<IMidiMessage> midiProgramChanges,
+            IReadOnlyDictionary<string, string> extraData );
 
         public static IArticulationFactory Default => new DefaultFactory();
 
@@ -40,7 +41,8 @@ namespace KeySwitchManager.Domain.KeySwitches
                     new ArticulationColor( articulationColor ),
                     new List<MidiNoteOn>(),
                     new List<MidiControlChange>(),
-                    new List<MidiProgramChange>()
+                    new List<MidiProgramChange>(),
+                    ExtraData.Empty
                 );
             }
 
@@ -51,7 +53,8 @@ namespace KeySwitchManager.Domain.KeySwitches
                 int articulationColor,
                 IReadOnlyCollection<IMidiMessage> midiNoteOns,
                 IReadOnlyCollection<IMidiMessage> midiControlChanges,
-                IReadOnlyCollection<IMidiMessage> midiProgramChanges )
+                IReadOnlyCollection<IMidiMessage> midiProgramChanges,
+                IReadOnlyDictionary<string, string> extraData )
             {
                 return new Articulation(
                     new ArticulationName( articulationName ),
@@ -60,7 +63,8 @@ namespace KeySwitchManager.Domain.KeySwitches
                     new ArticulationColor( articulationColor ),
                     midiNoteOns,
                     midiControlChanges,
-                    midiProgramChanges
+                    midiProgramChanges,
+                    IExtraDataFactory.Default.Create( extraData )
                 );
             }
         }

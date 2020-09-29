@@ -2,8 +2,8 @@ using System.Collections.Generic;
 
 using Databases.LiteDB.KeySwitches.KeySwitches.Models;
 
-using KeySwitchManager.Domain.KeySwitches;
 using KeySwitchManager.Domain.KeySwitches.Aggregate;
+using KeySwitchManager.Domain.KeySwitches.Value;
 using KeySwitchManager.Domain.MidiMessages.Aggregate;
 using KeySwitchManager.Domain.Services;
 using KeySwitchManager.Domain.Translations;
@@ -34,18 +34,11 @@ namespace Databases.LiteDB.KeySwitches.KeySwitches.Translations
                     i.ArticulationColor.Value,
                     noteOn,
                     controlChange,
-                    programChange
+                    programChange,
+                    ConvertExtraData( i.ExtraData )
                 );
 
                 articulationModels.Add( articulation );
-            }
-
-            var extra = new Dictionary<string, BsonValue>();
-            foreach( var key in source.ExtraData.Keys )
-            {
-                var k = key.Value;
-                var v = source.ExtraData[ key ];
-                extra.Add( k, new BsonValue( v.Value ) );
             }
 
             return new KeySwitchModel(
@@ -58,7 +51,7 @@ namespace Databases.LiteDB.KeySwitches.KeySwitches.Translations
                 source.ProductName.Value,
                 source.InstrumentName.Value,
                 articulationModels,
-                extra
+                ConvertExtraData( source.ExtraData )
             );
         }
 
@@ -76,5 +69,20 @@ namespace Databases.LiteDB.KeySwitches.KeySwitches.Translations
                 );
             }
         }
+
+        private static Dictionary<string, BsonValue> ConvertExtraData( ExtraData source )
+        {
+            var extra = new Dictionary<string, BsonValue>();
+
+            foreach( var key in source.Keys )
+            {
+                var k = key.Value;
+                var v = source[ key ];
+                extra.Add( k, new BsonValue( v.Value ) );
+            }
+
+            return extra;
+        }
+
     }
 }

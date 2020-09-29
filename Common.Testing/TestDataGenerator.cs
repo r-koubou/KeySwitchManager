@@ -57,7 +57,7 @@ namespace KeySwitchManager.Common.Testing
                 articulations,
                 new ExtraData( new Dictionary<ExtraDataKey, ExtraDataValue>
                 {
-                    {new ExtraDataKey( "extKey" ), new ExtraDataValue( "extValue" ) }
+                    { new ExtraDataKey( "extKey" ), new ExtraDataValue( "extValue" ) }
                 })
             );
         }
@@ -77,7 +77,11 @@ namespace KeySwitchManager.Common.Testing
                 new ArticulationColor( articulationColor ),
                 new List<MidiNoteOn>(),
                 new List<MidiControlChange>(),
-                new List<MidiProgramChange>()
+                new List<MidiProgramChange>(),
+                new ExtraData( new Dictionary<ExtraDataKey, ExtraDataValue>
+                {
+                    { new ExtraDataKey( "extKey" ), new ExtraDataValue( "extValue" ) }
+                })
             );
         }
 
@@ -86,8 +90,6 @@ namespace KeySwitchManager.Common.Testing
             IReadOnlyCollection<MidiControlChange> controlChanges,
             IReadOnlyCollection<MidiProgramChange> programChanges )
         {
-            var now = DateTimeHelper.NowUtc();
-
             return new Articulation(
                 new ArticulationName( "Power Chord" ),
                 ArticulationType.Default,
@@ -95,7 +97,11 @@ namespace KeySwitchManager.Common.Testing
                 new ArticulationColor( 0 ),
                 noteOns,
                 controlChanges,
-                programChanges
+                programChanges,
+                new ExtraData( new Dictionary<ExtraDataKey, ExtraDataValue>
+                {
+                    { new ExtraDataKey( "extKey" ), new ExtraDataValue( "extValue" ) }
+                })
             );
         }
         #endregion

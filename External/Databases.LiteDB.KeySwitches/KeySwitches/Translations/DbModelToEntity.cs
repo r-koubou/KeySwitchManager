@@ -10,6 +10,8 @@ using KeySwitchManager.Domain.MidiMessages;
 using KeySwitchManager.Domain.MidiMessages.Aggregate;
 using KeySwitchManager.Domain.Translations;
 
+using LiteDB;
+
 namespace Databases.LiteDB.KeySwitches.KeySwitches.Translations
 {
     public class DbModelToEntity : IDataTranslator<KeySwitchModel, KeySwitch>
@@ -35,17 +37,11 @@ namespace Databases.LiteDB.KeySwitches.KeySwitches.Translations
                     i.ArticulationColor,
                     noteOn,
                     controlChange,
-                    programChange
+                    programChange,
+                    ConvertExtraData( i.ExtraData )
                 );
 
                 articulations.Add( articulation );
-            }
-
-            var extra = new Dictionary<string, string>();
-            foreach( var key in source.ExtraData.Keys )
-            {
-                var v = source.ExtraData[ key ].AsString;
-                extra.Add( key, v );
             }
 
             return IKeySwitchFactory.Default.Create(
@@ -58,9 +54,22 @@ namespace Databases.LiteDB.KeySwitches.KeySwitches.Translations
                 source.ProductName,
                 source.InstrumentName,
                 articulations,
-                extra
+                ConvertExtraData( source.ExtraData )
             );
 
+        }
+
+        private static Dictionary<string, string> ConvertExtraData( Dictionary<string, BsonValue> source )
+        {
+            var extra = new Dictionary<string, string>();
+
+            foreach( var key in source.Keys )
+            {
+                var v = source[ key ].AsString;
+                extra.Add( key, v );
+            }
+
+            return extra;
         }
 
         private static void ConvertMessageList(

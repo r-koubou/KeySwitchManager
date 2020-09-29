@@ -80,7 +80,8 @@ namespace KeySwitchManager.Xlsx.KeySwitches.Translators
                 row.ColorIndex.Value,
                 TranslateMidiNoteMapping( row ),
                 TranslateMidiControlChangeMapping( row ),
-                TranslateMidiProgramChangeMapping( row )
+                TranslateMidiProgramChangeMapping( row ),
+                new Dictionary<string, string>() //TOOD
             );
         }
 
