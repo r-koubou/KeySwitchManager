@@ -51,6 +51,11 @@ namespace KeySwitchManager.Interactors.KeySwitches.Exporting
                         new List<IMidiMessage>{ IMidiControlChangeFactory.Default.Create( 1, 100 )},
                         new List<IMidiMessage>{ IMidiProgramChangeFactory.Default.Create( 2, 34 )}
                         )
+                },
+                new Dictionary<string, string>
+                {
+                    { "extra1 key", "extra1 value" },
+                    { "extra2 key", "extra2 value" },
                 }
             );
 

@@ -58,7 +58,8 @@ namespace KeySwitchManager.Interactors.KeySwitches.Adding
                 request.DeveloperName,
                 request.ProductName,
                 request.InstrumentName,
-                new []{ articulation }
+                new []{ articulation },
+                request.ExtraData
             );
 
             Repository.Save( keySwitch );

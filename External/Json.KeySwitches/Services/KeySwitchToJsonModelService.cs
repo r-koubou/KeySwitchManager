@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 
+using KeySwitchManager.Domain.KeySwitches;
 using KeySwitchManager.Domain.KeySwitches.Aggregate;
 using KeySwitchManager.Domain.MidiMessages.Aggregate;
 using KeySwitchManager.Domain.Services;
@@ -47,7 +48,8 @@ namespace KeySwitchManager.Json.KeySwitches.Services
                 source.DeveloperName.Value,
                 source.ProductName.Value,
                 source.InstrumentName.Value,
-                articulationModels
+                articulationModels,
+                IExtraDataFactory.Default.Create( source.ExtraData )
             );
         }
 

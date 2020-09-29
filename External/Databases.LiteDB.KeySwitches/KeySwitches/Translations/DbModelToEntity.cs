@@ -41,6 +41,13 @@ namespace Databases.LiteDB.KeySwitches.KeySwitches.Translations
                 articulations.Add( articulation );
             }
 
+            var extra = new Dictionary<string, string>();
+            foreach( var key in source.ExtraData.Keys )
+            {
+                var v = source.ExtraData[ key ].AsString;
+                extra.Add( key, v );
+            }
+
             return IKeySwitchFactory.Default.Create(
                 source.Id,
                 source.Author,
@@ -50,7 +57,8 @@ namespace Databases.LiteDB.KeySwitches.KeySwitches.Translations
                 source.DeveloperName,
                 source.ProductName,
                 source.InstrumentName,
-                articulations
+                articulations,
+                extra
             );
 
         }

@@ -19,6 +19,7 @@ namespace KeySwitchManager.UseCases.KeySwitches.Adding
         public IReadOnlyCollection<MidiNoteOn> MidiNoteOns { get; }
         public IReadOnlyCollection<MidiControlChange> MidiControlChanges { get; }
         public IReadOnlyCollection<MidiProgramChange> MidiProgramChanges { get; }
+        public IReadOnlyDictionary<string, string> ExtraData { get; }
 
         public KeySwitchAddingRequest(
             string author,
@@ -32,7 +33,8 @@ namespace KeySwitchManager.UseCases.KeySwitches.Adding
             int articulationColor,
             IReadOnlyCollection<MidiNoteOn> midiNoteOns,
             IReadOnlyCollection<MidiControlChange> midiControlChanges,
-            IReadOnlyCollection<MidiProgramChange> midiProgramChanges )
+            IReadOnlyCollection<MidiProgramChange> midiProgramChanges,
+            IReadOnlyDictionary<string, string> extraData )
         {
             Author             = author;
             Description        = description;
@@ -46,6 +48,7 @@ namespace KeySwitchManager.UseCases.KeySwitches.Adding
             MidiNoteOns        = midiNoteOns;
             MidiControlChanges = midiControlChanges;
             MidiProgramChanges = midiProgramChanges;
+            ExtraData          = extraData;
         }
     }
 }

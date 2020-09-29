@@ -19,7 +19,8 @@ namespace KeySwitchManager.Domain.KeySwitches
             string developerName,
             string productName,
             string instrumentName,
-            IReadOnlyCollection<Articulation> articulations );
+            IReadOnlyCollection<Articulation> articulations,
+            IReadOnlyDictionary<string, string> extraData );
 
         public static IKeySwitchFactory Default => new DefaultFactory();
 
@@ -34,7 +35,8 @@ namespace KeySwitchManager.Domain.KeySwitches
                 string developerName,
                 string productName,
                 string instrumentName,
-                IReadOnlyCollection<Articulation> articulations )
+                IReadOnlyCollection<Articulation> articulations,
+                IReadOnlyDictionary<string, string> extraData )
             {
                 created     = DateTimeHelper.ToUtc( created );
                 lastUpdated = DateTimeHelper.ToUtc( lastUpdated );
@@ -48,7 +50,8 @@ namespace KeySwitchManager.Domain.KeySwitches
                     new DeveloperName( developerName ),
                     new ProductName( productName ),
                     new InstrumentName( instrumentName ),
-                    articulations
+                    articulations,
+                    IExtraDataFactory.Default.Create( extraData )
                 );
             }
         }

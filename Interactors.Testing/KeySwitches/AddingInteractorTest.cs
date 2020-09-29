@@ -31,7 +31,8 @@ namespace KeySwitchManager.Interactors.Testing.KeySwitches
                 0,
                 new List<MidiNoteOn>(),
                 new List<MidiControlChange>(),
-                new List<MidiProgramChange>()
+                new List<MidiProgramChange>(),
+                new Dictionary<string, string>()
             );
 
             var presenter = new IAddingPresenter.Null();

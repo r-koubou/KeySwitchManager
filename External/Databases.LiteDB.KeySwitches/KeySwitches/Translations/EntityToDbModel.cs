@@ -2,10 +2,13 @@ using System.Collections.Generic;
 
 using Databases.LiteDB.KeySwitches.KeySwitches.Models;
 
+using KeySwitchManager.Domain.KeySwitches;
 using KeySwitchManager.Domain.KeySwitches.Aggregate;
 using KeySwitchManager.Domain.MidiMessages.Aggregate;
 using KeySwitchManager.Domain.Services;
 using KeySwitchManager.Domain.Translations;
+
+using LiteDB;
 
 namespace Databases.LiteDB.KeySwitches.KeySwitches.Translations
 {
@@ -37,6 +40,14 @@ namespace Databases.LiteDB.KeySwitches.KeySwitches.Translations
                 articulationModels.Add( articulation );
             }
 
+            var extra = new Dictionary<string, BsonValue>();
+            foreach( var key in source.ExtraData.Keys )
+            {
+                var k = key.Value;
+                var v = source.ExtraData[ key ];
+                extra.Add( k, new BsonValue( v.Value ) );
+            }
+
             return new KeySwitchModel(
                 source.Id.Value,
                 source.Author.Value,
@@ -46,7 +57,8 @@ namespace Databases.LiteDB.KeySwitches.KeySwitches.Translations
                 source.DeveloperName.Value,
                 source.ProductName.Value,
                 source.InstrumentName.Value,
-                articulationModels
+                articulationModels,
+                extra
             );
         }
 

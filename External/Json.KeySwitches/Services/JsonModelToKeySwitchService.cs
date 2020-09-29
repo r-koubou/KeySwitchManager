@@ -23,7 +23,8 @@ namespace KeySwitchManager.Json.KeySwitches.Services
                 model.DeveloperName,
                 model.ProductName,
                 model.InstrumentName,
-                articulations
+                articulations,
+                model.ExtraData
             );
         }
 

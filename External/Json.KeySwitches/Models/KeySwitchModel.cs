@@ -40,6 +40,9 @@ namespace KeySwitchManager.Json.KeySwitches.Models
         [JsonProperty( "articulations")]
         public IReadOnlyCollection<ArticulationModel> Articulations { get; set; } = new List<ArticulationModel>();
 
+        [JsonProperty( "extra")]
+        public IReadOnlyDictionary<string, string> ExtraData { get; set; } = new Dictionary<string, string>();
+
         public KeySwitchModel()
         {}
 
@@ -52,7 +55,8 @@ namespace KeySwitchManager.Json.KeySwitches.Models
             string developerName,
             string productName,
             string instrumentName,
-            IReadOnlyCollection<ArticulationModel> articulations )
+            IReadOnlyCollection<ArticulationModel> articulations,
+            IReadOnlyDictionary<string, string> extraData )
         {
             Id             = id;
             Author         = author;
@@ -63,6 +67,7 @@ namespace KeySwitchManager.Json.KeySwitches.Models
             ProductName    = productName;
             InstrumentName = instrumentName;
             Articulations  = articulations;
+            ExtraData      = extraData;
         }
     }
 }

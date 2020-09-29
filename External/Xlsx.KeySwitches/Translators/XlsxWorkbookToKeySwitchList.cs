@@ -66,7 +66,8 @@ namespace KeySwitchManager.Xlsx.KeySwitches.Translators
                 DeveloperName,
                 ProductName,
                 sheet.OutputNameCell.Value,
-                articulations
+                articulations,
+                new Dictionary<string, string>() //TODO
             );
         }
 
