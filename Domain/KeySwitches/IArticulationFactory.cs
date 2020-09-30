@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 
+using KeySwitchManager.Domain.Commons;
 using KeySwitchManager.Domain.KeySwitches.Aggregate;
 using KeySwitchManager.Domain.KeySwitches.Value;
 using KeySwitchManager.Domain.MidiMessages.Aggregate;
@@ -39,9 +40,9 @@ namespace KeySwitchManager.Domain.KeySwitches
                     articulationType,
                     new ArticulationGroup( articulationGroup ),
                     new ArticulationColor( articulationColor ),
-                    new List<MidiNoteOn>(),
-                    new List<MidiControlChange>(),
-                    new List<MidiProgramChange>(),
+                    new DataList<IMidiMessage>(),
+                    new DataList<IMidiMessage>(),
+                    new DataList<IMidiMessage>(),
                     ExtraData.Empty
                 );
             }
@@ -61,9 +62,9 @@ namespace KeySwitchManager.Domain.KeySwitches
                     articulationType,
                     new ArticulationGroup( articulationGroup ),
                     new ArticulationColor( articulationColor ),
-                    midiNoteOns,
-                    midiControlChanges,
-                    midiProgramChanges,
+                    new DataList<IMidiMessage>( midiNoteOns ),
+                    new DataList<IMidiMessage>( midiControlChanges ),
+                    new DataList<IMidiMessage>( midiProgramChanges ),
                     IExtraDataFactory.Default.Create( extraData )
                 );
             }

@@ -75,9 +75,9 @@ namespace KeySwitchManager.Common.Testing
                 articulationType,
                 new ArticulationGroup( articulationGroup ),
                 new ArticulationColor( articulationColor ),
-                new List<MidiNoteOn>(),
-                new List<MidiControlChange>(),
-                new List<MidiProgramChange>(),
+                new DataList<MidiNoteOn>(),
+                new DataList<MidiControlChange>(),
+                new DataList<MidiProgramChange>(),
                 new ExtraData( new Dictionary<ExtraDataKey, ExtraDataValue>
                 {
                     { new ExtraDataKey( "extKey" ), new ExtraDataValue( "extValue" ) }
@@ -95,9 +95,9 @@ namespace KeySwitchManager.Common.Testing
                 ArticulationType.Default,
                 new ArticulationGroup( 0 ),
                 new ArticulationColor( 0 ),
-                noteOns,
-                controlChanges,
-                programChanges,
+                new DataList<IMidiMessage>( noteOns ),
+                new DataList<IMidiMessage>( controlChanges ),
+                new DataList<IMidiMessage>( programChanges ),
                 new ExtraData( new Dictionary<ExtraDataKey, ExtraDataValue>
                 {
                     { new ExtraDataKey( "extKey" ), new ExtraDataValue( "extValue" ) }

@@ -1,7 +1,7 @@
 using System;
-using System.Collections.Generic;
 using System.Linq;
 
+using KeySwitchManager.Domain.Commons;
 using KeySwitchManager.Domain.KeySwitches.Value;
 using KeySwitchManager.Domain.MidiMessages.Aggregate;
 
@@ -13,9 +13,9 @@ namespace KeySwitchManager.Domain.KeySwitches.Aggregate
         public ArticulationType ArticulationType { get; }
         public ArticulationGroup ArticulationGroup { get; }
         public ArticulationColor ArticulationColor { get; }
-        public IReadOnlyCollection<IMidiMessage> MidiNoteOns { get; }
-        public IReadOnlyCollection<IMidiMessage> MidiControlChanges { get; }
-        public IReadOnlyCollection<IMidiMessage> MidiProgramChanges { get; }
+        public IDataList<IMidiMessage> MidiNoteOns { get; }
+        public IDataList<IMidiMessage> MidiControlChanges { get; }
+        public IDataList<IMidiMessage> MidiProgramChanges { get; }
         public ExtraData ExtraData { get; }
 
         public Articulation(
@@ -23,9 +23,9 @@ namespace KeySwitchManager.Domain.KeySwitches.Aggregate
             ArticulationType articulationType,
             ArticulationGroup articulationGroup,
             ArticulationColor articulationColor,
-            IReadOnlyCollection<IMidiMessage> midiNoteOns,
-            IReadOnlyCollection<IMidiMessage> midiControlChanges,
-            IReadOnlyCollection<IMidiMessage> midiProgramChanges,
+            IDataList<IMidiMessage> midiNoteOns,
+            IDataList<IMidiMessage> midiControlChanges,
+            IDataList<IMidiMessage> midiProgramChanges,
             ExtraData extraData )
         {
             ArticulationName   = articulationName;

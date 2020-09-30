@@ -9,7 +9,12 @@ namespace KeySwitchManager.Domain.Commons
     {
         private IReadOnlyList<T> List { get; }
 
-        public DataList( IReadOnlyCollection<T> source )
+        public DataList()
+        {
+            List = new List<T>();
+        }
+
+        public DataList( IEnumerable<T> source )
         {
             List = new List<T>( source );
         }
