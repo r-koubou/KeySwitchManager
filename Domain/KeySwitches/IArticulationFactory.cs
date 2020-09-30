@@ -20,9 +20,9 @@ namespace KeySwitchManager.Domain.KeySwitches
             ArticulationType articulationType,
             int articulationGroup,
             int articulationColor,
-            IReadOnlyCollection<IMidiMessage> midiNoteOns,
-            IReadOnlyCollection<IMidiMessage> midiControlChanges,
-            IReadOnlyCollection<IMidiMessage> midiProgramChanges,
+            IEnumerable<IMidiMessage> midiNoteOns,
+            IEnumerable<IMidiMessage> midiControlChanges,
+            IEnumerable<IMidiMessage> midiProgramChanges,
             IReadOnlyDictionary<string, string> extraData );
 
         public static IArticulationFactory Default => new DefaultFactory();
@@ -52,9 +52,9 @@ namespace KeySwitchManager.Domain.KeySwitches
                 ArticulationType articulationType,
                 int articulationGroup,
                 int articulationColor,
-                IReadOnlyCollection<IMidiMessage> midiNoteOns,
-                IReadOnlyCollection<IMidiMessage> midiControlChanges,
-                IReadOnlyCollection<IMidiMessage> midiProgramChanges,
+                IEnumerable<IMidiMessage> midiNoteOns,
+                IEnumerable<IMidiMessage> midiControlChanges,
+                IEnumerable<IMidiMessage> midiProgramChanges,
                 IReadOnlyDictionary<string, string> extraData )
             {
                 return new Articulation(
