@@ -52,5 +52,15 @@ namespace KeySwitchManager.Domain.Commons
             => GetEnumerator();
 
         #endregion
+
+        public TValue TryGetWithDefault( TKey key, TValue defaultValue )
+        {
+            if( Dictionary.TryGetValue( key, out var value ) )
+            {
+                return value;
+            }
+
+            return defaultValue;
+        }
     }
 }

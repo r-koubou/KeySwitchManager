@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Text;
 
 using ExcelDataReader;
@@ -68,7 +69,21 @@ namespace KeySwitchManager.Xlsx.KeySwitches.Services
                     Row      = rows[ rowIndex ],
                     RowIndex = rowIndex
                 };
+
+                // Standard Columns
                 var row = ParseRow( context );
+
+                // Extended Columns
+                foreach( var extraColumnName in ParseExtraColumnNames( rows ) )
+                {
+                    if( TryParseSheet( context, extraColumnName, out var extraValue ) )
+                    {
+                        row.Extra.Add(
+                            extraColumnName.Substring( SpreadsheetConstants.ExtraColumnPrefix.Length ),
+                            new ExtraDataCell( extraValue ) );
+                    }
+                }
+
                 worksheet.Rows.Add( row );
             }
 
@@ -260,6 +275,23 @@ namespace KeySwitchManager.Xlsx.KeySwitches.Services
                 i++;
             }
             return false;
+        }
+
+        private static IReadOnlyCollection<string> ParseExtraColumnNames( SourceRows rows )
+        {
+            var result = new List<string>();
+            var headers = rows[ SpreadsheetConstants.HeaderRowIndex ].ItemArray;
+            var extraColumnNames = headers.Where( x =>
+            {
+                return x != null && ( x.ToString() ?? string.Empty ).StartsWith( SpreadsheetConstants.ExtraColumnPrefix );
+            });
+
+            foreach( var i in extraColumnNames )
+            {
+                result.Add( i.ToString()! );
+            }
+
+            return result;
         }
 
     }

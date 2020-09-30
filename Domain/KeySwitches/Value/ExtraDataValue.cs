@@ -7,7 +7,14 @@ namespace KeySwitchManager.Domain.KeySwitches.Value
 {
     public class ExtraDataValue : IDictionaryKey<string>, IEquatable<ExtraDataValue>
     {
+        public static readonly ExtraDataValue Empty = new ExtraDataValue();
+
         public string Value { get; }
+
+        private ExtraDataValue()
+        {
+            Value = "";
+        }
 
         public ExtraDataValue( string value )
         {

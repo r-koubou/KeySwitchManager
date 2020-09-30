@@ -8,8 +8,6 @@ using KeySwitchManager.Domain.MidiMessages;
 using KeySwitchManager.Domain.MidiMessages.Aggregate;
 using KeySwitchManager.Domain.Translations;
 
-using LiteDB;
-
 namespace Databases.LiteDB.KeySwitches.KeySwitches.Translations
 {
     public class DbModelToEntity : IDataTranslator<KeySwitchModel, KeySwitch>
@@ -54,14 +52,15 @@ namespace Databases.LiteDB.KeySwitches.KeySwitches.Translations
 
         }
 
-        private static Dictionary<string, string> ConvertExtraData( Dictionary<string, BsonValue> source )
+        private static IReadOnlyDictionary<string, string> ConvertExtraData( IReadOnlyDictionary<string, object> source )
         {
             var extra = new Dictionary<string, string>();
 
-            foreach( var key in source.Keys )
+            foreach( var keyValuePair in source )
             {
-                var v = source[ key ].AsString;
-                extra.Add( key, v );
+                var k = keyValuePair.Key;
+                var v = keyValuePair.Value;
+                extra.Add( k, v.ToString()! );
             }
 
             return extra;

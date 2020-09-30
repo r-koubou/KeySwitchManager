@@ -1,7 +1,5 @@
 using System.Collections.Generic;
 
-using LiteDB;
-
 namespace Databases.LiteDB.KeySwitches.KeySwitches.Models
 {
     public class ArticulationModel
@@ -10,7 +8,7 @@ namespace Databases.LiteDB.KeySwitches.KeySwitches.Models
         public IReadOnlyCollection<MidiMessageModel> NoteOn { get; set; } = new List<MidiMessageModel>();
         public IReadOnlyCollection<MidiMessageModel> ControlChange { get; set; } = new List<MidiMessageModel>();
         public IReadOnlyCollection<MidiMessageModel> ProgramChange { get; set; } = new List<MidiMessageModel>();
-        public Dictionary<string, BsonValue> ExtraData { get; set; } = new Dictionary<string, BsonValue>();
+        public IReadOnlyDictionary<string, object> ExtraData { get; set; } = new Dictionary<string, object>();
 
         public ArticulationModel()
         {}
@@ -20,14 +18,13 @@ namespace Databases.LiteDB.KeySwitches.KeySwitches.Models
             IReadOnlyCollection<MidiMessageModel> midiNoteOns,
             IReadOnlyCollection<MidiMessageModel> midiControlChanges,
             IReadOnlyCollection<MidiMessageModel> midiProgramChanges,
-            Dictionary<string, BsonValue> extraData )
-
+            IReadOnlyDictionary<string, object> extraData )
         {
-            ArticulationName  = articulationName;
-            NoteOn            = midiNoteOns;
-            ControlChange     = midiControlChanges;
-            ProgramChange     = midiProgramChanges;
-            ExtraData         = extraData;
+            ArticulationName = articulationName;
+            NoteOn           = midiNoteOns;
+            ControlChange    = midiControlChanges;
+            ProgramChange    = midiProgramChanges;
+            ExtraData        = extraData;
         }
     }
 }

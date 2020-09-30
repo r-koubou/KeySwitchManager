@@ -72,12 +72,19 @@ namespace KeySwitchManager.Xlsx.KeySwitches.Translators
 
         private Articulation TranslateArticulation( Row row )
         {
+            var extra = new Dictionary<string, string>();
+
+            foreach( var key in row.Extra.Keys )
+            {
+                extra.Add( key, row.Extra[ key ].Value );
+            }
+
             return IArticulationFactory.Default.Create(
                 row.ArticulationName.Value,
                 TranslateMidiNoteMapping( row ),
                 TranslateMidiControlChangeMapping( row ),
                 TranslateMidiProgramChangeMapping( row ),
-                new Dictionary<string, string>() //TOOD
+                extra
             );
         }
 

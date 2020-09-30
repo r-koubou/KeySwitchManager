@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using KeySwitchManager.Common.Text.Xml;
 using KeySwitchManager.Domain.Commons;
 using KeySwitchManager.Domain.KeySwitches.Aggregate;
+using KeySwitchManager.Domain.KeySwitches.Value;
 using KeySwitchManager.Domain.MidiMessages.Aggregate;
 using KeySwitchManager.UseCases.VstExpressionMap.Translations;
 using KeySwitchManager.Xml.VstExpressionMap.Models;
@@ -19,12 +20,15 @@ namespace KeySwitchManager.Xml.VstExpressionMap.Translations
 
             foreach( var i in source.Articulations )
             {
+                var type = ConvertArticulationType( i.ExtraData.TryGetWithDefault( ExtraDataKeys.ArticulationType, ExtraDataValue.Empty ) );
+                var group = ConvertArticulationGroup( i.ExtraData.TryGetWithDefault( ExtraDataKeys.GroupIndex,      ExtraDataValue.Empty ) );
+
                 var slotVisual = USlotVisuals.New(
                     i.ArticulationName.Value,
                     i.ArticulationName.Value,
                     0,
-                    (int)i.ArticulationType,
-                    i.ArticulationGroup.Value
+                    type,
+                    group
                 );
                 listOfUSlotVisuals.Obj.Add( slotVisual );
             }
@@ -36,7 +40,10 @@ namespace KeySwitchManager.Xml.VstExpressionMap.Translations
             foreach( var i in source.Articulations )
             {
                 var slotName = i.ArticulationName.Value;
-                var slotColor = i.ArticulationColor.Value;
+                var slotColor = ConvertColorIndex( i.ExtraData.TryGetWithDefault( ExtraDataKeys.ColorIndex, ExtraDataValue.Empty ) );
+
+                var type = ConvertArticulationType( i.ExtraData.TryGetWithDefault( ExtraDataKeys.ArticulationType, ExtraDataValue.Empty ) );
+                var group = ConvertArticulationGroup( i.ExtraData.TryGetWithDefault( ExtraDataKeys.GroupIndex,     ExtraDataValue.Empty ) );
 
                 // PSoundSlot
                 var pSoundSlot = PSoundSlot.New( slotName );
@@ -54,8 +61,8 @@ namespace KeySwitchManager.Xml.VstExpressionMap.Translations
                     i.ArticulationName.Value,
                     i.ArticulationName.Value,
                     0,
-                    (int)i.ArticulationType,
-                    i.ArticulationGroup.Value
+                    type,
+                    group
                 );
 
                 pSoundSlot.Member.Add( PSoundSlot.Sv( slotVisual ) );
@@ -85,6 +92,26 @@ namespace KeySwitchManager.Xml.VstExpressionMap.Translations
             #endregion
 
             return new PlainText( XmlHelper.ToXmlString( rootElement ) );
+        }
+
+        private static int ConvertArticulationType( ExtraDataValue value )
+        {
+            return value.Value switch
+            {
+                "Attribute" => 0,
+                "Direction" => 1,
+                _           => 1
+            };
+        }
+
+        private static int ConvertArticulationGroup( ExtraDataValue value )
+        {
+            return int.TryParse( value.Value, out var result ) ? result : 0;
+        }
+
+        private static int ConvertColorIndex( ExtraDataValue value )
+        {
+            return int.TryParse( value.Value, out var result ) ? result : 0;
         }
 
         private static void ConvertOutputMappings( Articulation articulation, ListElement listOfPOutputEvent )
