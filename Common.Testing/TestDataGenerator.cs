@@ -28,7 +28,7 @@ namespace KeySwitchManager.Common.Testing
                 new DeveloperName( developerName ),
                 new ProductName( productName ),
                 new InstrumentName( instrumentName ),
-                new [] { CreateArticulation() },
+                new DataList<Articulation>( new[] { CreateArticulation() } ),
                 new ExtraData( new Dictionary<ExtraDataKey, ExtraDataValue>
                 {
                     {new ExtraDataKey( "extKey" ), new ExtraDataValue( "extValue" ) }
@@ -54,7 +54,7 @@ namespace KeySwitchManager.Common.Testing
                 new DeveloperName( "DeveloperName" ),
                 new ProductName( "ProductName" ),
                 new InstrumentName( "E.Guitar" ),
-                articulations,
+                new DataList<Articulation>( articulations ),
                 new ExtraData( new Dictionary<ExtraDataKey, ExtraDataValue>
                 {
                     { new ExtraDataKey( "extKey" ), new ExtraDataValue( "extValue" ) }

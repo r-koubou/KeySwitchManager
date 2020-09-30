@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 using System.Linq;
 
 using KeySwitchManager.Domain.Commons;
@@ -20,7 +19,7 @@ namespace KeySwitchManager.Domain.KeySwitches.Aggregate
         public DeveloperName DeveloperName { get; }
         public ProductName ProductName { get; }
         public InstrumentName InstrumentName { get; }
-        public IReadOnlyCollection<Articulation> Articulations { get; }
+        public IDataList<Articulation> Articulations { get; }
         public ExtraData ExtraData { get; }
 
         public KeySwitch(
@@ -32,7 +31,7 @@ namespace KeySwitchManager.Domain.KeySwitches.Aggregate
             DeveloperName developerName,
             ProductName productName,
             InstrumentName instrumentName,
-            IReadOnlyCollection<Articulation> articulations,
+            IDataList<Articulation> articulations,
             ExtraData extraData )
         {
             Id             = id;

@@ -50,7 +50,7 @@ namespace KeySwitchManager.Domain.KeySwitches
                     new DeveloperName( developerName ),
                     new ProductName( productName ),
                     new InstrumentName( instrumentName ),
-                    articulations,
+                    new DataList<Articulation>( articulations ),
                     IExtraDataFactory.Default.Create( extraData )
                 );
             }
