@@ -15,11 +15,7 @@ namespace KeySwitchManager.Domain.KeySwitches.Value
 
         public Author( string name )
         {
-            if( StringHelper.IsNullOrTrimEmpty( name ) )
-            {
-                name = string.Empty;
-            }
-            Value = name;
+            Value = StringHelper.IsNullOrTrimEmpty( name ) ? string.Empty : name;
         }
 
         public bool Equals( Author? other )
