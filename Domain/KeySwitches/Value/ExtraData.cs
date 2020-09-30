@@ -2,27 +2,22 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
+using KeySwitchManager.Domain.Commons;
+
 namespace KeySwitchManager.Domain.KeySwitches.Value
 {
-    public class ExtraData : IEquatable<ExtraData>
+    public class ExtraData : DataDictionary<ExtraDataKey, ExtraDataValue>, IEquatable<ExtraData>
     {
-        public static readonly ExtraData Empty =
-            new ExtraData( new Dictionary<ExtraDataKey, ExtraDataValue>() );
+        public ExtraData()
+        {}
 
-        private IReadOnlyDictionary<ExtraDataKey, ExtraDataValue> Value { get; }
-
-        public ExtraDataValue this[ ExtraDataKey key ] => Value[ key ];
-        public IEnumerable<ExtraDataKey> Keys => Value.Keys;
-        public IEnumerable<ExtraDataValue> Values => Value.Values;
-
-        public ExtraData( IReadOnlyDictionary<ExtraDataKey, ExtraDataValue> value )
-        {
-            Value = value;
-        }
+        public ExtraData( IReadOnlyDictionary<ExtraDataKey, ExtraDataValue> dictionary )
+            : base( dictionary )
+        {}
 
         public bool Equals( ExtraData? other )
         {
-            return other != null && other.Value.SequenceEqual( Value );
+            return other != null && other.Dictionary.SequenceEqual( Dictionary );
         }
     }
 }

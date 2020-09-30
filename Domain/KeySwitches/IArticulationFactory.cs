@@ -43,7 +43,7 @@ namespace KeySwitchManager.Domain.KeySwitches
                     new DataList<IMidiMessage>(),
                     new DataList<IMidiMessage>(),
                     new DataList<IMidiMessage>(),
-                    ExtraData.Empty
+                    new ExtraData()
                 );
             }
 
