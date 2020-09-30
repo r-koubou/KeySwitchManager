@@ -3,7 +3,6 @@ using System.Collections.Generic;
 
 using KeySwitchManager.Domain.KeySwitches;
 using KeySwitchManager.Domain.KeySwitches.Aggregate;
-using KeySwitchManager.Domain.KeySwitches.Value;
 using KeySwitchManager.Domain.MidiMessages;
 using KeySwitchManager.Domain.MidiMessages.Aggregate;
 using KeySwitchManager.Presenters.KeySwitches;
@@ -44,9 +43,6 @@ namespace KeySwitchManager.Interactors.KeySwitches.Exporting
                 {
                     IArticulationFactory.Default.Create(
                         "name",
-                        ArticulationType.Default,
-                        0,
-                        0,
                         new List<IMidiMessage>{ IMidiNoteOnFactory.Default.Create( 0, 100 )},
                         new List<IMidiMessage>{ IMidiControlChangeFactory.Default.Create( 1, 100 )},
                         new List<IMidiMessage>{ IMidiProgramChangeFactory.Default.Create( 2, 34 )},

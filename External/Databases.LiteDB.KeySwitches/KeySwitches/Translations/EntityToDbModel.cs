@@ -30,8 +30,6 @@ namespace Databases.LiteDB.KeySwitches.KeySwitches.Translations
 
                 var articulation = new ArticulationModel(
                     i.ArticulationName.Value,
-                    i.ArticulationGroup.Value,
-                    i.ArticulationColor.Value,
                     noteOn,
                     controlChange,
                     programChange,

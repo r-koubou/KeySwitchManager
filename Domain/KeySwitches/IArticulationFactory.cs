@@ -11,15 +11,11 @@ namespace KeySwitchManager.Domain.KeySwitches
     {
         public Articulation Create(
             string articulationName,
-            ArticulationType articulationType,
             int articulationGroup,
             int articulationColor );
 
         public Articulation Create(
             string articulationName,
-            ArticulationType articulationType,
-            int articulationGroup,
-            int articulationColor,
             IEnumerable<IMidiMessage> midiNoteOns,
             IEnumerable<IMidiMessage> midiControlChanges,
             IEnumerable<IMidiMessage> midiProgramChanges,
@@ -31,15 +27,11 @@ namespace KeySwitchManager.Domain.KeySwitches
         {
             public Articulation Create(
                 string articulationName,
-                ArticulationType articulationType,
                 int articulationGroup,
                 int articulationColor )
             {
                 return new Articulation(
                     new ArticulationName( articulationName ),
-                    articulationType,
-                    new ArticulationGroup( articulationGroup ),
-                    new ArticulationColor( articulationColor ),
                     new DataList<IMidiMessage>(),
                     new DataList<IMidiMessage>(),
                     new DataList<IMidiMessage>(),
@@ -49,9 +41,6 @@ namespace KeySwitchManager.Domain.KeySwitches
 
             public Articulation Create(
                 string articulationName,
-                ArticulationType articulationType,
-                int articulationGroup,
-                int articulationColor,
                 IEnumerable<IMidiMessage> midiNoteOns,
                 IEnumerable<IMidiMessage> midiControlChanges,
                 IEnumerable<IMidiMessage> midiProgramChanges,
@@ -59,9 +48,6 @@ namespace KeySwitchManager.Domain.KeySwitches
             {
                 return new Articulation(
                     new ArticulationName( articulationName ),
-                    articulationType,
-                    new ArticulationGroup( articulationGroup ),
-                    new ArticulationColor( articulationColor ),
                     new DataList<IMidiMessage>( midiNoteOns ),
                     new DataList<IMidiMessage>( midiControlChanges ),
                     new DataList<IMidiMessage>( midiProgramChanges ),

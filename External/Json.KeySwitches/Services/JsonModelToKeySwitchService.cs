@@ -44,9 +44,6 @@ namespace KeySwitchManager.Json.KeySwitches.Services
 
                 var articulation = IArticulationFactory.Default.Create(
                     i.Name,
-                    i.Type,
-                    i.Group,
-                    i.Color,
                     noteOn,
                     controlChange,
                     programChange,

@@ -27,9 +27,6 @@ namespace KeySwitchManager.Json.KeySwitches.Services
 
                 var jsonObject = new ArticulationModel(
                     i.ArticulationName.Value,
-                    i.ArticulationType,
-                    i.ArticulationGroup.Value,
-                    i.ArticulationColor.Value,
                     new MidiModel(
                         noteOn,
                         controlChange,

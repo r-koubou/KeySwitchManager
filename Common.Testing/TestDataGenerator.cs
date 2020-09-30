@@ -64,17 +64,10 @@ namespace KeySwitchManager.Common.Testing
         #endregion
 
         #region Articulation
-        public static Articulation CreateArticulation(
-            string articulationName = "Power Chord",
-            ArticulationType articulationType = ArticulationType.Default,
-            int articulationGroup = 0,
-            int articulationColor = 0 )
+        public static Articulation CreateArticulation( string articulationName = "Power Chord" )
         {
             return new Articulation(
                 new ArticulationName( articulationName ),
-                articulationType,
-                new ArticulationGroup( articulationGroup ),
-                new ArticulationColor( articulationColor ),
                 new DataList<MidiNoteOn>(),
                 new DataList<MidiControlChange>(),
                 new DataList<MidiProgramChange>(),
@@ -92,9 +85,6 @@ namespace KeySwitchManager.Common.Testing
         {
             return new Articulation(
                 new ArticulationName( "Power Chord" ),
-                ArticulationType.Default,
-                new ArticulationGroup( 0 ),
-                new ArticulationColor( 0 ),
                 new DataList<IMidiMessage>( noteOns ),
                 new DataList<IMidiMessage>( controlChanges ),
                 new DataList<IMidiMessage>( programChanges ),

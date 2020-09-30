@@ -22,9 +22,6 @@ namespace KeySwitchManager.Domain.Commons
             Dictionary = dictionary;
         }
 
-        public IReadOnlyDictionary<TKey, TValue> ToDictionary()
-            => new Dictionary<TKey, TValue>( Dictionary );
-
         public bool Equals( DataDictionary<TKey, TValue>? other )
         {
             return other != null && other.Dictionary.SequenceEqual( Dictionary );

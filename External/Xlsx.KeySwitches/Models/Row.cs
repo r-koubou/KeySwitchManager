@@ -29,25 +29,13 @@ namespace KeySwitchManager.Xlsx.KeySwitches.Models
         }
 
         public ArticulationNameCell ArticulationName { get; }
-        public ArticulationTypeCell ArticulationType { get; }
-        public ColorIndexCell ColorIndex { get; }
-        public GroupIndexCell GroupIndex { get; }
-
         public List<MidiNote> MidiNoteList { get; } = new List<MidiNote>();
         public List<MidiControlChange> MidiControlChangeList { get; } = new List<MidiControlChange>();
         public List<MidiProgramChange> MidiProgramChangeList { get; } = new List<MidiProgramChange>();
 
-        public Row(
-            ArticulationNameCell name,
-            ArticulationTypeCell type,
-            ColorIndexCell colorIndex,
-            GroupIndexCell groupIndex
-        )
+        public Row( ArticulationNameCell name )
         {
             ArticulationName = name;
-            ArticulationType = type;
-            ColorIndex       = colorIndex;
-            GroupIndex       = groupIndex;
         }
     }
 }

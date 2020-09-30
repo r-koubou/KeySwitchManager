@@ -3,7 +3,6 @@ using System.IO;
 
 using Databases.LiteDB.KeySwitches.KeySwitches;
 
-using KeySwitchManager.Domain.KeySwitches.Value;
 using KeySwitchManager.Domain.MidiMessages.Aggregate;
 using KeySwitchManager.Interactors.KeySwitches.Adding;
 using KeySwitchManager.Presenters.KeySwitches;
@@ -26,9 +25,6 @@ namespace KeySwitchManager.Interactors.Testing.KeySwitches
                 "Product",
                 "E.Guitar",
                 "Power Chord",
-                ArticulationType.Direction,
-                0,
-                0,
                 new List<MidiNoteOn>(),
                 new List<MidiControlChange>(),
                 new List<MidiProgramChange>(),

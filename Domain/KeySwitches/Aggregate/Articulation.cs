@@ -10,9 +10,6 @@ namespace KeySwitchManager.Domain.KeySwitches.Aggregate
     public class Articulation : IEquatable<Articulation>
     {
         public ArticulationName ArticulationName { get; }
-        public ArticulationType ArticulationType { get; }
-        public ArticulationGroup ArticulationGroup { get; }
-        public ArticulationColor ArticulationColor { get; }
         public IDataList<IMidiMessage> MidiNoteOns { get; }
         public IDataList<IMidiMessage> MidiControlChanges { get; }
         public IDataList<IMidiMessage> MidiProgramChanges { get; }
@@ -20,18 +17,12 @@ namespace KeySwitchManager.Domain.KeySwitches.Aggregate
 
         public Articulation(
             ArticulationName articulationName,
-            ArticulationType articulationType,
-            ArticulationGroup articulationGroup,
-            ArticulationColor articulationColor,
             IDataList<IMidiMessage> midiNoteOns,
             IDataList<IMidiMessage> midiControlChanges,
             IDataList<IMidiMessage> midiProgramChanges,
             ExtraData extraData )
         {
             ArticulationName   = articulationName;
-            ArticulationType   = articulationType;
-            ArticulationGroup  = articulationGroup;
-            ArticulationColor  = articulationColor;
             MidiNoteOns        = midiNoteOns;
             MidiControlChanges = midiControlChanges;
             MidiProgramChanges = midiProgramChanges;
@@ -52,9 +43,6 @@ namespace KeySwitchManager.Domain.KeySwitches.Aggregate
             }
 
             return ArticulationName.Equals( other.ArticulationName ) &&
-                   ArticulationType == other.ArticulationType &&
-                   ArticulationGroup.Equals( other.ArticulationGroup ) &&
-                   ArticulationColor.Equals( other.ArticulationColor ) &&
                    MidiNoteOns.SequenceEqual( other.MidiNoteOns ) &&
                    MidiControlChanges.SequenceEqual( other.MidiControlChanges ) &&
                    MidiProgramChanges.SequenceEqual( other.MidiProgramChanges );

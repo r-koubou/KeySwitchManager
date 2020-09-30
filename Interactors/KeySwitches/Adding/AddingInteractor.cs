@@ -42,9 +42,6 @@ namespace KeySwitchManager.Interactors.KeySwitches.Adding
             var created = DateTimeHelper.NowUtc();
             var articulation = ArticulationFactory.Create(
                 request.ArticulationName,
-                request.ArticulationType,
-                request.ArticulationGroup,
-                request.ArticulationColor,
                 request.MidiNoteOns,
                 request.MidiControlChanges,
                 request.MidiProgramChanges,

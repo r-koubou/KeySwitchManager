@@ -1,7 +1,5 @@
 using System.Collections.Generic;
 
-using KeySwitchManager.Domain.KeySwitches.Value;
-
 using Newtonsoft.Json;
 
 namespace KeySwitchManager.Json.KeySwitches.Models
@@ -12,16 +10,6 @@ namespace KeySwitchManager.Json.KeySwitches.Models
         [JsonProperty( "name")]
         [JsonRequired]
         public string Name { get; set; } = default!;
-
-        [JsonProperty( "type" )]
-        [JsonRequired]
-        public ArticulationType Type { get; set; } = ArticulationType.Default;
-
-        [JsonProperty( "group" )]
-        public int Group { get; set; }
-
-        [JsonProperty( "color")]
-        public int Color { get; set; }
 
         [JsonProperty("midi_message")]
         public MidiModel MidiMessage { get; set; } = new MidiModel();
@@ -34,16 +22,10 @@ namespace KeySwitchManager.Json.KeySwitches.Models
 
         public ArticulationModel(
             string name,
-            ArticulationType type,
-            int group,
-            int color,
             MidiModel midiMessage,
             IReadOnlyDictionary<string, string> extraData )
         {
             Name        = name;
-            Type        = type;
-            Group       = group;
-            Color       = color;
             MidiMessage = midiMessage;
             ExtraData   = extraData;
         }

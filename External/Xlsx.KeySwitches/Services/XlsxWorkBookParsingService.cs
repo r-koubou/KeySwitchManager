@@ -17,9 +17,6 @@ namespace KeySwitchManager.Xlsx.KeySwitches.Services
         private class ArticulationCellGroup
         {
             public ArticulationNameCell NameCell { get; set; } = ArticulationNameCell.Empty;
-            public ArticulationTypeCell TypeCell { get; set; } = ArticulationTypeCell.Default;
-            public ColorIndexCell ColorIndexCell { get; set; } = ColorIndexCell.Default;
-            public GroupIndexCell GroupIndexCell { get; set; } = GroupIndexCell.Default;
         }
 
         static XlsxWorkBookParsingService()
@@ -94,12 +91,7 @@ namespace KeySwitchManager.Xlsx.KeySwitches.Services
         {
             var articulationCellGroup = ParseArticulation( context );
 
-            var row = new Row(
-                articulationCellGroup.NameCell,
-                articulationCellGroup.TypeCell,
-                articulationCellGroup.ColorIndexCell,
-                articulationCellGroup.GroupIndexCell
-            );
+            var row = new Row( articulationCellGroup.NameCell );
 
             row.MidiNoteList.AddRange( ParseMidiNotes( context ) );
             row.MidiControlChangeList.AddRange( ParseMidiControlChanges( context ) );
@@ -114,15 +106,6 @@ namespace KeySwitchManager.Xlsx.KeySwitches.Services
 
             ParseSheet( context, SpreadsheetConstants.ColumnArticulationName, out var cellValue );
             articulationCellGroup.NameCell = new ArticulationNameCell( cellValue );
-
-            ParseSheet( context, SpreadsheetConstants.ColumnColor, out cellValue );
-            articulationCellGroup.ColorIndexCell = new ColorIndexCell( int.Parse( cellValue ) );
-
-            ParseSheet( context, SpreadsheetConstants.ColumnArticulationType, out cellValue );
-            articulationCellGroup.TypeCell = ArticulationTypeCell.Parse( cellValue );
-
-            ParseSheet( context, SpreadsheetConstants.ColumnGroup, out cellValue );
-            articulationCellGroup.GroupIndexCell = new GroupIndexCell( int.Parse( cellValue ) );
 
             return articulationCellGroup;
         }
