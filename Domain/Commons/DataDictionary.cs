@@ -53,7 +53,7 @@ namespace KeySwitchManager.Domain.Commons
 
         #endregion
 
-        public TValue TryGetWithDefault( TKey key, TValue defaultValue )
+        public TValue GetValueOrDefault( TKey key, TValue defaultValue )
         {
             if( Dictionary.TryGetValue( key, out var value ) )
             {
