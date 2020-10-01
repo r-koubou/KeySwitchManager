@@ -5,16 +5,16 @@ namespace KeySwitchManager.Xml.VstExpressionMap.Models.XmlClasses
         public static ObjectElement New()
         {
 #if false
-            <obj class="PSlotNoteChanger" ID="1015887872">
-               <int name="channel" value="-1"/>
-               <float name="velocityFact" value="0.25"/>
-               <float name="lengthFact" value="0.5"/>
-               <int name="minVelocity" value="0"/>
-               <int name="maxVelocity" value="127"/>
-               <int name="transpose" value="48"/>
-               <int name="minPitch" value="0"/>
-               <int name="maxPitch" value="127"/>
-            </obj>
+             <obj class="PSlotNoteChanger" ID="1196490592">
+                <int name="channel" value="-1"/>
+                <float name="velocityFact" value="1"/>
+                <float name="lengthFact" value="1"/>
+                <int name="minVelocity" value="0"/>
+                <int name="maxVelocity" value="127"/>
+                <int name="transpose" value="0"/>
+                <int name="minPitch" value="0"/>
+                <int name="maxPitch" value="127"/>
+             </obj>
 #endif
             var obj = new ObjectElement( "PSlotNoteChanger" );
 

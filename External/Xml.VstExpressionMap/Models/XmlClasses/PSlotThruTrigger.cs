@@ -5,7 +5,7 @@ namespace KeySwitchManager.Xml.VstExpressionMap.Models.XmlClasses
         public static ObjectElement New()
         {
 #if false
-            <obj class="PSlotThruTrigger" name="remote" ID="1357654234">
+            <obj class="PSlotThruTrigger" name="remote" ID="1205851952">
                <int name="status" value="144"/>
                <int name="data1" value="-1"/>
             </obj>
