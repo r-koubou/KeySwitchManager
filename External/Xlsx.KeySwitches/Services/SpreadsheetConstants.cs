@@ -13,15 +13,14 @@ namespace KeySwitchManager.Xlsx.KeySwitches.Services
         public static readonly string ExtraColumnPrefix = "Ext.";
 
         // Position of Output name cell
-        public static readonly int RowOutputIndex = 0;
-        public static readonly int ColumnOutputNameIndex = 1;
-
+        public static readonly int RowOutputIndex = 1;
+        public static readonly int ColumnOutputNameIndex = 0;
         // Position of Guid cell
-        public static readonly int RowGuidIndex = 1;
-        public static readonly int ColumnGuidIndex = 1;
+        public static readonly int RowGuidIndex = 3;
+        public static readonly int ColumnGuidIndex = 0;
 
-        // Start of data entry row index (3==header)
-        public static readonly int HeaderRowIndex = 3;
-        public static readonly int StartRowIndex = 4;
+        // Start of data entry row index (5==header)
+        public static readonly int HeaderRowIndex = 5;
+        public static readonly int StartRowIndex = 6;
     }
 }
