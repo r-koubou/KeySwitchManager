@@ -15,13 +15,15 @@ namespace KeySwitchManager.Xml.VstExpressionMap.Translations
     {
         public IText Translate( KeySwitch source )
         {
+            var slotTable = CollectSlotTable( source );
+
             #region List of USlotVisuals
             var listOfUSlotVisuals = new ListElement();
 
             foreach( var i in source.Articulations )
             {
-                var type = ConvertArticulationType( i.ExtraData.TryGetWithDefault( ExtraDataKeys.ArticulationType, ExtraDataValue.Empty ) );
-                var group = ConvertArticulationGroup( i.ExtraData.TryGetWithDefault( ExtraDataKeys.GroupIndex,      ExtraDataValue.Empty ) );
+                var type = ConvertArticulationType( i.ExtraData.GetValueOrDefault( ExtraDataKeys.ArticulationType, ExtraDataValue.Empty ) );
+                var group = ConvertArticulationGroup( i.ExtraData.GetValueOrDefault( ExtraDataKeys.GroupIndex,      ExtraDataValue.Empty ) );
 
                 var slotVisual = USlotVisuals.New(
                     i.ArticulationName.Value,
@@ -39,38 +41,44 @@ namespace KeySwitchManager.Xml.VstExpressionMap.Translations
 
             foreach( var i in source.Articulations )
             {
-                var slotName = i.ArticulationName.Value;
-                var slotColor = ConvertColorIndex( i.ExtraData.TryGetWithDefault( ExtraDataKeys.ColorIndex, ExtraDataValue.Empty ) );
-
-                var type = ConvertArticulationType( i.ExtraData.TryGetWithDefault( ExtraDataKeys.ArticulationType, ExtraDataValue.Empty ) );
-                var group = ConvertArticulationGroup( i.ExtraData.TryGetWithDefault( ExtraDataKeys.GroupIndex,     ExtraDataValue.Empty ) );
+                var slotName = i.ExtraData.GetValueOrDefault( ExtraDataKeys.SlotName, new ExtraDataValue( i.ArticulationName.Value ) );
+                var slotColor = ConvertColorIndex( i.ExtraData.GetValueOrDefault( ExtraDataKeys.ColorIndex, ExtraDataValue.Empty ) );
 
                 // PSoundSlot
-                var pSoundSlot = PSoundSlot.New( slotName );
+                // PSoundSlot.name
+                var pSoundSlot = PSoundSlot.New( slotName.Value );
+
+                // PSoundSlot.PSlotThruTrigger
                 pSoundSlot.Obj.Add( PSlotThruTrigger.New() );
 
-                // POutputEvent
+                // PSoundSlot -> PSlotMidiAction -> POutputEvent
                 var listOfPOutputEvent = new ListElement();
                 ConvertOutputMappings( i, listOfPOutputEvent );
 
-                // slotMidiAction
+                // PSoundSlot -> PSlotMidiAction
                 pSoundSlot.Obj.Add( PSlotMidiAction.New( listOfPOutputEvent ) );
 
-                // sv
-                var slotVisual = USlotVisuals.New(
-                    i.ArticulationName.Value,
-                    i.ArticulationName.Value,
-                    0,
-                    type,
-                    group
-                );
+                // PSoundSlot.sv
+                var slotVisualList = new List<ObjectElement>();
 
-                pSoundSlot.Member.Add( PSoundSlot.Sv( slotVisual ) );
+                foreach( var articulation in slotTable[ slotName.Value ] )
+                {
+                    var type = ConvertArticulationType( articulation.ExtraData.GetValueOrDefault( ExtraDataKeys.ArticulationType, ExtraDataValue.Empty ) );
+                    var group = ConvertArticulationGroup( articulation.ExtraData.GetValueOrDefault( ExtraDataKeys.GroupIndex,     ExtraDataValue.Empty ) );
 
-                // name
-                pSoundSlot.Member.Add( PSoundSlot.Name( slotName ) );
+                    slotVisualList.Add(
+                        USlotVisuals.New(
+                            articulation.ArticulationName.Value,
+                            articulation.ArticulationName.Value,
+                            0,
+                            type,
+                            group )
+                    );
+                }
 
-                //
+                pSoundSlot.Member.Add( PSoundSlot.Sv( slotVisualList ) );
+
+                // PSoundSlot.color
                 pSoundSlot.Int.Add( new IntElement( "color", slotColor ) );
 
                 // Aggregate
@@ -92,6 +100,27 @@ namespace KeySwitchManager.Xml.VstExpressionMap.Translations
             #endregion
 
             return new PlainText( XmlHelper.ToXmlString( rootElement ) );
+        }
+
+        private static IReadOnlyDictionary<string, ICollection<Articulation>> CollectSlotTable( KeySwitch keySwitch )
+        {
+            var result = new Dictionary<string, ICollection<Articulation>>();
+
+            foreach( var articulation in keySwitch.Articulations )
+            {
+                var slotName = articulation.ExtraData.GetValueOrDefault(
+                    ExtraDataKeys.SlotName,
+                    new ExtraDataValue( articulation.ArticulationName.Value )
+                ).Value;
+
+                if( !result.ContainsKey( slotName ) )
+                {
+                    result[ slotName ] = new List<Articulation>();
+                }
+                result[ slotName ].Add( articulation );
+            }
+
+            return result;
         }
 
         private static int ConvertArticulationType( ExtraDataValue value )
