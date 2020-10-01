@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+
 namespace KeySwitchManager.Xml.VstExpressionMap.Models.XmlClasses
 {
     public static class PSoundSlot
@@ -145,7 +147,7 @@ namespace KeySwitchManager.Xml.VstExpressionMap.Models.XmlClasses
            return obj;
         }
 
-        public static MemberElement Sv( ObjectElement slotVisual )
+        public static MemberElement Sv( IReadOnlyCollection<ObjectElement> slotVisualList )
         {
            #region xml
 #if false
@@ -160,13 +162,16 @@ namespace KeySwitchManager.Xml.VstExpressionMap.Models.XmlClasses
                      <string name="description" value="ArticulationName" wide="true"/>
                      <int name="group" value="0"/>
                   </obj>
+                  <obj class="USlotVisuals" ID="0000000000">
+                  :
+                  </obj>
                </list>
             </member>
 #endif
            #endregion
 
            var member = new MemberElement( "sv" );
-           member.Int.Add( new IntElement( "ownership", 2 ) );
+           member.Int.Add( new IntElement( "ownership", slotVisualList.Count ) );
 
            var list = new ListElement
            {
@@ -174,7 +179,10 @@ namespace KeySwitchManager.Xml.VstExpressionMap.Models.XmlClasses
               Type = "obj"
            };
 
-           list.Obj.Add( slotVisual );
+           foreach( var obj in slotVisualList )
+           {
+              list.Obj.Add( obj );
+           }
 
            member.List.Add( list );
 
