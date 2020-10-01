@@ -52,7 +52,7 @@ namespace Databases.LiteDB.KeySwitches.KeySwitches.Translations
 
         }
 
-        private static IReadOnlyDictionary<string, string> ConvertExtraData( IReadOnlyDictionary<string, object> source )
+        private static IReadOnlyDictionary<string, string> ConvertExtraData( IDictionary<string, object> source )
         {
             var extra = new Dictionary<string, string>();
 
