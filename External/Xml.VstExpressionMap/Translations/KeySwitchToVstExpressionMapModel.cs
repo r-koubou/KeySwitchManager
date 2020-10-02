@@ -157,20 +157,34 @@ namespace KeySwitchManager.Xml.VstExpressionMap.Translations
 
         private static IReadOnlyDictionary<string, ICollection<Articulation>> CollectSlotTable( KeySwitch keySwitch )
         {
+            static void AddArticulation( IDictionary<string, ICollection<Articulation>> dictionary, string key, Articulation articulation )
+            {
+                if( !dictionary.ContainsKey( key ) )
+                {
+                    dictionary[ key ] = new List<Articulation>();
+                }
+
+                dictionary[ key ].Add( articulation );
+            }
+
             var result = new Dictionary<string, ICollection<Articulation>>();
 
             foreach( var articulation in keySwitch.Articulations )
             {
-                var slotName = articulation.ExtraData.GetValueOrDefault(
-                    ExtraDataKeys.SlotName,
-                    new ExtraDataValue( articulation.ArticulationName.Value )
-                ).Value;
-
-                if( !result.ContainsKey( slotName ) )
+                // use a articulation name as slot name if user does not define a slot name
+                if( !articulation.ExtraData.TryGetValue( ExtraDataKeys.SlotName, out var extraValue ) )
                 {
-                    result[ slotName ] = new List<Articulation>();
+                    AddArticulation( result, articulation.ArticulationName.Value, articulation );
+                    continue;
                 }
-                result[ slotName ].Add( articulation );
+
+                // User can assign articulation to any slot by comma ( , ) separated
+                var slotNames = extraValue.Value.Split( ',' );
+                foreach( var slotName in slotNames )
+                {
+                    var key = slotName.Trim();
+                    AddArticulation( result, key, articulation );
+                }
             }
 
             return result;

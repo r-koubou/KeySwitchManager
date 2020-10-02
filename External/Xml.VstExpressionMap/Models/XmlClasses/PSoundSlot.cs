@@ -80,7 +80,7 @@ namespace KeySwitchManager.Xml.VstExpressionMap.Models.XmlClasses
            #endregion
 
            var member = new MemberElement( "sv" );
-           member.Int.Add( new IntElement( "ownership", slotVisualList.Count ) );
+           member.Int.Add( new IntElement( "ownership", 2 ) );
 
            var list = new ListElement
            {
