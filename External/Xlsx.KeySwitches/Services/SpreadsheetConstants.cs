@@ -19,8 +19,10 @@ namespace KeySwitchManager.Xlsx.KeySwitches.Services
         public static readonly int RowGuidIndex = 3;
         public static readonly int ColumnGuidIndex = 0;
 
-        // Start of data entry row index (5==header)
-        public static readonly int HeaderRowIndex = 5;
-        public static readonly int StartRowIndex = 6;
+        // row 4~23: Reserved for maintenance
+
+        // Start of data entry row index (19==header)
+        public static readonly int HeaderRowIndex = 24;
+        public static readonly int StartRowIndex = 25;
     }
 }
