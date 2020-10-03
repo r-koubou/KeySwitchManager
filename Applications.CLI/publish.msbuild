@@ -84,7 +84,7 @@
 
         <Copy
                 SourceFiles="$(OtherDeployingFiles)"
-                DestinationFolder="$(PublishDir)/$(Prefix)" />
+                DestinationFolder="$(PublishDir)" />
 
         <ZipDirectory
                 SourceDirectory="$(PublishDir)"
