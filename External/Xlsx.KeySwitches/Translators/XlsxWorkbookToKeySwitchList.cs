@@ -37,16 +37,17 @@ namespace KeySwitchManager.Xlsx.KeySwitches.Translators
         {
             var result = new List<KeySwitch>();
             var workbook = XlsxWorkBookParsingService.Parse( source );
+            var parsedGuidList = new List<Guid>();
 
             foreach( var sheet in workbook.Worksheets )
             {
-                result.Add( TranslateWorkSheet( sheet ) );
+                result.Add( TranslateWorkSheet( sheet, parsedGuidList ) );
             }
 
             return result;
         }
 
-        private KeySwitch TranslateWorkSheet( Worksheet sheet )
+        private KeySwitch TranslateWorkSheet( Worksheet sheet, ICollection<Guid> parsedGuidList )
         {
             var now = DateTimeHelper.NowUtc();
             var articulations = new List<Articulation>();
@@ -56,8 +57,19 @@ namespace KeySwitchManager.Xlsx.KeySwitches.Translators
                 articulations.Add( TranslateArticulation( row ) );
             }
 
+            var guid = Guid.TryParse( sheet.GuidCell.Value, out var parsedGuid ) ?
+                parsedGuid :
+                Guid.NewGuid();
+
+            if( parsedGuidList.Contains( guid ) )
+            {
+                throw new InvalidOperationException( $"GUID is duplicated in this workbook : {guid}");
+            }
+
+            parsedGuidList.Add( guid );
+
             return IKeySwitchFactory.Default.Create(
-                Guid.TryParse( sheet.GuidCell.Value, out var guid ) ? guid : Guid.NewGuid(),
+                guid,
                 Author,
                 Description,
                 now,
