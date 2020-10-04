@@ -82,10 +82,12 @@ namespace KeySwitchManager.CLI.Commands
                         break;
 
                     case ' ' when inDoubleQuote:
+                    case '\t' when inDoubleQuote:
                         builder.Append( c );
                         break;
 
                     case ' ':
+                    case '\t':
                         AddToList( builder, list );
                         break;
 

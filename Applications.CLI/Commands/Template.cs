@@ -1,4 +1,5 @@
 using System;
+using System.Diagnostics.CodeAnalysis;
 using System.IO;
 
 using CommandLine;
@@ -11,7 +12,9 @@ namespace KeySwitchManager.CLI.Commands
 {
     public class Template : ICommand
     {
-        [Verb( "template", false, HelpText = "export a template generic json to file")]
+        [Verb( "template", HelpText = "export a template generic json to file")]
+        [SuppressMessage( "ReSharper", "MemberCanBePrivate.Global" )]
+        [SuppressMessage( "ReSharper", "ClassNeverInstantiated.Global" )]
         public class CommandOption : ICommandOption
         {
             [Option( 'o', "output" )]

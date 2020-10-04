@@ -1,3 +1,4 @@
+using System.Diagnostics.CodeAnalysis;
 using System.IO;
 
 using CommandLine;
@@ -13,7 +14,9 @@ namespace KeySwitchManager.CLI.Commands
 {
     public class Import : ICommand
     {
-        [Verb( "import", false, HelpText = "import a json to database")]
+        [Verb( "import", HelpText = "import a json to database")]
+        [SuppressMessage( "ReSharper", "MemberCanBePrivate.Global" )]
+        [SuppressMessage( "ReSharper", "ClassNeverInstantiated.Global" )]
         public class CommandOption : ICommandOption
         {
             [Option( 'f', "database", Required = true )]
