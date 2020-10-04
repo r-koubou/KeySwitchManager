@@ -7,8 +7,12 @@ namespace KeySwitchManager.CLI
     public class Program
     {
         public static int Main( string[] args ) =>
+            Execute( args );
+
+        public static int Execute( string[] args ) =>
             Parser.Default.ParseArguments
                    <
+                       BatchMode.CommandOption,
                        Search.CommandOption,
                        Import.CommandOption,
                        Delete.CommandOption,
@@ -18,6 +22,7 @@ namespace KeySwitchManager.CLI
                        ExportStudioOneKeySwitch.CommandOption
                    >( args )
                   .MapResult(
+                       ( BatchMode.CommandOption option ) => new BatchMode().Execute( option ),
                        ( Search.CommandOption option ) => new Search().Execute( option ),
                        ( Import.CommandOption option ) => new Import().Execute( option ),
                        ( Delete.CommandOption option ) => new Delete().Execute( option ),
