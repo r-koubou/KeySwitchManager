@@ -29,8 +29,15 @@ namespace KeySwitchManager.CLI.Commands
 
             Console.WriteLine( "*** Batch mode begin" );
 
-            foreach( var line in batchText )
+            foreach( var x in batchText )
             {
+                var line = x.Trim();
+
+                if( string.IsNullOrEmpty( line ) || line.StartsWith( "#" ) )
+                {
+                    continue;
+                }
+
                 var commandOption = SplitCommandLine( line );
 
                 Console.WriteLine( $"*** Command Option: {line})" );
