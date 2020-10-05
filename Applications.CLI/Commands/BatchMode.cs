@@ -40,7 +40,7 @@ namespace KeySwitchManager.CLI.Commands
 
                 var commandOption = SplitCommandLine( line );
 
-                Console.WriteLine( $"*** Command Option: {line})" );
+                Console.WriteLine( $"*** Command Option: {line}" );
 
                 var exitCode = Program.Execute( commandOption );
 
