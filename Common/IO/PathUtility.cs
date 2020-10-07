@@ -30,5 +30,13 @@ namespace KeySwitchManager.Common.IO
 
             return fileName;
         }
+
+        public static void CreateDirectory( string directory )
+        {
+            if( !Directory.Exists( directory ) )
+            {
+                Directory.CreateDirectory( directory );
+            }
+        }
     }
 }

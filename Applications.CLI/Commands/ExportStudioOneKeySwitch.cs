@@ -77,6 +77,10 @@ namespace KeySwitchManager.CLI.Commands
                         new DirectoryPath( option.OutputDirectory )
                     ).Path;
                 }
+                else
+                {
+                    PathUtility.CreateDirectory( outputDirectory );
+                }
 
                 var prefix = $"{i.KeySwitch.ProductName} {i.KeySwitch.InstrumentName}";
                 var path = $"{prefix}.keyswitch";

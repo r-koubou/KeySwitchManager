@@ -74,8 +74,12 @@ namespace KeySwitchManager.CLI.Commands
                 {
                     outputDirectory = EntityDirectoryService.CreateDirectoryTree(
                         i.KeySwitch,
-                        new DirectoryPath( option.OutputDirectory )
+                        new DirectoryPath( outputDirectory )
                     ).Path;
+                }
+                else
+                {
+                    PathUtility.CreateDirectory( outputDirectory );
                 }
 
                 var prefix = $"{i.KeySwitch.ProductName} {i.KeySwitch.InstrumentName}";
