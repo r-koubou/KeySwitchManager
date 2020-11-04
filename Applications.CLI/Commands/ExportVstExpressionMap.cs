@@ -1,4 +1,5 @@
 using System;
+using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -19,7 +20,9 @@ namespace KeySwitchManager.CLI.Commands
 {
     public class ExportVstExpressionMap : ICommand
     {
-        [Verb( "expressionmap", false, HelpText = "export to VST Expression Map format")]
+        [Verb( "expressionmap", HelpText = "export to VST Expression Map format")]
+        [SuppressMessage( "ReSharper", "MemberCanBePrivate.Global" )]
+        [SuppressMessage( "ReSharper", "ClassNeverInstantiated.Global" )]
         public class CommandOption : ICommandOption
         {
             [Option( 'd', "developer", Required = true)]
@@ -71,8 +74,12 @@ namespace KeySwitchManager.CLI.Commands
                 {
                     outputDirectory = EntityDirectoryService.CreateDirectoryTree(
                         i.KeySwitch,
-                        new DirectoryPath( option.OutputDirectory )
+                        new DirectoryPath( outputDirectory )
                     ).Path;
+                }
+                else
+                {
+                    PathUtility.CreateDirectory( outputDirectory );
                 }
 
                 var prefix = $"{i.KeySwitch.ProductName} {i.KeySwitch.InstrumentName}";

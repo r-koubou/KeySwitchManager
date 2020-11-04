@@ -8,7 +8,7 @@ namespace KeySwitchManager.Common.Text
         {
             foreach( var t in texts )
             {
-                if( string.IsNullOrEmpty( t ) || t.Trim().Length == 0 )
+                if( string.IsNullOrEmpty( t ) || t == string.Empty || t.Trim().Length == 0 )
                 {
                     return true;
                 }
@@ -19,7 +19,7 @@ namespace KeySwitchManager.Common.Text
 
         public static bool IsNullOrTrimEmpty( string? text )
         {
-            return string.IsNullOrEmpty( text ) || text.Trim().Length == 0;
+            return string.IsNullOrEmpty( text ) || text == string.Empty || text.Trim().Length == 0;
         }
 
         public static void ValidateNullOrTrimEmpty(  string text )

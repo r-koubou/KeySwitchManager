@@ -2,10 +2,8 @@ using System.Collections.Generic;
 
 using Databases.LiteDB.KeySwitches.KeySwitches.Models;
 
-using KeySwitchManager.Common.Utilities;
 using KeySwitchManager.Domain.KeySwitches;
 using KeySwitchManager.Domain.KeySwitches.Aggregate;
-using KeySwitchManager.Domain.KeySwitches.Value;
 using KeySwitchManager.Domain.MidiMessages;
 using KeySwitchManager.Domain.MidiMessages.Aggregate;
 using KeySwitchManager.Domain.Translations;
@@ -30,12 +28,10 @@ namespace Databases.LiteDB.KeySwitches.KeySwitches.Translations
 
                 var articulation = IArticulationFactory.Default.Create(
                     i.ArticulationName,
-                    EnumHelper.Parse<ArticulationType>( i.ArticulationType ),
-                    i.ArticulationGroup,
-                    i.ArticulationColor,
                     noteOn,
                     controlChange,
-                    programChange
+                    programChange,
+                    ConvertExtraData( i.ExtraData )
                 );
 
                 articulations.Add( articulation );
@@ -50,9 +46,24 @@ namespace Databases.LiteDB.KeySwitches.KeySwitches.Translations
                 source.DeveloperName,
                 source.ProductName,
                 source.InstrumentName,
-                articulations
+                articulations,
+                ConvertExtraData( source.ExtraData )
             );
 
+        }
+
+        private static IReadOnlyDictionary<string, string> ConvertExtraData( IDictionary<string, object> source )
+        {
+            var extra = new Dictionary<string, string>();
+
+            foreach( var keyValuePair in source )
+            {
+                var k = keyValuePair.Key;
+                var v = keyValuePair.Value;
+                extra.Add( k, v.ToString()! );
+            }
+
+            return extra;
         }
 
         private static void ConvertMessageList(

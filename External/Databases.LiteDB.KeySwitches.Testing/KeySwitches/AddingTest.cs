@@ -30,7 +30,7 @@ namespace Databases.LiteDB.KeySwitches.Testing.KeySwitches
             var record = TestDataGenerator.CreateKeySwitch( articulation );
 
             var result = repository.Save( record );
-            Assert.AreEqual( 1, result );
+            Assert.AreEqual( 1, result.Inserted );
 
             var seq = repository.Find( record.ProductName );
             var cmp = seq.First();

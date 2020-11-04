@@ -1,6 +1,8 @@
 using System.Collections.Generic;
 
+using KeySwitchManager.Domain.KeySwitches;
 using KeySwitchManager.Domain.KeySwitches.Aggregate;
+using KeySwitchManager.Domain.KeySwitches.Value;
 using KeySwitchManager.Domain.MidiMessages.Aggregate;
 using KeySwitchManager.Domain.Services;
 using KeySwitchManager.Json.KeySwitches.Models;
@@ -25,14 +27,12 @@ namespace KeySwitchManager.Json.KeySwitches.Services
 
                 var jsonObject = new ArticulationModel(
                     i.ArticulationName.Value,
-                    i.ArticulationType,
-                    i.ArticulationGroup.Value,
-                    i.ArticulationColor.Value,
                     new MidiModel(
                         noteOn,
                         controlChange,
                         programChange
-                    )
+                    ),
+                    ConvertExtraData( i.ExtraData )
                 );
 
                 articulationModels.Add( jsonObject );
@@ -47,7 +47,8 @@ namespace KeySwitchManager.Json.KeySwitches.Services
                 source.DeveloperName.Value,
                 source.ProductName.Value,
                 source.InstrumentName.Value,
-                articulationModels
+                articulationModels,
+                IExtraDataFactory.Default.Create( source.ExtraData )
             );
         }
 
@@ -67,5 +68,20 @@ namespace KeySwitchManager.Json.KeySwitches.Services
                 );
             }
         }
+
+        private static Dictionary<string, string> ConvertExtraData( ExtraData source )
+        {
+            var extra = new Dictionary<string, string>();
+
+            foreach( var key in source.Keys )
+            {
+                var k = key.Value;
+                var v = source[ key ].Value;
+                extra.Add( key.Value, v );
+            }
+
+            return extra;
+        }
+
     }
 }

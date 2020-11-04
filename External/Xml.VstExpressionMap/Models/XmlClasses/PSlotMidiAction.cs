@@ -4,18 +4,18 @@ namespace KeySwitchManager.Xml.VstExpressionMap.Models.XmlClasses
     {
        #region xml
 #if false
-            <obj class="PSlotMidiAction" name="action" ID="1015024336">
+            <obj class="PSlotMidiAction" name="action" ID="1207133024">
                <int name="version" value="600"/>
                <member name="noteChanger">
                   <int name="ownership" value="1"/>
                   <list name="obj" type="obj">
-                     <obj class="PSlotNoteChanger" ID="1015887872">
-                        <int name="channel" value="0"/>
-                        <float name="velocityFact" value="0.25"/>
-                        <float name="lengthFact" value="0.5"/>
+                     <obj class="PSlotNoteChanger" ID="1196490592">
+                        <int name="channel" value="-1"/>
+                        <float name="velocityFact" value="1"/>
+                        <float name="lengthFact" value="1"/>
                         <int name="minVelocity" value="0"/>
                         <int name="maxVelocity" value="127"/>
-                        <int name="transpose" value="48"/>
+                        <int name="transpose" value="0"/>
                         <int name="minPitch" value="0"/>
                         <int name="maxPitch" value="127"/>
                      </obj>
@@ -23,36 +23,16 @@ namespace KeySwitchManager.Xml.VstExpressionMap.Models.XmlClasses
                </member>
                <member name="midiMessages">
                   <int name="ownership" value="1"/>
-                  <list name="obj" type="obj">
-                     <obj class="POutputEvent" ID="1027366928">
-                        <int name="status" value="144"/>
-                        <int name="data1" value="0"/>
-                        <int name="data2" value="100"/>
-                     </obj>
-                     <obj class="POutputEvent" ID="810426000">
-                        <int name="status" value="176"/>
-                        <int name="data1" value="1"/>
-                        <int name="data2" value="23"/>
-                     </obj>
-                     <obj class="POutputEvent" ID="1027361616">
-                        <int name="status" value="192"/>
-                        <int name="data1" value="15"/>
-                        <int name="data2" value="0"/>
-                     </obj>
-                  </list>
                </member>
-               <int name="channel" value="0"/>
-               <float name="velocityFact" value="0.25"/>
-               <float name="lengthFact" value="0.5"/>
+               <int name="channel" value="-1"/>
+               <float name="velocityFact" value="1"/>
+               <float name="lengthFact" value="1"/>
                <int name="minVelocity" value="0"/>
                <int name="maxVelocity" value="127"/>
-               <int name="transpose" value="48"/>
+               <int name="transpose" value="0"/>
                <int name="maxPitch" value="127"/>
                <int name="minPitch" value="0"/>
-               <int name="key" value="0"/>
-               <int name="controller1num" value="1"/>
-               <int name="controller1value" value="23"/>
-               <int name="program" value="16"/>
+               <int name="key" value="-1"/>
             </obj>
 #endif
        #endregion
@@ -77,7 +57,7 @@ namespace KeySwitchManager.Xml.VstExpressionMap.Models.XmlClasses
            obj.Int.Add( new IntElement( "transpose",   0 ) );
            obj.Int.Add( new IntElement( "minPitch",    0 ) );
            obj.Int.Add( new IntElement( "maxPitch",    127 ) );
-           obj.Int.Add( new IntElement( "key",         0 ) );
+           obj.Int.Add( new IntElement( "key",         -1 ) );
 
             return obj;
         }

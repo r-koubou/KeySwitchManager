@@ -28,7 +28,11 @@ namespace KeySwitchManager.Common.Testing
                 new DeveloperName( developerName ),
                 new ProductName( productName ),
                 new InstrumentName( instrumentName ),
-                new [] { CreateArticulation() }
+                new DataList<Articulation>( new[] { CreateArticulation() } ),
+                new ExtraData( new Dictionary<ExtraDataKey, ExtraDataValue>
+                {
+                    {new ExtraDataKey( "extKey" ), new ExtraDataValue( "extValue" ) }
+                })
             );
         }
 
@@ -50,26 +54,27 @@ namespace KeySwitchManager.Common.Testing
                 new DeveloperName( "DeveloperName" ),
                 new ProductName( "ProductName" ),
                 new InstrumentName( "E.Guitar" ),
-                articulations
+                new DataList<Articulation>( articulations ),
+                new ExtraData( new Dictionary<ExtraDataKey, ExtraDataValue>
+                {
+                    { new ExtraDataKey( "extKey" ), new ExtraDataValue( "extValue" ) }
+                })
             );
         }
         #endregion
 
         #region Articulation
-        public static Articulation CreateArticulation(
-            string articulationName = "Power Chord",
-            ArticulationType articulationType = ArticulationType.Default,
-            int articulationGroup = 0,
-            int articulationColor = 0 )
+        public static Articulation CreateArticulation( string articulationName = "Power Chord" )
         {
             return new Articulation(
                 new ArticulationName( articulationName ),
-                articulationType,
-                new ArticulationGroup( articulationGroup ),
-                new ArticulationColor( articulationColor ),
-                new List<MidiNoteOn>(),
-                new List<MidiControlChange>(),
-                new List<MidiProgramChange>()
+                new DataList<MidiNoteOn>(),
+                new DataList<MidiControlChange>(),
+                new DataList<MidiProgramChange>(),
+                new ExtraData( new Dictionary<ExtraDataKey, ExtraDataValue>
+                {
+                    { new ExtraDataKey( "extKey" ), new ExtraDataValue( "extValue" ) }
+                })
             );
         }
 
@@ -78,16 +83,15 @@ namespace KeySwitchManager.Common.Testing
             IReadOnlyCollection<MidiControlChange> controlChanges,
             IReadOnlyCollection<MidiProgramChange> programChanges )
         {
-            var now = DateTimeHelper.NowUtc();
-
             return new Articulation(
                 new ArticulationName( "Power Chord" ),
-                ArticulationType.Default,
-                new ArticulationGroup( 0 ),
-                new ArticulationColor( 0 ),
-                noteOns,
-                controlChanges,
-                programChanges
+                new DataList<IMidiMessage>( noteOns ),
+                new DataList<IMidiMessage>( controlChanges ),
+                new DataList<IMidiMessage>( programChanges ),
+                new ExtraData( new Dictionary<ExtraDataKey, ExtraDataValue>
+                {
+                    { new ExtraDataKey( "extKey" ), new ExtraDataValue( "extValue" ) }
+                })
             );
         }
         #endregion

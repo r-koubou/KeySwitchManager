@@ -1,8 +1,10 @@
 using System;
+using System.Diagnostics.CodeAnalysis;
 using System.IO;
 
 using CommandLine;
 
+using KeySwitchManager.Common.IO;
 using KeySwitchManager.Common.Text;
 using KeySwitchManager.Interactors.KeySwitches.Exporting;
 using KeySwitchManager.Json.KeySwitches.Translations;
@@ -11,7 +13,9 @@ namespace KeySwitchManager.CLI.Commands
 {
     public class Template : ICommand
     {
-        [Verb( "template", false, HelpText = "export a template generic json to file")]
+        [Verb( "template", HelpText = "export a template generic json to file")]
+        [SuppressMessage( "ReSharper", "MemberCanBePrivate.Global" )]
+        [SuppressMessage( "ReSharper", "ClassNeverInstantiated.Global" )]
         public class CommandOption : ICommandOption
         {
             [Option( 'o', "output" )]
@@ -33,6 +37,9 @@ namespace KeySwitchManager.CLI.Commands
             }
             else
             {
+                var outputDirectory = Path.GetDirectoryName( option.OutputPath )!;
+                PathUtility.CreateDirectory( outputDirectory );
+
                 Console.WriteLine( $"generating json to {option.OutputPath}" );
                 File.WriteAllText( option.OutputPath, response.Text );
             }

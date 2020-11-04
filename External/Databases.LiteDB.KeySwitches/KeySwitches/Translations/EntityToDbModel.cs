@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Databases.LiteDB.KeySwitches.KeySwitches.Models;
 
 using KeySwitchManager.Domain.KeySwitches.Aggregate;
+using KeySwitchManager.Domain.KeySwitches.Value;
 using KeySwitchManager.Domain.MidiMessages.Aggregate;
 using KeySwitchManager.Domain.Services;
 using KeySwitchManager.Domain.Translations;
@@ -27,11 +28,10 @@ namespace Databases.LiteDB.KeySwitches.KeySwitches.Translations
 
                 var articulation = new ArticulationModel(
                     i.ArticulationName.Value,
-                    i.ArticulationGroup.Value,
-                    i.ArticulationColor.Value,
                     noteOn,
                     controlChange,
-                    programChange
+                    programChange,
+                    ConvertExtraData( i.ExtraData )
                 );
 
                 articulationModels.Add( articulation );
@@ -46,7 +46,8 @@ namespace Databases.LiteDB.KeySwitches.KeySwitches.Translations
                 source.DeveloperName.Value,
                 source.ProductName.Value,
                 source.InstrumentName.Value,
-                articulationModels
+                articulationModels,
+                ConvertExtraData( source.ExtraData )
             );
         }
 
@@ -64,5 +65,20 @@ namespace Databases.LiteDB.KeySwitches.KeySwitches.Translations
                 );
             }
         }
+
+        private static Dictionary<string, object> ConvertExtraData( ExtraData source )
+        {
+            var extra = new Dictionary<string, object>();
+
+            foreach( var keyValuePair in source )
+            {
+                var k = keyValuePair.Key.Value;
+                var v = keyValuePair.Value.Value;
+                extra[ k ] = v;
+            }
+
+            return extra;
+        }
+
     }
 }

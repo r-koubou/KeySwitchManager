@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Text;
 
 using ExcelDataReader;
@@ -17,9 +18,6 @@ namespace KeySwitchManager.Xlsx.KeySwitches.Services
         private class ArticulationCellGroup
         {
             public ArticulationNameCell NameCell { get; set; } = ArticulationNameCell.Empty;
-            public ArticulationTypeCell TypeCell { get; set; } = ArticulationTypeCell.Default;
-            public ColorIndexCell ColorIndexCell { get; set; } = ColorIndexCell.Default;
-            public GroupIndexCell GroupIndexCell { get; set; } = GroupIndexCell.Default;
         }
 
         static XlsxWorkBookParsingService()
@@ -71,7 +69,21 @@ namespace KeySwitchManager.Xlsx.KeySwitches.Services
                     Row      = rows[ rowIndex ],
                     RowIndex = rowIndex
                 };
+
+                // Standard Columns
                 var row = ParseRow( context );
+
+                // Extended Columns
+                foreach( var extraColumnName in ParseExtraColumnNames( rows ) )
+                {
+                    if( TryParseSheet( context, extraColumnName, out var extraValue ) )
+                    {
+                        row.Extra.Add(
+                            extraColumnName.Substring( SpreadsheetConstants.ExtraColumnPrefix.Length ),
+                            new ExtraDataCell( extraValue ) );
+                    }
+                }
+
                 worksheet.Rows.Add( row );
             }
 
@@ -94,12 +106,7 @@ namespace KeySwitchManager.Xlsx.KeySwitches.Services
         {
             var articulationCellGroup = ParseArticulation( context );
 
-            var row = new Row(
-                articulationCellGroup.NameCell,
-                articulationCellGroup.TypeCell,
-                articulationCellGroup.ColorIndexCell,
-                articulationCellGroup.GroupIndexCell
-            );
+            var row = new Row( articulationCellGroup.NameCell );
 
             row.MidiNoteList.AddRange( ParseMidiNotes( context ) );
             row.MidiControlChangeList.AddRange( ParseMidiControlChanges( context ) );
@@ -114,15 +121,6 @@ namespace KeySwitchManager.Xlsx.KeySwitches.Services
 
             ParseSheet( context, SpreadsheetConstants.ColumnArticulationName, out var cellValue );
             articulationCellGroup.NameCell = new ArticulationNameCell( cellValue );
-
-            ParseSheet( context, SpreadsheetConstants.ColumnColor, out cellValue );
-            articulationCellGroup.ColorIndexCell = new ColorIndexCell( int.Parse( cellValue ) );
-
-            ParseSheet( context, SpreadsheetConstants.ColumnArticulationType, out cellValue );
-            articulationCellGroup.TypeCell = ArticulationTypeCell.Parse( cellValue );
-
-            ParseSheet( context, SpreadsheetConstants.ColumnGroup, out cellValue );
-            articulationCellGroup.GroupIndexCell = new GroupIndexCell( int.Parse( cellValue ) );
 
             return articulationCellGroup;
         }
@@ -277,6 +275,23 @@ namespace KeySwitchManager.Xlsx.KeySwitches.Services
                 i++;
             }
             return false;
+        }
+
+        private static IReadOnlyCollection<string> ParseExtraColumnNames( SourceRows rows )
+        {
+            var result = new List<string>();
+            var headers = rows[ SpreadsheetConstants.HeaderRowIndex ].ItemArray;
+            var extraColumnNames = headers.Where( x =>
+            {
+                return x != null && ( x.ToString() ?? string.Empty ).StartsWith( SpreadsheetConstants.ExtraColumnPrefix );
+            });
+
+            foreach( var i in extraColumnNames )
+            {
+                result.Add( i.ToString()! );
+            }
+
+            return result;
         }
 
     }

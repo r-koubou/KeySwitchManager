@@ -5,7 +5,6 @@ using KeySwitchManager.Common.Utilities;
 using KeySwitchManager.Domain.Commons;
 using KeySwitchManager.Domain.KeySwitches;
 using KeySwitchManager.Domain.KeySwitches.Aggregate;
-using KeySwitchManager.Domain.KeySwitches.Value;
 using KeySwitchManager.Domain.MidiMessages;
 using KeySwitchManager.Domain.MidiMessages.Aggregate;
 using KeySwitchManager.Domain.MidiMessages.Value;
@@ -38,16 +37,17 @@ namespace KeySwitchManager.Xlsx.KeySwitches.Translators
         {
             var result = new List<KeySwitch>();
             var workbook = XlsxWorkBookParsingService.Parse( source );
+            var parsedGuidList = new List<Guid>();
 
             foreach( var sheet in workbook.Worksheets )
             {
-                result.Add( TranslateWorkSheet( sheet ) );
+                result.Add( TranslateWorkSheet( sheet, parsedGuidList ) );
             }
 
             return result;
         }
 
-        private KeySwitch TranslateWorkSheet( Worksheet sheet )
+        private KeySwitch TranslateWorkSheet( Worksheet sheet, ICollection<Guid> parsedGuidList )
         {
             var now = DateTimeHelper.NowUtc();
             var articulations = new List<Articulation>();
@@ -57,8 +57,19 @@ namespace KeySwitchManager.Xlsx.KeySwitches.Translators
                 articulations.Add( TranslateArticulation( row ) );
             }
 
+            var guid = Guid.TryParse( sheet.GuidCell.Value, out var parsedGuid ) ?
+                parsedGuid :
+                Guid.NewGuid();
+
+            if( parsedGuidList.Contains( guid ) )
+            {
+                throw new InvalidOperationException( $"GUID is duplicated in this workbook : {guid}");
+            }
+
+            parsedGuidList.Add( guid );
+
             return IKeySwitchFactory.Default.Create(
-                Guid.TryParse( sheet.GuidCell.Value, out var guid ) ? guid : Guid.NewGuid(),
+                guid,
                 Author,
                 Description,
                 now,
@@ -66,20 +77,26 @@ namespace KeySwitchManager.Xlsx.KeySwitches.Translators
                 DeveloperName,
                 ProductName,
                 sheet.OutputNameCell.Value,
-                articulations
+                articulations,
+                new Dictionary<string, string>() //TODO
             );
         }
 
         private Articulation TranslateArticulation( Row row )
         {
+            var extra = new Dictionary<string, string>();
+
+            foreach( var key in row.Extra.Keys )
+            {
+                extra.Add( key, row.Extra[ key ].Value );
+            }
+
             return IArticulationFactory.Default.Create(
                 row.ArticulationName.Value,
-                EnumHelper.Parse<ArticulationType>( row.ArticulationType.Value ),
-                row.GroupIndex.Value,
-                row.ColorIndex.Value,
                 TranslateMidiNoteMapping( row ),
                 TranslateMidiControlChangeMapping( row ),
-                TranslateMidiProgramChangeMapping( row )
+                TranslateMidiProgramChangeMapping( row ),
+                extra
             );
         }
 

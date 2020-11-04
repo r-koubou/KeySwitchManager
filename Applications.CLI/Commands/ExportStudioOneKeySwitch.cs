@@ -1,4 +1,5 @@
 using System;
+using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -19,7 +20,9 @@ namespace KeySwitchManager.CLI.Commands
 {
     public class ExportStudioOneKeySwitch : ICommand
     {
-        [Verb( "studio-one", false, HelpText = "export to Studio One KeySwitch format")]
+        [Verb( "studio-one", HelpText = "export to Studio One KeySwitch format")]
+        [SuppressMessage( "ReSharper", "MemberCanBePrivate.Global" )]
+        [SuppressMessage( "ReSharper", "ClassNeverInstantiated.Global" )]
         public class CommandOption : ICommandOption
         {
             [Option( 'd', "developer", Required = true)]
@@ -73,6 +76,10 @@ namespace KeySwitchManager.CLI.Commands
                         i.KeySwitch,
                         new DirectoryPath( option.OutputDirectory )
                     ).Path;
+                }
+                else
+                {
+                    PathUtility.CreateDirectory( outputDirectory );
                 }
 
                 var prefix = $"{i.KeySwitch.ProductName} {i.KeySwitch.InstrumentName}";

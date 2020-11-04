@@ -23,7 +23,8 @@ namespace KeySwitchManager.Json.KeySwitches.Services
                 model.DeveloperName,
                 model.ProductName,
                 model.InstrumentName,
-                articulations
+                articulations,
+                model.ExtraData
             );
         }
 
@@ -43,12 +44,10 @@ namespace KeySwitchManager.Json.KeySwitches.Services
 
                 var articulation = IArticulationFactory.Default.Create(
                     i.Name,
-                    i.Type,
-                    i.Group,
-                    i.Color,
                     noteOn,
                     controlChange,
-                    programChange
+                    programChange,
+                    i.ExtraData
                 );
 
                 articulations.Add( articulation );
@@ -74,6 +73,5 @@ namespace KeySwitchManager.Json.KeySwitches.Services
                 );
             }
         }
-
     }
 }

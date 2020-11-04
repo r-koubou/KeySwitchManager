@@ -8,7 +8,7 @@ namespace KeySwitchManager.Xml.VstExpressionMap.Models.XmlClasses
          <obj class="USlotVisuals" ID="3316603083">
             <int name="displaytype" value="1"/>
             <int name="articulationtype" value="****TYPE****"/>
-            <int name="symbol" value="73"/>
+            <int name="symbol" value="0"/>
             <string name="text" value="****NAME*****" wide="true"/>
             <string name="description" value="****DESC****" wide="true"/>
             <int name="group" value="****GROUP****"/>

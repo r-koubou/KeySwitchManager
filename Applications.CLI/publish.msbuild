@@ -7,7 +7,8 @@
         <OtherDeployingFiles>
             ../NOTICE.md;
             README.md;
-            VERSION.md
+            VERSION.md;
+            Template.xlsm
         </OtherDeployingFiles>
     </PropertyGroup>
 
@@ -84,7 +85,7 @@
 
         <Copy
                 SourceFiles="$(OtherDeployingFiles)"
-                DestinationFolder="$(PublishDir)/$(Prefix)" />
+                DestinationFolder="$(PublishDir)" />
 
         <ZipDirectory
                 SourceDirectory="$(PublishDir)"

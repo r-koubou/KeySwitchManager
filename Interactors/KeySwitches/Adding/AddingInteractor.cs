@@ -42,12 +42,10 @@ namespace KeySwitchManager.Interactors.KeySwitches.Adding
             var created = DateTimeHelper.NowUtc();
             var articulation = ArticulationFactory.Create(
                 request.ArticulationName,
-                request.ArticulationType,
-                request.ArticulationGroup,
-                request.ArticulationColor,
                 request.MidiNoteOns,
                 request.MidiControlChanges,
-                request.MidiProgramChanges
+                request.MidiProgramChanges,
+                request.ExtraData
             );
             var keySwitch = KeySwitchFactory.Create(
                 Guid.NewGuid(),
@@ -58,7 +56,8 @@ namespace KeySwitchManager.Interactors.KeySwitches.Adding
                 request.DeveloperName,
                 request.ProductName,
                 request.InstrumentName,
-                new []{ articulation }
+                new []{ articulation },
+                request.ExtraData
             );
 
             Repository.Save( keySwitch );

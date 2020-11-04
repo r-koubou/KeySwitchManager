@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 using System.Linq;
 
 using KeySwitchManager.Domain.Commons;
@@ -10,7 +9,7 @@ namespace KeySwitchManager.Domain.KeySwitches.Aggregate
     /// <summary>
     /// Represents the top element of the articulation structure.
     /// </summary>
-    public class KeySwitch : IEquatable<KeySwitch>, IDuplicatable<KeySwitch>
+    public class KeySwitch : IEquatable<KeySwitch>
     {
         public EntityGuid Id { get; }
         public Author Author { get; }
@@ -20,7 +19,8 @@ namespace KeySwitchManager.Domain.KeySwitches.Aggregate
         public DeveloperName DeveloperName { get; }
         public ProductName ProductName { get; }
         public InstrumentName InstrumentName { get; }
-        public IReadOnlyCollection<Articulation> Articulations { get; }
+        public IDataList<Articulation> Articulations { get; }
+        public ExtraData ExtraData { get; }
 
         public KeySwitch(
             EntityGuid id,
@@ -31,7 +31,8 @@ namespace KeySwitchManager.Domain.KeySwitches.Aggregate
             DeveloperName developerName,
             ProductName productName,
             InstrumentName instrumentName,
-            IReadOnlyCollection<Articulation> articulations )
+            IDataList<Articulation> articulations,
+            ExtraData extraData )
         {
             Id             = id;
             Author         = author;
@@ -42,21 +43,7 @@ namespace KeySwitchManager.Domain.KeySwitches.Aggregate
             ProductName    = productName;
             InstrumentName = instrumentName;
             Articulations  = articulations;
-        }
-
-        public KeySwitch Duplicate( KeySwitch source )
-        {
-            return new KeySwitch(
-                new EntityGuid(),
-                source.Author,
-                source.Description,
-                source.Created,
-                source.LastUpdated,
-                source.DeveloperName,
-                source.ProductName,
-                source.InstrumentName,
-                source.Articulations
-            );
+            ExtraData      = extraData;
         }
 
         #region Equals
