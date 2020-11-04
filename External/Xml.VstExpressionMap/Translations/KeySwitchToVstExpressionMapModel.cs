@@ -171,7 +171,7 @@ namespace KeySwitchManager.Xml.VstExpressionMap.Translations
 
             foreach( var articulation in keySwitch.Articulations )
             {
-                // use a articulation name as slot name if user does not define a slot name
+                // use an articulation name as slot name if user does not define a slot name
                 if( !articulation.ExtraData.TryGetValue( ExtraDataKeys.SlotName, out var extraValue ) )
                 {
                     AddArticulation( result, articulation.ArticulationName.Value, articulation );
