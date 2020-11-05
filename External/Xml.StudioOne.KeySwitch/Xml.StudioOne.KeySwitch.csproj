@@ -8,7 +8,7 @@
         <Product>KeySwitchManager.Xml.StudioOne.KeySwitch</Product>
         <AssemblyName>KeySwitchManager.Xml.StudioOne.KeySwitch</AssemblyName>
         <RootNamespace>KeySwitchManager.Xml.StudioOne.KeySwitch</RootNamespace>
-        <Version>0.1.0-alpha</Version>
+        <Version>0.1.0</Version>
         <Description>KeySwitchManager.Xml.StudioOne.KeySwitch module</Description>
         <Nullable>enable</Nullable>
         <!-- Nuget -->

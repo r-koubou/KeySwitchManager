@@ -8,7 +8,7 @@
         <Product>KeySwitchManager.Presenteras</Product>
         <AssemblyName>KeySwitchManager.Presenters</AssemblyName>
         <RootNamespace>KeySwitchManager.Presenters</RootNamespace>
-        <Version>0.1.0-alpha</Version>
+        <Version>0.1.0</Version>
         <Description>KeySwitchManager.Presenters module</Description>
         <Nullable>enable</Nullable>
         <!-- Nuget -->
