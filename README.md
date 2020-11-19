@@ -1,4 +1,4 @@
-[Japanese](README.ja.md)
+[日本語](README.ja.md)
 
 # A Keyswitch file management tool for DAW
 
