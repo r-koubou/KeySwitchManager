@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>netcoreapp3.1</TargetFramework>
+        <!-- Assembly / Common -->
+        <Copyright>R-Koubou</Copyright>
+        <Company>R-Koubou</Company>
+        <Product>$$PROJECT_NAME$$</Product>
+        <AssemblyName>$$PROJECT_NAME$$</AssemblyName>
+        <RootNamespace>$$PROJECT_NAME$$</RootNamespace>
+        <Version>0.1.0</Version>
+        <Description>$$PROJECT_NAME$$ module</Description>
+        <Nullable>enable</Nullable>
+        <!-- Nuget -->
+        <Authors>R-Koubou</Authors>
+        <PackageId>$$PROJECT_NAME$$</PackageId>
+        <PackageLicenseExpression>MIT</PackageLicenseExpression>
+        <PackageProjectUrl>https://github.com/r-koubou/KeySwitchManager</PackageProjectUrl>
+        <RepositoryUrl>https://github.com/r-koubou/KeySwitchManager</RepositoryUrl>
+    </PropertyGroup>
+
+</Project>

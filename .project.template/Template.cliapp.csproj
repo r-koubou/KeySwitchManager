@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <!-- Assembly / Common -->
+        <OutputType>Exe</OutputType>
+        <TargetFramework>netcoreapp3.1</TargetFramework>
+        <AssemblyName>$$PROJECT_NAME$$</AssemblyName>
+        <RootNamespace>$$PROJECT_NAME$$</RootNamespace>
+        <Company>R-Koubou</Company>
+        <Product>$$PROJECT_NAME$$</Product>
+        <Version>0.1.0</Version>
+        <Description>$$PROJECT_NAME$$ app</Description>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+</Project>

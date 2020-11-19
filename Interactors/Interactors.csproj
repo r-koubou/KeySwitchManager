@@ -1,0 +1,28 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>netcoreapp3.1</TargetFramework>
+        <!-- Assembly / Common -->
+        <Copyright>R-Koubou</Copyright>
+        <Company>R-Koubou</Company>
+        <Product>KeySwitchManager.Interactors</Product>
+        <AssemblyName>KeySwitchManager.Interactors</AssemblyName>
+        <RootNamespace>KeySwitchManager.Interactors</RootNamespace>
+        <Version>0.1.0</Version>
+        <Description>KeySwitchManager.Interactors module</Description>
+        <Nullable>enable</Nullable>
+        <!-- Nuget -->
+        <Authors>R-Koubou</Authors>
+        <PackageId>KeySwitchManager.Interactors</PackageId>
+        <PackageLicenseExpression>MIT</PackageLicenseExpression>
+        <PackageProjectUrl>https://github.com/r-koubou/KeySwitchManager</PackageProjectUrl>
+        <RepositoryUrl>https://github.com/r-koubou/KeySwitchManager</RepositoryUrl>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\Gateways\Gateways.csproj" />
+      <ProjectReference Include="..\Presenters\Presenters.csproj" />
+      <ProjectReference Include="..\UseCases\UseCases.csproj" />
+    </ItemGroup>
+
+</Project>
