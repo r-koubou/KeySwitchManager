@@ -8,7 +8,7 @@
         <Product>KeySwitchManager.Json.KeySwitches</Product>
         <AssemblyName>KeySwitchManager.Json.KeySwitches</AssemblyName>
         <RootNamespace>KeySwitchManager.Json.KeySwitches</RootNamespace>
-        <Version>0.1.0-alpha</Version>
+        <Version>0.1.0</Version>
         <Description>KeySwitchManager.Json.KeySwitches module</Description>
         <Nullable>enable</Nullable>
         <!-- Nuget -->

@@ -8,7 +8,7 @@
         <Product>$$PROJECT_NAME$$</Product>
         <AssemblyName>$$PROJECT_NAME$$</AssemblyName>
         <RootNamespace>$$PROJECT_NAME$$</RootNamespace>
-        <Version>0.1.0-alpha</Version>
+        <Version>0.1.0</Version>
         <Description>$$PROJECT_NAME$$ module</Description>
         <Nullable>enable</Nullable>
         <!-- Nuget -->

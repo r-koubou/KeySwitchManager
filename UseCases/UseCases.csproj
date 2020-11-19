@@ -8,7 +8,7 @@
         <Product>KeySwitchManager.UseCases</Product>
         <AssemblyName>KeySwitchManager.UseCases</AssemblyName>
         <RootNamespace>KeySwitchManager.UseCases</RootNamespace>
-        <Version>0.1.0-alpha</Version>
+        <Version>0.1.0</Version>
         <Description>KeySwitchManager.UseCases module</Description>
         <Nullable>enable</Nullable>
         <!-- Nuget -->

@@ -8,7 +8,7 @@
         <Product>KeySwitchManager.Interactors</Product>
         <AssemblyName>KeySwitchManager.Interactors</AssemblyName>
         <RootNamespace>KeySwitchManager.Interactors</RootNamespace>
-        <Version>0.1.0-alpha</Version>
+        <Version>0.1.0</Version>
         <Description>KeySwitchManager.Interactors module</Description>
         <Nullable>enable</Nullable>
         <!-- Nuget -->

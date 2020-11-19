@@ -6,7 +6,8 @@
         <BuildDate>$([System.DateTime]::Now.ToString("yyyyMMdd"))</BuildDate>
         <OtherDeployingFiles>
             ../NOTICE.md;
-            README.md;
+            ../README.md;
+            ../README.ja.md;
             VERSION.md;
             Template.xlsm
         </OtherDeployingFiles>
