@@ -22,7 +22,7 @@ namespace Json.KeySwitches.Testing.KeySwitches
 
             var articulation = TestDataGenerator.CreateArticulation(
                 new List<MidiNoteOn> { midiNoteFactory.Create( 0, 1, 23 ) },
-                new List<MidiControlChange> { midiCcFactory.Create( 2, 34 ) },
+                new List<MidiControlChange> { midiCcFactory.Create( 0, 2, 34 ) },
                 new List<MidiProgramChange> { midiPcFactory.Create( 3, 45 ) }
             );
 
