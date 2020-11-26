@@ -9,6 +9,13 @@ namespace KeySwitchManager.Domain.MidiMessages
 
         public static IMidiControlChangeFactory Default => new DefaultFactory();
 
+        public static MidiControlChange Zero =>
+            new MidiControlChange(
+                new MidiChannel( 0 ),
+                new MidiControlChangeNumber( 0 ),
+                new MidiControlChangeValue( 0 )
+            );
+
         private class DefaultFactory : IMidiControlChangeFactory
         {
             public IMidiMessage Create( int status, int channel, int data1, int data2 )

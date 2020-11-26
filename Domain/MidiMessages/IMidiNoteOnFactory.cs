@@ -9,6 +9,13 @@ namespace KeySwitchManager.Domain.MidiMessages
 
         public static IMidiNoteOnFactory Default => new DefaultFactory();
 
+        public static MidiNoteOn Zero =>
+            new MidiNoteOn(
+                new MidiChannel( 0 ),
+                new MidiNoteNumber( 0 ),
+                new MidiVelocity( 0 )
+            );
+
         private class DefaultFactory : IMidiNoteOnFactory
         {
             public IMidiMessage Create( int status, int channel, int data1, int data2 )
