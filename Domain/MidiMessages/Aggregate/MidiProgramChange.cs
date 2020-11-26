@@ -15,7 +15,7 @@ namespace KeySwitchManager.Domain.MidiMessages.Aggregate
 
         public MidiProgramChange( MidiChannel midiChannel, MidiProgramChangeNumber number )
         {
-            Status    = new MidiStatusCode( MidiStatusCode.ProgramChange.Value );
+            Status    = MidiStatusCode.ProgramChange;
             Channel   = midiChannel;
             DataByte1 = number;
             DataByte2 = GenericMidiData.Zero;

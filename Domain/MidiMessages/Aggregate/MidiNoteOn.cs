@@ -20,7 +20,7 @@ namespace KeySwitchManager.Domain.MidiMessages.Aggregate
 
         public MidiNoteOn( MidiChannel midiChannel, MidiNoteNumber midiNoteNumber, MidiVelocity midiVelocity )
         {
-            Status    = new MidiStatusCode( MidiStatusCode.NoteOn.Value );
+            Status    = MidiStatusCode.NoteOn;
             Channel   = midiChannel;
             DataByte1 = midiNoteNumber;
             DataByte2 = midiVelocity;
