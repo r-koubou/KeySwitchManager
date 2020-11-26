@@ -21,7 +21,7 @@ namespace Json.KeySwitches.Testing.KeySwitches
             var midiPcFactory = IMidiProgramChangeFactory.Default;
 
             var articulation = TestDataGenerator.CreateArticulation(
-                new List<MidiNoteOn> { midiNoteFactory.Create( 1, 23 ) },
+                new List<MidiNoteOn> { midiNoteFactory.Create( 0, 1, 23 ) },
                 new List<MidiControlChange> { midiCcFactory.Create( 2, 34 ) },
                 new List<MidiProgramChange> { midiPcFactory.Create( 3, 45 ) }
             );

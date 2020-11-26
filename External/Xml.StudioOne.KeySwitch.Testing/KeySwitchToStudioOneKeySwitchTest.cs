@@ -17,7 +17,7 @@ namespace KeySwitchManager.Xml.StudioOne.KeySwitch.Testing
         {
             var translator = new KeySwitchToStudioOneKeySwitchModel();
             var articulation = TestDataGenerator.CreateArticulation(
-                new MidiNoteOn[]{ IMidiNoteOnFactory.Default.Create( 1, 23 ) },
+                new MidiNoteOn[]{ IMidiNoteOnFactory.Default.Create( 0, 1, 23 ) },
                 new MidiControlChange[]{},
                 new MidiProgramChange[]{}
             );
