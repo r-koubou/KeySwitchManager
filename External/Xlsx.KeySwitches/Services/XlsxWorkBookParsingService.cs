@@ -28,12 +28,10 @@ namespace KeySwitchManager.Xlsx.KeySwitches.Services
             Encoding.RegisterProvider( CodePagesEncodingProvider.Instance );
         }
 
-        public static Workbook Parse( FilePath filePath )
+        public static Workbook Parse( Stream source )
         {
-            var result = new Workbook( filePath.Path );
-
-            using var stream = File.Open( filePath.Path, FileMode.Open, FileAccess.Read );
-            using var reader = ExcelReaderFactory.CreateReader( stream );
+            var result = new Workbook();
+            using var reader = ExcelReaderFactory.CreateReader( source );
 
             var dataSet = reader.AsDataSet();
             var book = dataSet.Tables;
@@ -53,7 +51,18 @@ namespace KeySwitchManager.Xlsx.KeySwitches.Services
             }
 
             return result;
+        }
 
+        public static Workbook Parse( byte[] xlsxBytes )
+        {
+            using var stream = new MemoryStream( xlsxBytes );
+            return Parse( stream );
+        }
+
+        public static Workbook Parse( FilePath filePath )
+        {
+            using var stream = File.Open( filePath.Path, FileMode.Open, FileAccess.Read );
+            return Parse( stream );
         }
 
         private static Worksheet ParseWorksheet( SourceSheet sheet )
