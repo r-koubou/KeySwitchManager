@@ -12,7 +12,7 @@ using KeySwitchManager.Interactors.KeySwitches.Importing.Xlsx;
 using KeySwitchManager.Json.KeySwitches.Translations;
 using KeySwitchManager.Presenters.KeySwitches;
 using KeySwitchManager.UseCases.KeySwitches.Importing.Xlsx;
-using KeySwitchManager.Xlsx.KeySwitches.Translators;
+using KeySwitchManager.Xlsx.KeySwitches;
 
 namespace KeySwitchManager.CLI.Commands
 {
@@ -48,17 +48,28 @@ namespace KeySwitchManager.CLI.Commands
         {
             var option = (CommandOption)opt;
 
-            using var repository = new LiteDbKeySwitchRepository( option.DatabasePath );
-            var translator = new XlsxWorkbookToKeySwitchList(
+            var info = new XlsxImportingRepository.KeySwitchInfo(
                 option.Developer,
                 option.Product,
                 option.Author,
                 option.Description
             );
+
+            using var repository = new LiteDbKeySwitchRepository( option.DatabasePath );
+            using var translator = new XlsxImportingRepository(
+                new FilePath( option.InputPath ),
+                new XlsxImportingRepository.KeySwitchInfo(
+                    option.Developer,
+                    option.Product,
+                    option.Author,
+                    option.Description
+                )
+            );
+
             var presenter = new IImportingXlsxPresenter.Console();
             var interactor = new ImportingXlsxInteractor( repository, translator, presenter );
 
-            var input = new ImportingXlsxRequest( new FilePath( option.InputPath ) );
+            var input = new ImportingXlsxRequest();
 
             var response = interactor.Execute( input );
             OutputToJson( response.Imported, option );

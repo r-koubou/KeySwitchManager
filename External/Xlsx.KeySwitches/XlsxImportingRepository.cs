@@ -12,7 +12,7 @@ using KeySwitchManager.Xlsx.KeySwitches.Translators;
 
 namespace KeySwitchManager.Xlsx.KeySwitches
 {
-    public class XlsxExportingRepository : IKeySwitchXlsxRepository
+    public class XlsxImportingRepository : IKeySwitchXlsxRepository
     {
         public class KeySwitchInfo
         {
@@ -21,7 +21,7 @@ namespace KeySwitchManager.Xlsx.KeySwitches
             public string Author { get; }
             public string Description { get; }
 
-            protected KeySwitchInfo(
+            public KeySwitchInfo(
                 string developerName,
                 string productName,
                 string author = "",
@@ -43,7 +43,7 @@ namespace KeySwitchManager.Xlsx.KeySwitches
         private byte[] XlsxBytes { get; }
         private KeySwitchInfo Info { get; }
 
-        public XlsxExportingRepository( FilePath xlsxFilePath, KeySwitchInfo info )
+        public XlsxImportingRepository( FilePath xlsxFilePath, KeySwitchInfo info )
         {
             using var stream = new FileStream( xlsxFilePath.Path, FileMode.Create );
             using var memory = new MemoryStream( InitialBufferSize );
@@ -53,7 +53,7 @@ namespace KeySwitchManager.Xlsx.KeySwitches
             Info      = info;
         }
 
-        public XlsxExportingRepository( Stream stream, KeySwitchInfo info )
+        public XlsxImportingRepository( Stream stream, KeySwitchInfo info )
         {
             using var memory = new MemoryStream( InitialBufferSize );
 

@@ -1,29 +1,28 @@
 using KeySwitchManager.Gateways.KeySwitches;
 using KeySwitchManager.Presenters.KeySwitches;
 using KeySwitchManager.UseCases.KeySwitches.Importing.Xlsx;
-using KeySwitchManager.UseCases.KeySwitches.Translations;
 
 namespace KeySwitchManager.Interactors.KeySwitches.Importing.Xlsx
 {
     public class ImportingXlsxInteractor : IImportingXlsxUseCase
     {
         private IKeySwitchRepository Repository { get; }
-        private IXlsxWorkbookToKeySwitchList Translator { get; }
+        private IKeySwitchXlsxRepository SpreadSheetRepository { get; }
         private IImportingXlsxPresenter Presenter { get; }
 
         public ImportingXlsxInteractor(
             IKeySwitchRepository repository,
-            IXlsxWorkbookToKeySwitchList translator,
+            IKeySwitchXlsxRepository spreadSheetRepository,
             IImportingXlsxPresenter presenter )
         {
             Repository = repository;
             Presenter  = presenter;
-            Translator = translator;
+            SpreadSheetRepository = spreadSheetRepository;
         }
 
         public ImportingXlsxResponse Execute( ImportingXlsxRequest request )
         {
-            var keySwitches = Translator.Translate( request.FilePath );
+            var keySwitches = SpreadSheetRepository.Load();
             var insertedCount = 0;
             var updatedCount = 0;
 
@@ -34,7 +33,7 @@ namespace KeySwitchManager.Interactors.KeySwitches.Importing.Xlsx
                 updatedCount  += r.Updated;
             }
 
-            Presenter.Present( $"{request.FilePath}: {insertedCount} record(s) inserted, {updatedCount} record(s) updated" );
+            Presenter.Present( $"{insertedCount} record(s) inserted, {updatedCount} record(s) updated" );
 
             return new ImportingXlsxResponse( keySwitches );
         }
