@@ -3,7 +3,7 @@ using KeySwitchManager.Presenters.KeySwitches;
 using KeySwitchManager.UseCases.KeySwitches.Importing.Text;
 using KeySwitchManager.UseCases.KeySwitches.Translations;
 
-namespace KeySwitchManager.Interactors.KeySwitches.Importing.Text
+namespace KeySwitchManager.Interactors.KeySwitches.Importing
 {
     public class ImportingJsonInteractor : IImportingTextUseCase
     {
