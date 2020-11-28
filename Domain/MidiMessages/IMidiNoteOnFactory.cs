@@ -5,6 +5,7 @@ namespace KeySwitchManager.Domain.MidiMessages
 {
     public interface IMidiNoteOnFactory : IMidiMessageFactory
     {
+        public MidiNoteOn Create( int noteNumber, int velocity );
         public MidiNoteOn Create( int channel, int noteNumber, int velocity );
 
         public static IMidiNoteOnFactory Default => new DefaultFactory();
@@ -21,6 +22,11 @@ namespace KeySwitchManager.Domain.MidiMessages
             public IMidiMessage Create( int status, int channel, int data1, int data2 )
             {
                 return Create( channel, data1, data2 );
+            }
+
+            public MidiNoteOn Create( int noteNumber, int velocity )
+            {
+                return  Create( 0x00, noteNumber, velocity );
             }
 
             public MidiNoteOn Create( int channel, int noteNumber, int velocity )
