@@ -22,6 +22,7 @@
     <ItemGroup>
       <ProjectReference Include="..\..\Common\Common.csproj" />
       <ProjectReference Include="..\..\Domain\Domain.csproj" />
+      <ProjectReference Include="..\..\Gateways\Gateways.csproj" />
       <ProjectReference Include="..\..\UseCases\UseCases.csproj" />
     </ItemGroup>
 
