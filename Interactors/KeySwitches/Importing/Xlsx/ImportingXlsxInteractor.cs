@@ -7,12 +7,12 @@ namespace KeySwitchManager.Interactors.KeySwitches.Importing.Xlsx
     public class ImportingXlsxInteractor : IImportingXlsxUseCase
     {
         private IKeySwitchRepository Repository { get; }
-        private IKeySwitchXlsxRepository SpreadSheetRepository { get; }
+        private IKeySwitchSpreadSheetRepository SpreadSheetRepository { get; }
         private IImportingXlsxPresenter Presenter { get; }
 
         public ImportingXlsxInteractor(
             IKeySwitchRepository repository,
-            IKeySwitchXlsxRepository spreadSheetRepository,
+            IKeySwitchSpreadSheetRepository spreadSheetRepository,
             IImportingXlsxPresenter presenter )
         {
             Repository = repository;
