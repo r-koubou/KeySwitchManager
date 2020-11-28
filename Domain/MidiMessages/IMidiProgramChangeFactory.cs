@@ -5,6 +5,7 @@ namespace KeySwitchManager.Domain.MidiMessages
 {
     public interface IMidiProgramChangeFactory : IMidiMessageFactory
     {
+        public MidiProgramChange Create( int pcNumber );
         public MidiProgramChange Create( int channel, int pcNumber );
 
         public static IMidiProgramChangeFactory Default => new DefaultFactory();
@@ -20,6 +21,11 @@ namespace KeySwitchManager.Domain.MidiMessages
             public IMidiMessage Create( int status, int channel, int data1, int data2 )
             {
                 return Create( channel, data1 );
+            }
+
+            public MidiProgramChange Create( int pcNumber )
+            {
+                return Create( 0x00, pcNumber );
             }
 
             public MidiProgramChange Create( int channel, int pcNumber )

@@ -5,6 +5,7 @@ namespace KeySwitchManager.Domain.MidiMessages
 {
     public interface IMidiControlChangeFactory : IMidiMessageFactory
     {
+        public MidiControlChange Create( int ccNumber, int ccValue );
         public MidiControlChange Create( int channel, int ccNumber, int ccValue );
 
         public static IMidiControlChangeFactory Default => new DefaultFactory();
@@ -21,6 +22,11 @@ namespace KeySwitchManager.Domain.MidiMessages
             public IMidiMessage Create( int status, int channel, int data1, int data2 )
             {
                 return Create( channel, data1, data2 );
+            }
+
+            public MidiControlChange Create( int ccNumber, int ccValue )
+            {
+                return Create( 0x00, ccNumber, ccValue );
             }
 
             public MidiControlChange Create( int channel, int ccNumber, int ccValue )

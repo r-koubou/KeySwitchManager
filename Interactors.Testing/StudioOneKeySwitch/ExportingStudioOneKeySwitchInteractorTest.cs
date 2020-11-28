@@ -24,7 +24,7 @@ namespace KeySwitchManager.Interactors.Testing.StudioOneKeySwitch
             #region Adding To DB
             var dbRepository = new LiteDbKeySwitchRepository( new MemoryStream() );
             var articulation = TestDataGenerator.CreateArticulation(
-                new MidiNoteOn[]{ IMidiNoteOnFactory.Default.Create( 0, 1, 23 ) },
+                new MidiNoteOn[]{ IMidiNoteOnFactory.Default.Create( 1, 23 ) },
                 new MidiControlChange[]{},
                 new MidiProgramChange[]{}
             );
