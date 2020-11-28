@@ -30,7 +30,7 @@ namespace KeySwitchManager.Common.Text
             }
         }
 
-        public static void ValidateNull(  string text )
+        public static void ValidateNull( string text )
         {
             if( text == null )
             {

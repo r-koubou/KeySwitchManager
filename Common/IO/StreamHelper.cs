@@ -2,7 +2,7 @@ using System.IO;
 
 namespace KeySwitchManager.Common.IO
 {
-    public static class StreamUtility
+    public static class StreamHelper
     {
         private const int WorkSize = 8192;
         private static readonly byte[] WorkBuffer = new byte[ WorkSize ];
