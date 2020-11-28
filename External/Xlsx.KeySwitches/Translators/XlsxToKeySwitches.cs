@@ -2,27 +2,24 @@ using System;
 using System.Collections.Generic;
 
 using KeySwitchManager.Common.Utilities;
-using KeySwitchManager.Domain.Commons;
 using KeySwitchManager.Domain.KeySwitches;
 using KeySwitchManager.Domain.KeySwitches.Aggregate;
 using KeySwitchManager.Domain.MidiMessages;
 using KeySwitchManager.Domain.MidiMessages.Aggregate;
 using KeySwitchManager.Domain.MidiMessages.Value;
-using KeySwitchManager.UseCases.KeySwitches.Translations;
+using KeySwitchManager.Domain.Translations;
 using KeySwitchManager.Xlsx.KeySwitches.Models;
-using KeySwitchManager.Xlsx.KeySwitches.Services;
 
 namespace KeySwitchManager.Xlsx.KeySwitches.Translators
 {
-    [Obsolete("IKeySwitchXlsxRepository作成。XlsxToKeySwitchesに置き換え予定")]
-    public class XlsxWorkbookToKeySwitchList : IXlsxWorkbookToKeySwitchList
+    public class XlsxToKeySwitches : IDataTranslator<Workbook, IReadOnlyCollection<KeySwitch>>
     {
-        public string DeveloperName { get; }
-        public string ProductName { get; }
-        public string Author { get; }
-        public string Description { get; }
+        private string DeveloperName { get; }
+        private string ProductName { get; }
+        private string Author { get; }
+        private string Description { get; }
 
-        public XlsxWorkbookToKeySwitchList(
+        public XlsxToKeySwitches(
             string developerName,
             string productName,
             string author = "",
@@ -34,10 +31,10 @@ namespace KeySwitchManager.Xlsx.KeySwitches.Translators
             Description   = description;
         }
 
-        public IReadOnlyCollection<KeySwitch> Translate( FilePath source )
+        public IReadOnlyCollection<KeySwitch> Translate( Workbook source )
         {
             var result = new List<KeySwitch>();
-            var workbook = XlsxWorkBookParsingService.Parse( source );
+            var workbook = source;
             var parsedGuidList = new List<Guid>();
 
             foreach( var sheet in workbook.Worksheets )
