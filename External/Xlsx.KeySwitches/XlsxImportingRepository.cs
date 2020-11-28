@@ -45,7 +45,7 @@ namespace KeySwitchManager.Xlsx.KeySwitches
 
         public XlsxImportingRepository( FilePath xlsxFilePath, KeySwitchInfo info )
         {
-            using var stream = new FileStream( xlsxFilePath.Path, FileMode.Create );
+            using var stream = new FileStream( xlsxFilePath.Path, FileMode.Open );
             using var memory = new MemoryStream( InitialBufferSize );
 
             StreamHelper.ReadAllAndWrite( stream, memory );
