@@ -49,6 +49,7 @@ namespace KeySwitchManager.Xlsx.KeySwitches.Translators
         {
             var now = DateTimeHelper.NowUtc();
             var articulations = new List<Articulation>();
+            var extraData = new Dictionary<string, string>();
 
             foreach( var row in sheet.Rows )
             {
@@ -66,6 +67,11 @@ namespace KeySwitchManager.Xlsx.KeySwitches.Translators
 
             parsedGuidList.Add( guid );
 
+            foreach( var (key, value) in sheet.Extra )
+            {
+                extraData.Add( key, value.Value );
+            }
+
             return IKeySwitchFactory.Default.Create(
                 guid,
                 Author,
@@ -76,7 +82,7 @@ namespace KeySwitchManager.Xlsx.KeySwitches.Translators
                 ProductName,
                 sheet.OutputNameCell.Value,
                 articulations,
-                new Dictionary<string, string>() //TODO
+                extraData
             );
         }
 

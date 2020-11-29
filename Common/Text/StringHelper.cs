@@ -22,6 +22,11 @@ namespace KeySwitchManager.Common.Text
             return string.IsNullOrEmpty( text ) || text == string.Empty || text.Trim().Length == 0;
         }
 
+        public static bool IsNullOrTrimEmpty( object? obj )
+        {
+            return obj == null || IsNullOrTrimEmpty( obj.ToString() );
+        }
+
         public static void ValidateNullOrTrimEmpty(  string text )
         {
             if( IsNullOrTrimEmpty( text ) )

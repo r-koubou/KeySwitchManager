@@ -3,13 +3,11 @@ using System.IO;
 using System.Linq;
 using System.Text;
 
-using ExcelDataReader;
+using ClosedXML.Excel;
 
+using KeySwitchManager.Common.Text;
 using KeySwitchManager.Domain.Commons;
 using KeySwitchManager.Xlsx.KeySwitches.Models;
-
-using SourceSheet = System.Data.DataTable;
-using SourceRows  = System.Data.DataRowCollection;
 
 namespace KeySwitchManager.Xlsx.KeySwitches.Services
 {
@@ -31,22 +29,19 @@ namespace KeySwitchManager.Xlsx.KeySwitches.Services
         public static Workbook Parse( Stream source )
         {
             var result = new Workbook();
-            using var reader = ExcelReaderFactory.CreateReader( source );
+            using var sourceBook = new XLWorkbook( source );
 
-            var dataSet = reader.AsDataSet();
-            var book = dataSet.Tables;
-
-            foreach( SourceSheet? s in book )
+            foreach( var x in sourceBook.Worksheets )
             {
                 // Ignore sheet
-                if( s == null ||
-                    s.TableName == CommonSheetConstants.DefinitionSheetName ||
-                    s.TableName.Contains( CommonSheetConstants.IgnoreSheetNameRule ) )
+                if( x == null ||
+                    x.Name == CommonSheetConstants.DefinitionSheetName ||
+                    x.Name.Contains( CommonSheetConstants.IgnoreSheetNameRule ) )
                 {
                     continue;
                 }
 
-                Worksheet worksheet = ParseWorksheet( s );
+                Worksheet worksheet = ParseWorksheet( x );
                 result.Worksheets.Add( worksheet );
             }
 
@@ -65,17 +60,24 @@ namespace KeySwitchManager.Xlsx.KeySwitches.Services
             return Parse( stream );
         }
 
-        private static Worksheet ParseWorksheet( SourceSheet sheet )
+        private static Worksheet ParseWorksheet( IXLWorksheet sourceSheet )
         {
-            SourceRows rows = sheet.Rows;
+            var rowCount = sourceSheet.Rows().Count();
+            var worksheet = new Worksheet( sourceSheet.Name );
 
-            Worksheet worksheet = new Worksheet( sheet.TableName );
-            for( int rowIndex = SpreadsheetConstants.StartRowIndex; rowIndex < rows.Count; rowIndex++ )
+            var extraColumnNames = ParseExtraColumnNames( sourceSheet );
+
+            for( var rowIndex = SpreadsheetConstants.StartRowIndex; rowIndex < rowCount; rowIndex++ )
             {
+                if( IsEndOfRow( sourceSheet, rowIndex ) )
+                {
+                    break;
+                }
+
                 var context = new CellContext
                 {
-                    Sheet    = sheet,
-                    Row      = rows[ rowIndex ],
+                    Sheet    = sourceSheet,
+                    Row      = sourceSheet.Row( rowCount ),
                     RowIndex = rowIndex
                 };
 
@@ -83,7 +85,7 @@ namespace KeySwitchManager.Xlsx.KeySwitches.Services
                 var row = ParseRow( context );
 
                 // Extended Columns
-                foreach( var extraColumnName in ParseExtraColumnNames( rows ) )
+                foreach( var extraColumnName in extraColumnNames )
                 {
                     if( TryParseSheet( context, extraColumnName, out var extraValue ) )
                     {
@@ -96,14 +98,14 @@ namespace KeySwitchManager.Xlsx.KeySwitches.Services
                 worksheet.Rows.Add( row );
             }
 
-            var outputName = rows[ SpreadsheetConstants.RowOutputIndex ]
-                            .ItemArray[ SpreadsheetConstants.ColumnOutputNameIndex ].ToString();
+            var outputName = sourceSheet.Row( SpreadsheetConstants.RowOutputIndex )
+                                 .Cell( SpreadsheetConstants.ColumnOutputNameIndex  ).Value.ToString();
 
             worksheet.OutputNameCell = outputName == null ?
                 OutputNameCell.Empty : new OutputNameCell( outputName );
 
-            var guid = rows[ SpreadsheetConstants.RowGuidIndex ]
-                            .ItemArray[ SpreadsheetConstants.ColumnGuidIndex ].ToString();
+            var guid = sourceSheet.Row( SpreadsheetConstants.RowGuidIndex )
+                                  .Cell( SpreadsheetConstants.ColumnGuidIndex ).Value.ToString();
 
             worksheet.GuidCell = guid == null ?
                 GuidCell.Empty : new GuidCell( guid );
@@ -111,10 +113,23 @@ namespace KeySwitchManager.Xlsx.KeySwitches.Services
             return worksheet;
         }
 
+        private static bool IsEndOfRow( IXLWorksheet sheet, int rowIndex )
+        {
+            if( rowIndex > sheet.Rows().Count() )
+            {
+                return true;
+            }
+
+            var value = sheet.Row( rowIndex )
+                             .Cell( SpreadsheetConstants.StartColumnIndex )
+                             .Value;
+
+            return StringHelper.IsNullOrTrimEmpty( value );
+        }
+
         private static Row ParseRow( CellContext context )
         {
             var articulationCellGroup = ParseArticulation( context );
-
             var row = new Row( articulationCellGroup.NameCell );
 
             row.MidiNoteList.AddRange( ParseMidiNotes( context ) );
@@ -246,7 +261,7 @@ namespace KeySwitchManager.Xlsx.KeySwitches.Services
             }
         }
 
-        private static void ParseSheet( SourceSheet sheet, int rowIndex, string columnName, out string result )
+        private static void ParseSheet( IXLWorksheet sheet, int rowIndex, string columnName, out string result )
         {
             if( !TryParseSheet( sheet, rowIndex, columnName, out result ) )
             {
@@ -259,25 +274,23 @@ namespace KeySwitchManager.Xlsx.KeySwitches.Services
             return TryParseSheet( context.Sheet, context.RowIndex, columnName, out result );
         }
 
-        private static bool TryParseSheet( SourceSheet sheet, int rowIndex, string columnName, out string result )
+        private static bool TryParseSheet( IXLWorksheet sheet, int rowIndex, string columnName, out string result )
         {
-            var rows       = sheet.Rows;
-
-            int i = 0;
+            var i = 1;
             result = string.Empty;
 
-            foreach( var name in rows[ SpreadsheetConstants.HeaderRowIndex ].ItemArray )
+            foreach( var columnCell in sheet.Row( SpreadsheetConstants.HeaderRowIndex ).Cells() )
             {
-                if( name != null && name.ToString() == columnName )
+                if( columnCell != null && columnCell.Value.ToString() == columnName )
                 {
-                    var cell = rows[ rowIndex ].ItemArray[ i ];
+                    var cell = sheet.Row( rowIndex ).Cell( i );
 
                     if( cell == null )
                     {
                         return false;
                     }
 
-                    result = cell.ToString() ?? string.Empty;
+                    result = cell.Value?.ToString()!;
 
                     return !string.IsNullOrEmpty( result.Trim() );
                 }
@@ -286,18 +299,18 @@ namespace KeySwitchManager.Xlsx.KeySwitches.Services
             return false;
         }
 
-        private static IReadOnlyCollection<string> ParseExtraColumnNames( SourceRows rows )
+        private static IReadOnlyCollection<string> ParseExtraColumnNames( IXLWorksheet sheet )
         {
-            var result = new List<string>();
-            var headers = rows[ SpreadsheetConstants.HeaderRowIndex ].ItemArray;
+            var result  = new List<string>();
+            var headers = sheet.Row( SpreadsheetConstants.HeaderRowIndex ).Cells();
             var extraColumnNames = headers.Where( x =>
             {
-                return x != null && ( x.ToString() ?? string.Empty ).StartsWith( SpreadsheetConstants.ExtraColumnPrefix );
+                return x != null && ( x.Value.ToString() ?? string.Empty ).StartsWith( SpreadsheetConstants.ExtraColumnPrefix );
             });
 
             foreach( var i in extraColumnNames )
             {
-                result.Add( i.ToString()! );
+                result.Add( i.Value.ToString()! );
             }
 
             return result;
