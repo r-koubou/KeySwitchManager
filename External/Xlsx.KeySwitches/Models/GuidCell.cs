@@ -1,3 +1,5 @@
+using System;
+
 using KeySwitchManager.Common.Text;
 
 namespace KeySwitchManager.Xlsx.KeySwitches.Models
@@ -22,5 +24,10 @@ namespace KeySwitchManager.Xlsx.KeySwitches.Models
 
             Value = name;
         }
+        public GuidCell( Guid guid )
+        {
+            Value = guid.ToString("D");
+        }
+
     }
 }

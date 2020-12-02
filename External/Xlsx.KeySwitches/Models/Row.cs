@@ -33,7 +33,7 @@ namespace KeySwitchManager.Xlsx.KeySwitches.Models
         public List<MidiControlChange> MidiControlChangeList { get; } = new List<MidiControlChange>();
         public List<MidiProgramChange> MidiProgramChangeList { get; } = new List<MidiProgramChange>();
 
-        public Dictionary<string, ExtraDataCell> Extra { get; set; } = new Dictionary<string, ExtraDataCell>();
+        public Dictionary<string, ExtraDataCell> Extra { get; } = new Dictionary<string, ExtraDataCell>();
 
         public Row( ArticulationNameCell name )
         {

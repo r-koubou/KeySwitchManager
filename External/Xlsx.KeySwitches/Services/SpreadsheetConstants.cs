@@ -33,6 +33,20 @@ namespace KeySwitchManager.Xlsx.KeySwitches.Services
 
         // Start of data entry column index
         public static readonly int StartColumnIndex = 1;
+        public static readonly int StartMidiMessageColumnIndex = 2;
+
+        // DataValidations
+        public static readonly int ValidationMidiNoteListColumn = 1;
+        public static readonly int ValidationMidiNoteListRowBegin = 2;
+        public static readonly int ValidationMidiNoteListRowEnd = 258;
+
+        #endregion
+
+        #region Sheet names
+
+        public static readonly string TemplateSheetName   = "__TEMPLATE__";
+        public static readonly string DefinitionSheetName = "DO NOT MODIFY!";
+        public static readonly string IgnoreSheetNameRule = "Ignore";
 
         #endregion
     }

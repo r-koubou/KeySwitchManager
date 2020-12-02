@@ -29,6 +29,6 @@ namespace KeySwitchManager.Domain.Commons
             return other != null && Value.Equals( other.Value );
         }
 
-        public override string ToString() => Value.ToString();
+        public override string ToString() => Value.ToString( "D" );
     }
 }

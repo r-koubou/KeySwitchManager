@@ -35,8 +35,8 @@ namespace KeySwitchManager.Xlsx.KeySwitches.Services
             {
                 // Ignore sheet
                 if( x == null ||
-                    x.Name == CommonSheetConstants.DefinitionSheetName ||
-                    x.Name.Contains( CommonSheetConstants.IgnoreSheetNameRule ) )
+                    x.Name == SpreadsheetConstants.DefinitionSheetName ||
+                    x.Name.Contains( SpreadsheetConstants.IgnoreSheetNameRule ) )
                 {
                     continue;
                 }
