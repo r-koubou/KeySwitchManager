@@ -67,7 +67,7 @@ namespace KeySwitchManager.Xlsx.KeySwitches.Services
 
             var extraColumnNames = ParseExtraColumnNames( sourceSheet );
 
-            for( var rowIndex = SpreadsheetConstants.StartRowIndex; rowIndex < rowCount; rowIndex++ )
+            for( var rowIndex = SpreadsheetConstants.RowDataBegin; rowIndex < rowCount; rowIndex++ )
             {
                 if( IsEndOfRow( sourceSheet, rowIndex ) )
                 {
@@ -90,7 +90,7 @@ namespace KeySwitchManager.Xlsx.KeySwitches.Services
                     if( TryParseSheet( context, extraColumnName, out var extraValue ) )
                     {
                         row.Extra.Add(
-                            extraColumnName.Substring( SpreadsheetConstants.ExtraColumnPrefix.Length ),
+                            extraColumnName.Substring( SpreadsheetConstants.HeaderExtraPrefix.Length ),
                             new ExtraDataCell( extraValue ) );
                     }
                 }
@@ -98,14 +98,14 @@ namespace KeySwitchManager.Xlsx.KeySwitches.Services
                 worksheet.Rows.Add( row );
             }
 
-            var outputName = sourceSheet.Row( SpreadsheetConstants.RowOutputIndex )
-                                 .Cell( SpreadsheetConstants.ColumnOutputNameIndex  ).Value.ToString();
+            var outputName = sourceSheet.Row( SpreadsheetConstants.RowOutputName )
+                                 .Cell( SpreadsheetConstants.ColumnOutputName  ).Value.ToString();
 
             worksheet.OutputNameCell = outputName == null ?
                 OutputNameCell.Empty : new OutputNameCell( outputName );
 
-            var guid = sourceSheet.Row( SpreadsheetConstants.RowGuidIndex )
-                                  .Cell( SpreadsheetConstants.ColumnGuidIndex ).Value.ToString();
+            var guid = sourceSheet.Row( SpreadsheetConstants.RowGuid )
+                                  .Cell( SpreadsheetConstants.ColumnGuid ).Value.ToString();
 
             worksheet.GuidCell = guid == null ?
                 GuidCell.Empty : new GuidCell( guid );
@@ -121,7 +121,7 @@ namespace KeySwitchManager.Xlsx.KeySwitches.Services
             }
 
             var value = sheet.Row( rowIndex )
-                             .Cell( SpreadsheetConstants.StartColumnIndex )
+                             .Cell( SpreadsheetConstants.ColumnDataBegin )
                              .Value;
 
             return StringHelper.IsNullOrTrimEmpty( value );
@@ -143,7 +143,7 @@ namespace KeySwitchManager.Xlsx.KeySwitches.Services
         {
             var articulationCellGroup = new ArticulationCellGroup();
 
-            ParseSheet( context, SpreadsheetConstants.ColumnArticulationName, out var cellValue );
+            ParseSheet( context, SpreadsheetConstants.HeaderArticulationName, out var cellValue );
             articulationCellGroup.NameCell = new ArticulationNameCell( cellValue );
 
             return articulationCellGroup;
@@ -162,12 +162,12 @@ namespace KeySwitchManager.Xlsx.KeySwitches.Services
 
             for( int i = 1; i < int.MaxValue; i++ )
             {
-                if( !TryParseSheet( context, SpreadsheetConstants.ColumnMidiNote + i, out var noteNumberCell ) )
+                if( !TryParseSheet( context, SpreadsheetConstants.HeaderMidiNote + i, out var noteNumberCell ) )
                 {
                     break;
                 }
 
-                ParseSheet( context, SpreadsheetConstants.ColumnMidiVelocity + i, out var velocityCell );
+                ParseSheet( context, SpreadsheetConstants.HeaderMidiVelocity + i, out var velocityCell );
 
                 if( !int.TryParse( velocityCell, out var velocityValue ) )
                 {
@@ -199,11 +199,11 @@ namespace KeySwitchManager.Xlsx.KeySwitches.Services
             for( int i = 1; i < int.MaxValue; i++ )
             {
 
-                if( !TryParseSheet( context, SpreadsheetConstants.ColumnMidiCc + i, out var ccNumberCell ) )
+                if( !TryParseSheet( context, SpreadsheetConstants.HeaderMidiCc + i, out var ccNumberCell ) )
                 {
                     break;
                 }
-                if( !TryParseSheet( context, SpreadsheetConstants.ColumnMidiCcValue + i, out var ccValueCell ) )
+                if( !TryParseSheet( context, SpreadsheetConstants.HeaderMidiCcValue + i, out var ccValueCell ) )
                 {
                     break;
                 }
@@ -232,11 +232,11 @@ namespace KeySwitchManager.Xlsx.KeySwitches.Services
 
             for( int i = 1; i < int.MaxValue; i++ )
             {
-                if( !TryParseSheet( context, SpreadsheetConstants.ColumnProgramChangeChannel + i, out var pcChannelCell ) )
+                if( !TryParseSheet( context, SpreadsheetConstants.HeaderPcChannel + i, out var pcChannelCell ) )
                 {
                     pcChannelCell = "0";
                 }
-                if( !TryParseSheet( context, SpreadsheetConstants.ColumnProgramChangeData + i, out var pcDataCell ) )
+                if( !TryParseSheet( context, SpreadsheetConstants.HeaderPcData + i, out var pcDataCell ) )
                 {
                     break;
                 }
@@ -279,7 +279,7 @@ namespace KeySwitchManager.Xlsx.KeySwitches.Services
             var i = 1;
             result = string.Empty;
 
-            foreach( var columnCell in sheet.Row( SpreadsheetConstants.HeaderRowIndex ).Cells() )
+            foreach( var columnCell in sheet.Row( SpreadsheetConstants.RowDataHeader ).Cells() )
             {
                 if( columnCell != null && columnCell.Value.ToString() == columnName )
                 {
@@ -302,10 +302,10 @@ namespace KeySwitchManager.Xlsx.KeySwitches.Services
         private static IReadOnlyCollection<string> ParseExtraColumnNames( IXLWorksheet sheet )
         {
             var result  = new List<string>();
-            var headers = sheet.Row( SpreadsheetConstants.HeaderRowIndex ).Cells();
+            var headers = sheet.Row( SpreadsheetConstants.RowDataHeader ).Cells();
             var extraColumnNames = headers.Where( x =>
             {
-                return x != null && ( x.Value.ToString() ?? string.Empty ).StartsWith( SpreadsheetConstants.ExtraColumnPrefix );
+                return x != null && ( x.Value.ToString() ?? string.Empty ).StartsWith( SpreadsheetConstants.HeaderExtraPrefix );
             });
 
             foreach( var i in extraColumnNames )
