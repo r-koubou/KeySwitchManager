@@ -45,7 +45,7 @@ namespace KeySwitchManager.Xlsx.KeySwitches.Services
         #region Sheet names
 
         public static readonly string TemplateSheetName   = "__TEMPLATE__";
-        public static readonly string DefinitionSheetName = "DO NOT MODIFY!";
+        public static readonly string DataListDefinitionSheetName = "DO NOT MODIFY!";
         public static readonly string IgnoreSheetNameRule = "Ignore";
 
         #endregion
