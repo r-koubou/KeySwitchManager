@@ -58,7 +58,7 @@ namespace KeySwitchManager.Xlsx.KeySwitches.Translators
         }
 
         private static int TranslateMidiNoteMapping(
-            IDataList<IMidiMessage> midiMessages,
+            IEnumerable<IMidiMessage> midiMessages,
             IXLWorksheet sheet,
             int row,
             int startColumnIndex )
@@ -84,7 +84,7 @@ namespace KeySwitchManager.Xlsx.KeySwitches.Translators
         }
 
         private static int TranslateMidiControlChangeMapping(
-            IDataList<IMidiMessage> midiMessages,
+            IEnumerable<IMidiMessage> midiMessages,
             IXLWorksheet sheet,
             int row,
             int startColumnIndex )
@@ -108,7 +108,7 @@ namespace KeySwitchManager.Xlsx.KeySwitches.Translators
         }
 
         private static int TranslateMidiProgramChangeMapping(
-            IDataList<IMidiMessage> midiMessages,
+            IEnumerable<IMidiMessage> midiMessages,
             IXLWorksheet sheet,
             int row,
             int startColumnIndex )
