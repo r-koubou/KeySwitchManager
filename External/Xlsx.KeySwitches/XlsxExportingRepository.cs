@@ -1,9 +1,11 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Reflection;
 
 using ClosedXML.Excel;
 
+using KeySwitchManager.Common.IO;
 using KeySwitchManager.Domain.Commons;
 using KeySwitchManager.Domain.KeySwitches.Aggregate;
 using KeySwitchManager.Gateways.KeySwitches;
@@ -30,10 +32,8 @@ namespace KeySwitchManager.Xlsx.KeySwitches
 
         public bool Save( IReadOnlyCollection<KeySwitch> keySwitch )
         {
-            var asm = Assembly.GetExecutingAssembly();
-
             using var template = new XLWorkbook(
-                asm.GetManifestResourceStream( "KeySwitchManager.Xlsx.Template.xlsx" )
+                StreamHelper.GetAssemblyResourceStream<XlsxExportingRepository>( "Template.xlsx" )
             );
 
             var translator = new KeySwitchToXlsx( template );
