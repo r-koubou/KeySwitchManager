@@ -9,6 +9,7 @@ using KeySwitchManager.Common.IO;
 using KeySwitchManager.Domain.Commons;
 using KeySwitchManager.Domain.KeySwitches.Aggregate;
 using KeySwitchManager.Gateways.KeySwitches;
+using KeySwitchManager.Xlsx.KeySwitches.Services;
 using KeySwitchManager.Xlsx.KeySwitches.Translators;
 
 namespace KeySwitchManager.Xlsx.KeySwitches
@@ -39,6 +40,12 @@ namespace KeySwitchManager.Xlsx.KeySwitches
             var translator = new KeySwitchToXlsx( template );
 
             using var workbook = translator.Translate( keySwitch );
+
+            // Remove temporary worksheet
+            if( workbook.TryGetWorksheet( SpreadsheetConstants.TemplateSheetName, out var removingSheet ) )
+            {
+                removingSheet.Delete();
+            }
 
             workbook.SaveAs( XlsxPath.Path );
 
