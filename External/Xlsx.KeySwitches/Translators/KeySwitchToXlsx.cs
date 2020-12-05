@@ -86,10 +86,15 @@ namespace KeySwitchManager.Xlsx.KeySwitches.Translators
                 var headerRow = SpreadsheetConstants.RowDataHeader;
                 var headerCol = column;
 
+                sheet.Cell( headerRow, headerCol + 0 ).Style.Alignment.Horizontal = XLAlignmentHorizontalValues.Center;
                 sheet.Cell( headerRow, headerCol + 0 ).Value                      = $"{SpreadsheetConstants.HeaderMidiNote}{index}";
                 sheet.Cell( headerRow, headerCol + 0 ).Style.Fill.BackgroundColor = XLColor.FromArgb( 0xFCE4D2 );
+                EnableRuledLineTo( sheet.Cell( headerRow, headerCol + 0 ).Style );
+
+                sheet.Cell( headerRow, headerCol + 1 ).Style.Alignment.Horizontal = XLAlignmentHorizontalValues.Center;
                 sheet.Cell( headerRow, headerCol + 1 ).Value                      = $"{SpreadsheetConstants.HeaderMidiVelocity}{index}";
                 sheet.Cell( headerRow, headerCol + 1 ).Style.Fill.BackgroundColor = XLColor.FromArgb( 0xFCE4D2 );
+                EnableRuledLineTo( sheet.Cell( headerRow, headerCol + 1 ).Style );
 
                 sheet.Cell( row, column + 0 ).SetValue( note );
                 sheet.Cell( row, column + 1 ).SetValue( velocity );
@@ -117,10 +122,16 @@ namespace KeySwitchManager.Xlsx.KeySwitches.Translators
                 var headerRow = SpreadsheetConstants.RowDataHeader;
                 var headerCol = column;
 
+                sheet.Cell( headerRow, headerCol + 0 ).Style.Alignment.Horizontal = XLAlignmentHorizontalValues.Center;
                 sheet.Cell( headerRow, headerCol + 0 ).Value                      = $"{SpreadsheetConstants.HeaderMidiCc}{index}";
                 sheet.Cell( headerRow, headerCol + 0 ).Style.Fill.BackgroundColor = XLColor.FromArgb( 0xA9D7E1 );
+                EnableRuledLineTo( sheet.Cell( headerRow, headerCol + 0 ).Style );
+
+                sheet.Cell( headerRow, headerCol + 1 ).Style.Alignment.Horizontal = XLAlignmentHorizontalValues.Center;
                 sheet.Cell( headerRow, headerCol + 1 ).Value                      = $"{SpreadsheetConstants.HeaderMidiCcValue}{index}";
                 sheet.Cell( headerRow, headerCol + 1 ).Style.Fill.BackgroundColor = XLColor.FromArgb( 0xA9D7E1 );
+                EnableRuledLineTo( sheet.Cell( headerRow, headerCol + 1 ).Style );
+
 
                 sheet.Cell( row, column + 0 ).SetValue( ccNumber );
                 sheet.Cell( row, column + 1 ).SetValue( ccValue );
@@ -149,10 +160,16 @@ namespace KeySwitchManager.Xlsx.KeySwitches.Translators
                 var headerRow = SpreadsheetConstants.RowDataHeader;
                 var headerCol = column;
 
+                sheet.Cell( headerRow, headerCol + 0 ).Style.Alignment.Horizontal = XLAlignmentHorizontalValues.Center;
                 sheet.Cell( headerRow, headerCol + 0 ).Value                      = $"{SpreadsheetConstants.HeaderPcChannel}{index}";
                 sheet.Cell( headerRow, headerCol + 0 ).Style.Fill.BackgroundColor = XLColor.FromArgb( 0xF28337 );
+                EnableRuledLineTo( sheet.Cell( headerRow, headerCol + 0 ).Style );
+
+                sheet.Cell( headerRow, headerCol + 1 ).Style.Alignment.Horizontal = XLAlignmentHorizontalValues.Center;
                 sheet.Cell( headerRow, headerCol + 1 ).Value                      = $"{SpreadsheetConstants.HeaderPcData}{index}";
                 sheet.Cell( headerRow, headerCol + 1 ).Style.Fill.BackgroundColor = XLColor.FromArgb( 0xF28337 );
+                EnableRuledLineTo( sheet.Cell( headerRow, headerCol + 1 ).Style );
+
 
                 sheet.Cell( row, column + 0 ).SetValue( pcChannel );
                 sheet.Cell( row, column + 1 ).SetValue( pcNumber );
@@ -168,6 +185,7 @@ namespace KeySwitchManager.Xlsx.KeySwitches.Translators
         {
 #warning TODO: Extra data in worksheet is reserved
         }
+
         #endregion
 
         #region Fill Excel cell style, data validate
@@ -279,7 +297,9 @@ namespace KeySwitchManager.Xlsx.KeySwitches.Translators
 
             var listSheet = owner.Worksheet( SpreadsheetConstants.DataListDefinitionSheetName );
 
-            var d = sheet.Cell( row, column ).DataValidation;
+            var cell = sheet.Cell( row, column );
+
+            var d = cell.DataValidation;
             d.InputTitle = "MIDI Note";
             d.InputMessage = "Choose from Drop-down list or input number directly(0-127)\n" +
                              "\n" +
@@ -294,38 +314,65 @@ namespace KeySwitchManager.Xlsx.KeySwitches.Translators
                 SpreadsheetConstants.ColumnValidationMidiNoteList );
 
             d.List( listSheet.Range( validateListBegin, validateListEnd ) );
+
+            EnableRuledLineTo( cell.Style );
         }
 
         private static void SetMidiVelocityValidationData( IXLWorksheet sheet, int row, int column )
         {
             IXLWorkbook owner = sheet.Workbook;
 
-            var d = sheet.Cell( row, column ).DataValidation;
+            var cell = sheet.Cell( row, column );
+
+            var d = cell.DataValidation;
             d.InputTitle   = "0-127";
             d.InputMessage = "If don't use MIDI Note on, set cell value empty.";
             d.Decimal.Between( 0, 127 );
+
+            EnableRuledLineTo( cell.Style );
         }
 
         private static void SetMidiCcValidationData( IXLWorksheet sheet, int row, int column )
         {
             IXLWorkbook owner = sheet.Workbook;
 
-            var d = sheet.Cell( row, column ).DataValidation;
+            var cell = sheet.Cell( row, column );
+
+            var d = cell.DataValidation;
             d.InputTitle   = "0-127";
             d.InputMessage = "If don't use CC set cell value empty";
             d.Decimal.Between( 0, 127 );
+
+            EnableRuledLineTo( cell.Style );
         }
 
         private static void SetMidiPcValueValidationData( IXLWorksheet sheet, int row, int column )
         {
             IXLWorkbook owner = sheet.Workbook;
 
-            var d = sheet.Cell( row, column ).DataValidation;
+            var cell = sheet.Cell( row, column );
+
+            var d = cell.DataValidation;
             d.InputTitle   = "0-127";
             d.InputMessage = "If don't use Program Change, set cell value empty.";
             d.Decimal.Between( 0, 127 );
+
+            EnableRuledLineTo( cell.Style );
+
         }
         #endregion
+
+        private static void EnableRuledLineTo( IXLStyle style )
+        {
+            style.Border.TopBorder         = XLBorderStyleValues.Thin;
+            style.Border.TopBorderColor    = XLColor.Black;
+            style.Border.BottomBorder      = XLBorderStyleValues.Thin;
+            style.Border.BottomBorderColor = XLColor.Black;
+            style.Border.RightBorder       = XLBorderStyleValues.Thin;
+            style.Border.RightBorderColor  = XLColor.Black;
+            style.Border.LeftBorder        = XLBorderStyleValues.Thin;
+            style.Border.LeftBorderColor   = XLColor.Black;
+        }
 
         #endregion
 
