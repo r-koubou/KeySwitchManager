@@ -1,7 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.IO;
-using System.Reflection;
 
 using ClosedXML.Excel;
 
@@ -10,7 +8,7 @@ using KeySwitchManager.Domain.Commons;
 using KeySwitchManager.Domain.KeySwitches.Aggregate;
 using KeySwitchManager.Gateways.KeySwitches;
 using KeySwitchManager.Xlsx.KeySwitches.Services;
-using KeySwitchManager.Xlsx.KeySwitches.Translators;
+using KeySwitchManager.Xlsx.KeySwitches.Translators.Xlsx.FromKeySwitch;
 
 namespace KeySwitchManager.Xlsx.KeySwitches
 {

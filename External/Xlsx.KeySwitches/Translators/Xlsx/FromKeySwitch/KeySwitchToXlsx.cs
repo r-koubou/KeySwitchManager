@@ -9,7 +9,7 @@ using KeySwitchManager.Domain.Translations;
 using KeySwitchManager.Xlsx.KeySwitches.Models;
 using KeySwitchManager.Xlsx.KeySwitches.Services;
 
-namespace KeySwitchManager.Xlsx.KeySwitches.Translators
+namespace KeySwitchManager.Xlsx.KeySwitches.Translators.Xlsx.FromKeySwitch
 {
     public class KeySwitchToXlsx : IDataTranslator<IReadOnlyCollection<KeySwitch>, XLWorkbook>
     {
