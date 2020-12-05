@@ -1,5 +1,6 @@
 using System;
 using System.Linq;
+using System.Runtime.InteropServices.ComTypes;
 
 using ClosedXML.Excel;
 
@@ -13,6 +14,7 @@ namespace KeySwitchManager.Xlsx.KeySwitches.Services
         public const int MidiNoteOnHeaderCellColor = 0xFCE4D2;
         public const int MidiCcHeaderCellColor = 0xA9D7E1;
         public const int MidiPcHeaderCellColor = 0xBADBA5;
+        public const int ExtraHeaderCellColor = 0x909090;
 
         public static void ActivateRuledLine( IXLStyle style )
         {
@@ -71,6 +73,8 @@ namespace KeySwitchManager.Xlsx.KeySwitches.Services
 
             var row = startRow;
 
+            var extraMaxColumn = template.Articulations.SelectMany( x => x.ExtraData.Keys ).Distinct().Count();
+
             for( var r = 0; r < rowCount; r++ )
             {
                 var noteMaxColumn = template.Articulations.Max( x => x.MidiNoteOns.Count );
@@ -80,7 +84,8 @@ namespace KeySwitchManager.Xlsx.KeySwitches.Services
                 var column = startColumn;
                 column = SetDefaultMidiNoteCellStyle( sheet, row, column, noteMaxColumn );
                 column = SetDefaultMidiCcCellStyle( sheet, row, column, ccMaxColumn );
-                _      = SetDefaultMidiPcCellStyle( sheet, row, column, pcMaxColumn );
+                column = SetDefaultMidiPcCellStyle( sheet, row, column, pcMaxColumn );
+                _      = SetDefaultExtraCellStyle( sheet, row, column, extraMaxColumn );
                 row++;
             }
 
@@ -209,6 +214,30 @@ namespace KeySwitchManager.Xlsx.KeySwitches.Services
             sheet.Cell( row, column ).Style.Alignment.Horizontal = XLAlignmentHorizontalValues.Center;
         }
 
+        #endregion
+
+        #region Cell style for Extra data
+        public static int SetDefaultExtraCellStyle( IXLWorksheet sheet, int row, int column, int count = 1 )
+        {
+            for( var i = 0; i < count; i++ )
+            {
+                // Header text will be set at ExtraDataTranslator
+                SetHeaderCell( sheet, SpreadsheetConstants.RowDataHeader, column, ExtraHeaderCellColor, "" );
+                SetExtraCellStyle( sheet, row, column );
+                column++;
+            }
+
+            return column;
+        }
+
+        public static void SetExtraCellStyle( IXLWorksheet sheet, int row, int column )
+        {
+            ActivateRuledLine( sheet.Cell( row, column ).Style );
+            sheet.Cell( row, column ).Style.Alignment.Horizontal = XLAlignmentHorizontalValues.Center;
+        }
+
+        #endregion
+
         public static void SetHeaderCell( IXLWorksheet sheet, int row, int column, int color, string text )
         {
             sheet.Cell( row, column ).Value                      = text;
@@ -216,8 +245,6 @@ namespace KeySwitchManager.Xlsx.KeySwitches.Services
             ActivateRuledLine( sheet.Cell( row, column ).Style );
             sheet.Cell( row, column ).Style.Alignment.Horizontal = XLAlignmentHorizontalValues.Center;
         }
-
-        #endregion
 
     }
 }

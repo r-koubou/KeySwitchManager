@@ -40,12 +40,9 @@ namespace KeySwitchManager.Xlsx.KeySwitches.Translators.Xlsx.FromKeySwitch
 
             foreach( var articulation in keySwitch.Articulations )
             {
-
-                TranslateArticulation( articulation, newWorksheet, row );
+                _ = TranslateArticulation( keySwitch, articulation, newWorksheet, row );
                 row++;
             }
-
-            TranslateExtra( keySwitch, book );
 
             newWorksheet.Cell( SpreadsheetConstants.RowGuid, SpreadsheetConstants.ColumnGuid )
                         .Value = keySwitch.Id.Value;
@@ -53,13 +50,31 @@ namespace KeySwitchManager.Xlsx.KeySwitches.Translators.Xlsx.FromKeySwitch
                         .Value = keySwitch.InstrumentName;
         }
 
-        private static void TranslateArticulation( Articulation articulation, IXLWorksheet sheet, int row )
+        private static int TranslateArticulation( KeySwitch keySwitch, Articulation articulation, IXLWorksheet sheet, int row )
         {
-            var column = SpreadsheetConstants.ColumnMidiMessageBegin;
+            // Articulation name
+            var column = SpreadsheetConstants.ColumnDataBegin;
+            sheet.Cell( row, column ).Value                      = articulation.ArticulationName.Value;
+            sheet.Cell( row, column ).Style.Alignment.Horizontal = XLAlignmentHorizontalValues.Center;
+
+            // MIDI data
+            column = SpreadsheetConstants.ColumnMidiMessageBegin;
 
             column = TranslateMidiNoteMapping( articulation.MidiNoteOns, sheet, row, column );
             column = TranslateMidiControlChangeMapping( articulation.MidiControlChanges, sheet, row, column );
-            _ = TranslateMidiProgramChangeMapping( articulation.MidiProgramChanges, sheet, row, column );
+            column = TranslateMidiProgramChangeMapping( articulation.MidiProgramChanges, sheet, row, column );
+
+            // Extra Data
+            var extraDataTranslator = new ExtraDataTranslator( keySwitch );
+
+            extraDataTranslator.Translate(
+                sheet,
+                SpreadsheetConstants.RowDataHeader,
+                SpreadsheetConstants.RowDataBegin,
+                column
+            );
+
+            return column;
         }
 
         private static int TranslateMidiNoteMapping(
@@ -122,12 +137,6 @@ namespace KeySwitchManager.Xlsx.KeySwitches.Translators.Xlsx.FromKeySwitch
             );
         }
 
-        private static void TranslateExtra( KeySwitch keySwitch, IXLWorkbook book )
-        {
-#warning TODO: Extra data in worksheet is reserved
-        }
-
         #endregion
-
     }
 }
