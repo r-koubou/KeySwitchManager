@@ -5,7 +5,7 @@ using ClosedXML.Excel;
 
 using KeySwitchManager.Domain.MidiMessages.Aggregate;
 
-namespace KeySwitchManager.Xlsx.KeySwitches.Translators.Xlsx.FromKeySwitch
+namespace KeySwitchManager.Xlsx.KeySwitches.Translators.FromKeySwitch
 {
     [Flags]
     internal enum TranslateMidiMessageType

@@ -6,7 +6,7 @@ using ClosedXML.Excel;
 using KeySwitchManager.Domain.KeySwitches.Aggregate;
 using KeySwitchManager.Domain.KeySwitches.Value;
 
-namespace KeySwitchManager.Xlsx.KeySwitches.Translators.Xlsx.FromKeySwitch
+namespace KeySwitchManager.Xlsx.KeySwitches.Translators.FromKeySwitch
 {
 
     internal class ExtraDataTranslator

@@ -4,13 +4,13 @@ using ClosedXML.Excel;
 
 using KeySwitchManager.Domain.MidiMessages.Aggregate;
 
-namespace KeySwitchManager.Xlsx.KeySwitches.Translators.Xlsx.FromKeySwitch
+namespace KeySwitchManager.Xlsx.KeySwitches.Translators.FromKeySwitch
 {
-    internal class MidiMessageTranslator : IMidiMessageTranslator
+    internal class MidiNoteOnMessageTranslator : IMidiMessageTranslator
     {
         private int StartColumn { get; }
 
-        public MidiMessageTranslator( int startColumn )
+        public MidiNoteOnMessageTranslator( int startColumn )
         {
             StartColumn     = startColumn;
         }
