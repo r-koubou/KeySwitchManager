@@ -2,7 +2,9 @@ namespace path.to.your.ns
 {{
     public class {name}Interactor : I{name}UseCase
     {{
-        {name}Response Execute( {name}Request request )
-        {{}}
+        public {name}Response Execute( {name}Request request )
+        {{
+            throw new System.NotImplementedException();
+        }}
     }}
 }}
