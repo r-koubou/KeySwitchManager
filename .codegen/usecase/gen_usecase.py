@@ -47,5 +47,5 @@ with open( "out/{name}Request.cs".format( name = argv[ 0 ] ), mode = "w", encodi
 with open( "out/{name}Response.cs".format( name = argv[ 0 ] ), mode = "w", encoding = "utf-8") as f:
     f.write( TEMPLATE_RESPONSE )
 
-with open( "out/{name}Presenter.cs".format( name = argv[ 0 ] ), mode = "w", encoding = "utf-8") as f:
+with open( "out/I{name}Presenter.cs".format( name = argv[ 0 ] ), mode = "w", encoding = "utf-8") as f:
     f.write( TEMPLATE_PRESENTER )

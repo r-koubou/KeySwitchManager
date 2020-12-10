@@ -12,7 +12,7 @@ using KeySwitchManager.Xlsx.KeySwitches.Models;
 
 namespace KeySwitchManager.Xlsx.KeySwitches.Translators
 {
-    public class XlsxToKeySwitches : IDataTranslator<Workbook, IReadOnlyCollection<KeySwitch>>
+    internal class XlsxToKeySwitches : IDataTranslator<Workbook, IReadOnlyCollection<KeySwitch>>
     {
         private string DeveloperName { get; }
         private string ProductName { get; }

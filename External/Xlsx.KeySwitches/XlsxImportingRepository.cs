@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.IO;
 
 using KeySwitchManager.Common.IO;
-using KeySwitchManager.Common.Text;
 using KeySwitchManager.Domain.Commons;
 using KeySwitchManager.Domain.KeySwitches.Aggregate;
 using KeySwitchManager.Gateways.KeySwitches;
@@ -14,31 +13,6 @@ namespace KeySwitchManager.Xlsx.KeySwitches
 {
     public class XlsxImportingRepository : IKeySwitchSpreadSheetRepository
     {
-        public class KeySwitchInfo
-        {
-            public string DeveloperName { get; }
-            public string ProductName { get; }
-            public string Author { get; }
-            public string Description { get; }
-
-            public KeySwitchInfo(
-                string developerName,
-                string productName,
-                string author = "",
-                string description = "" )
-            {
-                StringHelper.ValidateNullOrTrimEmpty( developerName );
-                StringHelper.ValidateNullOrTrimEmpty( productName );
-                StringHelper.ValidateNull( author );
-                StringHelper.ValidateNull( description );
-
-                DeveloperName = developerName;
-                ProductName   = productName;
-                Author        = author;
-                Description   = description;
-            }
-        }
-
         private const int InitialBufferSize = 1024 * 64;
         private byte[] XlsxBytes { get; }
         private KeySwitchInfo Info { get; }

@@ -48,7 +48,7 @@ namespace KeySwitchManager.CLI.Commands
         {
             var option = (CommandOption)opt;
 
-            var info = new XlsxImportingRepository.KeySwitchInfo(
+            var info = new KeySwitchInfo(
                 option.Developer,
                 option.Product,
                 option.Author,
@@ -58,7 +58,7 @@ namespace KeySwitchManager.CLI.Commands
             using var repository = new LiteDbKeySwitchRepository( option.DatabasePath );
             using var translator = new XlsxImportingRepository(
                 new FilePath( option.InputPath ),
-                new XlsxImportingRepository.KeySwitchInfo(
+                new KeySwitchInfo(
                     option.Developer,
                     option.Product,
                     option.Author,
