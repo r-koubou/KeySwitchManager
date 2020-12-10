@@ -221,7 +221,13 @@ namespace KeySwitchManager.Xlsx.KeySwitches.Services
         {
             foreach( var key in extraKeys )
             {
-                SetHeaderCell( sheet, SpreadsheetConstants.RowDataHeader, column, ExtraHeaderCellColor, key.Value );
+                SetHeaderCell(
+                    sheet,
+                    SpreadsheetConstants.RowDataHeader,
+                    column,
+                    ExtraHeaderCellColor,
+                    SpreadsheetConstants.HeaderExtraPrefix + key.Value
+                );
                 SetExtraCellStyle( sheet, row, column );
                 column++;
             }
