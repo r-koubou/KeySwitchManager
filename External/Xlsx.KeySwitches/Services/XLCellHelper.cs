@@ -1,10 +1,10 @@
-using System;
+using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.InteropServices.ComTypes;
 
 using ClosedXML.Excel;
 
 using KeySwitchManager.Domain.KeySwitches.Aggregate;
+using KeySwitchManager.Domain.KeySwitches.Value;
 
 namespace KeySwitchManager.Xlsx.KeySwitches.Services
 {
@@ -73,7 +73,7 @@ namespace KeySwitchManager.Xlsx.KeySwitches.Services
 
             var row = startRow;
 
-            var extraMaxColumn = template.Articulations.SelectMany( x => x.ExtraData.Keys ).Distinct().Count();
+            var allExtraKeys = template.Articulations.SelectMany( x => x.ExtraData.Keys ).Distinct().ToArray();
 
             for( var r = 0; r < rowCount; r++ )
             {
@@ -85,7 +85,7 @@ namespace KeySwitchManager.Xlsx.KeySwitches.Services
                 column = SetDefaultMidiNoteCellStyle( sheet, row, column, noteMaxColumn );
                 column = SetDefaultMidiCcCellStyle( sheet, row, column, ccMaxColumn );
                 column = SetDefaultMidiPcCellStyle( sheet, row, column, pcMaxColumn );
-                _      = SetDefaultExtraCellStyle( sheet, row, column, extraMaxColumn );
+                _      = SetDefaultExtraCellStyle( sheet, row, column, allExtraKeys );
                 row++;
             }
 
@@ -217,12 +217,11 @@ namespace KeySwitchManager.Xlsx.KeySwitches.Services
         #endregion
 
         #region Cell style for Extra data
-        public static int SetDefaultExtraCellStyle( IXLWorksheet sheet, int row, int column, int count = 1 )
+        public static int SetDefaultExtraCellStyle( IXLWorksheet sheet, int row, int column, IEnumerable<ExtraDataKey> extraKeys )
         {
-            for( var i = 0; i < count; i++ )
+            foreach( var key in extraKeys )
             {
-                // Header text will be set at ExtraDataTranslator
-                SetHeaderCell( sheet, SpreadsheetConstants.RowDataHeader, column, ExtraHeaderCellColor, "" );
+                SetHeaderCell( sheet, SpreadsheetConstants.RowDataHeader, column, ExtraHeaderCellColor, key.Value );
                 SetExtraCellStyle( sheet, row, column );
                 column++;
             }
