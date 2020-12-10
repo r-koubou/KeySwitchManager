@@ -29,7 +29,7 @@ namespace KeySwitchManager.Xlsx.KeySwitches
             throw new NotSupportedException();
         }
 
-        public bool Save( IReadOnlyCollection<KeySwitch> keySwitch )
+        public bool Save( IReadOnlyCollection<KeySwitch> keySwitches )
         {
             using var template = new XLWorkbook(
                 StreamHelper.GetAssemblyResourceStream<XlsxExportingRepository>( "Template.xlsx" )
@@ -37,7 +37,7 @@ namespace KeySwitchManager.Xlsx.KeySwitches
 
             var translator = new KeySwitchToXlsx( template );
 
-            using var workbook = translator.Translate( keySwitch );
+            using var workbook = translator.Translate( keySwitches );
 
             // Remove temporary worksheet
             if( workbook.TryGetWorksheet( SpreadsheetConstants.TemplateSheetName, out var removingSheet ) )

@@ -52,7 +52,7 @@ namespace KeySwitchManager.Xlsx.KeySwitches
             return  translator.Translate( workBook );
         }
 
-        public bool Save( IReadOnlyCollection<KeySwitch> keySwitch ) =>
+        public bool Save( IReadOnlyCollection<KeySwitch> keySwitches ) =>
             throw new NotSupportedException();
     }
 }
