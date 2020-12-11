@@ -1,5 +1,3 @@
-using System.Data;
-
 using ClosedXML.Excel;
 
 namespace KeySwitchManager.Xlsx.KeySwitches.Models
