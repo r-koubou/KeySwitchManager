@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using ClosedXML.Excel;
 
 using KeySwitchManager.Domain.MidiMessages.Aggregate;
+using KeySwitchManager.Xlsx.KeySwitches.Models;
 
 namespace KeySwitchManager.Xlsx.KeySwitches.Translators.FromKeySwitch
 {
@@ -44,7 +45,15 @@ namespace KeySwitchManager.Xlsx.KeySwitches.Translators.FromKeySwitch
                         continue;
                     }
 
-                    sheet.Cell( row, column ).Value = cellValues[ i ].Value;
+                    if( flag.HasFlag( TranslateMidiMessageType.Data2 ) )
+                    {
+                        var noteName = MidiNoteNumberCell.GetNoteNameList()[ cellValues[ i ].Value ];
+                        sheet.Cell( row, column ).Value = noteName;
+                    }
+                    else
+                    {
+                        sheet.Cell( row, column ).Value = cellValues[ i ].Value;
+                    }
                     column++;
                 }
             }
