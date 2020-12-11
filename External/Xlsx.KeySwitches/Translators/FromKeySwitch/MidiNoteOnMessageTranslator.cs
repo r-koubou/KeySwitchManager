@@ -4,6 +4,7 @@ using ClosedXML.Excel;
 
 using KeySwitchManager.Domain.MidiMessages.Aggregate;
 using KeySwitchManager.Xlsx.KeySwitches.Models;
+using KeySwitchManager.Xlsx.KeySwitches.Services;
 
 namespace KeySwitchManager.Xlsx.KeySwitches.Translators.FromKeySwitch
 {
@@ -47,7 +48,7 @@ namespace KeySwitchManager.Xlsx.KeySwitches.Translators.FromKeySwitch
 
                     if( flag.HasFlag( TranslateMidiMessageType.Data2 ) )
                     {
-                        var noteName = MidiNoteNumberCell.GetNoteNameList()[ cellValues[ i ].Value ];
+                        var noteName = MidiNoteNameHelper.GetNoteNameList()[ cellValues[ i ].Value ];
                         sheet.Cell( row, column ).Value = noteName;
                     }
                     else
