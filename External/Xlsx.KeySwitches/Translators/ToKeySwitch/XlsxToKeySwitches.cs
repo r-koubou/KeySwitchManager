@@ -128,7 +128,6 @@ namespace KeySwitchManager.Xlsx.KeySwitches.Translators.ToKeySwitch
             foreach( var cc in row.MidiControlChangeList )
             {
                 var controlChange = factory.Create(
-                    0,
                     cc.CcNumber.Value,
                     cc.CcValue.Value
                 );

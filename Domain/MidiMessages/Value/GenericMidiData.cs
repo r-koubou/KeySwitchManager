@@ -8,6 +8,7 @@ namespace KeySwitchManager.Domain.MidiMessages.Value
         public const int MinValue = 0x00;
         public const int MaxValue = 0xFF;
 
+        public static readonly GenericMidiData Empty = new GenericMidiData( 0 );
         public static readonly GenericMidiData Zero = new GenericMidiData( 0 );
 
         public GenericMidiData( int value )

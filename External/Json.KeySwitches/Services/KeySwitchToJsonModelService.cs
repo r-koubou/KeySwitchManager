@@ -61,7 +61,6 @@ namespace KeySwitchManager.Json.KeySwitches.Services
                 dest.Add(
                     new MidiMessageModel(
                         i.Status.Value,
-                        i.Channel.Value,
                         i.DataByte1.Value,
                         i.DataByte2.Value
                     )

@@ -19,7 +19,7 @@ namespace KeySwitchManager.Xml.VstExpressionMap.Testing
             var articulation = TestDataGenerator.CreateArticulation(
                 new List<MidiNoteOn>
                 {
-                    IMidiNoteOnFactory.Default.Create( 0, 10, 20 )
+                    IMidiNoteOnFactory.Default.Create( 10, 20 )
                 },
                 new List<MidiControlChange>{},
                 new List<MidiProgramChange>{}

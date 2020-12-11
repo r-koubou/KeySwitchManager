@@ -1,5 +1,6 @@
 using System;
 
+using KeySwitchManager.Domain.MidiMessages.Services;
 using KeySwitchManager.Domain.MidiMessages.Value;
 
 namespace KeySwitchManager.Domain.MidiMessages.Aggregate
@@ -19,7 +20,8 @@ namespace KeySwitchManager.Domain.MidiMessages.Aggregate
         /// MIDI channel code which is included status byte.
         /// Set to Zero if message has no channel data.
         /// </summary>
-        public IMidiMessageData Channel { get; }
+        public IMidiMessageData Channel =>
+            new MidiChannel( MidiStatusHelper.GetChannel( Status.Value ) );
 
         /// <summary>
         /// MIDI event: 1st data byte

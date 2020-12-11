@@ -69,14 +69,13 @@ namespace Databases.LiteDB.KeySwitches.KeySwitches.Translations
         private static void ConvertMessageList(
             IEnumerable<MidiMessageModel> src,
             ICollection<IMidiMessage> dest,
-            IMidiMessageFactory messageFactory )
+            IMidiMessageFactory<IMidiMessage> messageFactory )
         {
             foreach( var i in src )
             {
                 dest.Add(
                     messageFactory.Create(
                         i.Status,
-                        i.Channel,
                         i.DataByte1,
                         i.DataByte2
                     )

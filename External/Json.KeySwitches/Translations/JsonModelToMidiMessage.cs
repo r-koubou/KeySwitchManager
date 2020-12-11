@@ -10,8 +10,7 @@ namespace KeySwitchManager.Json.KeySwitches.Translations
         public IMidiMessage Translate( MidiMessageModel source )
         {
             return new GenericMidiMessage(
-                new MidiStatusCode( source.Status ),
-                new GenericMidiData( source.Channel ),
+                new MidiStatus( source.Status ),
                 new GenericMidiData( source.Data1 ),
                 new GenericMidiData( source.Data2 )
             );

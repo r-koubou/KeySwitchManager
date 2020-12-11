@@ -8,17 +8,14 @@ namespace KeySwitchManager.Domain.MidiMessages.Aggregate
     public class MidiProgramChange : IMidiMessage
     {
         public IMidiMessageData Status { get; }
-        public IMidiMessageData Channel { get; }
-
         public IMidiMessageData DataByte1 { get; }
         public IMidiMessageData DataByte2 { get; }
 
-        public MidiProgramChange( MidiChannel midiChannel, MidiProgramChangeNumber number )
+        public MidiProgramChange( MidiStatus status, MidiProgramChangeNumber number )
         {
-            Status    = MidiStatusCode.ProgramChange;
-            Channel   = midiChannel;
+            Status    = status;
             DataByte1 = number;
-            DataByte2 = GenericMidiData.Zero;
+            DataByte2 = GenericMidiData.Empty;
         }
     }
 }

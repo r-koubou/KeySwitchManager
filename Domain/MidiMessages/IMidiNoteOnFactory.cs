@@ -1,37 +1,36 @@
 using KeySwitchManager.Domain.MidiMessages.Aggregate;
+using KeySwitchManager.Domain.MidiMessages.Services;
 using KeySwitchManager.Domain.MidiMessages.Value;
 
 namespace KeySwitchManager.Domain.MidiMessages
 {
-    public interface IMidiNoteOnFactory : IMidiMessageFactory
+    public interface IMidiNoteOnFactory : IMidiMessageFactory<MidiNoteOn>
     {
         public MidiNoteOn Create( int noteNumber, int velocity );
-        public MidiNoteOn Create( int channel, int noteNumber, int velocity );
 
         public static IMidiNoteOnFactory Default => new DefaultFactory();
 
         public static MidiNoteOn Zero =>
             new MidiNoteOn(
-                new MidiChannel( 0 ),
+                IMidiStatusFactory.Default.Create( MidiStatusHelper.NoteOn ),
                 new MidiNoteNumber( 0 ),
                 new MidiVelocity( 0 )
             );
 
         private class DefaultFactory : IMidiNoteOnFactory
         {
-            public IMidiMessage Create( int status, int channel, int data1, int data2 )
-            {
-                return Create( channel, data1, data2 );
-            }
-
             public MidiNoteOn Create( int noteNumber, int velocity )
             {
-                return  Create( 0x00, noteNumber, velocity );
+                return  Create( MidiStatusHelper.NoteOn, noteNumber, velocity );
             }
 
-            public MidiNoteOn Create( int channel, int noteNumber, int velocity )
+            public MidiNoteOn Create( int status, int data1, int data2 )
             {
-                return new MidiNoteOn( new MidiChannel( channel ), new MidiNoteNumber( noteNumber ), new MidiVelocity( velocity ) );
+                return new MidiNoteOn(
+                    IMidiStatusFactory.Default.Create( status ),
+                    new MidiNoteNumber( data1 ),
+                    new MidiVelocity( data2 )
+                );
             }
         }
     }
