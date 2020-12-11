@@ -95,10 +95,10 @@ namespace KeySwitchManager.Xlsx.KeySwitches.Services
         #region Cell style for MIDI Note
         public static int SetDefaultMidiNoteCellStyle( IXLWorksheet sheet, int row, int column, int count = 1 )
         {
-            for( var i = 0; i < count; i++ )
+            for( var index = 1; index <= count; index++ )
             {
-                SetHeaderCell( sheet, SpreadsheetConstants.RowDataHeader, column + 0, MidiNoteOnHeaderCellColor, $"{SpreadsheetConstants.HeaderMidiNote}{i}" );
-                SetHeaderCell( sheet, SpreadsheetConstants.RowDataHeader, column + 1, MidiNoteOnHeaderCellColor, $"{SpreadsheetConstants.HeaderMidiVelocity}{i}" );
+                SetHeaderCell( sheet, SpreadsheetConstants.RowDataHeader, column + 0, MidiNoteOnHeaderCellColor, $"{SpreadsheetConstants.HeaderMidiNote}{index}" );
+                SetHeaderCell( sheet, SpreadsheetConstants.RowDataHeader, column + 1, MidiNoteOnHeaderCellColor, $"{SpreadsheetConstants.HeaderMidiVelocity}{index}" );
 
                 SetMidiNoteCellStyle( sheet, row, column + 0 );
                 SetMidiVelocityCellStyle( sheet, row, column + 1 );
@@ -155,10 +155,10 @@ namespace KeySwitchManager.Xlsx.KeySwitches.Services
         #region Cell style for MIDI CC
         public static int SetDefaultMidiCcCellStyle( IXLWorksheet sheet, int row, int column, int count = 1 )
         {
-            for( var i = 0; i < count; i++ )
+            for( var index = 1; index <= count; index++ )
             {
-                SetHeaderCell( sheet, SpreadsheetConstants.RowDataHeader, column + 0, MidiCcHeaderCellColor, $"{SpreadsheetConstants.HeaderMidiCc}{i}" );
-                SetHeaderCell( sheet, SpreadsheetConstants.RowDataHeader, column + 1, MidiCcHeaderCellColor, $"{SpreadsheetConstants.HeaderMidiCcValue}{i}" );
+                SetHeaderCell( sheet, SpreadsheetConstants.RowDataHeader, column + 0, MidiCcHeaderCellColor, $"{SpreadsheetConstants.HeaderMidiCc}{index}" );
+                SetHeaderCell( sheet, SpreadsheetConstants.RowDataHeader, column + 1, MidiCcHeaderCellColor, $"{SpreadsheetConstants.HeaderMidiCcValue}{index}" );
 
                 SetMidiCcCellStyle( sheet, row, column + 0 );
                 SetMidiCcCellStyle( sheet, row, column + 1 );
@@ -187,10 +187,10 @@ namespace KeySwitchManager.Xlsx.KeySwitches.Services
         #region Cell style for MIDI PC
         public static int SetDefaultMidiPcCellStyle( IXLWorksheet sheet, int row, int column, int count = 1 )
         {
-            for( var i = 0; i < count; i++ )
+            for( var index = 1; index <= count; index++ )
             {
-                SetHeaderCell( sheet, SpreadsheetConstants.RowDataHeader, column + 0, MidiPcHeaderCellColor, $"{SpreadsheetConstants.HeaderPcChannel}{i}" );
-                SetHeaderCell( sheet, SpreadsheetConstants.RowDataHeader, column + 1, MidiPcHeaderCellColor, $"{SpreadsheetConstants.HeaderPcData}{i}" );
+                SetHeaderCell( sheet, SpreadsheetConstants.RowDataHeader, column + 0, MidiPcHeaderCellColor, $"{SpreadsheetConstants.HeaderPcChannel}{index}" );
+                SetHeaderCell( sheet, SpreadsheetConstants.RowDataHeader, column + 1, MidiPcHeaderCellColor, $"{SpreadsheetConstants.HeaderPcData}{index}" );
 
                 SetMidiPcCellStyle( sheet, row, column + 0 );
                 SetMidiPcCellStyle( sheet, row, column + 1 );
