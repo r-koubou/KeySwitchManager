@@ -21,6 +21,7 @@ namespace KeySwitchManager.Interactors.KeySwitches.Exporting
 
         public ExportingTemplateXlsxResponse Execute( ExportingTemplateXlsxRequest request )
         {
+            #region Template keyswitch
             var entity = IKeySwitchFactory.Default.Create(
                 Guid.NewGuid(),
                 "Author",
@@ -33,7 +34,14 @@ namespace KeySwitchManager.Interactors.KeySwitches.Exporting
                 new List<Articulation>
                 {
                     IArticulationFactory.Default.Create(
-                        "name",
+                        "IDLE",
+                        new List<IMidiMessage>(),
+                        new List<IMidiMessage>(),
+                        new List<IMidiMessage>(),
+                        new Dictionary<string, string>()
+                    ),
+                    IArticulationFactory.Default.Create(
+                        "Power Chord",
                         new List<IMidiMessage>{ IMidiNoteOnFactory.Default.Create( 0, 100 )},
                         new List<IMidiMessage>{ IMidiControlChangeFactory.Default.Create( 1, 100 )},
                         new List<IMidiMessage>{ IMidiProgramChangeFactory.Default.Create( 2, 34 )},
@@ -42,6 +50,7 @@ namespace KeySwitchManager.Interactors.KeySwitches.Exporting
                 },
                 new Dictionary<string, string>()
             );
+            #endregion
 
             var result = Repository.Save( new []{ entity } );
             return new ExportingTemplateXlsxResponse( result );
