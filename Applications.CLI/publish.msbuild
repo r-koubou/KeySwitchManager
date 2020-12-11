@@ -8,8 +8,7 @@
             ../NOTICE.md;
             ../README.md;
             ../README.ja.md;
-            VERSION.md;
-            Template.xlsm
+            VERSION.md
         </OtherDeployingFiles>
     </PropertyGroup>
 
