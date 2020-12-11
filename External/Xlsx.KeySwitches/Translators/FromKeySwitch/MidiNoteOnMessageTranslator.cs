@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using ClosedXML.Excel;
 
 using KeySwitchManager.Domain.MidiMessages.Aggregate;
-using KeySwitchManager.Xlsx.KeySwitches.Models;
 using KeySwitchManager.Xlsx.KeySwitches.Services;
 
 namespace KeySwitchManager.Xlsx.KeySwitches.Translators.FromKeySwitch
@@ -31,11 +30,7 @@ namespace KeySwitchManager.Xlsx.KeySwitches.Translators.FromKeySwitch
 
             foreach( var message in midiMessages )
             {
-                var headerNames = new[] { midiData1HeaderName, midiData2HeaderName, midiData3HeaderName };
-
-                #warning TODO Domain Object midi data name update to data1, data2, data3 style
-                // NOW: chanel, data1, data2
-                var cellValues  = new[] { message.Channel, message.DataByte1, message.DataByte2 };
+                var cellValues = new[] { message.Channel, message.DataByte1, message.DataByte2 };
 
                 for( int i = 0; i < 3; i++ )
                 {

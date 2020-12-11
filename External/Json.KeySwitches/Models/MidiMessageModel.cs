@@ -1,3 +1,5 @@
+using KeySwitchManager.Domain.MidiMessages.Services;
+
 using Newtonsoft.Json;
 
 namespace KeySwitchManager.Json.KeySwitches.Models
@@ -23,14 +25,13 @@ namespace KeySwitchManager.Json.KeySwitches.Models
 
         public MidiMessageModel(
             int status,
-            int channel,
             int data1,
             int data2 )
         {
-            Status    = status;
-            Channel   = channel;
-            Data1 = data1;
-            Data2 = data2;
+            Status  = status;
+            Channel = MidiStatusHelper.GetChannel( status );
+            Data1   = data1;
+            Data2   = data2;
         }
 
     }

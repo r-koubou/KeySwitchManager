@@ -1,5 +1,3 @@
-using System;
-
 using KeySwitchManager.Gateways.KeySwitches;
 using KeySwitchManager.UseCases.KeySwitches.Exporting;
 
