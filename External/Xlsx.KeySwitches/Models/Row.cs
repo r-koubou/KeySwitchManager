@@ -1,5 +1,7 @@
 using System.Collections.Generic;
 
+using KeySwitchManager.Xlsx.KeySwitches.Services;
+
 namespace KeySwitchManager.Xlsx.KeySwitches.Models
 {
     public class Row
@@ -7,7 +9,7 @@ namespace KeySwitchManager.Xlsx.KeySwitches.Models
         public class MidiNote
         {
             public MidiNoteNumberCell Note { get; set; }
-                = new MidiNoteNumberCell( MidiNoteNumberCell.GetNoteNameList()[ 0 ] );
+                = new MidiNoteNumberCell( MidiNoteNameHelper.GetNoteNameList()[ 0 ] );
             public MidiNoteVelocityCell Velocity { get; set; }
                 = new MidiNoteVelocityCell( MidiNoteVelocityCell.MinValue );
         }
@@ -33,7 +35,7 @@ namespace KeySwitchManager.Xlsx.KeySwitches.Models
         public List<MidiControlChange> MidiControlChangeList { get; } = new List<MidiControlChange>();
         public List<MidiProgramChange> MidiProgramChangeList { get; } = new List<MidiProgramChange>();
 
-        public Dictionary<string, ExtraDataCell> Extra { get; set; } = new Dictionary<string, ExtraDataCell>();
+        public Dictionary<string, ExtraDataCell> Extra { get; } = new Dictionary<string, ExtraDataCell>();
 
         public Row( ArticulationNameCell name )
         {

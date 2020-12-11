@@ -30,4 +30,15 @@
       <PackageReference Include="ClosedXML" Version="0.95.3" />
     </ItemGroup>
 
+    <ItemGroup>
+      <None Remove="Template.xlsx" />
+      <EmbeddedResource Include="Template.xlsx">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </EmbeddedResource>
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="Translators\ToKeySwitch" />
+    </ItemGroup>
+
 </Project>
