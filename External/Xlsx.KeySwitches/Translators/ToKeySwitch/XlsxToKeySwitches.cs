@@ -10,7 +10,7 @@ using KeySwitchManager.Domain.MidiMessages.Value;
 using KeySwitchManager.Domain.Translations;
 using KeySwitchManager.Xlsx.KeySwitches.Models;
 
-namespace KeySwitchManager.Xlsx.KeySwitches.Translators
+namespace KeySwitchManager.Xlsx.KeySwitches.Translators.ToKeySwitch
 {
     internal class XlsxToKeySwitches : IDataTranslator<Workbook, IReadOnlyCollection<KeySwitch>>
     {

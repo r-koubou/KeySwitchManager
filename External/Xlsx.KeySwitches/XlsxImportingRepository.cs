@@ -8,6 +8,7 @@ using KeySwitchManager.Domain.KeySwitches.Aggregate;
 using KeySwitchManager.Gateways.KeySwitches;
 using KeySwitchManager.Xlsx.KeySwitches.Services;
 using KeySwitchManager.Xlsx.KeySwitches.Translators;
+using KeySwitchManager.Xlsx.KeySwitches.Translators.ToKeySwitch;
 
 namespace KeySwitchManager.Xlsx.KeySwitches
 {
