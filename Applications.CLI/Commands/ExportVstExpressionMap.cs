@@ -10,7 +10,7 @@ using Databases.LiteDB.KeySwitches.KeySwitches;
 
 using KeySwitchManager.Common.IO;
 using KeySwitchManager.Domain.Commons;
-using KeySwitchManager.Domain.Services;
+using KeySwitchManager.Domain.Helpers;
 using KeySwitchManager.Interactors.VstExpressionMap.Exporting;
 using KeySwitchManager.Presenters.VstExpressionMap;
 using KeySwitchManager.UseCases.VstExpressionMap.Exporting;
@@ -72,7 +72,7 @@ namespace KeySwitchManager.CLI.Commands
 
                 if( option.DirectoryStructure )
                 {
-                    outputDirectory = EntityDirectoryService.CreateDirectoryTree(
+                    outputDirectory = EntityDirectoryHelper.CreateDirectoryTree(
                         i.KeySwitch,
                         new DirectoryPath( outputDirectory )
                     ).Path;

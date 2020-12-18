@@ -2,9 +2,9 @@ using System;
 
 using KeySwitchManager.Domain.Commons;
 
-namespace KeySwitchManager.Domain.Services
+namespace KeySwitchManager.Domain.Helpers
 {
-    public static class EntityDateTimeService
+    public static class EntityDateTimeHelper
     {
         public static DateTime ToDateTime( EntityDateTime dateTime )
         {

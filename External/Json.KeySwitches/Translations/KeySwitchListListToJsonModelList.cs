@@ -2,8 +2,8 @@ using System.Collections.Generic;
 
 using KeySwitchManager.Domain.Commons;
 using KeySwitchManager.Domain.KeySwitches.Aggregate;
+using KeySwitchManager.Json.KeySwitches.Helpers;
 using KeySwitchManager.Json.KeySwitches.Models;
-using KeySwitchManager.Json.KeySwitches.Services;
 using KeySwitchManager.UseCases.KeySwitches.Translations;
 
 using Newtonsoft.Json;
@@ -20,7 +20,7 @@ namespace KeySwitchManager.Json.KeySwitches.Translations
 
             foreach( var i in source )
             {
-                keySwitchList.Add( KeySwitchToJsonModelService.Translate( i ) );
+                keySwitchList.Add( KeySwitchToJsonModelHelper.Translate( i ) );
             }
 
             var jsonText = JsonConvert.SerializeObject( keySwitchList, Formatted ? Formatting.Indented : Formatting.None );

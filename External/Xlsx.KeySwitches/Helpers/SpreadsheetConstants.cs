@@ -1,4 +1,4 @@
-namespace KeySwitchManager.Xlsx.KeySwitches.Services
+namespace KeySwitchManager.Xlsx.KeySwitches.Helpers
 {
     public static class SpreadsheetConstants
     {

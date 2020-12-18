@@ -6,7 +6,7 @@ using Databases.LiteDB.KeySwitches.KeySwitches;
 
 using KeySwitchManager.Common.Testing;
 using KeySwitchManager.Domain.MidiMessages.Aggregate;
-using KeySwitchManager.Domain.MidiMessages.Services;
+using KeySwitchManager.Domain.MidiMessages.Helpers;
 using KeySwitchManager.Domain.MidiMessages.Value;
 
 using NUnit.Framework;

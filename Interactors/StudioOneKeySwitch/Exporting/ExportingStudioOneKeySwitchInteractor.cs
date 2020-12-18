@@ -2,7 +2,7 @@ using System.Collections.Generic;
 
 using KeySwitchManager.Domain.KeySwitches.Aggregate;
 using KeySwitchManager.Gateways.KeySwitches;
-using KeySwitchManager.Interactors.Services;
+using KeySwitchManager.Interactors.Helpers;
 using KeySwitchManager.Presenters.StudioOneKeySwitch;
 using KeySwitchManager.UseCases.StudioOneKeySwitch.Exporting;
 using KeySwitchManager.UseCases.StudioOneKeySwitch.Translations;
@@ -46,7 +46,7 @@ namespace KeySwitchManager.Interactors.StudioOneKeySwitch.Exporting
             var instrumentName = request.InstrumentName;
 
             return CreateResponse(
-                SearchService.Search( Repository, request.Guid, developerName, productName, instrumentName )
+                SearchHelper.Search( Repository, request.Guid, developerName, productName, instrumentName )
             );
         }
     }

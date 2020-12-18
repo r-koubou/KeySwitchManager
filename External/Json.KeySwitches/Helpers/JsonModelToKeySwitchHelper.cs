@@ -6,9 +6,9 @@ using KeySwitchManager.Domain.MidiMessages;
 using KeySwitchManager.Domain.MidiMessages.Aggregate;
 using KeySwitchManager.Json.KeySwitches.Models;
 
-namespace KeySwitchManager.Json.KeySwitches.Services
+namespace KeySwitchManager.Json.KeySwitches.Helpers
 {
-    internal static class JsonModelToKeySwitchService
+    internal static class JsonModelToKeySwitchHelper
     {
         public static KeySwitch Translate( KeySwitchModel model )
         {

@@ -3,9 +3,9 @@ using System.IO;
 using KeySwitchManager.Domain.Commons;
 using KeySwitchManager.Domain.KeySwitches.Aggregate;
 
-namespace KeySwitchManager.Domain.Services
+namespace KeySwitchManager.Domain.Helpers
 {
-    public static class EntityDirectoryService
+    public static class EntityDirectoryHelper
     {
         public static DirectoryPath CreateDirectoryTree( KeySwitch keySwitch, DirectoryPath baseDirectory, params DirectoryPath[] subDirectories )
         {

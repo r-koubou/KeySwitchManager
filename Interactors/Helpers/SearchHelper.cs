@@ -7,9 +7,9 @@ using KeySwitchManager.Domain.KeySwitches.Aggregate;
 using KeySwitchManager.Domain.KeySwitches.Value;
 using KeySwitchManager.Gateways.KeySwitches;
 
-namespace KeySwitchManager.Interactors.Services
+namespace KeySwitchManager.Interactors.Helpers
 {
-    public static class SearchService
+    public static class SearchHelper
     {
         public static ICollection<KeySwitch> Search(
             IKeySwitchRepository repository,
