@@ -1,6 +1,6 @@
 using System;
 
-using KeySwitchManager.Xlsx.KeySwitches.Services;
+using KeySwitchManager.Xlsx.KeySwitches.Helpers;
 
 namespace KeySwitchManager.Xlsx.KeySwitches.Models
 {

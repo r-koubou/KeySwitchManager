@@ -1,6 +1,6 @@
 using System;
 
-namespace KeySwitchManager.Xlsx.KeySwitches.Services
+namespace KeySwitchManager.Xlsx.KeySwitches.Helpers
 {
     public class InvalidCellValueException : Exception
     {

@@ -9,16 +9,16 @@ using KeySwitchManager.Common.Text;
 using KeySwitchManager.Domain.Commons;
 using KeySwitchManager.Xlsx.KeySwitches.Models;
 
-namespace KeySwitchManager.Xlsx.KeySwitches.Services
+namespace KeySwitchManager.Xlsx.KeySwitches.Helpers
 {
-    public static class XlsxWorkBookParsingService
+    public static class XlsxWorkBookParsingHelper
     {
         private class ArticulationCellGroup
         {
             public ArticulationNameCell NameCell { get; set; } = ArticulationNameCell.Empty;
         }
 
-        static XlsxWorkBookParsingService()
+        static XlsxWorkBookParsingHelper()
         {
             // Workaround
             // "System.NotSupportedException: No data is available for encoding 1252"

@@ -2,50 +2,54 @@
 import sys
 import os
 
-argv = sys.argv[1:]
+argv   = sys.argv[1:]
+PREFIX = argv[ 0 ]
 
-# Load
+#region Load
+def load_impl( soutce_path, prefix = PREFIX ):
+        with open( soutce_path, mode = 'r' ) as f:
+            return f.read().format(
+                name = prefix
+            )
 
-with open( "UseCase.heredoc.cs", mode = "r", encoding = "utf-8") as f:
-    TEMPLATE_USECASE = f.read().format(
-        name = argv[ 0 ]
-    )
+# Load from template file
+TEMPLATES = [
+    {
+        "code" : load_impl( "UseCase.heredoc.cs" ),
+        "path" : "out/I{name}UseCase.cs".format( name = PREFIX )
+    },
+    {
+        "code" : load_impl( "Interactor.heredoc.cs" ),
+        "path" : "out/{name}Interactor.cs".format( name = PREFIX )
+    },
+    {
+        "code" : load_impl( "Interactor.testing.heredoc.cs" ),
+        "path" : "out/{name}InteractorTest.cs".format( name = PREFIX )
+    },
+    {
+        "code" : load_impl( "Request.heredoc.cs" ),
+        "path" : "out/{name}Request.cs".format( name = PREFIX )
+    },
+    {
+        "code" : load_impl( "Response.heredoc.cs" ),
+        "path" : "out/{name}Response.cs".format( name = PREFIX )
+    },
+    {
+        "code" : load_impl( "Presenter.heredoc.cs" ),
+        "path" : "out/I{name}Presenter.cs".format( name = PREFIX )
+    },
+]
+#endregion
 
-with open( "Interactor.heredoc.cs", mode = "r", encoding = "utf-8") as f:
-    TEMPLATE_INTERACTOR = f.read().format(
-        name = argv[ 0 ]
-    )
-
-with open( "Request.heredoc.cs", mode = "r", encoding = "utf-8") as f:
-    TEMPLATE_REQUEST = f.read().format(
-        name = argv[ 0 ]
-    )
-
-with open( "Response.heredoc.cs", mode = "r", encoding = "utf-8") as f:
-    TEMPLATE_RESPONSE = f.read().format(
-        name = argv[ 0 ]
-    )
-
-with open( "Presenter.heredoc.cs", mode = "r", encoding = "utf-8") as f:
-    TEMPLATE_PRESENTER = f.read().format(
-        name = argv[ 0 ]
-    )
-
-# Output
+#region Output
+print( '--------------------------------' )
+print( PREFIX )
+print( '--------------------------------' )
 
 os.makedirs( "out", exist_ok = True )
 
-with open( "out/I{name}UseCase.cs".format( name = argv[ 0 ] ), mode = "w", encoding = "utf-8") as f:
-    f.write( TEMPLATE_USECASE )
-
-with open( "out/{name}Interactor.cs".format( name = argv[ 0 ] ), mode = "w", encoding = "utf-8") as f:
-    f.write( TEMPLATE_INTERACTOR )
-
-with open( "out/{name}Request.cs".format( name = argv[ 0 ] ), mode = "w", encoding = "utf-8") as f:
-    f.write( TEMPLATE_REQUEST )
-
-with open( "out/{name}Response.cs".format( name = argv[ 0 ] ), mode = "w", encoding = "utf-8") as f:
-    f.write( TEMPLATE_RESPONSE )
-
-with open( "out/I{name}Presenter.cs".format( name = argv[ 0 ] ), mode = "w", encoding = "utf-8") as f:
-    f.write( TEMPLATE_PRESENTER )
+for x in TEMPLATES:
+    print( x[ 'path' ] )
+    with open( x[ 'path' ], mode = "w", encoding = "utf-8" ) as f:
+        f.write( x[ 'code' ] )
+#endregion

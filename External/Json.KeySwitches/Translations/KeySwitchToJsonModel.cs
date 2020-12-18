@@ -1,7 +1,7 @@
 using KeySwitchManager.Domain.Commons;
 using KeySwitchManager.Domain.KeySwitches.Aggregate;
 using KeySwitchManager.Domain.Translations;
-using KeySwitchManager.Json.KeySwitches.Services;
+using KeySwitchManager.Json.KeySwitches.Helpers;
 
 using Newtonsoft.Json;
 
@@ -13,7 +13,7 @@ namespace KeySwitchManager.Json.KeySwitches.Translations
 
         public IText Translate( KeySwitch source )
         {
-            var jsonRoot = KeySwitchToJsonModelService.Translate( source );
+            var jsonRoot = KeySwitchToJsonModelHelper.Translate( source );
             var jsonText = JsonConvert.SerializeObject( jsonRoot, Formatted ? Formatting.Indented : Formatting.None );
             return new PlainText( jsonText );
         }

@@ -1,15 +1,15 @@
 using System.Collections.Generic;
 
+using KeySwitchManager.Domain.Helpers;
 using KeySwitchManager.Domain.KeySwitches;
 using KeySwitchManager.Domain.KeySwitches.Aggregate;
 using KeySwitchManager.Domain.KeySwitches.Value;
 using KeySwitchManager.Domain.MidiMessages.Aggregate;
-using KeySwitchManager.Domain.Services;
 using KeySwitchManager.Json.KeySwitches.Models;
 
-namespace KeySwitchManager.Json.KeySwitches.Services
+namespace KeySwitchManager.Json.KeySwitches.Helpers
 {
-    internal static class KeySwitchToJsonModelService
+    internal static class KeySwitchToJsonModelHelper
     {
         public static KeySwitchModel Translate( KeySwitch source )
         {
@@ -42,8 +42,8 @@ namespace KeySwitchManager.Json.KeySwitches.Services
                 source.Id.Value,
                 source.Author.Value,
                 source.Description.Value,
-                EntityDateTimeService.ToDateTime( source.Created ),
-                EntityDateTimeService.ToDateTime( source.LastUpdated ),
+                EntityDateTimeHelper.ToDateTime( source.Created ),
+                EntityDateTimeHelper.ToDateTime( source.LastUpdated ),
                 source.DeveloperName.Value,
                 source.ProductName.Value,
                 source.InstrumentName.Value,

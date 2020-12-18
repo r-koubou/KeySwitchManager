@@ -5,7 +5,7 @@ using ClosedXML.Excel;
 using KeySwitchManager.Domain.KeySwitches.Aggregate;
 using KeySwitchManager.Domain.MidiMessages.Aggregate;
 using KeySwitchManager.Domain.Translations;
-using KeySwitchManager.Xlsx.KeySwitches.Services;
+using KeySwitchManager.Xlsx.KeySwitches.Helpers;
 
 namespace KeySwitchManager.Xlsx.KeySwitches.Translators.FromKeySwitch
 {

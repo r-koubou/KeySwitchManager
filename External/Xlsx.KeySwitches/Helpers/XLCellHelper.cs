@@ -6,7 +6,7 @@ using ClosedXML.Excel;
 using KeySwitchManager.Domain.KeySwitches.Aggregate;
 using KeySwitchManager.Domain.KeySwitches.Value;
 
-namespace KeySwitchManager.Xlsx.KeySwitches.Services
+namespace KeySwitchManager.Xlsx.KeySwitches.Helpers
 {
     // ReSharper disable once InconsistentNaming
     public static class XLCellHelper

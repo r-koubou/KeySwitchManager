@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using ClosedXML.Excel;
 
 using KeySwitchManager.Domain.MidiMessages.Aggregate;
-using KeySwitchManager.Xlsx.KeySwitches.Services;
+using KeySwitchManager.Xlsx.KeySwitches.Helpers;
 
 namespace KeySwitchManager.Xlsx.KeySwitches.Translators.FromKeySwitch
 {

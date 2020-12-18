@@ -1,4 +1,4 @@
-namespace KeySwitchManager.Domain.MidiMessages.Services
+namespace KeySwitchManager.Domain.MidiMessages.Helpers
 {
     public static class MidiStatusHelper
     {

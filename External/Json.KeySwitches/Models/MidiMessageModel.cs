@@ -1,4 +1,4 @@
-using KeySwitchManager.Domain.MidiMessages.Services;
+using KeySwitchManager.Domain.MidiMessages.Helpers;
 
 using Newtonsoft.Json;
 

@@ -2,10 +2,10 @@ using System.Collections.Generic;
 
 using Databases.LiteDB.KeySwitches.KeySwitches.Models;
 
+using KeySwitchManager.Domain.Helpers;
 using KeySwitchManager.Domain.KeySwitches.Aggregate;
 using KeySwitchManager.Domain.KeySwitches.Value;
 using KeySwitchManager.Domain.MidiMessages.Aggregate;
-using KeySwitchManager.Domain.Services;
 using KeySwitchManager.Domain.Translations;
 
 namespace Databases.LiteDB.KeySwitches.KeySwitches.Translations
@@ -41,8 +41,8 @@ namespace Databases.LiteDB.KeySwitches.KeySwitches.Translations
                 source.Id.Value,
                 source.Author.Value,
                 source.Description.Value,
-                EntityDateTimeService.ToDateTime( source.Created ),
-                EntityDateTimeService.ToDateTime( source.LastUpdated ),
+                EntityDateTimeHelper.ToDateTime( source.Created ),
+                EntityDateTimeHelper.ToDateTime( source.LastUpdated ),
                 source.DeveloperName.Value,
                 source.ProductName.Value,
                 source.InstrumentName.Value,
