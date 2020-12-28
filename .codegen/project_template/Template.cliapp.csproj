@@ -8,7 +8,7 @@
         <RootNamespace>$$PROJECT_NAME$$</RootNamespace>
         <Company>R-Koubou</Company>
         <Product>$$PROJECT_NAME$$</Product>
-        <Version>0.1.0</Version>
+        <Version>0.1.1</Version>
         <Description>$$PROJECT_NAME$$ app</Description>
         <Nullable>enable</Nullable>
     </PropertyGroup>

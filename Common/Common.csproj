@@ -8,7 +8,7 @@
         <Product>KeySwitchManager.Common</Product>
         <AssemblyName>KeySwitchManager.Common</AssemblyName>
         <RootNamespace>KeySwitchManager.Common</RootNamespace>
-        <Version>0.1.0</Version>
+        <Version>0.1.1</Version>
         <Description>KeySwitchManager.Common module</Description>
         <Nullable>enable</Nullable>
         <!-- Nuget -->

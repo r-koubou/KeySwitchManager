@@ -8,7 +8,7 @@
         <Product>KeySwitchManager.Gateways</Product>
         <AssemblyName>KeySwitchManager.Gateways</AssemblyName>
         <RootNamespace>KeySwitchManager.Gateways</RootNamespace>
-        <Version>0.1.0</Version>
+        <Version>0.1.1</Version>
         <Description>KeySwitchManager.Gateways module</Description>
         <Nullable>enable</Nullable>
         <!-- Nuget -->

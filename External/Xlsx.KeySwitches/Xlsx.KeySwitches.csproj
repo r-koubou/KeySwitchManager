@@ -8,7 +8,7 @@
         <Product>KeySwitchManager.Xlsx.KeySwitches</Product>
         <AssemblyName>KeySwitchManager.Xlsx.KeySwitches</AssemblyName>
         <RootNamespace>KeySwitchManager.Xlsx.KeySwitches</RootNamespace>
-        <Version>0.1.0</Version>
+        <Version>0.1.1</Version>
         <Description>KeySwitchManager.Xlsx.KeySwitches module</Description>
         <Nullable>enable</Nullable>
         <!-- Nuget -->
@@ -32,9 +32,7 @@
 
     <ItemGroup>
       <None Remove="Template.xlsx" />
-      <EmbeddedResource Include="Template.xlsx">
-        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      </EmbeddedResource>
+      <EmbeddedResource Include="Template.xlsx" />
     </ItemGroup>
 
 </Project>

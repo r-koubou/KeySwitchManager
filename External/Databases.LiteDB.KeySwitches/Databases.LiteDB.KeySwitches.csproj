@@ -8,7 +8,7 @@
         <Product>Databases.LiteDB.KeySwitches</Product>
         <AssemblyName>Databases.LiteDB.KeySwitches</AssemblyName>
         <RootNamespace>Databases.LiteDB.KeySwitches</RootNamespace>
-        <Version>0.1.0</Version>
+        <Version>0.1.1</Version>
         <Description>Databases.LiteDB.KeySwitches module</Description>
         <Nullable>enable</Nullable>
         <!-- Nuget -->

@@ -8,7 +8,7 @@
         <Product>KeySwitchManager.Xml.VstExpressionMap</Product>
         <AssemblyName>KeySwitchManager.Xml.VstExpressionMap</AssemblyName>
         <RootNamespace>KeySwitchManager.Xml.VstExpressionMap</RootNamespace>
-        <Version>0.1.0</Version>
+        <Version>0.1.1</Version>
         <Description>KeySwitchManager.Xml.VstExpressionMap module</Description>
         <Nullable>enable</Nullable>
         <!-- Nuget -->

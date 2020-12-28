@@ -8,7 +8,7 @@
         <Product>KeySwitchManager.Domain</Product>
         <AssemblyName>KeySwitchManager.Domain</AssemblyName>
         <RootNamespace>KeySwitchManager.Domain</RootNamespace>
-        <Version>0.1.0</Version>
+        <Version>0.1.1</Version>
         <Description>KeySwitchManager.Domain module</Description>
         <Nullable>enable</Nullable>
         <!-- Nuget -->
