@@ -4,15 +4,7 @@
         <ProjectName>KeySwitchManager.CLI</ProjectName>
         <ProjectFile>Applications.CLI.csproj</ProjectFile>
         <BuildDate>$([System.DateTime]::Now.ToString("yyyyMMdd"))</BuildDate>
-        <OtherDeployingFiles>
-            ../NOTICE.md;
-            ../README.md;
-            ../README.ja.md;
-            VERSION.md
-        </OtherDeployingFiles>
     </PropertyGroup>
-
-    <Import Project="GenerateDotnetVersionLaunchShellScript.msbuild.proj" />
 
     <Target Name="Initialize">
         <!-- Build for Specific OS native code -->
@@ -69,24 +61,7 @@
 
     </Target>
 
-    <Target Name="GenerateDotnetLauncer" Condition="$(ForDotNetCore) == 'true'">
-        <WriteLinesToFile
-                File="$(PublishDir)/$(ProjectName).sh"
-                Overwrite="true"
-                Lines="$(BashLauncherText)"/>
-
-        <WriteLinesToFile
-                File="$(PublishDir)/$(ProjectName).bat"
-                Overwrite="true"
-                Lines="$(DosLauncherText)"/>
-    </Target>
-
-    <Target Name="Archive" DependsOnTargets="Build;GenerateDotnetLauncer">
-
-        <Copy
-                SourceFiles="$(OtherDeployingFiles)"
-                DestinationFolder="$(PublishDir)" />
-
+    <Target Name="Archive" DependsOnTargets="Build">
         <ZipDirectory
                 SourceDirectory="$(PublishDir)"
                 DestinationFile="publish/$(Prefix)-$(BuildDate).zip"
