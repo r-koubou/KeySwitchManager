@@ -44,13 +44,13 @@
         <!-- Build for Specific OS native code -->
         <PropertyGroup Condition="$(ForDotNetCore) == 'false'">
             <ProprtyArgs>
-                PublishDir=$(PublishDir);Configuration=$(Configuration);SelfContained=true;RuntimeIdentifier=$(RID)
+                OutDir=$(PublishDir);PublishDir=$(PublishDir);Configuration=$(Configuration);SelfContained=true;RuntimeIdentifier=$(RID)
             </ProprtyArgs>
         </PropertyGroup>
         <!-- Build for .net Core code -->
         <PropertyGroup Condition="$(ForDotNetCore) == 'true'">
             <ProprtyArgs>
-                PublishDir=$(PublishDir);Configuration=$(Configuration)
+                OutDir=$(PublishDir);PublishDir=$(PublishDir);Configuration=$(Configuration)
             </ProprtyArgs>
         </PropertyGroup>
 
