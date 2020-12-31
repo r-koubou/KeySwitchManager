@@ -6,6 +6,8 @@ namespace KeySwitchManager.Domain.Commons
     {
         public string Path { get; }
         public bool Exists => Directory.Exists( Path );
+        public bool IsFile => false;
+        public bool IsDirectory => true;
 
         public DirectoryPath( string path )
         {
