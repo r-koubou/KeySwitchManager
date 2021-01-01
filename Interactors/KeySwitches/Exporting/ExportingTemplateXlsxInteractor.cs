@@ -29,7 +29,7 @@ namespace KeySwitchManager.Interactors.KeySwitches.Exporting
                 DateTime.Now,
                 DateTime.Now,
                 "Developer Name",
-                "Product name",
+                "KeySwitchManager_Template",
                 "Instrument name",
                 new List<Articulation>
                 {

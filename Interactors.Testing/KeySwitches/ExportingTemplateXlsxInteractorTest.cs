@@ -14,7 +14,7 @@ namespace KeySwitchManager.Interactors.Testing.KeySwitches
         [Test]
         public void ExportTest()
         {
-            var xlsxRepository = new XlsxExportingRepository( new FilePath( "out.xlsx" ) );
+            var xlsxRepository = new XlsxExportingRepository( new DirectoryPath( "." ) );
             var interactor = new ExportingTemplateXlsxInteractor( xlsxRepository );
             var response = interactor.Execute( new ExportingTemplateXlsxRequest() );
 

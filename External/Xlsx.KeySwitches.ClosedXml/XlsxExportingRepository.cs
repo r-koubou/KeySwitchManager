@@ -1,5 +1,7 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
+using System.Linq;
 
 using ClosedXML.Excel;
 
@@ -14,11 +16,11 @@ namespace KeySwitchManager.Xlsx.KeySwitches.ClosedXml
 {
     public class XlsxExportingRepository : IKeySwitchSpreadSheetRepository
     {
-        public IPath XlsxPath { get; }
+        public DirectoryPath XlsxDirectory { get; }
 
-        public XlsxExportingRepository( IPath xlsxFilePath )
+        public XlsxExportingRepository( DirectoryPath xlsxFileDirectory )
         {
-            XlsxPath = xlsxFilePath;
+            XlsxDirectory = xlsxFileDirectory;
         }
 
         public void Dispose()
@@ -31,21 +33,45 @@ namespace KeySwitchManager.Xlsx.KeySwitches.ClosedXml
 
         public bool Save( IReadOnlyCollection<KeySwitch> keySwitches )
         {
-            using var template = new XLWorkbook(
-                StreamHelper.GetAssemblyResourceStream<KeySwitchInfo>( "Template.xlsx" )
-            );
+            var productList = new Dictionary<string, List<KeySwitch>>();
 
-            var translator = new KeySwitchToXlsx( template );
-
-            using var workbook = translator.Translate( keySwitches );
-
-            // Remove temporary worksheet
-            if( workbook.TryGetWorksheet( SpreadsheetConstants.TemplateSheetName, out var removingSheet ) )
+            foreach( var keySwitch in keySwitches )
             {
-                removingSheet.Delete();
+                if( !productList.ContainsKey( keySwitch.ProductName.Value ) )
+                {
+                    productList[ keySwitch.ProductName.Value ] = new List<KeySwitch>();
+                }
+                productList[ keySwitch.ProductName.Value ].Add( keySwitch );
             }
 
-            workbook.SaveAs( XlsxPath.Path );
+            foreach( var product in productList.Keys )
+            {
+                using var template = new XLWorkbook(
+                    StreamHelper.GetAssemblyResourceStream<KeySwitchInfo>( "Template.xlsx" )
+                );
+
+                var translator = new KeySwitchToXlsx( template );
+
+                using var workbook = translator.Translate(
+                    productList[ product ]
+                       .OrderBy( x => x.InstrumentName.Value ).ToArray()
+                );
+
+                // Remove temporary worksheet
+                if( workbook.TryGetWorksheet( SpreadsheetConstants.TemplateSheetName, out var removingSheet ) )
+                {
+                    removingSheet.Delete();
+                }
+
+                var outputFilePath = Path.Combine( XlsxDirectory.Path, $"{product}.xlsx" );
+
+                if( !XlsxDirectory.Exists )
+                {
+                    Directory.CreateDirectory( XlsxDirectory.Path );
+                }
+
+                workbook.SaveAs( outputFilePath );
+            }
 
             return true;
         }

@@ -61,7 +61,7 @@ namespace KeySwitchManager.Interactors.Testing.KeySwitches
             dbRepository.Save( entity );
             #endregion
 
-            var xlsxRepository = new XlsxExportingRepository( new FilePath( "out.xlsx" ) );
+            var xlsxRepository = new XlsxExportingRepository( new DirectoryPath( "." ) );
             var interactor = new ExportingXlsxInteractor( xlsxRepository );
             var response = interactor.Execute( new ExportingXlsxRequest( new[] { entity } ) );
 

@@ -7,6 +7,7 @@ using CommandLine;
 
 using Databases.LiteDB.KeySwitches.KeySwitches;
 
+using KeySwitchManager.Common.Text;
 using KeySwitchManager.Domain.Commons;
 using KeySwitchManager.Domain.KeySwitches.Aggregate;
 using KeySwitchManager.Domain.KeySwitches.Value;
@@ -26,16 +27,14 @@ namespace KeySwitchManager.CLI.Commands
             [Option( 'd', "developer", Required = true)]
             public string Developer { get; set; } = string.Empty;
 
-            [Option( 'p', "product", Required = true )]
+            [Option( 'p', "product" )]
             public string Product { get; set; } = string.Empty;
 
             [Option( 'f', "database", Required = true )]
             public string DatabasePath { get; set; } = string.Empty;
 
-            [Option( 'o', "output", Required = true )]
+            [Option( 'o', "output-dir", Required = true )]
             public string OutputPath { get; set; } = string.Empty;
-            [Option( 'l', "log" )]
-            public string LogFilePath { get; set; } = string.Empty;
         }
 
         public int Execute( ICommandOption opt )
@@ -47,7 +46,7 @@ namespace KeySwitchManager.CLI.Commands
 
             var entities = Query( option );
 
-            using var xlsxRepository = new XlsxExportingRepository( new FilePath( option.OutputPath ) );
+            using var xlsxRepository = new XlsxExportingRepository( new DirectoryPath( option.OutputPath ) );
             var interactor = new ExportingXlsxInteractor( xlsxRepository );
             var task = Task.Run( () => interactor.Execute( new ExportingXlsxRequest( entities ) ) );
 
@@ -65,10 +64,15 @@ namespace KeySwitchManager.CLI.Commands
         private static IReadOnlyCollection<KeySwitch> Query( CommandOption option )
         {
             using var repository = new LiteDbKeySwitchRepository( option.DatabasePath );
-            var developerName = new DeveloperName( option.Developer );
-            var productName = new ProductName( option.Product );
 
-            return repository.Find( developerName, productName );
+            var developerName = new DeveloperName( option.Developer );
+
+            if( StringHelper.IsNullOrTrimEmpty( option.Product ) )
+            {
+                return repository.Find( developerName );
+            }
+
+            return repository.Find( developerName, new ProductName( option.Product ) );
         }
     }
 }

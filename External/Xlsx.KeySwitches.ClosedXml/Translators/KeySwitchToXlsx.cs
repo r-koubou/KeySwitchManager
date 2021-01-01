@@ -34,7 +34,7 @@ namespace KeySwitchManager.Xlsx.KeySwitches.ClosedXml.Translators
         private static void TranslateWorkSheet( KeySwitch keySwitch, XLWorkbook book )
         {
             var row = SpreadsheetConstants.RowDataBegin;
-            var column = 0;
+            var column = SpreadsheetConstants.ColumnDataBegin;
 
             var newWorksheet = book.Worksheet( SpreadsheetConstants.TemplateSheetName )
                                    .CopyTo( keySwitch.InstrumentName.Value, book.Worksheets.Count - 1 );
