@@ -1,5 +1,7 @@
+using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
+using System.Threading.Tasks;
 
 using CommandLine;
 
@@ -10,7 +12,6 @@ using KeySwitchManager.Domain.KeySwitches.Aggregate;
 using KeySwitchManager.Domain.KeySwitches.Value;
 using KeySwitchManager.Interactors.KeySwitches.Exporting;
 using KeySwitchManager.UseCases.KeySwitches.Exporting;
-using KeySwitchManager.Xlsx.KeySwitches;
 using KeySwitchManager.Xlsx.KeySwitches.ClosedXml;
 
 namespace KeySwitchManager.CLI.Commands
@@ -39,15 +40,26 @@ namespace KeySwitchManager.CLI.Commands
 
         public int Execute( ICommandOption opt )
         {
+            var progress = new[] { "|", "/", "-", "\\" };
+            var progressCount = 0;
+
             var option = (CommandOption)opt;
 
             var entities = Query( option );
 
             using var xlsxRepository = new XlsxExportingRepository( new FilePath( option.OutputPath ) );
             var interactor = new ExportingXlsxInteractor( xlsxRepository );
-            var response = interactor.Execute( new ExportingXlsxRequest( entities ) );
+            var task = Task.Run( () => interactor.Execute( new ExportingXlsxRequest( entities ) ) );
 
-            return response.Result ? 0 : 1;
+            while( !task.IsCompleted )
+            {
+                Console.Write( $"\rExporting ... {progress[ progressCount ]}" );
+                progressCount = ( progressCount + 1 ) % progress.Length;
+                Task.Delay( 200 ).Wait();
+            }
+            Console.WriteLine();
+
+            return task.Result.Result ? 0 : 1;
         }
 
         private static IReadOnlyCollection<KeySwitch> Query( CommandOption option )
