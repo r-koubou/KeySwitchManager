@@ -10,8 +10,8 @@ namespace Domain.Testing.KeySwitches.Value
         [Test]
         public void EmptyNameTest()
         {
-            var var1 =  new Author( "" );
-            var var2 =  new Author( default! );
+            var var1 =  IAuthorFactory.Default.Create( "" );
+            var var2 =  IAuthorFactory.Default.Create( default! );
 
             Assert.AreEqual( string.Empty, var1.Value );
             Assert.AreEqual( string.Empty, var2.Value );

@@ -18,49 +18,44 @@ namespace KeySwitchManager.Domain.KeySwitches.Value
 
         public ExtraDataValue( string value )
         {
-            StringHelper.ValidateNullOrTrimEmpty( value );
             Value = value;
         }
 
         public override string ToString() => Value;
 
-        #region Equality Members
+        #region Equality
         public bool Equals( ExtraDataValue? other )
         {
-            if( ReferenceEquals( null, other ) )
-            {
-                return false;
-            }
-
-            if( ReferenceEquals( this, other ) )
-            {
-                return true;
-            }
-
-            return Value == other.Value;
+            return other != null && other.Value == Value;
         }
 
-        public override bool Equals( object? obj )
+        public int CompareTo( ExtraDataValue? other )
         {
-            if( ReferenceEquals( null, obj ) )
+            if( other == null )
             {
-                return false;
+                throw new ArgumentNullException( nameof( other ) );
             }
 
-            if( ReferenceEquals( this, obj ) )
-            {
-                return true;
-            }
-
-            if( obj.GetType() != this.GetType() )
-            {
-                return false;
-            }
-
-            return Equals( (ExtraDataValue)obj );
+            return string.Compare( other.Value, Value, StringComparison.Ordinal );
         }
-
-        public override int GetHashCode() => Value.GetHashCode();
-        #endregion
+        #endregion Equality
     }
+
+    #region Factory
+    public interface IExtraDataValueFactory
+    {
+        public static IExtraDataValueFactory Default => new DefaultFactory();
+
+        ExtraDataValue Create( string value );
+
+        private class DefaultFactory : IExtraDataValueFactory
+        {
+            public ExtraDataValue Create( string value )
+            {
+                StringHelper.ValidateNullOrTrimEmpty( value );
+                return new ExtraDataValue( value );
+            }
+        }
+    }
+    #endregion Factory
 }

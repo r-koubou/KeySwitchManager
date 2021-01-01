@@ -11,9 +11,9 @@ namespace Domain.Testing.KeySwitches.Value
         [Test]
         public void EmptyNameTest()
         {
-            Assert.Throws<InvalidNameException>( () =>  new DeveloperName( "" ) );
-            Assert.Throws<InvalidNameException>( () =>  new DeveloperName( "  " ) );
-            new DeveloperName( "Hoge" );
+            Assert.Throws<InvalidNameException>( () => IDeveloperNameFactory.Default.Create( "" ) );
+            Assert.Throws<InvalidNameException>( () => IDeveloperNameFactory.Default.Create( "  " ) );
+            _ = IDeveloperNameFactory.Default.Create( "Hoge" );
         }
 
         [Test]

@@ -11,9 +11,9 @@ namespace Domain.Testing.KeySwitches.Value
         [Test]
         public void EmptyNameTest()
         {
-            Assert.Throws<NullOrEmptyException>( () =>  new ExtraDataValue( "" ) );
-            Assert.Throws<NullOrEmptyException>( () =>  new ExtraDataValue( "  " ) );
-            new ExtraDataValue( "Hoge" );
+            Assert.Throws<NullOrEmptyException>( () => IExtraDataValueFactory.Default.Create( "" ) );
+            Assert.Throws<NullOrEmptyException>( () => IExtraDataValueFactory.Default.Create( "  " ) );
+            _ = IExtraDataValueFactory.Default.Create( "Hoge" );
         }
 
         [Test]

@@ -35,6 +35,14 @@ namespace KeySwitchManager.Common.Text
             }
         }
 
+        public static void ValidateNullOrTrimEmpty<TException>(  string text ) where TException : System.Exception, new()
+        {
+            if( IsNullOrTrimEmpty( text ) )
+            {
+                throw new TException();
+            }
+        }
+
         public static void ValidateNull( string text )
         {
             if( text == null )

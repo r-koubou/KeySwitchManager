@@ -9,51 +9,46 @@ namespace KeySwitchManager.Domain.KeySwitches.Value
     {
         public string Value { get; }
 
-        public ExtraDataKey( string key )
+        public ExtraDataKey( string value )
         {
-            StringHelper.ValidateNullOrTrimEmpty( key );
-            Value = key;
+            Value = value;
         }
 
         public override string ToString() => Value;
 
-        #region Equality Members
+        #region Equality
         public bool Equals( ExtraDataKey? other )
         {
-            if( ReferenceEquals( null, other ) )
-            {
-                return false;
-            }
-
-            if( ReferenceEquals( this, other ) )
-            {
-                return true;
-            }
-
-            return Value == other.Value;
+            return other != null && other.Value == Value;
         }
 
-        public override bool Equals( object? obj )
+        public int CompareTo( ExtraDataKey? other )
         {
-            if( ReferenceEquals( null, obj ) )
+            if( other == null )
             {
-                return false;
+                throw new ArgumentNullException( nameof( other ) );
             }
 
-            if( ReferenceEquals( this, obj ) )
-            {
-                return true;
-            }
-
-            if( obj.GetType() != this.GetType() )
-            {
-                return false;
-            }
-
-            return Equals( (ExtraDataKey)obj );
+            return string.Compare( other.Value, Value, StringComparison.Ordinal );
         }
-
-        public override int GetHashCode() => Value.GetHashCode();
-        #endregion
+        #endregion Equality
     }
+
+    #region Factory
+    public interface IExtraDataKeyFactory
+    {
+        public static IExtraDataKeyFactory Default => new DefaultFactory();
+
+        ExtraDataKey Create( string value );
+
+        private class DefaultFactory : IExtraDataKeyFactory
+        {
+            public ExtraDataKey Create( string value )
+            {
+                StringHelper.ValidateNullOrTrimEmpty( value );
+                return new ExtraDataKey( value );
+            }
+        }
+    }
+    #endregion Factory
 }

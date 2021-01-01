@@ -9,7 +9,7 @@ using KeySwitchManager.Common.Text;
 
 namespace KeySwitchManager.Domain.MidiMessages.Value
 {
-    public class MidiNoteName : IEquatable<MidiNoteName>
+    public class MidiNoteName : IEquatable<MidiNoteName>, IComparable<MidiNoteName>
     {
         #region Note names
         [SuppressMessage( "ReSharper", "InconsistentNaming" )]
@@ -440,11 +440,24 @@ namespace KeySwitchManager.Domain.MidiMessages.Value
             return new MidiNoteNumber( number.First().index );
         }
 
+        public override string ToString() => Value;
+
+        #region Equality
         public bool Equals( MidiNoteName? other )
         {
             return other != null && other.Value == Value;
         }
 
-        public override string ToString() => Value;
+        public int CompareTo( MidiNoteName? other )
+        {
+            if( other == null )
+            {
+                throw new ArgumentNullException( nameof( other ) );
+            }
+
+            return string.Compare( other.Value, Value, StringComparison.Ordinal );
+        }
+        #endregion Equality
+
     }
 }

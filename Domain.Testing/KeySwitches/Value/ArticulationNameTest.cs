@@ -11,9 +11,9 @@ namespace Domain.Testing.KeySwitches.Value
         [Test]
         public void EmptyNameTest()
         {
-            Assert.Throws<InvalidNameException>( () =>  new ArticulationName( "" ) );
-            Assert.Throws<InvalidNameException>( () =>  new ArticulationName( "  " ) );
-            new ArticulationName( "Hoge" );
+            Assert.Throws<InvalidNameException>( () =>  IArticulationNameFactory.Default.Create( "" ) );
+            Assert.Throws<InvalidNameException>( () =>  IArticulationNameFactory.Default.Create( "  " ) );
+            _ = IArticulationNameFactory.Default.Create( "Hoge" );
         }
 
         [Test]

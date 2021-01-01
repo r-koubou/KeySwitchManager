@@ -11,9 +11,9 @@ namespace Domain.Testing.KeySwitches.Value
         [Test]
         public void EmptyNameTest()
         {
-            Assert.Throws<InvalidNameException>( () =>  new InstrumentName( "" ) );
-            Assert.Throws<InvalidNameException>( () =>  new InstrumentName( "  " ) );
-            new InstrumentName( "Hoge" );
+            Assert.Throws<InvalidNameException>( () => IInstrumentNameFactory.Default.Create( "" ) );
+            Assert.Throws<InvalidNameException>( () => IInstrumentNameFactory.Default.Create( "  " ) );
+            _ = IInstrumentNameFactory.Default.Create( "Hoge" );
         }
 
         [Test]

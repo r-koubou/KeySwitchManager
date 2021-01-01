@@ -7,23 +7,50 @@ namespace KeySwitchManager.Domain.KeySwitches.Value
     /// <summary>
     /// A created author name
     /// </summary>
-    public class Author : IEquatable<Author>
+    public class Author : IEquatable<Author>, IComparable<Author>
     {
-        public static readonly Author Empty = new Author( string.Empty );
-
         public string Value { get; }
 
-        public Author( string name )
+        public Author( string value )
         {
-            Value = StringHelper.IsNullOrTrimEmpty( name ) ? string.Empty : name;
+            Value = value;
         }
 
+        public override string ToString() => Value;
+
+        #region Equality
         public bool Equals( Author? other )
         {
             return other != null && other.Value == Value;
         }
 
-        public override string ToString() => Value;
+        public int CompareTo( Author? other )
+        {
+            if( other == null )
+            {
+                throw new ArgumentNullException( nameof( other ) );
+            }
 
+            return string.Compare( other.Value, Value, StringComparison.Ordinal );
+        }
+        #endregion Equality
     }
+
+    #region Factory
+    public interface IAuthorFactory
+    {
+        public static IAuthorFactory Default => new DefaultFactory();
+
+        Author Create( string value );
+
+        private class DefaultFactory : IAuthorFactory
+        {
+            public Author Create( string value )
+            {
+                value = StringHelper.IsNullOrTrimEmpty( value ) ? string.Empty : value;
+                return new Author( value );
+            }
+        }
+    }
+    #endregion Factory
 }
