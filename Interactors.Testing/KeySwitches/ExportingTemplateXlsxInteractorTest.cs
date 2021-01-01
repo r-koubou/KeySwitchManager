@@ -2,6 +2,7 @@ using KeySwitchManager.Domain.Commons;
 using KeySwitchManager.Interactors.KeySwitches.Exporting;
 using KeySwitchManager.UseCases.KeySwitches.Exporting;
 using KeySwitchManager.Xlsx.KeySwitches;
+using KeySwitchManager.Xlsx.KeySwitches.ClosedXml;
 
 using NUnit.Framework;
 
@@ -13,7 +14,7 @@ namespace KeySwitchManager.Interactors.Testing.KeySwitches
         [Test]
         public void ExportTest()
         {
-            var xlsxRepository = new XlsxExportingRepository( new FilePath( "out.xlsx" ) );
+            var xlsxRepository = new XlsxExportingRepository( new DirectoryPath( "." ) );
             var interactor = new ExportingTemplateXlsxInteractor( xlsxRepository );
             var response = interactor.Execute( new ExportingTemplateXlsxRequest() );
 

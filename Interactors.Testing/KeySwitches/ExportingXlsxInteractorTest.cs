@@ -12,6 +12,7 @@ using KeySwitchManager.Domain.MidiMessages.Aggregate;
 using KeySwitchManager.Interactors.KeySwitches.Exporting;
 using KeySwitchManager.UseCases.KeySwitches.Exporting;
 using KeySwitchManager.Xlsx.KeySwitches;
+using KeySwitchManager.Xlsx.KeySwitches.ClosedXml;
 
 using NUnit.Framework;
 
@@ -60,7 +61,7 @@ namespace KeySwitchManager.Interactors.Testing.KeySwitches
             dbRepository.Save( entity );
             #endregion
 
-            var xlsxRepository = new XlsxExportingRepository( new FilePath( "out.xlsx" ) );
+            var xlsxRepository = new XlsxExportingRepository( new DirectoryPath( "." ) );
             var interactor = new ExportingXlsxInteractor( xlsxRepository );
             var response = interactor.Execute( new ExportingXlsxRequest( new[] { entity } ) );
 

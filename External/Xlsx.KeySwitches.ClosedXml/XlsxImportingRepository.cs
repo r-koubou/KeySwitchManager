@@ -6,10 +6,10 @@ using KeySwitchManager.Common.IO;
 using KeySwitchManager.Domain.Commons;
 using KeySwitchManager.Domain.KeySwitches.Aggregate;
 using KeySwitchManager.Gateways.KeySwitches;
-using KeySwitchManager.Xlsx.KeySwitches.Helpers;
-using KeySwitchManager.Xlsx.KeySwitches.Translators.ToKeySwitch;
+using KeySwitchManager.Xlsx.KeySwitches.Translators;
+using KeySwitchManager.Xlsx.KeySwitches.ClosedXml.Helpers;
 
-namespace KeySwitchManager.Xlsx.KeySwitches
+namespace KeySwitchManager.Xlsx.KeySwitches.ClosedXml
 {
     public class XlsxImportingRepository : IKeySwitchSpreadSheetRepository
     {

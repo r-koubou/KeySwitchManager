@@ -13,6 +13,7 @@ using KeySwitchManager.Json.KeySwitches.Translations;
 using KeySwitchManager.Presenters.KeySwitches;
 using KeySwitchManager.UseCases.KeySwitches.Importing.Xlsx;
 using KeySwitchManager.Xlsx.KeySwitches;
+using KeySwitchManager.Xlsx.KeySwitches.ClosedXml;
 
 namespace KeySwitchManager.CLI.Commands
 {

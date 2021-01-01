@@ -1,0 +1,38 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>netcoreapp3.1</TargetFramework>
+        <!-- Assembly / Common -->
+        <Copyright>R-Koubou</Copyright>
+        <Company>R-Koubou</Company>
+        <Product>KeySwitchManager.Xlsx.KeySwitches.ClosedXml</Product>
+        <AssemblyName>KeySwitchManager.Xlsx.KeySwitches.ClosedXml</AssemblyName>
+        <RootNamespace>KeySwitchManager.Xlsx.KeySwitches.ClosedXml</RootNamespace>
+        <Version>0.1.1</Version>
+        <Description>KeySwitchManager.Xlsx.KeySwitches module</Description>
+        <Nullable>enable</Nullable>
+        <!-- Nuget -->
+        <Authors>R-Koubou</Authors>
+        <PackageId>KeySwitchManager.Xlsx.KeySwitches.ClosedXml</PackageId>
+        <PackageLicenseExpression>MIT</PackageLicenseExpression>
+        <PackageProjectUrl>https://github.com/r-koubou/KeySwitchManager</PackageProjectUrl>
+        <RepositoryUrl>https://github.com/r-koubou/KeySwitchManager</RepositoryUrl>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\..\Common\Common.csproj" />
+      <ProjectReference Include="..\..\Domain\Domain.csproj" />
+      <ProjectReference Include="..\..\Gateways\Gateways.csproj" />
+      <ProjectReference Include="..\..\UseCases\UseCases.csproj" />
+      <ProjectReference Include="..\Xlsx.KeySwitches\Xlsx.KeySwitches.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Remove="Template.xlsx" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="ClosedXML" Version="0.95.4" />
+    </ItemGroup>
+
+</Project>

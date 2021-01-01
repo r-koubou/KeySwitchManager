@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 
 using ClosedXML.Excel;
@@ -5,9 +6,10 @@ using ClosedXML.Excel;
 using KeySwitchManager.Domain.KeySwitches.Aggregate;
 using KeySwitchManager.Domain.MidiMessages.Aggregate;
 using KeySwitchManager.Domain.Translations;
+using KeySwitchManager.Xlsx.KeySwitches.ClosedXml.Helpers;
 using KeySwitchManager.Xlsx.KeySwitches.Helpers;
 
-namespace KeySwitchManager.Xlsx.KeySwitches.Translators.FromKeySwitch
+namespace KeySwitchManager.Xlsx.KeySwitches.ClosedXml.Translators
 {
     public class KeySwitchToXlsx : IDataTranslator<IReadOnlyCollection<KeySwitch>, XLWorkbook>
     {
@@ -32,6 +34,7 @@ namespace KeySwitchManager.Xlsx.KeySwitches.Translators.FromKeySwitch
         private static void TranslateWorkSheet( KeySwitch keySwitch, XLWorkbook book )
         {
             var row = SpreadsheetConstants.RowDataBegin;
+            var column = SpreadsheetConstants.ColumnDataBegin;
 
             var newWorksheet = book.Worksheet( SpreadsheetConstants.TemplateSheetName )
                                    .CopyTo( keySwitch.InstrumentName.Value, book.Worksheets.Count - 1 );
@@ -40,14 +43,25 @@ namespace KeySwitchManager.Xlsx.KeySwitches.Translators.FromKeySwitch
 
             foreach( var articulation in keySwitch.Articulations )
             {
-                _ = TranslateArticulation( keySwitch, articulation, newWorksheet, row );
+                var col = TranslateArticulation( keySwitch, articulation, newWorksheet, row );
                 row++;
+                column = Math.Max( column, col );
             }
 
             newWorksheet.Cell( SpreadsheetConstants.RowGuid, SpreadsheetConstants.ColumnGuid )
                         .Value = keySwitch.Id.Value;
             newWorksheet.Cell( SpreadsheetConstants.RowOutputName, SpreadsheetConstants.ColumnOutputName )
                         .Value = keySwitch.InstrumentName;
+
+            // Draw cell border line
+            var style = newWorksheet.Range(
+                SpreadsheetConstants.RowDataHeader,
+                SpreadsheetConstants.ColumnDataBegin,
+                row - 1,
+                column - 1
+            ).Style;
+
+            XLCellHelper.ActivateCellBorder( style );
         }
 
         private static int TranslateArticulation( KeySwitch keySwitch, Articulation articulation, IXLWorksheet sheet, int row )

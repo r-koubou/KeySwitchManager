@@ -5,7 +5,7 @@ using CommandLine;
 using KeySwitchManager.Domain.Commons;
 using KeySwitchManager.Interactors.KeySwitches.Exporting;
 using KeySwitchManager.UseCases.KeySwitches.Exporting;
-using KeySwitchManager.Xlsx.KeySwitches;
+using KeySwitchManager.Xlsx.KeySwitches.ClosedXml;
 
 namespace KeySwitchManager.CLI.Commands
 {
@@ -16,7 +16,7 @@ namespace KeySwitchManager.CLI.Commands
         [SuppressMessage( "ReSharper", "ClassNeverInstantiated.Global" )]
         public class CommandOption : ICommandOption
         {
-            [Option( 'o', "output", Required = true)]
+            [Option( 'o', "output-dir", Required = true)]
             public string OutputPath { get; set; } = string.Empty;
         }
 
@@ -24,7 +24,7 @@ namespace KeySwitchManager.CLI.Commands
         {
             var option = (CommandOption)opt;
 
-            var repository = new XlsxExportingRepository( new FilePath( option.OutputPath ) );
+            var repository = new XlsxExportingRepository( new DirectoryPath( option.OutputPath ) );
             var interactor = new ExportingTemplateXlsxInteractor( repository );
 
             var response = interactor.Execute( new ExportingTemplateXlsxRequest() );
