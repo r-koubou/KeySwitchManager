@@ -7,7 +7,6 @@ using KeySwitchManager.Common.IO;
 using KeySwitchManager.Domain.Commons;
 using KeySwitchManager.Domain.KeySwitches.Aggregate;
 using KeySwitchManager.Gateways.KeySwitches;
-using KeySwitchManager.Xlsx.KeySwitches.ClosedXml.Helpers;
 using KeySwitchManager.Xlsx.KeySwitches.ClosedXml.Translators;
 using KeySwitchManager.Xlsx.KeySwitches.Helpers;
 
@@ -33,7 +32,7 @@ namespace KeySwitchManager.Xlsx.KeySwitches.ClosedXml
         public bool Save( IReadOnlyCollection<KeySwitch> keySwitches )
         {
             using var template = new XLWorkbook(
-                StreamHelper.GetAssemblyResourceStream<XlsxExportingRepository>( "Template.xlsx" )
+                StreamHelper.GetAssemblyResourceStream<KeySwitchInfo>( "Template.xlsx" )
             );
 
             var translator = new KeySwitchToXlsx( template );

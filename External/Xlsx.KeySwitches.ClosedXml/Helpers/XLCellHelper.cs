@@ -17,7 +17,7 @@ namespace KeySwitchManager.Xlsx.KeySwitches.ClosedXml.Helpers
         private const int MidiPcHeaderCellColor = 0xBADBA5;
         private const int ExtraHeaderCellColor = 0x909090;
 
-        public static void ActivateRuledLine( IXLStyle style )
+        public static void ActivateCellBorder( IXLStyle style )
         {
             style.Border.TopBorder         = XLBorderStyleValues.Thin;
             style.Border.TopBorderColor    = XLColor.Black;
@@ -37,8 +37,6 @@ namespace KeySwitchManager.Xlsx.KeySwitches.ClosedXml.Helpers
             int minValue,
             int maxValue )
         {
-            IXLWorkbook owner = sheet.Workbook;
-
             var cell = sheet.Cell( row, column );
             var d = cell.DataValidation;
 
@@ -57,8 +55,6 @@ namespace KeySwitchManager.Xlsx.KeySwitches.ClosedXml.Helpers
             IXLCell begin,
             IXLCell end )
         {
-            IXLWorkbook owner = sheet.Workbook;
-
             var cell = sheet.Cell( row, column );
             var d = cell.DataValidation;
 
@@ -133,8 +129,6 @@ namespace KeySwitchManager.Xlsx.KeySwitches.ClosedXml.Helpers
                 begin,
                 end );
 
-            ActivateRuledLine( sheet.Cell( row, column ).Style );
-
             sheet.Cell( row, column ).Style.Alignment.Horizontal = XLAlignmentHorizontalValues.Center;
         }
 
@@ -147,14 +141,12 @@ namespace KeySwitchManager.Xlsx.KeySwitches.ClosedXml.Helpers
                 "If don't use MIDI Note on, set cell value empty.",
                 0, 127 );
 
-            ActivateRuledLine( sheet.Cell( row, column ).Style );
-
             sheet.Cell( row, column ).Style.Alignment.Horizontal = XLAlignmentHorizontalValues.Center;
         }
         #endregion
 
         #region Cell style for MIDI CC
-        public static int SetDefaultMidiCcCellStyle( IXLWorksheet sheet, int row, int column, int count = 1 )
+        private static int SetDefaultMidiCcCellStyle( IXLWorksheet sheet, int row, int column, int count = 1 )
         {
             for( var index = 1; index <= count; index++ )
             {
@@ -169,7 +161,7 @@ namespace KeySwitchManager.Xlsx.KeySwitches.ClosedXml.Helpers
             return column;
         }
 
-        public static void SetMidiCcCellStyle( IXLWorksheet sheet, int row, int column )
+        private static void SetMidiCcCellStyle( IXLWorksheet sheet, int row, int column )
         {
             SetValidationByBetween(
                 sheet,
@@ -177,8 +169,6 @@ namespace KeySwitchManager.Xlsx.KeySwitches.ClosedXml.Helpers
                 column,
                 "If don't use CC set cell value empty",
                 0, 127 );
-
-            ActivateRuledLine( sheet.Cell( row, column ).Style );
 
             sheet.Cell( row, column ).Style.Alignment.Horizontal = XLAlignmentHorizontalValues.Center;
         }
@@ -210,8 +200,6 @@ namespace KeySwitchManager.Xlsx.KeySwitches.ClosedXml.Helpers
                 "If don't use PC set cell value empty",
                 0, 127 );
 
-            ActivateRuledLine( sheet.Cell( row, column ).Style );
-
             sheet.Cell( row, column ).Style.Alignment.Horizontal = XLAlignmentHorizontalValues.Center;
         }
 
@@ -238,7 +226,6 @@ namespace KeySwitchManager.Xlsx.KeySwitches.ClosedXml.Helpers
 
         private static void SetExtraCellStyle( IXLWorksheet sheet, int row, int column )
         {
-            ActivateRuledLine( sheet.Cell( row, column ).Style );
             sheet.Cell( row, column ).Style.Alignment.Horizontal = XLAlignmentHorizontalValues.Center;
         }
 
@@ -248,7 +235,6 @@ namespace KeySwitchManager.Xlsx.KeySwitches.ClosedXml.Helpers
         {
             sheet.Cell( row, column ).Value                      = text;
             sheet.Cell( row, column ).Style.Fill.BackgroundColor = XLColor.FromArgb( color );
-            ActivateRuledLine( sheet.Cell( row, column ).Style );
             sheet.Cell( row, column ).Style.Alignment.Horizontal = XLAlignmentHorizontalValues.Center;
         }
 

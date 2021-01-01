@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 
 using ClosedXML.Excel;
@@ -33,6 +34,7 @@ namespace KeySwitchManager.Xlsx.KeySwitches.ClosedXml.Translators
         private static void TranslateWorkSheet( KeySwitch keySwitch, XLWorkbook book )
         {
             var row = SpreadsheetConstants.RowDataBegin;
+            var column = 0;
 
             var newWorksheet = book.Worksheet( SpreadsheetConstants.TemplateSheetName )
                                    .CopyTo( keySwitch.InstrumentName.Value, book.Worksheets.Count - 1 );
@@ -41,14 +43,25 @@ namespace KeySwitchManager.Xlsx.KeySwitches.ClosedXml.Translators
 
             foreach( var articulation in keySwitch.Articulations )
             {
-                _ = TranslateArticulation( keySwitch, articulation, newWorksheet, row );
+                var col = TranslateArticulation( keySwitch, articulation, newWorksheet, row );
                 row++;
+                column = Math.Max( column, col );
             }
 
             newWorksheet.Cell( SpreadsheetConstants.RowGuid, SpreadsheetConstants.ColumnGuid )
                         .Value = keySwitch.Id.Value;
             newWorksheet.Cell( SpreadsheetConstants.RowOutputName, SpreadsheetConstants.ColumnOutputName )
                         .Value = keySwitch.InstrumentName;
+
+            // Draw cell border line
+            var style = newWorksheet.Range(
+                SpreadsheetConstants.RowDataHeader,
+                SpreadsheetConstants.ColumnDataBegin,
+                row - 1,
+                column - 1
+            ).Style;
+
+            XLCellHelper.ActivateCellBorder( style );
         }
 
         private static int TranslateArticulation( KeySwitch keySwitch, Articulation articulation, IXLWorksheet sheet, int row )
