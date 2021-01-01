@@ -10,12 +10,12 @@ using KeySwitchManager.Xlsx.KeySwitches.Helpers;
 namespace KeySwitchManager.Xlsx.KeySwitches.ClosedXml.Helpers
 {
     // ReSharper disable once InconsistentNaming
-    public static class XLCellHelper
+    internal static class XLCellHelper
     {
-        public const int MidiNoteOnHeaderCellColor = 0xFCE4D2;
-        public const int MidiCcHeaderCellColor = 0xA9D7E1;
-        public const int MidiPcHeaderCellColor = 0xBADBA5;
-        public const int ExtraHeaderCellColor = 0x909090;
+        private const int MidiNoteOnHeaderCellColor = 0xFCE4D2;
+        private const int MidiCcHeaderCellColor = 0xA9D7E1;
+        private const int MidiPcHeaderCellColor = 0xBADBA5;
+        private const int ExtraHeaderCellColor = 0x909090;
 
         public static void ActivateRuledLine( IXLStyle style )
         {
@@ -29,7 +29,7 @@ namespace KeySwitchManager.Xlsx.KeySwitches.ClosedXml.Helpers
             style.Border.LeftBorderColor   = XLColor.Black;
         }
 
-        public static void SetValidationByBetween(
+        private static void SetValidationByBetween(
             IXLWorksheet sheet,
             int row,
             int column,
@@ -47,7 +47,7 @@ namespace KeySwitchManager.Xlsx.KeySwitches.ClosedXml.Helpers
             d.Decimal.Between( minValue, maxValue );
         }
 
-        public static void SetValidationByList(
+        private static void SetValidationByList(
             IXLWorksheet sheet,
             int row,
             int column,
@@ -94,7 +94,7 @@ namespace KeySwitchManager.Xlsx.KeySwitches.ClosedXml.Helpers
         }
 
         #region Cell style for MIDI Note
-        public static int SetDefaultMidiNoteCellStyle( IXLWorksheet sheet, int row, int column, int count = 1 )
+        private static int SetDefaultMidiNoteCellStyle( IXLWorksheet sheet, int row, int column, int count = 1 )
         {
             for( var index = 1; index <= count; index++ )
             {
@@ -109,7 +109,7 @@ namespace KeySwitchManager.Xlsx.KeySwitches.ClosedXml.Helpers
             return column;
         }
 
-        public static void SetMidiNoteCellStyle( IXLWorksheet sheet, int row, int column )
+        private static void SetMidiNoteCellStyle( IXLWorksheet sheet, int row, int column )
         {
             var listSheet = sheet.Workbook.Worksheet( SpreadsheetConstants.DataListDefinitionSheetName );
 
@@ -138,7 +138,7 @@ namespace KeySwitchManager.Xlsx.KeySwitches.ClosedXml.Helpers
             sheet.Cell( row, column ).Style.Alignment.Horizontal = XLAlignmentHorizontalValues.Center;
         }
 
-        public static void SetMidiVelocityCellStyle( IXLWorksheet sheet, int row, int column )
+        private static void SetMidiVelocityCellStyle( IXLWorksheet sheet, int row, int column )
         {
             SetValidationByBetween(
                 sheet,
@@ -186,7 +186,7 @@ namespace KeySwitchManager.Xlsx.KeySwitches.ClosedXml.Helpers
         #endregion
 
         #region Cell style for MIDI PC
-        public static int SetDefaultMidiPcCellStyle( IXLWorksheet sheet, int row, int column, int count = 1 )
+        private static int SetDefaultMidiPcCellStyle( IXLWorksheet sheet, int row, int column, int count = 1 )
         {
             for( var index = 1; index <= count; index++ )
             {
@@ -201,7 +201,7 @@ namespace KeySwitchManager.Xlsx.KeySwitches.ClosedXml.Helpers
             return column;
         }
 
-        public static void SetMidiPcCellStyle( IXLWorksheet sheet, int row, int column )
+        private static void SetMidiPcCellStyle( IXLWorksheet sheet, int row, int column )
         {
             SetValidationByBetween(
                 sheet,
@@ -218,7 +218,7 @@ namespace KeySwitchManager.Xlsx.KeySwitches.ClosedXml.Helpers
         #endregion
 
         #region Cell style for Extra data
-        public static int SetDefaultExtraCellStyle( IXLWorksheet sheet, int row, int column, IEnumerable<ExtraDataKey> extraKeys )
+        private static int SetDefaultExtraCellStyle( IXLWorksheet sheet, int row, int column, IEnumerable<ExtraDataKey> extraKeys )
         {
             foreach( var key in extraKeys )
             {
@@ -236,7 +236,7 @@ namespace KeySwitchManager.Xlsx.KeySwitches.ClosedXml.Helpers
             return column;
         }
 
-        public static void SetExtraCellStyle( IXLWorksheet sheet, int row, int column )
+        private static void SetExtraCellStyle( IXLWorksheet sheet, int row, int column )
         {
             ActivateRuledLine( sheet.Cell( row, column ).Style );
             sheet.Cell( row, column ).Style.Alignment.Horizontal = XLAlignmentHorizontalValues.Center;
@@ -244,7 +244,7 @@ namespace KeySwitchManager.Xlsx.KeySwitches.ClosedXml.Helpers
 
         #endregion
 
-        public static void SetHeaderCell( IXLWorksheet sheet, int row, int column, int color, string text )
+        private static void SetHeaderCell( IXLWorksheet sheet, int row, int column, int color, string text )
         {
             sheet.Cell( row, column ).Value                      = text;
             sheet.Cell( row, column ).Style.Fill.BackgroundColor = XLColor.FromArgb( color );
