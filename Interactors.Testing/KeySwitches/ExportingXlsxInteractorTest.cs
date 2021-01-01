@@ -12,6 +12,7 @@ using KeySwitchManager.Domain.MidiMessages.Aggregate;
 using KeySwitchManager.Interactors.KeySwitches.Exporting;
 using KeySwitchManager.UseCases.KeySwitches.Exporting;
 using KeySwitchManager.Xlsx.KeySwitches;
+using KeySwitchManager.Xlsx.KeySwitches.ClosedXml;
 
 using NUnit.Framework;
 

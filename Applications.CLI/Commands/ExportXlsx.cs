@@ -11,6 +11,7 @@ using KeySwitchManager.Domain.KeySwitches.Value;
 using KeySwitchManager.Interactors.KeySwitches.Exporting;
 using KeySwitchManager.UseCases.KeySwitches.Exporting;
 using KeySwitchManager.Xlsx.KeySwitches;
+using KeySwitchManager.Xlsx.KeySwitches.ClosedXml;
 
 namespace KeySwitchManager.CLI.Commands
 {

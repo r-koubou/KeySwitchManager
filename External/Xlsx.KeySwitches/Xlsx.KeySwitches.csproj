@@ -20,19 +20,12 @@
     </PropertyGroup>
 
     <ItemGroup>
+      <EmbeddedResource Include="Template.xlsx" />
+    </ItemGroup>
+
+    <ItemGroup>
       <ProjectReference Include="..\..\Common\Common.csproj" />
       <ProjectReference Include="..\..\Domain\Domain.csproj" />
-      <ProjectReference Include="..\..\Gateways\Gateways.csproj" />
-      <ProjectReference Include="..\..\UseCases\UseCases.csproj" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <PackageReference Include="ClosedXML" Version="0.95.3" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <None Remove="Template.xlsx" />
-      <EmbeddedResource Include="Template.xlsx" />
     </ItemGroup>
 
 </Project>

@@ -1,6 +1,6 @@
 using ClosedXML.Excel;
 
-namespace KeySwitchManager.Xlsx.KeySwitches.Models
+namespace KeySwitchManager.Xlsx.KeySwitches.ClosedXml
 {
     public struct CellContext
     {

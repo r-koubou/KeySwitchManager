@@ -5,9 +5,10 @@ using ClosedXML.Excel;
 using KeySwitchManager.Domain.KeySwitches.Aggregate;
 using KeySwitchManager.Domain.MidiMessages.Aggregate;
 using KeySwitchManager.Domain.Translations;
+using KeySwitchManager.Xlsx.KeySwitches.ClosedXml.Helpers;
 using KeySwitchManager.Xlsx.KeySwitches.Helpers;
 
-namespace KeySwitchManager.Xlsx.KeySwitches.Translators.FromKeySwitch
+namespace KeySwitchManager.Xlsx.KeySwitches.ClosedXml.Translators
 {
     public class KeySwitchToXlsx : IDataTranslator<IReadOnlyCollection<KeySwitch>, XLWorkbook>
     {

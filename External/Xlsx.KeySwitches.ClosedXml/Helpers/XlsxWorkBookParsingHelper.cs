@@ -7,9 +7,10 @@ using ClosedXML.Excel;
 
 using KeySwitchManager.Common.Text;
 using KeySwitchManager.Domain.Commons;
+using KeySwitchManager.Xlsx.KeySwitches.Helpers;
 using KeySwitchManager.Xlsx.KeySwitches.Models;
 
-namespace KeySwitchManager.Xlsx.KeySwitches.Helpers
+namespace KeySwitchManager.Xlsx.KeySwitches.ClosedXml.Helpers
 {
     public static class XlsxWorkBookParsingHelper
     {

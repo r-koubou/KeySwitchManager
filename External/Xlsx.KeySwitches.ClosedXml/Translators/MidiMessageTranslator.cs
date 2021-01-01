@@ -4,7 +4,7 @@ using ClosedXML.Excel;
 
 using KeySwitchManager.Domain.MidiMessages.Aggregate;
 
-namespace KeySwitchManager.Xlsx.KeySwitches.Translators.FromKeySwitch
+namespace KeySwitchManager.Xlsx.KeySwitches.ClosedXml.Translators
 {
     internal class MidiMessageTranslator : IMidiMessageTranslator
     {
