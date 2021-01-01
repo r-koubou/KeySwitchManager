@@ -20,20 +20,20 @@ namespace Domain.Testing.KeySwitches.Value
         [Test]
         public void EqualityTest()
         {
-            var hoge = new Author( "Hoge" );
-            var huga = new Author( "Huga" );
+            var hoge =IAuthorFactory.Default.Create( "Hoge" );
+            var huga =IAuthorFactory.Default.Create( "Huga" );
             Assert.IsFalse( hoge.Equals( huga ) );
 
-            var hoge1 = new Author( "Hoge" );
-            var hoge2 = new Author( "Hoge" );
+            var hoge1 =IAuthorFactory.Default.Create( "Hoge" );
+            var hoge2 =IAuthorFactory.Default.Create( "Hoge" );
             Assert.IsTrue( hoge1.Equals( hoge2 ) );
         }
 
         [Test]
         public void ToStringEqualityTest()
         {
-            Assert.AreEqual( new Author( "Hoge" ).ToString(), "Hoge" );
-            Assert.IsTrue( new Author( "Hoge" ).ToString() == "Hoge" );
+            Assert.AreEqual(IAuthorFactory.Default.Create( "Hoge" ).ToString(), "Hoge" );
+            Assert.IsTrue(IAuthorFactory.Default.Create( "Hoge" ).ToString() == "Hoge" );
         }
 
     }

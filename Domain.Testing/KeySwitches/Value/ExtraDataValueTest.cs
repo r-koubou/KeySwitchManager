@@ -19,20 +19,20 @@ namespace Domain.Testing.KeySwitches.Value
         [Test]
         public void EqualityTest()
         {
-            var hoge = new ExtraDataValue( "Hoge" );
-            var huga = new ExtraDataValue( "Huga" );
+            var hoge = IExtraDataValueFactory.Default.Create( "Hoge" );
+            var huga = IExtraDataValueFactory.Default.Create( "Huga" );
             Assert.IsFalse( hoge.Equals( huga ) );
 
-            var hoge1 = new ExtraDataValue( "Hoge" );
-            var hoge2 = new ExtraDataValue( "Hoge" );
+            var hoge1 = IExtraDataValueFactory.Default.Create( "Hoge" );
+            var hoge2 = IExtraDataValueFactory.Default.Create( "Hoge" );
             Assert.IsTrue( hoge1.Equals( hoge2 ) );
         }
 
         [Test]
         public void ToStringEqualityTest()
         {
-            Assert.AreEqual( new ExtraDataValue( "Hoge" ).ToString(), "Hoge" );
-            Assert.IsTrue( new ExtraDataValue( "Hoge" ).ToString() == "Hoge" );
+            Assert.AreEqual( IExtraDataValueFactory.Default.Create( "Hoge" ).ToString(), "Hoge" );
+            Assert.IsTrue( IExtraDataValueFactory.Default.Create( "Hoge" ).ToString() == "Hoge" );
         }
 
     }

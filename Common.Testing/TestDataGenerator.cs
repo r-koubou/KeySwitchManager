@@ -21,17 +21,17 @@ namespace KeySwitchManager.Common.Testing
 
             return new KeySwitch(
                 new EntityGuid( Guid.NewGuid() ),
-                new Author( "Author" ),
-                new Description( "Description" ),
+                IAuthorFactory.Default.Create( "Author" ),
+                IDescriptionFactory.Default.Create( "Description" ),
                 new EntityDateTime( now ),
                 new EntityDateTime( now ),
-                new DeveloperName( developerName ),
-                new ProductName( productName ),
-                new InstrumentName( instrumentName ),
+                IDeveloperNameFactory.Default.Create( developerName ),
+                IProductNameFactory.Default.Create( productName ),
+                IInstrumentNameFactory.Default.Create( instrumentName ),
                 new DataList<Articulation>( new[] { CreateArticulation() } ),
                 new ExtraData( new Dictionary<ExtraDataKey, ExtraDataValue>
                 {
-                    {new ExtraDataKey( "extKey" ), new ExtraDataValue( "extValue" ) }
+                    {IExtraDataKeyFactory.Default.Create( "extKey" ), IExtraDataValueFactory.Default.Create( "extValue" ) }
                 })
             );
         }
@@ -47,17 +47,17 @@ namespace KeySwitchManager.Common.Testing
 
             return new KeySwitch(
                 new EntityGuid( Guid.NewGuid() ),
-                new Author( "Author" ),
-                new Description( "Description" ),
+                IAuthorFactory.Default.Create( "Author" ),
+                IDescriptionFactory.Default.Create( "Description" ),
                 new EntityDateTime( now ),
                 new EntityDateTime( now ),
-                new DeveloperName( "DeveloperName" ),
-                new ProductName( "ProductName" ),
-                new InstrumentName( "E.Guitar" ),
+                IDeveloperNameFactory.Default.Create( "DeveloperName" ),
+                IProductNameFactory.Default.Create( "ProductName" ),
+                IInstrumentNameFactory.Default.Create( "E.Guitar" ),
                 new DataList<Articulation>( articulations ),
                 new ExtraData( new Dictionary<ExtraDataKey, ExtraDataValue>
                 {
-                    { new ExtraDataKey( "extKey" ), new ExtraDataValue( "extValue" ) }
+                    { IExtraDataKeyFactory.Default.Create( "extKey" ), IExtraDataValueFactory.Default.Create( "extValue" ) }
                 })
             );
         }
@@ -67,13 +67,13 @@ namespace KeySwitchManager.Common.Testing
         public static Articulation CreateArticulation( string articulationName = "Power Chord" )
         {
             return new Articulation(
-                new ArticulationName( articulationName ),
+                IArticulationNameFactory.Default.Create( articulationName ),
                 new DataList<MidiNoteOn>(),
                 new DataList<MidiControlChange>(),
                 new DataList<MidiProgramChange>(),
                 new ExtraData( new Dictionary<ExtraDataKey, ExtraDataValue>
                 {
-                    { new ExtraDataKey( "extKey" ), new ExtraDataValue( "extValue" ) }
+                    { IExtraDataKeyFactory.Default.Create( "extKey" ), IExtraDataValueFactory.Default.Create( "extValue" ) }
                 })
             );
         }
@@ -84,13 +84,13 @@ namespace KeySwitchManager.Common.Testing
             IReadOnlyCollection<MidiProgramChange> programChanges )
         {
             return new Articulation(
-                new ArticulationName( "Power Chord" ),
+                IArticulationNameFactory.Default.Create( "Power Chord" ),
                 new DataList<IMidiMessage>( noteOns ),
                 new DataList<IMidiMessage>( controlChanges ),
                 new DataList<IMidiMessage>( programChanges ),
                 new ExtraData( new Dictionary<ExtraDataKey, ExtraDataValue>
                 {
-                    { new ExtraDataKey( "extKey" ), new ExtraDataValue( "extValue" ) }
+                    { IExtraDataKeyFactory.Default.Create( "extKey" ), IExtraDataValueFactory.Default.Create( "extValue" ) }
                 })
             );
         }
