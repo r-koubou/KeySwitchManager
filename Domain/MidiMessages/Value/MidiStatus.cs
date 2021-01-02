@@ -1,3 +1,4 @@
+using KeySwitchManager.Common.Numbers;
 using KeySwitchManager.Domain.MidiMessages.Helpers;
 
 namespace KeySwitchManager.Domain.MidiMessages.Value
@@ -7,18 +8,46 @@ namespace KeySwitchManager.Domain.MidiMessages.Value
     /// </summary>
     public class MidiStatus : MidiMessageData
     {
-        public const int MinValue = 0x00;
-        public const int MaxValue = 0xFF;
-
         public MidiChannel Channel =>
-            new MidiChannel( MidiStatusHelper.GetChannel( Value ) );
+            IMidiChannelFactory.Default.Create( MidiStatusHelper.GetChannel( Value ) );
 
-        public MidiStatus( int value )
-            : base( value, MinValue, MaxValue )
+        public MidiStatus( int value ) : base( value )
         {}
 
-        public MidiStatus( int value, int channel )
-            : base( value | ( channel & 0x0F ), MinValue, MaxValue )
+        public MidiStatus( int value, int channel ) : base( value | ( channel & 0x0F ) )
         {}
     }
+
+    #region Factory
+    public interface IMidiStatusFactory
+    {
+        public static IMidiStatusFactory Default => new DefaultFactory();
+
+        int MinValue { get; }
+        int MaxValue { get; }
+
+        MidiStatus Create( int value );
+        MidiStatus Create( int status, int channel );
+
+        private class DefaultFactory : IMidiStatusFactory
+        {
+            public int MinValue => 0x00;
+            public int MaxValue => 0xFF;
+
+            public MidiStatus Create( int value )
+            {
+                RangeValidateHelper.ValidateRange( value, MinValue, MaxValue );
+                return new MidiStatus( value );
+            }
+
+            public MidiStatus Create( int status, int channel )
+            {
+                var value = ( status | channel ) & 0xF;
+                RangeValidateHelper.ValidateRange( value, MinValue, MaxValue );
+                return new MidiStatus( value );
+            }
+
+        }
+    }
+    #endregion Factory
 }

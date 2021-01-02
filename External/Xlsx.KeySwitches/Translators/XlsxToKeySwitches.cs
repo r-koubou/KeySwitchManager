@@ -111,7 +111,7 @@ namespace KeySwitchManager.Xlsx.KeySwitches.Translators
 
             foreach( var midiNote in row.MidiNoteList )
             {
-                var noteNumber = new MidiNoteName( midiNote.Note.Value ).ToMidiNoteNumber().Value;
+                var noteNumber = IMidiNoteNameFactory.Default.Create( midiNote.Note.Value ).ToMidiNoteNumber().Value;
                 var noteOn = factory.Create( noteNumber, midiNote.Velocity.Value );
 
                 result.Add( noteOn );

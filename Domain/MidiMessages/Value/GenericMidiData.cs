@@ -1,3 +1,5 @@
+using KeySwitchManager.Common.Numbers;
+
 namespace KeySwitchManager.Domain.MidiMessages.Value
 {
     /// <summary>
@@ -5,14 +7,33 @@ namespace KeySwitchManager.Domain.MidiMessages.Value
     /// </summary>
     public class GenericMidiData : MidiMessageData
     {
-        public const int MinValue = 0x00;
-        public const int MaxValue = 0xFF;
+        public static readonly GenericMidiData Empty = new GenericMidiData( 0x00 );
 
-        public static readonly GenericMidiData Empty = new GenericMidiData( 0 );
-        public static readonly GenericMidiData Zero = new GenericMidiData( 0 );
-
-        public GenericMidiData( int value )
-            : base( value, MinValue, MaxValue )
+        public GenericMidiData( int value ) : base( value )
         {}
     }
+
+    #region Factory
+    public interface IGenericMidiDataFactory
+    {
+        public static IGenericMidiDataFactory Default => new DefaultFactory();
+
+        int MinValue { get; }
+        int MaxValue { get; }
+
+        GenericMidiData Create( int value );
+
+        private class DefaultFactory : IGenericMidiDataFactory
+        {
+            public int MinValue => 0x00;
+            public int MaxValue => 0xFF;
+
+            public GenericMidiData Create( int value )
+            {
+                RangeValidateHelper.ValidateRange( value, MinValue, MaxValue );
+                return new GenericMidiData( value );
+            }
+        }
+    }
+    #endregion Factory
 }

@@ -9,27 +9,27 @@ namespace Domain.Testing.MidiMessages.Value
     public class ControlValueTest
     {
         [Test]
-        [TestCase( MidiControlChangeValue.MinValue - 1 )]
-        [TestCase( MidiControlChangeValue.MaxValue + 1 )]
+        [TestCase( -1 )]
+        [TestCase( 128 )]
         public void OutOfRangeTest( int ccNumber )
         {
-            Assert.Throws<ValueOutOfRangeException>( () => new MidiControlChangeValue( ccNumber ) );
+            Assert.Throws<ValueOutOfRangeException>( () => IMidiControlChangeValueFactory.Default.Create( ccNumber ) );
         }
 
         [Test]
         public void EqualityTest()
         {
-            var cc1 = new MidiControlChangeValue( 1 );
-            var cc2 = new MidiControlChangeValue( 2 );
-            Assert.IsTrue( cc1.Equals( new MidiControlChangeValue( 1 ) ) );
+            var cc1 = IMidiControlChangeNumberFactory.Default.Create( 1 );
+            var cc2 = IMidiControlChangeNumberFactory.Default.Create( 2 );
+            Assert.IsTrue( cc1.Equals( IMidiControlChangeNumberFactory.Default.Create( 1 ) ) );
             Assert.IsFalse( cc1.Equals( cc2 ) );
         }
 
         [Test]
         public void ToStringEqualityTest()
         {
-            Assert.AreEqual( new MidiControlChangeValue( 1 ).ToString(), "1" );
-            Assert.IsTrue( new MidiControlChangeValue( 1 ).ToString() == "1" );
+            Assert.AreEqual( IMidiControlChangeNumberFactory.Default.Create( 1 ).ToString(), "1" );
+            Assert.IsTrue( IMidiControlChangeNumberFactory.Default.Create( 1 ).ToString() == "1" );
 
         }
 

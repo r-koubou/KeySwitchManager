@@ -1,7 +1,5 @@
 using System;
 
-using KeySwitchManager.Common.Numbers;
-
 namespace KeySwitchManager.Domain.MidiMessages.Value
 {
     public abstract class MidiMessageData
@@ -11,11 +9,37 @@ namespace KeySwitchManager.Domain.MidiMessages.Value
     {
         public int Value { get; }
 
-        protected MidiMessageData( int value, int min, int max )
+        protected MidiMessageData( int value )
         {
-            RangeValidateHelper.ValidateRange( value, min, max );
             Value = value;
         }
+
+        public override string ToString()
+            => Value.ToString();
+
+        #region Equality
+        public override bool Equals( object? obj )
+        {
+            if( ReferenceEquals( null, obj ) )
+            {
+                return false;
+            }
+
+            if( ReferenceEquals( this, obj ) )
+            {
+                return true;
+            }
+
+            if( obj.GetType() != this.GetType() )
+            {
+                return false;
+            }
+
+            return Equals( (MidiMessageData)obj );
+        }
+
+        public override int GetHashCode()
+            => GetType().GetHashCode() + Value.GetHashCode();
 
         public bool Equals( MidiMessageData? other )
         {
@@ -41,8 +65,6 @@ namespace KeySwitchManager.Domain.MidiMessages.Value
 
             return -1;
         }
-
-        public override string ToString() => Value.ToString();
-
+        #endregion Equality
     }
 }
