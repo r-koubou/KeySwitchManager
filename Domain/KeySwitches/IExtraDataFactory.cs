@@ -19,8 +19,8 @@ namespace KeySwitchManager.Domain.KeySwitches
 
                 foreach( var key in source.Keys )
                 {
-                    var k = new ExtraDataKey( key );
-                    var v = new ExtraDataValue( source[ key ] );
+                    var k = IExtraDataKeyFactory.Default.Create( key );
+                    var v = IExtraDataValueFactory.Default.Create( source[ key ] );
                     result.Add( k, v );
                 }
 

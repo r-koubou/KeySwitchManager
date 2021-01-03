@@ -11,28 +11,28 @@ namespace Domain.Testing.KeySwitches.Value
         [Test]
         public void EmptyNameTest()
         {
-            Assert.Throws<InvalidNameException>( () =>  new ArticulationName( "" ) );
-            Assert.Throws<InvalidNameException>( () =>  new ArticulationName( "  " ) );
-            new ArticulationName( "Hoge" );
+            Assert.Throws<InvalidNameException>( () =>  IArticulationNameFactory.Default.Create( "" ) );
+            Assert.Throws<InvalidNameException>( () =>  IArticulationNameFactory.Default.Create( "  " ) );
+            _ = IArticulationNameFactory.Default.Create( "Hoge" );
         }
 
         [Test]
         public void EqualityTest()
         {
-            var hoge = new ArticulationName( "Hoge" );
-            var huga = new ArticulationName( "Huga" );
+            var hoge = IArticulationNameFactory.Default.Create( "Hoge" );
+            var huga = IArticulationNameFactory.Default.Create( "Huga" );
             Assert.IsFalse( hoge.Equals( huga ) );
 
-            var hoge1 = new ArticulationName( "Hoge" );
-            var hoge2 = new ArticulationName( "Hoge" );
+            var hoge1 = IArticulationNameFactory.Default.Create( "Hoge" );
+            var hoge2 = IArticulationNameFactory.Default.Create( "Hoge" );
             Assert.IsTrue( hoge1.Equals( hoge2 ) );
         }
 
         [Test]
         public void ToStringEqualityTest()
         {
-            Assert.AreEqual( new ArticulationName( "Hoge" ).ToString(), "Hoge" );
-            Assert.IsTrue( new ArticulationName( "Hoge" ).ToString() == "Hoge" );
+            Assert.AreEqual( IArticulationNameFactory.Default.Create( "Hoge" ).ToString(), "Hoge" );
+            Assert.IsTrue( IArticulationNameFactory.Default.Create( "Hoge" ).ToString() == "Hoge" );
         }
 
     }

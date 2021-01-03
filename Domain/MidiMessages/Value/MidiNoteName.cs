@@ -4,12 +4,11 @@ using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 
 using KeySwitchManager.Common.Exceptions;
-using KeySwitchManager.Common.Numbers;
 using KeySwitchManager.Common.Text;
 
 namespace KeySwitchManager.Domain.MidiMessages.Value
 {
-    public class MidiNoteName : IEquatable<MidiNoteName>
+    public class MidiNoteName : IEquatable<MidiNoteName>, IComparable<MidiNoteName>
     {
         #region Note names
         [SuppressMessage( "ReSharper", "InconsistentNaming" )]
@@ -414,8 +413,6 @@ namespace KeySwitchManager.Domain.MidiMessages.Value
 
         public MidiNoteName( string noteName )
         {
-            StringHelper.ValidateNullOrTrimEmpty( noteName );
-
             if( NoteNameList.Contains( noteName ) )
             {
                 Value = noteName;
@@ -427,7 +424,6 @@ namespace KeySwitchManager.Domain.MidiMessages.Value
                 throw new InvalidNameException( nameof( noteName ) );
             }
 
-            RangeValidateHelper.ValidateRange( number, MidiNoteNumber.MinValue, MidiNoteNumber.MaxValue );
             Value = NoteNameList[ number ];
         }
 
@@ -440,11 +436,64 @@ namespace KeySwitchManager.Domain.MidiMessages.Value
             return new MidiNoteNumber( number.First().index );
         }
 
+        public override string ToString() => Value;
+
+        #region Equality
+        public override bool Equals( object? obj )
+        {
+            if( ReferenceEquals( null, obj ) )
+            {
+                return false;
+            }
+
+            if( ReferenceEquals( this, obj ) )
+            {
+                return true;
+            }
+
+            if( obj.GetType() != this.GetType() )
+            {
+                return false;
+            }
+
+            return Equals( (MidiNoteName)obj );
+        }
+
+        public override int GetHashCode()
+            => GetType().GetHashCode() + Value.GetHashCode();
+
         public bool Equals( MidiNoteName? other )
         {
             return other != null && other.Value == Value;
         }
 
-        public override string ToString() => Value;
+        public int CompareTo( MidiNoteName? other )
+        {
+            if( other == null )
+            {
+                throw new ArgumentNullException( nameof( other ) );
+            }
+
+            return string.Compare( other.Value, Value, StringComparison.Ordinal );
+        }
+        #endregion Equality
     }
+
+    #region Factory
+    public interface IMidiNoteNameFactory
+    {
+        public static IMidiNoteNameFactory Default => new DefaultFactory();
+
+        MidiNoteName Create( string value );
+
+        private class DefaultFactory : IMidiNoteNameFactory
+        {
+            public MidiNoteName Create( string value )
+            {
+                StringHelper.ValidateNullOrTrimEmpty( value );
+                return new MidiNoteName( value );
+            }
+        }
+    }
+    #endregion Factory
 }

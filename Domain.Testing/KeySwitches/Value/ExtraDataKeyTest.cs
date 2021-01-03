@@ -11,28 +11,28 @@ namespace Domain.Testing.KeySwitches.Value
         [Test]
         public void EmptyNameTest()
         {
-            Assert.Throws<NullOrEmptyException>( () =>  new ExtraDataKey( "" ) );
-            Assert.Throws<NullOrEmptyException>( () =>  new ExtraDataKey( "  " ) );
-            new ExtraDataKey( "Hoge" );
+            Assert.Throws<NullOrEmptyException>( () =>  IExtraDataKeyFactory.Default.Create( "" ) );
+            Assert.Throws<NullOrEmptyException>( () =>  IExtraDataKeyFactory.Default.Create( "  " ) );
+            _ = IExtraDataKeyFactory.Default.Create( "Hoge" );
         }
 
         [Test]
         public void EqualityTest()
         {
-            var hoge = new ExtraDataKey( "Hoge" );
-            var huga = new ExtraDataKey( "Huga" );
+            var hoge = IExtraDataKeyFactory.Default.Create( "Hoge" );
+            var huga = IExtraDataKeyFactory.Default.Create( "Huga" );
             Assert.IsFalse( hoge.Equals( huga ) );
 
-            var hoge1 = new ExtraDataKey( "Hoge" );
-            var hoge2 = new ExtraDataKey( "Hoge" );
+            var hoge1 = IExtraDataKeyFactory.Default.Create( "Hoge" );
+            var hoge2 = IExtraDataKeyFactory.Default.Create( "Hoge" );
             Assert.IsTrue( hoge1.Equals( hoge2 ) );
         }
 
         [Test]
         public void ToStringEqualityTest()
         {
-            Assert.AreEqual( new ExtraDataKey( "Hoge" ).ToString(), "Hoge" );
-            Assert.IsTrue( new ExtraDataKey( "Hoge" ).ToString() == "Hoge" );
+            Assert.AreEqual( IExtraDataKeyFactory.Default.Create( "Hoge" ).ToString(), "Hoge" );
+            Assert.IsTrue( IExtraDataKeyFactory.Default.Create( "Hoge" ).ToString() == "Hoge" );
         }
 
     }

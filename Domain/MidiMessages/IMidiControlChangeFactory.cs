@@ -12,9 +12,9 @@ namespace KeySwitchManager.Domain.MidiMessages
 
         public static MidiControlChange Zero =>
             new MidiControlChange(
-                new MidiStatus( 0 ),
-                new MidiControlChangeNumber( 0 ),
-                new MidiControlChangeValue( 0 )
+                IMidiStatusFactory.Default.Create( 0 ),
+                IMidiControlChangeNumberFactory.Default.Create( 0 ),
+                IMidiControlChangeValueFactory.Default.Create( 0 )
             );
 
         private class DefaultFactory : IMidiControlChangeFactory
@@ -28,8 +28,8 @@ namespace KeySwitchManager.Domain.MidiMessages
             {
                 return new MidiControlChange(
                     IMidiStatusFactory.Default.Create( status ),
-                    new MidiControlChangeNumber( data1 ),
-                    new MidiControlChangeValue( data2 )
+                    IMidiControlChangeNumberFactory.Default.Create( data1 ),
+                    IMidiControlChangeValueFactory.Default.Create( data2 )
                 );
             }
         }

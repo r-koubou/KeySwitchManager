@@ -30,9 +30,9 @@ namespace KeySwitchManager.Interactors.Helpers
             {
                 return new List<KeySwitch>(
                     repository.Find(
-                        new DeveloperName( developerName ),
-                        new ProductName( productName ),
-                        new InstrumentName( instrumentName ) )
+                        IDeveloperNameFactory.Default.Create( developerName ),
+                        IProductNameFactory.Default.Create( productName ),
+                        IInstrumentNameFactory.Default.Create( instrumentName ) )
                 );
             }
             #endregion
@@ -42,8 +42,8 @@ namespace KeySwitchManager.Interactors.Helpers
             {
                 return new List<KeySwitch>(
                     repository.Find(
-                        new DeveloperName( developerName ),
-                        new ProductName( productName )
+                        IDeveloperNameFactory.Default.Create( developerName ),
+                        IProductNameFactory.Default.Create( productName )
                     )
                 );
             }
@@ -54,7 +54,7 @@ namespace KeySwitchManager.Interactors.Helpers
             {
                 return new List<KeySwitch>(
                     repository.Find(
-                        new DeveloperName( developerName )
+                        IDeveloperNameFactory.Default.Create( developerName )
                     )
                 );
             }

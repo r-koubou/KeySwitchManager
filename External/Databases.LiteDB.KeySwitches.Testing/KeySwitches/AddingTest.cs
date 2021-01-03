@@ -23,7 +23,7 @@ namespace Databases.LiteDB.KeySwitches.Testing.KeySwitches
             var articulation = TestDataGenerator.CreateArticulation(
                 new List<MidiNoteOn>()
                 {
-                    new MidiNoteOn( new MidiStatus( MidiStatusHelper.NoteOn ), new MidiNoteNumber( 1 ), new MidiVelocity( 100 ) )
+                    new MidiNoteOn( IMidiStatusFactory.Default.Create( MidiStatusHelper.NoteOn ), IMidiNoteNumberFactory.Default.Create( 1 ), IMidiVelocityFactory.Default.Create( 100 ) )
                 },
                 new List<MidiControlChange>(),
                 new List<MidiProgramChange>()

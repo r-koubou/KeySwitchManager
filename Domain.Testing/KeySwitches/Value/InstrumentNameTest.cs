@@ -11,28 +11,28 @@ namespace Domain.Testing.KeySwitches.Value
         [Test]
         public void EmptyNameTest()
         {
-            Assert.Throws<InvalidNameException>( () =>  new InstrumentName( "" ) );
-            Assert.Throws<InvalidNameException>( () =>  new InstrumentName( "  " ) );
-            new InstrumentName( "Hoge" );
+            Assert.Throws<InvalidNameException>( () => IInstrumentNameFactory.Default.Create( "" ) );
+            Assert.Throws<InvalidNameException>( () => IInstrumentNameFactory.Default.Create( "  " ) );
+            _ = IInstrumentNameFactory.Default.Create( "Hoge" );
         }
 
         [Test]
         public void EqualityTest()
         {
-            var hoge = new InstrumentName( "Hoge" );
-            var huga = new InstrumentName( "Huga" );
+            var hoge = IInstrumentNameFactory.Default.Create( "Hoge" );
+            var huga = IInstrumentNameFactory.Default.Create( "Huga" );
             Assert.IsFalse( hoge.Equals( huga ) );
 
-            var hoge1 = new InstrumentName( "Hoge" );
-            var hoge2 = new InstrumentName( "Hoge" );
+            var hoge1 = IInstrumentNameFactory.Default.Create( "Hoge" );
+            var hoge2 = IInstrumentNameFactory.Default.Create( "Hoge" );
             Assert.IsTrue( hoge1.Equals( hoge2 ) );
         }
 
         [Test]
         public void ToStringEqualityTest()
         {
-            Assert.AreEqual( new InstrumentName( "Hoge" ).ToString(), "Hoge" );
-            Assert.IsTrue( new InstrumentName( "Hoge" ).ToString() == "Hoge" );
+            Assert.AreEqual( IInstrumentNameFactory.Default.Create( "Hoge" ).ToString(), "Hoge" );
+            Assert.IsTrue( IInstrumentNameFactory.Default.Create( "Hoge" ).ToString() == "Hoge" );
         }
 
     }

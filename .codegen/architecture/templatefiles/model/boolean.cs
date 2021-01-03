@@ -15,6 +15,29 @@ namespace path.to.your.ns
             => Value.ToString();
 
         #region Equality
+        public override bool Equals( object? obj )
+        {
+            if( ReferenceEquals( null, obj ) )
+            {
+                return false;
+            }
+
+            if( ReferenceEquals( this, obj ) )
+            {
+                return true;
+            }
+
+            if( obj.GetType() != this.GetType() )
+            {
+                return false;
+            }
+
+            return Equals( (__name__)obj );
+        }
+
+        public override int GetHashCode()
+            => GetType().GetHashCode() + Value.GetHashCode();
+
         public bool Equals( __name__? other )
         {
             return other != null && other.Value == Value;

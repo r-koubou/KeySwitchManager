@@ -8,25 +8,50 @@ namespace KeySwitchManager.Domain.KeySwitches.Value
     /// <summary>
     /// A ProductName name
     /// </summary>
-    public class ProductName : IEquatable<ProductName>
+    public class ProductName : IEquatable<ProductName>, IComparable<ProductName>
     {
         public string Value { get; }
 
-        public ProductName( string name )
+        public ProductName( string value )
         {
-            if( StringHelper.IsNullOrTrimEmpty( name ) )
-            {
-                throw new InvalidNameException( nameof( name ) );
-            }
-            Value = name;
+            Value = value;
         }
 
+        public override string ToString() => Value;
+
+        #region Equality
         public bool Equals( ProductName? other )
         {
             return other != null && other.Value == Value;
         }
 
-        public override string ToString() => Value;
+        public int CompareTo( ProductName? other )
+        {
+            if( other == null )
+            {
+                throw new ArgumentNullException( nameof( other ) );
+            }
 
+            return string.Compare( other.Value, Value, StringComparison.Ordinal );
+        }
+        #endregion Equality
     }
+
+    #region Factory
+    public interface IProductNameFactory
+    {
+        public static IProductNameFactory Default => new DefaultFactory();
+
+        ProductName Create( string value );
+
+        private class DefaultFactory : IProductNameFactory
+        {
+            public ProductName Create( string value )
+            {
+                StringHelper.ValidateNullOrTrimEmpty<InvalidNameException>( value );
+                return new ProductName( value );
+            }
+        }
+    }
+    #endregion Factory
 }
