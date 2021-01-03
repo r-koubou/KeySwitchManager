@@ -36,8 +36,16 @@ namespace KeySwitchManager.Xlsx.KeySwitches.ClosedXml.Translators
             var row = SpreadsheetConstants.RowDataBegin;
             var column = SpreadsheetConstants.ColumnDataBegin;
 
+            var worksheetName = keySwitch.InstrumentName.Value;
+
+            // xlsx worksheet name length must be <= 31
+            if( worksheetName.Length > 31 )
+            {
+                worksheetName = worksheetName.Substring( 0, 31 );
+            }
+
             var newWorksheet = book.Worksheet( SpreadsheetConstants.TemplateSheetName )
-                                   .CopyTo( keySwitch.InstrumentName.Value, book.Worksheets.Count - 1 );
+                                   .CopyTo( worksheetName, book.Worksheets.Count - 1 );
 
             XLCellHelper.SetDefaultCellStyle( newWorksheet, keySwitch );
 
