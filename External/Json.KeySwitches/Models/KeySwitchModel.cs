@@ -1,9 +1,9 @@
 using System;
 using System.Collections.Generic;
 
-using KeySwitchManager.Common.Utilities;
-
 using Newtonsoft.Json;
+
+using RkHelper.Time;
 
 namespace KeySwitchManager.Json.KeySwitches.Models
 {

@@ -1,6 +1,6 @@
 using System;
 
-using KeySwitchManager.Common.Text;
+using RkHelper.Text;
 
 namespace KeySwitchManager.Domain.Commons
 {
@@ -15,7 +15,7 @@ namespace KeySwitchManager.Domain.Commons
 
         public EntityGuid( string value )
         {
-            StringHelper.ValidateNullOrTrimEmpty( value );
+            StringHelper.ValidateEmpty( value );
             Value = Guid.Parse( value );
         }
 

@@ -20,6 +20,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\..\Common.Testing\Common.Testing.csproj" />
+      <ProjectReference Include="..\..\Interactors.Testing\Interactors.Testing.csproj" />
       <ProjectReference Include="..\Databases.LiteDB.KeySwitches\Databases.LiteDB.KeySwitches.csproj" />
     </ItemGroup>
 

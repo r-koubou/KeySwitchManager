@@ -1,4 +1,5 @@
-using KeySwitchManager.Common.Exceptions;
+using System;
+
 using KeySwitchManager.Domain.MidiMessages.Value;
 
 using NUnit.Framework;
@@ -12,7 +13,7 @@ namespace Domain.Testing.MidiMessages.Value
         [TestCase( 16 )]
         public void OutOfRangeTest( int noteNumber )
         {
-            Assert.Throws<ValueOutOfRangeException>( () => IMidiChannelFactory.Default.Create( noteNumber ) );
+            Assert.Throws<ArgumentOutOfRangeException>( () => IMidiChannelFactory.Default.Create( noteNumber ) );
         }
 
         [Test]

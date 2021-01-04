@@ -1,6 +1,6 @@
 using System;
 
-using KeySwitchManager.Common.Text;
+using RkHelper.Text;
 
 namespace KeySwitchManager.Domain.KeySwitches.Value
 {
@@ -47,7 +47,7 @@ namespace KeySwitchManager.Domain.KeySwitches.Value
         {
             public Author Create( string value )
             {
-                value = StringHelper.IsNullOrTrimEmpty( value ) ? string.Empty : value;
+                value = StringHelper.IsEmpty( value ) ? string.Empty : value;
                 return new Author( value );
             }
         }

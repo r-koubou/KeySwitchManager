@@ -7,11 +7,12 @@ using CommandLine;
 
 using Databases.LiteDB.KeySwitches.KeySwitches;
 
-using KeySwitchManager.Common.Text;
 using KeySwitchManager.Interactors.KeySwitches.Searching;
 using KeySwitchManager.Json.KeySwitches.Translations;
 using KeySwitchManager.Presenters.KeySwitches;
 using KeySwitchManager.UseCases.KeySwitches.Searching;
+
+using RkHelper.Text;
 
 namespace KeySwitchManager.CLI.Commands
 {
@@ -55,7 +56,7 @@ namespace KeySwitchManager.CLI.Commands
 
             var response = interactor.Execute( input );
 
-            if( StringHelper.IsNullOrTrimEmpty( option.OutputPath ) )
+            if( StringHelper.IsEmpty( option.OutputPath ) )
             {
                 Console.Out.WriteLine( $"{response.Text}" );
             }

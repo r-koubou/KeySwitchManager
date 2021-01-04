@@ -1,5 +1,4 @@
-using KeySwitchManager.Common.Exceptions;
-using KeySwitchManager.Common.Text;
+using RkHelper.Text;
 
 namespace KeySwitchManager.Xlsx.KeySwitches.Models
 {
@@ -16,11 +15,7 @@ namespace KeySwitchManager.Xlsx.KeySwitches.Models
 
         public OutputNameCell( string name )
         {
-            if( StringHelper.IsNullOrTrimEmpty( name ) )
-            {
-                throw new InvalidNameException( nameof( name ) );
-            }
-
+            StringHelper.ValidateEmpty( name );
             Value = name;
         }
     }

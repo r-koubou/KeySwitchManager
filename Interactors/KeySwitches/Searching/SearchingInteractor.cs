@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 
-using KeySwitchManager.Common.Text;
 using KeySwitchManager.Domain.Commons;
 using KeySwitchManager.Domain.KeySwitches.Aggregate;
 using KeySwitchManager.Domain.KeySwitches.Value;
@@ -8,6 +7,8 @@ using KeySwitchManager.Gateways.KeySwitches;
 using KeySwitchManager.Presenters.KeySwitches;
 using KeySwitchManager.UseCases.KeySwitches.Searching;
 using KeySwitchManager.UseCases.KeySwitches.Translations;
+
+using RkHelper.Text;
 
 namespace KeySwitchManager.Interactors.KeySwitches.Searching
 {
@@ -39,7 +40,7 @@ namespace KeySwitchManager.Interactors.KeySwitches.Searching
             var instrumentName = request.InstrumentName;
 
             #region By Developer, Product, Instrument
-            if( !StringHelper.IsNullOrTrimEmpty( developerName, productName, instrumentName ) )
+            if( !StringHelper.IsEmpty( developerName, productName, instrumentName ) )
             {
                 var keySwitches = Repository.Find(
                     IDeveloperNameFactory.Default.Create( request.DeveloperName ),
@@ -52,7 +53,7 @@ namespace KeySwitchManager.Interactors.KeySwitches.Searching
             #endregion
 
             #region By Developer, Product
-            if( !StringHelper.IsNullOrTrimEmpty( developerName, productName ) )
+            if( !StringHelper.IsEmpty( developerName, productName ) )
             {
                 var keySwitches = Repository.Find(
                     IDeveloperNameFactory.Default.Create( request.DeveloperName ),
@@ -64,7 +65,7 @@ namespace KeySwitchManager.Interactors.KeySwitches.Searching
             #endregion
 
             #region By Developer
-            if( !StringHelper.IsNullOrTrimEmpty( developerName ) )
+            if( !StringHelper.IsEmpty( developerName ) )
             {
                 var keySwitches = Repository.Find(
                     IDeveloperNameFactory.Default.Create( request.DeveloperName )

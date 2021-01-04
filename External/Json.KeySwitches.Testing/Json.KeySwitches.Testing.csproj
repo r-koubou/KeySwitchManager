@@ -16,6 +16,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\..\Common.Testing\Common.Testing.csproj" />
+      <ProjectReference Include="..\..\Interactors.Testing\Interactors.Testing.csproj" />
       <ProjectReference Include="..\Json.KeySwitches\Json.KeySwitches.csproj" />
     </ItemGroup>
 

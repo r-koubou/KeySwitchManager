@@ -1,7 +1,8 @@
-using KeySwitchManager.Common.Exceptions;
 using KeySwitchManager.Domain.KeySwitches.Value;
 
 using NUnit.Framework;
+
+using RkHelper.Text;
 
 namespace Domain.Testing.KeySwitches.Value
 {
@@ -11,8 +12,8 @@ namespace Domain.Testing.KeySwitches.Value
         [Test]
         public void EmptyNameTest()
         {
-            Assert.Throws<InvalidNameException>( () =>  IArticulationNameFactory.Default.Create( "" ) );
-            Assert.Throws<InvalidNameException>( () =>  IArticulationNameFactory.Default.Create( "  " ) );
+            Assert.Throws<EmptyTextException>( () =>  IArticulationNameFactory.Default.Create( "" ) );
+            Assert.Throws<EmptyTextException>( () =>  IArticulationNameFactory.Default.Create( "  " ) );
             _ = IArticulationNameFactory.Default.Create( "Hoge" );
         }
 

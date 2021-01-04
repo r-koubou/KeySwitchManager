@@ -7,13 +7,14 @@ using CommandLine;
 
 using Databases.LiteDB.KeySwitches.KeySwitches;
 
-using KeySwitchManager.Common.Text;
 using KeySwitchManager.Domain.Commons;
 using KeySwitchManager.Domain.KeySwitches.Aggregate;
 using KeySwitchManager.Domain.KeySwitches.Value;
 using KeySwitchManager.Interactors.KeySwitches.Exporting;
 using KeySwitchManager.UseCases.KeySwitches.Exporting;
 using KeySwitchManager.Xlsx.KeySwitches.ClosedXml;
+
+using RkHelper.Text;
 
 namespace KeySwitchManager.CLI.Commands
 {
@@ -67,7 +68,7 @@ namespace KeySwitchManager.CLI.Commands
 
             var developerName = IDeveloperNameFactory.Default.Create( option.Developer );
 
-            if( StringHelper.IsNullOrTrimEmpty( option.Product ) )
+            if( StringHelper.IsEmpty( option.Product ) )
             {
                 return repository.Find( developerName );
             }

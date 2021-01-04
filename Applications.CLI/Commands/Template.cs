@@ -4,10 +4,11 @@ using System.IO;
 
 using CommandLine;
 
-using KeySwitchManager.Common.IO;
-using KeySwitchManager.Common.Text;
 using KeySwitchManager.Interactors.KeySwitches.Exporting;
 using KeySwitchManager.Json.KeySwitches.Translations;
+
+using RkHelper.IO;
+using RkHelper.Text;
 
 namespace KeySwitchManager.CLI.Commands
 {
@@ -31,14 +32,14 @@ namespace KeySwitchManager.CLI.Commands
 
             var response = interactor.Execute();
 
-            if( StringHelper.IsNullOrTrimEmpty( option.OutputPath ) )
+            if( StringHelper.IsEmpty( option.OutputPath ) )
             {
                 Console.Out.WriteLine( response.Text );
             }
             else
             {
                 var outputDirectory = Path.GetDirectoryName( option.OutputPath )!;
-                PathUtility.CreateDirectory( outputDirectory );
+                DirectoryHelper.Create( outputDirectory );
 
                 Console.WriteLine( $"generating json to {option.OutputPath}" );
                 File.WriteAllText( option.OutputPath, response.Text );

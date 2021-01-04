@@ -3,10 +3,11 @@ using System.IO;
 
 using Databases.LiteDB.KeySwitches.KeySwitches;
 
-using KeySwitchManager.Common.Testing;
+using KeySwitchManager.Common.Testing.KeySwitches;
 using KeySwitchManager.Domain.MidiMessages;
 using KeySwitchManager.Domain.MidiMessages.Aggregate;
 using KeySwitchManager.Interactors.StudioOneKeySwitch.Exporting;
+using KeySwitchManager.Interactors.Testing.KeySwitches;
 using KeySwitchManager.Presenters.StudioOneKeySwitch;
 using KeySwitchManager.UseCases.StudioOneKeySwitch.Exporting;
 using KeySwitchManager.Xml.StudioOne.KeySwitch.Translations;

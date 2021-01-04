@@ -1,6 +1,6 @@
 using System;
 
-using KeySwitchManager.Common.Numbers;
+using RkHelper.Number;
 
 namespace KeySwitchManager.Gateways.KeySwitches.Value
 {
@@ -18,8 +18,8 @@ namespace KeySwitchManager.Gateways.KeySwitches.Value
 
         public SaveResult( int inserted, int updated )
         {
-            RangeValidateHelper.ValidateRange( inserted, MinValue, MaxValue );
-            RangeValidateHelper.ValidateRange( updated,  MinValue, MaxValue );
+            NumberHelper.ValidateRange( inserted, MinValue, MaxValue );
+            NumberHelper.ValidateRange( updated,  MinValue, MaxValue );
             Inserted = inserted;
             Updated  = updated;
         }

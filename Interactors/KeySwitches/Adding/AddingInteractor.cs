@@ -1,10 +1,11 @@
 using System;
 
-using KeySwitchManager.Common.Utilities;
 using KeySwitchManager.Domain.KeySwitches;
 using KeySwitchManager.Gateways.KeySwitches;
 using KeySwitchManager.Presenters.KeySwitches;
 using KeySwitchManager.UseCases.KeySwitches.Adding;
+
+using RkHelper.Time;
 
 namespace KeySwitchManager.Interactors.KeySwitches.Adding
 {
