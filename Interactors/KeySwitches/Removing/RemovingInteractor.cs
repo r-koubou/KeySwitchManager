@@ -1,8 +1,9 @@
-using KeySwitchManager.Common.Text;
 using KeySwitchManager.Domain.KeySwitches.Value;
 using KeySwitchManager.Gateways.KeySwitches;
 using KeySwitchManager.Presenters.KeySwitches;
 using KeySwitchManager.UseCases.KeySwitches.Removing;
+
+using RkHelper.Text;
 
 namespace KeySwitchManager.Interactors.KeySwitches.Removing
 {
@@ -29,7 +30,7 @@ namespace KeySwitchManager.Interactors.KeySwitches.Removing
 
             Presenter.Present( $"Removing keyswitch: Developer={developerName}, Product={productName}, Instrument={instrumentName}" );
 
-            if( !StringHelper.IsNullOrTrimEmpty( developerName, productName, instrumentName ) )
+            if( !StringHelper.IsEmpty( developerName, productName, instrumentName ) )
             {
                 removedCount = Repository.Delete(
                     IDeveloperNameFactory.Default.Create( developerName ),
@@ -37,7 +38,7 @@ namespace KeySwitchManager.Interactors.KeySwitches.Removing
                     IInstrumentNameFactory.Default.Create( instrumentName )
                 );
             }
-            else if( !StringHelper.IsNullOrTrimEmpty( developerName, productName ) )
+            else if( !StringHelper.IsEmpty( developerName, productName ) )
             {
                 removedCount = Repository.Delete(
                     IDeveloperNameFactory.Default.Create( developerName ),

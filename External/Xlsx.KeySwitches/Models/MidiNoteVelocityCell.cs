@@ -1,4 +1,4 @@
-using KeySwitchManager.Common.Numbers;
+using RkHelper.Number;
 
 namespace KeySwitchManager.Xlsx.KeySwitches.Models
 {
@@ -11,7 +11,7 @@ namespace KeySwitchManager.Xlsx.KeySwitches.Models
 
         public MidiNoteVelocityCell( int velocity )
         {
-            RangeValidateHelper.ValidateRange( velocity, MinValue, MaxValue );
+            NumberHelper.ValidateRange( velocity, MinValue, MaxValue );
             Value = velocity;
         }
     }

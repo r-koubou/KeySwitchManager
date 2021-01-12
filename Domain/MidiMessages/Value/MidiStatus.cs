@@ -1,5 +1,6 @@
-using KeySwitchManager.Common.Numbers;
 using KeySwitchManager.Domain.MidiMessages.Helpers;
+
+using RkHelper.Number;
 
 namespace KeySwitchManager.Domain.MidiMessages.Value
 {
@@ -36,14 +37,14 @@ namespace KeySwitchManager.Domain.MidiMessages.Value
 
             public MidiStatus Create( int value )
             {
-                RangeValidateHelper.ValidateRange( value, MinValue, MaxValue );
+                NumberHelper.ValidateRange( value, MinValue, MaxValue );
                 return new MidiStatus( value );
             }
 
             public MidiStatus Create( int status, int channel )
             {
                 var value = ( status | channel ) & 0xF;
-                RangeValidateHelper.ValidateRange( value, MinValue, MaxValue );
+                NumberHelper.ValidateRange( value, MinValue, MaxValue );
                 return new MidiStatus( value );
             }
 

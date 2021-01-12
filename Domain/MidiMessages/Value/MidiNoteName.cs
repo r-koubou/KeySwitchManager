@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 
-using KeySwitchManager.Common.Exceptions;
-using KeySwitchManager.Common.Text;
+using RkHelper.Text;
 
 namespace KeySwitchManager.Domain.MidiMessages.Value
 {
@@ -421,7 +420,7 @@ namespace KeySwitchManager.Domain.MidiMessages.Value
 
             if( !int.TryParse( noteName, out var number ) )
             {
-                throw new InvalidNameException( nameof( noteName ) );
+                throw new ArgumentException( nameof( noteName ) );
             }
 
             Value = NoteNameList[ number ];
@@ -490,7 +489,7 @@ namespace KeySwitchManager.Domain.MidiMessages.Value
         {
             public MidiNoteName Create( string value )
             {
-                StringHelper.ValidateNullOrTrimEmpty( value );
+                StringHelper.ValidateEmpty( value );
                 return new MidiNoteName( value );
             }
         }

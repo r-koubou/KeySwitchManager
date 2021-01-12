@@ -7,4 +7,4 @@ KeySwitchManager CLI Application
 
 ## Build At
 
-2021-01-02 16:36:56 +09:00
+2021-01-05 04:59:14 +09:00

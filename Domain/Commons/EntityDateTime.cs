@@ -1,6 +1,6 @@
 using System;
 
-using KeySwitchManager.Common.Numbers;
+using RkHelper.Number;
 
 namespace KeySwitchManager.Domain.Commons
 {
@@ -54,13 +54,13 @@ namespace KeySwitchManager.Domain.Commons
             int second,
             int milliSecond )
         {
-            RangeValidateHelper.ValidateRange( year,        0, int.MaxValue );
-            RangeValidateHelper.ValidateRange( month,       1, 12 );
-            RangeValidateHelper.ValidateRange( day,         1, 31 );
-            RangeValidateHelper.ValidateRange( hour,        0, 23 );
-            RangeValidateHelper.ValidateRange( minute,      0, 59 );
-            RangeValidateHelper.ValidateRange( second,      0, 59 );
-            RangeValidateHelper.ValidateRange( milliSecond, 0, 9999 );
+            NumberHelper.ValidateRange( year,        0, int.MaxValue );
+            NumberHelper.ValidateRange( month,       1, 12 );
+            NumberHelper.ValidateRange( day,         1, 31 );
+            NumberHelper.ValidateRange( hour,        0, 23 );
+            NumberHelper.ValidateRange( minute,      0, 59 );
+            NumberHelper.ValidateRange( second,      0, 59 );
+            NumberHelper.ValidateRange( milliSecond, 0, 9999 );
 
             Year        = year;
             Month       = month;

@@ -1,9 +1,10 @@
 using System.Linq;
 
-using KeySwitchManager.Common.Text.Xml;
 using KeySwitchManager.Domain.Commons;
 using KeySwitchManager.UseCases.StudioOneKeySwitch.Translations;
 using KeySwitchManager.Xml.StudioOne.KeySwitch.Models;
+
+using RkHelper.Text.Xml;
 
 namespace KeySwitchManager.Xml.StudioOne.KeySwitch.Translations
 {

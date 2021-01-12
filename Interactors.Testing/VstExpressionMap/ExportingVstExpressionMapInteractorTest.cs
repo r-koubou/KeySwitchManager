@@ -3,7 +3,8 @@ using System.IO;
 
 using Databases.LiteDB.KeySwitches.KeySwitches;
 
-using KeySwitchManager.Common.Testing;
+using KeySwitchManager.Common.Testing.KeySwitches;
+using KeySwitchManager.Interactors.Testing.KeySwitches;
 using KeySwitchManager.Interactors.VstExpressionMap.Exporting;
 using KeySwitchManager.Presenters.VstExpressionMap;
 using KeySwitchManager.UseCases.VstExpressionMap.Exporting;

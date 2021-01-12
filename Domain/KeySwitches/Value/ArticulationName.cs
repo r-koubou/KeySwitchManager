@@ -1,7 +1,8 @@
 using System;
 
-using KeySwitchManager.Common.Exceptions;
-using KeySwitchManager.Common.Text;
+using KeySwitchManager.Domain.Commons;
+
+using RkHelper.Text;
 
 namespace KeySwitchManager.Domain.KeySwitches.Value
 {
@@ -48,7 +49,7 @@ namespace KeySwitchManager.Domain.KeySwitches.Value
         {
             public ArticulationName Create( string value )
             {
-                StringHelper.ValidateNullOrTrimEmpty<InvalidNameException>( value );
+                StringHelper.ValidateEmpty( value );
                 return new ArticulationName( value );
             }
         }

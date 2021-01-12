@@ -8,13 +8,14 @@ using CommandLine;
 
 using Databases.LiteDB.KeySwitches.KeySwitches;
 
-using KeySwitchManager.Common.IO;
 using KeySwitchManager.Domain.Commons;
 using KeySwitchManager.Domain.Helpers;
 using KeySwitchManager.Interactors.VstExpressionMap.Exporting;
 using KeySwitchManager.Presenters.VstExpressionMap;
 using KeySwitchManager.UseCases.VstExpressionMap.Exporting;
 using KeySwitchManager.Xml.VstExpressionMap.Translations;
+
+using RkHelper.IO;
 
 namespace KeySwitchManager.CLI.Commands
 {
@@ -39,8 +40,6 @@ namespace KeySwitchManager.CLI.Commands
 
             [Option( 'o', "outputdir", Required = true )]
             public string OutputDirectory { get; set; } = string.Empty;
-            [Option( 'w', "overwrite" )]
-            public bool OverWrite { get; set; } = true;
             [Option( 's', "structure-dir" )]
             public bool DirectoryStructure { get; set; } = false;
         }
@@ -79,12 +78,12 @@ namespace KeySwitchManager.CLI.Commands
                 }
                 else
                 {
-                    PathUtility.CreateDirectory( outputDirectory );
+                    DirectoryHelper.Create( outputDirectory );
                 }
 
                 var prefix = $"{i.KeySwitch.ProductName} {i.KeySwitch.InstrumentName}";
                 var path = $"{prefix}.expressionmap";
-                path = PathUtility.GenerateFilePathWhenExist( path, outputDirectory, option.OverWrite );
+                path = PathHelper.IncrementPathNameWhenExist( outputDirectory, path );
 
                 Console.Out.WriteLine( $"export to {path}" );
                 File.WriteAllText( path, i.XmlText.Value, Encoding.UTF8 );

@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 
-using KeySwitchManager.Common.Text.Xml;
 using KeySwitchManager.Domain.Commons;
 using KeySwitchManager.Domain.KeySwitches.Aggregate;
 using KeySwitchManager.Domain.KeySwitches.Value;
@@ -8,6 +7,8 @@ using KeySwitchManager.Domain.MidiMessages.Aggregate;
 using KeySwitchManager.UseCases.VstExpressionMap.Translations;
 using KeySwitchManager.Xml.VstExpressionMap.Models;
 using KeySwitchManager.Xml.VstExpressionMap.Models.XmlClasses;
+
+using RkHelper.Text.Xml;
 
 namespace KeySwitchManager.Xml.VstExpressionMap.Translations
 {

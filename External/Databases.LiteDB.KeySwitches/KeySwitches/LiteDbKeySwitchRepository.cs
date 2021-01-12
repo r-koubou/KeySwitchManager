@@ -6,7 +6,6 @@ using System.Linq;
 using Databases.LiteDB.KeySwitches.KeySwitches.Models;
 using Databases.LiteDB.KeySwitches.KeySwitches.Translations;
 
-using KeySwitchManager.Common.Utilities;
 using KeySwitchManager.Domain.Commons;
 using KeySwitchManager.Domain.KeySwitches.Aggregate;
 using KeySwitchManager.Domain.KeySwitches.Value;
@@ -14,6 +13,8 @@ using KeySwitchManager.Gateways.KeySwitches;
 using KeySwitchManager.Gateways.KeySwitches.Value;
 
 using LiteDB;
+
+using RkHelper.Time;
 
 namespace Databases.LiteDB.KeySwitches.KeySwitches
 {

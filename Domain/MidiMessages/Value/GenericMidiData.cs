@@ -1,4 +1,4 @@
-using KeySwitchManager.Common.Numbers;
+using RkHelper.Number;
 
 namespace KeySwitchManager.Domain.MidiMessages.Value
 {
@@ -30,7 +30,7 @@ namespace KeySwitchManager.Domain.MidiMessages.Value
 
             public GenericMidiData Create( int value )
             {
-                RangeValidateHelper.ValidateRange( value, MinValue, MaxValue );
+                NumberHelper.ValidateRange( value, MinValue, MaxValue );
                 return new GenericMidiData( value );
             }
         }

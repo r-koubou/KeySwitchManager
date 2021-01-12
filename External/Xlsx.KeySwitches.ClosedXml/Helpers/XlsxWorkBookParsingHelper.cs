@@ -5,10 +5,11 @@ using System.Text;
 
 using ClosedXML.Excel;
 
-using KeySwitchManager.Common.Text;
 using KeySwitchManager.Domain.Commons;
 using KeySwitchManager.Xlsx.KeySwitches.Helpers;
 using KeySwitchManager.Xlsx.KeySwitches.Models;
+
+using RkHelper.Text;
 
 namespace KeySwitchManager.Xlsx.KeySwitches.ClosedXml.Helpers
 {
@@ -125,7 +126,7 @@ namespace KeySwitchManager.Xlsx.KeySwitches.ClosedXml.Helpers
                              .Cell( SpreadsheetConstants.ColumnDataBegin )
                              .Value;
 
-            return StringHelper.IsNullOrTrimEmpty( value );
+            return StringHelper.IsEmpty( value );
         }
 
         private static Row ParseRow( CellContext context )

@@ -1,4 +1,4 @@
-using KeySwitchManager.Common.Numbers;
+using RkHelper.Number;
 
 namespace KeySwitchManager.Xlsx.KeySwitches.Models
 {
@@ -11,7 +11,7 @@ namespace KeySwitchManager.Xlsx.KeySwitches.Models
 
         public MidiControlChangeNumberCell( int ccNumber )
         {
-            RangeValidateHelper.ValidateRange( ccNumber, MinValue, MaxValue );
+            NumberHelper.ValidateRange( ccNumber, MinValue, MaxValue );
             Value = ccNumber;
         }
     }

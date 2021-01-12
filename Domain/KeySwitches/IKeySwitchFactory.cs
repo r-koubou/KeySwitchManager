@@ -1,10 +1,11 @@
 using System;
 using System.Collections.Generic;
 
-using KeySwitchManager.Common.Utilities;
 using KeySwitchManager.Domain.Commons;
 using KeySwitchManager.Domain.KeySwitches.Aggregate;
 using KeySwitchManager.Domain.KeySwitches.Value;
+
+using RkHelper.Time;
 
 namespace KeySwitchManager.Domain.KeySwitches
 {

@@ -1,4 +1,4 @@
-using KeySwitchManager.Common.Text;
+using RkHelper.Text;
 
 namespace KeySwitchManager.Xlsx.KeySwitches.Models
 {
@@ -11,7 +11,7 @@ namespace KeySwitchManager.Xlsx.KeySwitches.Models
 
         public ExtraDataCell( string name )
         {
-            Value = StringHelper.IsNullOrTrimEmpty( name ) ? string.Empty : name;
+            Value = StringHelper.IsEmpty( name ) ? string.Empty : name;
         }
     }
 }

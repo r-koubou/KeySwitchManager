@@ -1,13 +1,14 @@
 using System;
 using System.Collections.Generic;
 
-using KeySwitchManager.Common.Utilities;
 using KeySwitchManager.Domain.Commons;
 using KeySwitchManager.Domain.KeySwitches.Aggregate;
 using KeySwitchManager.Domain.KeySwitches.Value;
 using KeySwitchManager.Domain.MidiMessages.Aggregate;
 
-namespace KeySwitchManager.Common.Testing
+using RkHelper.Time;
+
+namespace KeySwitchManager.Common.Testing.KeySwitches
 {
     public static class TestDataGenerator
     {

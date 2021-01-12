@@ -20,6 +20,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\..\Common.Testing\Common.Testing.csproj" />
+      <ProjectReference Include="..\..\Interactors.Testing\Interactors.Testing.csproj" />
       <ProjectReference Include="..\Xml.VstExpressionMap\Xml.VstExpressionMap.csproj" />
     </ItemGroup>
 

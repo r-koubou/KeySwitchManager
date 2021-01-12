@@ -4,10 +4,11 @@ using System.Linq;
 
 using Databases.LiteDB.KeySwitches.KeySwitches;
 
-using KeySwitchManager.Common.Testing;
+using KeySwitchManager.Common.Testing.KeySwitches;
 using KeySwitchManager.Domain.MidiMessages.Aggregate;
 using KeySwitchManager.Domain.MidiMessages.Helpers;
 using KeySwitchManager.Domain.MidiMessages.Value;
+using KeySwitchManager.Interactors.Testing.KeySwitches;
 
 using NUnit.Framework;
 

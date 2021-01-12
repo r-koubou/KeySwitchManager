@@ -1,4 +1,4 @@
-using KeySwitchManager.Common.Text;
+using RkHelper.Text;
 
 namespace KeySwitchManager.Xlsx.KeySwitches
 {
@@ -15,8 +15,8 @@ namespace KeySwitchManager.Xlsx.KeySwitches
             string author = "",
             string description = "" )
         {
-            StringHelper.ValidateNullOrTrimEmpty( developerName );
-            StringHelper.ValidateNullOrTrimEmpty( productName );
+            StringHelper.ValidateEmpty( developerName );
+            StringHelper.ValidateEmpty( productName );
             StringHelper.ValidateNull( author );
             StringHelper.ValidateNull( description );
 

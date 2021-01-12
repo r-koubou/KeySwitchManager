@@ -1,11 +1,12 @@
 using System;
 using System.Collections.Generic;
 
-using KeySwitchManager.Common.Text;
 using KeySwitchManager.Domain.Commons;
 using KeySwitchManager.Domain.KeySwitches.Aggregate;
 using KeySwitchManager.Domain.KeySwitches.Value;
 using KeySwitchManager.Gateways.KeySwitches;
+
+using RkHelper.Text;
 
 namespace KeySwitchManager.Interactors.Helpers
 {
@@ -26,7 +27,7 @@ namespace KeySwitchManager.Interactors.Helpers
             #endregion
 
             #region By Developer, Product, Instrument
-            if( !StringHelper.IsNullOrTrimEmpty( developerName, productName, instrumentName ) )
+            if( !StringHelper.IsEmpty( developerName, productName, instrumentName ) )
             {
                 return new List<KeySwitch>(
                     repository.Find(
@@ -38,7 +39,7 @@ namespace KeySwitchManager.Interactors.Helpers
             #endregion
 
             #region By Developer, Product
-            if( !StringHelper.IsNullOrTrimEmpty( developerName, productName ) )
+            if( !StringHelper.IsEmpty( developerName, productName ) )
             {
                 return new List<KeySwitch>(
                     repository.Find(
@@ -50,7 +51,7 @@ namespace KeySwitchManager.Interactors.Helpers
             #endregion
 
             #region By Developer
-            if( !StringHelper.IsNullOrTrimEmpty( developerName ) )
+            if( !StringHelper.IsEmpty( developerName ) )
             {
                 return new List<KeySwitch>(
                     repository.Find(

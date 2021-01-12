@@ -1,6 +1,6 @@
 using System;
 
-using KeySwitchManager.Common.Text;
+using RkHelper.Text;
 
 namespace KeySwitchManager.Xlsx.KeySwitches.Models
 {
@@ -17,12 +17,7 @@ namespace KeySwitchManager.Xlsx.KeySwitches.Models
 
         public GuidCell( string name )
         {
-            if( StringHelper.IsNullOrTrimEmpty( name ) )
-            {
-                Value = string.Empty;
-            }
-
-            Value = name;
+            Value = StringHelper.IsEmpty( name ) ? string.Empty : name;
         }
         public GuidCell( Guid guid )
         {

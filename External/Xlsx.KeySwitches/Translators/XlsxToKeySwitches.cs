@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 
-using KeySwitchManager.Common.Utilities;
 using KeySwitchManager.Domain.KeySwitches;
 using KeySwitchManager.Domain.KeySwitches.Aggregate;
 using KeySwitchManager.Domain.MidiMessages;
@@ -9,6 +8,8 @@ using KeySwitchManager.Domain.MidiMessages.Aggregate;
 using KeySwitchManager.Domain.MidiMessages.Value;
 using KeySwitchManager.Domain.Translations;
 using KeySwitchManager.Xlsx.KeySwitches.Models;
+
+using RkHelper.Time;
 
 namespace KeySwitchManager.Xlsx.KeySwitches.Translators
 {

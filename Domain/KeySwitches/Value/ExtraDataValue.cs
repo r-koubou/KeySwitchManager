@@ -1,7 +1,8 @@
 using System;
 
-using KeySwitchManager.Common.Text;
 using KeySwitchManager.Domain.Commons;
+
+using RkHelper.Text;
 
 namespace KeySwitchManager.Domain.KeySwitches.Value
 {
@@ -52,7 +53,7 @@ namespace KeySwitchManager.Domain.KeySwitches.Value
         {
             public ExtraDataValue Create( string value )
             {
-                StringHelper.ValidateNullOrTrimEmpty( value );
+                StringHelper.ValidateEmpty( value );
                 return new ExtraDataValue( value );
             }
         }

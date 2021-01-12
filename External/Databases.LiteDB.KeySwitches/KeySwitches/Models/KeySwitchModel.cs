@@ -1,9 +1,9 @@
 using System;
 using System.Collections.Generic;
 
-using KeySwitchManager.Common.Utilities;
-
 using LiteDB;
+
+using RkHelper.Time;
 
 namespace Databases.LiteDB.KeySwitches.KeySwitches.Models
 {
