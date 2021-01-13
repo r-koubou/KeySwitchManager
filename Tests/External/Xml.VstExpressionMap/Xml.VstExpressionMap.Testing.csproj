@@ -5,7 +5,9 @@
 
         <IsPackable>false</IsPackable>
 
-        <LangVersion>9</LangVersion>
+        <AssemblyName>KeySwitchManager.Xml.VstExpressionMap.Testing</AssemblyName>
+
+        <RootNamespace>KeySwitchManager.Xml.VstExpressionMap.Testing</RootNamespace>
 
         <Nullable>enable</Nullable>
     </PropertyGroup>
@@ -17,11 +19,9 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\Domain\Domain.csproj" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <Folder Include="KeySwitches" />
+      <ProjectReference Include="..\..\Common\Common.Testing.csproj" />
+      <ProjectReference Include="..\..\Interactors\Interactors.Testing.csproj" />
+      <ProjectReference Include="..\..\..\Sources\External\Xml.VstExpressionMap\Xml.VstExpressionMap.csproj" />
     </ItemGroup>
 
 </Project>

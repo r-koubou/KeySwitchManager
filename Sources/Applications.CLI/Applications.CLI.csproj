@@ -29,23 +29,23 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Content Include="..\CHANGELOG.md">
+      <Content Include="..\..\CHANGELOG.md">
         <Link>CHANGELOG.md</Link>
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </Content>
-      <Content Include="..\LICENSE">
+      <Content Include="..\..\LICENSE">
         <Link>LICENSE</Link>
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </Content>
-      <Content Include="..\NOTICE.md">
+      <Content Include="..\..\NOTICE.md">
         <Link>NOTICE.md</Link>
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </Content>
-      <Content Include="..\README.ja.md">
+      <Content Include="..\..\README.ja.md">
         <Link>README.ja.md</Link>
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </Content>
-      <Content Include="..\README.md">
+      <Content Include="..\..\README.md">
         <Link>README.md</Link>
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </Content>

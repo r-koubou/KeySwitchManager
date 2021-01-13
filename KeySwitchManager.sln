@@ -8,29 +8,29 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "03 Interface Adapters", "03
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "04 Frameworks and Drivers", "04 Frameworks and Drivers", "{57A50A2B-D447-4874-A32C-2BAAC715AC2D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain", "Domain\Domain.csproj", "{B61EB68B-0994-425F-BD54-0AC1A89D14E9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain", "Sources\Domain\Domain.csproj", "{B61EB68B-0994-425F-BD54-0AC1A89D14E9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain.Testing", "Domain.Testing\Domain.Testing.csproj", "{26524597-5E83-4FB3-9CBA-6CDAD3A0296F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain.Testing", "Tests\Domain\Domain.Testing.csproj", "{26524597-5E83-4FB3-9CBA-6CDAD3A0296F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UseCases", "UseCases\UseCases.csproj", "{2007D73D-2A66-41B5-A94B-104EB7D78B37}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UseCases", "Sources\UseCases\UseCases.csproj", "{2007D73D-2A66-41B5-A94B-104EB7D78B37}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Interactors", "Interactors\Interactors.csproj", "{7ECCCB05-2C51-4491-81A5-AF24E7B355F6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Interactors", "Sources\Interactors\Interactors.csproj", "{7ECCCB05-2C51-4491-81A5-AF24E7B355F6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Presenters", "Presenters\Presenters.csproj", "{A31FB6E0-791C-494B-99E7-B6F91505C3C9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Presenters", "Sources\Presenters\Presenters.csproj", "{A31FB6E0-791C-494B-99E7-B6F91505C3C9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gateways", "Gateways\Gateways.csproj", "{A6DAE468-A33B-4DB6-9EBD-8FAE37362874}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gateways", "Sources\Gateways\Gateways.csproj", "{A6DAE468-A33B-4DB6-9EBD-8FAE37362874}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Interactors.Testing", "Interactors.Testing\Interactors.Testing.csproj", "{C6EF264F-FD28-49F8-9767-549EC6E048A7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Interactors.Testing", "Tests\Interactors\Interactors.Testing.csproj", "{C6EF264F-FD28-49F8-9767-549EC6E048A7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Databases.LiteDB.KeySwitches", "External\Databases.LiteDB.KeySwitches\Databases.LiteDB.KeySwitches.csproj", "{E27AD20F-D7A7-4842-8BDC-9C8422CF4618}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Databases.LiteDB.KeySwitches", "Sources\External\Databases.LiteDB.KeySwitches\Databases.LiteDB.KeySwitches.csproj", "{E27AD20F-D7A7-4842-8BDC-9C8422CF4618}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Databases.LiteDB.KeySwitches.Testing", "External\Databases.LiteDB.KeySwitches.Testing\Databases.LiteDB.KeySwitches.Testing.csproj", "{70A70B9D-A7A1-4C20-9B25-61A59C87CC7E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Databases.LiteDB.KeySwitches.Testing", "Tests\External\Databases.LiteDB.KeySwitches\Databases.LiteDB.KeySwitches.Testing.csproj", "{70A70B9D-A7A1-4C20-9B25-61A59C87CC7E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Json.KeySwitches", "External\Json.KeySwitches\Json.KeySwitches.csproj", "{07A4641E-50C0-4831-9CFA-0825D1AA9604}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Json.KeySwitches", "Sources\External\Json.KeySwitches\Json.KeySwitches.csproj", "{07A4641E-50C0-4831-9CFA-0825D1AA9604}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Json.KeySwitches.Testing", "External\Json.KeySwitches.Testing\Json.KeySwitches.Testing.csproj", "{471C186E-12C1-4D4A-BC9C-3F57B05B7436}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Json.KeySwitches.Testing", "Tests\External\Json.KeySwitches\Json.KeySwitches.Testing.csproj", "{471C186E-12C1-4D4A-BC9C-3F57B05B7436}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xml.VstExpressionMap", "External\Xml.VstExpressionMap\Xml.VstExpressionMap.csproj", "{13F1DEB9-FF74-4597-906E-652953B5FF74}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xml.VstExpressionMap", "Sources\External\Xml.VstExpressionMap\Xml.VstExpressionMap.csproj", "{13F1DEB9-FF74-4597-906E-652953B5FF74}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Databases", "Databases", "{8E886F59-9606-4BC6-836F-B423F794FF67}"
 EndProject
@@ -38,25 +38,27 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "JSON", "JSON", "{2C2EDA27-8
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "XML", "XML", "{E9A5A415-0027-42EC-AA51-3093A2E78E0D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xml.VstExpressionMap.Testing", "External\Xml.VstExpressionMap.Testing\Xml.VstExpressionMap.Testing.csproj", "{41B7D236-BAB2-4932-A275-8DB7A9F8395C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xml.VstExpressionMap.Testing", "Tests\External\Xml.VstExpressionMap\Xml.VstExpressionMap.Testing.csproj", "{41B7D236-BAB2-4932-A275-8DB7A9F8395C}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Applications.CLI", "Applications.CLI", "{D25E9941-6ED1-455D-AD56-8F9703C1D767}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Applications.CLI", "Applications.CLI\Applications.CLI.csproj", "{530BB058-C61C-4DC2-9628-B503DF3B8C55}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Applications.CLI", "Sources\Applications.CLI\Applications.CLI.csproj", "{530BB058-C61C-4DC2-9628-B503DF3B8C55}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "XLSX", "XLSX", "{8539D13A-3741-4582-A8BE-023D1892472E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xlsx.KeySwitches.ClosedXml", "External\Xlsx.KeySwitches.ClosedXml\Xlsx.KeySwitches.ClosedXml.csproj", "{07B9772F-BDA6-4CE3-BB78-4F9D64B8E677}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xlsx.KeySwitches.ClosedXml", "Sources\External\Xlsx.KeySwitches.ClosedXml\Xlsx.KeySwitches.ClosedXml.csproj", "{07B9772F-BDA6-4CE3-BB78-4F9D64B8E677}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xml.StudioOne.KeySwitch", "External\Xml.StudioOne.KeySwitch\Xml.StudioOne.KeySwitch.csproj", "{1EB82814-D84D-4A91-9379-E94B372D432C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xml.StudioOne.KeySwitch", "Sources\External\Xml.StudioOne.KeySwitch\Xml.StudioOne.KeySwitch.csproj", "{1EB82814-D84D-4A91-9379-E94B372D432C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xml.StudioOne.KeySwitch.Testing", "External\Xml.StudioOne.KeySwitch.Testing\Xml.StudioOne.KeySwitch.Testing.csproj", "{15E38DE0-3673-43FF-BF19-75CFAF4B400A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xml.StudioOne.KeySwitch.Testing", "Tests\External\Xml.StudioOne.KeySwitch\Xml.StudioOne.KeySwitch.Testing.csproj", "{15E38DE0-3673-43FF-BF19-75CFAF4B400A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xlsx.KeySwitches", "External\Xlsx.KeySwitches\Xlsx.KeySwitches.csproj", "{149F6223-09CD-4BE7-B7C3-B08745C5671A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xlsx.KeySwitches", "Sources\External\Xlsx.KeySwitches\Xlsx.KeySwitches.csproj", "{149F6223-09CD-4BE7-B7C3-B08745C5671A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common.Testing", "Common.Testing\Common.Testing.csproj", "{CA974169-6348-431D-96F5-B96C69EF4103}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common.Testing", "Tests\Common\Common.Testing.csproj", "{CA974169-6348-431D-96F5-B96C69EF4103}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common", "Common\Common.csproj", "{24D0CBC0-3D56-412F-AE95-E6EAA2554554}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common", "Sources\Common\Common.csproj", "{24D0CBC0-3D56-412F-AE95-E6EAA2554554}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Commons", "Commons", "{31CAB578-F32A-4F55-B860-814D072DC6A4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -168,5 +170,7 @@ Global
 		{1EB82814-D84D-4A91-9379-E94B372D432C} = {E9A5A415-0027-42EC-AA51-3093A2E78E0D}
 		{15E38DE0-3673-43FF-BF19-75CFAF4B400A} = {E9A5A415-0027-42EC-AA51-3093A2E78E0D}
 		{149F6223-09CD-4BE7-B7C3-B08745C5671A} = {8539D13A-3741-4582-A8BE-023D1892472E}
+		{24D0CBC0-3D56-412F-AE95-E6EAA2554554} = {31CAB578-F32A-4F55-B860-814D072DC6A4}
+		{CA974169-6348-431D-96F5-B96C69EF4103} = {31CAB578-F32A-4F55-B860-814D072DC6A4}
 	EndGlobalSection
 EndGlobal
