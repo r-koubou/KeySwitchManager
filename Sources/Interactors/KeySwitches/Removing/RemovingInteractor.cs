@@ -33,16 +33,16 @@ namespace KeySwitchManager.Interactors.KeySwitches.Removing
             if( !StringHelper.IsEmpty( developerName, productName, instrumentName ) )
             {
                 removedCount = Repository.Delete(
-                    IDeveloperNameFactory.Default.Create( developerName ),
-                    IProductNameFactory.Default.Create( productName ),
-                    IInstrumentNameFactory.Default.Create( instrumentName )
+                    new DeveloperName( developerName ),
+                    new ProductName( productName ),
+                    new InstrumentName( instrumentName )
                 );
             }
             else if( !StringHelper.IsEmpty( developerName, productName ) )
             {
                 removedCount = Repository.Delete(
-                    IDeveloperNameFactory.Default.Create( developerName ),
-                    IProductNameFactory.Default.Create( productName )
+                    new DeveloperName( developerName ),
+                    new ProductName( productName )
                 );
             }
 

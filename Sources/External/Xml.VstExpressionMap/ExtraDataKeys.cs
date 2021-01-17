@@ -4,9 +4,9 @@ namespace KeySwitchManager.Xml.VstExpressionMap
 {
     public static class ExtraDataKeys
     {
-        public static readonly ExtraDataKey SlotName = IExtraDataKeyFactory.Default.Create( "Cubase.Slot" );
-        public static readonly ExtraDataKey ColorIndex = IExtraDataKeyFactory.Default.Create( "Cubase.Color" );
-        public static readonly ExtraDataKey GroupIndex = IExtraDataKeyFactory.Default.Create( "Cubase.Group" );
-        public static readonly ExtraDataKey ArticulationType = IExtraDataKeyFactory.Default.Create( "Cubase.ArticulationType" );
+        public static readonly ExtraDataKey SlotName = new ExtraDataKey( "Cubase.Slot" );
+        public static readonly ExtraDataKey ColorIndex = new ExtraDataKey( "Cubase.Color" );
+        public static readonly ExtraDataKey GroupIndex = new ExtraDataKey( "Cubase.Group" );
+        public static readonly ExtraDataKey ArticulationType = new ExtraDataKey( "Cubase.ArticulationType" );
     }
 }
