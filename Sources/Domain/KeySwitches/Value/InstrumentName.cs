@@ -1,7 +1,3 @@
-using System;
-
-using KeySwitchManager.Domain.Commons;
-
 using RkHelper.Text;
 
 using ValueObjectGenerator;
