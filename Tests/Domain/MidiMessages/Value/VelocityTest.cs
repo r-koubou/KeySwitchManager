@@ -13,23 +13,23 @@ namespace Domain.Testing.MidiMessages.Value
         [TestCase( 128 )]
         public void OutOfRangeTest( int velocity )
         {
-            Assert.Throws<ArgumentOutOfRangeException>( () => IMidiVelocityFactory.Default.Create( velocity ) );
+            Assert.Throws<ArgumentOutOfRangeException>( () => _ = new MidiVelocity( velocity ) );
         }
 
         [Test]
         public void EqualityTest()
         {
-            var vel1 = IMidiVelocityFactory.Default.Create( 10 );
-            var vel2 = IMidiVelocityFactory.Default.Create( 20 );
-            Assert.IsTrue( vel1.Equals( IMidiVelocityFactory.Default.Create( 10 ) ) );
+            var vel1 = new MidiVelocity( 10 );
+            var vel2 = new MidiVelocity( 20 );
+            Assert.IsTrue( vel1.Equals( new MidiVelocity( 10 ) ) );
             Assert.IsFalse( vel1.Equals( vel2 ) );
         }
 
         [Test]
         public void ToStringEqualityTest()
         {
-            Assert.AreEqual( IMidiVelocityFactory.Default.Create( 1 ).ToString(), "1" );
-            Assert.IsTrue( IMidiVelocityFactory.Default.Create( 1 ).ToString() == "1" );
+            Assert.AreEqual( new MidiVelocity( 1 ).ToString(), "1" );
+            Assert.IsTrue( new MidiVelocity( 1 ).ToString() == "1" );
         }
     }
 }

@@ -12,9 +12,9 @@ namespace KeySwitchManager.Domain.MidiMessages
 
         public static MidiNoteOn Zero =>
             new MidiNoteOn(
-                IMidiStatusFactory.Default.Create( MidiStatusHelper.NoteOn ),
-                IMidiNoteNumberFactory.Default.Create( 0 ),
-                IMidiVelocityFactory.Default.Create( 0 )
+                new MidiStatus( MidiStatusHelper.NoteOn ),
+                new MidiNoteNumber( 0 ),
+                new MidiVelocity( 0 )
             );
 
         private class DefaultFactory : IMidiNoteOnFactory
@@ -27,9 +27,9 @@ namespace KeySwitchManager.Domain.MidiMessages
             public MidiNoteOn Create( int status, int data1, int data2 )
             {
                 return new MidiNoteOn(
-                    IMidiStatusFactory.Default.Create( status ),
-                    IMidiNoteNumberFactory.Default.Create( data1 ),
-                    IMidiVelocityFactory.Default.Create( data2 )
+                    new MidiStatus( status ),
+                    new MidiNoteNumber( data1 ),
+                    new MidiVelocity( data2 )
                 );
             }
         }

@@ -14,23 +14,23 @@ namespace Domain.Testing.MidiMessages.Value
         [TestCase( 256 )]
         public void OutOfRangeTest( int ccNumber )
         {
-            Assert.Throws<ArgumentOutOfRangeException>( () => IMidiStatusFactory.Default.Create( ccNumber ) );
+            Assert.Throws<ArgumentOutOfRangeException>( () => _ = new MidiStatus( ccNumber ) );
         }
 
         [Test]
         public void EqualityTest()
         {
-            var code1 = IMidiStatusFactory.Default.Create( 1 );
-            var code2 = IMidiStatusFactory.Default.Create( 2 );
-            Assert.IsTrue( code1.Equals( IMidiStatusFactory.Default.Create( 1 ) ) );
+            var code1 = new MidiStatus( 1 );
+            var code2 = new MidiStatus( 2 );
+            Assert.IsTrue( code1.Equals( new MidiStatus( 1 ) ) );
             Assert.IsFalse( code1.Equals( code2 ) );
         }
 
         [Test]
         public void ToStringEqualityTest()
         {
-            Assert.AreEqual( IMidiStatusFactory.Default.Create( 1 ).ToString(), "1" );
-            Assert.IsTrue( IMidiStatusFactory.Default.Create( 1 ).ToString() == "1" );
+            Assert.AreEqual( new MidiStatus( 1 ).ToString(), "1" );
+            Assert.IsTrue( new MidiStatus( 1 ).ToString() == "1" );
 
         }
 

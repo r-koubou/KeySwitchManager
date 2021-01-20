@@ -15,7 +15,7 @@ namespace KeySwitchManager.Domain.MidiMessages.Aggregate
         {
             Status    = status;
             DataByte1 = number;
-            DataByte2 = GenericMidiData.Empty;
+            DataByte2 = new GenericMidiData( 0 );
         }
     }
 }

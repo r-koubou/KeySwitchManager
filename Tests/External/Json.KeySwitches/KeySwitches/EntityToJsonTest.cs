@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using KeySwitchManager.Common.Testing.KeySwitches;
 using KeySwitchManager.Domain.MidiMessages;
 using KeySwitchManager.Domain.MidiMessages.Aggregate;
-using KeySwitchManager.Interactors.Testing.KeySwitches;
 using KeySwitchManager.Json.KeySwitches.Translations;
 
 using NUnit.Framework;

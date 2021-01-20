@@ -1,54 +1,15 @@
-using KeySwitchManager.Domain.MidiMessages.Helpers;
-
-using RkHelper.Number;
+using ValueObjectGenerator;
 
 namespace KeySwitchManager.Domain.MidiMessages.Value
 {
     /// <summary>
     /// Generic MIDI message data.
     /// </summary>
-    public class MidiStatus : MidiMessageData
+    [ValueObject( typeof( int ) )]
+    [ValueRange( 0x00, 0xFF )]
+    public partial class MidiStatus : IMidiMessageData
     {
-        public MidiChannel Channel =>
-            IMidiChannelFactory.Default.Create( MidiStatusHelper.GetChannel( Value ) );
-
-        public MidiStatus( int value ) : base( value )
-        {}
-
-        public MidiStatus( int value, int channel ) : base( value | ( channel & 0x0F ) )
+        public MidiStatus( int value, int channel ) : this( value | ( channel & 0x0F ) )
         {}
     }
-
-    #region Factory
-    public interface IMidiStatusFactory
-    {
-        public static IMidiStatusFactory Default => new DefaultFactory();
-
-        int MinValue { get; }
-        int MaxValue { get; }
-
-        MidiStatus Create( int value );
-        MidiStatus Create( int status, int channel );
-
-        private class DefaultFactory : IMidiStatusFactory
-        {
-            public int MinValue => 0x00;
-            public int MaxValue => 0xFF;
-
-            public MidiStatus Create( int value )
-            {
-                NumberHelper.ValidateRange( value, MinValue, MaxValue );
-                return new MidiStatus( value );
-            }
-
-            public MidiStatus Create( int status, int channel )
-            {
-                var value = ( status | channel ) & 0xF;
-                NumberHelper.ValidateRange( value, MinValue, MaxValue );
-                return new MidiStatus( value );
-            }
-
-        }
-    }
-    #endregion Factory
 }

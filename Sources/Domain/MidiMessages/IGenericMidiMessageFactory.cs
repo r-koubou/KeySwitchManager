@@ -9,9 +9,9 @@ namespace KeySwitchManager.Domain.MidiMessages
 
         public static GenericMidiMessage Zero =>
             new GenericMidiMessage(
-                IMidiStatusFactory.Default.Create( 0 ),
-                IGenericMidiDataFactory.Default.Create( 0 ),
-                IGenericMidiDataFactory.Default.Create( 0 )
+                new MidiStatus( 0 ),
+                new GenericMidiData( 0 ),
+                new GenericMidiData( 0 )
             );
 
         private class DefaultFactory : IGenericMidiMessageFactory
@@ -19,9 +19,9 @@ namespace KeySwitchManager.Domain.MidiMessages
             public GenericMidiMessage Create( int status, int data1, int data2 )
             {
                 return new GenericMidiMessage(
-                    IMidiStatusFactory.Default.Create( status ),
-                     IGenericMidiDataFactory.Default.Create( data1 ),
-                    IGenericMidiDataFactory.Default.Create( data2 )
+                    new MidiStatus( status ),
+                     new GenericMidiData( data1 ),
+                    new GenericMidiData( data2 )
                 );
             }
         }

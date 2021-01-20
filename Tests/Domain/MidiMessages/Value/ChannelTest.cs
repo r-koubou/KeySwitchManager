@@ -13,23 +13,23 @@ namespace Domain.Testing.MidiMessages.Value
         [TestCase( 16 )]
         public void OutOfRangeTest( int noteNumber )
         {
-            Assert.Throws<ArgumentOutOfRangeException>( () => IMidiChannelFactory.Default.Create( noteNumber ) );
+            Assert.Throws<ArgumentOutOfRangeException>( () => _ = new MidiChannel( noteNumber ) );
         }
 
         [Test]
         public void EqualityTest()
         {
-            var vel1 = IMidiChannelFactory.Default.Create( 10 );
-            var vel2 = IMidiChannelFactory.Default.Create( 12 );
-            Assert.IsTrue( vel1.Equals( IMidiChannelFactory.Default.Create( 10 ) ) );
+            var vel1 = new MidiChannel( 10 );
+            var vel2 = new MidiChannel( 12 );
+            Assert.IsTrue( vel1.Equals( new MidiChannel( 10 ) ) );
             Assert.IsFalse( vel1.Equals( vel2 ) );
         }
 
         [Test]
         public void ToStringEqualityTest()
         {
-            Assert.AreEqual( IMidiChannelFactory.Default.Create( 1 ).ToString(), "1" );
-            Assert.IsTrue( IMidiChannelFactory.Default.Create( 1 ).ToString() == "1" );
+            Assert.AreEqual( new MidiChannel( 1 ).ToString(), "1" );
+            Assert.IsTrue( new MidiChannel( 1 ).ToString() == "1" );
         }
     }
 }

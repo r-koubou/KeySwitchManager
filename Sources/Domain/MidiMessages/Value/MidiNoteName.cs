@@ -5,9 +5,12 @@ using System.Linq;
 
 using RkHelper.Text;
 
+using ValueObjectGenerator;
+
 namespace KeySwitchManager.Domain.MidiMessages.Value
 {
-    public class MidiNoteName : IEquatable<MidiNoteName>, IComparable<MidiNoteName>
+    [ValueObject( typeof( string ) )]
+    public partial class MidiNoteName : IComparable<MidiNoteName>
     {
         #region Note names
         [SuppressMessage( "ReSharper", "InconsistentNaming" )]
@@ -403,27 +406,24 @@ namespace KeySwitchManager.Domain.MidiMessages.Value
             G_8
         };
 
-        public string Value { get; }
+        private static partial string Validate( string value )
+        {
+            if( NoteNameList.Contains( value ) )
+            {
+                return value;
+            }
+
+            if( !int.TryParse( value, out var number ) )
+            {
+                throw new ArgumentException( nameof( value ) );
+            }
+
+            return NoteNameList[ number ];
+        }
 
         public static MidiNoteName FromMidiNoteNumber( MidiNoteNumber midiNoteNumber )
         {
             return new MidiNoteName( NoteNameList[ midiNoteNumber.Value ] );
-        }
-
-        public MidiNoteName( string noteName )
-        {
-            if( NoteNameList.Contains( noteName ) )
-            {
-                Value = noteName;
-                return;
-            }
-
-            if( !int.TryParse( noteName, out var number ) )
-            {
-                throw new ArgumentException( nameof( noteName ) );
-            }
-
-            Value = NoteNameList[ number ];
         }
 
         public MidiNoteNumber ToMidiNoteNumber()
@@ -435,40 +435,10 @@ namespace KeySwitchManager.Domain.MidiMessages.Value
             return new MidiNoteNumber( number.First().index );
         }
 
-        public override string ToString() => Value;
-
         #region Equality
-        public override bool Equals( object? obj )
+        public int CompareTo( [AllowNull] MidiNoteName other )
         {
-            if( ReferenceEquals( null, obj ) )
-            {
-                return false;
-            }
-
-            if( ReferenceEquals( this, obj ) )
-            {
-                return true;
-            }
-
-            if( obj.GetType() != this.GetType() )
-            {
-                return false;
-            }
-
-            return Equals( (MidiNoteName)obj );
-        }
-
-        public override int GetHashCode()
-            => GetType().GetHashCode() + Value.GetHashCode();
-
-        public bool Equals( MidiNoteName? other )
-        {
-            return other != null && other.Value == Value;
-        }
-
-        public int CompareTo( MidiNoteName? other )
-        {
-            if( other == null )
+            if( other is null )
             {
                 throw new ArgumentNullException( nameof( other ) );
             }

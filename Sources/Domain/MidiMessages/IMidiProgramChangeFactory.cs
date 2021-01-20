@@ -12,8 +12,8 @@ namespace KeySwitchManager.Domain.MidiMessages
 
         public static MidiProgramChange Zero =>
             new MidiProgramChange(
-                IMidiStatusFactory.Default.Create( MidiStatusHelper.ProgramChange ),
-                IMidiProgramChangeNumberFactory.Default.Create( 0 )
+                new MidiStatus( MidiStatusHelper.ProgramChange ),
+                new MidiProgramChangeNumber( 0 )
             );
 
         private class DefaultFactory : IMidiProgramChangeFactory
@@ -35,8 +35,8 @@ namespace KeySwitchManager.Domain.MidiMessages
             public MidiProgramChange Create( int status, int data1, int data2 )
             {
                 return new MidiProgramChange(
-                    IMidiStatusFactory.Default.Create( status ),
-                    IMidiProgramChangeNumberFactory.Default.Create( data1 )
+                    new MidiStatus( status ),
+                    new MidiProgramChangeNumber( data1 )
                 );
             }
         }
