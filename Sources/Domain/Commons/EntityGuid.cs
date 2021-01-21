@@ -1,34 +1,12 @@
 using System;
 
-using RkHelper.Text;
+using ValueObjectGenerator;
 
 namespace KeySwitchManager.Domain.Commons
 {
-    public class EntityGuid : IEquatable<EntityGuid>
+    [ValueObject(typeof(Guid), Option = ValueOption.NonValidating | ValueOption.ToString)]
+    public partial class EntityGuid
     {
-        public Guid Value { get; }
-
-        public EntityGuid()
-        {
-            Value = Guid.NewGuid();
-        }
-
-        public EntityGuid( string value )
-        {
-            StringHelper.ValidateEmpty( value );
-            Value = Guid.Parse( value );
-        }
-
-        public EntityGuid( Guid value )
-        {
-            Value = value;
-        }
-
-        public bool Equals( EntityGuid? other )
-        {
-            return other != null && Value.Equals( other.Value );
-        }
-
-        public override string ToString() => Value.ToString( "D" );
+        private partial string ToStringImpl() => Value.ToString( "D" );
     }
 }
