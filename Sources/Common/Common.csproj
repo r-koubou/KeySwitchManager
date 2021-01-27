@@ -13,7 +13,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <PackageReference Include="ValueObjectGenerator" Version="0.0.1" />
+        <PackageReference Include="ValueObjectGenerator" Version="1.0.0" />
     </ItemGroup>
 
 </Project>
