@@ -12,4 +12,8 @@
         <Nullable>enable</Nullable>
     </PropertyGroup>
 
+    <ItemGroup>
+      <PackageReference Include="ValueObjectGenerator" Version="1.2.0" />
+    </ItemGroup>
+
 </Project>

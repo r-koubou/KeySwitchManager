@@ -31,7 +31,7 @@ namespace KeySwitchManager.Interactors.Testing.KeySwitches
 
             interactor.Execute( inputData );
 
-            var entities = dbRepository.Find( IDeveloperNameFactory.Default.Create( "DeveloperName" ) );
+            var entities = dbRepository.Find( new DeveloperName( "DeveloperName" ) );
             var cmp = translator.Translate( inputData.JsonText );
 
             var keySwitches = entities.ToList();

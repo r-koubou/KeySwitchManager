@@ -31,7 +31,7 @@ namespace KeySwitchManager.Domain.KeySwitches
                 int articulationColor )
             {
                 return new Articulation(
-                    IArticulationNameFactory.Default.Create( articulationName ),
+                    new ArticulationName( articulationName ),
                     new DataList<IMidiMessage>(),
                     new DataList<IMidiMessage>(),
                     new DataList<IMidiMessage>(),
@@ -47,7 +47,7 @@ namespace KeySwitchManager.Domain.KeySwitches
                 IReadOnlyDictionary<string, string> extraData )
             {
                 return new Articulation(
-                    IArticulationNameFactory.Default.Create( articulationName ),
+                    new ArticulationName( articulationName ),
                     new DataList<IMidiMessage>( midiNoteOns ),
                     new DataList<IMidiMessage>( midiControlChanges ),
                     new DataList<IMidiMessage>( midiProgramChanges ),

@@ -8,7 +8,6 @@ using KeySwitchManager.Common.Testing.KeySwitches;
 using KeySwitchManager.Domain.MidiMessages.Aggregate;
 using KeySwitchManager.Domain.MidiMessages.Helpers;
 using KeySwitchManager.Domain.MidiMessages.Value;
-using KeySwitchManager.Interactors.Testing.KeySwitches;
 
 using NUnit.Framework;
 
@@ -24,7 +23,7 @@ namespace Databases.LiteDB.KeySwitches.Testing.KeySwitches
             var articulation = TestDataGenerator.CreateArticulation(
                 new List<MidiNoteOn>()
                 {
-                    new MidiNoteOn( IMidiStatusFactory.Default.Create( MidiStatusHelper.NoteOn ), IMidiNoteNumberFactory.Default.Create( 1 ), IMidiVelocityFactory.Default.Create( 100 ) )
+                    new MidiNoteOn( new MidiStatus( MidiStatusHelper.NoteOn ), new MidiNoteNumber( 1 ), new MidiVelocity( 100 ) )
                 },
                 new List<MidiControlChange>(),
                 new List<MidiProgramChange>()

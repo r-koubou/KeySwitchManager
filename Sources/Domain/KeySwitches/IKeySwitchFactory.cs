@@ -44,13 +44,13 @@ namespace KeySwitchManager.Domain.KeySwitches
 
                 return new KeySwitch(
                     new EntityGuid( id ),
-                    IAuthorFactory.Default.Create( author ),
-                    IDescriptionFactory.Default.Create( description ),
+                    new Author( author ),
+                    new Description( description ),
                     new EntityDateTime( created ),
                     new EntityDateTime( lastUpdated ),
-                    IDeveloperNameFactory.Default.Create( developerName ),
-                    IProductNameFactory.Default.Create( productName ),
-                    IInstrumentNameFactory.Default.Create( instrumentName ),
+                    new DeveloperName( developerName ),
+                    new ProductName( productName ),
+                    new InstrumentName( instrumentName ),
                     new DataList<Articulation>( articulations ),
                     IExtraDataFactory.Default.Create( extraData )
                 );

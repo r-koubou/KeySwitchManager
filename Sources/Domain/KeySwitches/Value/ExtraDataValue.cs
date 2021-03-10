@@ -1,62 +1,16 @@
-using System;
-
-using KeySwitchManager.Domain.Commons;
-
-using RkHelper.Text;
+using ValueObjectGenerator;
 
 namespace KeySwitchManager.Domain.KeySwitches.Value
 {
-    public class ExtraDataValue : IDictionaryKey<string>, IEquatable<ExtraDataValue>
+    [ValueObject( typeof( string ) )]
+    [NotEmpty]
+    public partial class ExtraDataValue
     {
         public static readonly ExtraDataValue Empty = new ExtraDataValue();
 
-        public string Value { get; }
-
         private ExtraDataValue()
         {
-            Value = "";
-        }
-
-        public ExtraDataValue( string value )
-        {
-            Value = value;
-        }
-
-        public override string ToString() => Value;
-
-        #region Equality
-        public bool Equals( ExtraDataValue? other )
-        {
-            return other != null && other.Value == Value;
-        }
-
-        public int CompareTo( ExtraDataValue? other )
-        {
-            if( other == null )
-            {
-                throw new ArgumentNullException( nameof( other ) );
-            }
-
-            return string.Compare( other.Value, Value, StringComparison.Ordinal );
-        }
-        #endregion Equality
-    }
-
-    #region Factory
-    public interface IExtraDataValueFactory
-    {
-        public static IExtraDataValueFactory Default => new DefaultFactory();
-
-        ExtraDataValue Create( string value );
-
-        private class DefaultFactory : IExtraDataValueFactory
-        {
-            public ExtraDataValue Create( string value )
-            {
-                StringHelper.ValidateEmpty( value );
-                return new ExtraDataValue( value );
-            }
+            Value = string.Empty;
         }
     }
-    #endregion Factory
 }

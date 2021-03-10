@@ -66,14 +66,14 @@ namespace KeySwitchManager.CLI.Commands
         {
             using var repository = new LiteDbKeySwitchRepository( option.DatabasePath );
 
-            var developerName = IDeveloperNameFactory.Default.Create( option.Developer );
+            var developerName = new DeveloperName( option.Developer );
 
             if( StringHelper.IsEmpty( option.Product ) )
             {
                 return repository.Find( developerName );
             }
 
-            return repository.Find( developerName, IProductNameFactory.Default.Create( option.Product ) );
+            return repository.Find( developerName, new ProductName( option.Product ) );
         }
     }
 }

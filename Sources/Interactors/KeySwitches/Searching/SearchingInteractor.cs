@@ -43,9 +43,9 @@ namespace KeySwitchManager.Interactors.KeySwitches.Searching
             if( !StringHelper.IsEmpty( developerName, productName, instrumentName ) )
             {
                 var keySwitches = Repository.Find(
-                    IDeveloperNameFactory.Default.Create( request.DeveloperName ),
-                    IProductNameFactory.Default.Create( request.ProductName ),
-                    IInstrumentNameFactory.Default.Create( request.InstrumentName )
+                    new DeveloperName( request.DeveloperName ),
+                    new ProductName( request.ProductName ),
+                    new InstrumentName( request.InstrumentName )
                 );
 
                 return CreateResponse( keySwitches );
@@ -56,8 +56,8 @@ namespace KeySwitchManager.Interactors.KeySwitches.Searching
             if( !StringHelper.IsEmpty( developerName, productName ) )
             {
                 var keySwitches = Repository.Find(
-                    IDeveloperNameFactory.Default.Create( request.DeveloperName ),
-                    IProductNameFactory.Default.Create( request.ProductName )
+                    new DeveloperName( request.DeveloperName ),
+                    new ProductName( request.ProductName )
                 );
 
                 return CreateResponse( keySwitches );
@@ -68,7 +68,7 @@ namespace KeySwitchManager.Interactors.KeySwitches.Searching
             if( !StringHelper.IsEmpty( developerName ) )
             {
                 var keySwitches = Repository.Find(
-                    IDeveloperNameFactory.Default.Create( request.DeveloperName )
+                    new DeveloperName( request.DeveloperName )
                 );
 
                 return CreateResponse( keySwitches );

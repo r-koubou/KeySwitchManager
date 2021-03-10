@@ -21,7 +21,7 @@ namespace KeySwitchManager.Domain.MidiMessages.Aggregate
         /// Set to Zero if message has no channel data.
         /// </summary>
         public IMidiMessageData Channel =>
-            IMidiChannelFactory.Default.Create( MidiStatusHelper.GetChannel( Status.Value ) );
+            new MidiChannel( MidiStatusHelper.GetChannel( Status.Value ) );
 
         /// <summary>
         /// MIDI event: 1st data byte
