@@ -1,5 +1,3 @@
-using RkHelper.Text;
-
 using ValueObjectGenerator;
 
 namespace KeySwitchManager.Domain.KeySwitches.Value
@@ -8,12 +6,6 @@ namespace KeySwitchManager.Domain.KeySwitches.Value
     /// A DeveloperName name
     /// </summary>
     [ValueObject(typeof(string))]
-    public partial class DeveloperName
-    {
-        private static partial string Validate( string value )
-        {
-            StringHelper.ValidateEmpty( value );
-            return value;
-        }
-    }
+    [NotEmpty]
+    public partial class DeveloperName {}
 }

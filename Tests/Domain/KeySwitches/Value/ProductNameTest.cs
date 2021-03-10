@@ -1,8 +1,8 @@
+using System;
+
 using KeySwitchManager.Domain.KeySwitches.Value;
 
 using NUnit.Framework;
-
-using RkHelper.Text;
 
 namespace Domain.Testing.KeySwitches.Value
 {
@@ -12,8 +12,8 @@ namespace Domain.Testing.KeySwitches.Value
         [Test]
         public void EmptyNameTest()
         {
-            Assert.Throws<EmptyTextException>( () => _ = new ProductName( "" ) );
-            Assert.Throws<EmptyTextException>( () => _ = new ProductName( "  " ) );
+            Assert.Throws<ArgumentException>( () => _ = new ProductName( "" ) );
+            Assert.Throws<ArgumentException>( () => _ = new ProductName( "  " ) );
             _ = new ProductName( "Hoge" );
         }
 
