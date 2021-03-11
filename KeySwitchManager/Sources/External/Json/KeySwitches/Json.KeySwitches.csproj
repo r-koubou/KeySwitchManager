@@ -1,0 +1,32 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>netcoreapp3.1</TargetFramework>
+        <!-- Assembly / Common -->
+        <Copyright>R-Koubou</Copyright>
+        <Company>R-Koubou</Company>
+        <Product>KeySwitchManager.Json.KeySwitches</Product>
+        <AssemblyName>KeySwitchManager.Json.KeySwitches</AssemblyName>
+        <RootNamespace>KeySwitchManager.Json.KeySwitches</RootNamespace>
+        <Version>0.1.1</Version>
+        <Description>KeySwitchManager.Json.KeySwitches module</Description>
+        <Nullable>enable</Nullable>
+        <!-- Nuget -->
+        <Authors>R-Koubou</Authors>
+        <PackageId>KeySwitchManager.Json.KeySwitches</PackageId>
+        <PackageLicenseExpression>MIT</PackageLicenseExpression>
+        <PackageProjectUrl>https://github.com/r-koubou/KeySwitchManager</PackageProjectUrl>
+        <RepositoryUrl>https://github.com/r-koubou/KeySwitchManager</RepositoryUrl>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\..\..\Domain\Helpers\Domain.Helpers.csproj" />
+      <ProjectReference Include="..\..\..\Domain\KeySwitches\Domain.KeySwitches.csproj" />
+      <ProjectReference Include="..\..\..\UseCases\KeySwitches\UseCases.KeySwitches.csproj" />
+    </ItemGroup>
+
+</Project>

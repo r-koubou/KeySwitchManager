@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <LangVersion>9</LangVersion>
+        <TargetFramework>netcoreapp3.1</TargetFramework>
+        <!-- Assembly -->
+        <Copyright>R-Koubou</Copyright>
+        <Company>R-Koubou</Company>
+        <Product>KeySwitchManager.Presenters.StudioOneKeySwitch</Product>
+        <AssemblyName>KeySwitchManager.Presenters.StudioOneKeySwitch</AssemblyName>
+        <RootNamespace>KeySwitchManager.Presenters.StudioOneKeySwitch</RootNamespace>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\..\Commons\Commons.csproj" />
+      <ProjectReference Include="..\..\UseCases\StudioOneKeySwitch\UseCases.StudioOneKeySwitch.csproj" />
+      <ProjectReference Include="..\Commons\Presenters.Commons.csproj" />
+    </ItemGroup>
+
+</Project>

@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <LangVersion>9</LangVersion>
+        <TargetFramework>netcoreapp3.1</TargetFramework>
+        <!-- Assembly -->
+        <Copyright>R-Koubou</Copyright>
+        <Company>R-Koubou</Company>
+        <Product>KeySwitchManager.Domain.Translations</Product>
+        <AssemblyName>KeySwitchManager.Domain.Translations</AssemblyName>
+        <RootNamespace>KeySwitchManager.Domain.Translations</RootNamespace>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\..\Commons\Commons.csproj" />
+      <ProjectReference Include="..\Commons\Domain.Commons.csproj" />
+      <ProjectReference Include="..\KeySwitches\Domain.KeySwitches.csproj" />
+    </ItemGroup>
+
+</Project>

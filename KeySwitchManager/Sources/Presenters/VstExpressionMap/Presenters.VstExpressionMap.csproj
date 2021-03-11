@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <LangVersion>9</LangVersion>
+        <TargetFramework>netcoreapp3.1</TargetFramework>
+        <!-- Assembly -->
+        <Copyright>R-Koubou</Copyright>
+        <Company>R-Koubou</Company>
+        <Product>KeySwitchManager.Presenters.VstExpressionMap</Product>
+        <AssemblyName>KeySwitchManager.Presenters.VstExpressionMap</AssemblyName>
+        <RootNamespace>KeySwitchManager.Presenters.VstExpressionMap</RootNamespace>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\..\Commons\Commons.csproj" />
+      <ProjectReference Include="..\..\UseCases\VstExpressionMap\UseCases.VstExpressionMap.csproj" />
+      <ProjectReference Include="..\Commons\Presenters.Commons.csproj" />
+    </ItemGroup>
+
+</Project>

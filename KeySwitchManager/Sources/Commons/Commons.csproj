@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>netcoreapp3.1</TargetFramework>
+        <!-- Assembly / Common -->
+        <Copyright>R-Koubou</Copyright>
+        <Company>R-Koubou</Company>
+        <Product>KeySwitchManager.Common</Product>
+        <AssemblyName>KeySwitchManager.Common</AssemblyName>
+        <RootNamespace>KeySwitchManager.Common</RootNamespace>
+        <Version>0.0.1</Version>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <PackageReference Include="RkHelper" Version="0.0.2" />
+      <PackageReference Include="ValueObjectGenerator" Version="1.2.0" />
+    </ItemGroup>
+
+</Project>
