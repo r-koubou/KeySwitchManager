@@ -3,7 +3,7 @@ using System.IO;
 using KeySwitchManager.Domain.Commons;
 using KeySwitchManager.Domain.KeySwitches.Aggregate;
 
-namespace KeySwitchManager.Domain.Helpers
+namespace KeySwitchManager.CLI.Helpers
 {
     public static class EntityDirectoryHelper
     {

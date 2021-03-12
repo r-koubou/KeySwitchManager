@@ -2,7 +2,8 @@ using System.Collections.Generic;
 
 using Databases.LiteDB.KeySwitches.KeySwitches.Models;
 
-using KeySwitchManager.Domain.Helpers;
+using KeySwitchManager.Domain.Commons;
+using KeySwitchManager.Domain.Commons.Helpers;
 using KeySwitchManager.Domain.KeySwitches.Aggregate;
 using KeySwitchManager.Domain.KeySwitches.Value;
 using KeySwitchManager.Domain.MidiMessages.Aggregate;

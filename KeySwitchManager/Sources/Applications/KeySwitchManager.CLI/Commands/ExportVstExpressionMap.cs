@@ -8,8 +8,8 @@ using CommandLine;
 
 using Databases.LiteDB.KeySwitches.KeySwitches;
 
+using KeySwitchManager.CLI.Helpers;
 using KeySwitchManager.Domain.Commons;
-using KeySwitchManager.Domain.Helpers;
 using KeySwitchManager.Interactors.VstExpressionMap.Exporting;
 using KeySwitchManager.Presenters.VstExpressionMap;
 using KeySwitchManager.UseCases.VstExpressionMap.Exporting;

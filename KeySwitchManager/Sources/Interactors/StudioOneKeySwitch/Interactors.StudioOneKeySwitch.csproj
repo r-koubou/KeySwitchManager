@@ -2,7 +2,7 @@
 
     <PropertyGroup>
         <LangVersion>9</LangVersion>
-        <TargetFramework>netcoreapp3.1</TargetFramework>
+        <TargetFramework>net5.0</TargetFramework>
         <!-- Assembly -->
         <Copyright>R-Koubou</Copyright>
         <Company>R-Koubou</Company>
@@ -17,7 +17,6 @@
       <ProjectReference Include="..\..\Gateways\KeySwitches\Gateways.KeySwitches.csproj" />
       <ProjectReference Include="..\..\Presenters\StudioOneKeySwitch\Presenters.StudioOneKeySwitch.csproj" />
       <ProjectReference Include="..\..\UseCases\StudioOneKeySwitch\UseCases.StudioOneKeySwitch.csproj" />
-      <ProjectReference Include="..\Helpers\Interactors.Helpers.csproj" />
     </ItemGroup>
 
 </Project>
