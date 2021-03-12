@@ -8,8 +8,8 @@ using CommandLine;
 
 using Databases.LiteDB.KeySwitches.KeySwitches;
 
+using KeySwitchManager.CLI.Helpers;
 using KeySwitchManager.Domain.Commons;
-using KeySwitchManager.Domain.Helpers;
 using KeySwitchManager.Interactors.StudioOneKeySwitch.Exporting;
 using KeySwitchManager.Presenters.StudioOneKeySwitch;
 using KeySwitchManager.UseCases.StudioOneKeySwitch.Exporting;
