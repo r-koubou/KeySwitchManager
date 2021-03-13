@@ -1,23 +1,18 @@
-using KeySwitchManager.Domain.MidiMessages.Helpers;
+using System.ComponentModel.DataAnnotations;
 
-using Newtonsoft.Json;
+using KeySwitchManager.Domain.MidiMessages.Helpers;
 
 namespace KeySwitchManager.Json.KeySwitches.Models
 {
-    [JsonObject("midi_message")]
     public class MidiMessageModel
     {
-        [JsonProperty( "status" )]
-        [JsonRequired]
+        [Required]
         public int Status { get; set; }
 
-        [JsonProperty( "channel" )]
         public int Channel { get; set; }
 
-        [JsonProperty( "data1" )]
         public int Data1 { get; set; }
 
-        [JsonProperty( "data2" )]
         public int Data2 { get; set; }
 
         public MidiMessageModel()

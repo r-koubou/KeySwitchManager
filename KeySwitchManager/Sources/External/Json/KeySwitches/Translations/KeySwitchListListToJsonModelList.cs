@@ -1,12 +1,12 @@
 using System.Collections.Generic;
+using System.Text.Encodings.Web;
+using System.Text.Json;
 
 using KeySwitchManager.Domain.Commons;
 using KeySwitchManager.Domain.KeySwitches.Aggregate;
 using KeySwitchManager.Json.KeySwitches.Helpers;
 using KeySwitchManager.Json.KeySwitches.Models;
 using KeySwitchManager.UseCases.KeySwitches.Translations;
-
-using Newtonsoft.Json;
 
 namespace KeySwitchManager.Json.KeySwitches.Translations
 {
@@ -23,7 +23,13 @@ namespace KeySwitchManager.Json.KeySwitches.Translations
                 keySwitchList.Add( KeySwitchToJsonModelHelper.Translate( i ) );
             }
 
-            var jsonText = JsonConvert.SerializeObject( keySwitchList, Formatted ? Formatting.Indented : Formatting.None );
+            var serializeOption = new JsonSerializerOptions
+            {
+                Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping,
+                WriteIndented = Formatted
+            };
+
+            var jsonText = JsonSerializer.Serialize( keySwitchList, serializeOption );
             return new PlainText( jsonText );
         }
     }

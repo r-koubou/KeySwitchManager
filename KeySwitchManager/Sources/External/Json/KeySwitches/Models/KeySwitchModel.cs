@@ -1,46 +1,34 @@
 using System;
 using System.Collections.Generic;
-
-using Newtonsoft.Json;
+using System.ComponentModel.DataAnnotations;
 
 using RkHelper.Time;
 
 namespace KeySwitchManager.Json.KeySwitches.Models
 {
-    [JsonObject("instrument")]
     public class KeySwitchModel
     {
-        [JsonProperty( "id")]
         public Guid Id { get; set; } = Guid.NewGuid();
 
-        [JsonProperty( "author")]
         public string Author { get; set; } = default!;
 
-        [JsonProperty( "description")]
         public string Description { get; set; } = default!;
 
-        [JsonProperty( "created" )]
         public DateTime Created { get; set; } = DateTimeHelper.NowUtc();
 
-        [JsonProperty( "last_updated")]
         public DateTime LastUpdated { get; set; } = DateTimeHelper.NowUtc();
 
-        [JsonProperty( "developer_name")]
-        [JsonRequired]
+        [Required]
         public string DeveloperName { get; set; } = default!;
 
-        [JsonProperty( "product_name")]
-        [JsonRequired]
+        [Required]
         public string ProductName { get; set; } = default!;
 
-        [JsonProperty( "instrument_name")]
-        [JsonRequired]
+        [Required]
         public string InstrumentName { get; set; } = default!;
 
-        [JsonProperty( "articulations")]
         public IReadOnlyCollection<ArticulationModel> Articulations { get; set; } = new List<ArticulationModel>();
 
-        [JsonProperty( "extra")]
         public IReadOnlyDictionary<string, string> ExtraData { get; set; } = new Dictionary<string, string>();
 
         public KeySwitchModel()

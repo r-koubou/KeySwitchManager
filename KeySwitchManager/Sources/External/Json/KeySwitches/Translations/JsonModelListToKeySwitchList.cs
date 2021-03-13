@@ -1,12 +1,11 @@
 using System.Collections.Generic;
+using System.Text.Json;
 
 using KeySwitchManager.Domain.Commons;
 using KeySwitchManager.Domain.KeySwitches.Aggregate;
 using KeySwitchManager.Json.KeySwitches.Helpers;
 using KeySwitchManager.Json.KeySwitches.Models;
 using KeySwitchManager.UseCases.KeySwitches.Translations;
-
-using Newtonsoft.Json;
 
 namespace KeySwitchManager.Json.KeySwitches.Translations
 {
@@ -15,7 +14,7 @@ namespace KeySwitchManager.Json.KeySwitches.Translations
         public IReadOnlyCollection<KeySwitch> Translate( IText source )
         {
             var result = new List<KeySwitch>();
-            var model = JsonConvert.DeserializeObject<IEnumerable<KeySwitchModel>>( source.Value );
+            var model =JsonSerializer.Deserialize<IEnumerable<KeySwitchModel>>( source.Value ) ?? new List<KeySwitchModel>();
 
             foreach( var i in model )
             {
