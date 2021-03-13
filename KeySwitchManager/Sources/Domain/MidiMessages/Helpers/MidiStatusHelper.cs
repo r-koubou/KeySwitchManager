@@ -10,7 +10,7 @@ namespace KeySwitchManager.Domain.MidiMessages.Helpers
 
         public static int MakeStatus( int status, int channel )
         {
-            return status | ( channel & channel );
+            return status | ( channel & 0x0F );
         }
 
         public static int GetChannel( int status )

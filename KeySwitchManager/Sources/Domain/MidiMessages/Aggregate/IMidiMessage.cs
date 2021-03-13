@@ -1,6 +1,5 @@
 using System;
 
-using KeySwitchManager.Domain.MidiMessages.Helpers;
 using KeySwitchManager.Domain.MidiMessages.Value;
 
 namespace KeySwitchManager.Domain.MidiMessages.Aggregate
@@ -12,24 +11,17 @@ namespace KeySwitchManager.Domain.MidiMessages.Aggregate
     public interface IMidiMessage : IEquatable<IMidiMessage>
     {
         /// <summary>
-        /// MIDI status code
+        /// MIDI status byte
         /// </summary>
         public IMidiMessageData Status { get; }
 
         /// <summary>
-        /// MIDI channel code which is included status byte.
-        /// Set to Zero if message has no channel data.
-        /// </summary>
-        public IMidiMessageData Channel =>
-            new MidiChannel( MidiStatusHelper.GetChannel( Status.Value ) );
-
-        /// <summary>
-        /// MIDI event: 1st data byte
+        /// MIDI event: 1st byte in data bytes
         /// </summary>
 
         public IMidiMessageData DataByte1 { get; }
         /// <summary>
-        /// MIDI event: 2nd data byte
+        /// MIDI event: 2nd byte in data bytes
         /// </summary>
         public IMidiMessageData DataByte2 { get; }
 
@@ -37,7 +29,6 @@ namespace KeySwitchManager.Domain.MidiMessages.Aggregate
         {
             return other != null &&
                    Status.Value == other.Status.Value &&
-                   Channel.Value == other.Channel.Value &&
                    DataByte1.Value == other.DataByte1.Value &&
                    DataByte2.Value == other.DataByte2.Value;
         }

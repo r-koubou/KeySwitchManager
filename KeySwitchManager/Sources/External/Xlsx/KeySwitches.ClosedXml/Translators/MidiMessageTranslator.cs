@@ -29,7 +29,7 @@ namespace KeySwitchManager.Xlsx.KeySwitches.ClosedXml.Translators
 
             foreach( var message in midiMessages )
             {
-                var cellValues = new[] { message.Channel, message.DataByte1, message.DataByte2 };
+                var cellValues = new[] { message.Status, message.DataByte1, message.DataByte2 };
 
                 for( int i = 0; i < 3; i++ )
                 {
