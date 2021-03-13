@@ -1,20 +1,15 @@
 using System.Collections.Generic;
-
-using Newtonsoft.Json;
+using System.ComponentModel.DataAnnotations;
 
 namespace KeySwitchManager.Json.KeySwitches.Models
 {
-    [JsonObject("articulation")]
     public class ArticulationModel
     {
-        [JsonProperty( "name")]
-        [JsonRequired]
+        [Required]
         public string Name { get; set; } = default!;
 
-        [JsonProperty("midi_message")]
         public MidiModel MidiMessage { get; set; } = new MidiModel();
 
-        [JsonProperty( "extra")]
         public IReadOnlyDictionary<string, string> ExtraData { get; set; } = new Dictionary<string, string>();
 
         public ArticulationModel()
