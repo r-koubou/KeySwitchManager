@@ -2,7 +2,6 @@ using System.Collections.Generic;
 
 using Databases.LiteDB.KeySwitches.KeySwitches.Models;
 
-using KeySwitchManager.Domain.Commons;
 using KeySwitchManager.Domain.Commons.Helpers;
 using KeySwitchManager.Domain.KeySwitches.Aggregate;
 using KeySwitchManager.Domain.KeySwitches.Value;
@@ -59,7 +58,6 @@ namespace Databases.LiteDB.KeySwitches.KeySwitches.Translations
                 dest.Add(
                     new MidiMessageModel(
                         i.Status.Value,
-                        i.Channel.Value,
                         i.DataByte1.Value,
                         i.DataByte2.Value
                     )
