@@ -67,6 +67,28 @@ namespace KeySwitchManager.Domain.KeySwitches.Aggregate
                    other.InstrumentName.Equals( InstrumentName ) &&
                    other.Articulations.SequenceEqual( Articulations );
         }
+
+        public override bool Equals( object? obj )
+        {
+            return obj != null && Equals( obj as KeySwitch );
+        }
+
+        public override int GetHashCode()
+        {
+            var hashCode = new HashCode();
+            hashCode.Add( Id );
+            hashCode.Add( Author );
+            hashCode.Add( Description );
+            hashCode.Add( Created );
+            hashCode.Add( LastUpdated );
+            hashCode.Add( DeveloperName );
+            hashCode.Add( ProductName );
+            hashCode.Add( InstrumentName );
+            hashCode.Add( Articulations );
+            hashCode.Add( ExtraData );
+
+            return hashCode.ToHashCode();
+        }
         #endregion
     }
 }

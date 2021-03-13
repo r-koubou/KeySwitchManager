@@ -47,6 +47,18 @@ namespace KeySwitchManager.Domain.KeySwitches.Aggregate
                    MidiControlChanges.SequenceEqual( other.MidiControlChanges ) &&
                    MidiProgramChanges.SequenceEqual( other.MidiProgramChanges );
         }
+
+        public override bool Equals( object? obj )
+        {
+            return obj != null && Equals( obj as Articulation );
+        }
+
+        public override int GetHashCode() =>
+            HashCode.Combine( ArticulationName,
+                              MidiNoteOns,
+                              MidiControlChanges,
+                              MidiProgramChanges,
+                              ExtraData );
         #endregion Equals
     }
 }
