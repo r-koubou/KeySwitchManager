@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 
-using KeySwitchManager.Domain.Commons;
 using KeySwitchManager.Domain.Commons.Helpers;
 using KeySwitchManager.Domain.KeySwitches;
 using KeySwitchManager.Domain.KeySwitches.Aggregate;
