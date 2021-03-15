@@ -19,7 +19,7 @@
         </PropertyGroup>
 
         <PropertyGroup>
-            <PublishDir>publish/$(Prefix)</PublishDir>
+            <PublishWorkDir>$(PublishDir)/$(Prefix)</PublishWorkDir>
         </PropertyGroup>
 
         <!--#region Value check -->
@@ -44,13 +44,13 @@
         <!-- Build for Specific OS native code -->
         <PropertyGroup Condition="$(ForDotNetCore) == 'false'">
             <ProprtyArgs>
-                OutDir=$(PublishDir);PublishDir=$(PublishDir);Configuration=$(Configuration);SelfContained=true;RuntimeIdentifier=$(RID)
+                OutDir=$(PublishWorkDir);PublishDir=$(PublishWorkDir);Configuration=$(Configuration);SelfContained=true;RuntimeIdentifier=$(RID)
             </ProprtyArgs>
         </PropertyGroup>
         <!-- Build for .net Core code -->
         <PropertyGroup Condition="$(ForDotNetCore) == 'true'">
             <ProprtyArgs>
-                OutDir=$(PublishDir);PublishDir=$(PublishDir);Configuration=$(Configuration)
+                OutDir=$(PublishWorkDir);PublishDir=$(PublishWorkDir);Configuration=$(Configuration)
             </ProprtyArgs>
         </PropertyGroup>
 
@@ -62,12 +62,15 @@
     </Target>
 
     <Target Name="Archive" DependsOnTargets="Build">
+
         <ZipDirectory
-                SourceDirectory="$(PublishDir)"
-                DestinationFile="publish/$(Prefix)-$(BuildDate).zip"
+                Condition="'$(EnableArchive)'==true"
+                SourceDirectory="$(PublishWorkDir)"
+                DestinationFile="$(PublishDir)/$(Prefix)-$(BuildDate).zip"
                 Overwrite="true" />
         <RemoveDir
-                Directories="$(PublishDir)/"/>
+                Condition="'$(EnableArchive)'==true"
+                Directories="$(PublishWorkDir)/"/>
     </Target>
 
 </Project>

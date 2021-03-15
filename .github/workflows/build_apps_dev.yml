@@ -9,7 +9,7 @@ on:
       - "!#*"
 
 jobs:
-  build_debug:
+  build_apps:
     runs-on: ubuntu-latest
     env:
       DOTNET_CLI_TELEMETRY_OPTOUT: 1
@@ -20,10 +20,9 @@ jobs:
       with:
         dotnet-version: '5.0.100'
     # Executable App
-    - run: pushd KeySwitchManager/Sources/Applications/KeySwitchManager.CLI
-    - run: dotnet msbuild /nologo /t:Archive /p:Configuration=Release publish.msbuild
+    # KeySwitchManager.CLI
+    - run: dotnet msbuild /nologo /t:Archive /p:Configuration=Release /p:PublishDir=$(pwd)/publish  KeySwitchManager/Sources/Applications/KeySwitchManager.CLI/publish.msbuild
     - uses: actions/upload-artifact@v2
       with:
         name: KeySwitchManager.CLI
-        path: ./publish/*.zip
-    - run: popd
+        path: ./publish/KeySwitchManager.CLI*/
