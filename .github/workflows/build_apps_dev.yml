@@ -1,0 +1,29 @@
+name: "Build Apps (Develop)"
+on:
+  push:
+    branches:
+      - "develop"
+      - "feature/*"
+      - "refactor/*"
+    tags:
+      - "!#*"
+
+jobs:
+  build_debug:
+    runs-on: ubuntu-latest
+    env:
+      DOTNET_CLI_TELEMETRY_OPTOUT: 1
+      DOTNET_SKIP_FIRST_TIME_EXPERIENCE: 1
+    steps:
+    - uses: actions/checkout@v1
+    - uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: '5.0.100'
+    # Executable App
+    - run: pushd KeySwitchManager/Sources/Applications/KeySwitchManager.CLI
+    - run: dotnet msbuild /nologo /t:Archive /p:Configuration=Release publish.msbuild
+    - uses: actions/upload-artifact@v2
+      with:
+        name: KeySwitchManager.CLI
+        path: ./publish/*.zip
+    - run: popd
