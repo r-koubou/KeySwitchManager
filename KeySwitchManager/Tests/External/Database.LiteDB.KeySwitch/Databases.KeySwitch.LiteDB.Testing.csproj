@@ -6,10 +6,6 @@
         <IsPackable>false</IsPackable>
 
         <Nullable>enable</Nullable>
-
-        <AssemblyName>KeySwitchManager.Xml.StudioOne.KeySwitch.Testing</AssemblyName>
-
-        <RootNamespace>KeySwitchManager.Xml.StudioOne.KeySwitch.Testing</RootNamespace>
     </PropertyGroup>
 
     <ItemGroup>
@@ -20,7 +16,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\..\..\Sources\Domain\MidiMessages\Domain.MidiMessages.csproj" />
-      <ProjectReference Include="..\..\..\Sources\External\Xml\KeySwitch.StudioOne\Xml.KeySwitch.StudioOne.csproj" />
+      <ProjectReference Include="..\..\..\Sources\External\Database\LiteDB.KeySwitch\Database.LiteDB.KeySwitch.csproj" />
       <ProjectReference Include="..\..\Common\Common.Testing.csproj" />
     </ItemGroup>
 

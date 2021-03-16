@@ -11,7 +11,7 @@ using KeySwitchManager.Domain.MidiMessages.Value;
 
 using NUnit.Framework;
 
-namespace Databases.LiteDB.KeySwitches.Testing.KeySwitches
+namespace Databases.KeySwitch.LiteDB.Testing
 {
     [TestFixture]
     public class AddingTest

@@ -5,9 +5,9 @@
 
         <IsPackable>false</IsPackable>
 
-        <AssemblyName>Databases.LiteDB.KeySwitches.Testing</AssemblyName>
+        <AssemblyName>KeySwitchManager.Xml.KeySwitch.VstExpressionMap.Testing</AssemblyName>
 
-        <RootNamespace>Databases.LiteDB.KeySwitches.Testing</RootNamespace>
+        <RootNamespace>KeySwitchManager.Xml.KeySwitch.VstExpressionMap.Testing</RootNamespace>
 
         <Nullable>enable</Nullable>
     </PropertyGroup>
@@ -20,7 +20,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\..\..\Sources\Domain\MidiMessages\Domain.MidiMessages.csproj" />
-      <ProjectReference Include="..\..\..\Sources\External\Database\LiteDB.KeySwitch\Database.LiteDB.KeySwitch.csproj" />
+      <ProjectReference Include="..\..\..\Sources\External\Xml\KeySwitch.VstExpressionMap\Xml.KeySwitch.VstExpressionMap.csproj" />
       <ProjectReference Include="..\..\Common\Common.Testing.csproj" />
     </ItemGroup>
 

@@ -5,11 +5,11 @@
 
         <IsPackable>false</IsPackable>
 
-        <AssemblyName>KeySwitchManager.Xml.VstExpressionMap.Testing</AssemblyName>
-
-        <RootNamespace>KeySwitchManager.Xml.VstExpressionMap.Testing</RootNamespace>
-
         <Nullable>enable</Nullable>
+
+        <AssemblyName>KeySwitchManager.Xml.KeySwitch.StudioOne.Testing</AssemblyName>
+
+        <RootNamespace>KeySwitchManager.Xml.KeySwitch.StudioOne.Testing</RootNamespace>
     </PropertyGroup>
 
     <ItemGroup>
@@ -20,7 +20,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\..\..\Sources\Domain\MidiMessages\Domain.MidiMessages.csproj" />
-      <ProjectReference Include="..\..\..\Sources\External\Xml\KeySwitch.VstExpressionMap\Xml.KeySwitch.VstExpressionMap.csproj" />
+      <ProjectReference Include="..\..\..\Sources\External\Xml\KeySwitch.StudioOne\Xml.KeySwitch.StudioOne.csproj" />
       <ProjectReference Include="..\..\Common\Common.Testing.csproj" />
     </ItemGroup>
 

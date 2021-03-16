@@ -8,7 +8,7 @@ using KeySwitchManager.Json.KeySwitch.Translation;
 
 using NUnit.Framework;
 
-namespace Json.KeySwitches.Testing.KeySwitches
+namespace KeySwitchManager.Json.KeySwitches.Testing
 {
     [TestFixture]
     public class EntityToJsonTest

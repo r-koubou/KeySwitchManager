@@ -5,7 +5,9 @@
 
         <IsPackable>false</IsPackable>
 
-        <RootNamespace>Json.KeySwitches.Testing</RootNamespace>
+        <RootNamespace>KeySwitchManager.Json.KeySwitches.Testing</RootNamespace>
+
+        <AssemblyName>KeySwitchManager.Json.KeySwitches.Testing</AssemblyName>
     </PropertyGroup>
 
     <ItemGroup>
