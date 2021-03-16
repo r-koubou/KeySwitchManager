@@ -1,4 +1,4 @@
-namespace KeySwitchManager.Xml.VstExpressionMap.Models.XmlClasses
+namespace KeySwitchManager.Xml.KeySwitch.VstExpressionMap.Model.XmlClasses
 {
     public static class PSlotThruTrigger
     {

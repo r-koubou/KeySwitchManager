@@ -6,8 +6,8 @@
         <Copyright>R-Koubou</Copyright>
         <Company>R-Koubou</Company>
         <Product>KeySwitchManager.Xml.VstExpressionMap</Product>
-        <AssemblyName>KeySwitchManager.Xml.VstExpressionMap</AssemblyName>
-        <RootNamespace>KeySwitchManager.Xml.VstExpressionMap</RootNamespace>
+        <AssemblyName>KeySwitchManager.Xml.KeySwitch.VstExpressionMap</AssemblyName>
+        <RootNamespace>KeySwitchManager.Xml.KeySwitch.VstExpressionMap</RootNamespace>
         <Version>0.1.1</Version>
         <Description>KeySwitchManager.Xml.VstExpressionMap module</Description>
         <Nullable>enable</Nullable>
@@ -20,7 +20,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <Folder Include="Models" />
+      <Folder Include="Model" />
     </ItemGroup>
 
     <ItemGroup>

@@ -1,21 +1,20 @@
 using System.Collections.Generic;
 
 using KeySwitchManager.Domain.Commons;
-using KeySwitchManager.Domain.KeySwitches;
 using KeySwitchManager.Domain.KeySwitches.Entity;
 using KeySwitchManager.Domain.KeySwitches.Value;
 using KeySwitchManager.Domain.MidiMessages.Entity;
 using KeySwitchManager.UseCases.VstExpressionMap.Translations;
-using KeySwitchManager.Xml.VstExpressionMap.Models;
-using KeySwitchManager.Xml.VstExpressionMap.Models.XmlClasses;
+using KeySwitchManager.Xml.KeySwitch.VstExpressionMap.Model;
+using KeySwitchManager.Xml.KeySwitch.VstExpressionMap.Model.XmlClasses;
 
 using RkHelper.Text.Xml;
 
-namespace KeySwitchManager.Xml.VstExpressionMap.Translations
+namespace KeySwitchManager.Xml.KeySwitch.VstExpressionMap.Translation
 {
     public class KeySwitchToVstExpressionMapModel : IKeySwitchToVstExpressionMapModel
     {
-        public IText Translate( KeySwitch source )
+        public IText Translate( Domain.KeySwitches.KeySwitch source )
         {
             var slotTable = CollectSlotTable( source );
 
@@ -32,7 +31,7 @@ namespace KeySwitchManager.Xml.VstExpressionMap.Translations
         }
 
         #region Convert RootElement
-        private static RootElement ConvertRootElement( KeySwitch source, ListElement listOfPSoundSlot, ListElement listOfUSlotVisuals )
+        private static RootElement ConvertRootElement( Domain.KeySwitches.KeySwitch source, ListElement listOfPSoundSlot, ListElement listOfUSlotVisuals )
         {
             // Construction of InstrumentMap element
             var slots = InstrumentMap.Slots( listOfPSoundSlot );
@@ -50,7 +49,7 @@ namespace KeySwitchManager.Xml.VstExpressionMap.Translations
 
         #region Convert To USlotVisual List
 
-        private static ListElement ConvertUSlotVisualsList( KeySwitch source )
+        private static ListElement ConvertUSlotVisualsList( Domain.KeySwitches.KeySwitch source )
         {
             var listOfUSlotVisuals = new ListElement();
 
@@ -157,7 +156,7 @@ namespace KeySwitchManager.Xml.VstExpressionMap.Translations
             return slotVisualList;
         }
 
-        private static IReadOnlyDictionary<string, ICollection<Articulation>> CollectSlotTable( KeySwitch keySwitch )
+        private static IReadOnlyDictionary<string, ICollection<Articulation>> CollectSlotTable( Domain.KeySwitches.KeySwitch keySwitch )
         {
             static void AddArticulation( IDictionary<string, ICollection<Articulation>> dictionary, string key, Articulation articulation )
             {

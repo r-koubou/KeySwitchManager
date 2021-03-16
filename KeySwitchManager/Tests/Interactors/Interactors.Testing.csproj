@@ -25,8 +25,8 @@
       <ProjectReference Include="..\..\Sources\External\Databases\LiteDB.KeySwitches\Database.LiteDB.KeySwitch.csproj" />
       <ProjectReference Include="..\..\Sources\External\Json\KeySwitch\Json.KeySwitch.csproj" />
       <ProjectReference Include="..\..\Sources\External\Xlsx\KeySwitch.ClosedXml\Xlsx.KeySwitch.ClosedXml.csproj" />
-      <ProjectReference Include="..\..\Sources\External\Xml\StudioOne.KeySwitch\Xml.KeySwitch.StudioOne.csproj" />
-      <ProjectReference Include="..\..\Sources\External\Xml\VstExpressionMap\Xml.VstExpressionMap.csproj" />
+      <ProjectReference Include="..\..\Sources\External\Xml\KeySwitch.StudioOne\Xml.KeySwitch.StudioOne.csproj" />
+      <ProjectReference Include="..\..\Sources\External\Xml\KeySwitch.VstExpressionMap\Xml.KeySwitch.VstExpressionMap.csproj" />
       <ProjectReference Include="..\..\Sources\Interactors\KeySwitch\Interactors.KeySwitch.csproj" />
       <ProjectReference Include="..\..\Sources\Interactors\StudioOneKeySwitch\Interactors.StudioOneKeySwitch.csproj" />
       <ProjectReference Include="..\..\Sources\Interactors\VstExpressionMap\Interactors.VstExpressionMap.csproj" />

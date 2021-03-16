@@ -1,7 +1,7 @@
 using System.Diagnostics.CodeAnalysis;
 using System.Xml.Serialization;
 
-namespace KeySwitchManager.Xml.VstExpressionMap.Models
+namespace KeySwitchManager.Xml.KeySwitch.VstExpressionMap.Model
 {
     [XmlRoot( ElementName = "string" )]
     public class StringElement

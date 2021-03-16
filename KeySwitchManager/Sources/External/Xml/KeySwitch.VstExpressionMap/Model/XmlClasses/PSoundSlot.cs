@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace KeySwitchManager.Xml.VstExpressionMap.Models.XmlClasses
+namespace KeySwitchManager.Xml.KeySwitch.VstExpressionMap.Model.XmlClasses
 {
     public static class PSoundSlot
     {

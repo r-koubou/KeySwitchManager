@@ -1,6 +1,6 @@
 using KeySwitchManager.Domain.KeySwitches.Value;
 
-namespace KeySwitchManager.Xml.VstExpressionMap
+namespace KeySwitchManager.Xml.KeySwitch.VstExpressionMap
 {
     public static class ExtraDataKeys
     {
