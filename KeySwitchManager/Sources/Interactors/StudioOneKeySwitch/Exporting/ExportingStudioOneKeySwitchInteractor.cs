@@ -4,8 +4,8 @@ using KeySwitchManager.Domain.KeySwitches;
 using KeySwitchManager.Gateways.KeySwitch;
 using KeySwitchManager.Gateways.KeySwitch.Helper;
 using KeySwitchManager.Presenters.StudioOneKeySwitch;
-using KeySwitchManager.UseCases.StudioOneKeySwitch.Exporting;
-using KeySwitchManager.UseCases.StudioOneKeySwitch.Translations;
+using KeySwitchManager.UseCases.KeySwitch.StudioOne.Exporting;
+using KeySwitchManager.UseCases.KeySwitch.StudioOne.Translations;
 
 namespace KeySwitchManager.Interactors.StudioOneKeySwitch.Exporting
 {

@@ -2,18 +2,17 @@ using System.Collections.Generic;
 using System.Linq;
 
 using KeySwitchManager.Domain.Commons;
-using KeySwitchManager.Domain.KeySwitches;
 
-namespace KeySwitchManager.UseCases.VstExpressionMap.Exporting
+namespace KeySwitchManager.UseCases.KeySwitch.StudioOne.Exporting
 {
-    public class ExportingVstExpressionMapResponse
+    public class ExportingStudioOneKeySwitchResponse
     {
         public class Element
         {
-            public KeySwitch KeySwitch { get; }
+            public Domain.KeySwitches.KeySwitch KeySwitch { get; }
             public IText XmlText { get; }
 
-            public Element( KeySwitch keySwitch, IText xmlText )
+            public Element( Domain.KeySwitches.KeySwitch keySwitch, IText xmlText )
             {
                 KeySwitch = keySwitch;
                 XmlText      = xmlText;
@@ -23,7 +22,7 @@ namespace KeySwitchManager.UseCases.VstExpressionMap.Exporting
 
         public IReadOnlyCollection<Element> Elements { get; }
 
-        public ExportingVstExpressionMapResponse( IReadOnlyCollection<Element> elements )
+        public ExportingStudioOneKeySwitchResponse( IReadOnlyCollection<Element> elements )
         {
             Elements  = elements;
         }

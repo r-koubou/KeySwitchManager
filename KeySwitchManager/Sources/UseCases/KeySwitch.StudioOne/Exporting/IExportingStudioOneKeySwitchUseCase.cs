@@ -1,4 +1,4 @@
-namespace KeySwitchManager.UseCases.StudioOneKeySwitch.Exporting
+namespace KeySwitchManager.UseCases.KeySwitch.StudioOne.Exporting
 {
     public interface IExportingStudioOneKeySwitchUseCase
     {

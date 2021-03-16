@@ -4,7 +4,7 @@ using KeySwitchManager.Domain.Commons;
 using KeySwitchManager.Domain.KeySwitches.Entity;
 using KeySwitchManager.Domain.KeySwitches.Value;
 using KeySwitchManager.Domain.MidiMessages.Entity;
-using KeySwitchManager.UseCases.VstExpressionMap.Translations;
+using KeySwitchManager.UseCases.KeySwitch.VstExpressionMap.Translations;
 using KeySwitchManager.Xml.KeySwitch.VstExpressionMap.Model;
 using KeySwitchManager.Xml.KeySwitch.VstExpressionMap.Model.XmlClasses;
 

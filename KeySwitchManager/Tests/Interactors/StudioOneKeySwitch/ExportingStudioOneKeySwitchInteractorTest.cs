@@ -8,7 +8,7 @@ using KeySwitchManager.Domain.MidiMessages;
 using KeySwitchManager.Domain.MidiMessages.Entity;
 using KeySwitchManager.Interactors.StudioOneKeySwitch.Exporting;
 using KeySwitchManager.Presenters.StudioOneKeySwitch;
-using KeySwitchManager.UseCases.StudioOneKeySwitch.Exporting;
+using KeySwitchManager.UseCases.KeySwitch.StudioOne.Exporting;
 using KeySwitchManager.Xml.KeySwitch.StudioOne.Translation;
 
 using NUnit.Framework;

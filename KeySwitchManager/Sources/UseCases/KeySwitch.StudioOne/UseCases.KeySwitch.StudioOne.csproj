@@ -6,9 +6,9 @@
         <!-- Assembly -->
         <Copyright>R-Koubou</Copyright>
         <Company>R-Koubou</Company>
-        <Product>KeySwitchManager.UseCases.VstExpressionMap</Product>
-        <AssemblyName>KeySwitchManager.UseCases.VstExpressionMap</AssemblyName>
-        <RootNamespace>KeySwitchManager.UseCases.VstExpressionMap</RootNamespace>
+        <Product>KeySwitchManager.UseCases.StudioOneKeySwitch</Product>
+        <AssemblyName>KeySwitchManager.UseCases.KeySwitch.StudioOne</AssemblyName>
+        <RootNamespace>KeySwitchManager.UseCases.KeySwitch.StudioOne</RootNamespace>
         <Nullable>enable</Nullable>
     </PropertyGroup>
 

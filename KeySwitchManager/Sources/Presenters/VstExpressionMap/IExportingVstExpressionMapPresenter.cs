@@ -1,4 +1,4 @@
-using KeySwitchManager.UseCases.VstExpressionMap.Exporting;
+using KeySwitchManager.UseCases.KeySwitch.VstExpressionMap.Exporting;
 
 namespace KeySwitchManager.Presenters.VstExpressionMap
 {

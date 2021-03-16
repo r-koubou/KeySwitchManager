@@ -4,8 +4,8 @@ using KeySwitchManager.Domain.KeySwitches;
 using KeySwitchManager.Gateways.KeySwitch;
 using KeySwitchManager.Gateways.KeySwitch.Helper;
 using KeySwitchManager.Presenters.VstExpressionMap;
-using KeySwitchManager.UseCases.VstExpressionMap.Exporting;
-using KeySwitchManager.UseCases.VstExpressionMap.Translations;
+using KeySwitchManager.UseCases.KeySwitch.VstExpressionMap.Exporting;
+using KeySwitchManager.UseCases.KeySwitch.VstExpressionMap.Translations;
 
 namespace KeySwitchManager.Interactors.VstExpressionMap.Exporting
 {

@@ -1,4 +1,4 @@
-namespace KeySwitchManager.UseCases.VstExpressionMap.Exporting
+namespace KeySwitchManager.UseCases.KeySwitch.VstExpressionMap.Exporting
 {
     public interface IExportingVstExpressionMapUseCase
     {

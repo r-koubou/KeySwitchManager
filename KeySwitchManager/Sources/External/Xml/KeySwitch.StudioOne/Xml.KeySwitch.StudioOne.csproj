@@ -27,7 +27,7 @@
     <ItemGroup>
       <ProjectReference Include="..\..\..\Commons\Commons.csproj" />
       <ProjectReference Include="..\..\..\Domain\Commons\Domain.Commons.csproj" />
-      <ProjectReference Include="..\..\..\UseCases\StudioOneKeySwitch\UseCases.StudioOneKeySwitch.csproj" />
+      <ProjectReference Include="..\..\..\UseCases\KeySwitch.StudioOne\UseCases.KeySwitch.StudioOne.csproj" />
     </ItemGroup>
 
 </Project>

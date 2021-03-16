@@ -68,9 +68,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UseCases", "UseCases", "{80
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UseCases.KeySwitch", "Sources\UseCases\KeySwitch\UseCases.KeySwitch.csproj", "{721544EC-9776-4D54-AFB8-A786C01C1CEE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UseCases.StudioOneKeySwitch", "Sources\UseCases\StudioOneKeySwitch\UseCases.StudioOneKeySwitch.csproj", "{A08F27CD-4033-410F-AA01-86899CEC9AF4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UseCases.KeySwitch.StudioOne", "Sources\UseCases\KeySwitch.StudioOne\UseCases.KeySwitch.StudioOne.csproj", "{A08F27CD-4033-410F-AA01-86899CEC9AF4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UseCases.VstExpressionMap", "Sources\UseCases\VstExpressionMap\UseCases.VstExpressionMap.csproj", "{9B045316-5F70-481B-BCE0-8D7D0C2CC9C6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UseCases.KeySwitch.VstExpressionMap", "Sources\UseCases\KeySwitch.VstExpressionMap\UseCases.KeySwitch.VstExpressionMap.csproj", "{9B045316-5F70-481B-BCE0-8D7D0C2CC9C6}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Gateways", "Gateways", "{C75B2B80-D93D-4C92-91A5-50CCFC31056C}"
 EndProject

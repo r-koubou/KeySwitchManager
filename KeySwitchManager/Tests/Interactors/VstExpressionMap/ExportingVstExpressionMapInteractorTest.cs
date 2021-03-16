@@ -6,7 +6,7 @@ using Database.LiteDB.KeySwitch.KeySwitch;
 using KeySwitchManager.Common.Testing.KeySwitches;
 using KeySwitchManager.Interactors.VstExpressionMap.Exporting;
 using KeySwitchManager.Presenters.VstExpressionMap;
-using KeySwitchManager.UseCases.VstExpressionMap.Exporting;
+using KeySwitchManager.UseCases.KeySwitch.VstExpressionMap.Exporting;
 using KeySwitchManager.Xml.KeySwitch.VstExpressionMap.Translation;
 
 using NUnit.Framework;

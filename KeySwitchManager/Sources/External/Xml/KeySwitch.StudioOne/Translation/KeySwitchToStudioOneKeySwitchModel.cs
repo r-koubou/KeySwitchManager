@@ -1,7 +1,7 @@
 using System.Linq;
 
 using KeySwitchManager.Domain.Commons;
-using KeySwitchManager.UseCases.StudioOneKeySwitch.Translations;
+using KeySwitchManager.UseCases.KeySwitch.StudioOne.Translations;
 using KeySwitchManager.Xml.KeySwitch.StudioOne.Model;
 
 using RkHelper.Text.Xml;
