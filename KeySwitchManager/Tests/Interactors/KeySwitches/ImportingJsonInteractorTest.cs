@@ -19,7 +19,7 @@ namespace KeySwitchManager.Interactors.Testing.KeySwitches
         [Test]
         public void ImportTest()
         {
-            var jsonText = "[{\"id\":\"419db555-cc1d-405c-8b28-281ded630a45\",\"author\":\"Author\",\"description\":\"Description\",\"created\":\"2020-09-15T16:21:11.354Z\",\"last_updated\":\"2020-09-15T16:21:11.354Z\",\"developer_name\":\"DeveloperName\",\"product_name\":\"ProductName\",\"instrument_name\":\"E.Guitar\",\"articulation\":[{\"articulation_name\":\"Power Chord\",\"articulation_type\":1,\"articulation_group\":0,\"articulation_color\":0,\"midi_message\":{\"note_on\":[],\"control_change\":[],\"program_change\":[]}}]}]";
+            var jsonText = "[{\"Author\":\"Author\",\"Id\":\"d374e5e0-3b95-4f68-be4c-746dd8077a53\",\"Description\":\"Description\",\"Created\":\"2020-09-16T07:04:52.657Z\",\"LastUpdated\":\"2020-09-16T07:04:52.657Z\",\"DeveloperName\":\"DeveloperName\",\"ProductName\":\"ProductName\",\"InstrumentName\":\"E.Guitar\",\"Articulations\":[{\"Name\":\"Power Chord\",\"Type\":1,\"Group\":0,\"Color\":0,\"MidiMessage\":{\"NoteOn\":[{\"Status\":144,\"Channel\":0,\"Data1\":1,\"Data2\":23}],\"ControlChange\":[{\"Status\":176,\"Channel\":0,\"Data1\":2,\"Data2\":34}],\"ProgramChange\":[{\"Status\":192,\"Channel\":3,\"Data1\":45,\"Data2\":0}]}}]}]";
 
             var dbRepository = new LiteDbKeySwitchRepository( new MemoryStream() );
             var inputData = new ImportingTextRequest( jsonText );

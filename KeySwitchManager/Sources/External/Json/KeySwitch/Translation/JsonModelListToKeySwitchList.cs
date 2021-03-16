@@ -13,7 +13,7 @@ namespace KeySwitchManager.Json.KeySwitch.Translation
         public IReadOnlyCollection<Domain.KeySwitches.KeySwitch> Translate( IText source )
         {
             var result = new List<Domain.KeySwitches.KeySwitch>();
-            var model =JsonSerializer.Deserialize<IEnumerable<KeySwitchModel>>( source.Value ) ?? new List<KeySwitchModel>();
+            var model = JsonSerializer.Deserialize<IEnumerable<KeySwitchModel>>( source.Value ) ?? new List<KeySwitchModel>();
 
             foreach( var i in model )
             {
