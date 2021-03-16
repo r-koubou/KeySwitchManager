@@ -4,16 +4,16 @@ using System.IO;
 
 using CommandLine;
 
-using Databases.LiteDB.KeySwitches.KeySwitches;
+using Database.LiteDB.KeySwitch.KeySwitch;
 
 using KeySwitchManager.Domain.Commons;
-using KeySwitchManager.Domain.KeySwitches.Aggregate;
-using KeySwitchManager.Interactors.KeySwitches.Importing;
-using KeySwitchManager.Json.KeySwitches.Translations;
-using KeySwitchManager.Presenters.KeySwitches;
-using KeySwitchManager.UseCases.KeySwitches.Importing.Xlsx;
-using KeySwitchManager.Xlsx.KeySwitches;
-using KeySwitchManager.Xlsx.KeySwitches.ClosedXml;
+using KeySwitchManager.Domain.KeySwitches;
+using KeySwitchManager.Interactors.KeySwitch.Importing;
+using KeySwitchManager.Json.KeySwitch.Translation;
+using KeySwitchManager.Presenters.KeySwitch;
+using KeySwitchManager.UseCases.KeySwitch.Importing.Xlsx;
+using KeySwitchManager.Xlsx.KeySwitch;
+using KeySwitchManager.Xlsx.KeySwitch.ClosedXml;
 
 namespace KeySwitchManager.CLI.Commands
 {

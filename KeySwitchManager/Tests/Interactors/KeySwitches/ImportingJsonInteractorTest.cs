@@ -1,13 +1,13 @@
 using System.IO;
 using System.Linq;
 
-using Databases.LiteDB.KeySwitches.KeySwitches;
+using Database.LiteDB.KeySwitch.KeySwitch;
 
 using KeySwitchManager.Domain.KeySwitches.Value;
-using KeySwitchManager.Interactors.KeySwitches.Importing;
-using KeySwitchManager.Json.KeySwitches.Translations;
-using KeySwitchManager.Presenters.KeySwitches;
-using KeySwitchManager.UseCases.KeySwitches.Importing.Text;
+using KeySwitchManager.Interactors.KeySwitch.Importing;
+using KeySwitchManager.Json.KeySwitch.Translation;
+using KeySwitchManager.Presenters.KeySwitch;
+using KeySwitchManager.UseCases.KeySwitch.Importing.Text;
 
 using NUnit.Framework;
 

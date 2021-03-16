@@ -2,11 +2,11 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 
-using Databases.LiteDB.KeySwitches.KeySwitches;
+using Database.LiteDB.KeySwitch.KeySwitch;
 
 using KeySwitchManager.Common.Testing.KeySwitches;
-using KeySwitchManager.Domain.MidiMessages.Aggregate;
-using KeySwitchManager.Domain.MidiMessages.Helpers;
+using KeySwitchManager.Domain.MidiMessages.Entity;
+using KeySwitchManager.Domain.MidiMessages.Helper;
 using KeySwitchManager.Domain.MidiMessages.Value;
 
 using NUnit.Framework;

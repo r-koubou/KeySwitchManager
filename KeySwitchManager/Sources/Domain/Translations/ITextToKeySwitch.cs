@@ -1,5 +1,5 @@
 using KeySwitchManager.Domain.Commons;
-using KeySwitchManager.Domain.KeySwitches.Aggregate;
+using KeySwitchManager.Domain.KeySwitches;
 
 namespace KeySwitchManager.Domain.Translations
 {

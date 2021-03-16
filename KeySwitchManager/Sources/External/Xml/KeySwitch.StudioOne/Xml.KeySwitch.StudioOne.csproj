@@ -1,0 +1,33 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net5.0</TargetFramework>
+        <!-- Assembly / Common -->
+        <Copyright>R-Koubou</Copyright>
+        <Company>R-Koubou</Company>
+        <Product>KeySwitchManager.Xml.StudioOne.KeySwitch</Product>
+        <AssemblyName>KeySwitchManager.Xml.KeySwitch.StudioOne</AssemblyName>
+        <RootNamespace>KeySwitchManager.Xml.KeySwitch.StudioOne</RootNamespace>
+        <Version>0.1.1</Version>
+        <Description>KeySwitchManager.Xml.StudioOne.KeySwitch module</Description>
+        <Nullable>enable</Nullable>
+        <!-- Nuget -->
+        <Authors>R-Koubou</Authors>
+        <PackageId>KeySwitchManager.Xml.StudioOne.KeySwitch</PackageId>
+        <PackageLicenseExpression>MIT</PackageLicenseExpression>
+        <PackageProjectUrl>https://github.com/r-koubou/KeySwitchManager</PackageProjectUrl>
+        <RepositoryUrl>https://github.com/r-koubou/KeySwitchManager</RepositoryUrl>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <Folder Include="Model" />
+      <Folder Include="Translation" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\..\..\Commons\Commons.csproj" />
+      <ProjectReference Include="..\..\..\Domain\Commons\Domain.Commons.csproj" />
+      <ProjectReference Include="..\..\..\UseCases\KeySwitch.StudioOne\UseCases.KeySwitch.StudioOne.csproj" />
+    </ItemGroup>
+
+</Project>

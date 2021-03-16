@@ -5,12 +5,12 @@ using System.Text;
 
 using CommandLine;
 
-using Databases.LiteDB.KeySwitches.KeySwitches;
+using Database.LiteDB.KeySwitch.KeySwitch;
 
-using KeySwitchManager.Interactors.KeySwitches.Searching;
-using KeySwitchManager.Json.KeySwitches.Translations;
-using KeySwitchManager.Presenters.KeySwitches;
-using KeySwitchManager.UseCases.KeySwitches.Searching;
+using KeySwitchManager.Interactors.KeySwitch.Searching;
+using KeySwitchManager.Json.KeySwitch.Translation;
+using KeySwitchManager.Presenters.KeySwitch;
+using KeySwitchManager.UseCases.KeySwitch.Searching;
 
 using RkHelper.Text;
 

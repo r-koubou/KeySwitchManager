@@ -14,18 +14,18 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\..\External\Databases\KeySwitches.LiteDB\Databases.KeySwitches.LiteDB.csproj" />
-      <ProjectReference Include="..\..\External\Json\KeySwitches\Json.KeySwitches.csproj" />
-      <ProjectReference Include="..\..\External\Xlsx\KeySwitches.ClosedXml\Xlsx.KeySwitches.ClosedXml.csproj" />
-      <ProjectReference Include="..\..\External\Xlsx\KeySwitches\Xlsx.KeySwitches.csproj" />
-      <ProjectReference Include="..\..\External\Xml\StudioOne.KeySwitch\Xml.KeySwitch.StudioOne.csproj" />
-      <ProjectReference Include="..\..\External\Xml\VstExpressionMap\Xml.VstExpressionMap.csproj" />
-      <ProjectReference Include="..\..\Interactors\KeySwitches\Interactors.KeySwitches.csproj" />
-      <ProjectReference Include="..\..\Interactors\StudioOneKeySwitch\Interactors.StudioOneKeySwitch.csproj" />
-      <ProjectReference Include="..\..\Interactors\VstExpressionMap\Interactors.VstExpressionMap.csproj" />
-      <ProjectReference Include="..\..\Presenters\KeySwitches\Presenters.KeySwitches.csproj" />
-      <ProjectReference Include="..\..\Presenters\StudioOneKeySwitch\Presenters.StudioOneKeySwitch.csproj" />
-      <ProjectReference Include="..\..\Presenters\VstExpressionMap\Presenters.VstExpressionMap.csproj" />
+      <ProjectReference Include="..\..\External\Database\LiteDB.KeySwitch\Database.LiteDB.KeySwitch.csproj" />
+      <ProjectReference Include="..\..\External\Json\KeySwitch\Json.KeySwitch.csproj" />
+      <ProjectReference Include="..\..\External\Xlsx\KeySwitch.ClosedXml\Xlsx.KeySwitch.ClosedXml.csproj" />
+      <ProjectReference Include="..\..\External\Xlsx\KeySwitch\Xlsx.KeySwitch.csproj" />
+      <ProjectReference Include="..\..\External\Xml\KeySwitch.StudioOne\Xml.KeySwitch.StudioOne.csproj" />
+      <ProjectReference Include="..\..\External\Xml\KeySwitch.VstExpressionMap\Xml.KeySwitch.VstExpressionMap.csproj" />
+      <ProjectReference Include="..\..\Interactors\KeySwitch\Interactors.KeySwitch.csproj" />
+      <ProjectReference Include="..\..\Interactors\KeySwitch.StudioOne\Interactors.KeySwitch.StudioOne.csproj" />
+      <ProjectReference Include="..\..\Interactors\KeySwitch.VstExpressionMap\Interactors.KeySwitch.VstExpressionMap.csproj" />
+      <ProjectReference Include="..\..\Presenters\KeySwitch\Presenters.KeySwitch.csproj" />
+      <ProjectReference Include="..\..\Presenters\KeySwitch.StudioOne\Presenters.KeySwitch.StudioOne.csproj" />
+      <ProjectReference Include="..\..\Presenters\KeySwitch.VstExpressionMap\Presenters.KeySwitch.VstExpressionMap.csproj" />
     </ItemGroup>
 
     <ItemGroup>

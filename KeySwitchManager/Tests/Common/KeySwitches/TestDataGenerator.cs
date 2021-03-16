@@ -2,9 +2,10 @@ using System;
 using System.Collections.Generic;
 
 using KeySwitchManager.Domain.Commons;
-using KeySwitchManager.Domain.KeySwitches.Aggregate;
+using KeySwitchManager.Domain.KeySwitches;
+using KeySwitchManager.Domain.KeySwitches.Entity;
 using KeySwitchManager.Domain.KeySwitches.Value;
-using KeySwitchManager.Domain.MidiMessages.Aggregate;
+using KeySwitchManager.Domain.MidiMessages.Entity;
 
 using RkHelper.Time;
 

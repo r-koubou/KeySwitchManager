@@ -2,8 +2,8 @@ using System;
 
 using KeySwitchManager.Common.Testing.KeySwitches;
 using KeySwitchManager.Domain.MidiMessages;
-using KeySwitchManager.Domain.MidiMessages.Aggregate;
-using KeySwitchManager.Xml.StudioOne.KeySwitch.Translations;
+using KeySwitchManager.Domain.MidiMessages.Entity;
+using KeySwitchManager.Xml.KeySwitch.StudioOne.Translation;
 
 using NUnit.Framework;
 

@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <LangVersion>9</LangVersion>
+        <TargetFramework>net5.0</TargetFramework>
+        <!-- Assembly -->
+        <Copyright>R-Koubou</Copyright>
+        <Company>R-Koubou</Company>
+        <Product>KeySwitchManager.UseCases.VstExpressionMap</Product>
+        <AssemblyName>KeySwitchManager.UseCases.KeySwitch.VstExpressionMap</AssemblyName>
+        <RootNamespace>KeySwitchManager.UseCases.KeySwitch.VstExpressionMap</RootNamespace>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\..\Commons\Commons.csproj" />
+      <ProjectReference Include="..\..\Domain\KeySwitches\Domain.KeySwitches.csproj" />
+      <ProjectReference Include="..\..\Domain\Translations\Domain.Translations.csproj" />
+    </ItemGroup>
+
+</Project>

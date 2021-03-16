@@ -3,8 +3,8 @@ using System.Collections.Generic;
 
 using KeySwitchManager.Common.Testing.KeySwitches;
 using KeySwitchManager.Domain.MidiMessages;
-using KeySwitchManager.Domain.MidiMessages.Aggregate;
-using KeySwitchManager.Json.KeySwitches.Translations;
+using KeySwitchManager.Domain.MidiMessages.Entity;
+using KeySwitchManager.Json.KeySwitch.Translation;
 
 using NUnit.Framework;
 

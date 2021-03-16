@@ -3,12 +3,12 @@ using System.Diagnostics.CodeAnalysis;
 
 using CommandLine;
 
-using Databases.LiteDB.KeySwitches.KeySwitches;
+using Database.LiteDB.KeySwitch.KeySwitch;
 
-using KeySwitchManager.Interactors.KeySwitches.Removing;
-using KeySwitchManager.Json.KeySwitches.Translations;
-using KeySwitchManager.Presenters.KeySwitches;
-using KeySwitchManager.UseCases.KeySwitches.Removing;
+using KeySwitchManager.Interactors.KeySwitch.Removing;
+using KeySwitchManager.Json.KeySwitch.Translation;
+using KeySwitchManager.Presenters.KeySwitch;
+using KeySwitchManager.UseCases.KeySwitch.Removing;
 
 namespace KeySwitchManager.CLI.Commands
 {

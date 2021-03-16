@@ -6,14 +6,14 @@ using System.Text;
 
 using CommandLine;
 
-using Databases.LiteDB.KeySwitches.KeySwitches;
+using Database.LiteDB.KeySwitch.KeySwitch;
 
 using KeySwitchManager.CLI.Helpers;
 using KeySwitchManager.Domain.Commons;
-using KeySwitchManager.Interactors.VstExpressionMap.Exporting;
+using KeySwitchManager.Interactors.KeySwitch.VstExpressionMap.Exporting;
 using KeySwitchManager.Presenters.VstExpressionMap;
-using KeySwitchManager.UseCases.VstExpressionMap.Exporting;
-using KeySwitchManager.Xml.VstExpressionMap.Translations;
+using KeySwitchManager.UseCases.KeySwitch.VstExpressionMap.Exporting;
+using KeySwitchManager.Xml.KeySwitch.VstExpressionMap.Translation;
 
 using RkHelper.IO;
 

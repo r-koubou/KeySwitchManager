@@ -20,7 +20,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\..\..\Sources\Domain\MidiMessages\Domain.MidiMessages.csproj" />
-      <ProjectReference Include="..\..\..\Sources\External\Databases\KeySwitches.LiteDB\Databases.KeySwitches.LiteDB.csproj" />
+      <ProjectReference Include="..\..\..\Sources\External\Database\LiteDB.KeySwitch\Database.LiteDB.KeySwitch.csproj" />
       <ProjectReference Include="..\..\Common\Common.Testing.csproj" />
     </ItemGroup>
 

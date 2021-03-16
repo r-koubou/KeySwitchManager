@@ -1,0 +1,31 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net5.0</TargetFramework>
+        <!-- Assembly / Common -->
+        <Copyright>R-Koubou</Copyright>
+        <Company>R-Koubou</Company>
+        <Product>Databases.LiteDB.KeySwitches</Product>
+        <RootNamespace>Database.LiteDB.KeySwitch</RootNamespace>
+        <Version>0.1.1</Version>
+        <Description>Databases.LiteDB.KeySwitches module</Description>
+        <Nullable>enable</Nullable>
+        <!-- Nuget -->
+        <Authors>R-Koubou</Authors>
+        <PackageId>Databases.LiteDB.KeySwitches</PackageId>
+        <PackageLicenseExpression>MIT</PackageLicenseExpression>
+        <PackageProjectUrl>https://github.com/r-koubou/KeySwitchManager</PackageProjectUrl>
+        <RepositoryUrl>https://github.com/r-koubou/KeySwitchManager</RepositoryUrl>
+        <AssemblyName>Database.LiteDB.KeySwitch</AssemblyName>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <PackageReference Include="LiteDB" Version="5.0.9" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\..\..\Domain\Translations\Domain.Translations.csproj" />
+      <ProjectReference Include="..\..\..\Gateways\KeySwitch\Gateways.KeySwitch.csproj" />
+    </ItemGroup>
+
+</Project>
