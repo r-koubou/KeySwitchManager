@@ -1,6 +1,6 @@
 using System;
 
-namespace KeySwitchManager.Domain.Commons.Helpers
+namespace KeySwitchManager.Domain.Commons.Helper
 {
     public static class EntityDateTimeHelper
     {

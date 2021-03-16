@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-using KeySwitchManager.Domain.Commons.Helpers;
+using KeySwitchManager.Domain.Commons.Helper;
 using KeySwitchManager.Domain.KeySwitches;
 using KeySwitchManager.Domain.KeySwitches.Value;
 using KeySwitchManager.Domain.MidiMessages.Entity;
