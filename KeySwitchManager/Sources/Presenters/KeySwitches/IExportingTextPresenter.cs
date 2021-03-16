@@ -1,4 +1,4 @@
-using KeySwitchManager.UseCases.KeySwitches.Exporting;
+using KeySwitchManager.UseCases.KeySwitch.Exporting;
 
 namespace KeySwitchManager.Presenters.KeySwitches
 {

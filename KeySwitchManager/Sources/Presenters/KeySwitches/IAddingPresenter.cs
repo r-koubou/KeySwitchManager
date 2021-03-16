@@ -1,4 +1,4 @@
-using KeySwitchManager.UseCases.KeySwitches.Adding;
+using KeySwitchManager.UseCases.KeySwitch.Adding;
 
 namespace KeySwitchManager.Presenters.KeySwitches
 {

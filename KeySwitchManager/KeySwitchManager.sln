@@ -66,7 +66,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Interactors", "Interactors"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UseCases", "UseCases", "{8062AA09-46A1-4802-B13F-87456C59455C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UseCases.KeySwitches", "Sources\UseCases\KeySwitches\UseCases.KeySwitches.csproj", "{721544EC-9776-4D54-AFB8-A786C01C1CEE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UseCases.KeySwitch", "Sources\UseCases\KeySwitch\UseCases.KeySwitch.csproj", "{721544EC-9776-4D54-AFB8-A786C01C1CEE}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UseCases.StudioOneKeySwitch", "Sources\UseCases\StudioOneKeySwitch\UseCases.StudioOneKeySwitch.csproj", "{A08F27CD-4033-410F-AA01-86899CEC9AF4}"
 EndProject

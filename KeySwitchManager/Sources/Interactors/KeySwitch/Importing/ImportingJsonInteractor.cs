@@ -1,7 +1,7 @@
 using KeySwitchManager.Gateways.KeySwitches;
 using KeySwitchManager.Presenters.KeySwitches;
-using KeySwitchManager.UseCases.KeySwitches.Importing.Text;
-using KeySwitchManager.UseCases.KeySwitches.Translations;
+using KeySwitchManager.UseCases.KeySwitch.Importing.Text;
+using KeySwitchManager.UseCases.KeySwitch.Translations;
 
 namespace KeySwitchManager.Interactors.KeySwitch.Importing
 {

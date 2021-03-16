@@ -4,8 +4,8 @@ using KeySwitchManager.Domain.Commons;
 using KeySwitchManager.Domain.KeySwitches.Value;
 using KeySwitchManager.Gateways.KeySwitches;
 using KeySwitchManager.Presenters.KeySwitches;
-using KeySwitchManager.UseCases.KeySwitches.Searching;
-using KeySwitchManager.UseCases.KeySwitches.Translations;
+using KeySwitchManager.UseCases.KeySwitch.Searching;
+using KeySwitchManager.UseCases.KeySwitch.Translations;
 
 using RkHelper.Text;
 

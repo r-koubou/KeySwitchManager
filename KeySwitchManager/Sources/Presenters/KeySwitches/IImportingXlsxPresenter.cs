@@ -1,4 +1,4 @@
-using KeySwitchManager.UseCases.KeySwitches.Importing.Xlsx;
+using KeySwitchManager.UseCases.KeySwitch.Importing.Xlsx;
 
 namespace KeySwitchManager.Presenters.KeySwitches
 {

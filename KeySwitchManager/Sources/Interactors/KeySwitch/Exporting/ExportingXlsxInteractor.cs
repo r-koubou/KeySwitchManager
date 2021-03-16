@@ -1,5 +1,5 @@
 using KeySwitchManager.Gateways.KeySwitches;
-using KeySwitchManager.UseCases.KeySwitches.Exporting;
+using KeySwitchManager.UseCases.KeySwitch.Exporting;
 
 namespace KeySwitchManager.Interactors.KeySwitch.Exporting
 {

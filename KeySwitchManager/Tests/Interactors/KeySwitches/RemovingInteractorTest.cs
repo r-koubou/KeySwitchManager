@@ -6,7 +6,7 @@ using Databases.LiteDB.KeySwitches.KeySwitches;
 using KeySwitchManager.Common.Testing.KeySwitches;
 using KeySwitchManager.Interactors.KeySwitch.Removing;
 using KeySwitchManager.Presenters.KeySwitches;
-using KeySwitchManager.UseCases.KeySwitches.Removing;
+using KeySwitchManager.UseCases.KeySwitch.Removing;
 
 using NUnit.Framework;
 

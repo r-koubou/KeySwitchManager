@@ -6,7 +6,7 @@ using Databases.LiteDB.KeySwitches.KeySwitches;
 using KeySwitchManager.Domain.MidiMessages.Entity;
 using KeySwitchManager.Interactors.KeySwitch.Adding;
 using KeySwitchManager.Presenters.KeySwitches;
-using KeySwitchManager.UseCases.KeySwitches.Adding;
+using KeySwitchManager.UseCases.KeySwitch.Adding;
 
 using NUnit.Framework;
 

@@ -4,7 +4,7 @@ using CommandLine;
 
 using KeySwitchManager.Domain.Commons;
 using KeySwitchManager.Interactors.KeySwitch.Exporting;
-using KeySwitchManager.UseCases.KeySwitches.Exporting;
+using KeySwitchManager.UseCases.KeySwitch.Exporting;
 using KeySwitchManager.Xlsx.KeySwitches.ClosedXml;
 
 namespace KeySwitchManager.CLI.Commands

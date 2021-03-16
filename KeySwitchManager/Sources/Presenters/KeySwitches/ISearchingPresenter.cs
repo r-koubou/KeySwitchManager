@@ -1,4 +1,4 @@
-using KeySwitchManager.UseCases.KeySwitches.Searching;
+using KeySwitchManager.UseCases.KeySwitch.Searching;
 
 namespace KeySwitchManager.Presenters.KeySwitches
 {
