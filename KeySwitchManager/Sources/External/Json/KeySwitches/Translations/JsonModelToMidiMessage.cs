@@ -1,4 +1,4 @@
-using KeySwitchManager.Domain.MidiMessages.Aggregate;
+using KeySwitchManager.Domain.MidiMessages.Entity;
 using KeySwitchManager.Domain.MidiMessages.Value;
 using KeySwitchManager.Domain.Translations;
 using KeySwitchManager.Json.KeySwitches.Models;

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using KeySwitchManager.Domain.KeySwitches;
 using KeySwitchManager.Domain.KeySwitches.Entity;
 using KeySwitchManager.Domain.MidiMessages;
-using KeySwitchManager.Domain.MidiMessages.Aggregate;
+using KeySwitchManager.Domain.MidiMessages.Entity;
 using KeySwitchManager.Presenters.KeySwitches;
 using KeySwitchManager.UseCases.KeySwitches.Exporting;
 using KeySwitchManager.UseCases.KeySwitches.Translations;

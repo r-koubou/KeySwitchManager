@@ -5,7 +5,7 @@ using Databases.LiteDB.KeySwitches.KeySwitches.Models;
 using KeySwitchManager.Domain.KeySwitches;
 using KeySwitchManager.Domain.KeySwitches.Entity;
 using KeySwitchManager.Domain.MidiMessages;
-using KeySwitchManager.Domain.MidiMessages.Aggregate;
+using KeySwitchManager.Domain.MidiMessages.Entity;
 using KeySwitchManager.Domain.Translations;
 
 namespace Databases.LiteDB.KeySwitches.KeySwitches.Translations

@@ -1,4 +1,4 @@
-using KeySwitchManager.Domain.MidiMessages.Aggregate;
+using KeySwitchManager.Domain.MidiMessages.Entity;
 using KeySwitchManager.Domain.MidiMessages.Value;
 
 namespace KeySwitchManager.Domain.MidiMessages

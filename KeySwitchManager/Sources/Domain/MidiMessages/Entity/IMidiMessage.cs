@@ -2,7 +2,7 @@ using System;
 
 using KeySwitchManager.Domain.MidiMessages.Value;
 
-namespace KeySwitchManager.Domain.MidiMessages.Aggregate
+namespace KeySwitchManager.Domain.MidiMessages.Entity
 {
     /// <summary>
     /// MIDI event aggregation that makes up the sound slot.
