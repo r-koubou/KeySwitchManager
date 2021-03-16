@@ -7,8 +7,8 @@
         <Copyright>R-Koubou</Copyright>
         <Company>R-Koubou</Company>
         <Product>KeySwitchManager.Interactors.StudioOneKeySwitch</Product>
-        <AssemblyName>KeySwitchManager.Interactors.StudioOneKeySwitch</AssemblyName>
-        <RootNamespace>KeySwitchManager.Interactors.StudioOneKeySwitch</RootNamespace>
+        <AssemblyName>KeySwitchManager.Interactors.KeySwitch.StudioOne</AssemblyName>
+        <RootNamespace>KeySwitchManager.Interactors.KeySwitch.StudioOne</RootNamespace>
         <Nullable>enable</Nullable>
     </PropertyGroup>
 

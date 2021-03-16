@@ -58,9 +58,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain.Testing", "Tests\Dom
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Interactors.KeySwitch", "Sources\Interactors\KeySwitch\Interactors.KeySwitch.csproj", "{25B6087C-3378-4C99-A1E9-C3EF3A5BEB7B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Interactors.StudioOneKeySwitch", "Sources\Interactors\StudioOneKeySwitch\Interactors.StudioOneKeySwitch.csproj", "{B899E0B4-B610-4168-BC58-1DFDE6897F24}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Interactors.KeySwitch.StudioOne", "Sources\Interactors\KeySwitch.StudioOne\Interactors.KeySwitch.StudioOne.csproj", "{B899E0B4-B610-4168-BC58-1DFDE6897F24}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Interactors.VstExpressionMap", "Sources\Interactors\VstExpressionMap\Interactors.VstExpressionMap.csproj", "{149B9CFA-0FDB-41F9-A4C9-3DB224699ED7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Interactors.KeySwitch.VstExpressionMap", "Sources\Interactors\KeySwitch.VstExpressionMap\Interactors.KeySwitch.VstExpressionMap.csproj", "{149B9CFA-0FDB-41F9-A4C9-3DB224699ED7}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Interactors", "Interactors", "{A1BB74B6-296D-44FE-A35C-B286294FB205}"
 EndProject

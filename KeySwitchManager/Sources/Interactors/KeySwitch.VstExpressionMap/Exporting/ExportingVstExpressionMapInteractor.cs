@@ -1,13 +1,12 @@
 using System.Collections.Generic;
 
-using KeySwitchManager.Domain.KeySwitches;
 using KeySwitchManager.Gateways.KeySwitch;
 using KeySwitchManager.Gateways.KeySwitch.Helper;
 using KeySwitchManager.Presenters.VstExpressionMap;
 using KeySwitchManager.UseCases.KeySwitch.VstExpressionMap.Exporting;
 using KeySwitchManager.UseCases.KeySwitch.VstExpressionMap.Translations;
 
-namespace KeySwitchManager.Interactors.VstExpressionMap.Exporting
+namespace KeySwitchManager.Interactors.KeySwitch.VstExpressionMap.Exporting
 {
     public class ExportingVstExpressionMapInteractor : IExportingVstExpressionMapUseCase
     {
@@ -25,7 +24,7 @@ namespace KeySwitchManager.Interactors.VstExpressionMap.Exporting
             Presenter  = presenter;
         }
 
-        private ExportingVstExpressionMapResponse CreateResponse( IEnumerable<KeySwitch> query )
+        private ExportingVstExpressionMapResponse CreateResponse( IEnumerable<Domain.KeySwitches.KeySwitch> query )
         {
             var responseParam = new List<ExportingVstExpressionMapResponse.Element>();
 

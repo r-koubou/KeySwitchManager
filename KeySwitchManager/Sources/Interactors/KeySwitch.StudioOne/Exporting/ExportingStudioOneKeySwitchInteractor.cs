@@ -1,13 +1,12 @@
 using System.Collections.Generic;
 
-using KeySwitchManager.Domain.KeySwitches;
 using KeySwitchManager.Gateways.KeySwitch;
 using KeySwitchManager.Gateways.KeySwitch.Helper;
 using KeySwitchManager.Presenters.KeySwitch.StudioOneKeySwitch;
 using KeySwitchManager.UseCases.KeySwitch.StudioOne.Exporting;
 using KeySwitchManager.UseCases.KeySwitch.StudioOne.Translations;
 
-namespace KeySwitchManager.Interactors.StudioOneKeySwitch.Exporting
+namespace KeySwitchManager.Interactors.KeySwitch.StudioOne.Exporting
 {
     public class ExportingStudioOneKeySwitchInteractor : IExportingStudioOneKeySwitchUseCase
     {
@@ -25,7 +24,7 @@ namespace KeySwitchManager.Interactors.StudioOneKeySwitch.Exporting
             Presenter  = presenter;
         }
 
-        private ExportingStudioOneKeySwitchResponse CreateResponse( IEnumerable<KeySwitch> query )
+        private ExportingStudioOneKeySwitchResponse CreateResponse( IEnumerable<Domain.KeySwitches.KeySwitch> query )
         {
             var responseParam = new List<ExportingStudioOneKeySwitchResponse.Element>();
 
