@@ -5,7 +5,7 @@ using Database.LiteDB.KeySwitch.KeySwitch;
 
 using KeySwitchManager.Domain.KeySwitches.Value;
 using KeySwitchManager.Interactors.KeySwitch.Importing;
-using KeySwitchManager.Json.KeySwitches.Translations;
+using KeySwitchManager.Json.KeySwitch.Translation;
 using KeySwitchManager.Presenters.KeySwitch;
 using KeySwitchManager.UseCases.KeySwitch.Importing.Text;
 

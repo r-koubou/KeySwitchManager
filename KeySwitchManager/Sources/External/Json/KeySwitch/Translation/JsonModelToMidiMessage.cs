@@ -1,9 +1,9 @@
 using KeySwitchManager.Domain.MidiMessages.Entity;
 using KeySwitchManager.Domain.MidiMessages.Value;
 using KeySwitchManager.Domain.Translations;
-using KeySwitchManager.Json.KeySwitches.Models;
+using KeySwitchManager.Json.KeySwitch.Model;
 
-namespace KeySwitchManager.Json.KeySwitches.Translations
+namespace KeySwitchManager.Json.KeySwitch.Translation
 {
     public class JsonModelToMidiMessage : IDataTranslator<MidiMessageModel, IMidiMessage>
     {

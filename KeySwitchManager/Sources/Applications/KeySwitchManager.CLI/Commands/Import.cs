@@ -6,7 +6,7 @@ using CommandLine;
 using Database.LiteDB.KeySwitch.KeySwitch;
 
 using KeySwitchManager.Interactors.KeySwitch.Importing;
-using KeySwitchManager.Json.KeySwitches.Translations;
+using KeySwitchManager.Json.KeySwitch.Translation;
 using KeySwitchManager.Presenters.KeySwitch;
 using KeySwitchManager.UseCases.KeySwitch.Importing.Text;
 

@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 
 using RkHelper.Time;
 
-namespace KeySwitchManager.Json.KeySwitches.Models
+namespace KeySwitchManager.Json.KeySwitch.Model
 {
     public class KeySwitchModel
     {

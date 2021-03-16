@@ -4,13 +4,13 @@ using KeySwitchManager.Domain.KeySwitches;
 using KeySwitchManager.Domain.KeySwitches.Entity;
 using KeySwitchManager.Domain.MidiMessages;
 using KeySwitchManager.Domain.MidiMessages.Entity;
-using KeySwitchManager.Json.KeySwitches.Models;
+using KeySwitchManager.Json.KeySwitch.Model;
 
-namespace KeySwitchManager.Json.KeySwitches.Helpers
+namespace KeySwitchManager.Json.KeySwitch.Helper
 {
     internal static class JsonModelToKeySwitchHelper
     {
-        public static KeySwitch Translate( KeySwitchModel model )
+        public static Domain.KeySwitches.KeySwitch Translate( KeySwitchModel model )
         {
             var articulations = TranslateImpl( model );
 

@@ -3,18 +3,17 @@ using System.Text.Encodings.Web;
 using System.Text.Json;
 
 using KeySwitchManager.Domain.Commons;
-using KeySwitchManager.Domain.KeySwitches;
-using KeySwitchManager.Json.KeySwitches.Helpers;
-using KeySwitchManager.Json.KeySwitches.Models;
+using KeySwitchManager.Json.KeySwitch.Helper;
+using KeySwitchManager.Json.KeySwitch.Model;
 using KeySwitchManager.UseCases.KeySwitch.Translations;
 
-namespace KeySwitchManager.Json.KeySwitches.Translations
+namespace KeySwitchManager.Json.KeySwitch.Translation
 {
     public class KeySwitchListListToJsonModelList : IKeySwitchListToJsonListText
     {
         public bool Formatted { get; set; }
 
-        public IText Translate( IReadOnlyCollection<KeySwitch> source )
+        public IText Translate( IReadOnlyCollection<Domain.KeySwitches.KeySwitch> source )
         {
             var keySwitchList = new List<KeySwitchModel>();
 

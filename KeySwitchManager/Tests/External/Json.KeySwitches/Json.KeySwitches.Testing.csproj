@@ -16,7 +16,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\..\..\Sources\Domain\MidiMessages\Domain.MidiMessages.csproj" />
-      <ProjectReference Include="..\..\..\Sources\External\Json\KeySwitches\Json.KeySwitches.csproj" />
+      <ProjectReference Include="..\..\..\Sources\External\Json\KeySwitch\Json.KeySwitch.csproj" />
       <ProjectReference Include="..\..\Common\Common.Testing.csproj" />
     </ItemGroup>
 

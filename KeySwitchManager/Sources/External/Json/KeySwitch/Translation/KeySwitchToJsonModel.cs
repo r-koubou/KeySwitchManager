@@ -2,17 +2,16 @@ using System.Text.Encodings.Web;
 using System.Text.Json;
 
 using KeySwitchManager.Domain.Commons;
-using KeySwitchManager.Domain.KeySwitches;
 using KeySwitchManager.Domain.Translations;
-using KeySwitchManager.Json.KeySwitches.Helpers;
+using KeySwitchManager.Json.KeySwitch.Helper;
 
-namespace KeySwitchManager.Json.KeySwitches.Translations
+namespace KeySwitchManager.Json.KeySwitch.Translation
 {
     public class KeySwitchToJsonModel : IKeySwitchToText
     {
         public bool Formatted { get; set; }
 
-        public IText Translate( KeySwitch source )
+        public IText Translate( Domain.KeySwitches.KeySwitch source )
         {
             var jsonRoot = KeySwitchToJsonModelHelper.Translate( source );
 

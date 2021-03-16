@@ -14,7 +14,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Database.LiteDB.KeySwitch",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Databases.LiteDB.KeySwitches.Testing", "Tests\External\Databases.LiteDB.KeySwitches\Databases.LiteDB.KeySwitches.Testing.csproj", "{70A70B9D-A7A1-4C20-9B25-61A59C87CC7E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Json.KeySwitches", "Sources\External\Json\KeySwitches\Json.KeySwitches.csproj", "{07A4641E-50C0-4831-9CFA-0825D1AA9604}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Json.KeySwitch", "Sources\External\Json\KeySwitch\Json.KeySwitch.csproj", "{07A4641E-50C0-4831-9CFA-0825D1AA9604}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Json.KeySwitches.Testing", "Tests\External\Json.KeySwitches\Json.KeySwitches.Testing.csproj", "{471C186E-12C1-4D4A-BC9C-3F57B05B7436}"
 EndProject

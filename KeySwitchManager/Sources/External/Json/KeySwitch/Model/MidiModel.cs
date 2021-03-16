@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace KeySwitchManager.Json.KeySwitches.Models
+namespace KeySwitchManager.Json.KeySwitch.Model
 {
     public class MidiModel
     {
