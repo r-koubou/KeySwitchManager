@@ -1,6 +1,6 @@
 using KeySwitchManager.UseCases.KeySwitch.Searching;
 
-namespace KeySwitchManager.Presenters.KeySwitches
+namespace KeySwitchManager.Presenters.KeySwitch
 {
     public interface ISearchingPresenter : IPresenter<SearchingResponse>
     {

@@ -1,6 +1,6 @@
 using KeySwitchManager.UseCases.KeySwitch.Exporting;
 
-namespace KeySwitchManager.Presenters.KeySwitches
+namespace KeySwitchManager.Presenters.KeySwitch
 {
     public interface IExportingTemplateXlsxPresenter: IPresenter<ExportingTemplateXlsxResponse>
     {

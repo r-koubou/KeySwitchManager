@@ -2,7 +2,7 @@ using System;
 
 using KeySwitchManager.Domain.KeySwitches;
 using KeySwitchManager.Gateways.KeySwitch;
-using KeySwitchManager.Presenters.KeySwitches;
+using KeySwitchManager.Presenters.KeySwitch;
 using KeySwitchManager.UseCases.KeySwitch.Adding;
 
 using RkHelper.Time;

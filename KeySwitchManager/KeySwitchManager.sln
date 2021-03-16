@@ -80,7 +80,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presenters", "Presenters", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Presenters.Common", "Sources\Presenters\Common\Presenters.Common.csproj", "{83BD82FE-0432-4142-8A61-2B19A4179198}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Presenters.KeySwitches", "Sources\Presenters\KeySwitches\Presenters.KeySwitches.csproj", "{093B5A70-DCD3-45A0-AE41-2272DC2556DF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Presenters.KeySwitch", "Sources\Presenters\KeySwitch\Presenters.KeySwitch.csproj", "{093B5A70-DCD3-45A0-AE41-2272DC2556DF}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Presenters.StudioOneKeySwitch", "Sources\Presenters\StudioOneKeySwitch\Presenters.StudioOneKeySwitch.csproj", "{2F458E5D-55A4-492E-A521-19BFEA3D205E}"
 EndProject

@@ -10,7 +10,7 @@ using KeySwitchManager.Domain.Commons;
 using KeySwitchManager.Domain.KeySwitches;
 using KeySwitchManager.Interactors.KeySwitch.Importing;
 using KeySwitchManager.Json.KeySwitches.Translations;
-using KeySwitchManager.Presenters.KeySwitches;
+using KeySwitchManager.Presenters.KeySwitch;
 using KeySwitchManager.UseCases.KeySwitch.Importing.Xlsx;
 using KeySwitchManager.Xlsx.KeySwitches;
 using KeySwitchManager.Xlsx.KeySwitches.ClosedXml;

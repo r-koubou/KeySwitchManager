@@ -1,6 +1,6 @@
 using KeySwitchManager.UseCases.KeySwitch.Removing;
 
-namespace KeySwitchManager.Presenters.KeySwitches
+namespace KeySwitchManager.Presenters.KeySwitch
 {
     public interface IRemovingPresenter : IPresenter<RemovingResponse>
     {

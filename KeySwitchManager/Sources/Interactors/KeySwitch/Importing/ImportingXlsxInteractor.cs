@@ -1,5 +1,5 @@
 using KeySwitchManager.Gateways.KeySwitch;
-using KeySwitchManager.Presenters.KeySwitches;
+using KeySwitchManager.Presenters.KeySwitch;
 using KeySwitchManager.UseCases.KeySwitch.Importing.Xlsx;
 
 namespace KeySwitchManager.Interactors.KeySwitch.Importing

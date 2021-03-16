@@ -7,15 +7,15 @@
         <Copyright>R-Koubou</Copyright>
         <Company>R-Koubou</Company>
         <Product>KeySwitchManager.Presenters.KeySwitches</Product>
-        <AssemblyName>KeySwitchManager.Presenters.KeySwitches</AssemblyName>
-        <RootNamespace>KeySwitchManager.Presenters.KeySwitches</RootNamespace>
+        <AssemblyName>KeySwitchManager.Presenters.KeySwitch</AssemblyName>
+        <RootNamespace>KeySwitchManager.Presenters.KeySwitch</RootNamespace>
         <Nullable>enable</Nullable>
     </PropertyGroup>
 
     <ItemGroup>
       <ProjectReference Include="..\..\Commons\Commons.csproj" />
       <ProjectReference Include="..\..\UseCases\KeySwitch\UseCases.KeySwitch.csproj" />
-      <ProjectReference Include="..\Commons\Presenters.Common.csproj" />
+      <ProjectReference Include="..\Common\Presenters.Common.csproj" />
     </ItemGroup>
 
 </Project>
