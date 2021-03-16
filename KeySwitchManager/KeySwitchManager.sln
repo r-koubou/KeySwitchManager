@@ -74,7 +74,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UseCases.VstExpressionMap",
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Gateways", "Gateways", "{C75B2B80-D93D-4C92-91A5-50CCFC31056C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gateways.KeySwitches", "Sources\Gateways\KeySwitches\Gateways.KeySwitches.csproj", "{77CAAD7B-1968-4201-A2C3-7609A711EC80}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gateways.KeySwitch", "Sources\Gateways\KeySwitch\Gateways.KeySwitch.csproj", "{77CAAD7B-1968-4201-A2C3-7609A711EC80}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presenters", "Presenters", "{741C8E3E-E25D-4BBE-9F0A-E7C3BDF75FDE}"
 EndProject

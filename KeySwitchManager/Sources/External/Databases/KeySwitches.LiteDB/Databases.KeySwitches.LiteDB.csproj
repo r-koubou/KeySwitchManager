@@ -24,7 +24,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\..\..\Domain\Translations\Domain.Translations.csproj" />
-      <ProjectReference Include="..\..\..\Gateways\KeySwitches\Gateways.KeySwitches.csproj" />
+      <ProjectReference Include="..\..\..\Gateways\KeySwitch\Gateways.KeySwitch.csproj" />
     </ItemGroup>
 
 </Project>

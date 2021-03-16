@@ -1,7 +1,7 @@
 using System;
 
 using KeySwitchManager.Domain.KeySwitches;
-using KeySwitchManager.Gateways.KeySwitches;
+using KeySwitchManager.Gateways.KeySwitch;
 using KeySwitchManager.Presenters.KeySwitches;
 using KeySwitchManager.UseCases.KeySwitch.Adding;
 

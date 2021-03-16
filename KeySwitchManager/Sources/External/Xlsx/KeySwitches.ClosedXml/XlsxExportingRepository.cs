@@ -7,7 +7,7 @@ using ClosedXML.Excel;
 
 using KeySwitchManager.Domain.Commons;
 using KeySwitchManager.Domain.KeySwitches;
-using KeySwitchManager.Gateways.KeySwitches;
+using KeySwitchManager.Gateways.KeySwitch;
 using KeySwitchManager.Xlsx.KeySwitches.ClosedXml.Translators;
 using KeySwitchManager.Xlsx.KeySwitches.Helpers;
 

@@ -2,7 +2,7 @@ using System;
 
 using RkHelper.Number;
 
-namespace KeySwitchManager.Gateways.KeySwitches.Value
+namespace KeySwitchManager.Gateways.KeySwitch.Value
 {
     public class SaveResult : IEquatable<SaveResult>
     {

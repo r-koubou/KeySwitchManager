@@ -4,7 +4,7 @@ using System.IO;
 
 using KeySwitchManager.Domain.Commons;
 using KeySwitchManager.Domain.KeySwitches;
-using KeySwitchManager.Gateways.KeySwitches;
+using KeySwitchManager.Gateways.KeySwitch;
 using KeySwitchManager.Xlsx.KeySwitches.ClosedXml.Helpers;
 using KeySwitchManager.Xlsx.KeySwitches.Translators;
 
