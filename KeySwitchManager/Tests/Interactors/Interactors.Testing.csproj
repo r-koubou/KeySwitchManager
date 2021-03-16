@@ -30,7 +30,7 @@
       <ProjectReference Include="..\..\Sources\Interactors\KeySwitch\Interactors.KeySwitch.csproj" />
       <ProjectReference Include="..\..\Sources\Interactors\StudioOneKeySwitch\Interactors.StudioOneKeySwitch.csproj" />
       <ProjectReference Include="..\..\Sources\Interactors\VstExpressionMap\Interactors.VstExpressionMap.csproj" />
-      <ProjectReference Include="..\..\Sources\Presenters\VstExpressionMap\Presenters.VstExpressionMap.csproj" />
+      <ProjectReference Include="..\..\Sources\Presenters\KeySwitch.VstExpressionMap\Presenters.KeySwitch.VstExpressionMap.csproj" />
       <ProjectReference Include="..\..\Sources\UseCases\KeySwitch.StudioOne\UseCases.KeySwitch.StudioOne.csproj" />
       <ProjectReference Include="..\..\Sources\UseCases\KeySwitch.VstExpressionMap\UseCases.KeySwitch.VstExpressionMap.csproj" />
       <ProjectReference Include="..\Common\Common.Testing.csproj" />

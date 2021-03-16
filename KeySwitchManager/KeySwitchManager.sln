@@ -82,9 +82,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Presenters.Common", "Source
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Presenters.KeySwitch", "Sources\Presenters\KeySwitch\Presenters.KeySwitch.csproj", "{093B5A70-DCD3-45A0-AE41-2272DC2556DF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Presenters.StudioOneKeySwitch", "Sources\Presenters\StudioOneKeySwitch\Presenters.StudioOneKeySwitch.csproj", "{2F458E5D-55A4-492E-A521-19BFEA3D205E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Presenters.KeySwitch.StudioOne", "Sources\Presenters\KeySwitch.StudioOne\Presenters.KeySwitch.StudioOne.csproj", "{2F458E5D-55A4-492E-A521-19BFEA3D205E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Presenters.VstExpressionMap", "Sources\Presenters\VstExpressionMap\Presenters.VstExpressionMap.csproj", "{52D28374-5A06-4638-B313-EEBCDAA6072D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Presenters.KeySwitch.VstExpressionMap", "Sources\Presenters\KeySwitch.VstExpressionMap\Presenters.KeySwitch.VstExpressionMap.csproj", "{52D28374-5A06-4638-B313-EEBCDAA6072D}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Runtime", "Runtime", "{D67D4BCC-4359-4C74-9DBA-CB17BF358263}"
 EndProject

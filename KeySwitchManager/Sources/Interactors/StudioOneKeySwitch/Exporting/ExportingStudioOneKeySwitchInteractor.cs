@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using KeySwitchManager.Domain.KeySwitches;
 using KeySwitchManager.Gateways.KeySwitch;
 using KeySwitchManager.Gateways.KeySwitch.Helper;
-using KeySwitchManager.Presenters.StudioOneKeySwitch;
+using KeySwitchManager.Presenters.KeySwitch.StudioOneKeySwitch;
 using KeySwitchManager.UseCases.KeySwitch.StudioOne.Exporting;
 using KeySwitchManager.UseCases.KeySwitch.StudioOne.Translations;
 

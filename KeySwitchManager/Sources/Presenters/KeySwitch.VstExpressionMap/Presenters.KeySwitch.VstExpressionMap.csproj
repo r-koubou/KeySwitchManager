@@ -7,8 +7,8 @@
         <Copyright>R-Koubou</Copyright>
         <Company>R-Koubou</Company>
         <Product>KeySwitchManager.Presenters.VstExpressionMap</Product>
-        <AssemblyName>KeySwitchManager.Presenters.VstExpressionMap</AssemblyName>
-        <RootNamespace>KeySwitchManager.Presenters.VstExpressionMap</RootNamespace>
+        <AssemblyName>KeySwitchManager.Presenters.KeySwitch.VstExpressionMap</AssemblyName>
+        <RootNamespace>KeySwitchManager.Presenters.KeySwitch.VstExpressionMap</RootNamespace>
         <Nullable>enable</Nullable>
     </PropertyGroup>
 

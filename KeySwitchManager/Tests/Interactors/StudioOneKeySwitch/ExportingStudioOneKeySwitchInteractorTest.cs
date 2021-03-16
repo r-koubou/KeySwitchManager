@@ -7,7 +7,7 @@ using KeySwitchManager.Common.Testing.KeySwitches;
 using KeySwitchManager.Domain.MidiMessages;
 using KeySwitchManager.Domain.MidiMessages.Entity;
 using KeySwitchManager.Interactors.StudioOneKeySwitch.Exporting;
-using KeySwitchManager.Presenters.StudioOneKeySwitch;
+using KeySwitchManager.Presenters.KeySwitch.StudioOneKeySwitch;
 using KeySwitchManager.UseCases.KeySwitch.StudioOne.Exporting;
 using KeySwitchManager.Xml.KeySwitch.StudioOne.Translation;
 

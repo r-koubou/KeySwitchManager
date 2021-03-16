@@ -1,6 +1,6 @@
 using KeySwitchManager.UseCases.KeySwitch.StudioOne.Exporting;
 
-namespace KeySwitchManager.Presenters.StudioOneKeySwitch
+namespace KeySwitchManager.Presenters.KeySwitch.StudioOneKeySwitch
 {
     public interface IExportingStudioOneKeySwitchPresenter: IPresenter<ExportingStudioOneKeySwitchResponse>
     {
