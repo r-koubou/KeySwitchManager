@@ -22,7 +22,7 @@
       <ProjectReference Include="..\..\Sources\Domain\Commons\Domain.Commons.csproj" />
       <ProjectReference Include="..\..\Sources\Domain\KeySwitches\Domain.KeySwitches.csproj" />
       <ProjectReference Include="..\..\Sources\Domain\MidiMessages\Domain.MidiMessages.csproj" />
-      <ProjectReference Include="..\..\Sources\External\Databases\LiteDB.KeySwitches\Database.LiteDB.KeySwitch.csproj" />
+      <ProjectReference Include="..\..\Sources\External\Database\LiteDB.KeySwitch\Database.LiteDB.KeySwitch.csproj" />
       <ProjectReference Include="..\..\Sources\External\Json\KeySwitch\Json.KeySwitch.csproj" />
       <ProjectReference Include="..\..\Sources\External\Xlsx\KeySwitch.ClosedXml\Xlsx.KeySwitch.ClosedXml.csproj" />
       <ProjectReference Include="..\..\Sources\External\Xml\KeySwitch.StudioOne\Xml.KeySwitch.StudioOne.csproj" />

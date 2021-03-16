@@ -10,7 +10,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "04 Frameworks and Drivers",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Interactors.Testing", "Tests\Interactors\Interactors.Testing.csproj", "{C6EF264F-FD28-49F8-9767-549EC6E048A7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Database.LiteDB.KeySwitch", "Sources\External\Databases\LiteDB.KeySwitches\Database.LiteDB.KeySwitch.csproj", "{E27AD20F-D7A7-4842-8BDC-9C8422CF4618}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Database.LiteDB.KeySwitch", "Sources\External\Database\LiteDB.KeySwitch\Database.LiteDB.KeySwitch.csproj", "{E27AD20F-D7A7-4842-8BDC-9C8422CF4618}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Databases.LiteDB.KeySwitches.Testing", "Tests\External\Databases.LiteDB.KeySwitches\Databases.LiteDB.KeySwitches.Testing.csproj", "{70A70B9D-A7A1-4C20-9B25-61A59C87CC7E}"
 EndProject
