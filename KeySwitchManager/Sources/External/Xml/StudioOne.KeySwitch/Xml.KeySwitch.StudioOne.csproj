@@ -6,8 +6,8 @@
         <Copyright>R-Koubou</Copyright>
         <Company>R-Koubou</Company>
         <Product>KeySwitchManager.Xml.StudioOne.KeySwitch</Product>
-        <AssemblyName>KeySwitchManager.Xml.StudioOne.KeySwitch</AssemblyName>
-        <RootNamespace>KeySwitchManager.Xml.StudioOne.KeySwitch</RootNamespace>
+        <AssemblyName>KeySwitchManager.Xml.KeySwitch.StudioOne</AssemblyName>
+        <RootNamespace>KeySwitchManager.Xml.KeySwitch.StudioOne</RootNamespace>
         <Version>0.1.1</Version>
         <Description>KeySwitchManager.Xml.StudioOne.KeySwitch module</Description>
         <Nullable>enable</Nullable>
@@ -20,8 +20,8 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <Folder Include="Models" />
-      <Folder Include="Translations" />
+      <Folder Include="Model" />
+      <Folder Include="Translation" />
     </ItemGroup>
 
     <ItemGroup>

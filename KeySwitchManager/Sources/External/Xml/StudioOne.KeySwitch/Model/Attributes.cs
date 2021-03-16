@@ -1,6 +1,6 @@
 using System.Xml.Serialization;
 
-namespace KeySwitchManager.Xml.StudioOne.KeySwitch.Models
+namespace KeySwitchManager.Xml.KeySwitch.StudioOne.Model
 {
     public class Attributes
     {

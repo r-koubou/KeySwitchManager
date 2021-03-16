@@ -2,11 +2,11 @@ using System.Linq;
 
 using KeySwitchManager.Domain.Commons;
 using KeySwitchManager.UseCases.StudioOneKeySwitch.Translations;
-using KeySwitchManager.Xml.StudioOne.KeySwitch.Models;
+using KeySwitchManager.Xml.KeySwitch.StudioOne.Model;
 
 using RkHelper.Text.Xml;
 
-namespace KeySwitchManager.Xml.StudioOne.KeySwitch.Translations
+namespace KeySwitchManager.Xml.KeySwitch.StudioOne.Translation
 {
     public class KeySwitchToStudioOneKeySwitchModel : IKeySwitchToStudioOneKeySwitchModel
     {

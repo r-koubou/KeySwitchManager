@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.Xml.Serialization;
 
-namespace KeySwitchManager.Xml.StudioOne.KeySwitch.Models
+namespace KeySwitchManager.Xml.KeySwitch.StudioOne.Model
 {
     [XmlRoot( ElementName = "Music.KeySwitchList" )]
     public class RootElement

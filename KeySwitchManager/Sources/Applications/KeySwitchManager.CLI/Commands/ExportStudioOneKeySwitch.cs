@@ -13,7 +13,7 @@ using KeySwitchManager.Domain.Commons;
 using KeySwitchManager.Interactors.StudioOneKeySwitch.Exporting;
 using KeySwitchManager.Presenters.StudioOneKeySwitch;
 using KeySwitchManager.UseCases.StudioOneKeySwitch.Exporting;
-using KeySwitchManager.Xml.StudioOne.KeySwitch.Translations;
+using KeySwitchManager.Xml.KeySwitch.StudioOne.Translation;
 
 using RkHelper.IO;
 
