@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 
 using KeySwitchManager.Domain.Commons;
-using KeySwitchManager.Domain.KeySwitches;
 using KeySwitchManager.Domain.KeySwitches.Value;
 using KeySwitchManager.Gateways.KeySwitches;
 using KeySwitchManager.Presenters.KeySwitches;
@@ -10,7 +9,7 @@ using KeySwitchManager.UseCases.KeySwitches.Translations;
 
 using RkHelper.Text;
 
-namespace KeySwitchManager.Interactors.KeySwitches.Searching
+namespace KeySwitchManager.Interactors.KeySwitch.Searching
 {
     public class SearchingInteractor : ISearchingUseCase
     {
@@ -28,7 +27,7 @@ namespace KeySwitchManager.Interactors.KeySwitches.Searching
             Presenter  = presenter;
         }
 
-        private SearchingResponse CreateResponse( IReadOnlyCollection<KeySwitch> query )
+        private SearchingResponse CreateResponse( IReadOnlyCollection<Domain.KeySwitches.KeySwitch> query )
         {
             return new SearchingResponse( query, Translator.Translate( query ) );
         }
@@ -75,7 +74,7 @@ namespace KeySwitchManager.Interactors.KeySwitches.Searching
             }
             #endregion
 
-            return new SearchingResponse( new List<KeySwitch>(), PlainText.Empty );
+            return new SearchingResponse( new List<Domain.KeySwitches.KeySwitch>(), PlainText.Empty );
         }
     }
 }

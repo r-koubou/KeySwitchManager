@@ -4,7 +4,7 @@ using System.IO;
 using Databases.LiteDB.KeySwitches.KeySwitches;
 
 using KeySwitchManager.Domain.MidiMessages.Entity;
-using KeySwitchManager.Interactors.KeySwitches.Adding;
+using KeySwitchManager.Interactors.KeySwitch.Adding;
 using KeySwitchManager.Presenters.KeySwitches;
 using KeySwitchManager.UseCases.KeySwitches.Adding;
 

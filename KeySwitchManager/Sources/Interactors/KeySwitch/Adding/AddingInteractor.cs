@@ -7,7 +7,7 @@ using KeySwitchManager.UseCases.KeySwitches.Adding;
 
 using RkHelper.Time;
 
-namespace KeySwitchManager.Interactors.KeySwitches.Adding
+namespace KeySwitchManager.Interactors.KeySwitch.Adding
 {
     public class AddingInteractor : IAddingUseCase
     {

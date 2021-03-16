@@ -7,7 +7,7 @@ using CommandLine;
 
 using Databases.LiteDB.KeySwitches.KeySwitches;
 
-using KeySwitchManager.Interactors.KeySwitches.Searching;
+using KeySwitchManager.Interactors.KeySwitch.Searching;
 using KeySwitchManager.Json.KeySwitches.Translations;
 using KeySwitchManager.Presenters.KeySwitches;
 using KeySwitchManager.UseCases.KeySwitches.Searching;

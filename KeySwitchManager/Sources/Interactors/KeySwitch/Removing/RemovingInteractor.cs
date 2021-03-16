@@ -5,7 +5,7 @@ using KeySwitchManager.UseCases.KeySwitches.Removing;
 
 using RkHelper.Text;
 
-namespace KeySwitchManager.Interactors.KeySwitches.Removing
+namespace KeySwitchManager.Interactors.KeySwitch.Removing
 {
     public class RemovingInteractor : IRemovingUseCase
     {

@@ -4,7 +4,7 @@ using System.IO;
 using Databases.LiteDB.KeySwitches.KeySwitches;
 
 using KeySwitchManager.Common.Testing.KeySwitches;
-using KeySwitchManager.Interactors.KeySwitches.Removing;
+using KeySwitchManager.Interactors.KeySwitch.Removing;
 using KeySwitchManager.Presenters.KeySwitches;
 using KeySwitchManager.UseCases.KeySwitches.Removing;
 

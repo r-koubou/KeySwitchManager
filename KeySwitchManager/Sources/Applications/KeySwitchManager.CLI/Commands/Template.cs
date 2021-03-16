@@ -4,7 +4,7 @@ using System.IO;
 
 using CommandLine;
 
-using KeySwitchManager.Interactors.KeySwitches.Exporting;
+using KeySwitchManager.Interactors.KeySwitch.Exporting;
 using KeySwitchManager.Json.KeySwitches.Translations;
 
 using RkHelper.IO;
