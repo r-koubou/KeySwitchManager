@@ -5,7 +5,7 @@ using LiteDB;
 
 using RkHelper.Time;
 
-namespace Databases.LiteDB.KeySwitches.KeySwitches.Models
+namespace Database.LiteDB.KeySwitch.KeySwitch.Models
 {
     public class KeySwitchModel
     {

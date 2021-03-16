@@ -6,7 +6,7 @@
         <Copyright>R-Koubou</Copyright>
         <Company>R-Koubou</Company>
         <Product>Databases.LiteDB.KeySwitches</Product>
-        <RootNamespace>Databases.LiteDB.KeySwitches</RootNamespace>
+        <RootNamespace>Database.LiteDB.KeySwitch</RootNamespace>
         <Version>0.1.1</Version>
         <Description>Databases.LiteDB.KeySwitches module</Description>
         <Nullable>enable</Nullable>
@@ -16,6 +16,7 @@
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
         <PackageProjectUrl>https://github.com/r-koubou/KeySwitchManager</PackageProjectUrl>
         <RepositoryUrl>https://github.com/r-koubou/KeySwitchManager</RepositoryUrl>
+        <AssemblyName>Database.LiteDB.KeySwitch</AssemblyName>
     </PropertyGroup>
 
     <ItemGroup>

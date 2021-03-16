@@ -14,7 +14,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\..\External\Databases\KeySwitches.LiteDB\Databases.KeySwitches.LiteDB.csproj" />
+      <ProjectReference Include="..\..\External\Databases\LiteDB.KeySwitches\Database.LiteDB.KeySwitch.csproj" />
       <ProjectReference Include="..\..\External\Json\KeySwitches\Json.KeySwitches.csproj" />
       <ProjectReference Include="..\..\External\Xlsx\KeySwitches.ClosedXml\Xlsx.KeySwitches.ClosedXml.csproj" />
       <ProjectReference Include="..\..\External\Xlsx\KeySwitches\Xlsx.KeySwitches.csproj" />

@@ -1,18 +1,17 @@
 using System.Collections.Generic;
 
-using Databases.LiteDB.KeySwitches.KeySwitches.Models;
+using Database.LiteDB.KeySwitch.KeySwitch.Models;
 
 using KeySwitchManager.Domain.Commons.Helper;
-using KeySwitchManager.Domain.KeySwitches;
 using KeySwitchManager.Domain.KeySwitches.Value;
 using KeySwitchManager.Domain.MidiMessages.Entity;
 using KeySwitchManager.Domain.Translations;
 
-namespace Databases.LiteDB.KeySwitches.KeySwitches.Translations
+namespace Database.LiteDB.KeySwitch.KeySwitch.Translations
 {
-    public class EntityToDbModel : IDataTranslator<KeySwitch, KeySwitchModel>
+    public class EntityToDbModel : IDataTranslator<KeySwitchManager.Domain.KeySwitches.KeySwitch, KeySwitchModel>
     {
-        public KeySwitchModel Translate( KeySwitch source )
+        public KeySwitchModel Translate( KeySwitchManager.Domain.KeySwitches.KeySwitch source )
         {
             var articulationModels = new List<ArticulationModel>();
 

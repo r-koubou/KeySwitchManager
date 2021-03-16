@@ -6,7 +6,7 @@ using System.Text;
 
 using CommandLine;
 
-using Databases.LiteDB.KeySwitches.KeySwitches;
+using Database.LiteDB.KeySwitch.KeySwitch;
 
 using KeySwitchManager.CLI.Helpers;
 using KeySwitchManager.Domain.Commons;

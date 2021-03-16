@@ -1,7 +1,7 @@
 using System;
 using System.IO;
 
-using Databases.LiteDB.KeySwitches.KeySwitches;
+using Database.LiteDB.KeySwitch.KeySwitch;
 
 using KeySwitchManager.Common.Testing.KeySwitches;
 using KeySwitchManager.Interactors.VstExpressionMap.Exporting;

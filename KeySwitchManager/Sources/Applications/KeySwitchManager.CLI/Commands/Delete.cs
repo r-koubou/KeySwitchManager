@@ -3,7 +3,7 @@ using System.Diagnostics.CodeAnalysis;
 
 using CommandLine;
 
-using Databases.LiteDB.KeySwitches.KeySwitches;
+using Database.LiteDB.KeySwitch.KeySwitch;
 
 using KeySwitchManager.Interactors.KeySwitch.Removing;
 using KeySwitchManager.Json.KeySwitches.Translations;

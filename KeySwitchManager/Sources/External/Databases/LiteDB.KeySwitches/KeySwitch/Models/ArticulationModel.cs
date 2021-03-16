@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace Databases.LiteDB.KeySwitches.KeySwitches.Models
+namespace Database.LiteDB.KeySwitch.KeySwitch.Models
 {
     public class ArticulationModel
     {

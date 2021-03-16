@@ -10,7 +10,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "04 Frameworks and Drivers",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Interactors.Testing", "Tests\Interactors\Interactors.Testing.csproj", "{C6EF264F-FD28-49F8-9767-549EC6E048A7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Databases.KeySwitches.LiteDB", "Sources\External\Databases\KeySwitches.LiteDB\Databases.KeySwitches.LiteDB.csproj", "{E27AD20F-D7A7-4842-8BDC-9C8422CF4618}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Database.LiteDB.KeySwitch", "Sources\External\Databases\LiteDB.KeySwitches\Database.LiteDB.KeySwitch.csproj", "{E27AD20F-D7A7-4842-8BDC-9C8422CF4618}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Databases.LiteDB.KeySwitches.Testing", "Tests\External\Databases.LiteDB.KeySwitches\Databases.LiteDB.KeySwitches.Testing.csproj", "{70A70B9D-A7A1-4C20-9B25-61A59C87CC7E}"
 EndProject
@@ -20,7 +20,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Json.KeySwitches.Testing", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xml.VstExpressionMap", "Sources\External\Xml\VstExpressionMap\Xml.VstExpressionMap.csproj", "{13F1DEB9-FF74-4597-906E-652953B5FF74}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Databases", "Databases", "{8E886F59-9606-4BC6-836F-B423F794FF67}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Database", "Database", "{8E886F59-9606-4BC6-836F-B423F794FF67}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "JSON", "JSON", "{2C2EDA27-88F5-48F9-A312-CF4AB9382661}"
 EndProject

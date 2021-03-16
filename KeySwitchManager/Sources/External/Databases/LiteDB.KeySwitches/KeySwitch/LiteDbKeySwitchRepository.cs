@@ -3,11 +3,10 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 
-using Databases.LiteDB.KeySwitches.KeySwitches.Models;
-using Databases.LiteDB.KeySwitches.KeySwitches.Translations;
+using Database.LiteDB.KeySwitch.KeySwitch.Models;
+using Database.LiteDB.KeySwitch.KeySwitch.Translations;
 
 using KeySwitchManager.Domain.Commons;
-using KeySwitchManager.Domain.KeySwitches;
 using KeySwitchManager.Domain.KeySwitches.Value;
 using KeySwitchManager.Gateways.KeySwitch;
 using KeySwitchManager.Gateways.KeySwitch.Value;
@@ -16,7 +15,7 @@ using LiteDB;
 
 using RkHelper.Time;
 
-namespace Databases.LiteDB.KeySwitches.KeySwitches
+namespace Database.LiteDB.KeySwitch.KeySwitch
 {
     public class LiteDbKeySwitchRepository : IKeySwitchRepository, IDisposable
     {
@@ -63,7 +62,7 @@ namespace Databases.LiteDB.KeySwitches.KeySwitches
         }
 
         #region Save
-        public SaveResult Save( KeySwitch keySwitch )
+        public SaveResult Save( KeySwitchManager.Domain.KeySwitches.KeySwitch keySwitch )
         {
             var table = Database.GetCollection<KeySwitchModel>( KeySwitchesTableName );
 
@@ -128,9 +127,9 @@ namespace Databases.LiteDB.KeySwitches.KeySwitches
         #endregion
 
         #region Find
-        private IReadOnlyCollection<KeySwitch> CreateEntities( IEnumerable<KeySwitchModel> query )
+        private IReadOnlyCollection<KeySwitchManager.Domain.KeySwitches.KeySwitch> CreateEntities( IEnumerable<KeySwitchModel> query )
         {
-            var result = new List<KeySwitch>();
+            var result = new List<KeySwitchManager.Domain.KeySwitches.KeySwitch>();
             var translator = new DbModelToEntity();
 
             foreach( var item in query )
@@ -141,17 +140,17 @@ namespace Databases.LiteDB.KeySwitches.KeySwitches
             return result;
         }
 
-        public IReadOnlyCollection<KeySwitch> Find( EntityGuid guid )
+        public IReadOnlyCollection<KeySwitchManager.Domain.KeySwitches.KeySwitch> Find( EntityGuid guid )
         {
             return CreateEntities( KeySwitchTable.Find( x => x.Id == guid.Value ) );
         }
 
-        public IReadOnlyCollection<KeySwitch> Find( Guid guid )
+        public IReadOnlyCollection<KeySwitchManager.Domain.KeySwitches.KeySwitch> Find( Guid guid )
         {
             return CreateEntities( KeySwitchTable.Find( x => x.Id == guid ) );
         }
 
-        public IReadOnlyCollection<KeySwitch> Find(
+        public IReadOnlyCollection<KeySwitchManager.Domain.KeySwitches.KeySwitch> Find(
             DeveloperName developerName,
             ProductName productName,
             InstrumentName instrumentName )
@@ -166,7 +165,7 @@ namespace Databases.LiteDB.KeySwitches.KeySwitches
             );
         }
 
-        public IReadOnlyCollection<KeySwitch> Find( DeveloperName developerName, ProductName productName )
+        public IReadOnlyCollection<KeySwitchManager.Domain.KeySwitches.KeySwitch> Find( DeveloperName developerName, ProductName productName )
         {
             return CreateEntities(
                 KeySwitchTable.Find(
@@ -177,7 +176,7 @@ namespace Databases.LiteDB.KeySwitches.KeySwitches
             );
         }
 
-        public IReadOnlyCollection<KeySwitch> Find( DeveloperName developerName )
+        public IReadOnlyCollection<KeySwitchManager.Domain.KeySwitches.KeySwitch> Find( DeveloperName developerName )
         {
             return CreateEntities(
                 KeySwitchTable.Find(
@@ -187,7 +186,7 @@ namespace Databases.LiteDB.KeySwitches.KeySwitches
             );
         }
 
-        public IReadOnlyCollection<KeySwitch> Find( ProductName productName )
+        public IReadOnlyCollection<KeySwitchManager.Domain.KeySwitches.KeySwitch> Find( ProductName productName )
         {
             return CreateEntities(
                 KeySwitchTable.Find(
@@ -197,7 +196,7 @@ namespace Databases.LiteDB.KeySwitches.KeySwitches
             );
         }
 
-        public IReadOnlyCollection<KeySwitch> FindAll()
+        public IReadOnlyCollection<KeySwitchManager.Domain.KeySwitches.KeySwitch> FindAll()
         {
             return CreateEntities( KeySwitchTable.FindAll() );
         }
