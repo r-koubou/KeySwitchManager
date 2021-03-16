@@ -7,15 +7,15 @@ namespace KeySwitchManager.Domain.Commons
     /// <summary>
     /// Represents a date and time. The time zone is assumed to be handled in UTC.
     /// </summary>
-    public class EntityDateTime : IEquatable<EntityDateTime>
+    public class UtcDateTime : IEquatable<UtcDateTime>
     {
-        public static EntityDateTime Now
+        public static UtcDateTime Now
         {
             get
             {
                 var now = TimeZoneInfo.ConvertTimeToUtc( DateTime.Now );
 
-                return new EntityDateTime(
+                return new UtcDateTime(
                     now.Year,
                     now.Month,
                     now.Day,
@@ -34,7 +34,7 @@ namespace KeySwitchManager.Domain.Commons
         public int Second { get; }
         public int MilliSecond { get; }
 
-        public EntityDateTime( DateTime dateTime )
+        public UtcDateTime( DateTime dateTime )
             : this( dateTime.Year,
                     dateTime.Month,
                     dateTime.Day,
@@ -45,7 +45,7 @@ namespace KeySwitchManager.Domain.Commons
             )
         {}
 
-        public EntityDateTime(
+        public UtcDateTime(
             int year,
             int month,
             int day,
@@ -71,7 +71,22 @@ namespace KeySwitchManager.Domain.Commons
             MilliSecond = milliSecond;
         }
 
-        public bool Equals( EntityDateTime? other )
+        public override string ToString()
+            => $"{Year:D4}-{Month:D2}-{Day:D2}-{Hour:D2}:{Minute:D2}:{Second:D2}";
+
+        #region Equality
+        public override int GetHashCode() =>
+            HashCode.Combine(
+                Year,
+                Month,
+                Day,
+                Hour,
+                Minute,
+                Second,
+                MilliSecond
+            );
+
+        public bool Equals( UtcDateTime? other )
         {
             if( other == null )
             {
@@ -87,7 +102,11 @@ namespace KeySwitchManager.Domain.Commons
                    other.MilliSecond == MilliSecond;
         }
 
-        public override string ToString()
-            => $"{Year:D4}-{Month:D2}-{Day:D2}-{Hour:D2}:{Minute:D2}:{Second:D2}";
+        public override bool Equals(object? obj)
+        {
+            return Equals(obj as UtcDateTime);
+        }
+        #endregion
+
     }
 }

@@ -20,7 +20,7 @@ namespace KeySwitchManager.Gateways.KeySwitch.Helper
             #region By Guid
             if( guid != default )
             {
-                return new List<Domain.KeySwitches.KeySwitch>( repository.Find( new EntityGuid( guid ) ) );
+                return new List<Domain.KeySwitches.KeySwitch>( repository.Find( new KeySwitchId( guid ) ) );
             }
             #endregion
 

@@ -12,11 +12,11 @@ namespace KeySwitchManager.Domain.KeySwitches
     /// </summary>
     public class KeySwitch : IEquatable<KeySwitch>
     {
-        public EntityGuid Id { get; }
+        public KeySwitchId Id { get; }
         public Author Author { get; }
         public Description Description { get; }
-        public EntityDateTime Created { get; }
-        public EntityDateTime LastUpdated { get; }
+        public UtcDateTime Created { get; }
+        public UtcDateTime LastUpdated { get; }
         public DeveloperName DeveloperName { get; }
         public ProductName ProductName { get; }
         public InstrumentName InstrumentName { get; }
@@ -24,11 +24,11 @@ namespace KeySwitchManager.Domain.KeySwitches
         public ExtraData ExtraData { get; }
 
         public KeySwitch(
-            EntityGuid id,
+            KeySwitchId id,
             Author author,
             Description description,
-            EntityDateTime created,
-            EntityDateTime lastUpdated,
+            UtcDateTime created,
+            UtcDateTime lastUpdated,
             DeveloperName developerName,
             ProductName productName,
             InstrumentName instrumentName,

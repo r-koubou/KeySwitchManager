@@ -6,7 +6,6 @@ using System.Linq;
 using Database.LiteDB.KeySwitch.KeySwitch.Models;
 using Database.LiteDB.KeySwitch.KeySwitch.Translations;
 
-using KeySwitchManager.Domain.Commons;
 using KeySwitchManager.Domain.KeySwitches.Value;
 using KeySwitchManager.Gateways.KeySwitch;
 using KeySwitchManager.Gateways.KeySwitch.Value;
@@ -93,7 +92,7 @@ namespace Database.LiteDB.KeySwitch.KeySwitch
         #endregion
 
         #region Delete
-        public int Delete( EntityGuid guid )
+        public int Delete( KeySwitchId guid )
         {
             var result = KeySwitchTable.Delete( guid.Value );
             return result ? 1 : 0;
@@ -140,14 +139,9 @@ namespace Database.LiteDB.KeySwitch.KeySwitch
             return result;
         }
 
-        public IReadOnlyCollection<KeySwitchManager.Domain.KeySwitches.KeySwitch> Find( EntityGuid guid )
+        public IReadOnlyCollection<KeySwitchManager.Domain.KeySwitches.KeySwitch> Find( KeySwitchId keySwitchId )
         {
-            return CreateEntities( KeySwitchTable.Find( x => x.Id == guid.Value ) );
-        }
-
-        public IReadOnlyCollection<KeySwitchManager.Domain.KeySwitches.KeySwitch> Find( Guid guid )
-        {
-            return CreateEntities( KeySwitchTable.Find( x => x.Id == guid ) );
+            return CreateEntities( KeySwitchTable.Find( x => x.Id == keySwitchId.Value ) );
         }
 
         public IReadOnlyCollection<KeySwitchManager.Domain.KeySwitches.KeySwitch> Find(

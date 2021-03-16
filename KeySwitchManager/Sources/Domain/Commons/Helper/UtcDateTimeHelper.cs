@@ -2,9 +2,9 @@ using System;
 
 namespace KeySwitchManager.Domain.Commons.Helper
 {
-    public static class EntityDateTimeHelper
+    public static class UtcDateTimeHelper
     {
-        public static DateTime ToDateTime( EntityDateTime dateTime )
+        public static DateTime ToDateTime( UtcDateTime dateTime )
         {
             return new DateTime(
                 year: dateTime.Year,
@@ -18,7 +18,7 @@ namespace KeySwitchManager.Domain.Commons.Helper
             );
         }
 
-        public static DateTime ToLocalDateTime( EntityDateTime dateTime )
+        public static DateTime ToLocalDateTime( UtcDateTime dateTime )
         {
             return new DateTime(
                 year: dateTime.Year,

@@ -22,11 +22,11 @@ namespace KeySwitchManager.Common.Testing.KeySwitches
             var now = DateTimeHelper.NowUtc();
 
             return new KeySwitch(
-                new EntityGuid( Guid.NewGuid() ),
+                new KeySwitchId( Guid.NewGuid() ),
                 new Author( "Author" ),
                 new Description( "Description" ),
-                new EntityDateTime( now ),
-                new EntityDateTime( now ),
+                new UtcDateTime( now ),
+                new UtcDateTime( now ),
                 new DeveloperName( developerName ),
                 new ProductName( productName ),
                 new InstrumentName( instrumentName ),
@@ -48,11 +48,11 @@ namespace KeySwitchManager.Common.Testing.KeySwitches
             var now = DateTimeHelper.NowUtc();
 
             return new KeySwitch(
-                new EntityGuid( Guid.NewGuid() ),
+                new KeySwitchId( Guid.NewGuid() ),
                 new Author( "Author" ),
                 new Description( "Description" ),
-                new EntityDateTime( now ),
-                new EntityDateTime( now ),
+                new UtcDateTime( now ),
+                new UtcDateTime( now ),
                 new DeveloperName( "DeveloperName" ),
                 new ProductName( "ProductName" ),
                 new InstrumentName( "E.Guitar" ),

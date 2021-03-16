@@ -43,11 +43,11 @@ namespace KeySwitchManager.Domain.KeySwitches
                 lastUpdated = DateTimeHelper.ToUtc( lastUpdated );
 
                 return new KeySwitch(
-                    new EntityGuid( id ),
+                    new KeySwitchId( id ),
                     new Author( author ),
                     new Description( description ),
-                    new EntityDateTime( created ),
-                    new EntityDateTime( lastUpdated ),
+                    new UtcDateTime( created ),
+                    new UtcDateTime( lastUpdated ),
                     new DeveloperName( developerName ),
                     new ProductName( productName ),
                     new InstrumentName( instrumentName ),
