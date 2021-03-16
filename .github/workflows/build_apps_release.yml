@@ -1,12 +1,9 @@
-name: "Build Apps (Development)"
+name: Build Release
 on:
   push:
-    branches:
-      - "develop"
-      - "feature/*"
-      - "refactor/*"
     tags:
-      - "!#*"
+      - ver-*.*.*
+      - ver-[0-9]+
 
 jobs:
   build_apps:
@@ -19,10 +16,11 @@ jobs:
     - uses: actions/setup-dotnet@v1
       with:
         dotnet-version: '5.0.100'
+    - run: echo "VER_TAG=${GITHUB_REF#refs/tags/ver-}" >> $GITHUB_ENV
     # Executable App
     # KeySwitchManager.CLI
-    - run: dotnet msbuild /nologo /t:Archive /p:Configuration=Debug /p:PublishDir=$(pwd)/publish  KeySwitchManager/Sources/Applications/KeySwitchManager.CLI/publish.msbuild
+    - run: dotnet msbuild /nologo /t:Archive /p:Configuration=Release /p:PublishDir=$(pwd)/publish  KeySwitchManager/Sources/Applications/KeySwitchManager.CLI/publish.msbuild
     - uses: actions/upload-artifact@v2
       with:
-        name: KeySwitchManager.CLI
+        name: KeySwitchManager.CLI-${{ env.VER_TAG }}
         path: ./publish/KeySwitchManager.CLI*/
