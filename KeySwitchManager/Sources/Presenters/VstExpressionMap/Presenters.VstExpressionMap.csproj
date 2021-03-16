@@ -15,7 +15,7 @@
     <ItemGroup>
       <ProjectReference Include="..\..\Commons\Commons.csproj" />
       <ProjectReference Include="..\..\UseCases\VstExpressionMap\UseCases.VstExpressionMap.csproj" />
-      <ProjectReference Include="..\Commons\Presenters.Commons.csproj" />
+      <ProjectReference Include="..\Commons\Presenters.Common.csproj" />
     </ItemGroup>
 
 </Project>
