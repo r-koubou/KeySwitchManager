@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 
 using KeySwitchManager.Domain.Commons;
-using KeySwitchManager.Domain.KeySwitches.Aggregate;
+using KeySwitchManager.Domain.KeySwitches;
 
 namespace KeySwitchManager.UseCases.StudioOneKeySwitch.Exporting
 {

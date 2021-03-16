@@ -8,7 +8,7 @@ using CommandLine;
 using Databases.LiteDB.KeySwitches.KeySwitches;
 
 using KeySwitchManager.Domain.Commons;
-using KeySwitchManager.Domain.KeySwitches.Aggregate;
+using KeySwitchManager.Domain.KeySwitches;
 using KeySwitchManager.Domain.KeySwitches.Value;
 using KeySwitchManager.Interactors.KeySwitches.Exporting;
 using KeySwitchManager.UseCases.KeySwitches.Exporting;

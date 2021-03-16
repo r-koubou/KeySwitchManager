@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 
 using KeySwitchManager.Domain.Commons;
-using KeySwitchManager.Domain.KeySwitches.Aggregate;
+using KeySwitchManager.Domain.KeySwitches;
 using KeySwitchManager.Domain.Translations;
 
 namespace KeySwitchManager.UseCases.KeySwitches.Translations

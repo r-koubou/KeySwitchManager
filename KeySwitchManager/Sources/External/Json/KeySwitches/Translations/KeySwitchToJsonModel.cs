@@ -2,7 +2,7 @@ using System.Text.Encodings.Web;
 using System.Text.Json;
 
 using KeySwitchManager.Domain.Commons;
-using KeySwitchManager.Domain.KeySwitches.Aggregate;
+using KeySwitchManager.Domain.KeySwitches;
 using KeySwitchManager.Domain.Translations;
 using KeySwitchManager.Json.KeySwitches.Helpers;
 

@@ -10,7 +10,7 @@ namespace KeySwitchManager.Xml.StudioOne.KeySwitch.Translations
 {
     public class KeySwitchToStudioOneKeySwitchModel : IKeySwitchToStudioOneKeySwitchModel
     {
-        public IText Translate( Domain.KeySwitches.Aggregate.KeySwitch source )
+        public IText Translate( Domain.KeySwitches.KeySwitch source )
         {
             var xml = new RootElement
             {

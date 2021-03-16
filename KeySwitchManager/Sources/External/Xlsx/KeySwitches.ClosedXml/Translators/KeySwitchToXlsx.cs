@@ -3,7 +3,8 @@ using System.Collections.Generic;
 
 using ClosedXML.Excel;
 
-using KeySwitchManager.Domain.KeySwitches.Aggregate;
+using KeySwitchManager.Domain.KeySwitches;
+using KeySwitchManager.Domain.KeySwitches.Entity;
 using KeySwitchManager.Domain.MidiMessages.Aggregate;
 using KeySwitchManager.Domain.Translations;
 using KeySwitchManager.Xlsx.KeySwitches.ClosedXml.Helpers;

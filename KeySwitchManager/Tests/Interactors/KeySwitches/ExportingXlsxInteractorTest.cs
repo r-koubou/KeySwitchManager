@@ -6,7 +6,7 @@ using Databases.LiteDB.KeySwitches.KeySwitches;
 
 using KeySwitchManager.Domain.Commons;
 using KeySwitchManager.Domain.KeySwitches;
-using KeySwitchManager.Domain.KeySwitches.Aggregate;
+using KeySwitchManager.Domain.KeySwitches.Entity;
 using KeySwitchManager.Domain.MidiMessages;
 using KeySwitchManager.Domain.MidiMessages.Aggregate;
 using KeySwitchManager.Interactors.KeySwitches.Exporting;

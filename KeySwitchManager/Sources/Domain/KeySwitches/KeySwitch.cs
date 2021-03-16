@@ -2,9 +2,10 @@ using System;
 using System.Linq;
 
 using KeySwitchManager.Domain.Commons;
+using KeySwitchManager.Domain.KeySwitches.Entity;
 using KeySwitchManager.Domain.KeySwitches.Value;
 
-namespace KeySwitchManager.Domain.KeySwitches.Aggregate
+namespace KeySwitchManager.Domain.KeySwitches
 {
     /// <summary>
     /// Represents the top element of the articulation structure.

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Databases.LiteDB.KeySwitches.KeySwitches.Models;
 
 using KeySwitchManager.Domain.Commons.Helpers;
-using KeySwitchManager.Domain.KeySwitches.Aggregate;
+using KeySwitchManager.Domain.KeySwitches;
 using KeySwitchManager.Domain.KeySwitches.Value;
 using KeySwitchManager.Domain.MidiMessages.Aggregate;
 using KeySwitchManager.Domain.Translations;

@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-using KeySwitchManager.Domain.KeySwitches.Aggregate;
+using KeySwitchManager.Domain.KeySwitches;
 using KeySwitchManager.Gateways.KeySwitches;
 using KeySwitchManager.Gateways.KeySwitches.Helpers;
 using KeySwitchManager.Presenters.VstExpressionMap;

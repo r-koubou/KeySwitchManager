@@ -5,7 +5,7 @@ using KeySwitchManager.Domain.Commons;
 using KeySwitchManager.Domain.KeySwitches.Value;
 using KeySwitchManager.Domain.MidiMessages.Aggregate;
 
-namespace KeySwitchManager.Domain.KeySwitches.Aggregate
+namespace KeySwitchManager.Domain.KeySwitches.Entity
 {
     public class Articulation : IEquatable<Articulation>
     {

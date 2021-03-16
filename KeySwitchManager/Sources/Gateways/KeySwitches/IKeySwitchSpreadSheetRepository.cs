@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-using KeySwitchManager.Domain.KeySwitches.Aggregate;
+using KeySwitchManager.Domain.KeySwitches;
 
 namespace KeySwitchManager.Gateways.KeySwitches
 {
