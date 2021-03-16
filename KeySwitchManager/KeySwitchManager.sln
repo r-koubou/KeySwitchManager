@@ -32,13 +32,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Applications", "Application
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "XLSX", "XLSX", "{8539D13A-3741-4582-A8BE-023D1892472E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xlsx.KeySwitches.ClosedXml", "Sources\External\Xlsx\KeySwitches.ClosedXml\Xlsx.KeySwitches.ClosedXml.csproj", "{07B9772F-BDA6-4CE3-BB78-4F9D64B8E677}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xlsx.KeySwitch.ClosedXml", "Sources\External\Xlsx\KeySwitch.ClosedXml\Xlsx.KeySwitch.ClosedXml.csproj", "{07B9772F-BDA6-4CE3-BB78-4F9D64B8E677}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xml.KeySwitch.StudioOne", "Sources\External\Xml\StudioOne.KeySwitch\Xml.KeySwitch.StudioOne.csproj", "{1EB82814-D84D-4A91-9379-E94B372D432C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xml.StudioOne.KeySwitch.Testing", "Tests\External\Xml.StudioOne.KeySwitch\Xml.StudioOne.KeySwitch.Testing.csproj", "{15E38DE0-3673-43FF-BF19-75CFAF4B400A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xlsx.KeySwitches", "Sources\External\Xlsx\KeySwitches\Xlsx.KeySwitches.csproj", "{149F6223-09CD-4BE7-B7C3-B08745C5671A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xlsx.KeySwitch", "Sources\External\Xlsx\KeySwitch\Xlsx.KeySwitch.csproj", "{149F6223-09CD-4BE7-B7C3-B08745C5671A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common.Testing", "Tests\Common\Common.Testing.csproj", "{CA974169-6348-431D-96F5-B96C69EF4103}"
 EndProject

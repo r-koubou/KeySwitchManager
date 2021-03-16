@@ -12,8 +12,8 @@ using KeySwitchManager.Interactors.KeySwitch.Importing;
 using KeySwitchManager.Json.KeySwitch.Translation;
 using KeySwitchManager.Presenters.KeySwitch;
 using KeySwitchManager.UseCases.KeySwitch.Importing.Xlsx;
-using KeySwitchManager.Xlsx.KeySwitches;
-using KeySwitchManager.Xlsx.KeySwitches.ClosedXml;
+using KeySwitchManager.Xlsx.KeySwitch;
+using KeySwitchManager.Xlsx.KeySwitch.ClosedXml;
 
 namespace KeySwitchManager.CLI.Commands
 {

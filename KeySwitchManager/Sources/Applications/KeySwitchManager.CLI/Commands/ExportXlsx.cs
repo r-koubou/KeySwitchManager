@@ -12,7 +12,7 @@ using KeySwitchManager.Domain.KeySwitches;
 using KeySwitchManager.Domain.KeySwitches.Value;
 using KeySwitchManager.Interactors.KeySwitch.Exporting;
 using KeySwitchManager.UseCases.KeySwitch.Exporting;
-using KeySwitchManager.Xlsx.KeySwitches.ClosedXml;
+using KeySwitchManager.Xlsx.KeySwitch.ClosedXml;
 
 using RkHelper.Text;
 

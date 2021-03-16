@@ -1,7 +1,7 @@
 using KeySwitchManager.Domain.Commons;
 using KeySwitchManager.Interactors.KeySwitch.Exporting;
 using KeySwitchManager.UseCases.KeySwitch.Exporting;
-using KeySwitchManager.Xlsx.KeySwitches.ClosedXml;
+using KeySwitchManager.Xlsx.KeySwitch.ClosedXml;
 
 using NUnit.Framework;
 
