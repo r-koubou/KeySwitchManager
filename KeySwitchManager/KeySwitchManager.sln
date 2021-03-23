@@ -112,6 +112,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Presenters.KeySwitch.Cakewa
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Json.KeySwitch.Cakewalk", "Sources\External\Json\KeySwitch.Cakewalk\Json.KeySwitch.Cakewalk.csproj", "{0162F56A-6162-4904-AB60-37FAC1E9239F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Json.KeySwitch.Cakewalk", "Tests\External\Json.KeySwitch.Cakewalk\Json.KeySwitch.Cakewalk.csproj", "{CDFDBAA8-2BC9-4645-83DE-06BC2BC91D0D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -254,6 +256,10 @@ Global
 		{0162F56A-6162-4904-AB60-37FAC1E9239F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0162F56A-6162-4904-AB60-37FAC1E9239F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0162F56A-6162-4904-AB60-37FAC1E9239F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CDFDBAA8-2BC9-4645-83DE-06BC2BC91D0D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CDFDBAA8-2BC9-4645-83DE-06BC2BC91D0D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CDFDBAA8-2BC9-4645-83DE-06BC2BC91D0D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CDFDBAA8-2BC9-4645-83DE-06BC2BC91D0D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{8E886F59-9606-4BC6-836F-B423F794FF67} = {57A50A2B-D447-4874-A32C-2BAAC715AC2D}
@@ -310,5 +316,6 @@ Global
 		{1F04BDDE-6330-44DD-8B37-0ABD9F64ED72} = {A1BB74B6-296D-44FE-A35C-B286294FB205}
 		{3F3FA8A9-06A3-4E57-94A7-6712A7FF1EFB} = {741C8E3E-E25D-4BBE-9F0A-E7C3BDF75FDE}
 		{0162F56A-6162-4904-AB60-37FAC1E9239F} = {2C2EDA27-88F5-48F9-A312-CF4AB9382661}
+		{CDFDBAA8-2BC9-4645-83DE-06BC2BC91D0D} = {0C597E19-48AE-4329-932A-FC9EDA916E23}
 	EndGlobalSection
 EndGlobal

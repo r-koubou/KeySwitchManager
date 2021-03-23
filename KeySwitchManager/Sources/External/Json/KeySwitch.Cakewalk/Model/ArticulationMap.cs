@@ -8,12 +8,22 @@ namespace KeySwitchManager.Json.KeySwitch.Cakewalk.Model
     {
         [JsonPropertyName( "name" )]
         [Required]
-        public string Name { get; set; } = "New Articulation Map";
+        public string Name { get; }
 
         [JsonPropertyName( "groups" )]
-        public IList<Group> Groups { get; set; } = new List<Group>();
+        public IList<Group> Groups { get; }
 
         [JsonPropertyName( "articulations" )]
-        public IList<Articulation> Articulations { get; set; } = new List<Articulation>();
+        public IList<Articulation> Articulations { get; }
+
+        public ArticulationMap(
+            string name,
+            IList<Group> groups,
+            IList<Articulation> articulations )
+        {
+            Name          = name;
+            Groups        = groups;
+            Articulations = articulations;
+        }
     }
 }

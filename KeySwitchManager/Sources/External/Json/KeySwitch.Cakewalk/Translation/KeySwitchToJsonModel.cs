@@ -17,15 +17,36 @@ namespace KeySwitchManager.Json.KeySwitch.Cakewalk.Translation
     {
         public IText Translate( Domain.KeySwitches.KeySwitch source )
         {
-            var id = 0;
+            var id = 1;
+            var index = 0;
+            var groupId = 1;
+
+            var articulations = new List<CwArticulation>();
+            var groups = new List<Group>();
 
             foreach( var x in source.Articulations )
             {
-                var articulation = TranslateArticulation( x, id, 0, 0 );
+                var a = TranslateArticulation( x, id, index, groupId );
+                articulations.Add( a );
+
+                var group = new Group( groupId, source.InstrumentName.Value );
+                groups.Add( group );
+
                 id++;
+                index++;
+                groupId++;
             }
 
-            var result = new ArticulationMap();
+            var articulationMap = new ArticulationMap(
+                source.ProductName.Value,
+                groups,
+                articulations
+            );
+
+            var result = new CakewalkArticulationMap
+            {
+                ArticulationMaps = new List<ArticulationMap>{ articulationMap }
+            };
 
             var serializeOption = new JsonSerializerOptions
             {
@@ -56,21 +77,16 @@ namespace KeySwitchManager.Json.KeySwitch.Cakewalk.Translation
             );
         }
 
-        private static IList<CwArticulation.Event> TranslateArticulationEvents( Articulation articulation )
+        private static IReadOnlyList<MidiEvent> TranslateArticulationEvents( Articulation articulation )
         {
-            CwArticulation.Event CreateEvent( IMidiMessage x ) =>
-                new CwArticulation.Event(
-                    x.Status.Value,
-                    x.DataByte1.Value,
-                    x.DataByte2.Value,
-                    0x00,
-                    0,
-                    0,
-                    0,
-                    0
-                );
+            MidiEvent CreateEvent( IMidiMessage x ) =>
+                new MidiEvent{
+                    Byte1 = x.Status.Value,
+                    Byte2 = x.DataByte1.Value,
+                    Byte3 = x.DataByte2.Value,
+                };
 
-            var result = new List<CwArticulation.Event>();
+            var result = new List<MidiEvent>();
 
             result.AddRange( ( from x in articulation.MidiNoteOns select CreateEvent( x ) ).ToList() );
             result.AddRange( ( from x in articulation.MidiControlChanges select CreateEvent( x ) ).ToList() );
@@ -79,9 +95,9 @@ namespace KeySwitchManager.Json.KeySwitch.Cakewalk.Translation
             return result;
         }
 
-        private static IList<CwArticulation.Transform> TranslateArticulationTransform( Articulation articulation )
+        private static IReadOnlyList<Transform> TranslateArticulationTransform( Articulation articulation )
         {
-            return new List<CwArticulation.Transform>();
+            return new List<Transform>();
         }
 
     }
