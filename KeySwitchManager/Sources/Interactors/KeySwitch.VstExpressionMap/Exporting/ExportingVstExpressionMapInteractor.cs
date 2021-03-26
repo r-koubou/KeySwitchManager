@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using KeySwitchManager.Gateways.KeySwitch;
 using KeySwitchManager.Gateways.KeySwitch.Helper;
 using KeySwitchManager.Presenters.VstExpressionMap;
-using KeySwitchManager.UseCases.KeySwitch.VstExpressionMap.Exporting;
-using KeySwitchManager.UseCases.KeySwitch.VstExpressionMap.Translations;
+using KeySwitchManager.UseCases.KeySwitches.VstExpressionMap.Exporting;
+using KeySwitchManager.UseCases.KeySwitches.VstExpressionMap.Translators;
 
 namespace KeySwitchManager.Interactors.KeySwitch.VstExpressionMap.Exporting
 {

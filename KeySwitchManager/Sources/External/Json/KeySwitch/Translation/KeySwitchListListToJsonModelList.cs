@@ -5,7 +5,7 @@ using System.Text.Json;
 using KeySwitchManager.Domain.Commons;
 using KeySwitchManager.Json.KeySwitch.Helper;
 using KeySwitchManager.Json.KeySwitch.Model;
-using KeySwitchManager.UseCases.KeySwitch.Translations;
+using KeySwitchManager.UseCases.KeySwitches.Translators;
 
 namespace KeySwitchManager.Json.KeySwitch.Translation
 {

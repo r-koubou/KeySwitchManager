@@ -12,7 +12,7 @@ using KeySwitchManager.CLI.Helpers;
 using KeySwitchManager.Domain.Commons;
 using KeySwitchManager.Interactors.KeySwitch.VstExpressionMap.Exporting;
 using KeySwitchManager.Presenters.VstExpressionMap;
-using KeySwitchManager.UseCases.KeySwitch.VstExpressionMap.Exporting;
+using KeySwitchManager.UseCases.KeySwitches.VstExpressionMap.Exporting;
 using KeySwitchManager.Xml.KeySwitch.VstExpressionMap.Translation;
 
 using RkHelper.IO;

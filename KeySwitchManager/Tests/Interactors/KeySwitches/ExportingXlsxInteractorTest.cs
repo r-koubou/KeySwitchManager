@@ -10,7 +10,7 @@ using KeySwitchManager.Domain.KeySwitches.Entity;
 using KeySwitchManager.Domain.MidiMessages;
 using KeySwitchManager.Domain.MidiMessages.Entity;
 using KeySwitchManager.Interactors.KeySwitch.Exporting;
-using KeySwitchManager.UseCases.KeySwitch.Exporting;
+using KeySwitchManager.UseCases.KeySwitches.Exporting;
 using KeySwitchManager.Xlsx.KeySwitch.ClosedXml;
 
 using NUnit.Framework;

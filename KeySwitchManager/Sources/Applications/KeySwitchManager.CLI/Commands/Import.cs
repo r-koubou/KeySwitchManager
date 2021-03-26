@@ -8,7 +8,7 @@ using Database.LiteDB.KeySwitch.KeySwitch;
 using KeySwitchManager.Interactors.KeySwitch.Importing;
 using KeySwitchManager.Json.KeySwitch.Translation;
 using KeySwitchManager.Presenters.KeySwitch;
-using KeySwitchManager.UseCases.KeySwitch.Importing.Text;
+using KeySwitchManager.UseCases.KeySwitches.Importing.Text;
 
 namespace KeySwitchManager.CLI.Commands
 {

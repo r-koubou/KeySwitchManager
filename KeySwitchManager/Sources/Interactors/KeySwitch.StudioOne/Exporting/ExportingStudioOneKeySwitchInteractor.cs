@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using KeySwitchManager.Gateways.KeySwitch;
 using KeySwitchManager.Gateways.KeySwitch.Helper;
 using KeySwitchManager.Presenters.KeySwitch.StudioOneKeySwitch;
-using KeySwitchManager.UseCases.KeySwitch.StudioOne.Exporting;
-using KeySwitchManager.UseCases.KeySwitch.StudioOne.Translations;
+using KeySwitchManager.UseCases.KeySwitches.StudioOne.Exporting;
+using KeySwitchManager.UseCases.KeySwitches.StudioOne.Translators;
 
 namespace KeySwitchManager.Interactors.KeySwitch.StudioOne.Exporting
 {

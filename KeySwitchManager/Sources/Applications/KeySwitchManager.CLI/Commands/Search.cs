@@ -10,7 +10,7 @@ using Database.LiteDB.KeySwitch.KeySwitch;
 using KeySwitchManager.Interactors.KeySwitch.Searching;
 using KeySwitchManager.Json.KeySwitch.Translation;
 using KeySwitchManager.Presenters.KeySwitch;
-using KeySwitchManager.UseCases.KeySwitch.Searching;
+using KeySwitchManager.UseCases.KeySwitches.Searching;
 
 using RkHelper.Text;
 

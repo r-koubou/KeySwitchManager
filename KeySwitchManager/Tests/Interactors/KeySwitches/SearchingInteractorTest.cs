@@ -7,7 +7,7 @@ using KeySwitchManager.Common.Testing.KeySwitches;
 using KeySwitchManager.Interactors.KeySwitch.Searching;
 using KeySwitchManager.Json.KeySwitch.Translation;
 using KeySwitchManager.Presenters.KeySwitch;
-using KeySwitchManager.UseCases.KeySwitch.Searching;
+using KeySwitchManager.UseCases.KeySwitches.Searching;
 
 using NUnit.Framework;
 

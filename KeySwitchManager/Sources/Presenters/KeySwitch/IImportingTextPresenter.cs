@@ -1,4 +1,4 @@
-using KeySwitchManager.UseCases.KeySwitch.Importing.Text;
+using KeySwitchManager.UseCases.KeySwitches.Importing.Text;
 
 namespace KeySwitchManager.Presenters.KeySwitch
 {

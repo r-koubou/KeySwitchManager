@@ -1,7 +1,7 @@
 using KeySwitchManager.Domain.KeySwitches.Value;
 using KeySwitchManager.Gateways.KeySwitch;
 using KeySwitchManager.Presenters.KeySwitch;
-using KeySwitchManager.UseCases.KeySwitch.Removing;
+using KeySwitchManager.UseCases.KeySwitches.Removing;
 
 using RkHelper.Text;
 

@@ -1,4 +1,4 @@
-using KeySwitchManager.UseCases.KeySwitch.Removing;
+using KeySwitchManager.UseCases.KeySwitches.Removing;
 
 namespace KeySwitchManager.Presenters.KeySwitch
 {

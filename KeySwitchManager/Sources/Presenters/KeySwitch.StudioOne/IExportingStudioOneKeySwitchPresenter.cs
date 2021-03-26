@@ -1,4 +1,4 @@
-using KeySwitchManager.UseCases.KeySwitch.StudioOne.Exporting;
+using KeySwitchManager.UseCases.KeySwitches.StudioOne.Exporting;
 
 namespace KeySwitchManager.Presenters.KeySwitch.StudioOneKeySwitch
 {

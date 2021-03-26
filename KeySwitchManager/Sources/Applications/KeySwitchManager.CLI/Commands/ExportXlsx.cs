@@ -11,7 +11,7 @@ using KeySwitchManager.Domain.Commons;
 using KeySwitchManager.Domain.KeySwitches;
 using KeySwitchManager.Domain.KeySwitches.Value;
 using KeySwitchManager.Interactors.KeySwitch.Exporting;
-using KeySwitchManager.UseCases.KeySwitch.Exporting;
+using KeySwitchManager.UseCases.KeySwitches.Exporting;
 using KeySwitchManager.Xlsx.KeySwitch.ClosedXml;
 
 using RkHelper.Text;

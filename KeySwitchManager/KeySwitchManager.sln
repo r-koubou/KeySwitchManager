@@ -66,11 +66,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Interactors", "Interactors"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UseCases", "UseCases", "{8062AA09-46A1-4802-B13F-87456C59455C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UseCases.KeySwitch", "Sources\UseCases\KeySwitch\UseCases.KeySwitch.csproj", "{721544EC-9776-4D54-AFB8-A786C01C1CEE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UseCases.KeySwitches", "Sources\UseCases\KeySwitches\UseCases.KeySwitches.csproj", "{721544EC-9776-4D54-AFB8-A786C01C1CEE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UseCases.KeySwitch.StudioOne", "Sources\UseCases\KeySwitch.StudioOne\UseCases.KeySwitch.StudioOne.csproj", "{A08F27CD-4033-410F-AA01-86899CEC9AF4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UseCases.KeySwitches.StudioOne", "Sources\UseCases\KeySwitches.StudioOne\UseCases.KeySwitches.StudioOne.csproj", "{A08F27CD-4033-410F-AA01-86899CEC9AF4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UseCases.KeySwitch.VstExpressionMap", "Sources\UseCases\KeySwitch.VstExpressionMap\UseCases.KeySwitch.VstExpressionMap.csproj", "{9B045316-5F70-481B-BCE0-8D7D0C2CC9C6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UseCases.KeySwitches.VstExpressionMap", "Sources\UseCases\KeySwitches.VstExpressionMap\UseCases.KeySwitches.VstExpressionMap.csproj", "{9B045316-5F70-481B-BCE0-8D7D0C2CC9C6}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Gateways", "Gateways", "{C75B2B80-D93D-4C92-91A5-50CCFC31056C}"
 EndProject
@@ -104,7 +104,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Xml", "Xml", "{1E831713-53E
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KeySwitchManager.CLI", "Sources\Applications\KeySwitchManager.CLI\KeySwitchManager.CLI.csproj", "{173A0655-8594-4160-94C6-F7E7471F95F8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UseCases.KeySwitch.Cakewalk", "Sources\UseCases\KeySwitch.Cakewalk\UseCases.KeySwitch.Cakewalk.csproj", "{032CB3F6-042F-4FE4-9CC9-4B2F3625FD2C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UseCases.KeySwitches.Cakewalk", "Sources\UseCases\KeySwitches.Cakewalk\UseCases.KeySwitches.Cakewalk.csproj", "{032CB3F6-042F-4FE4-9CC9-4B2F3625FD2C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Interactors.KeySwitch.Cakewalk", "Sources\Interactors\KeySwitch.Cakewalk\Interactors.KeySwitch.Cakewalk.csproj", "{1F04BDDE-6330-44DD-8B37-0ABD9F64ED72}"
 EndProject

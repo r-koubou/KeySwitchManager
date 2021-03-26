@@ -21,7 +21,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\..\..\Domain\KeySwitches\Domain.KeySwitches.csproj" />
-      <ProjectReference Include="..\..\..\UseCases\KeySwitch\UseCases.KeySwitch.csproj" />
+      <ProjectReference Include="..\..\..\UseCases\KeySwitches\UseCases.KeySwitches.csproj" />
     </ItemGroup>
 
 </Project>

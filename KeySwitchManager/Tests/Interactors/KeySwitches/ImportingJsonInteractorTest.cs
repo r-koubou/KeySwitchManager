@@ -7,7 +7,7 @@ using KeySwitchManager.Domain.KeySwitches.Value;
 using KeySwitchManager.Interactors.KeySwitch.Importing;
 using KeySwitchManager.Json.KeySwitch.Translation;
 using KeySwitchManager.Presenters.KeySwitch;
-using KeySwitchManager.UseCases.KeySwitch.Importing.Text;
+using KeySwitchManager.UseCases.KeySwitches.Importing.Text;
 
 using NUnit.Framework;
 
