@@ -1,15 +1,12 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
+        <LangVersion>9</LangVersion>
         <TargetFramework>net5.0</TargetFramework>
-
-        <IsPackable>false</IsPackable>
-
+        <RootNamespace>KeySwitchManager.Json.KeySwitches.Cakewalk.Testing</RootNamespace>
         <Nullable>enable</Nullable>
-
-        <AssemblyName>KeySwitchManager.Xml.KeySwitch.StudioOne.Testing</AssemblyName>
-
-        <RootNamespace>KeySwitchManager.Xml.KeySwitch.StudioOne.Testing</RootNamespace>
+        <IsPackable>false</IsPackable>
+        <AssemblyName>KeySwitchManager.Json.KeySwitches.Cakewalk.Testing</AssemblyName>
     </PropertyGroup>
 
     <ItemGroup>
@@ -19,8 +16,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\..\..\Sources\Domain\MidiMessages\Domain.MidiMessages.csproj" />
-      <ProjectReference Include="..\..\..\Sources\External\Xml\KeySwitches.StudioOne\Xml.KeySwitches.StudioOne.csproj" />
+      <ProjectReference Include="..\..\..\Sources\External\Json\KeySwitches.Cakewalk\Json.KeySwitches.Cakewalk.csproj" />
       <ProjectReference Include="..\..\Common\Common.Testing.csproj" />
     </ItemGroup>
 

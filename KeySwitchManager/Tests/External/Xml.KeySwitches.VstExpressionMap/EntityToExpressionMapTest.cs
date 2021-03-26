@@ -8,7 +8,7 @@ using KeySwitchManager.Xml.KeySwitches.VstExpressionMap.Translators;
 
 using NUnit.Framework;
 
-namespace KeySwitchManager.Xml.VstExpressionMap.Testing
+namespace KeySwitchManager.Xml.KeySwitches.VstExpressionMap.Testing
 {
     [TestFixture]
     public class EntityToExpressionMapTest

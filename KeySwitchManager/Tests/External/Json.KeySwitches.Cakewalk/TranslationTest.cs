@@ -8,7 +8,7 @@ using KeySwitchManager.Json.KeySwitches.Cakewalk.Translators;
 
 using NUnit.Framework;
 
-namespace KeySwitchManager.Json.KeySwitch.Cakewalk.Testing
+namespace KeySwitchManager.Json.KeySwitches.Cakewalk.Testing
 {
     [TestFixture]
     public class TranslationTest

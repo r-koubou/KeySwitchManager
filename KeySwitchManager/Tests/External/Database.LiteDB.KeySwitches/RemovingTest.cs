@@ -6,7 +6,7 @@ using KeySwitchManager.Common.Testing.KeySwitches;
 
 using NUnit.Framework;
 
-namespace Databases.KeySwitch.LiteDB.Testing
+namespace Databases.KeySwitches.LiteDB.Testing
 {
     [TestFixture]
     public class RemovingTest

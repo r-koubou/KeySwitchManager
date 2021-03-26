@@ -7,7 +7,7 @@ using KeySwitchManager.Xml.KeySwitches.StudioOne.Translators;
 
 using NUnit.Framework;
 
-namespace KeySwitchManager.Xml.KeySwitch.StudioOne.Testing
+namespace KeySwitchManager.Xml.KeySwitches.StudioOne.Testing
 {
     [TestFixture]
     public class KeySwitchToStudioOneKeySwitchTest

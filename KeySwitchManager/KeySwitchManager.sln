@@ -12,7 +12,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Interactors.Testing", "Test
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Database.LiteDB.KeySwitches", "Sources\External\Database\LiteDB.KeySwitches\Database.LiteDB.KeySwitches.csproj", "{E27AD20F-D7A7-4842-8BDC-9C8422CF4618}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Databases.KeySwitch.LiteDB.Testing", "Tests\External\Database.LiteDB.KeySwitch\Databases.KeySwitch.LiteDB.Testing.csproj", "{70A70B9D-A7A1-4C20-9B25-61A59C87CC7E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Databases.KeySwitches.LiteDB.Testing", "Tests\External\Database.LiteDB.KeySwitches\Databases.KeySwitches.LiteDB.Testing.csproj", "{70A70B9D-A7A1-4C20-9B25-61A59C87CC7E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Json.KeySwitches", "Sources\External\Json\KeySwitches\Json.KeySwitches.csproj", "{07A4641E-50C0-4831-9CFA-0825D1AA9604}"
 EndProject
@@ -26,7 +26,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "JSON", "JSON", "{2C2EDA27-8
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "XML", "XML", "{E9A5A415-0027-42EC-AA51-3093A2E78E0D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xml.KeySwitch.VstExpressionMap.Testing", "Tests\External\Xml.KeySwitch.VstExpressionMap\Xml.KeySwitch.VstExpressionMap.Testing.csproj", "{41B7D236-BAB2-4932-A275-8DB7A9F8395C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xml.KeySwitches.VstExpressionMap.Testing", "Tests\External\Xml.KeySwitches.VstExpressionMap\Xml.KeySwitches.VstExpressionMap.Testing.csproj", "{41B7D236-BAB2-4932-A275-8DB7A9F8395C}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Applications", "Applications", "{D25E9941-6ED1-455D-AD56-8F9703C1D767}"
 EndProject
@@ -36,7 +36,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xlsx.KeySwitches.ClosedXml"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xml.KeySwitches.StudioOne", "Sources\External\Xml\KeySwitches.StudioOne\Xml.KeySwitches.StudioOne.csproj", "{1EB82814-D84D-4A91-9379-E94B372D432C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xml.KeySwitch.StudioOne.Testing", "Tests\External\Xml.KeySwitch.StudioOne\Xml.KeySwitch.StudioOne.Testing.csproj", "{15E38DE0-3673-43FF-BF19-75CFAF4B400A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xml.KeySwitches.StudioOne.Testing", "Tests\External\Xml.KeySwitches.StudioOne\Xml.KeySwitches.StudioOne.Testing.csproj", "{15E38DE0-3673-43FF-BF19-75CFAF4B400A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xlsx.KeySwitches", "Sources\External\Xlsx\KeySwitches\Xlsx.KeySwitches.csproj", "{149F6223-09CD-4BE7-B7C3-B08745C5671A}"
 EndProject
@@ -112,7 +112,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Presenters.KeySwitches.Cake
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Json.KeySwitches.Cakewalk", "Sources\External\Json\KeySwitches.Cakewalk\Json.KeySwitches.Cakewalk.csproj", "{0162F56A-6162-4904-AB60-37FAC1E9239F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Json.KeySwitch.Cakewalk", "Tests\External\Json.KeySwitch.Cakewalk\Json.KeySwitch.Cakewalk.csproj", "{CDFDBAA8-2BC9-4645-83DE-06BC2BC91D0D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Json.KeySwitches.Cakewalk.Testing", "Tests\External\Json.KeySwitches.Cakewalk\Json.KeySwitches.Cakewalk.Testing.csproj", "{CDFDBAA8-2BC9-4645-83DE-06BC2BC91D0D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
