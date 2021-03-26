@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 
 using KeySwitchManager.Domain.Commons;
-using KeySwitchManager.Gateways.KeySwitch;
+using KeySwitchManager.Gateways.KeySwitches;
 using KeySwitchManager.Xlsx.KeySwitch.ClosedXml.Helper;
 using KeySwitchManager.Xlsx.KeySwitch.Translator;
 

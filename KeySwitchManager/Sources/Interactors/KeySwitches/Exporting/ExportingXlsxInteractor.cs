@@ -1,4 +1,4 @@
-using KeySwitchManager.Gateways.KeySwitch;
+using KeySwitchManager.Gateways.KeySwitches;
 using KeySwitchManager.UseCases.KeySwitches.Exporting;
 
 namespace KeySwitchManager.Interactors.KeySwitches.Exporting

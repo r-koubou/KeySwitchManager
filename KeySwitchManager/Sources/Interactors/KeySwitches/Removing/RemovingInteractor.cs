@@ -1,5 +1,5 @@
 using KeySwitchManager.Domain.KeySwitches.Value;
-using KeySwitchManager.Gateways.KeySwitch;
+using KeySwitchManager.Gateways.KeySwitches;
 using KeySwitchManager.Presenters.KeySwitch;
 using KeySwitchManager.UseCases.KeySwitches.Removing;
 

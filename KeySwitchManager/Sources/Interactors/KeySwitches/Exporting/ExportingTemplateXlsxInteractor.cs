@@ -5,7 +5,7 @@ using KeySwitchManager.Domain.KeySwitches;
 using KeySwitchManager.Domain.KeySwitches.Entity;
 using KeySwitchManager.Domain.MidiMessages;
 using KeySwitchManager.Domain.MidiMessages.Entity;
-using KeySwitchManager.Gateways.KeySwitch;
+using KeySwitchManager.Gateways.KeySwitches;
 using KeySwitchManager.UseCases.KeySwitches.Exporting;
 
 namespace KeySwitchManager.Interactors.KeySwitches.Exporting

@@ -1,8 +1,9 @@
 using System.Collections.Generic;
 
 using KeySwitchManager.Domain.Commons;
+using KeySwitchManager.Domain.KeySwitches;
 using KeySwitchManager.Domain.KeySwitches.Value;
-using KeySwitchManager.Gateways.KeySwitch;
+using KeySwitchManager.Gateways.KeySwitches;
 using KeySwitchManager.Presenters.KeySwitch;
 using KeySwitchManager.UseCases.KeySwitches.Searching;
 using KeySwitchManager.UseCases.KeySwitches.Translators;
@@ -27,7 +28,7 @@ namespace KeySwitchManager.Interactors.KeySwitches.Searching
             Presenter  = presenter;
         }
 
-        private SearchingResponse CreateResponse( IReadOnlyCollection<Domain.KeySwitches.KeySwitch> query )
+        private SearchingResponse CreateResponse( IReadOnlyCollection<KeySwitch> query )
         {
             return new SearchingResponse( query, Translator.Translate( query ) );
         }
@@ -74,7 +75,7 @@ namespace KeySwitchManager.Interactors.KeySwitches.Searching
             }
             #endregion
 
-            return new SearchingResponse( new List<Domain.KeySwitches.KeySwitch>(), PlainText.Empty );
+            return new SearchingResponse( new List<KeySwitch>(), PlainText.Empty );
         }
     }
 }

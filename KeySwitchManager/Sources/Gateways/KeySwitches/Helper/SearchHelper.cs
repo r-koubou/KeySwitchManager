@@ -1,16 +1,16 @@
 using System;
 using System.Collections.Generic;
 
-using KeySwitchManager.Domain.Commons;
+using KeySwitchManager.Domain.KeySwitches;
 using KeySwitchManager.Domain.KeySwitches.Value;
 
 using RkHelper.Text;
 
-namespace KeySwitchManager.Gateways.KeySwitch.Helper
+namespace KeySwitchManager.Gateways.KeySwitches.Helper
 {
     public static class SearchHelper
     {
-        public static ICollection<Domain.KeySwitches.KeySwitch> Search(
+        public static ICollection<KeySwitch> Search(
             IKeySwitchRepository repository,
             Guid guid = default,
             string developerName = "",
@@ -20,14 +20,14 @@ namespace KeySwitchManager.Gateways.KeySwitch.Helper
             #region By Guid
             if( guid != default )
             {
-                return new List<Domain.KeySwitches.KeySwitch>( repository.Find( new KeySwitchId( guid ) ) );
+                return new List<KeySwitch>( repository.Find( new KeySwitchId( guid ) ) );
             }
             #endregion
 
             #region By Developer, Product, Instrument
             if( !StringHelper.IsEmpty( developerName, productName, instrumentName ) )
             {
-                return new List<Domain.KeySwitches.KeySwitch>(
+                return new List<KeySwitch>(
                     repository.Find(
                         new DeveloperName( developerName ),
                         new ProductName( productName ),
@@ -39,7 +39,7 @@ namespace KeySwitchManager.Gateways.KeySwitch.Helper
             #region By Developer, Product
             if( !StringHelper.IsEmpty( developerName, productName ) )
             {
-                return new List<Domain.KeySwitches.KeySwitch>(
+                return new List<KeySwitch>(
                     repository.Find(
                         new DeveloperName( developerName ),
                         new ProductName( productName )
@@ -51,7 +51,7 @@ namespace KeySwitchManager.Gateways.KeySwitch.Helper
             #region By Developer
             if( !StringHelper.IsEmpty( developerName ) )
             {
-                return new List<Domain.KeySwitches.KeySwitch>(
+                return new List<KeySwitch>(
                     repository.Find(
                         new DeveloperName( developerName )
                     )
@@ -59,7 +59,7 @@ namespace KeySwitchManager.Gateways.KeySwitch.Helper
             }
             #endregion
 
-            return new List<Domain.KeySwitches.KeySwitch>();
+            return new List<KeySwitch>();
         }
     }
 }
