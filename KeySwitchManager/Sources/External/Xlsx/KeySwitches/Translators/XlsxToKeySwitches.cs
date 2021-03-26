@@ -5,8 +5,8 @@ using KeySwitchManager.Domain.KeySwitches;
 using KeySwitchManager.Domain.KeySwitches.Entity;
 using KeySwitchManager.Domain.MidiMessages;
 using KeySwitchManager.Domain.MidiMessages.Entity;
-using KeySwitchManager.Domain.MidiMessages.Value;
-using KeySwitchManager.Domain.Translations;
+using KeySwitchManager.Domain.MidiMessages.Values;
+using KeySwitchManager.Domain.Translators;
 using KeySwitchManager.Xlsx.KeySwitches.Models;
 
 using RkHelper.Time;

@@ -2,11 +2,11 @@ using System.Collections.Generic;
 
 using Database.LiteDB.KeySwitches.Models;
 
-using KeySwitchManager.Domain.Commons.Helper;
+using KeySwitchManager.Domain.Commons.Helpers;
 using KeySwitchManager.Domain.KeySwitches;
-using KeySwitchManager.Domain.KeySwitches.Value;
+using KeySwitchManager.Domain.KeySwitches.Values;
 using KeySwitchManager.Domain.MidiMessages.Entity;
-using KeySwitchManager.Domain.Translations;
+using KeySwitchManager.Domain.Translators;
 
 namespace Database.LiteDB.KeySwitches.Translators
 {

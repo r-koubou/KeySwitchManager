@@ -16,7 +16,7 @@
       <ProjectReference Include="..\..\Commons\Commons.csproj" />
       <ProjectReference Include="..\..\Domain\KeySwitches\Domain.KeySwitches.csproj" />
       <ProjectReference Include="..\..\Domain\MidiMessages\Domain.MidiMessages.csproj" />
-      <ProjectReference Include="..\..\Domain\Translations\Domain.Translations.csproj" />
+      <ProjectReference Include="..\..\Domain\Translators\Domain.Translators.csproj" />
     </ItemGroup>
 
 </Project>

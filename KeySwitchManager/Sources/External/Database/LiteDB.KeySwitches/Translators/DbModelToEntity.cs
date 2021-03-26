@@ -6,7 +6,7 @@ using KeySwitchManager.Domain.KeySwitches;
 using KeySwitchManager.Domain.KeySwitches.Entity;
 using KeySwitchManager.Domain.MidiMessages;
 using KeySwitchManager.Domain.MidiMessages.Entity;
-using KeySwitchManager.Domain.Translations;
+using KeySwitchManager.Domain.Translators;
 
 namespace Database.LiteDB.KeySwitches.Translators
 {

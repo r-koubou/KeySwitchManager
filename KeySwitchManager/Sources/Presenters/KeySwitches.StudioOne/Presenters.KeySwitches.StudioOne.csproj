@@ -15,7 +15,7 @@
     <ItemGroup>
       <ProjectReference Include="..\..\Commons\Commons.csproj" />
       <ProjectReference Include="..\..\UseCases\KeySwitches.StudioOne\UseCases.KeySwitches.StudioOne.csproj" />
-      <ProjectReference Include="..\Common\Presenters.Common.csproj" />
+      <ProjectReference Include="..\Commons\Presenters.Commons.csproj" />
     </ItemGroup>
 
 </Project>

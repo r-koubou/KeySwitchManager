@@ -1,4 +1,4 @@
-using KeySwitchManager.Domain.KeySwitches.Value;
+using KeySwitchManager.Domain.KeySwitches.Values;
 
 namespace KeySwitchManager.Xml.KeySwitches.VstExpressionMap
 {

@@ -4,7 +4,7 @@ using System.Linq;
 using ClosedXML.Excel;
 
 using KeySwitchManager.Domain.KeySwitches;
-using KeySwitchManager.Domain.KeySwitches.Value;
+using KeySwitchManager.Domain.KeySwitches.Values;
 using KeySwitchManager.Xlsx.KeySwitches.Helpers;
 
 namespace KeySwitchManager.Xlsx.KeySwitches.ClosedXml.Helper

@@ -5,7 +5,7 @@ using ClosedXML.Excel;
 
 using KeySwitchManager.Domain.KeySwitches;
 using KeySwitchManager.Domain.KeySwitches.Entity;
-using KeySwitchManager.Domain.KeySwitches.Value;
+using KeySwitchManager.Domain.KeySwitches.Values;
 
 namespace KeySwitchManager.Xlsx.KeySwitches.ClosedXml.Translator
 {

@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 
 using KeySwitchManager.Domain.KeySwitches;
-using KeySwitchManager.Domain.KeySwitches.Value;
+using KeySwitchManager.Domain.KeySwitches.Values;
 using KeySwitchManager.Gateways.KeySwitches.Values;
 
 namespace KeySwitchManager.Gateways.KeySwitches

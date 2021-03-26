@@ -7,7 +7,7 @@ using Database.LiteDB.KeySwitches.Models;
 using Database.LiteDB.KeySwitches.Translators;
 
 using KeySwitchManager.Domain.KeySwitches;
-using KeySwitchManager.Domain.KeySwitches.Value;
+using KeySwitchManager.Domain.KeySwitches.Values;
 using KeySwitchManager.Gateways.KeySwitches;
 using KeySwitchManager.Gateways.KeySwitches.Values;
 

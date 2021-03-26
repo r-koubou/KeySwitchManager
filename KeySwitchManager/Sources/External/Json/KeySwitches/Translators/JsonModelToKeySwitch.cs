@@ -2,7 +2,7 @@ using System.Text.Json;
 
 using KeySwitchManager.Domain.Commons;
 using KeySwitchManager.Domain.KeySwitches;
-using KeySwitchManager.Domain.Translations;
+using KeySwitchManager.Domain.Translators;
 using KeySwitchManager.Json.KeySwitches.Helpers;
 using KeySwitchManager.Json.KeySwitches.Models;
 

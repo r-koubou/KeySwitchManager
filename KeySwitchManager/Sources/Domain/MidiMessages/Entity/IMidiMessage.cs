@@ -1,6 +1,6 @@
 using System;
 
-using KeySwitchManager.Domain.MidiMessages.Value;
+using KeySwitchManager.Domain.MidiMessages.Values;
 
 namespace KeySwitchManager.Domain.MidiMessages.Entity
 {

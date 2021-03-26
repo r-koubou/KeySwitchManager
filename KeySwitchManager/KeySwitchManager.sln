@@ -52,7 +52,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain.KeySwitches", "Sourc
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain.MidiMessages", "Sources\Domain\MidiMessages\Domain.MidiMessages.csproj", "{5CA4E8D9-ABFC-4971-A6DD-DEF993F7597D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain.Translations", "Sources\Domain\Translations\Domain.Translations.csproj", "{6CB07C58-3905-4C14-BEAE-45D88C26090E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain.Translators", "Sources\Domain\Translators\Domain.Translators.csproj", "{6CB07C58-3905-4C14-BEAE-45D88C26090E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain.Testing", "Tests\Domain\Domain.Testing.csproj", "{26654AF9-73B4-41C7-BEE7-86C501903808}"
 EndProject
@@ -78,7 +78,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gateways.KeySwitches", "Sou
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presenters", "Presenters", "{741C8E3E-E25D-4BBE-9F0A-E7C3BDF75FDE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Presenters.Common", "Sources\Presenters\Common\Presenters.Common.csproj", "{83BD82FE-0432-4142-8A61-2B19A4179198}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Presenters.Commons", "Sources\Presenters\Commons\Presenters.Commons.csproj", "{83BD82FE-0432-4142-8A61-2B19A4179198}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Presenters.KeySwitches", "Sources\Presenters\KeySwitches\Presenters.KeySwitches.csproj", "{093B5A70-DCD3-45A0-AE41-2272DC2556DF}"
 EndProject

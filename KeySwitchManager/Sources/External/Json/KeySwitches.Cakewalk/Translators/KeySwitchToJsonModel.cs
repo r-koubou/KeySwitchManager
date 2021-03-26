@@ -6,7 +6,7 @@ using System.Text.Json;
 using KeySwitchManager.Domain.Commons;
 using KeySwitchManager.Domain.KeySwitches;
 using KeySwitchManager.Domain.MidiMessages.Entity;
-using KeySwitchManager.Domain.Translations;
+using KeySwitchManager.Domain.Translators;
 using KeySwitchManager.Json.KeySwitches.Cakewalk.Models;
 
 using Articulation = KeySwitchManager.Domain.KeySwitches.Entity.Articulation;

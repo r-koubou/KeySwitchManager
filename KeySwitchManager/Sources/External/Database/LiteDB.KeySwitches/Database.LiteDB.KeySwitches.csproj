@@ -22,7 +22,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\..\..\Domain\Translations\Domain.Translations.csproj" />
+      <ProjectReference Include="..\..\..\Domain\Translators\Domain.Translators.csproj" />
       <ProjectReference Include="..\..\..\Gateways\KeySwitches\Gateways.KeySwitches.csproj" />
     </ItemGroup>
 

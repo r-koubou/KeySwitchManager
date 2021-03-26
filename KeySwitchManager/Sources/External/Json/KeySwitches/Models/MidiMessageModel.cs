@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 
-using KeySwitchManager.Domain.MidiMessages.Helper;
+using KeySwitchManager.Domain.MidiMessages.Helpers;
 
 namespace KeySwitchManager.Json.KeySwitches.Models
 {

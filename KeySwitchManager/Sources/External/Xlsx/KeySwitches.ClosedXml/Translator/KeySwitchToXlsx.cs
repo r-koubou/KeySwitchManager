@@ -6,7 +6,7 @@ using ClosedXML.Excel;
 using KeySwitchManager.Domain.KeySwitches;
 using KeySwitchManager.Domain.KeySwitches.Entity;
 using KeySwitchManager.Domain.MidiMessages.Entity;
-using KeySwitchManager.Domain.Translations;
+using KeySwitchManager.Domain.Translators;
 using KeySwitchManager.Xlsx.KeySwitches.ClosedXml.Helper;
 using KeySwitchManager.Xlsx.KeySwitches.Helpers;
 

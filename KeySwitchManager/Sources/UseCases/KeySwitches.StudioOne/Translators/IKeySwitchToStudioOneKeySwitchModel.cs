@@ -1,6 +1,6 @@
 using KeySwitchManager.Domain.Commons;
 using KeySwitchManager.Domain.KeySwitches;
-using KeySwitchManager.Domain.Translations;
+using KeySwitchManager.Domain.Translators;
 
 namespace KeySwitchManager.UseCases.KeySwitches.StudioOne.Translators
 {

@@ -3,7 +3,7 @@ using System.Linq;
 
 using KeySwitchManager.Domain.Commons;
 using KeySwitchManager.Domain.KeySwitches.Entity;
-using KeySwitchManager.Domain.KeySwitches.Value;
+using KeySwitchManager.Domain.KeySwitches.Values;
 
 namespace KeySwitchManager.Domain.KeySwitches
 {

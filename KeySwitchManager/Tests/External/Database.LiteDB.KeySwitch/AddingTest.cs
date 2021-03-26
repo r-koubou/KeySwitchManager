@@ -6,8 +6,8 @@ using Database.LiteDB.KeySwitches;
 
 using KeySwitchManager.Common.Testing.KeySwitches;
 using KeySwitchManager.Domain.MidiMessages.Entity;
-using KeySwitchManager.Domain.MidiMessages.Helper;
-using KeySwitchManager.Domain.MidiMessages.Value;
+using KeySwitchManager.Domain.MidiMessages.Helpers;
+using KeySwitchManager.Domain.MidiMessages.Values;
 
 using NUnit.Framework;
 

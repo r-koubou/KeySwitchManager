@@ -1,6 +1,7 @@
 using System.Linq;
 
 using KeySwitchManager.Domain.Commons;
+using KeySwitchManager.Domain.KeySwitches;
 using KeySwitchManager.UseCases.KeySwitches.StudioOne.Translators;
 using KeySwitchManager.Xml.KeySwitches.StudioOne.Models;
 
@@ -10,7 +11,7 @@ namespace KeySwitchManager.Xml.KeySwitches.StudioOne.Translators
 {
     public class KeySwitchToStudioOneKeySwitchModel : IKeySwitchToStudioOneKeySwitchModel
     {
-        public IText Translate( Domain.KeySwitches.KeySwitch source )
+        public IText Translate( KeySwitch source )
         {
             var xml = new RootElement
             {

@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 
 using KeySwitchManager.Common.Testing.KeySwitches;
-using KeySwitchManager.Domain.Commons;
 using KeySwitchManager.Domain.MidiMessages;
 using KeySwitchManager.Domain.MidiMessages.Entity;
 using KeySwitchManager.Json.KeySwitches.Cakewalk.Translators;
