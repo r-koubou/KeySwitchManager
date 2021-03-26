@@ -2,7 +2,7 @@ using KeySwitchManager.Gateways.KeySwitch;
 using KeySwitchManager.Presenters.KeySwitch;
 using KeySwitchManager.UseCases.KeySwitches.Importing.Xlsx;
 
-namespace KeySwitchManager.Interactors.KeySwitch.Importing
+namespace KeySwitchManager.Interactors.KeySwitches.Importing
 {
     public class ImportingXlsxInteractor : IImportingXlsxUseCase
     {

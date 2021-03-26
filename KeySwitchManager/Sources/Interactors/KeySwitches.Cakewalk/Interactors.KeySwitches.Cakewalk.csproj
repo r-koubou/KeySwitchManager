@@ -7,8 +7,8 @@
         <Copyright>R-Koubou</Copyright>
         <Company>R-Koubou</Company>
         <Product>KeySwitchManager.Interactors.KeySwitch.Cakewalk</Product>
-        <AssemblyName>KeySwitchManager.Interactors.KeySwitch.Cakewalk</AssemblyName>
-        <RootNamespace>KeySwitchManager.Interactors.KeySwitch.Cakewalk</RootNamespace>
+        <AssemblyName>KeySwitchManager.Interactors.KeySwitches.Cakewalk</AssemblyName>
+        <RootNamespace>KeySwitchManager.Interactors.KeySwitches.Cakewalk</RootNamespace>
         <Nullable>enable</Nullable>
     </PropertyGroup>
 

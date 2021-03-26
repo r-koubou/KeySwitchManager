@@ -4,7 +4,7 @@ using System.IO;
 using Database.LiteDB.KeySwitch.KeySwitch;
 
 using KeySwitchManager.Common.Testing.KeySwitches;
-using KeySwitchManager.Interactors.KeySwitch.Searching;
+using KeySwitchManager.Interactors.KeySwitches.Searching;
 using KeySwitchManager.Json.KeySwitch.Translation;
 using KeySwitchManager.Presenters.KeySwitch;
 using KeySwitchManager.UseCases.KeySwitches.Searching;

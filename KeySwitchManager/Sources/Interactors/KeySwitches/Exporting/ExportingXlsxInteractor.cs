@@ -1,7 +1,7 @@
 using KeySwitchManager.Gateways.KeySwitch;
 using KeySwitchManager.UseCases.KeySwitches.Exporting;
 
-namespace KeySwitchManager.Interactors.KeySwitch.Exporting
+namespace KeySwitchManager.Interactors.KeySwitches.Exporting
 {
     public class ExportingXlsxInteractor : IExportingXlsxUseCase
     {

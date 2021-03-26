@@ -27,9 +27,9 @@
       <ProjectReference Include="..\..\Sources\External\Xlsx\KeySwitch.ClosedXml\Xlsx.KeySwitch.ClosedXml.csproj" />
       <ProjectReference Include="..\..\Sources\External\Xml\KeySwitch.StudioOne\Xml.KeySwitch.StudioOne.csproj" />
       <ProjectReference Include="..\..\Sources\External\Xml\KeySwitch.VstExpressionMap\Xml.KeySwitch.VstExpressionMap.csproj" />
-      <ProjectReference Include="..\..\Sources\Interactors\KeySwitch\Interactors.KeySwitch.csproj" />
-      <ProjectReference Include="..\..\Sources\Interactors\KeySwitch.StudioOne\Interactors.KeySwitch.StudioOne.csproj" />
-      <ProjectReference Include="..\..\Sources\Interactors\KeySwitch.VstExpressionMap\Interactors.KeySwitch.VstExpressionMap.csproj" />
+      <ProjectReference Include="..\..\Sources\Interactors\KeySwitches.VstExpressionMap\Interactors.KeySwitches.VstExpressionMap.csproj" />
+      <ProjectReference Include="..\..\Sources\Interactors\KeySwitches.StudioOne\Interactors.KeySwitches.StudioOne.csproj" />
+      <ProjectReference Include="..\..\Sources\Interactors\KeySwitches\Interactors.KeySwitches.csproj" />
       <ProjectReference Include="..\..\Sources\Presenters\KeySwitch.VstExpressionMap\Presenters.KeySwitch.VstExpressionMap.csproj" />
       <ProjectReference Include="..\..\Sources\UseCases\KeySwitches.StudioOne\UseCases.KeySwitches.StudioOne.csproj" />
       <ProjectReference Include="..\..\Sources\UseCases\KeySwitches.VstExpressionMap\UseCases.KeySwitches.VstExpressionMap.csproj" />

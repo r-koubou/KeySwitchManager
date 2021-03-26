@@ -6,7 +6,7 @@ using KeySwitchManager.Presenters.VstExpressionMap;
 using KeySwitchManager.UseCases.KeySwitches.VstExpressionMap.Exporting;
 using KeySwitchManager.UseCases.KeySwitches.VstExpressionMap.Translators;
 
-namespace KeySwitchManager.Interactors.KeySwitch.VstExpressionMap.Exporting
+namespace KeySwitchManager.Interactors.KeySwitches.VstExpressionMap.Exporting
 {
     public class ExportingVstExpressionMapInteractor : IExportingVstExpressionMapUseCase
     {

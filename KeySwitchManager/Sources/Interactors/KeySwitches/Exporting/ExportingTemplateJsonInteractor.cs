@@ -9,7 +9,7 @@ using KeySwitchManager.Presenters.KeySwitch;
 using KeySwitchManager.UseCases.KeySwitches.Exporting;
 using KeySwitchManager.UseCases.KeySwitches.Translators;
 
-namespace KeySwitchManager.Interactors.KeySwitch.Exporting
+namespace KeySwitchManager.Interactors.KeySwitches.Exporting
 {
     public class ExportingTemplateJsonInteractor : IExportingTemplateAsTextUseCase
     {

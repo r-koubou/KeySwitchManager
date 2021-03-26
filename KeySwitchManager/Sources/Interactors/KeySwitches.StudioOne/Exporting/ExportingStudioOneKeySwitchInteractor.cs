@@ -6,7 +6,7 @@ using KeySwitchManager.Presenters.KeySwitch.StudioOneKeySwitch;
 using KeySwitchManager.UseCases.KeySwitches.StudioOne.Exporting;
 using KeySwitchManager.UseCases.KeySwitches.StudioOne.Translators;
 
-namespace KeySwitchManager.Interactors.KeySwitch.StudioOne.Exporting
+namespace KeySwitchManager.Interactors.KeySwitches.StudioOne.Exporting
 {
     public class ExportingStudioOneKeySwitchInteractor : IExportingStudioOneKeySwitchUseCase
     {

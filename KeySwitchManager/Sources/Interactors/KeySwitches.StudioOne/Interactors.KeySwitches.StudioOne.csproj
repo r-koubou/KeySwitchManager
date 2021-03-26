@@ -6,17 +6,17 @@
         <!-- Assembly -->
         <Copyright>R-Koubou</Copyright>
         <Company>R-Koubou</Company>
-        <Product>KeySwitchManager.Interactors.KeySwitches</Product>
-        <AssemblyName>KeySwitchManager.Interactors.KeySwitch</AssemblyName>
-        <RootNamespace>KeySwitchManager.Interactors.KeySwitch</RootNamespace>
+        <Product>KeySwitchManager.Interactors.StudioOneKeySwitch</Product>
+        <AssemblyName>KeySwitchManager.Interactors.KeySwitches.StudioOne</AssemblyName>
+        <RootNamespace>KeySwitchManager.Interactors.KeySwitches.StudioOne</RootNamespace>
         <Nullable>enable</Nullable>
     </PropertyGroup>
 
     <ItemGroup>
       <ProjectReference Include="..\..\Commons\Commons.csproj" />
-      <ProjectReference Include="..\..\Domain\KeySwitches\Domain.KeySwitches.csproj" />
       <ProjectReference Include="..\..\Gateways\KeySwitch\Gateways.KeySwitch.csproj" />
-      <ProjectReference Include="..\..\Presenters\KeySwitch\Presenters.KeySwitch.csproj" />
+      <ProjectReference Include="..\..\Presenters\KeySwitch.StudioOne\Presenters.KeySwitch.StudioOne.csproj" />
+      <ProjectReference Include="..\..\UseCases\KeySwitches.StudioOne\UseCases.KeySwitches.StudioOne.csproj" />
     </ItemGroup>
 
 </Project>

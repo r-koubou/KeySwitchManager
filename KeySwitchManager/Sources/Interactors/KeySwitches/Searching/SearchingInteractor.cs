@@ -9,7 +9,7 @@ using KeySwitchManager.UseCases.KeySwitches.Translators;
 
 using RkHelper.Text;
 
-namespace KeySwitchManager.Interactors.KeySwitch.Searching
+namespace KeySwitchManager.Interactors.KeySwitches.Searching
 {
     public class SearchingInteractor : ISearchingUseCase
     {

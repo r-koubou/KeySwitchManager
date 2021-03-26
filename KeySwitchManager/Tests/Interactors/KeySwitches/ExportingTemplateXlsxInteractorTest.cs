@@ -1,5 +1,5 @@
 using KeySwitchManager.Domain.Commons;
-using KeySwitchManager.Interactors.KeySwitch.Exporting;
+using KeySwitchManager.Interactors.KeySwitches.Exporting;
 using KeySwitchManager.UseCases.KeySwitches.Exporting;
 using KeySwitchManager.Xlsx.KeySwitch.ClosedXml;
 
