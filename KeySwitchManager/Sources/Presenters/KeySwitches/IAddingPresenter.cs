@@ -1,6 +1,6 @@
 using KeySwitchManager.UseCases.KeySwitches.Adding;
 
-namespace KeySwitchManager.Presenters.KeySwitch
+namespace KeySwitchManager.Presenters.KeySwitches
 {
     public interface IAddingPresenter : IPresenter<KeySwitchAddingResponse>
     {

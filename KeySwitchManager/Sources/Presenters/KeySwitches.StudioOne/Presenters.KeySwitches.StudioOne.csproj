@@ -6,15 +6,15 @@
         <!-- Assembly -->
         <Copyright>R-Koubou</Copyright>
         <Company>R-Koubou</Company>
-        <Product>KeySwitchManager.Presenters.KeySwitches</Product>
-        <AssemblyName>KeySwitchManager.Presenters.KeySwitch</AssemblyName>
-        <RootNamespace>KeySwitchManager.Presenters.KeySwitch</RootNamespace>
+        <Product>KeySwitchManager.Presenters.StudioOneKeySwitch</Product>
+        <AssemblyName>KeySwitchManager.Presenters.KeySwitches.StudioOneKeySwitch</AssemblyName>
+        <RootNamespace>KeySwitchManager.Presenters.KeySwitches.StudioOneKeySwitch</RootNamespace>
         <Nullable>enable</Nullable>
     </PropertyGroup>
 
     <ItemGroup>
       <ProjectReference Include="..\..\Commons\Commons.csproj" />
-      <ProjectReference Include="..\..\UseCases\KeySwitches\UseCases.KeySwitches.csproj" />
+      <ProjectReference Include="..\..\UseCases\KeySwitches.StudioOne\UseCases.KeySwitches.StudioOne.csproj" />
       <ProjectReference Include="..\Common\Presenters.Common.csproj" />
     </ItemGroup>
 

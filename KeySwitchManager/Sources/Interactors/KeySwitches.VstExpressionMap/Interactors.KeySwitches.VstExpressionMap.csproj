@@ -15,7 +15,7 @@
     <ItemGroup>
       <ProjectReference Include="..\..\Commons\Commons.csproj" />
       <ProjectReference Include="..\..\Gateways\KeySwitches\Gateways.KeySwitches.csproj" />
-      <ProjectReference Include="..\..\Presenters\KeySwitch.VstExpressionMap\Presenters.KeySwitch.VstExpressionMap.csproj" />
+      <ProjectReference Include="..\..\Presenters\KeySwitches.VstExpressionMap\Presenters.KeySwitches.VstExpressionMap.csproj" />
       <ProjectReference Include="..\..\UseCases\KeySwitches.VstExpressionMap\UseCases.KeySwitches.VstExpressionMap.csproj" />
     </ItemGroup>
 

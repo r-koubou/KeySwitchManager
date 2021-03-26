@@ -1,6 +1,6 @@
 using KeySwitchManager.UseCases.KeySwitches.Importing.Text;
 
-namespace KeySwitchManager.Presenters.KeySwitch
+namespace KeySwitchManager.Presenters.KeySwitches
 {
     public interface IImportingTextPresenter : IPresenter<ImportingTextResponse>
     {

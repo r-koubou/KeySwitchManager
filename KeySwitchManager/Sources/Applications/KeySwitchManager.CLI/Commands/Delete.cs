@@ -7,7 +7,7 @@ using Database.LiteDB.KeySwitch.KeySwitch;
 
 using KeySwitchManager.Interactors.KeySwitches.Removing;
 using KeySwitchManager.Json.KeySwitch.Translation;
-using KeySwitchManager.Presenters.KeySwitch;
+using KeySwitchManager.Presenters.KeySwitches;
 using KeySwitchManager.UseCases.KeySwitches.Removing;
 
 namespace KeySwitchManager.CLI.Commands

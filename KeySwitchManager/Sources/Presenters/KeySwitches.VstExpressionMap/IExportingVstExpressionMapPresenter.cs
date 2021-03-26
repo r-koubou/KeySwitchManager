@@ -1,6 +1,6 @@
 using KeySwitchManager.UseCases.KeySwitches.VstExpressionMap.Exporting;
 
-namespace KeySwitchManager.Presenters.VstExpressionMap
+namespace KeySwitchManager.Presenters.KeySwitches.VstExpressionMap
 {
     public interface IExportingVstExpressionMapPresenter: IPresenter<ExportingVstExpressionMapResponse>
     {

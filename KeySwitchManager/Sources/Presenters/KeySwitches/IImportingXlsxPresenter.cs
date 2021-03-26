@@ -1,6 +1,6 @@
 using KeySwitchManager.UseCases.KeySwitches.Importing.Xlsx;
 
-namespace KeySwitchManager.Presenters.KeySwitch
+namespace KeySwitchManager.Presenters.KeySwitches
 {
     public interface IImportingXlsxPresenter : IPresenter<ImportingXlsxRequest>
     {

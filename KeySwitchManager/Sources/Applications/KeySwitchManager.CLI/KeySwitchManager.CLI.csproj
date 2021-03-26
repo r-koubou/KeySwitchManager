@@ -23,9 +23,9 @@
       <ProjectReference Include="..\..\Interactors\KeySwitches.VstExpressionMap\Interactors.KeySwitches.VstExpressionMap.csproj" />
       <ProjectReference Include="..\..\Interactors\KeySwitches.StudioOne\Interactors.KeySwitches.StudioOne.csproj" />
       <ProjectReference Include="..\..\Interactors\KeySwitches\Interactors.KeySwitches.csproj" />
-      <ProjectReference Include="..\..\Presenters\KeySwitch\Presenters.KeySwitch.csproj" />
-      <ProjectReference Include="..\..\Presenters\KeySwitch.StudioOne\Presenters.KeySwitch.StudioOne.csproj" />
-      <ProjectReference Include="..\..\Presenters\KeySwitch.VstExpressionMap\Presenters.KeySwitch.VstExpressionMap.csproj" />
+      <ProjectReference Include="..\..\Presenters\KeySwitches.VstExpressionMap\Presenters.KeySwitches.VstExpressionMap.csproj" />
+      <ProjectReference Include="..\..\Presenters\KeySwitches.StudioOne\Presenters.KeySwitches.StudioOne.csproj" />
+      <ProjectReference Include="..\..\Presenters\KeySwitches\Presenters.KeySwitches.csproj" />
     </ItemGroup>
 
     <ItemGroup>

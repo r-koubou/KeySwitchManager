@@ -4,7 +4,7 @@ using KeySwitchManager.Domain.Commons;
 using KeySwitchManager.Domain.KeySwitches;
 using KeySwitchManager.Domain.KeySwitches.Value;
 using KeySwitchManager.Gateways.KeySwitches;
-using KeySwitchManager.Presenters.KeySwitch;
+using KeySwitchManager.Presenters.KeySwitches;
 using KeySwitchManager.UseCases.KeySwitches.Searching;
 using KeySwitchManager.UseCases.KeySwitches.Translators;
 

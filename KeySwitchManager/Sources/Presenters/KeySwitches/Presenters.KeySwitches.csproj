@@ -6,15 +6,15 @@
         <!-- Assembly -->
         <Copyright>R-Koubou</Copyright>
         <Company>R-Koubou</Company>
-        <Product>KeySwitchManager.Presenters.VstExpressionMap</Product>
-        <AssemblyName>KeySwitchManager.Presenters.KeySwitch.VstExpressionMap</AssemblyName>
-        <RootNamespace>KeySwitchManager.Presenters.KeySwitch.VstExpressionMap</RootNamespace>
+        <Product>KeySwitchManager.Presenters.KeySwitches</Product>
+        <AssemblyName>KeySwitchManager.Presenters.KeySwitches</AssemblyName>
+        <RootNamespace>KeySwitchManager.Presenters.KeySwitches</RootNamespace>
         <Nullable>enable</Nullable>
     </PropertyGroup>
 
     <ItemGroup>
       <ProjectReference Include="..\..\Commons\Commons.csproj" />
-      <ProjectReference Include="..\..\UseCases\KeySwitches.VstExpressionMap\UseCases.KeySwitches.VstExpressionMap.csproj" />
+      <ProjectReference Include="..\..\UseCases\KeySwitches\UseCases.KeySwitches.csproj" />
       <ProjectReference Include="..\Common\Presenters.Common.csproj" />
     </ItemGroup>
 

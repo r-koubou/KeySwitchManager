@@ -11,7 +11,7 @@ using Database.LiteDB.KeySwitch.KeySwitch;
 using KeySwitchManager.CLI.Helpers;
 using KeySwitchManager.Domain.Commons;
 using KeySwitchManager.Interactors.KeySwitches.StudioOne.Exporting;
-using KeySwitchManager.Presenters.KeySwitch.StudioOneKeySwitch;
+using KeySwitchManager.Presenters.KeySwitches.StudioOneKeySwitch;
 using KeySwitchManager.UseCases.KeySwitches.StudioOne.Exporting;
 using KeySwitchManager.Xml.KeySwitch.StudioOne.Translation;
 

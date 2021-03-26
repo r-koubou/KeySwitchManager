@@ -80,11 +80,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presenters", "Presenters", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Presenters.Common", "Sources\Presenters\Common\Presenters.Common.csproj", "{83BD82FE-0432-4142-8A61-2B19A4179198}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Presenters.KeySwitch", "Sources\Presenters\KeySwitch\Presenters.KeySwitch.csproj", "{093B5A70-DCD3-45A0-AE41-2272DC2556DF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Presenters.KeySwitches", "Sources\Presenters\KeySwitches\Presenters.KeySwitches.csproj", "{093B5A70-DCD3-45A0-AE41-2272DC2556DF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Presenters.KeySwitch.StudioOne", "Sources\Presenters\KeySwitch.StudioOne\Presenters.KeySwitch.StudioOne.csproj", "{2F458E5D-55A4-492E-A521-19BFEA3D205E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Presenters.KeySwitches.StudioOne", "Sources\Presenters\KeySwitches.StudioOne\Presenters.KeySwitches.StudioOne.csproj", "{2F458E5D-55A4-492E-A521-19BFEA3D205E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Presenters.KeySwitch.VstExpressionMap", "Sources\Presenters\KeySwitch.VstExpressionMap\Presenters.KeySwitch.VstExpressionMap.csproj", "{52D28374-5A06-4638-B313-EEBCDAA6072D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Presenters.KeySwitches.VstExpressionMap", "Sources\Presenters\KeySwitches.VstExpressionMap\Presenters.KeySwitches.VstExpressionMap.csproj", "{52D28374-5A06-4638-B313-EEBCDAA6072D}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Runtime", "Runtime", "{D67D4BCC-4359-4C74-9DBA-CB17BF358263}"
 EndProject
@@ -108,7 +108,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UseCases.KeySwitches.Cakewa
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Interactors.KeySwitches.Cakewalk", "Sources\Interactors\KeySwitches.Cakewalk\Interactors.KeySwitches.Cakewalk.csproj", "{1F04BDDE-6330-44DD-8B37-0ABD9F64ED72}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Presenters.KeySwitch.Cakewalk", "Sources\Presenters\KeySwitch.Cakewalk\Presenters.KeySwitch.Cakewalk.csproj", "{3F3FA8A9-06A3-4E57-94A7-6712A7FF1EFB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Presenters.KeySwitches.Cakewalk", "Sources\Presenters\KeySwitches.Cakewalk\Presenters.KeySwitches.Cakewalk.csproj", "{3F3FA8A9-06A3-4E57-94A7-6712A7FF1EFB}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Json.KeySwitch.Cakewalk", "Sources\External\Json\KeySwitch.Cakewalk\Json.KeySwitch.Cakewalk.csproj", "{0162F56A-6162-4904-AB60-37FAC1E9239F}"
 EndProject

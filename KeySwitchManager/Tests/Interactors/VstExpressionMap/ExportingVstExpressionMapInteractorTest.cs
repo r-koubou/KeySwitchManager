@@ -5,7 +5,7 @@ using Database.LiteDB.KeySwitch.KeySwitch;
 
 using KeySwitchManager.Common.Testing.KeySwitches;
 using KeySwitchManager.Interactors.KeySwitches.VstExpressionMap.Exporting;
-using KeySwitchManager.Presenters.VstExpressionMap;
+using KeySwitchManager.Presenters.KeySwitches.VstExpressionMap;
 using KeySwitchManager.UseCases.KeySwitches.VstExpressionMap.Exporting;
 using KeySwitchManager.Xml.KeySwitch.VstExpressionMap.Translation;
 
