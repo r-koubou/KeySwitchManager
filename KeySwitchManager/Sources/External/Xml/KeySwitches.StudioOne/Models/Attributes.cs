@@ -1,0 +1,13 @@
+using System.Xml.Serialization;
+
+namespace KeySwitchManager.Xml.KeySwitches.StudioOne.Models
+{
+    public class Attributes
+    {
+        [XmlAttribute( AttributeName = "pitch" )]
+        public string Pitch { get; set; } = string.Empty;
+
+        [XmlAttribute( AttributeName = "name" )]
+        public string Name { get; set; } = string.Empty;
+    }
+}

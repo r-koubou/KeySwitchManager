@@ -20,7 +20,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\..\..\Sources\Domain\MidiMessages\Domain.MidiMessages.csproj" />
-      <ProjectReference Include="..\..\..\Sources\External\Xml\KeySwitch.StudioOne\Xml.KeySwitch.StudioOne.csproj" />
+      <ProjectReference Include="..\..\..\Sources\External\Xml\KeySwitches.StudioOne\Xml.KeySwitches.StudioOne.csproj" />
       <ProjectReference Include="..\..\Common\Common.Testing.csproj" />
     </ItemGroup>
 

@@ -1,11 +1,11 @@
 using System;
 using System.IO;
 
-using Database.LiteDB.KeySwitch.KeySwitch;
+using Database.LiteDB.KeySwitches;
 
 using KeySwitchManager.Common.Testing.KeySwitches;
 using KeySwitchManager.Interactors.KeySwitches.Searching;
-using KeySwitchManager.Json.KeySwitch.Translation;
+using KeySwitchManager.Json.KeySwitches.Translators;
 using KeySwitchManager.Presenters.KeySwitches;
 using KeySwitchManager.UseCases.KeySwitches.Searching;
 

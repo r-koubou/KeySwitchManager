@@ -2,7 +2,7 @@ using System.Collections.Generic;
 
 using KeySwitchManager.Domain.KeySwitches;
 using KeySwitchManager.Gateways.KeySwitches;
-using KeySwitchManager.Gateways.KeySwitches.Helper;
+using KeySwitchManager.Gateways.KeySwitches.Helpers;
 using KeySwitchManager.Presenters.KeySwitches.VstExpressionMap;
 using KeySwitchManager.UseCases.KeySwitches.VstExpressionMap.Exporting;
 using KeySwitchManager.UseCases.KeySwitches.VstExpressionMap.Translators;

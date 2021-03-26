@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.IO;
 
-using Database.LiteDB.KeySwitch.KeySwitch;
+using Database.LiteDB.KeySwitches;
 
 using KeySwitchManager.Domain.MidiMessages.Entity;
 using KeySwitchManager.Interactors.KeySwitches.Adding;

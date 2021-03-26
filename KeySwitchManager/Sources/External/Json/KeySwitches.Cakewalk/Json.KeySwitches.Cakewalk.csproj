@@ -1,0 +1,24 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <LangVersion>9</LangVersion>
+        <TargetFramework>net5.0</TargetFramework>
+        <!-- Assembly -->
+        <Copyright>R-Koubou</Copyright>
+        <Company>R-Koubou</Company>
+        <Product>KeySwitchManager.Json.KeySwitch.Cakewalk</Product>
+        <AssemblyName>KeySwitchManager.Json.KeySwitches.Cakewalk</AssemblyName>
+        <RootNamespace>KeySwitchManager.Json.KeySwitches.Cakewalk</RootNamespace>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\..\..\Commons\Commons.csproj" />
+      <ProjectReference Include="..\..\..\Domain\Translations\Domain.Translations.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="Helper" />
+    </ItemGroup>
+
+</Project>

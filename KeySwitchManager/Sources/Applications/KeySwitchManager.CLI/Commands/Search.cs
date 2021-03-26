@@ -5,10 +5,10 @@ using System.Text;
 
 using CommandLine;
 
-using Database.LiteDB.KeySwitch.KeySwitch;
+using Database.LiteDB.KeySwitches;
 
 using KeySwitchManager.Interactors.KeySwitches.Searching;
-using KeySwitchManager.Json.KeySwitch.Translation;
+using KeySwitchManager.Json.KeySwitches.Translators;
 using KeySwitchManager.Presenters.KeySwitches;
 using KeySwitchManager.UseCases.KeySwitches.Searching;
 

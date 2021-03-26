@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using KeySwitchManager.Common.Testing.KeySwitches;
 using KeySwitchManager.Domain.MidiMessages;
 using KeySwitchManager.Domain.MidiMessages.Entity;
-using KeySwitchManager.Xml.KeySwitch.VstExpressionMap.Translation;
+using KeySwitchManager.Xml.KeySwitches.VstExpressionMap.Translators;
 
 using NUnit.Framework;
 

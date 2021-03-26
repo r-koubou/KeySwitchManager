@@ -1,6 +1,6 @@
 using System.IO;
 
-using Database.LiteDB.KeySwitch.KeySwitch;
+using Database.LiteDB.KeySwitches;
 
 using KeySwitchManager.Common.Testing.KeySwitches;
 

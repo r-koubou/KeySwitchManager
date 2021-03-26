@@ -5,7 +5,7 @@ using KeySwitchManager.Common.Testing.KeySwitches;
 using KeySwitchManager.Domain.Commons;
 using KeySwitchManager.Domain.MidiMessages;
 using KeySwitchManager.Domain.MidiMessages.Entity;
-using KeySwitchManager.Json.KeySwitch.Cakewalk.Translation;
+using KeySwitchManager.Json.KeySwitches.Cakewalk.Translators;
 
 using NUnit.Framework;
 

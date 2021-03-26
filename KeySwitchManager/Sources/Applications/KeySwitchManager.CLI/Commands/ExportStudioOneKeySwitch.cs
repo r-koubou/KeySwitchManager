@@ -6,14 +6,14 @@ using System.Text;
 
 using CommandLine;
 
-using Database.LiteDB.KeySwitch.KeySwitch;
+using Database.LiteDB.KeySwitches;
 
 using KeySwitchManager.CLI.Helpers;
 using KeySwitchManager.Domain.Commons;
 using KeySwitchManager.Interactors.KeySwitches.StudioOne.Exporting;
 using KeySwitchManager.Presenters.KeySwitches.StudioOneKeySwitch;
 using KeySwitchManager.UseCases.KeySwitches.StudioOne.Exporting;
-using KeySwitchManager.Xml.KeySwitch.StudioOne.Translation;
+using KeySwitchManager.Xml.KeySwitches.StudioOne.Translators;
 
 using RkHelper.IO;
 

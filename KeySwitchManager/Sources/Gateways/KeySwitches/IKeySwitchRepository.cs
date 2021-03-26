@@ -2,7 +2,7 @@ using System.Collections.Generic;
 
 using KeySwitchManager.Domain.KeySwitches;
 using KeySwitchManager.Domain.KeySwitches.Value;
-using KeySwitchManager.Gateways.KeySwitches.Value;
+using KeySwitchManager.Gateways.KeySwitches.Values;
 
 namespace KeySwitchManager.Gateways.KeySwitches
 {

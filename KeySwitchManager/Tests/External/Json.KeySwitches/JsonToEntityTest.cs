@@ -1,5 +1,5 @@
 using KeySwitchManager.Domain.Commons;
-using KeySwitchManager.Json.KeySwitch.Translation;
+using KeySwitchManager.Json.KeySwitches.Translators;
 
 using NUnit.Framework;
 
