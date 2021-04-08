@@ -7,13 +7,15 @@
         <Copyright>R-Koubou</Copyright>
         <Company>R-Koubou</Company>
         <Product>KeySwitchManager.Presenters.KeySwitch.Cakewalk</Product>
-        <AssemblyName>KeySwitchManager.Presenters.KeySwitch.Cakewalkes</AssemblyName>
-        <RootNamespace>KeySwitchManager.Presenters.KeySwitch.Cakewalkes</RootNamespace>
+        <AssemblyName>KeySwitchManager.Presenters.KeySwitch.Cakewalk</AssemblyName>
+        <RootNamespace>KeySwitchManager.Presenters.KeySwitch.Cakewalk</RootNamespace>
         <Nullable>enable</Nullable>
     </PropertyGroup>
 
     <ItemGroup>
       <ProjectReference Include="..\..\Commons\Commons.csproj" />
+      <ProjectReference Include="..\..\UseCases\KeySwitches.Cakewalk\UseCases.KeySwitches.Cakewalk.csproj" />
+      <ProjectReference Include="..\Commons\Presenters.Commons.csproj" />
     </ItemGroup>
 
 </Project>

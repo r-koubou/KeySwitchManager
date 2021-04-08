@@ -17,9 +17,4 @@
       <ProjectReference Include="..\..\Domain\Translators\Domain.Translators.csproj" />
     </ItemGroup>
 
-    <ItemGroup>
-      <Folder Include="Exporting" />
-      <Folder Include="Translators" />
-    </ItemGroup>
-
 </Project>

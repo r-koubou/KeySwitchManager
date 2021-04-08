@@ -25,7 +25,7 @@ namespace KeySwitchManager.Json.KeySwitches.Cakewalk.Testing
                 new List<MidiProgramChange>()
             );
             var keySwitch = TestDataGenerator.CreateKeySwitch( artichlation );
-            var translator = new KeySwitchToJsonModel();
+            var translator = new KeySwitchToCakewalkArticulationModel();
             var jsonText = translator.Translate( keySwitch );
 
             Console.WriteLine( jsonText );

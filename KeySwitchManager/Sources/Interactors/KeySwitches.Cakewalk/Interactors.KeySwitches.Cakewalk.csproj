@@ -14,6 +14,10 @@
 
     <ItemGroup>
       <ProjectReference Include="..\..\Commons\Commons.csproj" />
+      <ProjectReference Include="..\..\External\Json\KeySwitches.Cakewalk\Json.KeySwitches.Cakewalk.csproj" />
+      <ProjectReference Include="..\..\Gateways\KeySwitches\Gateways.KeySwitches.csproj" />
+      <ProjectReference Include="..\..\Presenters\KeySwitches.Cakewalk\Presenters.KeySwitches.Cakewalk.csproj" />
+      <ProjectReference Include="..\..\UseCases\KeySwitches.Cakewalk\UseCases.KeySwitches.Cakewalk.csproj" />
     </ItemGroup>
 
 </Project>

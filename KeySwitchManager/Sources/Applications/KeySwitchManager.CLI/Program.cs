@@ -21,6 +21,8 @@ namespace KeySwitchManager.CLI
                 typeof(TemplateXlsx.CommandOption),
                 typeof(ImportXlsx.CommandOption),
                 typeof(ExportVstExpressionMap.CommandOption),
+                typeof(ExportStudioOneKeySwitch.CommandOption),
+                typeof(ExportCakewalkArticulation.CommandOption),
                 typeof(ExportXlsx.CommandOption),
             };
 
@@ -33,6 +35,8 @@ namespace KeySwitchManager.CLI
                 ( TemplateXlsx.CommandOption option ) => new TemplateXlsx().Execute( option ),
                 ( ImportXlsx.CommandOption option ) => new ImportXlsx().Execute( option ),
                 ( ExportVstExpressionMap.CommandOption option ) => new ExportVstExpressionMap().Execute( option ),
+                ( ExportStudioOneKeySwitch.CommandOption option ) => new ExportStudioOneKeySwitch().Execute( option ),
+                ( ExportCakewalkArticulation.CommandOption option ) => new ExportCakewalkArticulation().Execute( option ),
                 ( ExportXlsx.CommandOption option ) => new ExportXlsx().Execute( option ),
                 errors => 1
             );

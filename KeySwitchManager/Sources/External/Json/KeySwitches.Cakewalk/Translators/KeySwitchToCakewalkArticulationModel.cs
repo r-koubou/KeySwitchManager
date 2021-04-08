@@ -6,15 +6,15 @@ using System.Text.Json;
 using KeySwitchManager.Domain.Commons;
 using KeySwitchManager.Domain.KeySwitches;
 using KeySwitchManager.Domain.MidiMessages.Entity;
-using KeySwitchManager.Domain.Translators;
 using KeySwitchManager.Json.KeySwitches.Cakewalk.Models;
+using KeySwitchManager.UseCases.KeySwitches.Cakewalk.Translators;
 
 using Articulation = KeySwitchManager.Domain.KeySwitches.Entity.Articulation;
 using CwArticulation = KeySwitchManager.Json.KeySwitches.Cakewalk.Models.Articulation;
 
 namespace KeySwitchManager.Json.KeySwitches.Cakewalk.Translators
 {
-    public class KeySwitchToJsonModel : IKeySwitchToText
+    public class KeySwitchToCakewalkArticulationModel : IKeySwitchToCakewalkArticulationModel
     {
         public IText Translate( KeySwitch source )
         {
@@ -23,24 +23,19 @@ namespace KeySwitchManager.Json.KeySwitches.Cakewalk.Translators
             var groupId = 1;
 
             var articulations = new List<CwArticulation>();
-            var groups = new List<Group>();
 
             foreach( var x in source.Articulations )
             {
                 var a = TranslateArticulation( x, id, index, groupId );
                 articulations.Add( a );
 
-                var group = new Group( groupId, source.InstrumentName.Value );
-                groups.Add( group );
-
                 id++;
                 index++;
-                groupId++;
             }
 
             var articulationMap = new ArticulationMap(
                 source.ProductName.Value,
-                groups,
+                new[]{ new Group( 1, source.InstrumentName.Value ) },
                 articulations
             );
 
