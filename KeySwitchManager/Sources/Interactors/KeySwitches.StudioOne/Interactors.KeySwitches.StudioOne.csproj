@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <LangVersion>9</LangVersion>
+        <TargetFramework>net5.0</TargetFramework>
+        <!-- Assembly -->
+        <Copyright>R-Koubou</Copyright>
+        <Company>R-Koubou</Company>
+        <Product>KeySwitchManager.Interactors.StudioOneKeySwitch</Product>
+        <AssemblyName>KeySwitchManager.Interactors.KeySwitches.StudioOne</AssemblyName>
+        <RootNamespace>KeySwitchManager.Interactors.KeySwitches.StudioOne</RootNamespace>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\..\Commons\Commons.csproj" />
+      <ProjectReference Include="..\..\Gateways\KeySwitches\Gateways.KeySwitches.csproj" />
+      <ProjectReference Include="..\..\Presenters\KeySwitches.StudioOne\Presenters.KeySwitches.StudioOne.csproj" />
+      <ProjectReference Include="..\..\UseCases\KeySwitches.StudioOne\UseCases.KeySwitches.StudioOne.csproj" />
+    </ItemGroup>
+
+</Project>

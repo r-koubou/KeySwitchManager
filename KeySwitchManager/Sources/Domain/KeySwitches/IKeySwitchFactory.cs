@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 using KeySwitchManager.Domain.Commons;
 using KeySwitchManager.Domain.KeySwitches.Entity;
-using KeySwitchManager.Domain.KeySwitches.Value;
+using KeySwitchManager.Domain.KeySwitches.Values;
 
 using RkHelper.Time;
 

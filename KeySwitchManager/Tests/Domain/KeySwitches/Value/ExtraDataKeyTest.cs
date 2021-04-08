@@ -1,6 +1,6 @@
 using System;
 
-using KeySwitchManager.Domain.KeySwitches.Value;
+using KeySwitchManager.Domain.KeySwitches.Values;
 
 using NUnit.Framework;
 

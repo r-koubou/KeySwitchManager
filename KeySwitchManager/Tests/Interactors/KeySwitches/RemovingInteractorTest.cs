@@ -1,12 +1,12 @@
 using System;
 using System.IO;
 
-using Database.LiteDB.KeySwitch.KeySwitch;
+using Database.LiteDB.KeySwitches;
 
 using KeySwitchManager.Common.Testing.KeySwitches;
-using KeySwitchManager.Interactors.KeySwitch.Removing;
-using KeySwitchManager.Presenters.KeySwitch;
-using KeySwitchManager.UseCases.KeySwitch.Removing;
+using KeySwitchManager.Interactors.KeySwitches.Removing;
+using KeySwitchManager.Presenters.KeySwitches;
+using KeySwitchManager.UseCases.KeySwitches.Removing;
 
 using NUnit.Framework;
 

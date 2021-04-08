@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-using KeySwitchManager.Domain.KeySwitches.Value;
+using KeySwitchManager.Domain.KeySwitches.Values;
 
 namespace KeySwitchManager.Domain.KeySwitches
 {

@@ -5,14 +5,14 @@ using System.Threading.Tasks;
 
 using CommandLine;
 
-using Database.LiteDB.KeySwitch.KeySwitch;
+using Database.LiteDB.KeySwitches;
 
 using KeySwitchManager.Domain.Commons;
 using KeySwitchManager.Domain.KeySwitches;
-using KeySwitchManager.Domain.KeySwitches.Value;
-using KeySwitchManager.Interactors.KeySwitch.Exporting;
-using KeySwitchManager.UseCases.KeySwitch.Exporting;
-using KeySwitchManager.Xlsx.KeySwitch.ClosedXml;
+using KeySwitchManager.Domain.KeySwitches.Values;
+using KeySwitchManager.Interactors.KeySwitches.Exporting;
+using KeySwitchManager.UseCases.KeySwitches.Exporting;
+using KeySwitchManager.Xlsx.KeySwitches.ClosedXml;
 
 using RkHelper.Text;
 

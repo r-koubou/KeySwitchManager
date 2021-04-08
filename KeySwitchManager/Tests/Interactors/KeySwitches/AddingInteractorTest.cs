@@ -1,12 +1,12 @@
 using System.Collections.Generic;
 using System.IO;
 
-using Database.LiteDB.KeySwitch.KeySwitch;
+using Database.LiteDB.KeySwitches;
 
 using KeySwitchManager.Domain.MidiMessages.Entity;
-using KeySwitchManager.Interactors.KeySwitch.Adding;
-using KeySwitchManager.Presenters.KeySwitch;
-using KeySwitchManager.UseCases.KeySwitch.Adding;
+using KeySwitchManager.Interactors.KeySwitches.Adding;
+using KeySwitchManager.Presenters.KeySwitches;
+using KeySwitchManager.UseCases.KeySwitches.Adding;
 
 using NUnit.Framework;
 

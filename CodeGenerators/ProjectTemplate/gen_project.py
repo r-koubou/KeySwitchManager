@@ -5,7 +5,7 @@ import re
 AUTHOR              = 'R-Koubou'
 PROJECT_NAME_PREFIX = 'KeySwitchManager.'
 TARGET_LANGVERSION  = '9'
-TARGET_FRAMEWORK    = 'netcoreapp3.1'
+TARGET_FRAMEWORK    = 'net5.0'
 REPO_URL            = 'https://github.com/r-koubou/KeySwitchManager'
 PROJECT_TYPE_MODULE = 'module'
 PROJECT_TYPE_CLI    = 'cliapp'

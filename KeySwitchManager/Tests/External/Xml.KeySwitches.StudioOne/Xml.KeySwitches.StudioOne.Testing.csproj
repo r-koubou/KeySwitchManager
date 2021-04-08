@@ -1,0 +1,27 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net5.0</TargetFramework>
+
+        <IsPackable>false</IsPackable>
+
+        <Nullable>enable</Nullable>
+
+        <AssemblyName>KeySwitchManager.Xml.KeySwitches.StudioOne.Testing</AssemblyName>
+
+        <RootNamespace>KeySwitchManager.Xml.KeySwitches.StudioOne.Testing</RootNamespace>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="nunit" Version="3.12.0" />
+        <PackageReference Include="NUnit3TestAdapter" Version="3.15.1" />
+        <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.4.0" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\..\..\Sources\Domain\MidiMessages\Domain.MidiMessages.csproj" />
+      <ProjectReference Include="..\..\..\Sources\External\Xml\KeySwitches.StudioOne\Xml.KeySwitches.StudioOne.csproj" />
+      <ProjectReference Include="..\..\Common\Common.Testing.csproj" />
+    </ItemGroup>
+
+</Project>

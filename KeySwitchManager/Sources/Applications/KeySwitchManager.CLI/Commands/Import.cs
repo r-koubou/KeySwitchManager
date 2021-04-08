@@ -3,12 +3,12 @@ using System.IO;
 
 using CommandLine;
 
-using Database.LiteDB.KeySwitch.KeySwitch;
+using Database.LiteDB.KeySwitches;
 
-using KeySwitchManager.Interactors.KeySwitch.Importing;
-using KeySwitchManager.Json.KeySwitch.Translation;
-using KeySwitchManager.Presenters.KeySwitch;
-using KeySwitchManager.UseCases.KeySwitch.Importing.Text;
+using KeySwitchManager.Interactors.KeySwitches.Importing;
+using KeySwitchManager.Json.KeySwitches.Translators;
+using KeySwitchManager.Presenters.KeySwitches;
+using KeySwitchManager.UseCases.KeySwitches.Importing.Text;
 
 namespace KeySwitchManager.CLI.Commands
 {

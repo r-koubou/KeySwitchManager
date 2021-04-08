@@ -1,15 +1,15 @@
 using System;
 using System.IO;
 
-using Database.LiteDB.KeySwitch.KeySwitch;
+using Database.LiteDB.KeySwitches;
 
 using KeySwitchManager.Common.Testing.KeySwitches;
 using KeySwitchManager.Domain.MidiMessages;
 using KeySwitchManager.Domain.MidiMessages.Entity;
-using KeySwitchManager.Interactors.KeySwitch.StudioOne.Exporting;
-using KeySwitchManager.Presenters.KeySwitch.StudioOneKeySwitch;
-using KeySwitchManager.UseCases.KeySwitch.StudioOne.Exporting;
-using KeySwitchManager.Xml.KeySwitch.StudioOne.Translation;
+using KeySwitchManager.Interactors.KeySwitches.StudioOne.Exporting;
+using KeySwitchManager.Presenters.KeySwitches.StudioOneKeySwitch;
+using KeySwitchManager.UseCases.KeySwitches.StudioOne.Exporting;
+using KeySwitchManager.Xml.KeySwitches.StudioOne.Translators;
 
 using NUnit.Framework;
 

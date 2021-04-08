@@ -1,5 +1,5 @@
 using KeySwitchManager.Domain.MidiMessages.Entity;
-using KeySwitchManager.Domain.MidiMessages.Value;
+using KeySwitchManager.Domain.MidiMessages.Values;
 
 namespace KeySwitchManager.Domain.MidiMessages
 {
