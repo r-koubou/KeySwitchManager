@@ -3,12 +3,10 @@ using System.Diagnostics.CodeAnalysis;
 
 using CommandLine;
 
-using Database.LiteDB.KeySwitches;
-
-using KeySwitchManager.Interactors.KeySwitches.Removing;
-using KeySwitchManager.Json.KeySwitches.Translators;
-using KeySwitchManager.Presenters.KeySwitches;
-using KeySwitchManager.UseCases.KeySwitches.Removing;
+using KeySwitchManager.Commons.Data;
+using KeySwitchManager.Infrastructure.Database.LiteDB.KeySwitches;
+using KeySwitchManager.Interactor.KeySwitches;
+using KeySwitchManager.UseCase.KeySwitches.Delete;
 
 namespace KeySwitchManager.CLI.Commands
 {
@@ -36,16 +34,13 @@ namespace KeySwitchManager.CLI.Commands
         {
             var option = (CommandOption)opt;
 
-            using var repository = new LiteDbKeySwitchRepository( option.DatabasePath );
-            var translator = new KeySwitchListListToJsonModelList{ Formatted = true };
-            var presenter =  new IRemovingPresenter.Null();
-            var interactor = new RemovingInteractor( repository, presenter );
-
-            var input = new RemovingRequest( option.Developer, option.Product, option.Instrument );
+            using var repository = new LiteDbKeySwitchRepository( new FilePath( option.DatabasePath ) );
+            var interactor = new DeleteInteractor( repository );
+            var request = new DeleteRequest( option.Developer, option.Product, option.Instrument );
 
             Console.WriteLine( $"Developer=\"{option.Developer}\", Product=\"{option.Product}\", Instrument=\"{option.Instrument}\"" );
 
-            var response = interactor.Execute( input );
+            var response = interactor.Execute( request );
 
             if( response.RemovedCount > 0 )
             {

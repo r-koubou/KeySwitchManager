@@ -14,23 +14,6 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\..\External\Database\LiteDB.KeySwitches\Database.LiteDB.KeySwitches.csproj" />
-      <ProjectReference Include="..\..\External\Json\KeySwitches.Cakewalk\Json.KeySwitches.Cakewalk.csproj" />
-      <ProjectReference Include="..\..\External\Json\KeySwitches\Json.KeySwitches.csproj" />
-      <ProjectReference Include="..\..\External\Xlsx\KeySwitches.ClosedXml\Xlsx.KeySwitches.ClosedXml.csproj" />
-      <ProjectReference Include="..\..\External\Xlsx\KeySwitches\Xlsx.KeySwitches.csproj" />
-      <ProjectReference Include="..\..\External\Xml\KeySwitches.VstExpressionMap\Xml.KeySwitches.VstExpressionMap.csproj" />
-      <ProjectReference Include="..\..\External\Xml\KeySwitches.StudioOne\Xml.KeySwitches.StudioOne.csproj" />
-      <ProjectReference Include="..\..\Interactors\KeySwitches.Cakewalk\Interactors.KeySwitches.Cakewalk.csproj" />
-      <ProjectReference Include="..\..\Interactors\KeySwitches.VstExpressionMap\Interactors.KeySwitches.VstExpressionMap.csproj" />
-      <ProjectReference Include="..\..\Interactors\KeySwitches.StudioOne\Interactors.KeySwitches.StudioOne.csproj" />
-      <ProjectReference Include="..\..\Interactors\KeySwitches\Interactors.KeySwitches.csproj" />
-      <ProjectReference Include="..\..\Presenters\KeySwitches.VstExpressionMap\Presenters.KeySwitches.VstExpressionMap.csproj" />
-      <ProjectReference Include="..\..\Presenters\KeySwitches.StudioOne\Presenters.KeySwitches.StudioOne.csproj" />
-      <ProjectReference Include="..\..\Presenters\KeySwitches\Presenters.KeySwitches.csproj" />
-    </ItemGroup>
-
-    <ItemGroup>
       <PackageReference Include="CommandLineParser" Version="2.8.0" />
     </ItemGroup>
 
@@ -61,6 +44,15 @@
       <None Update="VERSION.md">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </None>
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\..\Infrastructure\Database.LiteDB\Database.LiteDB.csproj" />
+      <ProjectReference Include="..\..\Infrastructure\Storage.Json\Storage.Json.csproj" />
+      <ProjectReference Include="..\..\Infrastructure\Storage.Spreadsheet.ClosedXml\Storage.Spreadsheet.ClosedXml.csproj" />
+      <ProjectReference Include="..\..\Infrastructure\Storage.Spreadsheet\Storage.Spreadsheet.csproj" />
+      <ProjectReference Include="..\..\Infrastructure\Storage.Xml\Storage.Xml.csproj" />
+      <ProjectReference Include="..\..\Interactor\Interactor.csproj" />
     </ItemGroup>
 
     <!-- Output assenbly version to text file for including on deploy by msbuild script. -->

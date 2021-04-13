@@ -1,14 +1,11 @@
 using System;
 using System.Diagnostics.CodeAnalysis;
-using System.IO;
 
 using CommandLine;
 
-using KeySwitchManager.Interactors.KeySwitches.Exporting;
-using KeySwitchManager.Json.KeySwitches.Translators;
-
-using RkHelper.IO;
-using RkHelper.Text;
+using KeySwitchManager.Commons.Data;
+using KeySwitchManager.Infrastructure.Storage.Json.KeySwitches;
+using KeySwitchManager.Interactor.KeySwitches;
 
 namespace KeySwitchManager.CLI.Commands
 {
@@ -18,32 +15,19 @@ namespace KeySwitchManager.CLI.Commands
         [SuppressMessage( "ReSharper", "MemberCanBePrivate.Global" )]
         [SuppressMessage( "ReSharper", "ClassNeverInstantiated.Global" )]
         public class CommandOption : ICommandOption
-        {
-            [Option( 'o', "output" )]
-            public string OutputPath { get; set; } = string.Empty;
-        }
+        {}
 
         public int Execute( ICommandOption opt )
         {
             var option = (CommandOption)opt;
+            const string outputPath = "(ProductName).json";
 
-            var translator = new KeySwitchListListToJsonModelList{ Formatted = true };
-            var interactor = new ExportingTemplateJsonInteractor( translator );
+            using var outputRepository = new KeySwitchFileRepository( new FilePath( outputPath ), false );
 
-            var response = interactor.Execute();
+            Console.WriteLine( $"generating keyswitch template to {outputPath}" );
 
-            if( StringHelper.IsEmpty( option.OutputPath ) )
-            {
-                Console.Out.WriteLine( response.Text );
-            }
-            else
-            {
-                var outputDirectory = Path.GetDirectoryName( option.OutputPath )!;
-                DirectoryHelper.Create( outputDirectory );
-
-                Console.WriteLine( $"generating json to {option.OutputPath}" );
-                File.WriteAllText( option.OutputPath, response.Text );
-            }
+            var interactor = new TemplateKeySwitchCreateInteractor( outputRepository );
+            _ = interactor.Execute();
 
             return 0;
         }

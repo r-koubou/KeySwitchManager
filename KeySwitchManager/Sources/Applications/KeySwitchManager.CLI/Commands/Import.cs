@@ -1,14 +1,12 @@
 using System.Diagnostics.CodeAnalysis;
-using System.IO;
 
 using CommandLine;
 
-using Database.LiteDB.KeySwitches;
-
-using KeySwitchManager.Interactors.KeySwitches.Importing;
-using KeySwitchManager.Json.KeySwitches.Translators;
-using KeySwitchManager.Presenters.KeySwitches;
-using KeySwitchManager.UseCases.KeySwitches.Importing.Text;
+using KeySwitchManager.Commons.Data;
+using KeySwitchManager.Infrastructure.Database.LiteDB.KeySwitches;
+using KeySwitchManager.Infrastructure.Storage.Json.KeySwitches;
+using KeySwitchManager.Interactor.KeySwitches;
+using KeySwitchManager.UseCase.KeySwitches.Import.Text;
 
 namespace KeySwitchManager.CLI.Commands
 {
@@ -30,14 +28,15 @@ namespace KeySwitchManager.CLI.Commands
         {
             var option = (CommandOption)opt;
 
-            using var repository = new LiteDbKeySwitchRepository( option.DatabasePath );
-            var translator = new JsonModelListToKeySwitchList();
-            var presenter = new IImportingTextPresenter.Console();
-            var interactor = new ImportingJsonInteractor( repository, translator, presenter );
+            using var repository = new LiteDbKeySwitchRepository( new FilePath( option.DatabasePath ) );
+            using var inputRepository = new KeySwitchFileRepository( new FilePath( option.InputPath ), true );
 
-            var input = new ImportingTextRequest( File.ReadAllText( option.InputPath ) );
+            var presenter = new ITextImportPresenter.Console();
+            var interactor = new TextImportInteractor( repository, inputRepository, presenter );
 
-            _ = interactor.Execute( input );
+            var request = new TextImportRequest();
+
+            _ = interactor.Execute( request );
 
             return 0;
         }

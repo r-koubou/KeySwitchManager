@@ -1,19 +1,13 @@
-using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
-using System.IO;
 
 using CommandLine;
 
-using Database.LiteDB.KeySwitches;
-
-using KeySwitchManager.Domain.Commons;
-using KeySwitchManager.Domain.KeySwitches;
-using KeySwitchManager.Interactors.KeySwitches.Importing;
-using KeySwitchManager.Json.KeySwitches.Translators;
-using KeySwitchManager.Presenters.KeySwitches;
-using KeySwitchManager.UseCases.KeySwitches.Importing.Xlsx;
-using KeySwitchManager.Xlsx.KeySwitches;
-using KeySwitchManager.Xlsx.KeySwitches.ClosedXml;
+using KeySwitchManager.Commons.Data;
+using KeySwitchManager.Domain.KeySwitches.Helpers;
+using KeySwitchManager.Infrastructure.Database.LiteDB.KeySwitches;
+using KeySwitchManager.Infrastructure.Storage.Spreadsheet.ClosedXml.KeySwitches;
+using KeySwitchManager.Interactor.KeySwitches;
+using KeySwitchManager.UseCase.KeySwitches.Import.Spreadsheet;
 
 namespace KeySwitchManager.CLI.Commands
 {
@@ -41,8 +35,6 @@ namespace KeySwitchManager.CLI.Commands
 
             [Option( 'i', "input", Required = true )]
             public string InputPath { get; set; } = string.Empty;
-            [Option( 'l', "log" )]
-            public string LogFilePath { get; set; } = string.Empty;
         }
 
         public int Execute( ICommandOption opt )
@@ -56,41 +48,16 @@ namespace KeySwitchManager.CLI.Commands
                 option.Description
             );
 
-            using var repository = new LiteDbKeySwitchRepository( option.DatabasePath );
-            using var translator = new XlsxImportingRepository(
-                new FilePath( option.InputPath ),
-                new KeySwitchInfo(
-                    option.Developer,
-                    option.Product,
-                    option.Author,
-                    option.Description
-                )
-            );
+            using var repository = new LiteDbKeySwitchRepository( new FilePath( option.DatabasePath ) );
+            using var inputRepository = new ClosedXmlFileLoadRepository( new FilePath( option.InputPath ), info );
 
-            var presenter = new IImportingXlsxPresenter.Console();
-            var interactor = new ImportingXlsxInteractor( repository, translator, presenter );
+            var presenter = new ISpreadsheetImportPresenter.Console();
+            var interactor = new SpreadSheetImportInteractor( repository, inputRepository, presenter );
 
-            var input = new ImportingXlsxRequest();
-
-            var response = interactor.Execute( input );
-            OutputToJson( response.Imported, option );
+            var request = new SpreadsheetImportRequest();
+            _ = interactor.Execute( request );
 
             return 0;
-        }
-
-        private void OutputToJson( IReadOnlyCollection<KeySwitch> entities, CommandOption option )
-        {
-            var translator = new KeySwitchListListToJsonModelList
-            {
-                Formatted = true
-            };
-
-            var json = translator.Translate( entities );
-
-            if( !string.IsNullOrEmpty( option.LogFilePath ) )
-            {
-                File.WriteAllText( option.LogFilePath, json.Value );
-            }
         }
     }
 }

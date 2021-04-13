@@ -1,20 +1,13 @@
-using System;
-using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
-using System.Threading.Tasks;
 
 using CommandLine;
 
-using Database.LiteDB.KeySwitches;
-
-using KeySwitchManager.Domain.Commons;
-using KeySwitchManager.Domain.KeySwitches;
-using KeySwitchManager.Domain.KeySwitches.Values;
-using KeySwitchManager.Interactors.KeySwitches.Exporting;
-using KeySwitchManager.UseCases.KeySwitches.Exporting;
-using KeySwitchManager.Xlsx.KeySwitches.ClosedXml;
-
-using RkHelper.Text;
+using KeySwitchManager.Commons.Data;
+using KeySwitchManager.Domain.KeySwitches.Helpers;
+using KeySwitchManager.Infrastructure.Database.LiteDB.KeySwitches;
+using KeySwitchManager.Infrastructure.Storage.Spreadsheet.ClosedXml.KeySwitches;
+using KeySwitchManager.Interactor.KeySwitches;
+using KeySwitchManager.UseCase.KeySwitches.Export.Spreadsheet;
 
 namespace KeySwitchManager.CLI.Commands
 {
@@ -35,45 +28,31 @@ namespace KeySwitchManager.CLI.Commands
             public string DatabasePath { get; set; } = string.Empty;
 
             [Option( 'o', "output-dir", Required = true )]
-            public string OutputPath { get; set; } = string.Empty;
+            public string OutputDirectory { get; set; } = string.Empty;
         }
+
 
         public int Execute( ICommandOption opt )
         {
-            var progress = new[] { "|", "/", "-", "\\" };
-            var progressCount = 0;
-
             var option = (CommandOption)opt;
 
-            var entities = Query( option );
+            var info = new KeySwitchInfo(
+                option.Developer,
+                option.Product
+            );
 
-            using var xlsxRepository = new XlsxExportingRepository( new DirectoryPath( option.OutputPath ) );
-            var interactor = new ExportingXlsxInteractor( xlsxRepository );
-            var task = Task.Run( () => interactor.Execute( new ExportingXlsxRequest( entities ) ) );
+            using var inputRepository = new LiteDbKeySwitchRepository( new FilePath( option.DatabasePath ) );
+            var keySwitches = SearchHelper.Search( inputRepository, info );
 
-            while( !task.IsCompleted )
-            {
-                Console.Write( $"\rExporting ... {progress[ progressCount ]}" );
-                progressCount = ( progressCount + 1 ) % progress.Length;
-                Task.Delay( 200 ).Wait();
-            }
-            Console.WriteLine();
+            using var outputRepository = new ClosedXmlFileSaveRepository( new DirectoryPath( option.OutputDirectory ) );
+            var interactor = new SpreadsheetExportInteractor(
+                outputRepository,
+                new ISpreadsheetExportPresenter.Console()
+            );
 
-            return task.Result.Result ? 0 : 1;
-        }
+            var response = interactor.Execute( new SpreadsheetExportRequest( keySwitches ) );
 
-        private static IReadOnlyCollection<KeySwitch> Query( CommandOption option )
-        {
-            using var repository = new LiteDbKeySwitchRepository( option.DatabasePath );
-
-            var developerName = new DeveloperName( option.Developer );
-
-            if( StringHelper.IsEmpty( option.Product ) )
-            {
-                return repository.Find( developerName );
-            }
-
-            return repository.Find( developerName, new ProductName( option.Product ) );
+            return response.Result ? 0 : 1;
         }
     }
 }

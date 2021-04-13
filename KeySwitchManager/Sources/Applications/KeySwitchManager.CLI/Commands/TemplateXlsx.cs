@@ -1,11 +1,12 @@
+using System;
 using System.Diagnostics.CodeAnalysis;
 
 using CommandLine;
 
-using KeySwitchManager.Domain.Commons;
-using KeySwitchManager.Interactors.KeySwitches.Exporting;
-using KeySwitchManager.UseCases.KeySwitches.Exporting;
-using KeySwitchManager.Xlsx.KeySwitches.ClosedXml;
+using KeySwitchManager.Commons.Data;
+using KeySwitchManager.Infrastructure.Storage.Spreadsheet.ClosedXml.KeySwitches;
+using KeySwitchManager.Interactor.KeySwitches;
+using KeySwitchManager.UseCase.KeySwitches.Create.SpreadsheetTemplate;
 
 namespace KeySwitchManager.CLI.Commands
 {
@@ -15,19 +16,19 @@ namespace KeySwitchManager.CLI.Commands
         [SuppressMessage( "ReSharper", "MemberCanBePrivate.Global" )]
         [SuppressMessage( "ReSharper", "ClassNeverInstantiated.Global" )]
         public class CommandOption : ICommandOption
-        {
-            [Option( 'o', "output-dir", Required = true)]
-            public string OutputPath { get; set; } = string.Empty;
-        }
+        {}
 
         public int Execute( ICommandOption opt )
         {
-            var option = (CommandOption)opt;
+            using var outputRepository = new ClosedXmlFileSaveTemplateRepository( new FilePath( "(ProductName).xlsx" ) );
+            var interactor = new SpreadsheetTemplateExportInteractor(
+                outputRepository,
+                new ISpreadsheetTemplateExportPresenter.Console()
+            );
 
-            var repository = new XlsxExportingRepository( new DirectoryPath( option.OutputPath ) );
-            var interactor = new ExportingTemplateXlsxInteractor( repository );
+            Console.WriteLine( $"generating keyswitch template to {outputRepository.DataPath}" );
 
-            var response = interactor.Execute( new ExportingTemplateXlsxRequest() );
+            var response = interactor.Execute( new SpreadsheetTemplateExportRequest() );
 
             return response.Result ? 0 : 1;
         }

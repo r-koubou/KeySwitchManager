@@ -5,15 +5,15 @@
         <!-- Assembly / Common -->
         <Copyright>R-Koubou</Copyright>
         <Company>R-Koubou</Company>
-        <Product>KeySwitchManager.Common</Product>
-        <AssemblyName>KeySwitchManager.Common</AssemblyName>
-        <RootNamespace>KeySwitchManager.Common</RootNamespace>
+        <Product>KeySwitchManager.Commons</Product>
+        <AssemblyName>KeySwitchManager.Commons</AssemblyName>
+        <RootNamespace>KeySwitchManager.Commons</RootNamespace>
         <Version>0.0.1</Version>
         <Nullable>enable</Nullable>
     </PropertyGroup>
 
     <ItemGroup>
-      <PackageReference Include="RkHelper" Version="0.0.2" />
+      <PackageReference Include="RkHelper" Version="0.0.3" />
       <PackageReference Include="ValueObjectGenerator" Version="1.2.0" />
     </ItemGroup>
 
