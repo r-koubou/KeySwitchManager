@@ -1,15 +1,15 @@
 using System;
 using System.Collections.Generic;
 
-using KeySwitchManager.Domain.Commons;
-using KeySwitchManager.Domain.KeySwitches;
-using KeySwitchManager.Domain.KeySwitches.Entity;
-using KeySwitchManager.Domain.KeySwitches.Values;
-using KeySwitchManager.Domain.MidiMessages.Entity;
+using KeySwitchManager.Commons.Data;
+using KeySwitchManager.Domain.KeySwitches.Midi.Models.Entities;
+using KeySwitchManager.Domain.KeySwitches.Models;
+using KeySwitchManager.Domain.KeySwitches.Models.Entities;
+using KeySwitchManager.Domain.KeySwitches.Models.Values;
 
 using RkHelper.Time;
 
-namespace KeySwitchManager.Common.Testing.KeySwitches
+namespace KeySwitchManager.Testing.Commons.KeySwitches
 {
     public static class TestDataGenerator
     {

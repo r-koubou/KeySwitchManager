@@ -1,13 +1,11 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFramework>net5.0</TargetFramework>
-
-        <IsPackable>false</IsPackable>
-
         <LangVersion>9</LangVersion>
-
+        <TargetFramework>net5.0</TargetFramework>
+        <RootNamespace>KeySwitchManager.Testing.Domain</RootNamespace>
         <Nullable>enable</Nullable>
+        <IsPackable>false</IsPackable>
     </PropertyGroup>
 
     <ItemGroup>
@@ -17,7 +15,12 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\..\Sources\Domain\KeySwitches\Domain.KeySwitches.csproj" />
+      <ProjectReference Include="..\..\Sources\Domain\Domain.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="KeySwitches\Models" />
+      <Folder Include="MidiMessages\Models" />
     </ItemGroup>
 
 </Project>

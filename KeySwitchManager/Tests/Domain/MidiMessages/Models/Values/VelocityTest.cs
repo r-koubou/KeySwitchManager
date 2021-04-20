@@ -1,10 +1,10 @@
 using System;
 
-using KeySwitchManager.Domain.MidiMessages.Values;
+using KeySwitchManager.Domain.KeySwitches.Midi.Models.Values;
 
 using NUnit.Framework;
 
-namespace Domain.Testing.MidiMessages.Value
+namespace KeySwitchManager.Testing.Domain.MidiMessages.Models.Values
 {
     [TestFixture]
     public class VelocityTest

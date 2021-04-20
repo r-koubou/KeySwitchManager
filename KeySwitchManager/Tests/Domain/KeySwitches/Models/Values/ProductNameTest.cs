@@ -1,10 +1,10 @@
 using System;
 
-using KeySwitchManager.Domain.KeySwitches.Values;
+using KeySwitchManager.Domain.KeySwitches.Models.Values;
 
 using NUnit.Framework;
 
-namespace Domain.Testing.KeySwitches.Value
+namespace KeySwitchManager.Testing.Domain.KeySwitches.Models.Values
 {
     [TestFixture]
     public class ProductNameTest
