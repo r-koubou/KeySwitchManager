@@ -5,7 +5,7 @@ using System.Linq;
 using KeySwitchManager.Domain.KeySwitches.Midi.Models.Entities;
 using KeySwitchManager.Domain.KeySwitches.Midi.Models.Helpers;
 using KeySwitchManager.Domain.KeySwitches.Midi.Models.Values;
-using KeySwitchManager.Infrastructure.Database.LiteDB.KeySwitches;
+using KeySwitchManager.Infrastructures.Database.LiteDB.KeySwitches;
 using KeySwitchManager.Testing.Commons.KeySwitches;
 
 using NUnit.Framework;

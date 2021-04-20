@@ -2,7 +2,7 @@ using CommandLine;
 
 using KeySwitchManager.Commons.Data;
 using KeySwitchManager.Domain.KeySwitches.Models;
-using KeySwitchManager.Infrastructure.Storage.Json.Cakewalk;
+using KeySwitchManager.Infrastructures.Storage.Json.Cakewalk;
 
 namespace KeySwitchManager.CLI.Commands
 {

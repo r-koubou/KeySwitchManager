@@ -1,6 +1,6 @@
 using System.IO;
 
-using KeySwitchManager.Infrastructure.Database.LiteDB.KeySwitches;
+using KeySwitchManager.Infrastructures.Database.LiteDB.KeySwitches;
 using KeySwitchManager.Testing.Commons.KeySwitches;
 
 using NUnit.Framework;

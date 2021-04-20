@@ -6,8 +6,8 @@ using System.Text;
 using CommandLine;
 
 using KeySwitchManager.Commons.Data;
-using KeySwitchManager.Infrastructure.Database.LiteDB.KeySwitches;
-using KeySwitchManager.Infrastructure.Storage.Json.KeySwitches.Translators;
+using KeySwitchManager.Infrastructures.Database.LiteDB.KeySwitches;
+using KeySwitchManager.Infrastructures.Storage.Json.KeySwitches.Translators;
 using KeySwitchManager.Interactor.KeySwitches;
 using KeySwitchManager.UseCase.KeySwitches.Find;
 

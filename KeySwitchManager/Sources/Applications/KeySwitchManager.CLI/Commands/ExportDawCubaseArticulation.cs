@@ -2,7 +2,7 @@ using CommandLine;
 
 using KeySwitchManager.Commons.Data;
 using KeySwitchManager.Domain.KeySwitches.Models;
-using KeySwitchManager.Infrastructure.Storage.Xml.Cubase;
+using KeySwitchManager.Infrastructures.Storage.Xml.Cubase;
 
 namespace KeySwitchManager.CLI.Commands
 {
