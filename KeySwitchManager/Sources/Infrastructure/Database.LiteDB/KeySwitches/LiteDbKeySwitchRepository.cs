@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 
 using KeySwitchManager.Commons.Data;
@@ -17,7 +18,6 @@ namespace KeySwitchManager.Infrastructure.Database.LiteDB.KeySwitches
     {
         public const string KeySwitchesTableName = @"keyswitches";
 
-        private FilePath DataPath { get; }
         private LiteDatabase Database { get; set; }
 
         private ILiteCollection<KeySwitchModel> KeySwitchTable
@@ -25,8 +25,12 @@ namespace KeySwitchManager.Infrastructure.Database.LiteDB.KeySwitches
 
         public LiteDbKeySwitchRepository( FilePath dbFilePath )
         {
-            DataPath = dbFilePath;
             Database = new LiteDatabase( dbFilePath.Path );
+        }
+
+        public LiteDbKeySwitchRepository( Stream stream )
+        {
+            Database = new LiteDatabase( stream );
         }
 
         public void Dispose()
