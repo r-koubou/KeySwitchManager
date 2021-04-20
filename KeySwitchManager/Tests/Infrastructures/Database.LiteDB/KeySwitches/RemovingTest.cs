@@ -1,5 +1,6 @@
 using System.IO;
 
+using KeySwitchManager.Commons.Data;
 using KeySwitchManager.Infrastructures.Database.LiteDB.KeySwitches;
 using KeySwitchManager.Testing.Commons.KeySwitches;
 
@@ -13,7 +14,7 @@ namespace KeySwitchManager.Testing.Database.LiteDB.KeySwitches
         [Test]
         public void DeleteTest()
         {
-            var repository = new LiteDbKeySwitchRepository( new MemoryStream() );
+            using var repository = new LiteDbKeySwitchRepository( new FilePath( $"{Path.GetTempFileName()}.db" ) );
             var record = TestDataGenerator.CreateKeySwitch();
 
             #region Delete by Id

@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 
+using KeySwitchManager.Commons.Data;
 using KeySwitchManager.Domain.KeySwitches.Midi.Models.Entities;
 using KeySwitchManager.Domain.KeySwitches.Midi.Models.Helpers;
 using KeySwitchManager.Domain.KeySwitches.Midi.Models.Values;
@@ -18,7 +19,7 @@ namespace KeySwitchManager.Testing.Database.LiteDB.KeySwitches
         [Test]
         public void InsertTest()
         {
-            var repository = new LiteDbKeySwitchRepository( new MemoryStream() );
+            using var repository = new LiteDbKeySwitchRepository( new FilePath( $"{Path.GetTempFileName()}.db" ) );
             var articulation = TestDataGenerator.CreateArticulation(
                 new List<MidiNoteOn>()
                 {

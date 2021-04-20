@@ -18,4 +18,8 @@
       <ProjectReference Include="..\..\Sources\Domain\Domain.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="IO" />
+    </ItemGroup>
+
 </Project>
