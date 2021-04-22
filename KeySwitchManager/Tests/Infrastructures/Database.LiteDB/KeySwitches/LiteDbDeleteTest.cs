@@ -9,7 +9,7 @@ using NUnit.Framework;
 namespace KeySwitchManager.Testing.Database.LiteDB.KeySwitches
 {
     [TestFixture]
-    public class RemovingTest
+    public class LiteDbDeleteTest
     {
         [Test]
         public void DeleteTest()

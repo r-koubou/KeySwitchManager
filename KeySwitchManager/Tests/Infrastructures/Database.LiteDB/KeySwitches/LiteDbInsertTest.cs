@@ -14,7 +14,7 @@ using NUnit.Framework;
 namespace KeySwitchManager.Testing.Database.LiteDB.KeySwitches
 {
     [TestFixture]
-    public class AddingTest
+    public class LiteDbInsertTest
     {
         [Test]
         public void InsertTest()
