@@ -50,7 +50,7 @@ namespace KeySwitchManager.CLI.Commands
             var request = new FindRequest( option.Developer, option.Product, option.Instrument );
 
             var response = interactor.Execute( request );
-            var jsonText = new KeySwitchListExportTranslator().Translate( response.Result ).Value;
+            var jsonText = new KeySwitchExportTranslator().Translate( response.Result ).Value;
 
             if( StringHelper.IsEmpty( option.OutputPath ) )
             {
