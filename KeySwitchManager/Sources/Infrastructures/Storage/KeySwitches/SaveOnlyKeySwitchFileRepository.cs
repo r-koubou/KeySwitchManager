@@ -4,14 +4,14 @@ using KeySwitchManager.Commons.Data;
 
 namespace KeySwitchManager.Infrastructures.Storage.KeySwitches
 {
-    public abstract class SaveOnlyFileRepository : FileRepository
+    public abstract class SaveOnlyKeySwitchFileRepository : KeySwitchFileRepository
     {
-        protected SaveOnlyFileRepository( IPath dataPath ) :
+        protected SaveOnlyKeySwitchFileRepository( IPath dataPath ) :
             base( dataPath, false ) {}
 
         public override void Load()
             => throw new NotSupportedException(
-                $"Sorry, `{nameof( SaveOnlyFileRepository )}` cannot load from file"
+                $"class `{GetType().Name}` is not supported load"
             );
     }
 }

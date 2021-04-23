@@ -11,7 +11,7 @@ using KeySwitchManager.Infrastructures.Storage.Spreadsheet.ClosedXml.KeySwitches
 
 namespace KeySwitchManager.Infrastructures.Storage.Spreadsheet.ClosedXml.KeySwitches
 {
-    public class ClosedXmlFileSaveRepository : SaveOnlyFileRepository
+    public class ClosedXmlFileSaveRepository : SaveOnlyKeySwitchFileRepository
     {
         private DirectoryPath TargetDirectory { get; }
 

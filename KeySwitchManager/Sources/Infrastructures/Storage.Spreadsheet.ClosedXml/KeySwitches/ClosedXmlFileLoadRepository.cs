@@ -10,7 +10,7 @@ using RkHelper.IO;
 
 namespace KeySwitchManager.Infrastructures.Storage.Spreadsheet.ClosedXml.KeySwitches
 {
-    public class ClosedXmlFileLoadRepository : LoadOnlyFileRepository
+    public class ClosedXmlFileLoadRepository : LoadOnlyKeySwitchFileRepository
     {
         private const int InitialBufferSize = 1024 * 64;
         private KeySwitchInfo Info { get; }

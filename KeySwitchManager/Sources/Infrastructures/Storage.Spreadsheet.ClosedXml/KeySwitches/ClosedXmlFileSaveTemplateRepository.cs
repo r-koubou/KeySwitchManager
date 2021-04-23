@@ -6,7 +6,7 @@ using KeySwitchManager.Infrastructures.Storage.Spreadsheet.ClosedXml.KeySwitches
 
 namespace KeySwitchManager.Infrastructures.Storage.Spreadsheet.ClosedXml.KeySwitches
 {
-    public class ClosedXmlFileSaveTemplateRepository : SaveOnlyFileRepository
+    public class ClosedXmlFileSaveTemplateRepository : SaveOnlyKeySwitchFileRepository
     {
         private FilePath Target { get; }
 

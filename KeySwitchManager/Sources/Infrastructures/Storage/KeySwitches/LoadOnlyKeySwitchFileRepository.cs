@@ -4,12 +4,12 @@ using KeySwitchManager.Commons.Data;
 
 namespace KeySwitchManager.Infrastructures.Storage.KeySwitches
 {
-    public abstract class LoadOnlyFileRepository : FileRepository
+    public abstract class LoadOnlyKeySwitchFileRepository : KeySwitchFileRepository
     {
-        protected LoadOnlyFileRepository( IPath dataPath ) :
+        protected LoadOnlyKeySwitchFileRepository( IPath dataPath ) :
             base( dataPath, true ) {}
 
-        protected LoadOnlyFileRepository( IPath dataPath, bool loadFromPathNow ) :
+        protected LoadOnlyKeySwitchFileRepository( IPath dataPath, bool loadFromPathNow ) :
             base( dataPath, loadFromPathNow ) {}
 
         public override int Flush()

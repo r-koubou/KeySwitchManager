@@ -7,7 +7,7 @@ using KeySwitchManager.Infrastructures.Storage.KeySwitches.Helper;
 
 namespace KeySwitchManager.Infrastructures.Storage.Json.Cakewalk
 {
-    public class CakewalkFileRepository : SaveOnlyFileRepository
+    public class CakewalkFileRepository : SaveOnlyKeySwitchFileRepository
     {
         protected DirectoryPath TargetDirectory { get; }
 

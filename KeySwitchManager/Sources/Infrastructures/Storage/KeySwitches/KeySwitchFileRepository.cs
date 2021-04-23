@@ -3,11 +3,11 @@ using KeySwitchManager.Domain.KeySwitches.Models;
 
 namespace KeySwitchManager.Infrastructures.Storage.KeySwitches
 {
-    public abstract class FileRepository : OnMemoryKeySwitchRepository
+    public abstract class KeySwitchFileRepository : OnMemoryKeySwitchRepository
     {
         public IPath DataPath { get; }
 
-        protected FileRepository( IPath dataPath, bool loadFromPathNow )
+        protected KeySwitchFileRepository( IPath dataPath, bool loadFromPathNow )
         {
             DataPath = dataPath;
 

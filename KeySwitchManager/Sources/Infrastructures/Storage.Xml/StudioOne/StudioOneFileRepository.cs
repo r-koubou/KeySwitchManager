@@ -7,7 +7,7 @@ using KeySwitchManager.Infrastructures.Storage.Xml.StudioOne.Helpers;
 
 namespace KeySwitchManager.Infrastructures.Storage.Xml.StudioOne
 {
-    public class StudioOneFileRepository : SaveOnlyFileRepository
+    public class StudioOneFileRepository : SaveOnlyKeySwitchFileRepository
     {
         protected DirectoryPath TargetDirectory { get; }
 

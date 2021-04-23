@@ -3,11 +3,10 @@ using System.IO;
 
 using KeySwitchManager.Commons.Data;
 using KeySwitchManager.Infrastructures.Storage.Json.KeySwitches.Helpers;
-using KeySwitchManager.Infrastructures.Storage.KeySwitches;
 
 namespace KeySwitchManager.Infrastructures.Storage.Json.KeySwitches
 {
-    public class KeySwitchFileRepository : FileRepository
+    public class KeySwitchFileRepository : Storage.KeySwitches.KeySwitchFileRepository
     {
         public KeySwitchFileRepository( IPath jsonDataPath, bool loadFromPathNow ) :
             base( jsonDataPath, loadFromPathNow )

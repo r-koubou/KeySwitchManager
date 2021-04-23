@@ -7,7 +7,7 @@ using KeySwitchManager.Infrastructures.Storage.Xml.Cubase.Helpers;
 
 namespace KeySwitchManager.Infrastructures.Storage.Xml.Cubase
 {
-    public class CubaseFileRepository : SaveOnlyFileRepository
+    public class CubaseFileRepository : SaveOnlyKeySwitchFileRepository
     {
         protected DirectoryPath TargetDirectory { get; }
 
