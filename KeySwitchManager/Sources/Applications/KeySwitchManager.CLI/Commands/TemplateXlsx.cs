@@ -4,7 +4,7 @@ using System.Diagnostics.CodeAnalysis;
 using CommandLine;
 
 using KeySwitchManager.Commons.Data;
-using KeySwitchManager.Infrastructures.Storage.Spreadsheet.ClosedXml.KeySwitches;
+using KeySwitchManager.Infrastructure.Storage.Spreadsheet.ClosedXml.KeySwitches;
 using KeySwitchManager.Interactor.KeySwitches;
 using KeySwitchManager.UseCase.KeySwitches.Create.SpreadsheetTemplate;
 

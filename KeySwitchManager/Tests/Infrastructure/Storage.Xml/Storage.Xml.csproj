@@ -1,0 +1,28 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <LangVersion>9</LangVersion>
+        <TargetFramework>net5.0</TargetFramework>
+        <RootNamespace>KeySwitchManager.Testing.Storage.Xml</RootNamespace>
+        <Nullable>enable</Nullable>
+        <IsPackable>false</IsPackable>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="nunit" Version="3.12.0" />
+        <PackageReference Include="NUnit3TestAdapter" Version="3.15.1" />
+        <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.4.0" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="Cubase" />
+      <Folder Include="StudioOne" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\..\..\Sources\Commons\Commons.csproj" />
+      <ProjectReference Include="..\..\..\Sources\Infrastructure\Storage.Xml\Storage.Xml.csproj" />
+      <ProjectReference Include="..\..\Commons\Commons.csproj" />
+    </ItemGroup>
+
+</Project>

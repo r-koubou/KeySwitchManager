@@ -3,8 +3,8 @@ using System.Diagnostics.CodeAnalysis;
 using CommandLine;
 
 using KeySwitchManager.Commons.Data;
-using KeySwitchManager.Infrastructures.Database.LiteDB.KeySwitches;
-using KeySwitchManager.Infrastructures.Storage.Json.KeySwitches;
+using KeySwitchManager.Infrastructure.Database.LiteDB.KeySwitches;
+using KeySwitchManager.Infrastructure.Storage.Json.KeySwitches;
 using KeySwitchManager.Interactor.KeySwitches;
 using KeySwitchManager.UseCase.KeySwitches.Import.Text;
 

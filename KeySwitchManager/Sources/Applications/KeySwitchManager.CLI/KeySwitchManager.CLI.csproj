@@ -47,11 +47,11 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\..\Infrastructures\Database.LiteDB\Database.LiteDB.csproj" />
-      <ProjectReference Include="..\..\Infrastructures\Storage.Json\Storage.Json.csproj" />
-      <ProjectReference Include="..\..\Infrastructures\Storage.Spreadsheet.ClosedXml\Storage.Spreadsheet.ClosedXml.csproj" />
-      <ProjectReference Include="..\..\Infrastructures\Storage.Spreadsheet\Storage.Spreadsheet.csproj" />
-      <ProjectReference Include="..\..\Infrastructures\Storage.Xml\Storage.Xml.csproj" />
+      <ProjectReference Include="..\..\Infrastructure\Database.LiteDB\Database.LiteDB.csproj" />
+      <ProjectReference Include="..\..\Infrastructure\Storage.Json\Storage.Json.csproj" />
+      <ProjectReference Include="..\..\Infrastructure\Storage.Spreadsheet.ClosedXml\Storage.Spreadsheet.ClosedXml.csproj" />
+      <ProjectReference Include="..\..\Infrastructure\Storage.Spreadsheet\Storage.Spreadsheet.csproj" />
+      <ProjectReference Include="..\..\Infrastructure\Storage.Xml\Storage.Xml.csproj" />
       <ProjectReference Include="..\..\Interactor\Interactor.csproj" />
     </ItemGroup>
 

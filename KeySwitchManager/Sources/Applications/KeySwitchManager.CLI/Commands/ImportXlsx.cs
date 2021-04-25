@@ -4,8 +4,8 @@ using CommandLine;
 
 using KeySwitchManager.Commons.Data;
 using KeySwitchManager.Domain.KeySwitches.Helpers;
-using KeySwitchManager.Infrastructures.Database.LiteDB.KeySwitches;
-using KeySwitchManager.Infrastructures.Storage.Spreadsheet.ClosedXml.KeySwitches;
+using KeySwitchManager.Infrastructure.Database.LiteDB.KeySwitches;
+using KeySwitchManager.Infrastructure.Storage.Spreadsheet.ClosedXml.KeySwitches;
 using KeySwitchManager.Interactor.KeySwitches;
 using KeySwitchManager.UseCase.KeySwitches.Import.Spreadsheet;
 

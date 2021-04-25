@@ -4,7 +4,7 @@ using System.Diagnostics.CodeAnalysis;
 using CommandLine;
 
 using KeySwitchManager.Commons.Data;
-using KeySwitchManager.Infrastructures.Database.LiteDB.KeySwitches;
+using KeySwitchManager.Infrastructure.Database.LiteDB.KeySwitches;
 using KeySwitchManager.Interactor.KeySwitches;
 using KeySwitchManager.UseCase.KeySwitches.Delete;
 

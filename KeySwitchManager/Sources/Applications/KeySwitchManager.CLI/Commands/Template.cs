@@ -4,7 +4,7 @@ using System.Diagnostics.CodeAnalysis;
 using CommandLine;
 
 using KeySwitchManager.Commons.Data;
-using KeySwitchManager.Infrastructures.Storage.Json.KeySwitches;
+using KeySwitchManager.Infrastructure.Storage.Json.KeySwitches;
 using KeySwitchManager.Interactor.KeySwitches;
 
 namespace KeySwitchManager.CLI.Commands
