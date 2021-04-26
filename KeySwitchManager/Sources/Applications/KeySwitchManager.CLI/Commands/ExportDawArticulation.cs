@@ -16,7 +16,7 @@ namespace KeySwitchManager.CLI.Commands
     {
         public class CommandOption : ICommandOption
         {
-            [Option( 'd', "developer", Required = true)]
+            [Option( 'd', "developer" )]
             public string Developer { get; set; } = string.Empty;
 
             [Option( 'p', "product" )]

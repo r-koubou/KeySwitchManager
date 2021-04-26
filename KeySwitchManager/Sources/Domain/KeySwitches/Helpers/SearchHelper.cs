@@ -69,7 +69,8 @@ namespace KeySwitchManager.Domain.KeySwitches.Helpers
             }
             #endregion
 
-            return new List<KeySwitch>();
+            // All
+            return new List<KeySwitch>( repository.FindAll() );
         }
 
         public static IReadOnlyCollection<KeySwitch> Search(
