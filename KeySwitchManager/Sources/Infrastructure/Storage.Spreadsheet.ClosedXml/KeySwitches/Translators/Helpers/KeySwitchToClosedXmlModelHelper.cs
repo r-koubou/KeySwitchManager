@@ -13,18 +13,23 @@ namespace KeySwitchManager.Infrastructure.Storage.Spreadsheet.ClosedXml.KeySwitc
 {
     internal static class KeySwitchToClosedXmlModelHelper
     {
-        public static XLWorkbook Translate( IReadOnlyCollection<KeySwitch> keySwitches, XLWorkbook template )
+        /// <summary>
+        /// Minimum number of blank cell rows to generate
+        /// </summary>
+        private const int MinimumBorderRowCount = 32;
+
+        public static XLWorkbook Translate( IReadOnlyCollection<KeySwitch> keySwitches, XLWorkbook template, int minimumBorderRowCount = MinimumBorderRowCount )
         {
             foreach( var k in keySwitches )
             {
-                TranslateWorkSheet( k, template );
+                TranslateWorkSheet( k, template, minimumBorderRowCount );
             }
 
             return template;
         }
 
         #region Translation
-        private static void TranslateWorkSheet( KeySwitch keySwitch, XLWorkbook book )
+        private static void TranslateWorkSheet( KeySwitch keySwitch, XLWorkbook book, int minimumBorderRowCount )
         {
             var row = SpreadsheetConstants.RowDataBegin;
             var column = SpreadsheetConstants.ColumnDataBegin;
@@ -54,15 +59,25 @@ namespace KeySwitchManager.Infrastructure.Storage.Spreadsheet.ClosedXml.KeySwitc
             newWorksheet.Cell( SpreadsheetConstants.RowOutputName, SpreadsheetConstants.ColumnOutputName )
                         .Value = keySwitch.InstrumentName;
 
-            // Draw cell border line
-            var style = newWorksheet.Range(
+            // fill empty rows count (bordered only)
+            var emptyRowCount = Math.Max(
+                minimumBorderRowCount - ( row - SpreadsheetConstants.RowDataBegin ),
+                0
+            );
+
+            #region Apply format to data cells
+
+            var range = newWorksheet.Range(
                 SpreadsheetConstants.RowDataHeader,
                 SpreadsheetConstants.ColumnDataBegin,
-                row - 1,
+                row - 1 + emptyRowCount,
                 column - 1
-            ).Style;
+            );
 
-            XLCellHelper.ActivateCellBorder( style );
+            // Draw cell border line
+            XLCellHelper.ActivateCellBorder( range.Style );
+
+            #endregion
         }
 
         private static int TranslateArticulation( KeySwitch keySwitch, Articulation articulation, IXLWorksheet sheet, int row )
@@ -82,7 +97,7 @@ namespace KeySwitchManager.Infrastructure.Storage.Spreadsheet.ClosedXml.KeySwitc
             // Extra Data
             var extraDataTranslator = new ExtraDataTranslator( keySwitch );
 
-            extraDataTranslator.Translate(
+            column = extraDataTranslator.Translate(
                 sheet,
                 SpreadsheetConstants.RowDataHeader,
                 SpreadsheetConstants.RowDataBegin,
