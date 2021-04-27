@@ -16,6 +16,9 @@ namespace KeySwitchManager.CLI.Commands
     {
         public class CommandOption : ICommandOption
         {
+            [Option( 'q', "quiet" )]
+            public bool Quiet { get; set; } = false;
+
             [Option( 'd', "developer" )]
             public string Developer { get; set; } = string.Empty;
 
@@ -42,17 +45,26 @@ namespace KeySwitchManager.CLI.Commands
 
             if( !keySwitches.Any() )
             {
-                Console.WriteLine( "records not found" );
+                if( !option.Quiet )
+                {
+                    Console.WriteLine( "records not found" );
+                }
+
                 return 0;
             }
 
             using var outputRepository = CreateOutputRepository( new DirectoryPath( option.OutputDirectory ) );
-            var interactor = new DawExportInteractor( repository, outputRepository, new IDawExportPresenter.Console() );
+
+            IDawExportPresenter presenter = option.Quiet ?
+                new IDawExportPresenter.Null() :
+                new IDawExportPresenter.Console();
+
+            var interactor = new DawExportInteractor( repository, outputRepository, presenter );
 
             var request = new DawExportRequest( option.Developer, option.Product, option.Instrument );
-            _ = interactor.Execute( request );
+            var response = interactor.Execute( request );
 
-            return 0;
+            return response.Result ? 0 : 1;
         }
 
         public abstract IKeySwitchRepository CreateOutputRepository( DirectoryPath outputDirectory );
