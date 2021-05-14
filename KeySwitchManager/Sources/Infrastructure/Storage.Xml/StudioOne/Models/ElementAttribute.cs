@@ -11,7 +11,7 @@ namespace KeySwitchManager.Infrastructure.Storage.Xml.StudioOne.Models
         public int Id { get; set; }
 
         [XmlAttribute( AttributeName = "color" )]
-        public string Color { get; set; } = string.Empty;
+        public string Color { get; set; } = default!; // AABBGGRR
 
         [XmlAttribute( AttributeName = "pitch" )]
         public int Pitch { get; set; }

@@ -43,14 +43,18 @@ namespace KeySwitchManager.Infrastructure.Storage.Xml.StudioOne.Translators.Help
             var pitch = articulation.MidiNoteOns[ 0 ].DataByte1.Value;
             var activation = TranslateActivation( articulation );
 
-            var color = articulation.ExtraData.GetValueOrDefault(
-                ExtraDataKeys.Color, new ExtraDataValue( "FFFF0000" )
-            );
+            string color = default!;
+
+            if( articulation.ExtraData.ContainsKey( ExtraDataKeys.Color ) )
+            {
+                color = articulation.ExtraData[ ExtraDataKeys.Color ].Value;
+            }
+
             var momentary = articulation.ExtraData.GetValueOrDefault(
                 ExtraDataKeys.Momentary, new ExtraDataValue( "0" )
             ).Value == "0" ? 0 : 1;
 
-            return new ElementAttribute( name, id, color.Value, pitch, momentary, activation );
+            return new ElementAttribute( name, id, color, pitch, momentary, activation );
         }
 
         #region Translate Activations
