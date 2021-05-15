@@ -12,7 +12,7 @@ namespace KeySwitchManager.Infrastructure.Storage.Json.KeySwitches.Helpers
         public static void Write( Stream stream, IReadOnlyCollection<KeySwitch> keySwitches, Encoding encoding )
         {
             using var writer = new StreamWriter( stream, encoding );
-            var jsonText = new KeySwitchExportTranslator( true ).Translate( keySwitches );
+            var jsonText = new KeySwitchExportTranslator().Translate( keySwitches );
 
             writer.WriteLine( jsonText );
         }

@@ -14,7 +14,7 @@ namespace KeySwitchManager.Infrastructure.Storage.Json.KeySwitches.Translators
     {
         public bool Formatted { get; }
 
-        public KeySwitchExportTranslator( bool formatted = false )
+        public KeySwitchExportTranslator( bool formatted = true )
         {
             Formatted = formatted;
         }
