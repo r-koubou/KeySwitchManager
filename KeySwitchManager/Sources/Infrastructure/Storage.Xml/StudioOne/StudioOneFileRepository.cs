@@ -25,7 +25,7 @@ namespace KeySwitchManager.Infrastructure.Storage.Xml.StudioOne
             foreach( var x in KeySwitches )
             {
                 var outputFilePath = new FilePath(
-                    CreatePathHelper.CreateFilePath( x, ".keyswitch", TargetDirectory ).Path
+                    CreatePathHelper.CreateFilePath( x, $"{x.ProductName.Value} - ", ".keyswitch", TargetDirectory ).Path
                 );
 
                 using var stream = File.Create( outputFilePath.Path );

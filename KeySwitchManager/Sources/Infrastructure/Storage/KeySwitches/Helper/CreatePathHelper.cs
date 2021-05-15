@@ -1,3 +1,4 @@
+using System;
 using System.IO;
 
 using KeySwitchManager.Commons.Data;
@@ -35,10 +36,15 @@ namespace KeySwitchManager.Infrastructure.Storage.KeySwitches.Helper
 
         public static FilePath CreateFilePath( KeySwitch keySwitch, string suffix, DirectoryPath baseDirectory, params DirectoryPath[] subDirectories )
         {
+            return CreateFilePath( keySwitch, string.Empty, suffix, baseDirectory, subDirectories );
+        }
+
+        public static FilePath CreateFilePath( KeySwitch keySwitch, string prefix, string suffix, DirectoryPath baseDirectory, params DirectoryPath[] subDirectories )
+        {
             var outputDirectory = CreateDirectoryTree( keySwitch, baseDirectory, subDirectories );
 
             return new FilePath(
-                Path.Combine( outputDirectory.Path, keySwitch.InstrumentName + suffix )
+                Path.Combine( outputDirectory.Path, $"{prefix}{keySwitch.InstrumentName}{suffix}" )
             );
         }
 
