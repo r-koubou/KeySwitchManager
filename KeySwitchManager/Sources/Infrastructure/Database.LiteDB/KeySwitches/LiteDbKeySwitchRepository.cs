@@ -145,43 +145,64 @@ namespace KeySwitchManager.Infrastructure.Database.LiteDB.KeySwitches
             ProductName productName,
             InstrumentName instrumentName )
         {
+            var d = developerName.Value;
+            var p = productName.Value;
+            var i = instrumentName.Value;
+
             return CreateEntities(
                 KeySwitchTable.Find(
                     x =>
-                        x.DeveloperName.Contains( developerName.Value ) &&
-                        x.ProductName.Contains( productName.Value ) &&
-                        x.InstrumentName.Contains( instrumentName.Value )
+                        ( d == "*" || x.DeveloperName.Contains( d ) ) &&
+                        ( p == "*" || x.ProductName.Contains( p ) ) &&
+                        ( i == "*" || x.InstrumentName.Contains( i ) )
                 )
             );
         }
 
         public IReadOnlyCollection<KeySwitch> Find( DeveloperName developerName, ProductName productName )
         {
+            var d = developerName.Value;
+            var p = productName.Value;
+
             return CreateEntities(
                 KeySwitchTable.Find(
                     x =>
-                        x.DeveloperName.Contains( developerName.Value ) &&
-                        x.ProductName.Contains( productName.Value )
+                        ( d == "*" || x.DeveloperName.Contains( d ) ) &&
+                        ( p == "*" || x.ProductName.Contains( p ) )
                 )
             );
         }
 
         public IReadOnlyCollection<KeySwitch> Find( DeveloperName developerName )
         {
+            var d = developerName.Value;
+
+            if( d == "*" )
+            {
+                return FindAll();
+            }
+
             return CreateEntities(
                 KeySwitchTable.Find(
                     x =>
-                        x.DeveloperName.Contains( developerName.Value )
+                        x.DeveloperName.Contains( d )
                 )
             );
         }
 
         public IReadOnlyCollection<KeySwitch> Find( ProductName productName )
         {
+            var p = productName.Value;
+
+            if( p == "*" )
+            {
+                return FindAll();
+            }
+
             return CreateEntities(
                 KeySwitchTable.Find(
                     x =>
-                        x.ProductName.Contains( productName.Value )
+                        x.ProductName.Contains( p )
                 )
             );
         }
