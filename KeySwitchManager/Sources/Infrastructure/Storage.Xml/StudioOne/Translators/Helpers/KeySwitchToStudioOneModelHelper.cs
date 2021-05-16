@@ -100,7 +100,7 @@ namespace KeySwitchManager.Infrastructure.Storage.Xml.StudioOne.Translators.Help
         {
             var result = new List<string>();
 
-            foreach( var x in articulation.MidiNoteOns )
+            foreach( var x in articulation.MidiControlChanges )
             {
                 var ccNo = x.Status.Value;
                 var byte1 = x.DataByte1.Value;
