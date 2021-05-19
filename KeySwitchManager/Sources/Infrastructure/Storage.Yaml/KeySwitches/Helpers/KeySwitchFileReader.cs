@@ -4,9 +4,9 @@ using System.Text;
 
 using KeySwitchManager.Commons.Data;
 using KeySwitchManager.Domain.KeySwitches.Models;
-using KeySwitchManager.Infrastructure.Storage.Json.KeySwitches.Translators;
+using KeySwitchManager.Storage.Yaml.KeySwitches.Translators;
 
-namespace KeySwitchManager.Infrastructure.Storage.Json.KeySwitches.Helpers
+namespace KeySwitchManager.Storage.Yaml.KeySwitches.Helpers
 {
     public static class KeySwitchFileReader
     {
@@ -15,7 +15,7 @@ namespace KeySwitchManager.Infrastructure.Storage.Json.KeySwitches.Helpers
             using var reader = new StreamReader( stream, encoding );
             var jsonText = reader.ReadToEnd();
 
-            return new JsonKeySwitchImportTranslator().Translate( new PlainText( jsonText ) );
+            return new YamlKeySwitchImportTranslator().Translate( new PlainText( jsonText ) );
         }
 
         public static IReadOnlyCollection<KeySwitch> Read( Stream stream )

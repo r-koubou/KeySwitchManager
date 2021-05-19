@@ -7,8 +7,8 @@ using CommandLine;
 
 using KeySwitchManager.Commons.Data;
 using KeySwitchManager.Infrastructure.Database.LiteDB.KeySwitches;
-using KeySwitchManager.Infrastructure.Storage.Json.KeySwitches.Translators;
 using KeySwitchManager.Interactor.KeySwitches;
+using KeySwitchManager.Storage.Yaml.KeySwitches.Translators;
 using KeySwitchManager.UseCase.KeySwitches.Find;
 
 using RkHelper.Text;
@@ -50,16 +50,16 @@ namespace KeySwitchManager.CLI.Commands
             var request = new FindRequest( option.Developer, option.Product, option.Instrument );
 
             var response = interactor.Execute( request );
-            var jsonText = new KeySwitchExportTranslator().Translate( response.Result ).Value;
+            var outputText = new YamlKeySwitchExportTranslator().Translate( response.Result ).Value;
 
             if( StringHelper.IsEmpty( option.OutputPath ) )
             {
-                Console.Out.WriteLine( $"{jsonText}" );
+                Console.Out.WriteLine( $"{outputText}" );
             }
             else
             {
-                File.WriteAllText( option.OutputPath, jsonText, Encoding.UTF8 );
-                Console.Out.WriteLine( $"Output json to {option.OutputPath}" );
+                File.WriteAllText( option.OutputPath, outputText, Encoding.UTF8 );
+                Console.Out.WriteLine( $"Output yaml to {option.OutputPath}" );
             }
 
             Console.Error.WriteLine( $"{response.FoundCount} record(s) found" );

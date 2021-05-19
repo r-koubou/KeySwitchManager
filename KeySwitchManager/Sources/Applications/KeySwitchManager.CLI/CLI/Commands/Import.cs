@@ -6,13 +6,14 @@ using KeySwitchManager.Commons.Data;
 using KeySwitchManager.Infrastructure.Database.LiteDB.KeySwitches;
 using KeySwitchManager.Infrastructure.Storage.Json.KeySwitches;
 using KeySwitchManager.Interactor.KeySwitches;
+using KeySwitchManager.Storage.Yaml.KeySwitches;
 using KeySwitchManager.UseCase.KeySwitches.Import.Text;
 
 namespace KeySwitchManager.CLI.Commands
 {
     public class Import : ICommand
     {
-        [Verb( "import", HelpText = "import a json to database")]
+        [Verb( "import", HelpText = "import a yaml to database")]
         [SuppressMessage( "ReSharper", "MemberCanBePrivate.Global" )]
         [SuppressMessage( "ReSharper", "ClassNeverInstantiated.Global" )]
         public class CommandOption : ICommandOption
@@ -29,7 +30,7 @@ namespace KeySwitchManager.CLI.Commands
             var option = (CommandOption)opt;
 
             using var repository = new LiteDbKeySwitchRepository( new FilePath( option.DatabasePath ) );
-            using var inputRepository = new KeySwitchFileRepository( new FilePath( option.InputPath ), true );
+            using var inputRepository = new YamlKeySwitchFileRepository( new FilePath( option.InputPath ), true );
 
             var presenter = new ITextImportPresenter.Console();
             var interactor = new TextImportInteractor( repository, inputRepository, presenter );

@@ -3,18 +3,18 @@ using System.Collections.Generic;
 
 using KeySwitchManager.Domain.KeySwitches.Midi.Models;
 using KeySwitchManager.Domain.KeySwitches.Midi.Models.Entities;
-using KeySwitchManager.Infrastructure.Storage.Json.KeySwitches.Translators;
+using KeySwitchManager.Storage.Yaml.KeySwitches.Translators;
 using KeySwitchManager.Testing.Commons.KeySwitches;
 
 using NUnit.Framework;
 
-namespace KeySwitchManager.Testing.Storage.Json.KeySwitches
+namespace KeySwitchManager.Testing.Storage.Yaml.KeySwitches
 {
     [TestFixture]
     public class KeySwitchExportTest
     {
         [Test]
-        public void ConvertToJsonTest()
+        public void ConvertToYamlTest()
         {
             var midiNoteFactory = IMidiNoteOnFactory.Default;
             var midiCcFactory = IMidiControlChangeFactory.Default;
@@ -28,15 +28,15 @@ namespace KeySwitchManager.Testing.Storage.Json.KeySwitches
 
             var entity = TestDataGenerator.CreateKeySwitch( articulation );
 
-            var translator = new JsonKeySwitchExportTranslator();
-            var json = translator.Translate( new[] { entity } );
+            var translator = new YamlKeySwitchExportTranslator();
+            var yaml = translator.Translate( new[] { entity } );
 
-            var translator2 = new JsonKeySwitchImportTranslator();
-            var cmp = translator2.Translate( json );
+            var translator2 = new YamlKeySwitchImportTranslator();
+            var cmp = translator2.Translate( yaml );
 
             Assert.AreEqual( new[] { entity }, cmp );
 
-            Console.WriteLine( json );
+            Console.WriteLine( yaml );
         }
     }
 }

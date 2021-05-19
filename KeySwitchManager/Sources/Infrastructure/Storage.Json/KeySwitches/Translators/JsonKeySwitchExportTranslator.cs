@@ -9,12 +9,12 @@ using KeySwitchManager.Infrastructure.Storage.Json.KeySwitches.Translators.Helpe
 
 namespace KeySwitchManager.Infrastructure.Storage.Json.KeySwitches.Translators
 {
-    public class KeySwitchExportTranslator :
+    public class JsonKeySwitchExportTranslator :
         IDataTranslator<IReadOnlyCollection<KeySwitch>, IText>
     {
         public bool Formatted { get; }
 
-        public KeySwitchExportTranslator( bool formatted = true )
+        public JsonKeySwitchExportTranslator( bool formatted = true )
         {
             Formatted = formatted;
         }

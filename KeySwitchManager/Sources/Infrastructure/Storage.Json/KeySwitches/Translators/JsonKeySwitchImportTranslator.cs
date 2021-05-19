@@ -8,7 +8,7 @@ using KeySwitchManager.Infrastructure.Storage.Json.KeySwitches.Translators.Helpe
 
 namespace KeySwitchManager.Infrastructure.Storage.Json.KeySwitches.Translators
 {
-    public class KeySwitchImportTranslator : IDataTranslator<IText, IReadOnlyCollection<KeySwitch>>
+    public class JsonKeySwitchImportTranslator : IDataTranslator<IText, IReadOnlyCollection<KeySwitch>>
     {
         public IReadOnlyCollection<KeySwitch> Translate( IText source )
         {

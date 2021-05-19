@@ -52,6 +52,7 @@
       <ProjectReference Include="..\..\Infrastructure\Storage.Spreadsheet.ClosedXml\Storage.Spreadsheet.ClosedXml.csproj" />
       <ProjectReference Include="..\..\Infrastructure\Storage.Spreadsheet\Storage.Spreadsheet.csproj" />
       <ProjectReference Include="..\..\Infrastructure\Storage.Xml\Storage.Xml.csproj" />
+      <ProjectReference Include="..\..\Infrastructure\Storage.Yaml\Storage.Yaml.csproj" />
       <ProjectReference Include="..\..\Interactor\Interactor.csproj" />
     </ItemGroup>
 

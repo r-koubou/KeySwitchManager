@@ -2,5 +2,4 @@
 *test*.db
 *test*.json
 *test*.xls*
-(ProductName).json
-(ProductName).xlsx
+(ProductName).*

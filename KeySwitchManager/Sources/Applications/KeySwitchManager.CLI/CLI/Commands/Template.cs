@@ -4,14 +4,14 @@ using System.Diagnostics.CodeAnalysis;
 using CommandLine;
 
 using KeySwitchManager.Commons.Data;
-using KeySwitchManager.Infrastructure.Storage.Json.KeySwitches;
 using KeySwitchManager.Interactor.KeySwitches;
+using KeySwitchManager.Storage.Yaml.KeySwitches;
 
 namespace KeySwitchManager.CLI.Commands
 {
     public class Template : ICommand
     {
-        [Verb( "template", HelpText = "export a template generic json to file")]
+        [Verb( "template", HelpText = "export a template generic yaml to file")]
         [SuppressMessage( "ReSharper", "MemberCanBePrivate.Global" )]
         [SuppressMessage( "ReSharper", "ClassNeverInstantiated.Global" )]
         public class CommandOption : ICommandOption
@@ -20,9 +20,9 @@ namespace KeySwitchManager.CLI.Commands
         public int Execute( ICommandOption opt )
         {
             var option = (CommandOption)opt;
-            const string outputPath = "(ProductName).json";
+            const string outputPath = "(ProductName).yaml";
 
-            using var outputRepository = new KeySwitchFileRepository( new FilePath( outputPath ), false );
+            using var outputRepository = new YamlKeySwitchFileRepository( new FilePath( outputPath ), false );
 
             Console.WriteLine( $"generating keyswitch template to {outputPath}" );
 
