@@ -8,7 +8,7 @@ namespace KeySwitchManager.CLI.Commands
 {
     public class ExportDawCubaseArticulation : ExportDawArticulation
     {
-        [Verb( "cubase", HelpText = "export to Studio One Articulation format")]
+        [Verb( "cubase", HelpText = "export to VST Expression map format")]
         public new class CommandOption : ExportDawArticulation.CommandOption
         {}
 

@@ -8,7 +8,7 @@ namespace KeySwitchManager.CLI.Commands
 {
     public class ExportDawStudioOneArticulation : ExportDawArticulation
     {
-        [Verb( "studio-one", HelpText = "export to Studio One Articulation format")]
+        [Verb( "studio-one", HelpText = "export to Studio One 5 Sound Variations format")]
         public new class CommandOption : ExportDawArticulation.CommandOption
         {}
 
