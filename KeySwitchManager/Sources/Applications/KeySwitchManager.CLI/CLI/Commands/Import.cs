@@ -4,7 +4,6 @@ using CommandLine;
 
 using KeySwitchManager.Commons.Data;
 using KeySwitchManager.Infrastructure.Database.LiteDB.KeySwitches;
-using KeySwitchManager.Infrastructure.Storage.Json.KeySwitches;
 using KeySwitchManager.Interactor.KeySwitches;
 using KeySwitchManager.Storage.Yaml.KeySwitches;
 using KeySwitchManager.UseCase.KeySwitches.Import.Text;

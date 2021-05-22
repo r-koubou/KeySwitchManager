@@ -6,6 +6,7 @@ using KeySwitchManager.Domain.KeySwitches.Midi.Models.Values;
 using KeySwitchManager.Domain.KeySwitches.Models;
 using KeySwitchManager.Domain.KeySwitches.Models.Entities;
 using KeySwitchManager.Domain.KeySwitches.Models.Values;
+using KeySwitchManager.Domain.KeySwitches.Models.Values.Extensions;
 using KeySwitchManager.Infrastructure.Storage.Xml.StudioOne.Models;
 
 namespace KeySwitchManager.Infrastructure.Storage.Xml.StudioOne.Translators.Helpers
@@ -101,22 +102,14 @@ namespace KeySwitchManager.Infrastructure.Storage.Xml.StudioOne.Translators.Help
             void TranslateExtraData( string prefix, ExtraDataKey k )
             {
 
-                var extraData = articulation.ExtraData;
-
-                for( var i = 1; i < int.MaxValue; i++ )
+                articulation.ExtraData.KeyWithIndexCount( k, ( k, v, i ) =>
                 {
-                    var key = new ExtraDataKey( $"{k.Value}{i}" );
-
-                    if( !extraData.ContainsKey( key ) )
-                    {
-                        break;
-                    }
-
-                    var values = extraData[ key ].Value.Split( ExtraDataKeys.ValueSeparator );
+                    var values = v.Value.Split( ExtraDataKeys.ValueSeparator );
                     var note = new MidiNoteName( values[ 0 ].Trim() ).ToMidiNoteNumber().Value;
                     var velocity = int.Parse( values[ 1 ].Trim() );
                     result.Add( $"{prefix}{note}.{velocity}" );
-                }
+
+                });
             }
 
             TranslateExtraData( "note", ExtraDataKeys.NoteOnOff );
@@ -169,22 +162,14 @@ namespace KeySwitchManager.Infrastructure.Storage.Xml.StudioOne.Translators.Help
             var result = new List<string>();
 
             #region Convert from Extra keys
-            var extraData = articulation.ExtraData;
 
-            for( var i = 1; i < int.MaxValue; i++ )
+            articulation.ExtraData.KeyWithIndexCount( ExtraDataKeys.Bank, ( k, v, i ) =>
             {
-                var key = new ExtraDataKey( $"{ExtraDataKeys.Bank}{i}" );
-
-                if( !extraData.ContainsKey( key ) )
-                {
-                    break;
-                }
-
-                var values = extraData[ key ].Value.Split( ExtraDataKeys.ValueSeparator );
+                var values = v.Value.Split( ExtraDataKeys.ValueSeparator );
                 var data1 = int.Parse( values[ 0 ].Trim() );
                 var data2 = int.Parse( values[ 1 ].Trim() );
                 result.Add( $"bc{data1}.{data2}" );
-            }
+            });
             #endregion
 
             return result;
