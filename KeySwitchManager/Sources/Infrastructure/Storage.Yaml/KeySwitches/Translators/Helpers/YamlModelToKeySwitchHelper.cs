@@ -47,7 +47,7 @@ namespace KeySwitchManager.Storage.Yaml.KeySwitches.Translators.Helpers
                     noteOn,
                     controlChange,
                     programChange,
-                    i.ExtraData
+                    new Dictionary<string, string>( i.ExtraData )
                 );
 
                 articulations.Add( articulation );

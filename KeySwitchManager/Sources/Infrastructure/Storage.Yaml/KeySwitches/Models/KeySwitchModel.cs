@@ -29,7 +29,6 @@ namespace KeySwitchManager.Storage.Yaml.KeySwitches.Models
 
         public IList<ArticulationModel> Articulations { get; set; } = new List<ArticulationModel>();
 
-        //[YamlIgnore]
         public IDictionary<string, string> ExtraData { get; set; } = new Dictionary<string, string>();
 
         public KeySwitchModel()

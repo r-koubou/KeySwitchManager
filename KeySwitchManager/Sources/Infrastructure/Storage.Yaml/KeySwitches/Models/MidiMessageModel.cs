@@ -1,15 +1,11 @@
 using System.ComponentModel.DataAnnotations;
 
-using KeySwitchManager.Domain.KeySwitches.Midi.Models.Helpers;
-
 namespace KeySwitchManager.Storage.Yaml.KeySwitches.Models
 {
     public class MidiMessageModel
     {
         [Required]
         public int Status { get; set; }
-
-        public int Channel { get; set; }
 
         public int Data1 { get; set; }
 
@@ -24,7 +20,6 @@ namespace KeySwitchManager.Storage.Yaml.KeySwitches.Models
             int data2 )
         {
             Status  = status;
-            Channel = MidiStatusHelper.GetChannel( status );
             Data1   = data1;
             Data2   = data2;
         }

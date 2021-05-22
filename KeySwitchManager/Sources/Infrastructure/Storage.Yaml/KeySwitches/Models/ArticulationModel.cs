@@ -1,8 +1,6 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-using YamlDotNet.Serialization;
-
 namespace KeySwitchManager.Storage.Yaml.KeySwitches.Models
 {
     public class ArticulationModel
@@ -12,8 +10,7 @@ namespace KeySwitchManager.Storage.Yaml.KeySwitches.Models
 
         public MidiModel MidiMessage { get; set; } = new MidiModel();
 
-        [YamlIgnore]
-        public IReadOnlyDictionary<string, string> ExtraData { get; set; } = new Dictionary<string, string>();
+        public IDictionary<string, string> ExtraData { get; set; } = new Dictionary<string, string>();
 
         public ArticulationModel()
         {}
@@ -25,7 +22,7 @@ namespace KeySwitchManager.Storage.Yaml.KeySwitches.Models
         {
             Name        = name;
             MidiMessage = midiMessage;
-            ExtraData   = extraData;
+            ExtraData   = new Dictionary<string, string>( extraData );
         }
     }
 }
