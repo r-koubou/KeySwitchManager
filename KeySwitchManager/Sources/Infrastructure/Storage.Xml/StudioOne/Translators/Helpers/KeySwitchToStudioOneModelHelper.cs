@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
+using KeySwitchManager.Domain.KeySwitches.Midi.Models.Values;
 using KeySwitchManager.Domain.KeySwitches.Models;
 using KeySwitchManager.Domain.KeySwitches.Models.Entities;
 using KeySwitchManager.Domain.KeySwitches.Models.Values;
@@ -66,6 +67,9 @@ namespace KeySwitchManager.Infrastructure.Storage.Xml.StudioOne.Translators.Help
             activations.AddRange(  TranslateActivationNote( articulation ) );
             activations.AddRange( TranslateActivationControlChange( articulation ) );
             activations.AddRange( TranslateActivationProgramChange( articulation ) );
+            activations.AddRange( TranslateActivationBankChange( articulation ) );
+
+            activations = activations.Distinct().ToList();
 
             var count = activations.Count;
             for( var i = 0; i < count; i++ )
@@ -92,6 +96,33 @@ namespace KeySwitchManager.Infrastructure.Storage.Xml.StudioOne.Translators.Help
                 var byte2 = x.DataByte2.Value;
                 result.Add( $"note{byte1}.{byte2}" );
             }
+
+            #region Convert from Extra keys
+            void TranslateExtraData( string prefix, ExtraDataKey k )
+            {
+
+                var extraData = articulation.ExtraData;
+
+                for( var i = 1; i < int.MaxValue; i++ )
+                {
+                    var key = new ExtraDataKey( $"{k.Value}{i}" );
+
+                    if( !extraData.ContainsKey( key ) )
+                    {
+                        break;
+                    }
+
+                    var values = extraData[ key ].Value.Split( ExtraDataKeys.ValueSeparator );
+                    var note = new MidiNoteName( values[ 0 ].Trim() ).ToMidiNoteNumber().Value;
+                    var velocity = int.Parse( values[ 1 ].Trim() );
+                    result.Add( $"{prefix}{note}.{velocity}" );
+                }
+            }
+
+            TranslateExtraData( "note", ExtraDataKeys.NoteOnOff );
+            TranslateExtraData( "on", ExtraDataKeys.NoteOn );
+            TranslateExtraData( "off", ExtraDataKeys.NoteOff );
+            #endregion
 
             return result;
         }
@@ -129,6 +160,32 @@ namespace KeySwitchManager.Infrastructure.Storage.Xml.StudioOne.Translators.Help
                 var byte1 = x.DataByte1.Value;
                 result.Add( $"pc{byte1}" );
             }
+
+            return result;
+        }
+
+        private static IReadOnlyCollection<string> TranslateActivationBankChange( Articulation articulation )
+        {
+            var result = new List<string>();
+
+            #region Convert from Extra keys
+            var extraData = articulation.ExtraData;
+
+            for( var i = 1; i < int.MaxValue; i++ )
+            {
+                var key = new ExtraDataKey( $"{ExtraDataKeys.Bank}{i}" );
+
+                if( !extraData.ContainsKey( key ) )
+                {
+                    break;
+                }
+
+                var values = extraData[ key ].Value.Split( ExtraDataKeys.ValueSeparator );
+                var data1 = int.Parse( values[ 0 ].Trim() );
+                var data2 = int.Parse( values[ 1 ].Trim() );
+                result.Add( $"bc{data1}.{data2}" );
+            }
+            #endregion
 
             return result;
         }
