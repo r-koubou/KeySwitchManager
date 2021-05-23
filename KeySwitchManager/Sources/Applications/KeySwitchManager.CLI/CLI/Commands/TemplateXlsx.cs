@@ -1,5 +1,4 @@
 using System;
-using System.Diagnostics.CodeAnalysis;
 
 using CommandLine;
 
@@ -12,15 +11,18 @@ namespace KeySwitchManager.CLI.Commands
 {
     public class TemplateXlsx : ICommand
     {
-        [Verb( "template-xlsx", HelpText = "export a template to xlsx file")]
-        [SuppressMessage( "ReSharper", "MemberCanBePrivate.Global" )]
-        [SuppressMessage( "ReSharper", "ClassNeverInstantiated.Global" )]
+        [Verb( "template-xlsx", HelpText = "export a template to xlsx file" )]
         public class CommandOption : ICommandOption
-        {}
+        {
+            [Value( index: 0, MetaName = "output", HelpText = "Output path for template file", Default = "(ProductName).xlsx" )]
+            public string OutputPath { get; set; } = string.Empty;
+        }
 
         public int Execute( ICommandOption opt )
         {
-            using var outputRepository = new ClosedXmlFileSaveTemplateRepository( new FilePath( "(ProductName).xlsx" ) );
+            var option = (CommandOption)opt;
+
+            using var outputRepository = new ClosedXmlFileSaveTemplateRepository( new FilePath( option.OutputPath ) );
             var interactor = new SpreadsheetTemplateExportInteractor(
                 outputRepository,
                 new ISpreadsheetTemplateExportPresenter.Console()
