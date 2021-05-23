@@ -1,27 +1,42 @@
-[English](README.md)
+# KeySwitchManager
 
-# キースイッチファイル管理ツール
-
-キースイッチ情報をデータベースで管理し、対応したDAWのキースイッチ定義ファイルに相互変換可能なツール。
-
-![overview](https://i.gyazo.com/db570b52d9c59fad54fc1d7b043a1d21.png)
+キースイッチ情報をデータベースファイルで管理し、DAWのキースイッチ定義ファイルに変換可能なコマンドラインツール。
 
 
 
-## 入力フォーマット
+## コマンド
 
-- スプレッドシート
-- JSON
+```bash
+KeySwitchManager.CLI <command> [<options>|--help]
+```
+
+コマンドラインオプションに何も指定しない場合は、使用方法を出力する。
 
 
 
 ## 対応DAW
 
-- Cubase (Proのみ)
-- Nuendo
-- Studio One 5 (Proのみ)
+- Cubase (Proのみ), Nuendo
+- Studio One 5.2
+- Cakewalk
 
 
+
+## データ作成
+
+### キースイッチ情報作成用のファイルの作成、編集
+
+```bash
+KeySwitchManager.CLI template
+```
+
+
+キースイッチ情報をデータベースファイルに登録・更新
+DAWのキースイッチファイルを出力
+
+### 
+
+## 
 
 ## コマンドラインオプション
 
