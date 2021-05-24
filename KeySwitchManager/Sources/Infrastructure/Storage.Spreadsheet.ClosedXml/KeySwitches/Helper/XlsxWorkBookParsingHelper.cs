@@ -157,29 +157,39 @@ namespace KeySwitchManager.Infrastructure.Storage.Spreadsheet.ClosedXml.KeySwitc
             // MIDI Notes
             // * Multiple MIDI Note Supported
             // * Column name format:
-            // MIDI Note1 ... MIDI Note1+n
-            // Velocity1 ... Velocity1+n
+            // NoteOn Ch1 ... NoteOn Ch[1+n]
+            // Note1 ... Note[1+n]
+            // Velocity1 ... Velocity[1+n]
             //----------------------------------------------------------------------
             var notes = new List<Row.MidiNote>();
 
             for( int i = 1; i < int.MaxValue; i++ )
             {
+                #region Channel
+                var midiChannel = ParseMidiChannelCell( context, SpreadsheetConstants.HeaderMidiNoteOnChannel + i );
+                #endregion
+
+                #region Note
                 if( !TryParseSheet( context, SpreadsheetConstants.HeaderMidiNote + i, out var noteNumberCell ) )
                 {
                     break;
                 }
 
                 ParseSheet( context, SpreadsheetConstants.HeaderMidiVelocity + i, out var velocityCell );
+                #endregion
 
+                #region Velocity
                 if( !int.TryParse( velocityCell, out var velocityValue ) )
                 {
-                    break;
+                    velocityValue = 100;
                 }
+                #endregion
 
                 var obj = new Row.MidiNote
                 {
+                    Channel  = new MidiChannelCell( midiChannel ),
                     Note     = new MidiNoteNumberCell( noteNumberCell ),
-                    Velocity =  new MidiNoteVelocityCell( velocityValue )
+                    Velocity = new MidiNoteVelocityCell( velocityValue )
                 };
 
                 notes.Add( obj );
@@ -187,31 +197,42 @@ namespace KeySwitchManager.Infrastructure.Storage.Spreadsheet.ClosedXml.KeySwitc
 
             return notes;
         }
+
         private static IEnumerable<Row.MidiControlChange> ParseMidiControlChanges( CellContext context )
         {
             //----------------------------------------------------------------------
             // MIDI CC
             // * Multiple MIDI CC Supported
             // * Column name format:
-            //   CC No1 ... CC No1+n
-            //   CC Value1 ... CC Value1+n
+            //   CC Ch1 ... CC Ch[1+n]
+            //   CC No1 ... CC No[1+n]
+            //   CC Value1 ... CC Value[1+n]
             //----------------------------------------------------------------------
             var controlChanges = new List<Row.MidiControlChange>();
 
             for( int i = 1; i < int.MaxValue; i++ )
             {
+                #region Channel
+                var midiChannel = ParseMidiChannelCell( context, SpreadsheetConstants.HeaderMidiNoteOnChannel + i );
+                #endregion
 
+                #region CC No
                 if( !TryParseSheet( context, SpreadsheetConstants.HeaderMidiCc + i, out var ccNumberCell ) )
                 {
                     break;
                 }
+                #endregion
+
+                #region CC Value
                 if( !TryParseSheet( context, SpreadsheetConstants.HeaderMidiCcValue + i, out var ccValueCell ) )
                 {
                     break;
                 }
+                #endregion
 
                 var obj = new Row.MidiControlChange
                 {
+                    Channel  = new MidiChannelCell( midiChannel ),
                     CcNumber = new MidiControlChangeNumberCell( int.Parse( ccNumberCell ) ),
                     CcValue  = new MidiControlChangeValueCell( int.Parse( ccValueCell ) )
                 };
@@ -234,18 +255,20 @@ namespace KeySwitchManager.Infrastructure.Storage.Spreadsheet.ClosedXml.KeySwitc
 
             for( int i = 1; i < int.MaxValue; i++ )
             {
-                if( !TryParseSheet( context, SpreadsheetConstants.HeaderPcChannel + i, out var pcChannelCell ) )
-                {
-                    pcChannelCell = "0";
-                }
+                #region Channel
+                var midiChannel = ParseMidiChannelCell( context, SpreadsheetConstants.HeaderMidiNoteOnChannel + i );
+                #endregion
+
+                #region PC Value
                 if( !TryParseSheet( context, SpreadsheetConstants.HeaderPcData + i, out var pcDataCell ) )
                 {
                     break;
                 }
+                #endregion
 
                 var obj = new Row.MidiProgramChange
                 {
-                    Channel = new MidiProgramChangeCell( int.Parse( pcChannelCell ) ),
+                    Channel = new MidiChannelCell( midiChannel ),
                     Data    = new MidiProgramChangeCell( int.Parse( pcDataCell ) )
                 };
 
@@ -299,6 +322,31 @@ namespace KeySwitchManager.Infrastructure.Storage.Spreadsheet.ClosedXml.KeySwitc
                 i++;
             }
             return false;
+        }
+
+        private static int ParseMidiChannelCell( CellContext context, string columnName )
+        {
+            var midiChannel = 0x00;
+
+            if( TryParseSheet( context, columnName, out var channelCell ) )
+            {
+                if( !int.TryParse( channelCell, out midiChannel ) )
+                {
+                    midiChannel = 0x00;
+                }
+                else
+                {
+                    // one-based index [1-16] to zero-based [0-15] index
+                    midiChannel -= 1;
+
+                    if( midiChannel < 0 )
+                    {
+                        midiChannel = 0;
+                    }
+                }
+            }
+
+            return midiChannel;
         }
 
         private static IReadOnlyCollection<string> ParseExtraColumnNames( IXLWorksheet sheet )

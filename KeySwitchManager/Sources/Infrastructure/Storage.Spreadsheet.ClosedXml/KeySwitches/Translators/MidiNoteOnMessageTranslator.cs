@@ -29,15 +29,37 @@ namespace KeySwitchManager.Infrastructure.Storage.Spreadsheet.ClosedXml.KeySwitc
             foreach( var message in midiMessages )
             {
                 // channel
-                column = KeySwitchToClosedXmlModelHelper.UpdateCellFromMidiMessage( type, TranslateMidiMessageType.ChannelInStatus, message.Status.Value & 0xF, sheet, row, column );
+                column = KeySwitchToClosedXmlModelHelper.UpdateCellFromMidiMessage(
+                    type,
+                    TranslateMidiMessageType.ChannelInStatus,
+                    ( message.Status.Value & 0xF ) + 1, // zero-based index to one-based index
+                    sheet,
+                    row,
+                    column
+                );
                 // note
-                column = KeySwitchToClosedXmlModelHelper.UpdateCellFromMidiMessage( type, TranslateMidiMessageType.Data1,           message.DataByte1.Value,    sheet, row, column, ( cell, value ) =>
-                {
-                    var noteName = MidiNoteNameHelper.GetNoteNameList()[ value ];
-                    cell.Value = noteName;
-                });
+                column = KeySwitchToClosedXmlModelHelper.UpdateCellFromMidiMessage(
+                    type,
+                    TranslateMidiMessageType.Data1,
+                    message.DataByte1.Value,
+                    sheet,
+                    row,
+                    column,
+                    ( cell, value ) =>
+                    {
+                        var noteName = MidiNoteNameHelper.GetNoteNameList()[ value ];
+                        cell.Value = noteName;
+                    }
+                );
                 // velocity
-                column = KeySwitchToClosedXmlModelHelper.UpdateCellFromMidiMessage( type, TranslateMidiMessageType.Data2,           message.DataByte2.Value,    sheet, row, column );
+                column = KeySwitchToClosedXmlModelHelper.UpdateCellFromMidiMessage(
+                    type,
+                    TranslateMidiMessageType.Data2,
+                    message.DataByte2.Value,
+                    sheet,
+                    row,
+                    column
+                );
             }
 
             return column;

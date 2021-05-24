@@ -112,8 +112,9 @@ namespace KeySwitchManager.Infrastructure.Storage.Spreadsheet.KeySwitches.Transl
 
             foreach( var midiNote in row.MidiNoteList )
             {
+                var channel = midiNote.Channel.Value;
                 var noteNumber = IMidiNoteNameFactory.Default.Create( midiNote.Note.Value ).ToMidiNoteNumber().Value;
-                var noteOn = factory.Create( noteNumber, midiNote.Velocity.Value );
+                var noteOn = factory.Create( channel, noteNumber, midiNote.Velocity.Value );
 
                 result.Add( noteOn );
             }
@@ -129,6 +130,7 @@ namespace KeySwitchManager.Infrastructure.Storage.Spreadsheet.KeySwitches.Transl
             foreach( var cc in row.MidiControlChangeList )
             {
                 var controlChange = factory.Create(
+                    cc.Channel.Value,
                     cc.CcNumber.Value,
                     cc.CcValue.Value
                 );

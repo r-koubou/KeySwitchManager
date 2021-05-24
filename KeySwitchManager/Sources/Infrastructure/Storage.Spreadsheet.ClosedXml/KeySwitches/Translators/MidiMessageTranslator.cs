@@ -27,12 +27,42 @@ namespace KeySwitchManager.Infrastructure.Storage.Spreadsheet.ClosedXml.KeySwitc
 
             foreach( var message in midiMessages )
             {
-                // Status byte / Channel Number
-                column = KeySwitchToClosedXmlModelHelper.UpdateCellFromMidiMessage( type, TranslateMidiMessageType.Status, message.Status.Value, sheet, row, column );
-                column = KeySwitchToClosedXmlModelHelper.UpdateCellFromMidiMessage( type, TranslateMidiMessageType.ChannelInStatus, message.Status.Value & 0xF, sheet, row, column );
-                // Data byte
-                column = KeySwitchToClosedXmlModelHelper.UpdateCellFromMidiMessage( type, TranslateMidiMessageType.Data1, message.DataByte1.Value, sheet, row, column );
-                column = KeySwitchToClosedXmlModelHelper.UpdateCellFromMidiMessage( type, TranslateMidiMessageType.Data2, message.DataByte2.Value, sheet, row, column );
+                // Status byte
+                column = KeySwitchToClosedXmlModelHelper.UpdateCellFromMidiMessage(
+                    type,
+                    TranslateMidiMessageType.Status,
+                    message.Status.Value,
+                    sheet,
+                    row,
+                    column
+                );
+                // Channel Number
+                column = KeySwitchToClosedXmlModelHelper.UpdateCellFromMidiMessage(
+                    type,
+                    TranslateMidiMessageType.ChannelInStatus,
+                    ( message.Status.Value & 0xF ) + 1, // Zero-based index to One-based index
+                    sheet,
+                    row,
+                    column
+                );
+                // Data byte1
+                column = KeySwitchToClosedXmlModelHelper.UpdateCellFromMidiMessage(
+                    type,
+                    TranslateMidiMessageType.Data1,
+                    message.DataByte1.Value,
+                    sheet,
+                    row,
+                    column
+                );
+                // Data byte2
+                column = KeySwitchToClosedXmlModelHelper.UpdateCellFromMidiMessage(
+                    type,
+                    TranslateMidiMessageType.Data2,
+                    message.DataByte2.Value,
+                    sheet,
+                    row,
+                    column
+                );
             }
 
             return column;

@@ -12,7 +12,7 @@ namespace KeySwitchManager.Domain.KeySwitches.Midi.Models
 
         public static MidiNoteOn Zero =>
             new MidiNoteOn(
-                new MidiStatus( MidiStatusHelper.NoteOn ),
+                new MidiStatus( MidiStatusHelper.NoteOn | 0x00 ),
                 new MidiNoteNumber( 0 ),
                 new MidiVelocity( 0 )
             );
@@ -21,13 +21,13 @@ namespace KeySwitchManager.Domain.KeySwitches.Midi.Models
         {
             public MidiNoteOn Create( int noteNumber, int velocity )
             {
-                return  Create( MidiStatusHelper.NoteOn, noteNumber, velocity );
+                return  Create( 0x00, noteNumber, velocity );
             }
 
-            public MidiNoteOn Create( int status, int data1, int data2 )
+            public MidiNoteOn Create( int channel, int data1, int data2 )
             {
                 return new MidiNoteOn(
-                    new MidiStatus( status ),
+                    new MidiStatus( MidiStatusHelper.MakeStatus( MidiStatusHelper.NoteOn, channel ) ),
                     new MidiNoteNumber( data1 ),
                     new MidiVelocity( data2 )
                 );

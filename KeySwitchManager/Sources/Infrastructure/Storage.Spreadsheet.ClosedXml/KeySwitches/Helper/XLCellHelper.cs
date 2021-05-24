@@ -217,7 +217,7 @@ namespace KeySwitchManager.Infrastructure.Storage.Spreadsheet.ClosedXml.KeySwitc
                 SetHeaderCell( sheet, SpreadsheetConstants.RowDataHeader, column + 0, MidiPcHeaderCellColor, $"{SpreadsheetConstants.HeaderPcChannel}{index}" );
                 SetHeaderCell( sheet, SpreadsheetConstants.RowDataHeader, column + 1, MidiPcHeaderCellColor, $"{SpreadsheetConstants.HeaderPcData}{index}" );
 
-                SetMidiPcCellStyle( sheet, row, column + 0 );
+                SetMidiChannelCellStyle( sheet, row, column + 0 );
                 SetMidiPcCellStyle( sheet, row, column + 1 );
                 column += 2;
             }
