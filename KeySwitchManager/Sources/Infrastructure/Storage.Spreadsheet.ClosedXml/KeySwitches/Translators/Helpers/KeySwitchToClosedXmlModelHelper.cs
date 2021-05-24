@@ -120,10 +120,7 @@ namespace KeySwitchManager.Infrastructure.Storage.Spreadsheet.ClosedXml.KeySwitc
                 sheet,
                 SpreadsheetConstants.RowDataHeader,
                 row,
-                string.Empty,
-                SpreadsheetConstants.HeaderMidiNote,
-                SpreadsheetConstants.HeaderMidiVelocity,
-                TranslateMidiMessageType.Data2 | TranslateMidiMessageType.Data3
+                TranslateMidiMessageType.ChannelInStatus | TranslateMidiMessageType.Data1 | TranslateMidiMessageType.Data2
             );
         }
 
@@ -140,10 +137,7 @@ namespace KeySwitchManager.Infrastructure.Storage.Spreadsheet.ClosedXml.KeySwitc
                 sheet,
                 SpreadsheetConstants.RowDataHeader,
                 row,
-                string.Empty,
-                SpreadsheetConstants.HeaderMidiCc,
-                SpreadsheetConstants.HeaderMidiCcValue,
-                TranslateMidiMessageType.Data2 | TranslateMidiMessageType.Data3
+                TranslateMidiMessageType.ChannelInStatus | TranslateMidiMessageType.Data1 | TranslateMidiMessageType.Data2
             );
         }
 
@@ -160,13 +154,54 @@ namespace KeySwitchManager.Infrastructure.Storage.Spreadsheet.ClosedXml.KeySwitc
                 sheet,
                 SpreadsheetConstants.RowDataHeader,
                 row,
-                SpreadsheetConstants.HeaderPcChannel,
-                SpreadsheetConstants.HeaderPcData,
-                string.Empty,
-                TranslateMidiMessageType.Data1 | TranslateMidiMessageType.Data2
+                TranslateMidiMessageType.ChannelInStatus | TranslateMidiMessageType.Data1
             );
         }
 
+        #endregion
+
+        #region Updating Midi Message Cell
+        public static int UpdateCellFromMidiMessage(
+            TranslateMidiMessageType type,
+            TranslateMidiMessageType mask,
+            int midiValue,
+            IXLWorksheet sheet,
+            int row,
+            int column,
+            Action<IXLCell, int> updateAction )
+        {
+            if( !type.HasFlag( mask ) )
+            {
+                return column;
+            }
+
+            updateAction( sheet.Cell( row, column ), midiValue );
+            column++;
+
+            return column;
+        }
+
+        public static int UpdateCellFromMidiMessage(
+            TranslateMidiMessageType type,
+            TranslateMidiMessageType mask,
+            int midiValue,
+            IXLWorksheet sheet,
+            int row,
+            int column )
+        {
+            return UpdateCellFromMidiMessage(
+                type,
+                mask,
+                midiValue,
+                sheet,
+                row,
+                column,
+                ( cell, value ) =>
+                {
+                    cell.Value = value;
+                }
+            );
+        }
         #endregion
 
     }

@@ -10,9 +10,10 @@ namespace KeySwitchManager.Infrastructure.Storage.Spreadsheet.ClosedXml.KeySwitc
     [Flags]
     internal enum TranslateMidiMessageType
     {
-        Data1 = 0x1,
-        Data2 = 0x2,
-        Data3 = 0x4,
+        Status = 0x1,
+        ChannelInStatus = 0x2,
+        Data1 = 0x4,
+        Data2 = 0x8,
     }
 
     internal class MidiMessageCellInfo
@@ -34,9 +35,6 @@ namespace KeySwitchManager.Infrastructure.Storage.Spreadsheet.ClosedXml.KeySwitc
             IXLWorksheet sheet,
             int headerRow,
             int row,
-            string midiData1HeaderName,
-            string midiData2HeaderName,
-            string midiData3HeaderName,
             TranslateMidiMessageType type );
     }
 }
