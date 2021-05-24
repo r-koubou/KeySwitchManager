@@ -21,13 +21,13 @@ namespace KeySwitchManager.Domain.KeySwitches.Midi.Models
         {
             public MidiControlChange Create( int ccNumber, int ccValue )
             {
-                return Create( MidiStatusHelper.ControlChange, ccNumber, ccValue );
+                return Create( 0x00, ccNumber, ccValue );
             }
 
-            public MidiControlChange Create( int status, int data1, int data2 )
+            public MidiControlChange Create( int channel, int data1, int data2 )
             {
                 return new MidiControlChange(
-                    new MidiStatus( status ),
+                    new MidiStatus( MidiStatusHelper.MakeStatus( MidiStatusHelper.ControlChange, channel ) ),
                     new MidiControlChangeNumber( data1 ),
                     new MidiControlChangeValue( data2 )
                 );

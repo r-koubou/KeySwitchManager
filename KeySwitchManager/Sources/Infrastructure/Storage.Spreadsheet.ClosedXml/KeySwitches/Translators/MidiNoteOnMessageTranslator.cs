@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using ClosedXML.Excel;
 
 using KeySwitchManager.Domain.KeySwitches.Midi.Models.Entities;
+using KeySwitchManager.Infrastructure.Storage.Spreadsheet.ClosedXml.KeySwitches.Translators.Helpers;
 using KeySwitchManager.Infrastructure.Storage.Spreadsheet.KeySwitches.Helpers;
 
 namespace KeySwitchManager.Infrastructure.Storage.Spreadsheet.ClosedXml.KeySwitches.Translators
@@ -21,37 +22,44 @@ namespace KeySwitchManager.Infrastructure.Storage.Spreadsheet.ClosedXml.KeySwitc
             IXLWorksheet sheet,
             int headerRow,
             int row,
-            string midiData1HeaderName,
-            string midiData2HeaderName,
-            string midiData3HeaderName,
             TranslateMidiMessageType type )
         {
             var column = StartColumn;
 
             foreach( var message in midiMessages )
             {
-                var cellValues = new[] { message.Status, message.DataByte1, message.DataByte2 };
-
-                for( int i = 0; i < 3; i++ )
-                {
-                    var flag = (TranslateMidiMessageType)( 1 << i );
-
-                    if( !type.HasFlag( flag ) )
+                // channel
+                column = KeySwitchToClosedXmlModelHelper.UpdateCellFromMidiMessage(
+                    type,
+                    TranslateMidiMessageType.ChannelInStatus,
+                    ( message.Status.Value & 0xF ) + 1, // zero-based index to one-based index
+                    sheet,
+                    row,
+                    column
+                );
+                // note
+                column = KeySwitchToClosedXmlModelHelper.UpdateCellFromMidiMessage(
+                    type,
+                    TranslateMidiMessageType.Data1,
+                    message.DataByte1.Value,
+                    sheet,
+                    row,
+                    column,
+                    ( cell, value ) =>
                     {
-                        continue;
+                        var noteName = MidiNoteNameHelper.GetNoteNameList()[ value ];
+                        cell.Value = noteName;
                     }
-
-                    if( flag.HasFlag( TranslateMidiMessageType.Data2 ) )
-                    {
-                        var noteName = MidiNoteNameHelper.GetNoteNameList()[ cellValues[ i ].Value ];
-                        sheet.Cell( row, column ).Value = noteName;
-                    }
-                    else
-                    {
-                        sheet.Cell( row, column ).Value = cellValues[ i ].Value;
-                    }
-                    column++;
-                }
+                );
+                // velocity
+                column = KeySwitchToClosedXmlModelHelper.UpdateCellFromMidiMessage(
+                    type,
+                    TranslateMidiMessageType.Data2,
+                    message.DataByte2.Value,
+                    sheet,
+                    row,
+                    column
+                );
             }
 
             return column;

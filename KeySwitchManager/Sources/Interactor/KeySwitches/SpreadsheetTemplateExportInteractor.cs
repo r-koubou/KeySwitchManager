@@ -51,7 +51,7 @@ namespace KeySwitchManager.Interactor.KeySwitches
                         "Power Chord",
                         new List<IMidiMessage>{ IMidiNoteOnFactory.Default.Create( 0, 100 )},
                         new List<IMidiMessage>{ IMidiControlChangeFactory.Default.Create( 1, 100 )},
-                        new List<IMidiMessage>{ IMidiProgramChangeFactory.Default.Create( 2, 34 )},
+                        new List<IMidiMessage>{ IMidiProgramChangeFactory.Default.Create( 34 )},
                         new Dictionary<string, string>()
                     ),
                 },

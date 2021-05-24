@@ -1,5 +1,4 @@
 using System;
-using System.Diagnostics.CodeAnalysis;
 
 using CommandLine;
 
@@ -11,16 +10,17 @@ namespace KeySwitchManager.CLI.Commands
 {
     public class Template : ICommand
     {
-        [Verb( "template", HelpText = "export a template generic yaml to file")]
-        [SuppressMessage( "ReSharper", "MemberCanBePrivate.Global" )]
-        [SuppressMessage( "ReSharper", "ClassNeverInstantiated.Global" )]
+        [Verb( "template", HelpText = "export a template generic yaml to file" )]
         public class CommandOption : ICommandOption
-        {}
+        {
+            [Value( index: 0, MetaName = "output", HelpText = "Output path for template file", Default = "(ProductName).yaml" )]
+            public string OutputPath { get; set; } = string.Empty;
+        }
 
         public int Execute( ICommandOption opt )
         {
             var option = (CommandOption)opt;
-            const string outputPath = "(ProductName).yaml";
+            var outputPath = option.OutputPath;
 
             using var outputRepository = new YamlKeySwitchFileRepository( new FilePath( outputPath ), false );
 

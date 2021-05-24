@@ -8,6 +8,8 @@ namespace KeySwitchManager.Infrastructure.Storage.Spreadsheet.KeySwitches.Models
     {
         public class MidiNote
         {
+            public MidiChannelCell Channel { get; set; }
+                = new MidiChannelCell( MidiChannelCell.MinValue );
             public MidiNoteNumberCell Note { get; set; }
                 = new MidiNoteNumberCell( MidiNoteNameHelper.GetNoteNameList()[ 0 ] );
             public MidiNoteVelocityCell Velocity { get; set; }
@@ -16,6 +18,8 @@ namespace KeySwitchManager.Infrastructure.Storage.Spreadsheet.KeySwitches.Models
 
         public class MidiControlChange
         {
+            public MidiChannelCell Channel { get; set; }
+                = new MidiChannelCell( MidiChannelCell.MinValue );
             public MidiControlChangeNumberCell CcNumber { get; set; }
                 = new MidiControlChangeNumberCell( MidiControlChangeNumberCell.MinValue );
             public MidiControlChangeValueCell CcValue { get; set; }
@@ -24,8 +28,8 @@ namespace KeySwitchManager.Infrastructure.Storage.Spreadsheet.KeySwitches.Models
 
         public class MidiProgramChange
         {
-            public MidiProgramChangeCell Channel { get; set; }
-                = new MidiProgramChangeCell( MidiProgramChangeCell.MinValue );
+            public MidiChannelCell Channel { get; set; }
+                = new MidiChannelCell( MidiChannelCell.MinValue );
             public MidiProgramChangeCell Data { get; set; }
                 = new MidiProgramChangeCell( MidiProgramChangeCell.MinValue );
         }

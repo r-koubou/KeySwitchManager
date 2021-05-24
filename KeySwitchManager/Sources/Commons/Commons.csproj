@@ -14,7 +14,7 @@
 
     <ItemGroup>
       <PackageReference Include="RkHelper" Version="0.0.3" />
-      <PackageReference Include="ValueObjectGenerator" Version="1.2.0" />
+      <PackageReference Include="ValueObjectGenerator" Version="1.2.1" />
     </ItemGroup>
 
 </Project>

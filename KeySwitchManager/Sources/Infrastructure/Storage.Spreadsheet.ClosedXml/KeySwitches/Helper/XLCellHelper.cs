@@ -89,17 +89,49 @@ namespace KeySwitchManager.Infrastructure.Storage.Spreadsheet.ClosedXml.KeySwitc
             sheet.ShowGridLines = false;
         }
 
+        #region Cell style for MIDI Channel
+        private static void SetMidiChannelCellStyle( IXLWorksheet sheet, int row, int column )
+        {
+            var listSheet = sheet.Workbook.Worksheet( SpreadsheetConstants.DataListDefinitionSheetName );
+
+            var begin = listSheet.Cell(
+                SpreadsheetConstants.RowValidationMidiChannelListBegin,
+                SpreadsheetConstants.ColumnValidationMidiChannelList );
+
+            var end = listSheet.Cell(
+                SpreadsheetConstants.RowValidationMidiChannelListEnd,
+                SpreadsheetConstants.ColumnValidationMidiChannelList );
+
+            SetValidationByList(
+                sheet,
+                row,
+                column,
+                "MIDI Channel",
+                "Choose from Drop-down list or input number directly(1-16)\n" +
+                "\n" +
+                "If don’t use MIDI Channel, set Cell value empty. (=ch1)",
+                listSheet,
+                begin,
+                end );
+
+            sheet.Cell( row, column ).Style.Alignment.Horizontal = XLAlignmentHorizontalValues.Center;
+        }
+        #endregion
+
+
         #region Cell style for MIDI Note
         private static int SetDefaultMidiNoteCellStyle( IXLWorksheet sheet, int row, int column, int count = 1 )
         {
             for( var index = 1; index <= count; index++ )
             {
-                SetHeaderCell( sheet, SpreadsheetConstants.RowDataHeader, column + 0, MidiNoteOnHeaderCellColor, $"{SpreadsheetConstants.HeaderMidiNote}{index}" );
-                SetHeaderCell( sheet, SpreadsheetConstants.RowDataHeader, column + 1, MidiNoteOnHeaderCellColor, $"{SpreadsheetConstants.HeaderMidiVelocity}{index}" );
+                SetHeaderCell( sheet, SpreadsheetConstants.RowDataHeader, column + 0, MidiNoteOnHeaderCellColor, $"{SpreadsheetConstants.HeaderMidiNoteOnChannel}{index}" );
+                SetHeaderCell( sheet, SpreadsheetConstants.RowDataHeader, column + 1, MidiNoteOnHeaderCellColor, $"{SpreadsheetConstants.HeaderMidiNote}{index}" );
+                SetHeaderCell( sheet, SpreadsheetConstants.RowDataHeader, column + 2, MidiNoteOnHeaderCellColor, $"{SpreadsheetConstants.HeaderMidiVelocity}{index}" );
 
-                SetMidiNoteCellStyle( sheet, row, column + 0 );
-                SetMidiVelocityCellStyle( sheet, row, column + 1 );
-                column += 2;
+                SetMidiChannelCellStyle( sheet, row, column + 0 );
+                SetMidiNoteCellStyle( sheet, row, column + 1 );
+                SetMidiVelocityCellStyle( sheet, row, column + 2 );
+                column += 3;
             }
 
             return column;
@@ -150,12 +182,14 @@ namespace KeySwitchManager.Infrastructure.Storage.Spreadsheet.ClosedXml.KeySwitc
         {
             for( var index = 1; index <= count; index++ )
             {
-                SetHeaderCell( sheet, SpreadsheetConstants.RowDataHeader, column + 0, MidiCcHeaderCellColor, $"{SpreadsheetConstants.HeaderMidiCc}{index}" );
-                SetHeaderCell( sheet, SpreadsheetConstants.RowDataHeader, column + 1, MidiCcHeaderCellColor, $"{SpreadsheetConstants.HeaderMidiCcValue}{index}" );
+                SetHeaderCell( sheet, SpreadsheetConstants.RowDataHeader, column + 0, MidiCcHeaderCellColor, $"{SpreadsheetConstants.HeaderMidiCcChannel}{index}" );
+                SetHeaderCell( sheet, SpreadsheetConstants.RowDataHeader, column + 1, MidiCcHeaderCellColor, $"{SpreadsheetConstants.HeaderMidiCc}{index}" );
+                SetHeaderCell( sheet, SpreadsheetConstants.RowDataHeader, column + 2, MidiCcHeaderCellColor, $"{SpreadsheetConstants.HeaderMidiCcValue}{index}" );
 
-                SetMidiCcCellStyle( sheet, row, column + 0 );
+                SetMidiChannelCellStyle( sheet, row, column + 0 );
                 SetMidiCcCellStyle( sheet, row, column + 1 );
-                column += 2;
+                SetMidiCcCellStyle( sheet, row, column + 2 );
+                column += 3;
             }
 
             return column;
@@ -183,7 +217,7 @@ namespace KeySwitchManager.Infrastructure.Storage.Spreadsheet.ClosedXml.KeySwitc
                 SetHeaderCell( sheet, SpreadsheetConstants.RowDataHeader, column + 0, MidiPcHeaderCellColor, $"{SpreadsheetConstants.HeaderPcChannel}{index}" );
                 SetHeaderCell( sheet, SpreadsheetConstants.RowDataHeader, column + 1, MidiPcHeaderCellColor, $"{SpreadsheetConstants.HeaderPcData}{index}" );
 
-                SetMidiPcCellStyle( sheet, row, column + 0 );
+                SetMidiChannelCellStyle( sheet, row, column + 0 );
                 SetMidiPcCellStyle( sheet, row, column + 1 );
                 column += 2;
             }

@@ -3,11 +3,13 @@ namespace KeySwitchManager.Infrastructure.Storage.Spreadsheet.KeySwitches.Helper
     public static class SpreadsheetConstants
     {
         public static readonly string HeaderArticulationName = "Articulation Name";
-        public static readonly string HeaderMidiNote = "MIDI Note";
+        public static readonly string HeaderMidiNoteOnChannel = "NoteOn Ch";
+        public static readonly string HeaderMidiNote = "Note";
         public static readonly string HeaderMidiVelocity = "Velocity";
+        public static readonly string HeaderMidiCcChannel = "CC Ch";
         public static readonly string HeaderMidiCc = "CC No";
-        public static readonly string HeaderMidiCcValue = "CC Value";
-        public static readonly string HeaderPcChannel = "PC Channel";
+        public static readonly string HeaderMidiCcValue = "CC Data";
+        public static readonly string HeaderPcChannel = "PC Ch";
         public static readonly string HeaderPcData = "PC Data";
 
         public static readonly string HeaderExtraPrefix = "Ext.";
@@ -35,10 +37,14 @@ namespace KeySwitchManager.Infrastructure.Storage.Spreadsheet.KeySwitches.Helper
         public static readonly int ColumnDataBegin = 1;
         public static readonly int ColumnMidiMessageBegin = 2;
 
-        // DataValidations
+        // DataValidations (Note)
         public static readonly int ColumnValidationMidiNoteList = 2;
         public static readonly int RowValidationMidiNoteListBegin = 2;
         public static readonly int RowValidationMidiNoteListEnd = 258;
+        // DataValidations (Channel)
+        public static readonly int ColumnValidationMidiChannelList = 8;
+        public static readonly int RowValidationMidiChannelListBegin = 2;
+        public static readonly int RowValidationMidiChannelListEnd = 18;
 
         #endregion
 
