@@ -41,7 +41,7 @@ namespace KeySwitchManager.Interactor.KeySwitches
                 {
                     IArticulationFactory.Default.Create(
                         "name",
-                        new List<IMidiMessage>{ IMidiNoteOnFactory.Default.Create( 0, 100 )},
+                        new List<IMidiChannelVoiceMessage>{ IMidiNoteOnFactory.Default.Create( 0, 100 )},
                         new List<IMidiMessage>{ IMidiControlChangeFactory.Default.Create( 1, 100 )},
                         new List<IMidiMessage>{ IMidiProgramChangeFactory.Default.Create( 23 )},
                         new Dictionary<string, string>

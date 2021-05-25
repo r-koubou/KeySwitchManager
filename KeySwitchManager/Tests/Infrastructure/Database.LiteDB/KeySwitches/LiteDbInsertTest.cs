@@ -4,7 +4,6 @@ using System.Linq;
 
 using KeySwitchManager.Commons.Data;
 using KeySwitchManager.Domain.KeySwitches.Midi.Models.Entities;
-using KeySwitchManager.Domain.KeySwitches.Midi.Models.Helpers;
 using KeySwitchManager.Domain.KeySwitches.Midi.Models.Values;
 using KeySwitchManager.Infrastructure.Database.LiteDB.KeySwitches;
 using KeySwitchManager.Testing.Commons.KeySwitches;
@@ -23,7 +22,7 @@ namespace KeySwitchManager.Testing.Database.LiteDB.KeySwitches
             var articulation = TestDataGenerator.CreateArticulation(
                 new List<MidiNoteOn>()
                 {
-                    new MidiNoteOn( new MidiStatus( MidiStatusHelper.NoteOn | 0x00 ), new MidiNoteNumber( 1 ), new MidiVelocity( 100 ) )
+                    new MidiNoteOn( new MidiChannel( 0 ), new MidiNoteNumber( 1 ), new MidiVelocity( 100 ) )
                 },
                 new List<MidiControlChange>(),
                 new List<MidiProgramChange>()

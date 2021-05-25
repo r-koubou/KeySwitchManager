@@ -10,14 +10,14 @@ namespace KeySwitchManager.Domain.KeySwitches.Models.Entities
     public class Articulation : IEquatable<Articulation>
     {
         public ArticulationName ArticulationName { get; }
-        public IDataList<IMidiMessage> MidiNoteOns { get; }
+        public IDataList<IMidiChannelVoiceMessage> MidiNoteOns { get; }
         public IDataList<IMidiMessage> MidiControlChanges { get; }
         public IDataList<IMidiMessage> MidiProgramChanges { get; }
         public ExtraData ExtraData { get; }
 
         public Articulation(
             ArticulationName articulationName,
-            IDataList<IMidiMessage> midiNoteOns,
+            IDataList<IMidiChannelVoiceMessage> midiNoteOns,
             IDataList<IMidiMessage> midiControlChanges,
             IDataList<IMidiMessage> midiProgramChanges,
             ExtraData extraData )

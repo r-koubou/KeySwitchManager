@@ -17,7 +17,7 @@ namespace KeySwitchManager.Infrastructure.Database.LiteDB.KeySwitches.Translator
 
             foreach( var i in source.Articulations )
             {
-                var noteOn = new List<IMidiMessage>();
+                var noteOn = new List<IMidiChannelVoiceMessage>();
                 var controlChange = new List<IMidiMessage>();
                 var programChange = new List<IMidiMessage>();
 
@@ -67,14 +67,14 @@ namespace KeySwitchManager.Infrastructure.Database.LiteDB.KeySwitches.Translator
 
         private static void ConvertMessageList(
             IEnumerable<MidiMessageModel> src,
-            ICollection<IMidiMessage> dest,
-            IMidiMessageFactory<IMidiMessage> messageFactory )
+            ICollection<IMidiChannelVoiceMessage> dest,
+            IMidiChannelVoiceMessageFactory<IMidiChannelVoiceMessage> messageFactory )
         {
             foreach( var i in src )
             {
                 dest.Add(
                     messageFactory.Create(
-                        i.Status,
+                        i.Status & 0x0F,
                         i.DataByte1,
                         i.DataByte2
                     )

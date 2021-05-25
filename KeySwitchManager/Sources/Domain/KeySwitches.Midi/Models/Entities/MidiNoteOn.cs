@@ -5,18 +5,19 @@ namespace KeySwitchManager.Domain.KeySwitches.Midi.Models.Entities
     /// <summary>
     /// Representing a MIDI note on.
     /// </summary>
-    public class MidiNoteOn : IMidiMessage
+    public class MidiNoteOn : IMidiChannelVoiceMessage
     {
-        public IMidiMessageData Status { get; }
+        public IMidiMessageData Status => new MidiStatus( 0x90 | Channel.Value );
         public IMidiMessageData DataByte1 { get; }
         public IMidiMessageData DataByte2 { get; }
+        public IMidiMessageData Channel { get; }
 
         public MidiNoteOn(
-            MidiStatus status,
+            MidiChannel channel,
             MidiNoteNumber midiNoteNumber,
             MidiVelocity midiVelocity )
         {
-            Status    = status;
+            Channel   = channel;
             DataByte1 = midiNoteNumber;
             DataByte2 = midiVelocity;
         }

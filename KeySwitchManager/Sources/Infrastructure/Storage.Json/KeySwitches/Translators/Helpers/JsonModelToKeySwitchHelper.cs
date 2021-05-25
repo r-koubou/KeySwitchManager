@@ -34,7 +34,7 @@ namespace KeySwitchManager.Infrastructure.Storage.Json.KeySwitches.Translators.H
 
             foreach( var i in source.Articulations )
             {
-                List<IMidiMessage> noteOn = new List<IMidiMessage>();
+                var noteOn = new List<IMidiChannelVoiceMessage>();
                 List<IMidiMessage> controlChange = new List<IMidiMessage>();
                 List<IMidiMessage> programChange = new List<IMidiMessage>();
 
@@ -58,14 +58,14 @@ namespace KeySwitchManager.Infrastructure.Storage.Json.KeySwitches.Translators.H
 
         private static void ConvertMessageList(
             IEnumerable<MidiMessageModel> src,
-            ICollection<IMidiMessage> dest,
-            IMidiMessageFactory<IMidiMessage> messageFactory )
+            ICollection<IMidiChannelVoiceMessage> dest,
+            IMidiChannelVoiceMessageFactory<IMidiChannelVoiceMessage> messageFactory )
         {
             foreach( var i in src )
             {
                 dest.Add(
                     messageFactory.Create(
-                        i.Status,
+                        i.Channel,
                         i.Data1,
                         i.Data2
                     )

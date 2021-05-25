@@ -16,7 +16,7 @@ namespace KeySwitchManager.Domain.KeySwitches.Models
 
         public Articulation Create(
             string articulationName,
-            IEnumerable<IMidiMessage> midiNoteOns,
+            IEnumerable<IMidiChannelVoiceMessage> midiNoteOns,
             IEnumerable<IMidiMessage> midiControlChanges,
             IEnumerable<IMidiMessage> midiProgramChanges,
             IReadOnlyDictionary<string, string> extraData );
@@ -32,7 +32,7 @@ namespace KeySwitchManager.Domain.KeySwitches.Models
             {
                 return new Articulation(
                     new ArticulationName( articulationName ),
-                    new DataList<IMidiMessage>(),
+                    new DataList<IMidiChannelVoiceMessage>(),
                     new DataList<IMidiMessage>(),
                     new DataList<IMidiMessage>(),
                     new ExtraData()
@@ -41,14 +41,14 @@ namespace KeySwitchManager.Domain.KeySwitches.Models
 
             public Articulation Create(
                 string articulationName,
-                IEnumerable<IMidiMessage> midiNoteOns,
+                IEnumerable<IMidiChannelVoiceMessage> midiNoteOns,
                 IEnumerable<IMidiMessage> midiControlChanges,
                 IEnumerable<IMidiMessage> midiProgramChanges,
                 IReadOnlyDictionary<string, string> extraData )
             {
                 return new Articulation(
                     new ArticulationName( articulationName ),
-                    new DataList<IMidiMessage>( midiNoteOns ),
+                    new DataList<IMidiChannelVoiceMessage>( midiNoteOns ),
                     new DataList<IMidiMessage>( midiControlChanges ),
                     new DataList<IMidiMessage>( midiProgramChanges ),
                     IExtraDataFactory.Default.Create( extraData )
