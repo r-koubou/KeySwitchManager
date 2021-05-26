@@ -2,8 +2,9 @@ using KeySwitchManager.Domain.MidiMessages.Models.Entities;
 
 namespace KeySwitchManager.Domain.MidiMessages.Models
 {
-    public interface IMidiMessageFactory<out TMidiMessage> where TMidiMessage : IMidiMessage
+    public interface IMidiChannelVoiceMessageFactory<out TMidiMessage>
+        where TMidiMessage : IMidiChannelVoiceMessage
     {
-        public TMidiMessage Create( int status, int data1, int data2 );
+        public TMidiMessage Create( int channel, int data1, int data2 );
     }
 }
