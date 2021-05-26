@@ -1,4 +1,4 @@
-namespace KeySwitchManager.Domain.KeySwitches.Midi.Models.Values
+namespace KeySwitchManager.Domain.MidiMessages.Models.Values
 {
     /// <summary>
     /// An interface for MIDI Event data byte

@@ -2,11 +2,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-using KeySwitchManager.Domain.KeySwitches.Midi.Models.Values;
 using KeySwitchManager.Domain.KeySwitches.Models;
 using KeySwitchManager.Domain.KeySwitches.Models.Entities;
 using KeySwitchManager.Domain.KeySwitches.Models.Values;
 using KeySwitchManager.Domain.KeySwitches.Models.Values.Extensions;
+using KeySwitchManager.Domain.MidiMessages.Models.Values;
 using KeySwitchManager.Infrastructure.Storage.Xml.StudioOne.Models;
 
 namespace KeySwitchManager.Infrastructure.Storage.Xml.StudioOne.Translators.Helpers

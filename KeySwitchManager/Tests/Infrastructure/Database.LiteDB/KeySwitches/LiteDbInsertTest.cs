@@ -3,8 +3,8 @@ using System.IO;
 using System.Linq;
 
 using KeySwitchManager.Commons.Data;
-using KeySwitchManager.Domain.KeySwitches.Midi.Models.Entities;
-using KeySwitchManager.Domain.KeySwitches.Midi.Models.Values;
+using KeySwitchManager.Domain.MidiMessages.Models.Entities;
+using KeySwitchManager.Domain.MidiMessages.Models.Values;
 using KeySwitchManager.Infrastructure.Database.LiteDB.KeySwitches;
 using KeySwitchManager.Testing.Commons.KeySwitches;
 

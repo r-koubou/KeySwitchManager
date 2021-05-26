@@ -1,9 +1,9 @@
 using System.Collections.Generic;
 
 using KeySwitchManager.Commons.Helpers;
-using KeySwitchManager.Domain.KeySwitches.Midi.Models.Entities;
 using KeySwitchManager.Domain.KeySwitches.Models;
 using KeySwitchManager.Domain.KeySwitches.Models.Values;
+using KeySwitchManager.Domain.MidiMessages.Models.Entities;
 using KeySwitchManager.Storage.Yaml.KeySwitches.Models;
 
 namespace KeySwitchManager.Storage.Yaml.KeySwitches.Translators.Helpers

@@ -1,6 +1,6 @@
-using KeySwitchManager.Domain.KeySwitches.Midi.Models.Values;
+using KeySwitchManager.Domain.MidiMessages.Models.Values;
 
-namespace KeySwitchManager.Domain.KeySwitches.Midi.Models.Entities
+namespace KeySwitchManager.Domain.MidiMessages.Models.Entities
 {
     /// <summary>
     /// Represents a MIDI control change.

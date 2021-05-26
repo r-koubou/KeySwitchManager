@@ -1,9 +1,9 @@
 using System.Collections.Generic;
 
 using KeySwitchManager.Commons.Data;
-using KeySwitchManager.Domain.KeySwitches.Midi.Models.Entities;
 using KeySwitchManager.Domain.KeySwitches.Models.Entities;
 using KeySwitchManager.Domain.KeySwitches.Models.Values;
+using KeySwitchManager.Domain.MidiMessages.Models.Entities;
 
 namespace KeySwitchManager.Domain.KeySwitches.Models
 {

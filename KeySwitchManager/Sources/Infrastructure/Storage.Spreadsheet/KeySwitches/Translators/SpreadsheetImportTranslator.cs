@@ -2,11 +2,11 @@ using System;
 using System.Collections.Generic;
 
 using KeySwitchManager.Commons.Data;
-using KeySwitchManager.Domain.KeySwitches.Midi.Models;
-using KeySwitchManager.Domain.KeySwitches.Midi.Models.Entities;
-using KeySwitchManager.Domain.KeySwitches.Midi.Models.Values;
 using KeySwitchManager.Domain.KeySwitches.Models;
 using KeySwitchManager.Domain.KeySwitches.Models.Entities;
+using KeySwitchManager.Domain.MidiMessages.Models;
+using KeySwitchManager.Domain.MidiMessages.Models.Entities;
+using KeySwitchManager.Domain.MidiMessages.Models.Values;
 using KeySwitchManager.Infrastructure.Storage.Spreadsheet.KeySwitches.Models;
 
 using RkHelper.Time;

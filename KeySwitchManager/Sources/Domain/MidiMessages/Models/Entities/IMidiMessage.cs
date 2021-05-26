@@ -1,8 +1,8 @@
 using System;
 
-using KeySwitchManager.Domain.KeySwitches.Midi.Models.Values;
+using KeySwitchManager.Domain.MidiMessages.Models.Values;
 
-namespace KeySwitchManager.Domain.KeySwitches.Midi.Models.Entities
+namespace KeySwitchManager.Domain.MidiMessages.Models.Entities
 {
     /// <summary>
     /// MIDI event aggregation that makes up the sound slot.

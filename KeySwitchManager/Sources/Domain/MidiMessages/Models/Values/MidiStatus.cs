@@ -1,6 +1,6 @@
 using ValueObjectGenerator;
 
-namespace KeySwitchManager.Domain.KeySwitches.Midi.Models.Values
+namespace KeySwitchManager.Domain.MidiMessages.Models.Values
 {
     /// <summary>
     /// Represents a MIDI status byte

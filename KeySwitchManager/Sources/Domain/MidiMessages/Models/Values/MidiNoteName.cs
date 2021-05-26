@@ -7,7 +7,7 @@ using RkHelper.Text;
 
 using ValueObjectGenerator;
 
-namespace KeySwitchManager.Domain.KeySwitches.Midi.Models.Values
+namespace KeySwitchManager.Domain.MidiMessages.Models.Values
 {
     [ValueObject( typeof( string ) )]
     public partial class MidiNoteName : IComparable<MidiNoteName>

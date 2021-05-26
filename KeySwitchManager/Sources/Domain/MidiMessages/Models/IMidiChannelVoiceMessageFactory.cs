@@ -1,6 +1,6 @@
-using KeySwitchManager.Domain.KeySwitches.Midi.Models.Entities;
+using KeySwitchManager.Domain.MidiMessages.Models.Entities;
 
-namespace KeySwitchManager.Domain.KeySwitches.Midi.Models
+namespace KeySwitchManager.Domain.MidiMessages.Models
 {
     public interface IMidiMessageFactory<out TMidiMessage> where TMidiMessage : IMidiMessage
     {

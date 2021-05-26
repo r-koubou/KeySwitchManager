@@ -1,8 +1,8 @@
 using System;
 using System.Collections.Generic;
 
-using KeySwitchManager.Domain.KeySwitches.Midi.Models;
-using KeySwitchManager.Domain.KeySwitches.Midi.Models.Entities;
+using KeySwitchManager.Domain.MidiMessages.Models;
+using KeySwitchManager.Domain.MidiMessages.Models.Entities;
 using KeySwitchManager.Infrastructure.Storage.Xml.Cubase.Translators;
 using KeySwitchManager.Testing.Commons.KeySwitches;
 
