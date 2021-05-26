@@ -4,7 +4,7 @@ using KeySwitchManager.Domain.KeySwitches.Models;
 using KeySwitchManager.Domain.KeySwitches.Models.Entities;
 using KeySwitchManager.Domain.MidiMessages.Models;
 using KeySwitchManager.Domain.MidiMessages.Models.Entities;
-using KeySwitchManager.Storage.Yaml.KeySwitches.Models;
+using KeySwitchManager.Storage.Yaml.KeySwitches.Models.Entities;
 
 namespace KeySwitchManager.Storage.Yaml.KeySwitches.Translators.Helpers
 {
@@ -38,9 +38,9 @@ namespace KeySwitchManager.Storage.Yaml.KeySwitches.Translators.Helpers
                 var controlChange = new List<IMidiChannelVoiceMessage>();
                 var programChange = new List<IMidiChannelVoiceMessage>();
 
-                ConvertMessageList( i.MidiMessage.NoteOn,        noteOn,        IMidiNoteOnFactory.Default );
-                ConvertMessageList( i.MidiMessage.ControlChange, controlChange, IMidiControlChangeFactory.Default );
-                ConvertMessageList( i.MidiMessage.ProgramChange, programChange, IMidiProgramChangeFactory.Default );
+                ConvertChannelVoiceMessage( i.MidiMessage.NoteOn,        noteOn,        IMidiNoteOnFactory.Default );
+                ConvertChannelVoiceMessage( i.MidiMessage.ControlChange, controlChange, IMidiControlChangeFactory.Default );
+                ConvertChannelVoiceMessage( i.MidiMessage.ProgramChange, programChange, IMidiProgramChangeFactory.Default );
 
                 var articulation = IArticulationFactory.Default.Create(
                     i.Name,
@@ -56,15 +56,33 @@ namespace KeySwitchManager.Storage.Yaml.KeySwitches.Translators.Helpers
             return articulations;
         }
 
-        private static void ConvertMessageList(
-            IEnumerable<MidiMessageModel> src,
+        #region Converting
+        private static void ConvertChannelVoiceMessage(
+            IEnumerable<IMidiChannelVoiceMessageModel> src,
             ICollection<IMidiChannelVoiceMessage> dest,
-            IMidiChannelVoiceMessageFactory<IMidiChannelVoiceMessage> messageFactory )
+            IMidiChannelVoiceMessageFactory<IMidiChannelVoiceMessage> factory )
         {
             foreach( var i in src )
             {
                 dest.Add(
-                    messageFactory.Create(
+                    factory.Create(
+                        i.Channel,
+                        i.Data1,
+                        i.Data2
+                    )
+                );
+            }
+        }
+
+        private static void ConvertMessageList(
+            IEnumerable<IMidiMessageModel> src,
+            ICollection<IMidiMessage> dest,
+            IMidiMessageFactory<IMidiMessage> factory )
+        {
+            foreach( var i in src )
+            {
+                dest.Add(
+                        factory.Create(
                         i.Status,
                         i.Data1,
                         i.Data2
@@ -72,5 +90,6 @@ namespace KeySwitchManager.Storage.Yaml.KeySwitches.Translators.Helpers
                 );
             }
         }
+        #endregion
     }
 }

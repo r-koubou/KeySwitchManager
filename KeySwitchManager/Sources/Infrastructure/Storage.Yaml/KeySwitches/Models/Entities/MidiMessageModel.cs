@@ -1,11 +1,8 @@
-using System.ComponentModel.DataAnnotations;
-
-namespace KeySwitchManager.Storage.Yaml.KeySwitches.Models
+namespace KeySwitchManager.Storage.Yaml.KeySwitches.Models.Entities
 {
-    public class MidiMessageModel
+    public class MidiMessageModel : IMidiMessageModel
     {
-        [Required]
-        public int Status { get; set; }
+        public int Status { get; }
 
         public int Data1 { get; set; }
 

@@ -1,5 +1,7 @@
 using System.Collections.Generic;
 
+using KeySwitchManager.Storage.Yaml.KeySwitches.Models.Entities;
+
 namespace KeySwitchManager.Storage.Yaml.KeySwitches.Models
 {
     public class YamlModel
