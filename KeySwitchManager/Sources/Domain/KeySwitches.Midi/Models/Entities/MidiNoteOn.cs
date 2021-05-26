@@ -8,9 +8,9 @@ namespace KeySwitchManager.Domain.KeySwitches.Midi.Models.Entities
     public class MidiNoteOn : IMidiChannelVoiceMessage
     {
         public IMidiMessageData Status => new MidiStatus( 0x90 | Channel.Value );
+        public IMidiMessageData Channel { get; }
         public IMidiMessageData DataByte1 { get; }
         public IMidiMessageData DataByte2 { get; }
-        public IMidiMessageData Channel { get; }
 
         public MidiNoteOn(
             MidiChannel channel,

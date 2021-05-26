@@ -9,7 +9,7 @@ namespace KeySwitchManager.Domain.KeySwitches.Midi.Models.Values
     [ValueRange( 0x00, 0xFF )]
     public partial class MidiStatus : IMidiMessageData
     {
-        public MidiStatus( int value, int channel = 0x00 ) : this( value | ( channel & 0x0F ) )
+        public MidiStatus( int value, MidiChannel channel ) : this( value | channel.Value )
         {}
     }
 }

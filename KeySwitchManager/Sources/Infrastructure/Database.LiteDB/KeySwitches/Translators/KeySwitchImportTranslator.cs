@@ -18,8 +18,8 @@ namespace KeySwitchManager.Infrastructure.Database.LiteDB.KeySwitches.Translator
             foreach( var i in source.Articulations )
             {
                 var noteOn = new List<IMidiChannelVoiceMessage>();
-                var controlChange = new List<IMidiMessage>();
-                var programChange = new List<IMidiMessage>();
+                var controlChange = new List<IMidiChannelVoiceMessage>();
+                var programChange = new List<IMidiChannelVoiceMessage>();
 
                 ConvertMessageList( i.NoteOn,        noteOn,        IMidiNoteOnFactory.Default );
                 ConvertMessageList( i.ControlChange, controlChange, IMidiControlChangeFactory.Default );

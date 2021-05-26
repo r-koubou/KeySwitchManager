@@ -17,8 +17,8 @@ namespace KeySwitchManager.Domain.KeySwitches.Models
         public Articulation Create(
             string articulationName,
             IEnumerable<IMidiChannelVoiceMessage> midiNoteOns,
-            IEnumerable<IMidiMessage> midiControlChanges,
-            IEnumerable<IMidiMessage> midiProgramChanges,
+            IEnumerable<IMidiChannelVoiceMessage> midiControlChanges,
+            IEnumerable<IMidiChannelVoiceMessage> midiProgramChanges,
             IReadOnlyDictionary<string, string> extraData );
 
         public static IArticulationFactory Default => new DefaultFactory();
@@ -33,8 +33,8 @@ namespace KeySwitchManager.Domain.KeySwitches.Models
                 return new Articulation(
                     new ArticulationName( articulationName ),
                     new DataList<IMidiChannelVoiceMessage>(),
-                    new DataList<IMidiMessage>(),
-                    new DataList<IMidiMessage>(),
+                    new DataList<IMidiChannelVoiceMessage>(),
+                    new DataList<IMidiChannelVoiceMessage>(),
                     new ExtraData()
                 );
             }
@@ -42,15 +42,15 @@ namespace KeySwitchManager.Domain.KeySwitches.Models
             public Articulation Create(
                 string articulationName,
                 IEnumerable<IMidiChannelVoiceMessage> midiNoteOns,
-                IEnumerable<IMidiMessage> midiControlChanges,
-                IEnumerable<IMidiMessage> midiProgramChanges,
+                IEnumerable<IMidiChannelVoiceMessage> midiControlChanges,
+                IEnumerable<IMidiChannelVoiceMessage> midiProgramChanges,
                 IReadOnlyDictionary<string, string> extraData )
             {
                 return new Articulation(
                     new ArticulationName( articulationName ),
                     new DataList<IMidiChannelVoiceMessage>( midiNoteOns ),
-                    new DataList<IMidiMessage>( midiControlChanges ),
-                    new DataList<IMidiMessage>( midiProgramChanges ),
+                    new DataList<IMidiChannelVoiceMessage>( midiControlChanges ),
+                    new DataList<IMidiChannelVoiceMessage>( midiProgramChanges ),
                     IExtraDataFactory.Default.Create( extraData )
                 );
             }

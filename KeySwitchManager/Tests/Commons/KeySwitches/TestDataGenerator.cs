@@ -88,8 +88,8 @@ namespace KeySwitchManager.Testing.Commons.KeySwitches
             return new Articulation(
                 new ArticulationName( "Power Chord" ),
                 new DataList<IMidiChannelVoiceMessage>( noteOns ),
-                new DataList<IMidiMessage>( controlChanges ),
-                new DataList<IMidiMessage>( programChanges ),
+                new DataList<IMidiChannelVoiceMessage>( controlChanges ),
+                new DataList<IMidiChannelVoiceMessage>( programChanges ),
                 new ExtraData( new Dictionary<ExtraDataKey, ExtraDataValue>
                 {
                     { new ExtraDataKey( "extKey" ), new ExtraDataValue( "extValue" ) }

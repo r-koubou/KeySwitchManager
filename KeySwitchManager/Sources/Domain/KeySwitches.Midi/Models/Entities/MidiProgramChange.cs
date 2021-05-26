@@ -6,15 +6,16 @@ namespace KeySwitchManager.Domain.KeySwitches.Midi.Models.Entities
     /// <summary>
     /// Represents a MIDI program change.
     /// </summary>
-    public class MidiProgramChange : IMidiMessage
+    public class MidiProgramChange : IMidiChannelVoiceMessage
     {
-        public IMidiMessageData Status { get; }
+        public IMidiMessageData Status => new MidiStatus( 0xC0 | Channel.Value );
+        public IMidiMessageData Channel { get; }
         public IMidiMessageData DataByte1 { get; }
         public IMidiMessageData DataByte2 { get; }
 
-        public MidiProgramChange( MidiStatus status, MidiProgramChangeNumber number )
+        public MidiProgramChange( MidiChannel channel, MidiProgramChangeNumber number )
         {
-            Status    = status;
+            Channel   = channel;
             DataByte1 = number;
             DataByte2 = new GenericMidiData( 0 );
         }

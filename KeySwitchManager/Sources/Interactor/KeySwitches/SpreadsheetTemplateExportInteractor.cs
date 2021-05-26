@@ -43,15 +43,15 @@ namespace KeySwitchManager.Interactor.KeySwitches
                     IArticulationFactory.Default.Create(
                         "IDLE",
                         new List<IMidiChannelVoiceMessage>(),
-                        new List<IMidiMessage>(),
-                        new List<IMidiMessage>(),
+                        new List<IMidiChannelVoiceMessage>(),
+                        new List<IMidiChannelVoiceMessage>(),
                         new Dictionary<string, string>()
                     ),
                     IArticulationFactory.Default.Create(
                         "Power Chord",
                         new List<IMidiChannelVoiceMessage>{ IMidiNoteOnFactory.Default.Create( 0, 100 )},
-                        new List<IMidiMessage>{ IMidiControlChangeFactory.Default.Create( 1, 100 )},
-                        new List<IMidiMessage>{ IMidiProgramChangeFactory.Default.Create( 34 )},
+                        new List<IMidiChannelVoiceMessage>{ IMidiControlChangeFactory.Default.Create( 1, 100 )},
+                        new List<IMidiChannelVoiceMessage>{ IMidiProgramChangeFactory.Default.Create( 34 )},
                         new Dictionary<string, string>()
                     ),
                 },

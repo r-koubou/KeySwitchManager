@@ -1,10 +1,9 @@
 using KeySwitchManager.Domain.KeySwitches.Midi.Models.Entities;
-using KeySwitchManager.Domain.KeySwitches.Midi.Models.Helpers;
 using KeySwitchManager.Domain.KeySwitches.Midi.Models.Values;
 
 namespace KeySwitchManager.Domain.KeySwitches.Midi.Models
 {
-    public interface IMidiControlChangeFactory : IMidiMessageFactory<MidiControlChange>
+    public interface IMidiControlChangeFactory : IMidiChannelVoiceMessageFactory<MidiControlChange>
     {
         public MidiControlChange Create( int ccNumber, int ccValue );
 
@@ -12,7 +11,7 @@ namespace KeySwitchManager.Domain.KeySwitches.Midi.Models
 
         public static MidiControlChange Zero =>
             new MidiControlChange(
-                new MidiStatus( 0 ),
+                new MidiChannel( 0 ),
                 new MidiControlChangeNumber( 0 ),
                 new MidiControlChangeValue( 0 )
             );
@@ -27,7 +26,7 @@ namespace KeySwitchManager.Domain.KeySwitches.Midi.Models
             public MidiControlChange Create( int channel, int data1, int data2 )
             {
                 return new MidiControlChange(
-                    new MidiStatus( MidiStatusHelper.MakeStatus( MidiStatusHelper.ControlChange, channel ) ),
+                    new MidiChannel( channel ),
                     new MidiControlChangeNumber( data1 ),
                     new MidiControlChangeValue( data2 )
                 );

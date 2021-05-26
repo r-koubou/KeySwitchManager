@@ -35,8 +35,8 @@ namespace KeySwitchManager.Storage.Yaml.KeySwitches.Translators.Helpers
             foreach( var i in source.Articulations )
             {
                 var noteOn = new List<IMidiChannelVoiceMessage>();
-                List<IMidiMessage> controlChange = new List<IMidiMessage>();
-                List<IMidiMessage> programChange = new List<IMidiMessage>();
+                var controlChange = new List<IMidiChannelVoiceMessage>();
+                var programChange = new List<IMidiChannelVoiceMessage>();
 
                 ConvertMessageList( i.MidiMessage.NoteOn,        noteOn,        IMidiNoteOnFactory.Default );
                 ConvertMessageList( i.MidiMessage.ControlChange, controlChange, IMidiControlChangeFactory.Default );

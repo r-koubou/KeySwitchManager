@@ -1,19 +1,18 @@
 using KeySwitchManager.Domain.KeySwitches.Midi.Models.Entities;
-using KeySwitchManager.Domain.KeySwitches.Midi.Models.Helpers;
 using KeySwitchManager.Domain.KeySwitches.Midi.Models.Values;
 
 namespace KeySwitchManager.Domain.KeySwitches.Midi.Models
 {
-    public interface IMidiProgramChangeFactory : IMidiMessageFactory<MidiProgramChange>
+    public interface IMidiProgramChangeFactory : IMidiChannelVoiceMessageFactory<MidiProgramChange>
     {
-        public MidiProgramChange Create( int channel, int pcNumber );
         public MidiProgramChange Create( int pcNumber );
+        public MidiProgramChange Create( int channel, int pcNumber );
 
         public static IMidiProgramChangeFactory Default => new DefaultFactory();
 
         public static MidiProgramChange Zero =>
             new MidiProgramChange(
-                new MidiStatus( MidiStatusHelper.ProgramChange ),
+                new MidiChannel( 0 ),
                 new MidiProgramChangeNumber( 0 )
             );
 
@@ -26,17 +25,13 @@ namespace KeySwitchManager.Domain.KeySwitches.Midi.Models
 
             public MidiProgramChange Create( int channel, int pcNumber )
             {
-                return Create(
-                    MidiStatusHelper.MakeStatus( MidiStatusHelper.ProgramChange, channel ),
-                    pcNumber,
-                    0x00
-                );
+                return Create( channel, pcNumber, 0x00 );
             }
 
             public MidiProgramChange Create( int channel, int data1, int data2 )
             {
                 return new MidiProgramChange(
-                    new MidiStatus( MidiStatusHelper.MakeStatus( MidiStatusHelper.ProgramChange, channel ) ),
+                    new MidiChannel( channel ),
                     new MidiProgramChangeNumber( data1 )
                 );
             }

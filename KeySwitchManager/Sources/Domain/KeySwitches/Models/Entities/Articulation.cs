@@ -11,15 +11,15 @@ namespace KeySwitchManager.Domain.KeySwitches.Models.Entities
     {
         public ArticulationName ArticulationName { get; }
         public IDataList<IMidiChannelVoiceMessage> MidiNoteOns { get; }
-        public IDataList<IMidiMessage> MidiControlChanges { get; }
-        public IDataList<IMidiMessage> MidiProgramChanges { get; }
+        public IDataList<IMidiChannelVoiceMessage> MidiControlChanges { get; }
+        public IDataList<IMidiChannelVoiceMessage> MidiProgramChanges { get; }
         public ExtraData ExtraData { get; }
 
         public Articulation(
             ArticulationName articulationName,
             IDataList<IMidiChannelVoiceMessage> midiNoteOns,
-            IDataList<IMidiMessage> midiControlChanges,
-            IDataList<IMidiMessage> midiProgramChanges,
+            IDataList<IMidiChannelVoiceMessage> midiControlChanges,
+            IDataList<IMidiChannelVoiceMessage> midiProgramChanges,
             ExtraData extraData )
         {
             ArticulationName   = articulationName;
