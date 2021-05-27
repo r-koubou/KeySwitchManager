@@ -1,3 +1,5 @@
+using KeySwitchManager.Domain.MidiMessages.Models.Values;
+
 using YamlDotNet.Serialization;
 
 namespace KeySwitchManager.Storage.Yaml.KeySwitches.Models.Entities
@@ -10,8 +12,23 @@ namespace KeySwitchManager.Storage.Yaml.KeySwitches.Models.Entities
         [YamlMember( Alias = "Channel" )]
         public int Channel { get; set; }
 
-        [YamlMember( Alias = "NoteNumber" )]
-        public int Data1 { get; set; }
+        [YamlMember( Alias = "Note" )]
+        // ReSharper disable once MemberCanBePrivate.Global
+        public string Note { get; set; } = string.Empty;
+
+        [YamlIgnore]
+        public int Data1
+        {
+            get
+            {
+                if( int.TryParse( Note, out var v ) )
+                {
+                    return v;
+                }
+                return new MidiNoteName( Note ).ToMidiNoteNumber().Value;
+            }
+            set => Note = MidiNoteName.FromMidiNoteNumber( new MidiNoteNumber( value ) ).Value;
+        }
 
         [YamlMember( Alias = "Velocity" )]
         public int Data2 { get; set; }
@@ -23,6 +40,7 @@ namespace KeySwitchManager.Storage.Yaml.KeySwitches.Models.Entities
             Channel = channel;
             Data1   = data1;
             Data2   = data2;
+            Note    = MidiNoteName.FromMidiNoteNumber( new MidiNoteNumber( data1 ) ).Value;
         }
     }
 }
