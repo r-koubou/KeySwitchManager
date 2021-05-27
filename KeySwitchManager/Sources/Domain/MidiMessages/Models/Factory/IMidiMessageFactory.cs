@@ -1,4 +1,6 @@
-namespace KeySwitchManager.Domain.MidiMessages.Models.Aggregations
+using KeySwitchManager.Domain.MidiMessages.Models.Aggregations;
+
+namespace KeySwitchManager.Domain.MidiMessages.Models.Factory
 {
     public interface IMidiMessageFactory<out TMidiMessage> where TMidiMessage : IMidiMessage
     {

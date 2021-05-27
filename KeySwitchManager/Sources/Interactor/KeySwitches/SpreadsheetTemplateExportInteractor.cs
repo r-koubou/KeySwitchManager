@@ -5,6 +5,7 @@ using KeySwitchManager.Domain.KeySwitches.Models;
 using KeySwitchManager.Domain.KeySwitches.Models.Aggregations;
 using KeySwitchManager.Domain.MidiMessages.Models;
 using KeySwitchManager.Domain.MidiMessages.Models.Aggregations;
+using KeySwitchManager.Domain.MidiMessages.Models.Factory;
 using KeySwitchManager.UseCase.KeySwitches.Create.SpreadsheetTemplate;
 
 namespace KeySwitchManager.Interactor.KeySwitches

@@ -1,7 +1,8 @@
 using KeySwitchManager.Domain.KeySwitches.Models.Values;
+using KeySwitchManager.Domain.MidiMessages.Models.Aggregations;
 using KeySwitchManager.Domain.MidiMessages.Models.Values;
 
-namespace KeySwitchManager.Domain.MidiMessages.Models.Aggregations
+namespace KeySwitchManager.Domain.MidiMessages.Models.Factory
 {
     public interface IGenericMidiMessageFactory : IMidiMessageFactory<GenericMidiMessage>
     {

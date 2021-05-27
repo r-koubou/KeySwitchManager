@@ -1,6 +1,7 @@
+using KeySwitchManager.Domain.MidiMessages.Models.Aggregations;
 using KeySwitchManager.Domain.MidiMessages.Models.Values;
 
-namespace KeySwitchManager.Domain.MidiMessages.Models.Aggregations
+namespace KeySwitchManager.Domain.MidiMessages.Models.Factory
 {
     public interface IMidiControlChangeFactory : IMidiChannelVoiceMessageFactory<MidiControlChange>
     {

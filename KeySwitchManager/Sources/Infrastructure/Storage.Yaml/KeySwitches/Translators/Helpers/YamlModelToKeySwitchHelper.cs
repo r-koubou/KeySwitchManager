@@ -4,6 +4,7 @@ using KeySwitchManager.Domain.KeySwitches.Models;
 using KeySwitchManager.Domain.KeySwitches.Models.Aggregations;
 using KeySwitchManager.Domain.MidiMessages.Models;
 using KeySwitchManager.Domain.MidiMessages.Models.Aggregations;
+using KeySwitchManager.Domain.MidiMessages.Models.Factory;
 using KeySwitchManager.Storage.Yaml.KeySwitches.Models.Aggregations;
 
 namespace KeySwitchManager.Storage.Yaml.KeySwitches.Translators.Helpers
