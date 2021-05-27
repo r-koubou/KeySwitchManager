@@ -1,6 +1,6 @@
-using KeySwitchManager.Storage.Yaml.KeySwitches.Models.Entities;
+using KeySwitchManager.Storage.Yaml.KeySwitches.Models.Aggregations;
 
-namespace KeySwitchManager.Storage.Yaml.KeySwitches.Models
+namespace KeySwitchManager.Storage.Yaml.KeySwitches.Models.Factory
 {
     public interface IMidiMessageModelFactory<out TMidiMessage> where TMidiMessage : IMidiMessageModel
     {

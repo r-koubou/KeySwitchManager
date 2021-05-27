@@ -1,6 +1,6 @@
 using YamlDotNet.Serialization;
 
-namespace KeySwitchManager.Storage.Yaml.KeySwitches.Models.Entities
+namespace KeySwitchManager.Storage.Yaml.KeySwitches.Models.Aggregations
 {
     public class MidiControlChangeModel : IMidiChannelVoiceMessageModel
     {

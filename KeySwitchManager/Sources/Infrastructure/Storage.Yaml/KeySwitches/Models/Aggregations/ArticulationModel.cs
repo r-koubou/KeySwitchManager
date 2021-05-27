@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace KeySwitchManager.Storage.Yaml.KeySwitches.Models.Entities
+namespace KeySwitchManager.Storage.Yaml.KeySwitches.Models.Aggregations
 {
     public class ArticulationModel
     {

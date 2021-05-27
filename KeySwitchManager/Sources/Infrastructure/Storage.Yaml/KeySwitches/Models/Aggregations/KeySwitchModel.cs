@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 
 using RkHelper.Time;
 
-namespace KeySwitchManager.Storage.Yaml.KeySwitches.Models.Entities
+namespace KeySwitchManager.Storage.Yaml.KeySwitches.Models.Aggregations
 {
     public class KeySwitchModel
     {
