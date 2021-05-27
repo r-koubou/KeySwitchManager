@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using KeySwitchManager.Commons.Helpers;
 using KeySwitchManager.Domain.KeySwitches.Models;
 using KeySwitchManager.Domain.KeySwitches.Models.Values;
-using KeySwitchManager.Domain.MidiMessages.Models;
 using KeySwitchManager.Domain.MidiMessages.Models.Entities;
 using KeySwitchManager.Storage.Yaml.KeySwitches.Models;
 using KeySwitchManager.Storage.Yaml.KeySwitches.Models.Entities;
@@ -18,9 +17,9 @@ namespace KeySwitchManager.Storage.Yaml.KeySwitches.Translators.Helpers
 
             foreach( var i in source.Articulations )
             {
-                var noteOn = new List<IMidiChannelVoiceMessageModel>();
-                var controlChange = new List<IMidiChannelVoiceMessageModel>();
-                var programChange = new List<IMidiChannelVoiceMessageModel>();
+                var noteOn = new List<MidiNoteOnModel>();
+                var controlChange = new List<MidiControlChangeModel>();
+                var programChange = new List<MidiProgramChangeModel>();
 
                 ConvertChannelVoiceMessageList( i.MidiNoteOns,        noteOn,        IMidiNoteOnModelFactory.Default );
                 ConvertChannelVoiceMessageList( i.MidiControlChanges, controlChange, IMidiControlChangeModelFactory.Default );
@@ -54,10 +53,10 @@ namespace KeySwitchManager.Storage.Yaml.KeySwitches.Translators.Helpers
         }
 
         #region Converting
-        private static void ConvertChannelVoiceMessageList(
+        private static void ConvertChannelVoiceMessageList<T>(
             IEnumerable<IMidiMessage> src,
-            ICollection<IMidiChannelVoiceMessageModel> dest,
-            IMidiChannelVoiceMessageModelFactory<IMidiChannelVoiceMessageModel> factory )
+            ICollection<T> dest,
+            IMidiChannelVoiceMessageModelFactory<T> factory ) where T : IMidiChannelVoiceMessageModel
         {
             foreach( var i in src )
             {
@@ -73,8 +72,8 @@ namespace KeySwitchManager.Storage.Yaml.KeySwitches.Translators.Helpers
 
         private static void ConvertMessageList(
             IEnumerable<IMidiMessage> src,
-            ICollection<IMidiMessage> dest,
-            IMidiMessageFactory<IMidiMessage> factory )
+            ICollection<IMidiMessageModel> dest,
+            IMidiMessageModelFactory<IMidiMessageModel> factory )
         {
             foreach( var i in src )
             {

@@ -4,21 +4,21 @@ namespace KeySwitchManager.Storage.Yaml.KeySwitches.Models.Entities
 {
     public class MidiModel
     {
-        public IList<IMidiChannelVoiceMessageModel> NoteOn { get; set; } = new List<IMidiChannelVoiceMessageModel>();
-        public IList<IMidiChannelVoiceMessageModel> ControlChange { get; set; } = new List<IMidiChannelVoiceMessageModel>();
-        public IList<IMidiChannelVoiceMessageModel> ProgramChange { get; set; } = new List<IMidiChannelVoiceMessageModel>();
+        public IList<MidiNoteOnModel> NoteOn { get; set; } = new List<MidiNoteOnModel>();
+        public IList<MidiControlChangeModel> ControlChange { get; set; } = new List<MidiControlChangeModel>();
+        public IList<MidiProgramChangeModel> ProgramChange { get; set; } = new List<MidiProgramChangeModel>();
 
         public MidiModel()
         {}
 
         public MidiModel(
-            IReadOnlyCollection<IMidiChannelVoiceMessageModel> noteOn,
-            IReadOnlyCollection<IMidiChannelVoiceMessageModel> controlChange,
-            IReadOnlyCollection<IMidiChannelVoiceMessageModel> programChange )
+            IReadOnlyCollection<MidiNoteOnModel> noteOn,
+            IReadOnlyCollection<MidiControlChangeModel> controlChange,
+            IReadOnlyCollection<MidiProgramChangeModel> programChange )
         {
-            NoteOn        = new List<IMidiChannelVoiceMessageModel>( noteOn );
-            ControlChange = new List<IMidiChannelVoiceMessageModel>( controlChange );
-            ProgramChange = new List<IMidiChannelVoiceMessageModel>( programChange );
+            NoteOn        = new List<MidiNoteOnModel>( noteOn );
+            ControlChange = new List<MidiControlChangeModel>( controlChange );
+            ProgramChange = new List<MidiProgramChangeModel>( programChange );
         }
     }
 }
