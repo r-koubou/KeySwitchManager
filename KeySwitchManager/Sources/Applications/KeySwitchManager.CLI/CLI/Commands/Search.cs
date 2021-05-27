@@ -1,5 +1,4 @@
 using System;
-using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Text;
 
@@ -15,11 +14,9 @@ using RkHelper.Text;
 
 namespace KeySwitchManager.CLI.Commands
 {
-    public class SearchKeySwitch
+    public class Search
     {
         [Verb( "search", HelpText = "search a data from database by given parameter")]
-        [SuppressMessage( "ReSharper", "MemberCanBePrivate.Global" )]
-        [SuppressMessage( "ReSharper", "ClassNeverInstantiated.Global" )]
         public class CommandOption : ICommandOption
         {
             [Option( 'd', "developer", Required = true)]

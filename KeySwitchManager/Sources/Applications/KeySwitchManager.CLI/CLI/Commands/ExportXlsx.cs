@@ -1,5 +1,3 @@
-using System.Diagnostics.CodeAnalysis;
-
 using CommandLine;
 
 using KeySwitchManager.Commons.Data;
@@ -14,8 +12,6 @@ namespace KeySwitchManager.CLI.Commands
     public class ExportXlsx : ICommand
     {
         [Verb( "export-xlsx", HelpText = "export a xlsx format from database")]
-        [SuppressMessage( "ReSharper", "MemberCanBePrivate.Global" )]
-        [SuppressMessage( "ReSharper", "ClassNeverInstantiated.Global" )]
         public class CommandOption : ICommandOption
         {
             [Option( 'd', "developer", Required = true)]

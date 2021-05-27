@@ -9,7 +9,7 @@ using KeySwitchManager.UseCase.KeySwitches.Create.SpreadsheetTemplate;
 
 namespace KeySwitchManager.CLI.Commands
 {
-    public class TemplateXlsx : ICommand
+    public class NewXlsx : ICommand
     {
         [Verb( "new-xlsx", HelpText = "export a template to xlsx file" )]
         public class CommandOption : ICommandOption
