@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
 
 using KeySwitchManager.Commons.Data;
@@ -43,9 +44,9 @@ namespace KeySwitchManager.Domain.KeySwitches.Models.Entities
             }
 
             return ArticulationName.Equals( other.ArticulationName ) &&
-                   MidiNoteOns.SequenceEqual( other.MidiNoteOns ) &&
-                   MidiControlChanges.SequenceEqual( other.MidiControlChanges ) &&
-                   MidiProgramChanges.SequenceEqual( other.MidiProgramChanges );
+                   MidiNoteOns.SequenceEqual( other.MidiNoteOns, IMidiMessage.EqualityComparer ) &&
+                   MidiControlChanges.SequenceEqual( other.MidiControlChanges, IMidiMessage.EqualityComparer ) &&
+                   MidiProgramChanges.SequenceEqual( other.MidiProgramChanges, IMidiMessage.EqualityComparer );
         }
 
         public override bool Equals( object? obj )
@@ -60,5 +61,28 @@ namespace KeySwitchManager.Domain.KeySwitches.Models.Entities
                               MidiProgramChanges,
                               ExtraData );
         #endregion Equals
+
+        #region IEqualityComparer
+        public static readonly IEqualityComparer<Articulation> EqualityComparer = new DefaultComparer();
+        private class DefaultComparer : IEqualityComparer<Articulation>
+        {
+            public bool Equals( Articulation? x, Articulation? y )
+            {
+                if( x == null && y == null )
+                {
+                    return true;
+                }
+                if( x != null )
+                {
+                    return x.Equals( y );
+                }
+
+                return y != null && y.Equals( x );
+            }
+
+            public int GetHashCode( Articulation obj )
+                => obj.GetHashCode();
+        }
+        #endregion
     }
 }
