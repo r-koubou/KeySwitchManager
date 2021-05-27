@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 
 using KeySwitchManager.Commons.Data;
-using KeySwitchManager.Domain.KeySwitches.Models.Entities;
+using KeySwitchManager.Domain.KeySwitches.Models.Aggregations;
 using KeySwitchManager.Domain.KeySwitches.Models.Values;
 
 using RkHelper.Time;

@@ -5,7 +5,7 @@ using KeySwitchManager.Domain.KeySwitches.Models;
 using KeySwitchManager.Domain.MidiMessages.Models.Entities;
 using KeySwitchManager.Infrastructure.Storage.Json.Cakewalk.Models;
 
-using Articulation = KeySwitchManager.Domain.KeySwitches.Models.Entities.Articulation;
+using Articulation = KeySwitchManager.Domain.KeySwitches.Models.Aggregations.Articulation;
 using CwArticulation = KeySwitchManager.Infrastructure.Storage.Json.Cakewalk.Models.Articulation;
 
 namespace KeySwitchManager.Infrastructure.Storage.Json.Cakewalk.Translators.Helpers

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using ClosedXML.Excel;
 
 using KeySwitchManager.Domain.KeySwitches.Models;
-using KeySwitchManager.Domain.KeySwitches.Models.Entities;
+using KeySwitchManager.Domain.KeySwitches.Models.Aggregations;
 using KeySwitchManager.Domain.MidiMessages.Models.Entities;
 using KeySwitchManager.Infrastructure.Storage.Spreadsheet.ClosedXml.KeySwitches.Helper;
 using KeySwitchManager.Infrastructure.Storage.Spreadsheet.KeySwitches.Helpers;

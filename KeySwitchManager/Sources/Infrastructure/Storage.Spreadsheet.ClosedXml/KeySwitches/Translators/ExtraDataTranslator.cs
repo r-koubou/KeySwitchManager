@@ -4,7 +4,7 @@ using System.Linq;
 using ClosedXML.Excel;
 
 using KeySwitchManager.Domain.KeySwitches.Models;
-using KeySwitchManager.Domain.KeySwitches.Models.Entities;
+using KeySwitchManager.Domain.KeySwitches.Models.Aggregations;
 using KeySwitchManager.Domain.KeySwitches.Models.Values;
 
 namespace KeySwitchManager.Infrastructure.Storage.Spreadsheet.ClosedXml.KeySwitches.Translators

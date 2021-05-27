@@ -6,7 +6,7 @@ using KeySwitchManager.Commons.Data;
 using KeySwitchManager.Domain.KeySwitches.Models.Values;
 using KeySwitchManager.Domain.MidiMessages.Models.Entities;
 
-namespace KeySwitchManager.Domain.KeySwitches.Models.Entities
+namespace KeySwitchManager.Domain.KeySwitches.Models.Aggregations
 {
     public class Articulation : IEquatable<Articulation>
     {
