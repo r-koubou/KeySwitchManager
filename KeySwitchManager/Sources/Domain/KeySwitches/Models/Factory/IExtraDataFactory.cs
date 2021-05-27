@@ -2,7 +2,7 @@ using System.Collections.Generic;
 
 using KeySwitchManager.Domain.KeySwitches.Models.Values;
 
-namespace KeySwitchManager.Domain.KeySwitches.Models
+namespace KeySwitchManager.Domain.KeySwitches.Models.Factory
 {
     public interface IExtraDataFactory
     {

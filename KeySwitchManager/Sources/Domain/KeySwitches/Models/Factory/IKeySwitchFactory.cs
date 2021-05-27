@@ -7,7 +7,7 @@ using KeySwitchManager.Domain.KeySwitches.Models.Values;
 
 using RkHelper.Time;
 
-namespace KeySwitchManager.Domain.KeySwitches.Models
+namespace KeySwitchManager.Domain.KeySwitches.Models.Factory
 {
     public interface IKeySwitchFactory
     {

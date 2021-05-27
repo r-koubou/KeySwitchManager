@@ -1,10 +1,11 @@
 using System.Collections.Generic;
 
 using KeySwitchManager.Commons.Data;
+using KeySwitchManager.Domain.KeySwitches.Models.Aggregations;
 using KeySwitchManager.Domain.KeySwitches.Models.Values;
 using KeySwitchManager.Domain.MidiMessages.Models.Aggregations;
 
-namespace KeySwitchManager.Domain.KeySwitches.Models.Aggregations
+namespace KeySwitchManager.Domain.KeySwitches.Models.Factory
 {
     public interface IArticulationFactory
     {
