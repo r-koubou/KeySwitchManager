@@ -11,7 +11,7 @@ namespace KeySwitchManager.CLI.Commands
 {
     public class TemplateXlsx : ICommand
     {
-        [Verb( "template-xlsx", HelpText = "export a template to xlsx file" )]
+        [Verb( "new-xlsx", HelpText = "export a template to xlsx file" )]
         public class CommandOption : ICommandOption
         {
             [Value( index: 0, MetaName = "output", HelpText = "Output path for template file", Default = "(ProductName).xlsx" )]

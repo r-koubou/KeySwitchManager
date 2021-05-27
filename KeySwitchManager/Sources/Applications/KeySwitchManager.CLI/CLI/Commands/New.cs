@@ -8,9 +8,9 @@ using KeySwitchManager.Storage.Yaml.KeySwitches;
 
 namespace KeySwitchManager.CLI.Commands
 {
-    public class Template : ICommand
+    public class New : ICommand
     {
-        [Verb( "template", HelpText = "export a template generic yaml to file" )]
+        [Verb( "new", HelpText = "export a template generic yaml to file" )]
         public class CommandOption : ICommandOption
         {
             [Value( index: 0, MetaName = "output", HelpText = "Output path for template file", Default = "(ProductName).yaml" )]
