@@ -5,7 +5,7 @@ using KeySwitchManager.Commons.Data;
 using KeySwitchManager.Domain.KeySwitches.Models;
 using KeySwitchManager.Domain.KeySwitches.Models.Aggregations;
 using KeySwitchManager.Domain.KeySwitches.Models.Values;
-using KeySwitchManager.Domain.MidiMessages.Models.Entities;
+using KeySwitchManager.Domain.MidiMessages.Models.Aggregations;
 
 using RkHelper.Time;
 

@@ -2,7 +2,7 @@ using System.Collections.Generic;
 
 using KeySwitchManager.Commons.Data;
 using KeySwitchManager.Domain.KeySwitches.Models.Values;
-using KeySwitchManager.Domain.MidiMessages.Models.Entities;
+using KeySwitchManager.Domain.MidiMessages.Models.Aggregations;
 
 namespace KeySwitchManager.Domain.KeySwitches.Models.Aggregations
 {

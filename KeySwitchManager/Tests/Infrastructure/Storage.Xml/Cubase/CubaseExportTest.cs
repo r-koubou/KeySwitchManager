@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 
 using KeySwitchManager.Domain.MidiMessages.Models;
-using KeySwitchManager.Domain.MidiMessages.Models.Entities;
+using KeySwitchManager.Domain.MidiMessages.Models.Aggregations;
 using KeySwitchManager.Infrastructure.Storage.Xml.Cubase.Translators;
 using KeySwitchManager.Testing.Commons.KeySwitches;
 

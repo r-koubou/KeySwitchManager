@@ -4,7 +4,7 @@ using KeySwitchManager.Commons.Data;
 using KeySwitchManager.Commons.Helpers;
 using KeySwitchManager.Domain.KeySwitches.Models;
 using KeySwitchManager.Domain.KeySwitches.Models.Values;
-using KeySwitchManager.Domain.MidiMessages.Models.Entities;
+using KeySwitchManager.Domain.MidiMessages.Models.Aggregations;
 using KeySwitchManager.Infrastructure.Database.LiteDB.KeySwitches.Models;
 
 namespace KeySwitchManager.Infrastructure.Database.LiteDB.KeySwitches.Translators

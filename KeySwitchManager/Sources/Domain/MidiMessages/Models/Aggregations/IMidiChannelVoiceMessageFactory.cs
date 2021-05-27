@@ -1,6 +1,4 @@
-using KeySwitchManager.Domain.MidiMessages.Models.Entities;
-
-namespace KeySwitchManager.Domain.MidiMessages.Models
+namespace KeySwitchManager.Domain.MidiMessages.Models.Aggregations
 {
     public interface IMidiChannelVoiceMessageFactory<out TMidiMessage>
         where TMidiMessage : IMidiChannelVoiceMessage

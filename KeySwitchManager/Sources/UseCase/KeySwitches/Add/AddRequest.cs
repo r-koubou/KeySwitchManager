@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-using KeySwitchManager.Domain.MidiMessages.Models.Entities;
+using KeySwitchManager.Domain.MidiMessages.Models.Aggregations;
 
 namespace KeySwitchManager.UseCase.KeySwitches.Add
 {

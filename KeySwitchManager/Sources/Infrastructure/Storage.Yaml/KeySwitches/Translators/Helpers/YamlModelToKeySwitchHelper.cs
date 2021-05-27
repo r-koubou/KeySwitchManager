@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using KeySwitchManager.Domain.KeySwitches.Models;
 using KeySwitchManager.Domain.KeySwitches.Models.Aggregations;
 using KeySwitchManager.Domain.MidiMessages.Models;
-using KeySwitchManager.Domain.MidiMessages.Models.Entities;
+using KeySwitchManager.Domain.MidiMessages.Models.Aggregations;
 using KeySwitchManager.Storage.Yaml.KeySwitches.Models.Entities;
 
 namespace KeySwitchManager.Storage.Yaml.KeySwitches.Translators.Helpers

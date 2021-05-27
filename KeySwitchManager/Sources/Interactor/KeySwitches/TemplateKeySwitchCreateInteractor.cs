@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using KeySwitchManager.Domain.KeySwitches.Models;
 using KeySwitchManager.Domain.KeySwitches.Models.Aggregations;
 using KeySwitchManager.Domain.MidiMessages.Models;
-using KeySwitchManager.Domain.MidiMessages.Models.Entities;
+using KeySwitchManager.Domain.MidiMessages.Models.Aggregations;
 using KeySwitchManager.UseCase.KeySwitches.Create.Template;
 
 namespace KeySwitchManager.Interactor.KeySwitches
