@@ -1,5 +1,8 @@
 using KeySwitchManager.Domain.MidiMessages.Models.Values;
 
+using RkHelper.Number;
+using RkHelper.Text;
+
 using YamlDotNet.Serialization;
 
 namespace KeySwitchManager.Storage.Yaml.KeySwitches.Models.Aggregations
@@ -21,10 +24,17 @@ namespace KeySwitchManager.Storage.Yaml.KeySwitches.Models.Aggregations
         {
             get
             {
-                if( int.TryParse( Note, out var v ) )
+                if( StringHelper.IsEmpty( Note ) )
                 {
-                    return v;
+                    return 0;
                 }
+
+                if( NumberHelper.TryParse( Note, out var result ) ||
+                    NumberHelper.TryParse( Note, out result, 16 ) )
+                {
+                    return result;
+                }
+
                 return new MidiNoteName( Note ).ToMidiNoteNumber().Value;
             }
             set => Note = MidiNoteName.FromMidiNoteNumber( new MidiNoteNumber( value ) ).Value;
