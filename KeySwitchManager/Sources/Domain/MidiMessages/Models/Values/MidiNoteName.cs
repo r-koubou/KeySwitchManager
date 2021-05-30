@@ -408,17 +408,36 @@ namespace KeySwitchManager.Domain.MidiMessages.Models.Values
 
         private static partial string Validate( string value )
         {
+            if( !TryParse( value, out var result ) )
+            {
+                throw new ArgumentException( $"{nameof( value )} = {value}" );
+            }
+
+            return result;
+        }
+
+        public static bool TryParse( string value, out string result )
+        {
+            result = string.Empty;
+
             if( NoteNameList.Contains( value ) )
             {
-                return value;
+                result = value;
+                return true;
             }
 
             if( !int.TryParse( value, out var number ) )
             {
-                throw new ArgumentException( nameof( value ) );
+                return false;
             }
 
-            return NoteNameList[ number ];
+            result = NoteNameList[ number ];
+            return true;
+        }
+
+        public static bool IsValidMidiNoteName( string midiNoteName )
+        {
+            return TryParse( midiNoteName, out var _ );
         }
 
         public static MidiNoteName FromMidiNoteNumber( MidiNoteNumber midiNoteNumber )
