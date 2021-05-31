@@ -1,10 +1,12 @@
 using System.Collections.Generic;
 
 using KeySwitchManager.Commons.Data;
-using KeySwitchManager.Domain.KeySwitches.Midi.Models;
-using KeySwitchManager.Domain.KeySwitches.Midi.Models.Entities;
 using KeySwitchManager.Domain.KeySwitches.Models;
-using KeySwitchManager.Domain.KeySwitches.Models.Entities;
+using KeySwitchManager.Domain.KeySwitches.Models.Aggregations;
+using KeySwitchManager.Domain.KeySwitches.Models.Factory;
+using KeySwitchManager.Domain.MidiMessages.Models;
+using KeySwitchManager.Domain.MidiMessages.Models.Aggregations;
+using KeySwitchManager.Domain.MidiMessages.Models.Factory;
 using KeySwitchManager.Infrastructure.Database.LiteDB.KeySwitches.Models;
 
 namespace KeySwitchManager.Infrastructure.Database.LiteDB.KeySwitches.Translators
@@ -17,9 +19,9 @@ namespace KeySwitchManager.Infrastructure.Database.LiteDB.KeySwitches.Translator
 
             foreach( var i in source.Articulations )
             {
-                var noteOn = new List<IMidiMessage>();
-                var controlChange = new List<IMidiMessage>();
-                var programChange = new List<IMidiMessage>();
+                var noteOn = new List<IMidiChannelVoiceMessage>();
+                var controlChange = new List<IMidiChannelVoiceMessage>();
+                var programChange = new List<IMidiChannelVoiceMessage>();
 
                 ConvertMessageList( i.NoteOn,        noteOn,        IMidiNoteOnFactory.Default );
                 ConvertMessageList( i.ControlChange, controlChange, IMidiControlChangeFactory.Default );
@@ -67,14 +69,14 @@ namespace KeySwitchManager.Infrastructure.Database.LiteDB.KeySwitches.Translator
 
         private static void ConvertMessageList(
             IEnumerable<MidiMessageModel> src,
-            ICollection<IMidiMessage> dest,
-            IMidiMessageFactory<IMidiMessage> messageFactory )
+            ICollection<IMidiChannelVoiceMessage> dest,
+            IMidiChannelVoiceMessageFactory<IMidiChannelVoiceMessage> messageFactory )
         {
             foreach( var i in src )
             {
                 dest.Add(
                     messageFactory.Create(
-                        i.Status,
+                        i.Status & 0x0F,
                         i.DataByte1,
                         i.DataByte2
                     )

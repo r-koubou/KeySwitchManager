@@ -2,10 +2,10 @@ using System;
 using System.Collections.Generic;
 
 using KeySwitchManager.Commons.Data;
-using KeySwitchManager.Domain.KeySwitches.Midi.Models.Entities;
 using KeySwitchManager.Domain.KeySwitches.Models;
-using KeySwitchManager.Domain.KeySwitches.Models.Entities;
+using KeySwitchManager.Domain.KeySwitches.Models.Aggregations;
 using KeySwitchManager.Domain.KeySwitches.Models.Values;
+using KeySwitchManager.Domain.MidiMessages.Models.Aggregations;
 
 using RkHelper.Time;
 
@@ -87,9 +87,9 @@ namespace KeySwitchManager.Testing.Commons.KeySwitches
         {
             return new Articulation(
                 new ArticulationName( "Power Chord" ),
-                new DataList<IMidiMessage>( noteOns ),
-                new DataList<IMidiMessage>( controlChanges ),
-                new DataList<IMidiMessage>( programChanges ),
+                new DataList<IMidiChannelVoiceMessage>( noteOns ),
+                new DataList<IMidiChannelVoiceMessage>( controlChanges ),
+                new DataList<IMidiChannelVoiceMessage>( programChanges ),
                 new ExtraData( new Dictionary<ExtraDataKey, ExtraDataValue>
                 {
                     { new ExtraDataKey( "extKey" ), new ExtraDataValue( "extValue" ) }

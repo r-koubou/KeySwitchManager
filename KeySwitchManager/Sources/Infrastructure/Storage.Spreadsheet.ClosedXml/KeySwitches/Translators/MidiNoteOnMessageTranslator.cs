@@ -2,7 +2,7 @@ using System.Collections.Generic;
 
 using ClosedXML.Excel;
 
-using KeySwitchManager.Domain.KeySwitches.Midi.Models.Entities;
+using KeySwitchManager.Domain.MidiMessages.Models.Aggregations;
 using KeySwitchManager.Infrastructure.Storage.Spreadsheet.ClosedXml.KeySwitches.Translators.Helpers;
 using KeySwitchManager.Infrastructure.Storage.Spreadsheet.KeySwitches.Helpers;
 

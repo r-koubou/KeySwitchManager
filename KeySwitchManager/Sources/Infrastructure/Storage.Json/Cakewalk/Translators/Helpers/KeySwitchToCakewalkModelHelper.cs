@@ -1,11 +1,11 @@
 using System.Collections.Generic;
 using System.Linq;
 
-using KeySwitchManager.Domain.KeySwitches.Midi.Models.Entities;
 using KeySwitchManager.Domain.KeySwitches.Models;
+using KeySwitchManager.Domain.MidiMessages.Models.Aggregations;
 using KeySwitchManager.Infrastructure.Storage.Json.Cakewalk.Models;
 
-using Articulation = KeySwitchManager.Domain.KeySwitches.Models.Entities.Articulation;
+using Articulation = KeySwitchManager.Domain.KeySwitches.Models.Aggregations.Articulation;
 using CwArticulation = KeySwitchManager.Infrastructure.Storage.Json.Cakewalk.Models.Articulation;
 
 namespace KeySwitchManager.Infrastructure.Storage.Json.Cakewalk.Translators.Helpers

@@ -1,4 +1,4 @@
-using KeySwitchManager.Domain.KeySwitches.Midi.Models.Values;
+using KeySwitchManager.Domain.MidiMessages.Models.Values;
 
 using ValueObjectGenerator;
 

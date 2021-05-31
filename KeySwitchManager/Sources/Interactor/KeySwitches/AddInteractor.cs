@@ -1,6 +1,8 @@
 using System;
 
 using KeySwitchManager.Domain.KeySwitches.Models;
+using KeySwitchManager.Domain.KeySwitches.Models.Aggregations;
+using KeySwitchManager.Domain.KeySwitches.Models.Factory;
 using KeySwitchManager.UseCase.KeySwitches.Add;
 
 using RkHelper.Time;
