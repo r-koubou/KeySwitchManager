@@ -67,7 +67,7 @@ namespace KeySwitchManager.Interactor.KeySwitches
 
             if( flushed == 0 )
             {
-                Presenter.Message( $"No keyswitch(es) flushed to storage/repository ({OutputRepository.GetType()})" );
+                Presenter.Present( $"No keyswitch(es) flushed to storage/repository ({OutputRepository.GetType()})" );
             }
 
             return new SpreadsheetTemplateExportResponse( true );
