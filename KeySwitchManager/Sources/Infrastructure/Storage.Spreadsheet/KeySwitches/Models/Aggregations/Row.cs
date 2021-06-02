@@ -1,8 +1,9 @@
 using System.Collections.Generic;
 
 using KeySwitchManager.Infrastructure.Storage.Spreadsheet.KeySwitches.Helpers;
+using KeySwitchManager.Infrastructure.Storage.Spreadsheet.KeySwitches.Models.Values;
 
-namespace KeySwitchManager.Infrastructure.Storage.Spreadsheet.KeySwitches.Models
+namespace KeySwitchManager.Infrastructure.Storage.Spreadsheet.KeySwitches.Models.Aggregations
 {
     public class Row
     {

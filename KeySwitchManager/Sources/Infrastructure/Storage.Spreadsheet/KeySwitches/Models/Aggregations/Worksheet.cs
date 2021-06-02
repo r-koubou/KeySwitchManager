@@ -1,7 +1,9 @@
 using System;
 using System.Collections.Generic;
 
-namespace KeySwitchManager.Infrastructure.Storage.Spreadsheet.KeySwitches.Models
+using KeySwitchManager.Infrastructure.Storage.Spreadsheet.KeySwitches.Models.Values;
+
+namespace KeySwitchManager.Infrastructure.Storage.Spreadsheet.KeySwitches.Models.Aggregations
 {
     public class Worksheet
     {
@@ -9,7 +11,7 @@ namespace KeySwitchManager.Infrastructure.Storage.Spreadsheet.KeySwitches.Models
         public GuidCell GuidCell { get; set; } = GuidCell.Empty;
         public DeveloperNameCell DeveloperNameCell { get; set; } = DeveloperNameCell.Empty;
         public ProductNameCell ProductNameCell { get; set; } = ProductNameCell.Empty;
-        public OutputNameCell OutputNameCell { get; set; } = OutputNameCell.Empty;
+        public InstrumentNameCell InstrumentNameCell { get; set; } = InstrumentNameCell.Empty;
         public AuthorCell AuthorCell { get; set; } = AuthorCell.Empty;
         public DescriptionCell DescriptionCell { get; set; } = DescriptionCell.Empty;
 

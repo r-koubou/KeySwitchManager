@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 
-using KeySwitchManager.Domain.MidiMessages.Models;
 using KeySwitchManager.Domain.MidiMessages.Models.Aggregations;
 using KeySwitchManager.Domain.MidiMessages.Models.Factory;
 using KeySwitchManager.Infrastructure.Storage.Xml.Cubase.Translators;

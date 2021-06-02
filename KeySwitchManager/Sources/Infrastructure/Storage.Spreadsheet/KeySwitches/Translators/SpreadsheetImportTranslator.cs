@@ -9,6 +9,7 @@ using KeySwitchManager.Domain.MidiMessages.Models.Aggregations;
 using KeySwitchManager.Domain.MidiMessages.Models.Factory;
 using KeySwitchManager.Domain.MidiMessages.Models.Values;
 using KeySwitchManager.Infrastructure.Storage.Spreadsheet.KeySwitches.Models;
+using KeySwitchManager.Infrastructure.Storage.Spreadsheet.KeySwitches.Models.Aggregations;
 
 using RkHelper.Time;
 
@@ -41,9 +42,7 @@ namespace KeySwitchManager.Infrastructure.Storage.Spreadsheet.KeySwitches.Transl
                 articulations.Add( TranslateArticulation( row ) );
             }
 
-            var guid = Guid.TryParse( sheet.GuidCell.Value, out var parsedGuid ) ?
-                parsedGuid :
-                Guid.NewGuid();
+            var guid = sheet.GuidCell.Value;
 
             if( parsedGuidList.Contains( guid ) )
             {
@@ -65,7 +64,7 @@ namespace KeySwitchManager.Infrastructure.Storage.Spreadsheet.KeySwitches.Transl
                 now,
                 sheet.DeveloperNameCell.Value,
                 sheet.ProductNameCell.Value,
-                sheet.OutputNameCell.Value,
+                sheet.InstrumentNameCell.Value,
                 articulations,
                 extraData
             );

@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -8,6 +9,8 @@ using ClosedXML.Excel;
 using KeySwitchManager.Commons.Data;
 using KeySwitchManager.Infrastructure.Storage.Spreadsheet.KeySwitches.Helpers;
 using KeySwitchManager.Infrastructure.Storage.Spreadsheet.KeySwitches.Models;
+using KeySwitchManager.Infrastructure.Storage.Spreadsheet.KeySwitches.Models.Aggregations;
+using KeySwitchManager.Infrastructure.Storage.Spreadsheet.KeySwitches.Models.Values;
 
 using RkHelper.Text;
 
@@ -105,7 +108,7 @@ namespace KeySwitchManager.Infrastructure.Storage.Spreadsheet.ClosedXml.KeySwitc
                                   .Cell( SpreadsheetConstants.ColumnGuid ).Value.ToString();
 
             worksheet.GuidCell = guid == null ?
-                GuidCell.Empty : new GuidCell( guid );
+                GuidCell.Empty : new GuidCell( new Guid( guid ) );
             #endregion
 
             #region Developer Name
@@ -128,8 +131,8 @@ namespace KeySwitchManager.Infrastructure.Storage.Spreadsheet.ClosedXml.KeySwitc
             var outputName = sourceSheet.Row( SpreadsheetConstants.RowOutputName )
                                         .Cell( SpreadsheetConstants.ColumnOutputName ).Value.ToString();
 
-            worksheet.OutputNameCell = outputName == null ?
-                OutputNameCell.Empty : new OutputNameCell( outputName );
+            worksheet.InstrumentNameCell = outputName == null ?
+                InstrumentNameCell.Empty : new InstrumentNameCell( outputName );
             #endregion
 
             #region Author
