@@ -100,17 +100,53 @@ namespace KeySwitchManager.Infrastructure.Storage.Spreadsheet.ClosedXml.KeySwitc
                 worksheet.Rows.Add( row );
             }
 
-            var outputName = sourceSheet.Row( SpreadsheetConstants.RowOutputName )
-                                 .Cell( SpreadsheetConstants.ColumnOutputName  ).Value.ToString();
-
-            worksheet.OutputNameCell = outputName == null ?
-                OutputNameCell.Empty : new OutputNameCell( outputName );
-
+            #region GUID
             var guid = sourceSheet.Row( SpreadsheetConstants.RowGuid )
                                   .Cell( SpreadsheetConstants.ColumnGuid ).Value.ToString();
 
             worksheet.GuidCell = guid == null ?
                 GuidCell.Empty : new GuidCell( guid );
+            #endregion
+
+            #region Developer Name
+            var developerName = sourceSheet.Row( SpreadsheetConstants.RowDeveloperName )
+                                         .Cell( SpreadsheetConstants.ColumnDeveloperName ).Value.ToString();
+
+            worksheet.DeveloperNameCell = developerName == null ?
+                DeveloperNameCell.Empty : new DeveloperNameCell( developerName );
+            #endregion
+
+            #region Product Name
+            var productName = sourceSheet.Row( SpreadsheetConstants.RowProductName )
+                                        .Cell( SpreadsheetConstants.ColumnProductName ).Value.ToString();
+
+            worksheet.ProductNameCell = productName == null ?
+                ProductNameCell.Empty : new ProductNameCell( productName );
+            #endregion
+
+            #region Instrument Name
+            var outputName = sourceSheet.Row( SpreadsheetConstants.RowOutputName )
+                                        .Cell( SpreadsheetConstants.ColumnOutputName ).Value.ToString();
+
+            worksheet.OutputNameCell = outputName == null ?
+                OutputNameCell.Empty : new OutputNameCell( outputName );
+            #endregion
+
+            #region Author
+            var author = sourceSheet.Row( SpreadsheetConstants.RowAuthor )
+                                        .Cell( SpreadsheetConstants.ColumnAuthor ).Value.ToString();
+
+            worksheet.AuthorCell = author == null ?
+                AuthorCell.Empty : new AuthorCell( author );
+            #endregion
+
+            #region Description
+            var description = sourceSheet.Row( SpreadsheetConstants.RowDescription )
+                                    .Cell( SpreadsheetConstants.ColumnDescription ).Value.ToString();
+
+            worksheet.DescriptionCell = author == null ?
+                DescriptionCell.Empty : new DescriptionCell( author );
+            #endregion
 
             return worksheet;
         }

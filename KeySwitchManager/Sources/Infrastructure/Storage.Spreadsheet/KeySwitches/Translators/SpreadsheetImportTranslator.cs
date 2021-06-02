@@ -5,7 +5,6 @@ using KeySwitchManager.Commons.Data;
 using KeySwitchManager.Domain.KeySwitches.Models;
 using KeySwitchManager.Domain.KeySwitches.Models.Aggregations;
 using KeySwitchManager.Domain.KeySwitches.Models.Factory;
-using KeySwitchManager.Domain.MidiMessages.Models;
 using KeySwitchManager.Domain.MidiMessages.Models.Aggregations;
 using KeySwitchManager.Domain.MidiMessages.Models.Factory;
 using KeySwitchManager.Domain.MidiMessages.Models.Values;
@@ -17,23 +16,6 @@ namespace KeySwitchManager.Infrastructure.Storage.Spreadsheet.KeySwitches.Transl
 {
     public class SpreadsheetImportTranslator : IDataTranslator<Workbook, IReadOnlyCollection<KeySwitch>>
     {
-        private string DeveloperName { get; }
-        private string ProductName { get; }
-        private string Author { get; }
-        private string Description { get; }
-
-        public SpreadsheetImportTranslator(
-            string developerName,
-            string productName,
-            string author = "",
-            string description = "" )
-        {
-            DeveloperName = developerName;
-            ProductName   = productName;
-            Author        = author;
-            Description   = description;
-        }
-
         public IReadOnlyCollection<KeySwitch> Translate( Workbook source )
         {
             var result = new List<KeySwitch>();
@@ -77,12 +59,12 @@ namespace KeySwitchManager.Infrastructure.Storage.Spreadsheet.KeySwitches.Transl
 
             return IKeySwitchFactory.Default.Create(
                 guid,
-                Author,
-                Description,
+                sheet.AuthorCell.Value,
+                sheet.DescriptionCell.Value,
                 now,
                 now,
-                DeveloperName,
-                ProductName,
+                sheet.DeveloperNameCell.Value,
+                sheet.ProductNameCell.Value,
                 sheet.OutputNameCell.Value,
                 articulations,
                 extraData
