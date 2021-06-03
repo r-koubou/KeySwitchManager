@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -8,6 +9,8 @@ using ClosedXML.Excel;
 using KeySwitchManager.Commons.Data;
 using KeySwitchManager.Infrastructure.Storage.Spreadsheet.KeySwitches.Helpers;
 using KeySwitchManager.Infrastructure.Storage.Spreadsheet.KeySwitches.Models;
+using KeySwitchManager.Infrastructure.Storage.Spreadsheet.KeySwitches.Models.Aggregations;
+using KeySwitchManager.Infrastructure.Storage.Spreadsheet.KeySwitches.Models.Values;
 
 using RkHelper.Text;
 
@@ -100,17 +103,53 @@ namespace KeySwitchManager.Infrastructure.Storage.Spreadsheet.ClosedXml.KeySwitc
                 worksheet.Rows.Add( row );
             }
 
-            var outputName = sourceSheet.Row( SpreadsheetConstants.RowOutputName )
-                                 .Cell( SpreadsheetConstants.ColumnOutputName  ).Value.ToString();
-
-            worksheet.OutputNameCell = outputName == null ?
-                OutputNameCell.Empty : new OutputNameCell( outputName );
-
+            #region GUID
             var guid = sourceSheet.Row( SpreadsheetConstants.RowGuid )
                                   .Cell( SpreadsheetConstants.ColumnGuid ).Value.ToString();
 
             worksheet.GuidCell = guid == null ?
-                GuidCell.Empty : new GuidCell( guid );
+                GuidCell.Empty : new GuidCell( new Guid( guid ) );
+            #endregion
+
+            #region Developer Name
+            var developerName = sourceSheet.Row( SpreadsheetConstants.RowDeveloperName )
+                                         .Cell( SpreadsheetConstants.ColumnDeveloperName ).Value.ToString();
+
+            worksheet.DeveloperNameCell = developerName == null ?
+                DeveloperNameCell.Empty : new DeveloperNameCell( developerName );
+            #endregion
+
+            #region Product Name
+            var productName = sourceSheet.Row( SpreadsheetConstants.RowProductName )
+                                        .Cell( SpreadsheetConstants.ColumnProductName ).Value.ToString();
+
+            worksheet.ProductNameCell = productName == null ?
+                ProductNameCell.Empty : new ProductNameCell( productName );
+            #endregion
+
+            #region Instrument Name
+            var outputName = sourceSheet.Row( SpreadsheetConstants.RowOutputName )
+                                        .Cell( SpreadsheetConstants.ColumnOutputName ).Value.ToString();
+
+            worksheet.InstrumentNameCell = outputName == null ?
+                InstrumentNameCell.Empty : new InstrumentNameCell( outputName );
+            #endregion
+
+            #region Author
+            var author = sourceSheet.Row( SpreadsheetConstants.RowAuthor )
+                                        .Cell( SpreadsheetConstants.ColumnAuthor ).Value.ToString();
+
+            worksheet.AuthorCell = author == null ?
+                AuthorCell.Empty : new AuthorCell( author );
+            #endregion
+
+            #region Description
+            var description = sourceSheet.Row( SpreadsheetConstants.RowDescription )
+                                    .Cell( SpreadsheetConstants.ColumnDescription ).Value.ToString();
+
+            worksheet.DescriptionCell = author == null ?
+                DescriptionCell.Empty : new DescriptionCell( author );
+            #endregion
 
             return worksheet;
         }
@@ -157,28 +196,29 @@ namespace KeySwitchManager.Infrastructure.Storage.Spreadsheet.ClosedXml.KeySwitc
             // MIDI Notes
             // * Multiple MIDI Note Supported
             // * Column name format:
-            // NoteOn Ch1 ... NoteOn Ch[1+n]
-            // Note1 ... Note[1+n]
-            // Velocity1 ... Velocity[1+n]
+            // NoteOn Ch[1] ... NoteOn Ch[1+n]
+            // Note[1] ... Note[1+n]
+            // Velocity[1] ... Velocity[1+n]
             //----------------------------------------------------------------------
             var notes = new List<Row.MidiNote>();
 
             for( int i = 1; i < int.MaxValue; i++ )
             {
                 #region Channel
-                var midiChannel = ParseMidiChannelCell( context, SpreadsheetConstants.HeaderMidiNoteOnChannel + i );
+                var midiChannel = ParseMidiChannelCell( context, SpreadsheetConstants.MakeIndexedHeader( SpreadsheetConstants.HeaderMidiNoteOnChannel, i ) );
                 #endregion
 
                 #region Note
-                if( !TryParseSheet( context, SpreadsheetConstants.HeaderMidiNote + i, out var noteNumberCell ) )
+                if( !TryParseSheet( context, SpreadsheetConstants.MakeIndexedHeader( SpreadsheetConstants.HeaderMidiNote, i ), out var noteNumberCell ) )
                 {
                     break;
                 }
 
-                ParseSheet( context, SpreadsheetConstants.HeaderMidiVelocity + i, out var velocityCell );
                 #endregion
 
                 #region Velocity
+                ParseSheet( context, SpreadsheetConstants.MakeIndexedHeader( SpreadsheetConstants.HeaderMidiVelocity, i ), out var velocityCell );
+
                 if( !int.TryParse( velocityCell, out var velocityValue ) )
                 {
                     velocityValue = 100;
@@ -204,27 +244,27 @@ namespace KeySwitchManager.Infrastructure.Storage.Spreadsheet.ClosedXml.KeySwitc
             // MIDI CC
             // * Multiple MIDI CC Supported
             // * Column name format:
-            //   CC Ch1 ... CC Ch[1+n]
-            //   CC No1 ... CC No[1+n]
-            //   CC Value1 ... CC Value[1+n]
+            //   CC Ch[1] ... CC Ch[1+n]
+            //   CC No[1] ... CC No[1+n]
+            //   CC Value[1] ... CC Value[1+n]
             //----------------------------------------------------------------------
             var controlChanges = new List<Row.MidiControlChange>();
 
             for( int i = 1; i < int.MaxValue; i++ )
             {
                 #region Channel
-                var midiChannel = ParseMidiChannelCell( context, SpreadsheetConstants.HeaderMidiNoteOnChannel + i );
+                var midiChannel = ParseMidiChannelCell( context, SpreadsheetConstants.MakeIndexedHeader( SpreadsheetConstants.HeaderPcChannel, i ) );
                 #endregion
 
                 #region CC No
-                if( !TryParseSheet( context, SpreadsheetConstants.HeaderMidiCc + i, out var ccNumberCell ) )
+                if( !TryParseSheet( context, SpreadsheetConstants.MakeIndexedHeader( SpreadsheetConstants.HeaderMidiCc, i ), out var ccNumberCell ) )
                 {
                     break;
                 }
                 #endregion
 
                 #region CC Value
-                if( !TryParseSheet( context, SpreadsheetConstants.HeaderMidiCcValue + i, out var ccValueCell ) )
+                if( !TryParseSheet( context, SpreadsheetConstants.MakeIndexedHeader( SpreadsheetConstants.HeaderMidiCcValue, i ), out var ccValueCell ) )
                 {
                     break;
                 }
@@ -249,18 +289,19 @@ namespace KeySwitchManager.Infrastructure.Storage.Spreadsheet.ClosedXml.KeySwitc
             // Program (MIDI Program Change?)
             // * Multiple value Supported
             // * Column name format:
-            //   PC Channel1, PC Data1 ... PC Channel1+n, PC Data1+n
+            //   PC Channel[1] ... PC Channel[1+n]
+            //   PC Data[1] ... PC Data[1+n]
             //----------------------------------------------------------------------
             var program = new List<Row.MidiProgramChange>();
 
             for( int i = 1; i < int.MaxValue; i++ )
             {
                 #region Channel
-                var midiChannel = ParseMidiChannelCell( context, SpreadsheetConstants.HeaderMidiNoteOnChannel + i );
+                var midiChannel = ParseMidiChannelCell( context, SpreadsheetConstants.MakeIndexedHeader( SpreadsheetConstants.HeaderPcChannel, i ) );
                 #endregion
 
                 #region PC Value
-                if( !TryParseSheet( context, SpreadsheetConstants.HeaderPcData + i, out var pcDataCell ) )
+                if( !TryParseSheet( context, SpreadsheetConstants.MakeIndexedHeader( SpreadsheetConstants.HeaderPcData, i ), out var pcDataCell ) )
                 {
                     break;
                 }

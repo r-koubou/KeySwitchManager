@@ -54,10 +54,35 @@ namespace KeySwitchManager.Infrastructure.Storage.Spreadsheet.ClosedXml.KeySwitc
                 column = Math.Max( column, col );
             }
 
+            #region GUID
             newWorksheet.Cell( SpreadsheetConstants.RowGuid, SpreadsheetConstants.ColumnGuid )
                         .Value = keySwitch.Id.Value;
+            #endregion
+
+            #region Developer Name
+            newWorksheet.Cell( SpreadsheetConstants.RowDeveloperName, SpreadsheetConstants.ColumnDeveloperName )
+                        .Value = keySwitch.DeveloperName;
+            #endregion
+
+            #region Product Name
+            newWorksheet.Cell( SpreadsheetConstants.RowProductName, SpreadsheetConstants.ColumnProductName )
+                        .Value = keySwitch.ProductName;
+            #endregion
+
+            #region Instrument Name
             newWorksheet.Cell( SpreadsheetConstants.RowOutputName, SpreadsheetConstants.ColumnOutputName )
                         .Value = keySwitch.InstrumentName;
+            #endregion
+
+            #region Author
+            newWorksheet.Cell( SpreadsheetConstants.RowAuthor, SpreadsheetConstants.ColumnAuthor )
+                        .Value = keySwitch.Author;
+            #endregion
+
+            #region Description
+            newWorksheet.Cell( SpreadsheetConstants.RowDescription, SpreadsheetConstants.ColumnDescription )
+                        .Value = keySwitch.Description;
+            #endregion
 
             // fill empty rows count (bordered only)
             var emptyRowCount = Math.Max(
@@ -76,6 +101,12 @@ namespace KeySwitchManager.Infrastructure.Storage.Spreadsheet.ClosedXml.KeySwitc
 
             // Draw cell border line
             XLCellHelper.ActivateCellBorder( range.Style );
+
+            // Adjust column width
+            for( var i = SpreadsheetConstants.ColumnDataBegin; i < column; i++ )
+            {
+                XLCellHelper.AdjustColumnWidth( newWorksheet, i );
+            }
 
             #endregion
         }

@@ -1,7 +1,6 @@
 using System.IO;
 
 using KeySwitchManager.Commons.Data;
-using KeySwitchManager.Domain.KeySwitches.Helpers;
 using KeySwitchManager.Infrastructure.Storage.KeySwitches;
 using KeySwitchManager.Infrastructure.Storage.Spreadsheet.ClosedXml.KeySwitches.Helper;
 using KeySwitchManager.Infrastructure.Storage.Spreadsheet.KeySwitches.Translators;
@@ -13,14 +12,11 @@ namespace KeySwitchManager.Infrastructure.Storage.Spreadsheet.ClosedXml.KeySwitc
     public class ClosedXmlFileLoadRepository : LoadOnlyKeySwitchFileRepository
     {
         private const int InitialBufferSize = 1024 * 64;
-        private KeySwitchInfo Info { get; }
 
-        public ClosedXmlFileLoadRepository( FilePath path, KeySwitchInfo info, bool loadFromPathNow = true ) :
+        public ClosedXmlFileLoadRepository( FilePath path, bool loadFromPathNow = true ) :
             base( path, false )
         // A param loadFromPathNow is always false by Since we have implemented this class own processing
         {
-            Info = info;
-
             if( loadFromPathNow )
             {
                 Load();
@@ -42,12 +38,7 @@ namespace KeySwitchManager.Infrastructure.Storage.Spreadsheet.ClosedXml.KeySwitc
             byte[] xlsxBytes = memory.ToArray();
 
             var workBook = XlsxWorkBookParsingHelper.Parse( xlsxBytes );
-            var translator = new SpreadsheetImportTranslator(
-                Info.DeveloperName,
-                Info.ProductName,
-                Info.Author,
-                Info.Description
-            );
+            var translator = new SpreadsheetImportTranslator();
 
             KeySwitches.Clear();
             KeySwitches.AddRange( translator.Translate( workBook ) );

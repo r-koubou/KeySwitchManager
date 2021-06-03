@@ -5,7 +5,6 @@ using KeySwitchManager.Domain.KeySwitches.Models;
 using KeySwitchManager.Domain.KeySwitches.Models.Factory;
 using KeySwitchManager.Domain.KeySwitches.Models.Values;
 using KeySwitchManager.Domain.MidiMessages.Models.Aggregations;
-using KeySwitchManager.Storage.Yaml.KeySwitches.Models;
 using KeySwitchManager.Storage.Yaml.KeySwitches.Models.Aggregations;
 using KeySwitchManager.Storage.Yaml.KeySwitches.Models.Factory;
 
