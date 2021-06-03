@@ -63,6 +63,16 @@ namespace KeySwitchManager.Infrastructure.Storage.Spreadsheet.ClosedXml.KeySwitc
             d.List( listSheet.Range( begin, end ) );
         }
 
+        public static void AdjustRowHeight( IXLWorksheet sheet, int row )
+        {
+            sheet.Row( row ).AdjustToContents();
+        }
+
+        public static void AdjustColumnWidth( IXLWorksheet sheet, int column )
+        {
+            sheet.Column( column ).AdjustToContents();
+        }
+
         public static void SetDefaultCellStyle( IXLWorksheet sheet, KeySwitch template, int rowCount = 100 )
         {
             var startRow = SpreadsheetConstants.RowDataBegin;

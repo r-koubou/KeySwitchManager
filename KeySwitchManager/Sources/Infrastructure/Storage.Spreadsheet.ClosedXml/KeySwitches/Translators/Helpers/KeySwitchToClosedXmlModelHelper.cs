@@ -102,6 +102,12 @@ namespace KeySwitchManager.Infrastructure.Storage.Spreadsheet.ClosedXml.KeySwitc
             // Draw cell border line
             XLCellHelper.ActivateCellBorder( range.Style );
 
+            // Adjust column width
+            for( var i = SpreadsheetConstants.ColumnDataBegin; i < column; i++ )
+            {
+                XLCellHelper.AdjustColumnWidth( newWorksheet, i );
+            }
+
             #endregion
         }
 
