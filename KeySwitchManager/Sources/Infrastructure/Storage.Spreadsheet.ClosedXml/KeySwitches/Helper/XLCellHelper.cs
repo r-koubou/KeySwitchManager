@@ -124,9 +124,9 @@ namespace KeySwitchManager.Infrastructure.Storage.Spreadsheet.ClosedXml.KeySwitc
         {
             for( var index = 1; index <= count; index++ )
             {
-                SetHeaderCell( sheet, SpreadsheetConstants.RowDataHeader, column + 0, MidiNoteOnHeaderCellColor, $"{SpreadsheetConstants.HeaderMidiNoteOnChannel}{index}" );
-                SetHeaderCell( sheet, SpreadsheetConstants.RowDataHeader, column + 1, MidiNoteOnHeaderCellColor, $"{SpreadsheetConstants.HeaderMidiNote}{index}" );
-                SetHeaderCell( sheet, SpreadsheetConstants.RowDataHeader, column + 2, MidiNoteOnHeaderCellColor, $"{SpreadsheetConstants.HeaderMidiVelocity}{index}" );
+                SetHeaderCell( sheet, SpreadsheetConstants.RowDataHeader, column + 0, MidiNoteOnHeaderCellColor, SpreadsheetConstants.MakeIndexedHeader( SpreadsheetConstants.HeaderMidiNoteOnChannel, index ) );
+                SetHeaderCell( sheet, SpreadsheetConstants.RowDataHeader, column + 1, MidiNoteOnHeaderCellColor, SpreadsheetConstants.MakeIndexedHeader( SpreadsheetConstants.HeaderMidiNote,          index ) );
+                SetHeaderCell( sheet, SpreadsheetConstants.RowDataHeader, column + 2, MidiNoteOnHeaderCellColor, SpreadsheetConstants.MakeIndexedHeader( SpreadsheetConstants.HeaderMidiVelocity,      index ) );
 
                 SetMidiChannelCellStyle( sheet, row, column + 0 );
                 SetMidiNoteCellStyle( sheet, row, column + 1 );
@@ -182,9 +182,9 @@ namespace KeySwitchManager.Infrastructure.Storage.Spreadsheet.ClosedXml.KeySwitc
         {
             for( var index = 1; index <= count; index++ )
             {
-                SetHeaderCell( sheet, SpreadsheetConstants.RowDataHeader, column + 0, MidiCcHeaderCellColor, $"{SpreadsheetConstants.HeaderMidiCcChannel}{index}" );
-                SetHeaderCell( sheet, SpreadsheetConstants.RowDataHeader, column + 1, MidiCcHeaderCellColor, $"{SpreadsheetConstants.HeaderMidiCc}{index}" );
-                SetHeaderCell( sheet, SpreadsheetConstants.RowDataHeader, column + 2, MidiCcHeaderCellColor, $"{SpreadsheetConstants.HeaderMidiCcValue}{index}" );
+                SetHeaderCell( sheet, SpreadsheetConstants.RowDataHeader, column + 0, MidiCcHeaderCellColor, SpreadsheetConstants.MakeIndexedHeader( SpreadsheetConstants.HeaderMidiCcChannel, index ) );
+                SetHeaderCell( sheet, SpreadsheetConstants.RowDataHeader, column + 1, MidiCcHeaderCellColor, SpreadsheetConstants.MakeIndexedHeader( SpreadsheetConstants.HeaderMidiCc,        index ) );
+                SetHeaderCell( sheet, SpreadsheetConstants.RowDataHeader, column + 2, MidiCcHeaderCellColor, SpreadsheetConstants.MakeIndexedHeader( SpreadsheetConstants.HeaderMidiCcValue,   index ) );
 
                 SetMidiChannelCellStyle( sheet, row, column + 0 );
                 SetMidiCcCellStyle( sheet, row, column + 1 );
@@ -214,8 +214,8 @@ namespace KeySwitchManager.Infrastructure.Storage.Spreadsheet.ClosedXml.KeySwitc
         {
             for( var index = 1; index <= count; index++ )
             {
-                SetHeaderCell( sheet, SpreadsheetConstants.RowDataHeader, column + 0, MidiPcHeaderCellColor, $"{SpreadsheetConstants.HeaderPcChannel}{index}" );
-                SetHeaderCell( sheet, SpreadsheetConstants.RowDataHeader, column + 1, MidiPcHeaderCellColor, $"{SpreadsheetConstants.HeaderPcData}{index}" );
+                SetHeaderCell( sheet, SpreadsheetConstants.RowDataHeader, column + 0, MidiPcHeaderCellColor, SpreadsheetConstants.MakeIndexedHeader( SpreadsheetConstants.HeaderPcChannel, index ) );
+                SetHeaderCell( sheet, SpreadsheetConstants.RowDataHeader, column + 1, MidiPcHeaderCellColor, SpreadsheetConstants.MakeIndexedHeader( SpreadsheetConstants.HeaderPcData, index ) );
 
                 SetMidiChannelCellStyle( sheet, row, column + 0 );
                 SetMidiPcCellStyle( sheet, row, column + 1 );

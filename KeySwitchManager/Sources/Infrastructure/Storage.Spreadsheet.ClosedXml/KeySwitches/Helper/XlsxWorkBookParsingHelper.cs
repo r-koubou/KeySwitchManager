@@ -196,28 +196,29 @@ namespace KeySwitchManager.Infrastructure.Storage.Spreadsheet.ClosedXml.KeySwitc
             // MIDI Notes
             // * Multiple MIDI Note Supported
             // * Column name format:
-            // NoteOn Ch1 ... NoteOn Ch[1+n]
-            // Note1 ... Note[1+n]
-            // Velocity1 ... Velocity[1+n]
+            // NoteOn Ch[1] ... NoteOn Ch[1+n]
+            // Note[1] ... Note[1+n]
+            // Velocity[1] ... Velocity[1+n]
             //----------------------------------------------------------------------
             var notes = new List<Row.MidiNote>();
 
             for( int i = 1; i < int.MaxValue; i++ )
             {
                 #region Channel
-                var midiChannel = ParseMidiChannelCell( context, SpreadsheetConstants.HeaderMidiNoteOnChannel + i );
+                var midiChannel = ParseMidiChannelCell( context, SpreadsheetConstants.MakeIndexedHeader( SpreadsheetConstants.HeaderMidiNoteOnChannel, i ) );
                 #endregion
 
                 #region Note
-                if( !TryParseSheet( context, SpreadsheetConstants.HeaderMidiNote + i, out var noteNumberCell ) )
+                if( !TryParseSheet( context, SpreadsheetConstants.MakeIndexedHeader( SpreadsheetConstants.HeaderMidiNote, i ), out var noteNumberCell ) )
                 {
                     break;
                 }
 
-                ParseSheet( context, SpreadsheetConstants.HeaderMidiVelocity + i, out var velocityCell );
                 #endregion
 
                 #region Velocity
+                ParseSheet( context, SpreadsheetConstants.MakeIndexedHeader( SpreadsheetConstants.HeaderMidiVelocity, i ), out var velocityCell );
+
                 if( !int.TryParse( velocityCell, out var velocityValue ) )
                 {
                     velocityValue = 100;
@@ -243,27 +244,27 @@ namespace KeySwitchManager.Infrastructure.Storage.Spreadsheet.ClosedXml.KeySwitc
             // MIDI CC
             // * Multiple MIDI CC Supported
             // * Column name format:
-            //   CC Ch1 ... CC Ch[1+n]
-            //   CC No1 ... CC No[1+n]
-            //   CC Value1 ... CC Value[1+n]
+            //   CC Ch[1] ... CC Ch[1+n]
+            //   CC No[1] ... CC No[1+n]
+            //   CC Value[1] ... CC Value[1+n]
             //----------------------------------------------------------------------
             var controlChanges = new List<Row.MidiControlChange>();
 
             for( int i = 1; i < int.MaxValue; i++ )
             {
                 #region Channel
-                var midiChannel = ParseMidiChannelCell( context, SpreadsheetConstants.HeaderMidiNoteOnChannel + i );
+                var midiChannel = ParseMidiChannelCell( context, SpreadsheetConstants.MakeIndexedHeader( SpreadsheetConstants.HeaderPcChannel, i ) );
                 #endregion
 
                 #region CC No
-                if( !TryParseSheet( context, SpreadsheetConstants.HeaderMidiCc + i, out var ccNumberCell ) )
+                if( !TryParseSheet( context, SpreadsheetConstants.MakeIndexedHeader( SpreadsheetConstants.HeaderMidiCc, i ), out var ccNumberCell ) )
                 {
                     break;
                 }
                 #endregion
 
                 #region CC Value
-                if( !TryParseSheet( context, SpreadsheetConstants.HeaderMidiCcValue + i, out var ccValueCell ) )
+                if( !TryParseSheet( context, SpreadsheetConstants.MakeIndexedHeader( SpreadsheetConstants.HeaderMidiCcValue, i ), out var ccValueCell ) )
                 {
                     break;
                 }
@@ -288,18 +289,19 @@ namespace KeySwitchManager.Infrastructure.Storage.Spreadsheet.ClosedXml.KeySwitc
             // Program (MIDI Program Change?)
             // * Multiple value Supported
             // * Column name format:
-            //   PC Channel1, PC Data1 ... PC Channel1+n, PC Data1+n
+            //   PC Channel[1] ... PC Channel[1+n]
+            //   PC Data[1] ... PC Data[1+n]
             //----------------------------------------------------------------------
             var program = new List<Row.MidiProgramChange>();
 
             for( int i = 1; i < int.MaxValue; i++ )
             {
                 #region Channel
-                var midiChannel = ParseMidiChannelCell( context, SpreadsheetConstants.HeaderMidiNoteOnChannel + i );
+                var midiChannel = ParseMidiChannelCell( context, SpreadsheetConstants.MakeIndexedHeader( SpreadsheetConstants.HeaderPcChannel, i ) );
                 #endregion
 
                 #region PC Value
-                if( !TryParseSheet( context, SpreadsheetConstants.HeaderPcData + i, out var pcDataCell ) )
+                if( !TryParseSheet( context, SpreadsheetConstants.MakeIndexedHeader( SpreadsheetConstants.HeaderPcData, i ), out var pcDataCell ) )
                 {
                     break;
                 }

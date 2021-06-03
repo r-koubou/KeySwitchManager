@@ -14,6 +14,9 @@ namespace KeySwitchManager.Infrastructure.Storage.Spreadsheet.KeySwitches.Helper
 
         public static readonly string HeaderExtraPrefix = "Ext.";
 
+        public static string MakeIndexedHeader( string header, int index )
+            => $"{header}[{index}]";
+
         //
         // Row, Column index starts from 1.
         //
