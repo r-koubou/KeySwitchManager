@@ -1,5 +1,4 @@
 using System;
-using System.Diagnostics.CodeAnalysis;
 
 using CommandLine;
 
@@ -13,8 +12,6 @@ namespace KeySwitchManager.CLI.Commands
     public class Delete : ICommand
     {
         [Verb( "delete", false, HelpText = "delete records from database")]
-        [SuppressMessage( "ReSharper", "MemberCanBePrivate.Global" )]
-        [SuppressMessage( "ReSharper", "ClassNeverInstantiated.Global" )]
         public class CommandOption : ICommandOption
         {
             [Option( 'd', "developer", Required = true )]

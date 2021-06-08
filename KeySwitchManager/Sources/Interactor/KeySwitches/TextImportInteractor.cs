@@ -33,7 +33,7 @@ namespace KeySwitchManager.Interactor.KeySwitches
 
             foreach( var i in keySwitches )
             {
-                Presenter.Message( $"... {i.ProductName} | {i.InstrumentName}" );
+                Presenter.Present( $"... {i.ProductName} | {i.InstrumentName}" );
 
                 var r = Repository.Save( i );
                 updatedCount += r.Updated;
@@ -44,7 +44,7 @@ namespace KeySwitchManager.Interactor.KeySwitches
 
             if( flushed == 0 )
             {
-                Presenter.Message( $"No keyswitch(es) flushed to storage/repository ({Repository.GetType()})" );
+                Presenter.Present( $"No keyswitch(es) flushed to storage/repository ({Repository.GetType()})" );
             }
 
             Presenter.Present( $"{insertedCount} record(s) inserted, {updatedCount} record(s) updated" );

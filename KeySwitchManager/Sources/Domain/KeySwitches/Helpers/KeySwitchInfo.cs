@@ -16,7 +16,7 @@ namespace KeySwitchManager.Domain.KeySwitches.Helpers
             string description = "" )
         {
             StringHelper.ValidateEmpty( developerName );
-            StringHelper.ValidateEmpty( productName );
+            StringHelper.ValidateNull( productName );
             StringHelper.ValidateNull( author );
             StringHelper.ValidateNull( description );
 

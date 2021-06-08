@@ -1,10 +1,11 @@
 using System;
 using System.Collections.Generic;
 
-using KeySwitchManager.Domain.KeySwitches.Midi.Models;
-using KeySwitchManager.Domain.KeySwitches.Midi.Models.Entities;
 using KeySwitchManager.Domain.KeySwitches.Models;
-using KeySwitchManager.Domain.KeySwitches.Models.Entities;
+using KeySwitchManager.Domain.KeySwitches.Models.Aggregations;
+using KeySwitchManager.Domain.KeySwitches.Models.Factory;
+using KeySwitchManager.Domain.MidiMessages.Models.Aggregations;
+using KeySwitchManager.Domain.MidiMessages.Models.Factory;
 using KeySwitchManager.UseCase.KeySwitches.Create.Template;
 
 namespace KeySwitchManager.Interactor.KeySwitches
@@ -41,9 +42,9 @@ namespace KeySwitchManager.Interactor.KeySwitches
                 {
                     IArticulationFactory.Default.Create(
                         "name",
-                        new List<IMidiMessage>{ IMidiNoteOnFactory.Default.Create( 0, 100 )},
-                        new List<IMidiMessage>{ IMidiControlChangeFactory.Default.Create( 1, 100 )},
-                        new List<IMidiMessage>{ IMidiProgramChangeFactory.Default.Create( 23 )},
+                        new List<IMidiChannelVoiceMessage>{ IMidiNoteOnFactory.Default.Create( 0, 100 )},
+                        new List<IMidiChannelVoiceMessage>{ IMidiControlChangeFactory.Default.Create( 1, 100 )},
+                        new List<IMidiChannelVoiceMessage>{ IMidiProgramChangeFactory.Default.Create( 23 )},
                         new Dictionary<string, string>
                         {
                             { "extra1 key", "extra1 value" },
@@ -64,7 +65,7 @@ namespace KeySwitchManager.Interactor.KeySwitches
 
             if( flushed == 0 )
             {
-                Presenter.Message( $"No keyswitch(es) flushed to storage/repository ({OutputRepository.GetType()})" );
+                Presenter.Present( $"No keyswitch(es) flushed to storage/repository ({OutputRepository.GetType()})" );
             }
 
             return new TemplateKeySwitchCreateResponse();

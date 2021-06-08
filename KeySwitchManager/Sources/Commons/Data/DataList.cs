@@ -38,5 +38,8 @@ namespace KeySwitchManager.Commons.Data
 
         public bool Equals( DataList<T>? other )
             => other != null && other.SequenceEqual( List );
+
+        public bool SequenceEqual( IEnumerable<T> other, IEqualityComparer<T> comparer )
+            => List.SequenceEqual( other, comparer );
     }
 }

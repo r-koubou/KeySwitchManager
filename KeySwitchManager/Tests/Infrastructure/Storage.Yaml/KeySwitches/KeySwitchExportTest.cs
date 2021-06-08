@@ -1,8 +1,8 @@
 using System;
 using System.Collections.Generic;
 
-using KeySwitchManager.Domain.KeySwitches.Midi.Models;
-using KeySwitchManager.Domain.KeySwitches.Midi.Models.Entities;
+using KeySwitchManager.Domain.MidiMessages.Models.Aggregations;
+using KeySwitchManager.Domain.MidiMessages.Models.Factory;
 using KeySwitchManager.Storage.Yaml.KeySwitches.Translators;
 using KeySwitchManager.Testing.Commons.KeySwitches;
 
@@ -23,7 +23,7 @@ namespace KeySwitchManager.Testing.Storage.Yaml.KeySwitches
             var articulation = TestDataGenerator.CreateArticulation(
                 new List<MidiNoteOn> { midiNoteFactory.Create( 1, 23 ) },
                 new List<MidiControlChange> { midiCcFactory.Create( 2, 34 ) },
-                new List<MidiProgramChange> { midiPcFactory.Create( 3, 45 ) }
+                new List<MidiProgramChange> { midiPcFactory.Create( 45 ) }
             );
 
             var entity = TestDataGenerator.CreateKeySwitch( articulation );

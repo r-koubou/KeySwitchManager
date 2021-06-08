@@ -2,12 +2,14 @@ using System;
 using System.Collections.Generic;
 
 using KeySwitchManager.Commons.Data;
-using KeySwitchManager.Domain.KeySwitches.Midi.Models;
-using KeySwitchManager.Domain.KeySwitches.Midi.Models.Entities;
-using KeySwitchManager.Domain.KeySwitches.Midi.Models.Values;
 using KeySwitchManager.Domain.KeySwitches.Models;
-using KeySwitchManager.Domain.KeySwitches.Models.Entities;
+using KeySwitchManager.Domain.KeySwitches.Models.Aggregations;
+using KeySwitchManager.Domain.KeySwitches.Models.Factory;
+using KeySwitchManager.Domain.MidiMessages.Models.Aggregations;
+using KeySwitchManager.Domain.MidiMessages.Models.Factory;
+using KeySwitchManager.Domain.MidiMessages.Models.Values;
 using KeySwitchManager.Infrastructure.Storage.Spreadsheet.KeySwitches.Models;
+using KeySwitchManager.Infrastructure.Storage.Spreadsheet.KeySwitches.Models.Aggregations;
 
 using RkHelper.Time;
 
@@ -15,23 +17,6 @@ namespace KeySwitchManager.Infrastructure.Storage.Spreadsheet.KeySwitches.Transl
 {
     public class SpreadsheetImportTranslator : IDataTranslator<Workbook, IReadOnlyCollection<KeySwitch>>
     {
-        private string DeveloperName { get; }
-        private string ProductName { get; }
-        private string Author { get; }
-        private string Description { get; }
-
-        public SpreadsheetImportTranslator(
-            string developerName,
-            string productName,
-            string author = "",
-            string description = "" )
-        {
-            DeveloperName = developerName;
-            ProductName   = productName;
-            Author        = author;
-            Description   = description;
-        }
-
         public IReadOnlyCollection<KeySwitch> Translate( Workbook source )
         {
             var result = new List<KeySwitch>();
@@ -57,9 +42,7 @@ namespace KeySwitchManager.Infrastructure.Storage.Spreadsheet.KeySwitches.Transl
                 articulations.Add( TranslateArticulation( row ) );
             }
 
-            var guid = Guid.TryParse( sheet.GuidCell.Value, out var parsedGuid ) ?
-                parsedGuid :
-                Guid.NewGuid();
+            var guid = sheet.GuidCell.Value;
 
             if( parsedGuidList.Contains( guid ) )
             {
@@ -75,13 +58,13 @@ namespace KeySwitchManager.Infrastructure.Storage.Spreadsheet.KeySwitches.Transl
 
             return IKeySwitchFactory.Default.Create(
                 guid,
-                Author,
-                Description,
+                sheet.AuthorCell.Value,
+                sheet.DescriptionCell.Value,
                 now,
                 now,
-                DeveloperName,
-                ProductName,
-                sheet.OutputNameCell.Value,
+                sheet.DeveloperNameCell.Value,
+                sheet.ProductNameCell.Value,
+                sheet.InstrumentNameCell.Value,
                 articulations,
                 extraData
             );

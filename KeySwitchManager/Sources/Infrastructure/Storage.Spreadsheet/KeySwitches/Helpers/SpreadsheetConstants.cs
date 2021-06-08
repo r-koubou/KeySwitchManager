@@ -14,20 +14,35 @@ namespace KeySwitchManager.Infrastructure.Storage.Spreadsheet.KeySwitches.Helper
 
         public static readonly string HeaderExtraPrefix = "Ext.";
 
+        public static string MakeIndexedHeader( string header, int index )
+            => $"{header}[{index}]";
+
         //
         // Row, Column index starts from 1.
         //
 
         #region Row, Column index
 
-        // Position of Output name cell
-        public static readonly int RowOutputName = 2;
-        public static readonly int ColumnOutputName = 1;
         // Position of Guid cell
-        public static readonly int RowGuid = 4;
+        public static readonly int RowGuid = 2;
         public static readonly int ColumnGuid = 1;
+        // Position of Developer name cell
+        public static readonly int RowDeveloperName = 4;
+        public static readonly int ColumnDeveloperName = 1;
+        // Position of Product name cell
+        public static readonly int RowProductName = 6;
+        public static readonly int ColumnProductName = 1;
+        // Position of Output name cell
+        public static readonly int RowOutputName = 8;
+        public static readonly int ColumnOutputName = 1;
+        // Position of Author cell
+        public static readonly int RowAuthor = 10;
+        public static readonly int ColumnAuthor = 1;
+        // Position of Description cell
+        public static readonly int RowDescription = 12;
+        public static readonly int ColumnDescription = 1;
 
-        // row 5~24: Reserved for maintenance
+        // row 13~24: Reserved for maintenance
 
         // Start of data entry row index
         public static readonly int RowDataHeader = 25;

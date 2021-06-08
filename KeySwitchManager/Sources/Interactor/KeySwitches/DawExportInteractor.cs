@@ -42,7 +42,7 @@ namespace KeySwitchManager.Interactor.KeySwitches
 
             foreach( var x in queryResult )
             {
-                Presenter.Message( $"Developer=\"{x.DeveloperName}\", Product=\"{x.ProductName}\", Instrument=\"{x.InstrumentName}\"" );
+                Presenter.Present( $"Developer=\"{x.DeveloperName}\", Product=\"{x.ProductName}\", Instrument=\"{x.InstrumentName}\"" );
                 OutputRepository.Save( x );
             }
 
@@ -50,7 +50,7 @@ namespace KeySwitchManager.Interactor.KeySwitches
 
             if( flushed == 0 )
             {
-                Presenter.Message( $"No keyswitch(es) flushed to storage/repository ({OutputRepository.GetType()})" );
+                Presenter.Present( $"No keyswitch(es) flushed to storage/repository ({OutputRepository.GetType()})" );
             }
 
             return new DawExportResponse( true, queryResult );

@@ -22,10 +22,15 @@ namespace KeySwitchManager.Commons.Data
             Dictionary = dictionary;
         }
 
+        public bool SequenceEqual(
+            DataDictionary<TKey, TValue> other,
+            IEqualityComparer<KeyValuePair<TKey, TValue>> comparer )
+            => Dictionary.SequenceEqual( other, comparer );
+
+        #region IEquatable
         public bool Equals( DataDictionary<TKey, TValue>? other )
-        {
-            return other != null && other.Dictionary.SequenceEqual( Dictionary );
-        }
+            => other != null && other.Dictionary.SequenceEqual( Dictionary );
+        #endregion
 
         #region Implements of C# Correction API
         public int Count => Dictionary.Count;

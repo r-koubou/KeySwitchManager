@@ -1,10 +1,12 @@
 using System.Collections.Generic;
 
 using KeySwitchManager.Commons.Helpers;
-using KeySwitchManager.Domain.KeySwitches.Midi.Models.Entities;
 using KeySwitchManager.Domain.KeySwitches.Models;
+using KeySwitchManager.Domain.KeySwitches.Models.Factory;
 using KeySwitchManager.Domain.KeySwitches.Models.Values;
-using KeySwitchManager.Storage.Yaml.KeySwitches.Models;
+using KeySwitchManager.Domain.MidiMessages.Models.Aggregations;
+using KeySwitchManager.Storage.Yaml.KeySwitches.Models.Aggregations;
+using KeySwitchManager.Storage.Yaml.KeySwitches.Models.Factory;
 
 namespace KeySwitchManager.Storage.Yaml.KeySwitches.Translators.Helpers
 {
@@ -16,13 +18,13 @@ namespace KeySwitchManager.Storage.Yaml.KeySwitches.Translators.Helpers
 
             foreach( var i in source.Articulations )
             {
-                var noteOn = new List<MidiMessageModel>();
-                var controlChange = new List<MidiMessageModel>();
-                var programChange = new List<MidiMessageModel>();
+                var noteOn = new List<MidiNoteOnModel>();
+                var controlChange = new List<MidiControlChangeModel>();
+                var programChange = new List<MidiProgramChangeModel>();
 
-                ConvertMessageList( i.MidiNoteOns,        noteOn );
-                ConvertMessageList( i.MidiControlChanges, controlChange );
-                ConvertMessageList( i.MidiProgramChanges, programChange );
+                ConvertChannelVoiceMessageList( i.MidiNoteOns,        noteOn,        IMidiNoteOnModelFactory.Default );
+                ConvertChannelVoiceMessageList( i.MidiControlChanges, controlChange, IMidiControlChangeModelFactory.Default );
+                ConvertChannelVoiceMessageList( i.MidiProgramChanges, programChange, IMidiProgramChangeModelFactory.Default );
 
                 var yamlObject = new ArticulationModel(
                     i.ArticulationName.Value,
@@ -51,14 +53,33 @@ namespace KeySwitchManager.Storage.Yaml.KeySwitches.Translators.Helpers
             );
         }
 
-        private static void ConvertMessageList(
+        #region Converting
+        private static void ConvertChannelVoiceMessageList<T>(
             IEnumerable<IMidiMessage> src,
-            ICollection<MidiMessageModel> dest )
+            ICollection<T> dest,
+            IMidiChannelVoiceMessageModelFactory<T> factory ) where T : IMidiChannelVoiceMessageModel
         {
             foreach( var i in src )
             {
                 dest.Add(
-                    new MidiMessageModel(
+                    factory.Create(
+                        i.Status.Value & 0xF,
+                        i.DataByte1.Value,
+                        i.DataByte2.Value
+                    )
+                );
+            }
+        }
+
+        private static void ConvertMessageList(
+            IEnumerable<IMidiMessage> src,
+            ICollection<IMidiMessageModel> dest,
+            IMidiMessageModelFactory<IMidiMessageModel> factory )
+        {
+            foreach( var i in src )
+            {
+                dest.Add(
+                    factory.Create(
                         i.Status.Value,
                         i.DataByte1.Value,
                         i.DataByte2.Value
@@ -80,6 +101,7 @@ namespace KeySwitchManager.Storage.Yaml.KeySwitches.Translators.Helpers
 
             return extra;
         }
+        #endregion
 
     }
 }

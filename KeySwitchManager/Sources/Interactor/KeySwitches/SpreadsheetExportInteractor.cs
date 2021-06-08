@@ -24,7 +24,7 @@ namespace KeySwitchManager.Interactor.KeySwitches
         {
             foreach( var x in request.KeySwitches )
             {
-                Presenter.Message( $"... {x.ProductName} | {x.InstrumentName}" );
+                Presenter.Present( $"... {x.ProductName} | {x.InstrumentName}" );
                 OutputRepository.Save( x );
             }
 
@@ -32,7 +32,7 @@ namespace KeySwitchManager.Interactor.KeySwitches
 
             if( flushed == 0 )
             {
-                Presenter.Message( $"No keyswitch(es) flushed to storage/repository ({OutputRepository.GetType()})" );
+                Presenter.Present( $"No keyswitch(es) flushed to storage/repository ({OutputRepository.GetType()})" );
             }
 
             return new SpreadsheetExportResponse(  true );

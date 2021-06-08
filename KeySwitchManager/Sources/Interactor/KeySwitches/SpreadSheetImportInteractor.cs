@@ -34,7 +34,7 @@ namespace KeySwitchManager.Interactor.KeySwitches
 
             foreach( var i in keySwitches )
             {
-                Presenter.Message( $"... {i.ProductName} | {i.InstrumentName}" );
+                Presenter.Present( $"... {i.ProductName} | {i.InstrumentName}" );
 
                 var r = Repository.Save( i );
                 insertedCount += r.Inserted;
