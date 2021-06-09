@@ -15,10 +15,6 @@ Go to the wiki for usage and more information.
 - Studio One 5.2 (or later)
 - Cakewalk
 
-\* Cubase & Nuendo are trademark of Steinberg Media Technologies GmbH
-\* Studio One is a trademark of PreSonus Audio Electronics, Inc.
-\* Cakewalk is a trademark of BandLab Technologies
-
 ## License
 
 [MIT](LICENSE)

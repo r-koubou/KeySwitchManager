@@ -1,5 +1,13 @@
-Dependency third party libraries
-========================================
+NOTICE
+=======================================
+
+## Trademark Notice
+
+- Cubase, Nuendo are trademark of Steinberg Media Technologies GmbH
+- Studio One is a trademark of PreSonus Audio Electronics, Inc.
+- Cakewalk is a trademark of BandLab Technologies
+
+## Dependency third party libraries
 
 This software depends following libraries to work.
 

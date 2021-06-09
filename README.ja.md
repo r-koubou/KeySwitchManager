@@ -12,10 +12,6 @@ KeySwitchManager は複数のDAW用キースイッチ定義ファイル作成に
 - Studio One 5.2 以降
 - Cakewalk
 
-\* Cubase & Nuendo are trademark of Steinberg Media Technologies GmbH
-\* Studio One is a trademark of PreSonus Audio Electronics, Inc.
-\* Cakewalk is a trademark of BandLab Technologies
-
 ## ライセンス
 
 [MIT](LICENSE)
