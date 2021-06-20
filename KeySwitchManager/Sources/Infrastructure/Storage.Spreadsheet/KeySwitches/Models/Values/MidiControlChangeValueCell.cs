@@ -3,7 +3,7 @@ using ValueObjectGenerator;
 namespace KeySwitchManager.Infrastructure.Storage.Spreadsheet.KeySwitches.Models.Values
 {
     [ValueObject( typeof( int ) )]
-    [ValueRange( MinValue, MinValue )]
+    [ValueRange( MinValue, MaxValue )]
     public partial class MidiControlChangeValueCell
     {
         public const int MinValue = 0x00;
