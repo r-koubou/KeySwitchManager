@@ -22,7 +22,7 @@ jobs:
         dotnet-version: '5.0.100'
     # Executable App
     # KeySwitchManager.CLI
-    - run: dotnet msbuild /nologo /t:Archive /p:Configuration=Debug /p:PublishDir=$(pwd)/publish  KeySwitchManager/Sources/Applications/KeySwitchManager.CLI/publish.msbuild
+    - run: dotnet msbuild /nologo /t:Archive /p:Configuration=Debug /p:PublishDir=$(pwd)/publish KeySwitchManager.CLI/publish.msbuild
     - uses: actions/upload-artifact@v2
       with:
         name: KeySwitchManager.CLI
