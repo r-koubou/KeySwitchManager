@@ -70,7 +70,11 @@ namespace KeySwitchManager.Infrastructure.Storage.Spreadsheet.ClosedXml.KeySwitc
 
         public static void AdjustColumnWidth( IXLWorksheet sheet, int column )
         {
-            sheet.Column( column ).AdjustToContents();
+            // TODO: ClosedXml depends GDI+ (Windows).
+            // Dont work on Linux, macOS without mono-libgdiplus
+            // https://onihusube.hatenablog.com/entry/2020/03/11/013446
+
+            // sheet.Column( column ).AdjustToContents();
         }
 
         public static void SetDefaultCellStyle( IXLWorksheet sheet, KeySwitch template, int rowCount = 100 )

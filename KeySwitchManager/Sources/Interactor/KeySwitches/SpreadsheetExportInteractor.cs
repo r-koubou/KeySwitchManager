@@ -28,6 +28,8 @@ namespace KeySwitchManager.Interactor.KeySwitches
                 OutputRepository.Save( x );
             }
 
+            Presenter.Present( "Exporting. This process may take several minutes." );
+
             var flushed = OutputRepository.Flush();
 
             if( flushed == 0 )

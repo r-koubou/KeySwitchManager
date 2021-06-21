@@ -103,10 +103,11 @@ namespace KeySwitchManager.Infrastructure.Storage.Spreadsheet.ClosedXml.KeySwitc
             XLCellHelper.ActivateCellBorder( range.Style );
 
             // Adjust column width
-            for( var i = SpreadsheetConstants.ColumnDataBegin; i < column; i++ )
-            {
-                XLCellHelper.AdjustColumnWidth( newWorksheet, i );
-            }
+            // for( var i = SpreadsheetConstants.ColumnDataBegin; i < column; i++ )
+            // {
+            //     ** ClosedXml depends GDI+ **
+            //     XLCellHelper.AdjustColumnWidth( newWorksheet, i );
+            // }
 
             #endregion
         }
