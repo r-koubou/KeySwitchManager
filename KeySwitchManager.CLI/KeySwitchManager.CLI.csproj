@@ -18,10 +18,6 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Content Include="..\CHANGELOG.md">
-        <Link>CHANGELOG.md</Link>
-        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      </Content>
       <Content Include="..\LICENSE">
         <Link>LICENSE</Link>
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -38,9 +34,6 @@
         <Link>README.md</Link>
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </Content>
-    </ItemGroup>
-
-    <ItemGroup>
       <None Update="VERSION.md">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </None>
