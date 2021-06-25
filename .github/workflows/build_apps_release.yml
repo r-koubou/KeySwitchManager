@@ -19,7 +19,7 @@ jobs:
     - run: echo "VER_TAG=${GITHUB_REF#refs/tags/ver-}" >> $GITHUB_ENV
     # Executable App
     # KeySwitchManager.CLI
-    - run: dotnet msbuild /nologo /t:Archive /p:Configuration=Release /p:PublishDir=$(pwd)/publish  KeySwitchManager/Sources/Applications/KeySwitchManager.CLI/publish.msbuild
+    - run: dotnet msbuild /nologo /t:Archive /p:Configuration=Release /p:PublishDir=$(pwd)/publish KeySwitchManager.CLI/publish.msbuild
     - uses: actions/upload-artifact@v2
       with:
         name: KeySwitchManager.CLI-${{ env.VER_TAG }}

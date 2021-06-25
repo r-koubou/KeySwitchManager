@@ -18,42 +18,29 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Content Include="..\..\..\..\CHANGELOG.md">
-        <Link>CHANGELOG.md</Link>
-        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      </Content>
-      <Content Include="..\..\..\..\LICENSE">
+      <Content Include="..\LICENSE">
         <Link>LICENSE</Link>
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </Content>
-      <Content Include="..\..\..\..\NOTICE.md">
+      <Content Include="..\NOTICE.md">
         <Link>NOTICE.md</Link>
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </Content>
-      <Content Include="..\..\..\..\README.ja.md">
+      <Content Include="..\README.ja.md">
         <Link>README.ja.md</Link>
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </Content>
-      <Content Include="..\..\..\..\README.md">
+      <Content Include="..\README.md">
         <Link>README.md</Link>
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </Content>
-    </ItemGroup>
-
-    <ItemGroup>
       <None Update="VERSION.md">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </None>
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\..\Infrastructure\Database.LiteDB\Database.LiteDB.csproj" />
-      <ProjectReference Include="..\..\Infrastructure\Storage.Json\Storage.Json.csproj" />
-      <ProjectReference Include="..\..\Infrastructure\Storage.Spreadsheet.ClosedXml\Storage.Spreadsheet.ClosedXml.csproj" />
-      <ProjectReference Include="..\..\Infrastructure\Storage.Spreadsheet\Storage.Spreadsheet.csproj" />
-      <ProjectReference Include="..\..\Infrastructure\Storage.Xml\Storage.Xml.csproj" />
-      <ProjectReference Include="..\..\Infrastructure\Storage.Yaml\Storage.Yaml.csproj" />
-      <ProjectReference Include="..\..\Interactor\Interactor.csproj" />
+      <ProjectReference Include="..\KeySwitchManager\ForExternalReference\LibKeySwitchManager.csproj" />
     </ItemGroup>
 
     <!-- Output assenbly version to text file for including on deploy by msbuild script. -->
