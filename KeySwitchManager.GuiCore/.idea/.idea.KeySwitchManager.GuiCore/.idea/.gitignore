@@ -1,0 +1,10 @@
+# デフォルトの無視対象ファイル
+/shelf/
+/workspace.xml
+# Rider ignored files
+/modules.xml
+/projectSettingsUpdater.xml
+/.idea.KeySwitchManager.GuiCore.iml
+/contentModel.xml
+# エディターベースの HTTP クライアントリクエスト
+/httpRequests/
