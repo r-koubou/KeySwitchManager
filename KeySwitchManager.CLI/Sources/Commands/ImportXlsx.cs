@@ -28,9 +28,9 @@ namespace KeySwitchManager.CLI.Commands
             using var inputRepository = new ClosedXmlFileLoadRepository( new FilePath( option.InputPath ) );
 
             var presenter = new ISpreadsheetImportPresenter.Console();
-            var interactor = new SpreadSheetImportInteractor( repository, inputRepository, presenter );
+            var interactor = new ImportSpreadSheetInteractor( repository, inputRepository, presenter );
 
-            var request = new SpreadsheetImportRequest();
+            var request = new ImportSpreadSheetRequest();
             _ = interactor.Execute( request );
 
             return 0;

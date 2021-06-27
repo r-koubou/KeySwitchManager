@@ -5,7 +5,6 @@
         <OutputType>Exe</OutputType>
         <TargetFramework>net5.0</TargetFramework>
         <AssemblyName>KeySwitchManager.CLI</AssemblyName>
-        <RootNamespace>KeySwitchManager</RootNamespace>
         <Company>R-Koubou</Company>
         <Product>KeySwitchManager CLI Application</Product>
         <Version>0.1.1</Version>
@@ -40,7 +39,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\KeySwitchManager\ForExternalReference\LibKeySwitchManager.csproj" />
+      <ProjectReference Include="..\KeySwitchManager\ForExternalReference\KeySwitchManager.csproj" />
     </ItemGroup>
 
     <!-- Output assenbly version to text file for including on deploy by msbuild script. -->

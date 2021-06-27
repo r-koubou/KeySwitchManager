@@ -41,12 +41,12 @@ namespace KeySwitchManager.CLI.Commands
             var keySwitches = SearchHelper.Search( inputRepository, info );
 
             using var outputRepository = new ClosedXmlFileSaveRepository( new DirectoryPath( option.OutputDirectory ) );
-            var interactor = new SpreadsheetExportInteractor(
+            var interactor = new ExportSpreadsheetInteractor(
                 outputRepository,
-                new ISpreadsheetExportPresenter.Console()
+                new IExportSpreadsheetPresenter.Console()
             );
 
-            var response = interactor.Execute( new SpreadsheetExportRequest( keySwitches ) );
+            var response = interactor.Execute( new ExportSpreadsheetRequest( keySwitches ) );
 
             return response.Result ? 0 : 1;
         }

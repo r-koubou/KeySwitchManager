@@ -23,14 +23,14 @@ namespace KeySwitchManager.CLI.Commands
             var option = (CommandOption)opt;
 
             using var outputRepository = new ClosedXmlFileSaveTemplateRepository( new FilePath( option.OutputPath ) );
-            var interactor = new SpreadsheetTemplateExportInteractor(
+            var interactor = new CreateSpreadsheetTemplateInteractor(
                 outputRepository,
-                new ISpreadsheetTemplateExportPresenter.Console()
+                new ICreateSpreadsheetTemplatePresenter.Console()
             );
 
             Console.WriteLine( $"generating keyswitch template to {outputRepository.DataPath}" );
 
-            var response = interactor.Execute( new SpreadsheetTemplateExportRequest() );
+            var response = interactor.Execute( new CreateSpreadsheetTemplateRequest() );
 
             return response.Result ? 0 : 1;
         }

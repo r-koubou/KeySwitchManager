@@ -26,7 +26,7 @@ namespace KeySwitchManager.CLI.Commands
 
             Console.WriteLine( $"generating keyswitch template to {outputPath}" );
 
-            var interactor = new TemplateKeySwitchCreateInteractor( outputRepository );
+            var interactor = new CreateTextTemplateInteractor( outputRepository );
             _ = interactor.Execute();
 
             return 0;

@@ -2,7 +2,7 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KeySwitchManager.CLI", "KeySwitchManager.CLI.csproj", "{C0A84413-ACA8-49EC-B5B2-B4AF17C35B71}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LibKeySwitchManager", "..\KeySwitchManager\ForExternalReference\LibKeySwitchManager.csproj", "{838A38AC-20CB-4628-92EF-E74212FA2DD4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KeySwitchManager", "..\KeySwitchManager\ForExternalReference\KeySwitchManager.csproj", "{7A0E230E-1ECA-42FF-9005-A0F4F5531701}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -16,9 +16,9 @@ Global
 		{C0A84413-ACA8-49EC-B5B2-B4AF17C35B71}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C0A84413-ACA8-49EC-B5B2-B4AF17C35B71}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C0A84413-ACA8-49EC-B5B2-B4AF17C35B71}.Release|Any CPU.Build.0 = Release|Any CPU
-		{838A38AC-20CB-4628-92EF-E74212FA2DD4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{838A38AC-20CB-4628-92EF-E74212FA2DD4}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{838A38AC-20CB-4628-92EF-E74212FA2DD4}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{838A38AC-20CB-4628-92EF-E74212FA2DD4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7A0E230E-1ECA-42FF-9005-A0F4F5531701}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7A0E230E-1ECA-42FF-9005-A0F4F5531701}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7A0E230E-1ECA-42FF-9005-A0F4F5531701}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7A0E230E-1ECA-42FF-9005-A0F4F5531701}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

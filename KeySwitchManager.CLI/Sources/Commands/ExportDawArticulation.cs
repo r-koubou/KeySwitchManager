@@ -55,13 +55,13 @@ namespace KeySwitchManager.CLI.Commands
 
             using var outputRepository = CreateOutputRepository( new DirectoryPath( option.OutputDirectory ) );
 
-            IDawExportPresenter presenter = option.Quiet ?
-                new IDawExportPresenter.Null() :
-                new IDawExportPresenter.Console();
+            IExportDawPresenter presenter = option.Quiet ?
+                new IExportDawPresenter.Null() :
+                new IExportDawPresenter.Console();
 
-            var interactor = new DawExportInteractor( repository, outputRepository, presenter );
+            var interactor = new ExportDawInteractor( repository, outputRepository, presenter );
 
-            var request = new DawExportRequest( option.Developer, option.Product, option.Instrument );
+            var request = new ExportDawRequest( option.Developer, option.Product, option.Instrument );
             var response = interactor.Execute( request );
 
             return response.Result ? 0 : 1;

@@ -27,10 +27,10 @@ namespace KeySwitchManager.CLI.Commands
             using var repository = new LiteDbKeySwitchRepository( new FilePath( option.DatabasePath ) );
             using var inputRepository = new YamlKeySwitchFileRepository( new FilePath( option.InputPath ), true );
 
-            var presenter = new ITextImportPresenter.Console();
-            var interactor = new TextImportInteractor( repository, inputRepository, presenter );
+            var presenter = new IImportTextPresenter.Console();
+            var interactor = new ImportTextInteractor( repository, inputRepository, presenter );
 
-            var request = new TextImportRequest();
+            var request = new ImportTextRequest();
 
             _ = interactor.Execute( request );
 
