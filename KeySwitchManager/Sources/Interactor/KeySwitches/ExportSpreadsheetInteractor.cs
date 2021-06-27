@@ -3,24 +3,24 @@ using KeySwitchManager.UseCase.KeySwitches.Export.Spreadsheet;
 
 namespace KeySwitchManager.Interactor.KeySwitches
 {
-    public class SpreadsheetExportInteractor : ISpreadsheetExportUseCase
+    public class ExportSpreadsheetInteractor : IExportSpreadsheetUseCase
     {
         private IKeySwitchRepository OutputRepository { get; }
-        private ISpreadsheetExportPresenter Presenter { get; }
+        private IExportSpreadsheetPresenter Presenter { get; }
 
-        public SpreadsheetExportInteractor( IKeySwitchRepository outputRepository ) :
-            this( outputRepository, new ISpreadsheetExportPresenter.Null() )
+        public ExportSpreadsheetInteractor( IKeySwitchRepository outputRepository ) :
+            this( outputRepository, new IExportSpreadsheetPresenter.Null() )
         {}
 
-        public SpreadsheetExportInteractor(
+        public ExportSpreadsheetInteractor(
             IKeySwitchRepository outputRepository,
-            ISpreadsheetExportPresenter presenter )
+            IExportSpreadsheetPresenter presenter )
         {
             Presenter        = presenter;
             OutputRepository = outputRepository;
         }
 
-        public SpreadsheetExportResponse Execute( SpreadsheetExportRequest request )
+        public ExportSpreadsheetResponse Execute( ExportSpreadsheetRequest request )
         {
             foreach( var x in request.KeySwitches )
             {
@@ -37,7 +37,7 @@ namespace KeySwitchManager.Interactor.KeySwitches
                 Presenter.Present( $"No keyswitch(es) flushed to storage/repository ({OutputRepository.GetType()})" );
             }
 
-            return new SpreadsheetExportResponse(  true );
+            return new ExportSpreadsheetResponse(  true );
         }
     }
 }

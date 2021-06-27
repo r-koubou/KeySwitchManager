@@ -6,28 +6,28 @@ using KeySwitchManager.Domain.KeySwitches.Models.Aggregations;
 using KeySwitchManager.Domain.KeySwitches.Models.Factory;
 using KeySwitchManager.Domain.MidiMessages.Models.Aggregations;
 using KeySwitchManager.Domain.MidiMessages.Models.Factory;
-using KeySwitchManager.UseCase.KeySwitches.Create.Template;
+using KeySwitchManager.UseCase.KeySwitches.Create.Text;
 
 namespace KeySwitchManager.Interactor.KeySwitches
 {
-    public class TemplateKeySwitchCreateInteractor : ITemplateKeySwitchCreateUseCase
+    public class CreateTextTemplateInteractor : ICreateTextTemplateUseCase
     {
         private IKeySwitchRepository OutputRepository { get; }
-        private ITemplateKeySwitchCreatePresenter Presenter { get; }
+        private ICreateTextTemplatePresenter Presenter { get; }
 
-        public TemplateKeySwitchCreateInteractor( IKeySwitchRepository outputRepository )
-            : this( outputRepository, new ITemplateKeySwitchCreatePresenter.Null() )
+        public CreateTextTemplateInteractor( IKeySwitchRepository outputRepository )
+            : this( outputRepository, new ICreateTextTemplatePresenter.Null() )
         {}
 
-        public TemplateKeySwitchCreateInteractor(
+        public CreateTextTemplateInteractor(
             IKeySwitchRepository outputRepository,
-            ITemplateKeySwitchCreatePresenter presenter )
+            ICreateTextTemplatePresenter presenter )
         {
             OutputRepository = outputRepository;
             Presenter        = presenter;
         }
 
-        public TemplateKeySwitchCreateResponse Execute()
+        public CreateTextTemplateResponse Execute()
         {
             var keySwitch = IKeySwitchFactory.Default.Create(
                 Guid.NewGuid(),
@@ -68,7 +68,7 @@ namespace KeySwitchManager.Interactor.KeySwitches
                 Presenter.Present( $"No keyswitch(es) flushed to storage/repository ({OutputRepository.GetType()})" );
             }
 
-            return new TemplateKeySwitchCreateResponse();
+            return new CreateTextTemplateResponse();
         }
     }
 }

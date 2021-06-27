@@ -2,7 +2,7 @@ using KeySwitchManager.UseCase.Commons;
 
 namespace KeySwitchManager.UseCase.KeySwitches.Import.Spreadsheet
 {
-    public interface ISpreadsheetImportPresenter : IPresenter<SpreadsheetImportResponse>
+    public interface ISpreadsheetImportPresenter : IPresenter<ImportSpreadSheetResponse>
     {
         public class Null : ISpreadsheetImportPresenter
         {}

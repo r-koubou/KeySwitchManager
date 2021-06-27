@@ -44,7 +44,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Storage.Yaml", "Tests\Infra
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "For Referencing from external project", "For Referencing from external project", "{2963B25E-00F7-4F9C-9FC3-21EA05BDB1B8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LibKeySwitchManager", "ForExternalReference\LibKeySwitchManager.csproj", "{22226110-43FE-4907-A508-D6E36677431C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KeySwitchManager", "ForExternalReference\KeySwitchManager.csproj", "{22226110-43FE-4907-A508-D6E36677431C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

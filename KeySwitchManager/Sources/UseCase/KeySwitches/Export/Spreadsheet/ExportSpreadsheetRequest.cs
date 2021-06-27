@@ -4,11 +4,11 @@ using KeySwitchManager.Domain.KeySwitches.Models;
 
 namespace KeySwitchManager.UseCase.KeySwitches.Export.Spreadsheet
 {
-    public class SpreadsheetExportRequest
+    public class ExportSpreadsheetRequest
     {
         public IReadOnlyCollection<KeySwitch> KeySwitches { get; }
 
-        public SpreadsheetExportRequest( IReadOnlyCollection<KeySwitch> keySwitches )
+        public ExportSpreadsheetRequest( IReadOnlyCollection<KeySwitch> keySwitches )
         {
             KeySwitches = new List<KeySwitch>( keySwitches );
         }

@@ -4,12 +4,12 @@ using KeySwitchManager.Domain.KeySwitches.Models;
 
 namespace KeySwitchManager.UseCase.KeySwitches.Export.Daw
 {
-    public class DawExportResponse
+    public class ExportDawResponse
     {
         public bool Result { get; }
         public IReadOnlyCollection<KeySwitch> StoredKeySwitches { get; }
 
-        public DawExportResponse(
+        public ExportDawResponse(
             bool result,
             IEnumerable<KeySwitch> storedKeySwitches )
         {

@@ -4,29 +4,29 @@ using KeySwitchManager.UseCase.KeySwitches.Export.Daw;
 
 namespace KeySwitchManager.Interactor.KeySwitches
 {
-    public class DawExportInteractor : IDawExportUseCase
+    public class ExportDawInteractor : IExportDawUseCase
     {
         private IKeySwitchRepository Repository { get; }
         private IKeySwitchRepository OutputRepository { get; }
-        private IDawExportPresenter Presenter { get; }
+        private IExportDawPresenter Presenter { get; }
 
-        public DawExportInteractor(
+        public ExportDawInteractor(
             IKeySwitchRepository repository,
             IKeySwitchRepository outputRepository ) :
-            this( repository, outputRepository, new IDawExportPresenter.Null() )
+            this( repository, outputRepository, new IExportDawPresenter.Null() )
         {}
 
-        public DawExportInteractor(
+        public ExportDawInteractor(
             IKeySwitchRepository repository,
             IKeySwitchRepository outputRepository,
-            IDawExportPresenter presenter )
+            IExportDawPresenter presenter )
         {
             Repository       = repository;
             OutputRepository = outputRepository;
             Presenter        = presenter;
         }
 
-        public DawExportResponse Execute( DawExportRequest request )
+        public ExportDawResponse Execute( ExportDawRequest request )
         {
             var developerName = request.DeveloperName;
             var productName = request.ProductName;
@@ -53,7 +53,7 @@ namespace KeySwitchManager.Interactor.KeySwitches
                 Presenter.Present( $"No keyswitch(es) flushed to storage/repository ({OutputRepository.GetType()})" );
             }
 
-            return new DawExportResponse( true, queryResult );
+            return new ExportDawResponse( true, queryResult );
         }
     }
 }

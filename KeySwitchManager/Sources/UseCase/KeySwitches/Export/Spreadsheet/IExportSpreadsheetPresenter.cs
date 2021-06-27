@@ -2,15 +2,15 @@ using KeySwitchManager.UseCase.Commons;
 
 namespace KeySwitchManager.UseCase.KeySwitches.Export.Spreadsheet
 {
-    public interface ISpreadsheetExportPresenter: IPresenter<SpreadsheetExportResponse>
+    public interface IExportSpreadsheetPresenter: IPresenter<ExportSpreadsheetResponse>
     {
-        public class Null : ISpreadsheetExportPresenter
+        public class Null : IExportSpreadsheetPresenter
         {
-            public void Complete( SpreadsheetExportResponse response )
+            public void Complete( ExportSpreadsheetResponse response )
             {}
         }
 
-        public class Console : ISpreadsheetExportPresenter
+        public class Console : IExportSpreadsheetPresenter
         {
             public void Present<T>( T param )
             {

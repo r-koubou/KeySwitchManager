@@ -3,20 +3,20 @@ using KeySwitchManager.UseCase.KeySwitches.Import.Spreadsheet;
 
 namespace KeySwitchManager.Interactor.KeySwitches
 {
-    public class SpreadSheetImportInteractor : ISpreadSheetImportUseCase
+    public class ImportSpreadSheetInteractor : IImportSpreadSheetUseCase
     {
         private IKeySwitchRepository Repository { get; }
         private IKeySwitchRepository InputRepository { get; }
 
         private ISpreadsheetImportPresenter Presenter { get; }
 
-        public SpreadSheetImportInteractor(
+        public ImportSpreadSheetInteractor(
             IKeySwitchRepository repository,
             IKeySwitchRepository inputRepository ) :
             this( repository, inputRepository, new ISpreadsheetImportPresenter.Null() )
         {}
 
-        public SpreadSheetImportInteractor(
+        public ImportSpreadSheetInteractor(
             IKeySwitchRepository repository,
             IKeySwitchRepository inputRepository,
             ISpreadsheetImportPresenter presenter )
@@ -26,7 +26,7 @@ namespace KeySwitchManager.Interactor.KeySwitches
             Presenter       = presenter;
         }
 
-        public SpreadsheetImportResponse Execute( SpreadsheetImportRequest request )
+        public ImportSpreadSheetResponse Execute( ImportSpreadSheetRequest request )
         {
             var keySwitches = InputRepository.FindAll();
             var insertedCount = 0;
@@ -43,7 +43,7 @@ namespace KeySwitchManager.Interactor.KeySwitches
 
             Presenter.Present( $"{insertedCount} record(s) inserted, {updatedCount} record(s) updated" );
 
-            return new SpreadsheetImportResponse( keySwitches );
+            return new ImportSpreadSheetResponse( keySwitches );
         }
     }
 }

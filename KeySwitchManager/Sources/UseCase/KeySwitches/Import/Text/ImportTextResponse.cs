@@ -1,10 +1,10 @@
 namespace KeySwitchManager.UseCase.KeySwitches.Import.Text
 {
-    public class TextImportResponse
+    public class ImportTextResponse
     {
         public int UpdatedCount { get; }
 
-        public TextImportResponse( int updatedCount )
+        public ImportTextResponse( int updatedCount )
         {
             UpdatedCount = updatedCount;
         }

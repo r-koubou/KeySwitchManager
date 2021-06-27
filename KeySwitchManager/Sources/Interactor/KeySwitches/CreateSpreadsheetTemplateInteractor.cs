@@ -6,28 +6,28 @@ using KeySwitchManager.Domain.KeySwitches.Models.Aggregations;
 using KeySwitchManager.Domain.KeySwitches.Models.Factory;
 using KeySwitchManager.Domain.MidiMessages.Models.Aggregations;
 using KeySwitchManager.Domain.MidiMessages.Models.Factory;
-using KeySwitchManager.UseCase.KeySwitches.Create.SpreadsheetTemplate;
+using KeySwitchManager.UseCase.KeySwitches.Create.Spreadsheet;
 
 namespace KeySwitchManager.Interactor.KeySwitches
 {
-    public class SpreadsheetTemplateExportInteractor : ISpreadsheetTemplateExportUseCase
+    public class CreateSpreadsheetTemplateInteractor : ICreateSpreadsheetTemplateUseCase
     {
         private IKeySwitchRepository OutputRepository { get; }
-        private ISpreadsheetTemplateExportPresenter Presenter { get; }
+        private ICreateSpreadsheetTemplatePresenter Presenter { get; }
 
-        public SpreadsheetTemplateExportInteractor( IKeySwitchRepository outputRepository ) :
-            this( outputRepository, new ISpreadsheetTemplateExportPresenter.Null() )
+        public CreateSpreadsheetTemplateInteractor( IKeySwitchRepository outputRepository ) :
+            this( outputRepository, new ICreateSpreadsheetTemplatePresenter.Null() )
         {}
 
-        public SpreadsheetTemplateExportInteractor(
+        public CreateSpreadsheetTemplateInteractor(
             IKeySwitchRepository outputRepository,
-            ISpreadsheetTemplateExportPresenter presenter )
+            ICreateSpreadsheetTemplatePresenter presenter )
         {
             OutputRepository = outputRepository;
             Presenter        = presenter;
         }
 
-        public SpreadsheetTemplateExportResponse Execute( SpreadsheetTemplateExportRequest request )
+        public CreateSpreadsheetTemplateResponse Execute( CreateSpreadsheetTemplateRequest request )
         {
             #region Template keyswitch
             var entity = IKeySwitchFactory.Default.Create(
@@ -69,7 +69,7 @@ namespace KeySwitchManager.Interactor.KeySwitches
                 Presenter.Present( $"No keyswitch(es) flushed to storage/repository ({OutputRepository.GetType()})" );
             }
 
-            return new SpreadsheetTemplateExportResponse( true );
+            return new CreateSpreadsheetTemplateResponse( true );
         }
     }
 }

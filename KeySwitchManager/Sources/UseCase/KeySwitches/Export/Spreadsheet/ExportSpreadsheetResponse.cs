@@ -1,10 +1,10 @@
 namespace KeySwitchManager.UseCase.KeySwitches.Export.Spreadsheet
 {
-    public class SpreadsheetExportResponse
+    public class ExportSpreadsheetResponse
     {
         public bool Result { get; }
 
-        public SpreadsheetExportResponse( bool result )
+        public ExportSpreadsheetResponse( bool result )
         {
             Result = result;
         }

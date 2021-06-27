@@ -3,29 +3,29 @@ using KeySwitchManager.UseCase.KeySwitches.Import.Text;
 
 namespace KeySwitchManager.Interactor.KeySwitches
 {
-    public class TextImportInteractor : ITextImportUseCase
+    public class ImportTextInteractor : IImportTextUseCase
     {
         private IKeySwitchRepository Repository { get; }
         private IKeySwitchRepository InputRepository { get; }
-        private ITextImportPresenter Presenter { get; }
+        private IImportTextPresenter Presenter { get; }
 
-        public TextImportInteractor(
+        public ImportTextInteractor(
             IKeySwitchRepository repository,
             IKeySwitchRepository inputRepository ) :
-            this( repository, inputRepository, new ITextImportPresenter.Null() )
+            this( repository, inputRepository, new IImportTextPresenter.Null() )
         {}
 
-        public TextImportInteractor(
+        public ImportTextInteractor(
             IKeySwitchRepository repository,
             IKeySwitchRepository inputRepository,
-            ITextImportPresenter presenter )
+            IImportTextPresenter presenter )
         {
             Repository           = repository;
             Presenter            = presenter;
             InputRepository = inputRepository;
         }
 
-        public TextImportResponse Execute( TextImportRequest request )
+        public ImportTextResponse Execute( ImportTextRequest request )
         {
             var keySwitches = InputRepository.FindAll();
             var insertedCount = 0;
@@ -49,7 +49,7 @@ namespace KeySwitchManager.Interactor.KeySwitches
 
             Presenter.Present( $"{insertedCount} record(s) inserted, {updatedCount} record(s) updated" );
 
-            return new TextImportResponse( updatedCount );
+            return new ImportTextResponse( updatedCount );
         }
     }
 }

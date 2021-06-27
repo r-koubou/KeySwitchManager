@@ -2,15 +2,15 @@ using KeySwitchManager.UseCase.Commons;
 
 namespace KeySwitchManager.UseCase.KeySwitches.Export.Daw
 {
-    public interface IDawExportPresenter: IPresenter<DawExportResponse>
+    public interface IExportDawPresenter: IPresenter<ExportDawResponse>
     {
-        public class Null : IDawExportPresenter
+        public class Null : IExportDawPresenter
         {
-            public void Complete( DawExportResponse response )
+            public void Complete( ExportDawResponse response )
             {}
         }
 
-        public class Console : IDawExportPresenter
+        public class Console : IExportDawPresenter
         {
             public void Present<T>( T param )
             {

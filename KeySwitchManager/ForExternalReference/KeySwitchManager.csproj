@@ -6,10 +6,11 @@
         <!-- Assembly -->
         <Copyright>R-Koubou</Copyright>
         <Company>R-Koubou</Company>
-        <Product>LibKeySwitchManager</Product>
+        <Product>KeySwitchManager</Product>
         <RootNamspace>KeySwitchManager</RootNamspace>
         <Nullable>enable</Nullable>
-        <PackageId>LibKeySwitchManager</PackageId>
+        <PackageId>KeySwitchManager</PackageId>
+        <RootNamespace>LibKeySwitchManager</RootNamespace>
     </PropertyGroup>
 
     <ItemGroup>
