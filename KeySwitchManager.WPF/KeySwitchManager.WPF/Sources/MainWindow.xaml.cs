@@ -35,7 +35,44 @@ namespace KeySwitchManager.WPF
         }
 
         #region Executions
-        private async Task ControllerExecuteAsync( IController controller )
+        private void PreExecuteControllerInMainThread()
+        {
+            ProgressBar.IsIndeterminate           = true;
+            DoCreateNewDefinitionButton.IsEnabled = false;
+            LogClearButton.IsEnabled              = false;
+        }
+
+        private void PostExecuteControllerInMainThread()
+        {
+            ProgressBar.IsIndeterminate           = false;
+            DoCreateNewDefinitionButton.IsEnabled = true;
+            LogClearButton.IsEnabled              = true;
+        }
+
+        private async Task ExecuteControllerAsync(  Func<IController> controllerFactory )
+        {
+            try
+            {
+                PreExecuteControllerInMainThread();
+
+                var controller = controllerFactory.Invoke();
+
+                await ExecuteControllerAsyncImpl( controller );
+                controller.Dispose();
+            }
+            catch( Exception exception )
+            {
+                LogView.Append( new LogViewModel( exception.ToString() ) );
+            }
+            finally
+            {
+                MessageBox.Show( "Done" );
+                PostExecuteControllerInMainThread();
+            }
+
+        }
+
+        private async Task ExecuteControllerAsyncImpl( IController controller )
         {
             var dispatcher = Dispatcher;
 
@@ -96,32 +133,12 @@ namespace KeySwitchManager.WPF
 
         private async void OnDoCreateNewDefinitionButtonClicked( object sender, RoutedEventArgs e )
         {
-            try
-            {
-                using var controller = CreateControllerFactory.Create( NewFileText.Text, LogView );
-                await ControllerExecuteAsync( controller );
-                controller.Dispose();
-                MessageBox.Show( "Done" );
-            }
-            catch( Exception exception )
-            {
-                LogView.Append( new LogViewModel( exception.ToString() ) );
-            }
+            await ExecuteControllerAsync( () => CreateControllerFactory.Create( NewFileText.Text, LogView ) );
         }
 
         private async void OnDoImportButtonClick( object sender, RoutedEventArgs e )
         {
-            try
-            {
-                using var controller = ImportControllerFactory.Create( ImportDatabaseFileText.Text, ImportFileText.Text, LogView );
-                await ControllerExecuteAsync( controller );
-                controller.Dispose();
-                MessageBox.Show( "Done" );
-            }
-            catch( Exception exception )
-            {
-                LogView.Append( new LogViewModel( exception.ToString() ) );
-            }
+            await ExecuteControllerAsync( () => ImportControllerFactory.Create( ImportDatabaseFileText.Text, ImportFileText.Text, LogView ) );
         }
 
         private void OnOpenDatabaseFileChooserButtonClicked( object sender, RoutedEventArgs e )
