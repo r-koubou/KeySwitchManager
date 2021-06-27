@@ -27,7 +27,7 @@ namespace KeySwitchManager.CLI.Commands
             using var repository = new LiteDbKeySwitchRepository( new FilePath( option.DatabasePath ) );
             using var inputRepository = new ClosedXmlFileLoadRepository( new FilePath( option.InputPath ) );
 
-            var presenter = new ISpreadsheetImportPresenter.Console();
+            var presenter = new IImportSpreadsheetPresenter.Console();
             var interactor = new ImportSpreadSheetInteractor( repository, inputRepository, presenter );
 
             var request = new ImportSpreadSheetRequest();

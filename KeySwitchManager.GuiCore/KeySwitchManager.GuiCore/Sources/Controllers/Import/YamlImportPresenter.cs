@@ -1,10 +1,9 @@
 ﻿using KeySwitchManager.GuiCore.Sources.View.LogView;
-using KeySwitchManager.UseCase.KeySwitches.Import.Spreadsheet;
 using KeySwitchManager.UseCase.KeySwitches.Import.Text;
 
 namespace KeySwitchManager.GuiCore.Sources.Controllers.Import
 {
-    public class YamlImportPresenter : ITextImportPresenter
+    public class YamlImportPresenter : IImportTextPresenter
     {
         private ILogView View { get; }
 
@@ -21,7 +20,7 @@ namespace KeySwitchManager.GuiCore.Sources.Controllers.Import
             }
         }
 
-        public void Complete( SpreadsheetImportResponse response )
+        public void Complete( ImportTextResponse response )
         {
             View.Append( new LogViewModel( "Complete" ) );
         }

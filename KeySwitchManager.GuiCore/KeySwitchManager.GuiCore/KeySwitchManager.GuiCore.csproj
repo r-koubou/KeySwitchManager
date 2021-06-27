@@ -11,7 +11,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\..\KeySwitchManager\ForExternalReference\LibKeySwitchManager.csproj" />
+      <ProjectReference Include="..\..\KeySwitchManager\ForExternalReference\KeySwitchManager.csproj" />
     </ItemGroup>
 
 </Project>

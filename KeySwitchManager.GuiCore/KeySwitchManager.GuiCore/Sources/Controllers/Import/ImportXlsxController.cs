@@ -1,6 +1,4 @@
-﻿using System;
-
-using KeySwitchManager.Domain.KeySwitches.Models;
+﻿using KeySwitchManager.Domain.KeySwitches.Models;
 using KeySwitchManager.Infrastructure.Storage.KeySwitches;
 using KeySwitchManager.Interactor.KeySwitches;
 using KeySwitchManager.UseCase.KeySwitches.Import.Spreadsheet;
@@ -11,13 +9,13 @@ namespace KeySwitchManager.GuiCore.Sources.Controllers.Import
     {
         private IKeySwitchRepository DatabaseRepository { get; }
         private LoadOnlyKeySwitchFileRepository SpreadSheetFileRepository { get; }
-        private ISpreadsheetImportPresenter Presenter { get; }
+        private IImportSpreadsheetPresenter Presenter { get; }
 
         #region Ctor
         public ImportXlsxController(
             IKeySwitchRepository databaseRepository,
             LoadOnlyKeySwitchFileRepository spreadSheetFileRepository,
-            ISpreadsheetImportPresenter presenter )
+            IImportSpreadsheetPresenter presenter )
         {
             DatabaseRepository        = databaseRepository;
             SpreadSheetFileRepository = spreadSheetFileRepository;
@@ -31,7 +29,7 @@ namespace KeySwitchManager.GuiCore.Sources.Controllers.Import
             {
                 DatabaseRepository.Dispose();
             }
-            catch( Exception e )
+            catch
             {
                 // ignored
             }
@@ -39,8 +37,8 @@ namespace KeySwitchManager.GuiCore.Sources.Controllers.Import
 
         public void Execute()
         {
-            var interactor = new SpreadSheetImportInteractor( DatabaseRepository, SpreadSheetFileRepository, Presenter );
-            var request = new SpreadsheetImportRequest();
+            var interactor = new ImportSpreadSheetInteractor( DatabaseRepository, SpreadSheetFileRepository, Presenter );
+            var request = new ImportSpreadSheetRequest();
             var response = interactor.Execute( request );
             Presenter.Complete( response );
         }

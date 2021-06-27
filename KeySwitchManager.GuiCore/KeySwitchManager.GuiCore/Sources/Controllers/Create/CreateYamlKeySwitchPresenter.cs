@@ -1,9 +1,9 @@
 ﻿using KeySwitchManager.GuiCore.Sources.View.LogView;
-using KeySwitchManager.UseCase.KeySwitches.Create.Template;
+using KeySwitchManager.UseCase.KeySwitches.Create.Text;
 
 namespace KeySwitchManager.GuiCore.Sources.Controllers.Create
 {
-    public class CreateYamlKeySwitchPresenter : ITemplateKeySwitchCreatePresenter
+    public class CreateYamlKeySwitchPresenter : ICreateTextTemplatePresenter
     {
         private ILogView View { get; }
 
@@ -20,7 +20,7 @@ namespace KeySwitchManager.GuiCore.Sources.Controllers.Create
             }
         }
 
-        public void Complete( TemplateKeySwitchCreateResponse response )
+        public void Complete( CreateTextTemplateResponse response )
         {
             View.Append( new LogViewModel( "Complete" ) );
         }

@@ -1,10 +1,9 @@
 ﻿using KeySwitchManager.GuiCore.Sources.View.LogView;
-using KeySwitchManager.UseCase.KeySwitches.Create.SpreadsheetTemplate;
-using KeySwitchManager.UseCase.KeySwitches.Create.Template;
+using KeySwitchManager.UseCase.KeySwitches.Create.Spreadsheet;
 
 namespace KeySwitchManager.GuiCore.Sources.Controllers.Create
 {
-    public class CreateXlsxKeySwitchPresenter : ISpreadsheetTemplateExportPresenter
+    public class CreateXlsxKeySwitchPresenter : ICreateSpreadsheetTemplatePresenter
     {
         private ILogView View { get; }
 
@@ -21,7 +20,7 @@ namespace KeySwitchManager.GuiCore.Sources.Controllers.Create
             }
         }
 
-        public void Complete( SpreadsheetTemplateExportResponse response )
+        public void Complete( CreateSpreadsheetTemplateResponse response )
         {
             View.Append( new LogViewModel( "Complete" ) );
         }

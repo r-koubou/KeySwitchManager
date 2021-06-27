@@ -1,18 +1,17 @@
 ﻿using KeySwitchManager.Domain.KeySwitches.Models;
 using KeySwitchManager.Interactor.KeySwitches;
-using KeySwitchManager.UseCase.KeySwitches.Create.SpreadsheetTemplate;
-using KeySwitchManager.UseCase.KeySwitches.Create.Template;
+using KeySwitchManager.UseCase.KeySwitches.Create.Spreadsheet;
 
 namespace KeySwitchManager.GuiCore.Sources.Controllers.Create
 {
     public class CreateXlsxController : IController
     {
         private IKeySwitchRepository OutputRepository { get; }
-        private ISpreadsheetTemplateExportPresenter Presenter { get; }
+        private ICreateSpreadsheetTemplatePresenter Presenter { get; }
 
         public CreateXlsxController(
             IKeySwitchRepository outputRepository,
-            ISpreadsheetTemplateExportPresenter presenter )
+            ICreateSpreadsheetTemplatePresenter presenter )
         {
             OutputRepository = outputRepository;
             Presenter        = presenter;
@@ -22,8 +21,8 @@ namespace KeySwitchManager.GuiCore.Sources.Controllers.Create
 
         public void Execute()
         {
-            var interactor = new SpreadsheetTemplateExportInteractor( OutputRepository, Presenter );
-            var request = new SpreadsheetTemplateExportRequest();
+            var interactor = new CreateSpreadsheetTemplateInteractor( OutputRepository, Presenter );
+            var request = new CreateSpreadsheetTemplateRequest();
             var response = interactor.Execute( request );
             Presenter.Complete( response );
         }

@@ -1,17 +1,17 @@
 ﻿using KeySwitchManager.Domain.KeySwitches.Models;
 using KeySwitchManager.Interactor.KeySwitches;
-using KeySwitchManager.UseCase.KeySwitches.Create.Template;
+using KeySwitchManager.UseCase.KeySwitches.Create.Text;
 
 namespace KeySwitchManager.GuiCore.Sources.Controllers.Create
 {
     public class CreateYamlController : IController
     {
         private IKeySwitchRepository OutputRepository { get; }
-        private ITemplateKeySwitchCreatePresenter Presenter { get; }
+        private ICreateTextTemplatePresenter Presenter { get; }
 
         public CreateYamlController(
             IKeySwitchRepository outputRepository,
-            ITemplateKeySwitchCreatePresenter presenter )
+            ICreateTextTemplatePresenter presenter )
         {
             OutputRepository = outputRepository;
             Presenter        = presenter;
@@ -21,7 +21,7 @@ namespace KeySwitchManager.GuiCore.Sources.Controllers.Create
 
         public void Execute()
         {
-            var interactor = new TemplateKeySwitchCreateInteractor( OutputRepository, Presenter );
+            var interactor = new CreateTextTemplateInteractor( OutputRepository, Presenter );
             var response = interactor.Execute();
             Presenter.Complete( response );
         }

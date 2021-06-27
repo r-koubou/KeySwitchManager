@@ -3,11 +3,11 @@ using KeySwitchManager.UseCase.KeySwitches.Import.Spreadsheet;
 
 namespace KeySwitchManager.GuiCore.Sources.Controllers.Import
 {
-    public class SpreadsheetImportPresenter : ISpreadsheetImportPresenter
+    public class ImportSpreadSheetPresenter : IImportSpreadsheetPresenter
     {
         private ILogView View { get; }
 
-        public SpreadsheetImportPresenter( ILogView view )
+        public ImportSpreadSheetPresenter( ILogView view )
         {
             View = view;
         }
@@ -20,7 +20,7 @@ namespace KeySwitchManager.GuiCore.Sources.Controllers.Import
             }
         }
 
-        public void Complete( SpreadsheetImportResponse response )
+        public void Complete( ImportSpreadSheetResponse response )
         {
             View.Append( new LogViewModel( "Complete" ) );
         }

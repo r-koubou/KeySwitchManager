@@ -66,7 +66,7 @@ namespace KeySwitchManager.Domain.KeySwitches.Models
                    other.DeveloperName.Equals( DeveloperName ) &&
                    other.ProductName.Equals( ProductName ) &&
                    other.InstrumentName.Equals( InstrumentName ) &&
-                   other.Articulations.SequenceEqual( Articulations );
+                   other.Articulations.SequenceEqual( Articulations, Articulation.EqualityComparer );
         }
 
         public override bool Equals( object? obj )

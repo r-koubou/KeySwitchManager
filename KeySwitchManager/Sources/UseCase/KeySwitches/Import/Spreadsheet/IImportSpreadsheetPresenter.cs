@@ -2,12 +2,12 @@ using KeySwitchManager.UseCase.Commons;
 
 namespace KeySwitchManager.UseCase.KeySwitches.Import.Spreadsheet
 {
-    public interface ISpreadsheetImportPresenter : IPresenter<ImportSpreadSheetResponse>
+    public interface IImportSpreadsheetPresenter : IPresenter<ImportSpreadSheetResponse>
     {
-        public class Null : ISpreadsheetImportPresenter
+        public class Null : IImportSpreadsheetPresenter
         {}
 
-        public class Console : ISpreadsheetImportPresenter
+        public class Console : IImportSpreadsheetPresenter
         {
             public void Present<T>( T param )
             {

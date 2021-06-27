@@ -8,18 +8,18 @@ namespace KeySwitchManager.Interactor.KeySwitches
         private IKeySwitchRepository Repository { get; }
         private IKeySwitchRepository InputRepository { get; }
 
-        private ISpreadsheetImportPresenter Presenter { get; }
+        private IImportSpreadsheetPresenter Presenter { get; }
 
         public ImportSpreadSheetInteractor(
             IKeySwitchRepository repository,
             IKeySwitchRepository inputRepository ) :
-            this( repository, inputRepository, new ISpreadsheetImportPresenter.Null() )
+            this( repository, inputRepository, new IImportSpreadsheetPresenter.Null() )
         {}
 
         public ImportSpreadSheetInteractor(
             IKeySwitchRepository repository,
             IKeySwitchRepository inputRepository,
-            ISpreadsheetImportPresenter presenter )
+            IImportSpreadsheetPresenter presenter )
         {
             Repository      = repository;
             InputRepository = inputRepository;

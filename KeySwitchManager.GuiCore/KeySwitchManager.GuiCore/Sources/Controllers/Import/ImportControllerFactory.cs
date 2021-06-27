@@ -18,7 +18,7 @@ namespace KeySwitchManager.GuiCore.Sources.Controllers.Import
             {
                 var databaseRepository = new LiteDbKeySwitchRepository( new FilePath( databasePath ) );
                 var spreadSheetFileRepository = new ClosedXmlFileLoadRepository( new FilePath( importFilePath ) );
-                var presenter = new SpreadsheetImportPresenter( logView );
+                var presenter = new ImportSpreadSheetPresenter( logView );
                 return new ImportXlsxController( databaseRepository, spreadSheetFileRepository, presenter );
             }
 
