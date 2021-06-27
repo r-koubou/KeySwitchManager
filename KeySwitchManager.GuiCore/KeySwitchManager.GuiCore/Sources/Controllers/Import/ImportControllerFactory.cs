@@ -12,7 +12,9 @@ namespace KeySwitchManager.GuiCore.Sources.Controllers.Import
     {
         public static IController Create( string databasePath, string importFilePath, ILogView logView )
         {
-            if( importFilePath.EndsWith( ".xlsx" ) )
+            var path = importFilePath.ToLower();
+
+            if( path.EndsWith( ".xlsx" ) )
             {
                 var databaseRepository = new LiteDbKeySwitchRepository( new FilePath( databasePath ) );
                 var spreadSheetFileRepository = new ClosedXmlFileLoadRepository( new FilePath( importFilePath ) );
@@ -20,7 +22,7 @@ namespace KeySwitchManager.GuiCore.Sources.Controllers.Import
                 return new ImportXlsxController( databaseRepository, spreadSheetFileRepository, presenter );
             }
 
-            if( importFilePath.EndsWith( ".yaml" ) )
+            if( path.EndsWith( ".yaml" ) )
             {
                 var databaseRepository = new LiteDbKeySwitchRepository( new FilePath( databasePath ) );
                 var yamlFileRepository = new YamlKeySwitchFileRepository( new FilePath( importFilePath ), true );

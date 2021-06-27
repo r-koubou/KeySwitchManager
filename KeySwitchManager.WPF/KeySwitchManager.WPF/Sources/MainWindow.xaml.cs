@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using System.Windows;
 
 using KeySwitchManager.GuiCore.Sources.Controllers;
+using KeySwitchManager.GuiCore.Sources.Controllers.Create;
 using KeySwitchManager.GuiCore.Sources.Controllers.Import;
 using KeySwitchManager.GuiCore.Sources.View.LogView;
 using KeySwitchManager.WPF.WpfView;
@@ -16,17 +17,25 @@ namespace KeySwitchManager.WPF
     /// </summary>
     public partial class MainWindow : Window
     {
+        #region UI Binding
+        #endregion
+
         private LogView LogView { get; }
 
         public MainWindow()
         {
             InitializeComponent();
+
             LogView = new LogView( LogTextBox, this.Dispatcher );
+            InitializeCustomComponent();
         }
 
+        private void InitializeCustomComponent()
+        {
+        }
 
         #region Executions
-        private async Task ExecuteImportAsync( IController controller )
+        private async Task ControllerExecuteAsync( IController controller )
         {
             var dispatcher = Dispatcher;
 
@@ -49,7 +58,7 @@ namespace KeySwitchManager.WPF
         #endregion
 
         #region Utilities
-        private string ChooseFilePath( string filter )
+        private string ChooseOpenFilePath( string filter )
         {
             var dialog = new OpenFileDialog
             {
@@ -57,6 +66,20 @@ namespace KeySwitchManager.WPF
             };
 
             if( dialog.ShowDialog() == true )
+            {
+                return dialog.FileName;
+            }
+
+            return string.Empty;
+        }
+        private string ChooseSaveFilePath(string filter)
+        {
+            var dialog = new SaveFileDialog
+            {
+                Filter = filter
+            };
+
+            if (dialog.ShowDialog() == true)
             {
                 return dialog.FileName;
             }
@@ -71,12 +94,27 @@ namespace KeySwitchManager.WPF
             LogTextBox.Text = string.Empty;
         }
 
+        private async void OnDoCreateNewDefinitionButtonClicked( object sender, RoutedEventArgs e )
+        {
+            try
+            {
+                using var controller = CreateControllerFactory.Create( NewFileText.Text, LogView );
+                await ControllerExecuteAsync( controller );
+                controller.Dispose();
+                MessageBox.Show( "Done" );
+            }
+            catch( Exception exception )
+            {
+                LogView.Append( new LogViewModel( exception.ToString() ) );
+            }
+        }
+
         private async void OnDoImportButtonClick( object sender, RoutedEventArgs e )
         {
             try
             {
                 using var controller = ImportControllerFactory.Create( ImportDatabaseFileText.Text, ImportFileText.Text, LogView );
-                await ExecuteImportAsync( controller );
+                await ControllerExecuteAsync( controller );
                 controller.Dispose();
                 MessageBox.Show( "Done" );
             }
@@ -88,12 +126,17 @@ namespace KeySwitchManager.WPF
 
         private void OnOpenDatabaseFileChooserButtonClicked( object sender, RoutedEventArgs e )
         {
-            ImportDatabaseFileText.Text = ChooseFilePath( "Database File|*.db|All Types|*" );
+            ImportDatabaseFileText.Text = ChooseOpenFilePath( "Database File|*.db|All Types|*" );
         }
 
         private void OnOpenFileChooserButtonClicked( object sender, RoutedEventArgs e )
         {
-            ImportFileText.Text = ChooseFilePath("KeySwitch definition File|*.yaml;*.xlsx");
+            ImportFileText.Text = ChooseOpenFilePath( "KeySwitch definition File|*.yaml;*.xlsx" );
+        }
+
+        private void OnCreateDefinitionFileChooserButtonClicked( object sender, RoutedEventArgs e )
+        {
+            NewFileText.Text = ChooseSaveFilePath( "KeySwitch definition File|*.xlsx|KeySwitch definition File|*.yaml" );
         }
         #endregion
     }
