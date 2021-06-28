@@ -74,7 +74,7 @@
                                     <ColumnDefinition Width="0.1*"/>
                                 </Grid.ColumnDefinitions>
                                 <TextBox Grid.Column="0" x:Name="FindDatabaseFileText" HorizontalAlignment="Stretch" Margin="10,0,0,0" Text="" TextWrapping="NoWrap" VerticalAlignment="Stretch" Width="Auto"/>
-                                <Button x:Name="OpenSearchDatabaseFileChooserButton" Grid.Column="1" Content="Open" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" Click="OpenFindDatabaseFileChooserButtonClicked"/>
+                                <Button x:Name="OpenFindDatabaseFileChooserButton" Grid.Column="1" Content="Open" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" Click="OpenFindDatabaseFileChooserButtonClicked"/>
                             </Grid>
                         </GroupBox>
                     </Grid>
@@ -108,7 +108,7 @@
                                 <Label Grid.Column="0" Content="Instrument"/>
                                 <TextBox x:Name="FindInstrumentText" Grid.Column="1" Text="*"/>
                             </Grid>
-                            <Button x:Name="FindButton" Content="Search" Margin="0,20,0,0" Click="OnFindButtonClicked"/>
+                            <Button x:Name="FindButton" Content="Find" Margin="0,20,0,0" Click="OnFindButtonClicked"/>
                         </StackPanel>
                     </GroupBox>
                     <GroupBox Header="Export" Margin="0,10,0,10">
