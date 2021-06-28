@@ -2,7 +2,7 @@
 using KeySwitchManager.Interactor.KeySwitches;
 using KeySwitchManager.UseCase.KeySwitches.Create.Spreadsheet;
 
-namespace KeySwitchManager.GuiCore.Sources.Controllers.Create
+namespace KeySwitchManager.GuiCore.Controllers.Create
 {
     public class CreateXlsxController : IController
     {

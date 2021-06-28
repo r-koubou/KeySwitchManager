@@ -3,7 +3,7 @@ using KeySwitchManager.Interactor.KeySwitches;
 using KeySwitchManager.Storage.Yaml.KeySwitches;
 using KeySwitchManager.UseCase.KeySwitches.Import.Text;
 
-namespace KeySwitchManager.GuiCore.Sources.Controllers.Import
+namespace KeySwitchManager.GuiCore.Controllers.Import
 {
     public class ImportYamlController : IController
     {

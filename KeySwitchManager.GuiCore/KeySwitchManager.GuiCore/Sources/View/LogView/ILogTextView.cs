@@ -1,4 +1,4 @@
-﻿namespace KeySwitchManager.GuiCore.Sources.View.LogView
+﻿namespace KeySwitchManager.GuiCore.View.LogView
 {
     public interface ILogTextView
     {

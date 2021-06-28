@@ -1,7 +1,7 @@
-﻿using KeySwitchManager.GuiCore.Sources.View.LogView;
+﻿using KeySwitchManager.GuiCore.View.LogView;
 using KeySwitchManager.UseCase.KeySwitches.Create.Spreadsheet;
 
-namespace KeySwitchManager.GuiCore.Sources.Controllers.Create
+namespace KeySwitchManager.GuiCore.Controllers.Create
 {
     public class CreateXlsxKeySwitchPresenter : ICreateSpreadsheetTemplatePresenter
     {

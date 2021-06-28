@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace KeySwitchManager.GuiCore.Sources.Controllers
+namespace KeySwitchManager.GuiCore.Controllers
 {
     public interface IController : IDisposable
     {

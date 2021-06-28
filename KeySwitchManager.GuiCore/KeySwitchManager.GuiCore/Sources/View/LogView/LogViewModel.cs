@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace KeySwitchManager.GuiCore.Sources.View.LogView
+namespace KeySwitchManager.GuiCore.View.LogView
 {
     public class LogViewModel
     {

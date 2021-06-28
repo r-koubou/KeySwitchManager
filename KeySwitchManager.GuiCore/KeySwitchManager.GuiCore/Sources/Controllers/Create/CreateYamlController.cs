@@ -2,7 +2,7 @@
 using KeySwitchManager.Interactor.KeySwitches;
 using KeySwitchManager.UseCase.KeySwitches.Create.Text;
 
-namespace KeySwitchManager.GuiCore.Sources.Controllers.Create
+namespace KeySwitchManager.GuiCore.Controllers.Create
 {
     public class CreateYamlController : IController
     {

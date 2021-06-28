@@ -3,7 +3,7 @@ using KeySwitchManager.Infrastructure.Storage.KeySwitches;
 using KeySwitchManager.Interactor.KeySwitches;
 using KeySwitchManager.UseCase.KeySwitches.Import.Spreadsheet;
 
-namespace KeySwitchManager.GuiCore.Sources.Controllers.Import
+namespace KeySwitchManager.GuiCore.Controllers.Import
 {
     public class ImportXlsxController : IController
     {

@@ -1,11 +1,11 @@
 ﻿using System;
 
 using KeySwitchManager.Commons.Data;
-using KeySwitchManager.GuiCore.Sources.View.LogView;
+using KeySwitchManager.GuiCore.View.LogView;
 using KeySwitchManager.Infrastructure.Storage.Spreadsheet.ClosedXml.KeySwitches;
 using KeySwitchManager.Storage.Yaml.KeySwitches;
 
-namespace KeySwitchManager.GuiCore.Sources.Controllers.Create
+namespace KeySwitchManager.GuiCore.Controllers.Create
 {
     public static class CreateControllerFactory
     {

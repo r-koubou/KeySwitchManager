@@ -1,7 +1,7 @@
-﻿using KeySwitchManager.GuiCore.Sources.View.LogView;
+﻿using KeySwitchManager.GuiCore.View.LogView;
 using KeySwitchManager.UseCase.KeySwitches.Import.Text;
 
-namespace KeySwitchManager.GuiCore.Sources.Controllers.Import
+namespace KeySwitchManager.GuiCore.Controllers.Import
 {
     public class YamlImportPresenter : IImportTextPresenter
     {
