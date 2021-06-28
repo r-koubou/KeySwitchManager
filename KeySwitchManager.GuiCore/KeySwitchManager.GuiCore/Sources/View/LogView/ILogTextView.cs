@@ -4,6 +4,7 @@
     {
         void Append( string text );
         void Clear();
+        void ScrollToEnd();
 
         public class Null : ILogTextView
         {
@@ -11,6 +12,9 @@
             {}
 
             public void Clear()
+            {}
+
+            public void ScrollToEnd()
             {}
         }
     }

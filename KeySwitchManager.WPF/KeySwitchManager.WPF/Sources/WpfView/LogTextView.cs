@@ -2,7 +2,7 @@
 using System.Windows.Controls;
 using System.Windows.Threading;
 
-using KeySwitchManager.GuiCore.Sources.View.LogView;
+using KeySwitchManager.GuiCore.View.LogView;
 
 namespace KeySwitchManager.WPF.WpfView
 {
@@ -21,7 +21,7 @@ namespace KeySwitchManager.WPF.WpfView
         {
             UiThreadDispatcher.Invoke( () =>
             {
-                Target.Text += text + Environment.NewLine;
+                Target.AppendText( text + Environment.NewLine );
             });
         }
 
@@ -30,6 +30,14 @@ namespace KeySwitchManager.WPF.WpfView
             UiThreadDispatcher.Invoke( () =>
             {
                 Target.Text = string.Empty;
+            });
+        }
+
+        public void ScrollToEnd()
+        {
+            UiThreadDispatcher.Invoke( () => {
+                Target.Focus();
+                Target.ScrollToEnd();
             });
         }
     }

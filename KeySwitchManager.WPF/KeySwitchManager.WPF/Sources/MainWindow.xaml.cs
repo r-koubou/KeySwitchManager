@@ -1,15 +1,19 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Windows;
 
-using KeySwitchManager.GuiCore.Sources.Controllers;
-using KeySwitchManager.GuiCore.Sources.Controllers.Create;
-using KeySwitchManager.GuiCore.Sources.Controllers.Import;
+using KeySwitchManager.GuiCore.Controllers;
+using KeySwitchManager.GuiCore.Controllers.Create;
+using KeySwitchManager.GuiCore.Controllers.Find;
+using KeySwitchManager.GuiCore.Controllers.Import;
 using KeySwitchManager.WPF.WpfView;
 
 using Microsoft.Win32;
 
 using RkHelper.Text;
+
+using MSAPI = Microsoft.WindowsAPICodePack;
 
 namespace KeySwitchManager.WPF
 {
@@ -32,16 +36,24 @@ namespace KeySwitchManager.WPF
         }
 
         private void InitializeCustomComponent()
-        {}
+        {
+            ExportFormatCombobox.ItemsSource = new List<string>
+            {
+                "Spreadsheet (*.xlsx)",
+                "Cubase (*.expressionmap)",
+                "Studio One (*.keyswitch)",
+                "Cakewalk (*.artmap)",
+            };
+        }
 
         #region Executions
         private void PreExecuteController()
         {
             Dispatcher.Invoke( () => {
                 LogTextView.Clear();
-                ProgressBar.IsIndeterminate           = true;
-                DoCreateNewDefinitionButton.IsEnabled = false;
-                LogClearButton.IsEnabled              = false;
+                ProgressBar.IsIndeterminate = true;
+                LogClearButton.IsEnabled    = false;
+                MainTabPanel.IsEnabled      = false;
             } );
         }
 
@@ -51,8 +63,8 @@ namespace KeySwitchManager.WPF
                 ProgressBar.IsIndeterminate = false;
 
                 MessageBox.Show( "Done" );
-                DoCreateNewDefinitionButton.IsEnabled = true;
-                LogClearButton.IsEnabled              = true;
+                LogClearButton.IsEnabled = true;
+                MainTabPanel.IsEnabled   = true;
             } );
         }
 
@@ -65,6 +77,23 @@ namespace KeySwitchManager.WPF
         #endregion
 
         #region Utilities
+        private string ChooseDirectoryPath( string title )
+        {
+            // https://qiita.com/Kosen-amai/items/9de7a77a1e6b7851a0b3
+
+            var dialog = new MSAPI::Dialogs.CommonOpenFileDialog();
+
+            dialog.IsFolderPicker = true;
+            dialog.Title = title;
+
+            if( dialog.ShowDialog() == MSAPI::Dialogs.CommonFileDialogResult.Ok )
+            {
+                return dialog.FileName;
+            }
+
+            return string.Empty;
+        }
+
         private string ChooseOpenFilePath( string filter )
         {
             var dialog = new OpenFileDialog
@@ -101,6 +130,7 @@ namespace KeySwitchManager.WPF
             LogTextBox.Text = string.Empty;
         }
 
+        #region New
         private async void OnDoCreateNewDefinitionButtonClicked( object sender, RoutedEventArgs e )
         {
             var path = NewFileText.Text;
@@ -111,6 +141,18 @@ namespace KeySwitchManager.WPF
             }
 
             await ExecuteControllerAsync( () => CreateControllerFactory.Create( path, LogTextView ) );
+        }
+        #endregion
+
+        #region Import
+        private void OnOpenDatabaseFileChooserButtonClicked( object sender, RoutedEventArgs e )
+        {
+            ImportDatabaseFileText.Text = ChooseOpenFilePath( "Database File|*.db|All Types|*" );
+        }
+
+        private void OnOpenFileChooserButtonClicked( object sender, RoutedEventArgs e )
+        {
+            ImportFileText.Text = ChooseOpenFilePath( "KeySwitch definition File|*.yaml;*.xlsx" );
         }
 
         private async void OnDoImportButtonClick( object sender, RoutedEventArgs e )
@@ -124,21 +166,49 @@ namespace KeySwitchManager.WPF
             }
             await ExecuteControllerAsync( () => ImportControllerFactory.Create( databasePath, importFilePath, LogTextView ) );
         }
+        #endregion
 
-        private void OnOpenDatabaseFileChooserButtonClicked( object sender, RoutedEventArgs e )
-        {
-            ImportDatabaseFileText.Text = ChooseOpenFilePath( "Database File|*.db|All Types|*" );
-        }
-
-        private void OnOpenFileChooserButtonClicked( object sender, RoutedEventArgs e )
-        {
-            ImportFileText.Text = ChooseOpenFilePath( "KeySwitch definition File|*.yaml;*.xlsx" );
-        }
-
+        #region Find
         private void OnCreateDefinitionFileChooserButtonClicked( object sender, RoutedEventArgs e )
         {
             NewFileText.Text = ChooseSaveFilePath( "KeySwitch definition File|*.xlsx|KeySwitch definition File|*.yaml" );
         }
+
+        private void OpenFindDatabaseFileChooserButtonClicked( object sender, RoutedEventArgs e )
+        {
+            FindDatabaseFileText.Text = ChooseOpenFilePath( "Database File|*.db|All Types|*" );
+        }
+
+        private async void OnFindButtonClicked( object sender, RoutedEventArgs e )
+        {
+            var databasePath = FindDatabaseFileText.Text;
+            var developer = FindDeveloperText.Text;
+            var product = FindProductText.Text;
+            var instrument = FindInstrumentText.Text;
+
+            if( StringHelper.IsEmpty( databasePath, developer, product, instrument ) )
+            {
+                return;
+            }
+
+            await ExecuteControllerAsync( () => FindControllerFactory.Create( databasePath, developer, product, instrument, LogTextView ) );
+        }
+
         #endregion
+
+        #region Export
+
+        private void OnSaveExportDirectoryChooserButtonClicked( object sender, RoutedEventArgs e )
+        {
+            ExportDirectoryText.Text = ChooseDirectoryPath( "Choose Export Directory" );
+        }
+
+        private async void OnExportButtonClicked(object sender, RoutedEventArgs e)
+        {
+        }
+
+        #endregion
+        #endregion
+
     }
 }
