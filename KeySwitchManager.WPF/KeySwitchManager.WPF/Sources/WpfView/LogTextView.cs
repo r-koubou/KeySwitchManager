@@ -6,22 +6,22 @@ using KeySwitchManager.GuiCore.Sources.View.LogView;
 
 namespace KeySwitchManager.WPF.WpfView
 {
-    public class LogView : ILogView
+    public class LogTextView : ILogTextView
     {
         private TextBox Target { get; }
         private Dispatcher UiThreadDispatcher { get; }
 
-        public LogView( TextBox target, Dispatcher uiThreadDispatcher )
+        public LogTextView( TextBox target, Dispatcher uiThreadDispatcher )
         {
-            Target                   = target;
+            Target             = target;
             UiThreadDispatcher = uiThreadDispatcher;
         }
 
-        public void Append( LogViewModel model )
+        public void Append( string text )
         {
             UiThreadDispatcher.Invoke( () =>
             {
-                Target.Text += model.Text + Environment.NewLine;
+                Target.Text += text + Environment.NewLine;
             });
         }
 

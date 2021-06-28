@@ -5,24 +5,24 @@ namespace KeySwitchManager.GuiCore.Sources.Controllers.Create
 {
     public class CreateYamlKeySwitchPresenter : ICreateTextTemplatePresenter
     {
-        private ILogView View { get; }
+        private ILogTextView TextView { get; }
 
-        public CreateYamlKeySwitchPresenter( ILogView view )
+        public CreateYamlKeySwitchPresenter( ILogTextView textView )
         {
-            View = view;
+            TextView = textView;
         }
 
         public void Present<T>( T param )
         {
             if( param != null )
             {
-                View.Append( new LogViewModel( param.ToString() ?? string.Empty ) );
+                TextView.Append( param.ToString() ?? string.Empty );
             }
         }
 
         public void Complete( CreateTextTemplateResponse response )
         {
-            View.Append( new LogViewModel( "Complete" ) );
+            TextView.Append( "Complete" );
         }
     }
 }

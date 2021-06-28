@@ -1,13 +1,13 @@
 ﻿namespace KeySwitchManager.GuiCore.Sources.View.LogView
 {
-    public interface ILogView
+    public interface ILogTextView
     {
-        void Append( LogViewModel model );
+        void Append( string text );
         void Clear();
 
-        public class Null : ILogView
+        public class Null : ILogTextView
         {
-            public void Append( LogViewModel model )
+            public void Append( string text )
             {}
 
             public void Clear()

@@ -10,7 +10,7 @@ namespace KeySwitchManager.GuiCore.Sources.Controllers.Import
 {
     public static class ImportControllerFactory
     {
-        public static IController Create( string databasePath, string importFilePath, ILogView logView )
+        public static IController Create( string databasePath, string importFilePath, ILogTextView logTextView )
         {
             var path = importFilePath.ToLower();
 
@@ -18,7 +18,7 @@ namespace KeySwitchManager.GuiCore.Sources.Controllers.Import
             {
                 var databaseRepository = new LiteDbKeySwitchRepository( new FilePath( databasePath ) );
                 var spreadSheetFileRepository = new ClosedXmlFileLoadRepository( new FilePath( importFilePath ) );
-                var presenter = new ImportSpreadSheetPresenter( logView );
+                var presenter = new ImportSpreadSheetPresenter( logTextView );
                 return new ImportXlsxController( databaseRepository, spreadSheetFileRepository, presenter );
             }
 
@@ -26,7 +26,7 @@ namespace KeySwitchManager.GuiCore.Sources.Controllers.Import
             {
                 var databaseRepository = new LiteDbKeySwitchRepository( new FilePath( databasePath ) );
                 var yamlFileRepository = new YamlKeySwitchFileRepository( new FilePath( importFilePath ), true );
-                var presenter = new YamlImportPresenter( logView );
+                var presenter = new YamlImportPresenter( logTextView );
                 return new ImportYamlController( databaseRepository, yamlFileRepository, presenter );
             }
 
