@@ -24,7 +24,7 @@ namespace KeySwitchManager.Infrastructure.Storage.Spreadsheet.ClosedXml.KeySwitc
             }
 
             var keySwitch = KeySwitches.First();
-            XlsxWorkBookWriter.Write( new[]{ keySwitch }, Target );
+            XlsxWorkBookWriter.Write( new[]{ keySwitch }, Target, StorageAccessListener );
 
             return 1;
 

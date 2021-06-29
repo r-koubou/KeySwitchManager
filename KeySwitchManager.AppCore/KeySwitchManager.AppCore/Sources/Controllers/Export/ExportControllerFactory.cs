@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 using KeySwitchManager.AppCore.Views.LogView;
 using KeySwitchManager.Commons.Data;
@@ -6,6 +7,7 @@ using KeySwitchManager.Domain.KeySwitches.Models;
 using KeySwitchManager.Domain.KeySwitches.Models.Values;
 using KeySwitchManager.Infrastructure.Database.LiteDB.KeySwitches;
 using KeySwitchManager.Infrastructure.Storage.Json.Cakewalk;
+using KeySwitchManager.Infrastructure.Storage.KeySwitches;
 using KeySwitchManager.Infrastructure.Storage.Spreadsheet.ClosedXml.KeySwitches;
 using KeySwitchManager.Infrastructure.Storage.Xml.Cubase;
 using KeySwitchManager.Infrastructure.Storage.Xml.StudioOne;
@@ -53,7 +55,7 @@ namespace KeySwitchManager.AppCore.Controllers.Export
                 switch( format )
                 {
                     case ExportSupportedFormat.Xlsx:
-                        var xlsxRepository = new ClosedXmlFileSaveRepository( outputDir );
+                        var xlsxRepository = new ClosedXmlFileSaveRepository( outputDir, new FileAccessListener( logTextView ) );
                         return new ExportXlsxController( developer, product, sourceDatabase, xlsxRepository, new ExportXlsxPresenter( logTextView ) );
 
                     case ExportSupportedFormat.Cubase:
@@ -78,5 +80,24 @@ namespace KeySwitchManager.AppCore.Controllers.Export
             DisposeSafety( sourceDatabase );
             throw new ArgumentException( $"{format} is not supported" );
         }
+
+        private class FileAccessListener : IStorageAccessListener
+        {
+            private ILogTextView LogTextView { get; }
+
+            public FileAccessListener( ILogTextView logTextView )
+            {
+                LogTextView = logTextView;
+            }
+
+            public void OnWriteAccess( IReadOnlyCollection<KeySwitch> keySwitches, IPath path )
+            {
+                foreach( var x in keySwitches )
+                {
+                    LogTextView.Append( $"{x.DeveloperName} {x.ProductName} {x.InstrumentName}" );
+                }
+            }
+        }
+
     }
 }

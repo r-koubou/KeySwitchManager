@@ -20,6 +20,11 @@ namespace KeySwitchManager.Infrastructure.Storage.Spreadsheet.ClosedXml.KeySwitc
             TargetDirectory = targetDirectory;
         }
 
+        public ClosedXmlFileSaveRepository( DirectoryPath targetDirectory, IStorageAccessListener listener ) : base( targetDirectory, listener )
+        {
+            TargetDirectory = targetDirectory;
+        }
+
         #region Save
         public sealed override int Flush()
         {
@@ -59,7 +64,8 @@ namespace KeySwitchManager.Infrastructure.Storage.Spreadsheet.ClosedXml.KeySwitc
 
                 XlsxWorkBookWriter.Write(
                     instruments,
-                    new FilePath( outputFilePath )
+                    new FilePath( outputFilePath ),
+                    StorageAccessListener
                 );
                 saved++;
             }

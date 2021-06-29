@@ -1,7 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e8bcafb5-9d96-47f9-b856-318cadc177d9" name="デフォルト変更リスト" comment="" />
+    <list default="true" id="e8bcafb5-9d96-47f9-b856-318cadc177d9" name="デフォルト変更リスト" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.KeySwitchManager.AppCore/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.KeySwitchManager.AppCore/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/KeySwitchManager.AppCore/Sources/Controllers/Export/ExportControllerFactory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/KeySwitchManager.AppCore/Sources/Controllers/Export/ExportControllerFactory.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../KeySwitchManager/Sources/Infrastructure/Storage.Spreadsheet.ClosedXml/KeySwitches/ClosedXmlFileSaveRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../KeySwitchManager/Sources/Infrastructure/Storage.Spreadsheet.ClosedXml/KeySwitches/ClosedXmlFileSaveRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../KeySwitchManager/Sources/Infrastructure/Storage.Spreadsheet.ClosedXml/KeySwitches/ClosedXmlFileSaveTemplateRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../KeySwitchManager/Sources/Infrastructure/Storage.Spreadsheet.ClosedXml/KeySwitches/ClosedXmlFileSaveTemplateRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../KeySwitchManager/Sources/Infrastructure/Storage.Spreadsheet.ClosedXml/KeySwitches/Helper/XlsxWorkBookWriter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../KeySwitchManager/Sources/Infrastructure/Storage.Spreadsheet.ClosedXml/KeySwitches/Helper/XlsxWorkBookWriter.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../KeySwitchManager/Sources/Infrastructure/Storage/KeySwitches/LoadOnlyKeySwitchFileRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../KeySwitchManager/Sources/Infrastructure/Storage/KeySwitches/LoadOnlyKeySwitchFileRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../KeySwitchManager/Sources/Infrastructure/Storage/KeySwitches/SaveOnlyKeySwitchFileRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../KeySwitchManager/Sources/Infrastructure/Storage/KeySwitches/SaveOnlyKeySwitchFileRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../KeySwitchManager/Sources/Interactor/KeySwitches/ExportSpreadsheetInteractor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../KeySwitchManager/Sources/Interactor/KeySwitches/ExportSpreadsheetInteractor.cs" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -9,6 +18,14 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/../KeySwitchManager/Sources/Infrastructure/Storage.Spreadsheet.ClosedXml/KeySwitches/ClosedXmlFileSaveRepository.cs" root0="SKIP_HIGHLIGHTING" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <changedPaths>
+      <option value="$PROJECT_DIR$/KeySwitchManager.AppCore/Sources/Controllers/Export/ExportControllerFactory.cs" />
+    </changedPaths>
   </component>
   <component name="ProjectId" id="1ucxhinuHr6RjLmWunN66duyDu9" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -33,6 +50,7 @@
       <updated>1624978800238</updated>
       <workItem from="1624978805498" duration="16000" />
       <workItem from="1624985501803" duration="14000" />
+      <workItem from="1624987878865" duration="1296000" />
     </task>
     <servers />
   </component>

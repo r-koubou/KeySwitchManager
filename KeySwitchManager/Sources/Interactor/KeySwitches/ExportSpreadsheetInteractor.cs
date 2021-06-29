@@ -22,13 +22,12 @@ namespace KeySwitchManager.Interactor.KeySwitches
 
         public ExportSpreadsheetResponse Execute( ExportSpreadsheetRequest request )
         {
+            Presenter.Present( "Exporting. This process may take several minutes." );
+
             foreach( var x in request.KeySwitches )
             {
-                Presenter.Present( $"... {x.ProductName} | {x.InstrumentName}" );
                 OutputRepository.Save( x );
             }
-
-            Presenter.Present( "Exporting. This process may take several minutes." );
 
             var flushed = OutputRepository.Flush();
 
@@ -37,7 +36,7 @@ namespace KeySwitchManager.Interactor.KeySwitches
                 Presenter.Present( $"No keyswitch(es) flushed to storage/repository ({OutputRepository.GetType()})" );
             }
 
-            return new ExportSpreadsheetResponse(  true );
+            return new ExportSpreadsheetResponse( true );
         }
     }
 }
