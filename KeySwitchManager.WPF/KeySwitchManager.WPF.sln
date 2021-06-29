@@ -2,7 +2,7 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KeySwitchManager.WPF", "KeySwitchManager.WPF\KeySwitchManager.WPF.csproj", "{E9F26DB7-E520-4769-97CB-21551A2C4546}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KeySwitchManager.GuiCore", "..\KeySwitchManager.GuiCore\KeySwitchManager.GuiCore\KeySwitchManager.GuiCore.csproj", "{38A602AA-1998-4D7E-8742-9EC06C34BD39}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KeySwitchManager.AppCore", "..\KeySwitchManager.AppCore\KeySwitchManager.AppCore\KeySwitchManager.AppCore.csproj", "{38A602AA-1998-4D7E-8742-9EC06C34BD39}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

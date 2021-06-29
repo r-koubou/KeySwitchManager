@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Windows;
 
-using KeySwitchManager.GuiCore.Controllers;
-using KeySwitchManager.GuiCore.Controllers.Create;
-using KeySwitchManager.GuiCore.Controllers.Find;
-using KeySwitchManager.GuiCore.Controllers.Import;
+using KeySwitchManager.AppCore.Controllers;
+using KeySwitchManager.AppCore.Controllers.Create;
+using KeySwitchManager.AppCore.Controllers.Find;
+using KeySwitchManager.AppCore.Controllers.Import;
 using KeySwitchManager.WPF.WpfView;
 
 using Microsoft.Win32;
+using Microsoft.WindowsAPICodePack.Dialogs;
 
 using RkHelper.Text;
 
@@ -81,12 +82,12 @@ namespace KeySwitchManager.WPF
         {
             // https://qiita.com/Kosen-amai/items/9de7a77a1e6b7851a0b3
 
-            var dialog = new MSAPI::Dialogs.CommonOpenFileDialog();
+            var dialog = new CommonOpenFileDialog();
 
             dialog.IsFolderPicker = true;
             dialog.Title = title;
 
-            if( dialog.ShowDialog() == MSAPI::Dialogs.CommonFileDialogResult.Ok )
+            if( dialog.ShowDialog() == CommonFileDialogResult.Ok )
             {
                 return dialog.FileName;
             }

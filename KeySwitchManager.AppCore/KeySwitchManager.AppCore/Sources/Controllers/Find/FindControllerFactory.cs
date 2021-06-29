@@ -1,8 +1,8 @@
-﻿using KeySwitchManager.Commons.Data;
-using KeySwitchManager.GuiCore.View.LogView;
+﻿using KeySwitchManager.AppCore.View.LogView;
+using KeySwitchManager.Commons.Data;
 using KeySwitchManager.Infrastructure.Database.LiteDB.KeySwitches;
 
-namespace KeySwitchManager.GuiCore.Controllers.Find
+namespace KeySwitchManager.AppCore.Controllers.Find
 {
     public static class FindControllerFactory
     {

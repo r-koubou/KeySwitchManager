@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KeySwitchManager.GuiCore", "KeySwitchManager.GuiCore\KeySwitchManager.GuiCore.csproj", "{1BC5444C-B8CC-4099-9DC9-6D900BAD6206}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KeySwitchManager.AppCore", "KeySwitchManager.AppCore\KeySwitchManager.AppCore.csproj", "{1BC5444C-B8CC-4099-9DC9-6D900BAD6206}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KeySwitchManager", "..\KeySwitchManager\ForExternalReference\KeySwitchManager.csproj", "{72D05FB6-1975-49CF-994C-7180EC0F5F06}"
 EndProject

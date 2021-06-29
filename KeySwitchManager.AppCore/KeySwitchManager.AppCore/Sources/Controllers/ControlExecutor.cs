@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Threading.Tasks;
 
-using KeySwitchManager.GuiCore.View.LogView;
+using KeySwitchManager.AppCore.View.LogView;
 
-namespace KeySwitchManager.GuiCore.Controllers
+namespace KeySwitchManager.AppCore.Controllers
 {
     public static class ControlExecutor
     {

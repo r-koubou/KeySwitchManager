@@ -1,7 +1,7 @@
-﻿using KeySwitchManager.GuiCore.View.LogView;
+﻿using KeySwitchManager.AppCore.View.LogView;
 using KeySwitchManager.UseCase.KeySwitches.Import.Spreadsheet;
 
-namespace KeySwitchManager.GuiCore.Controllers.Import
+namespace KeySwitchManager.AppCore.Controllers.Import
 {
     public class ImportSpreadSheetPresenter : IImportSpreadsheetPresenter
     {

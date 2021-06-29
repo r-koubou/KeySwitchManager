@@ -2,7 +2,7 @@
 using KeySwitchManager.Interactor.KeySwitches;
 using KeySwitchManager.UseCase.KeySwitches.Find;
 
-namespace KeySwitchManager.GuiCore.Controllers.Find
+namespace KeySwitchManager.AppCore.Controllers.Find
 {
     public class FindController : IController
     {

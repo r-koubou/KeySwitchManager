@@ -1,12 +1,12 @@
 ﻿using System;
 
+using KeySwitchManager.AppCore.View.LogView;
 using KeySwitchManager.Commons.Data;
-using KeySwitchManager.GuiCore.View.LogView;
 using KeySwitchManager.Infrastructure.Database.LiteDB.KeySwitches;
 using KeySwitchManager.Infrastructure.Storage.Spreadsheet.ClosedXml.KeySwitches;
 using KeySwitchManager.Storage.Yaml.KeySwitches;
 
-namespace KeySwitchManager.GuiCore.Controllers.Import
+namespace KeySwitchManager.AppCore.Controllers.Import
 {
     public static class ImportControllerFactory
     {

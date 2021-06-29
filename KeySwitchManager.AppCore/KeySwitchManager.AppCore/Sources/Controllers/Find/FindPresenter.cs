@@ -1,9 +1,9 @@
 ﻿using System.Text;
 
-using KeySwitchManager.GuiCore.View.LogView;
+using KeySwitchManager.AppCore.View.LogView;
 using KeySwitchManager.UseCase.KeySwitches.Find;
 
-namespace KeySwitchManager.GuiCore.Controllers.Find
+namespace KeySwitchManager.AppCore.Controllers.Find
 {
     public class FindPresenter : IFindPresenter
     {

@@ -2,7 +2,7 @@
 using System.Windows.Controls;
 using System.Windows.Threading;
 
-using KeySwitchManager.GuiCore.View.LogView;
+using KeySwitchManager.AppCore.View.LogView;
 
 namespace KeySwitchManager.WPF.WpfView
 {
