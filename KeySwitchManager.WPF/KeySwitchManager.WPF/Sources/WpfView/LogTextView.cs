@@ -2,7 +2,7 @@
 using System.Windows.Controls;
 using System.Windows.Threading;
 
-using KeySwitchManager.AppCore.View.LogView;
+using KeySwitchManager.AppCore.Views.LogView;
 
 namespace KeySwitchManager.WPF.WpfView
 {
@@ -10,6 +10,9 @@ namespace KeySwitchManager.WPF.WpfView
     {
         private TextBox Target { get; }
         private Dispatcher UiThreadDispatcher { get; }
+
+        #region ILogTextView
+        public bool AutoScroll { get; set; } = true;
 
         public LogTextView( TextBox target, Dispatcher uiThreadDispatcher )
         {
@@ -22,6 +25,11 @@ namespace KeySwitchManager.WPF.WpfView
             UiThreadDispatcher.Invoke( () =>
             {
                 Target.AppendText( text + Environment.NewLine );
+
+                if( AutoScroll )
+                {
+                    ScrollToEnd();
+                }
             });
         }
 
@@ -40,5 +48,6 @@ namespace KeySwitchManager.WPF.WpfView
                 Target.ScrollToEnd();
             });
         }
+        #endregion
     }
 }

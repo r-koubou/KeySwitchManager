@@ -1,6 +1,6 @@
 ﻿using System;
 
-using KeySwitchManager.AppCore.View.LogView;
+using KeySwitchManager.AppCore.Views.LogView;
 using KeySwitchManager.Commons.Data;
 using KeySwitchManager.Infrastructure.Storage.Spreadsheet.ClosedXml.KeySwitches;
 using KeySwitchManager.Storage.Yaml.KeySwitches;

@@ -1,6 +1,6 @@
 ﻿using System.Text;
 
-using KeySwitchManager.AppCore.View.LogView;
+using KeySwitchManager.AppCore.Views.LogView;
 using KeySwitchManager.UseCase.KeySwitches.Find;
 
 namespace KeySwitchManager.AppCore.Controllers.Find

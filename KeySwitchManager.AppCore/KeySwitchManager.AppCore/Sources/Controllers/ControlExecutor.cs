@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 
-using KeySwitchManager.AppCore.View.LogView;
+using KeySwitchManager.AppCore.Views.LogView;
 
 namespace KeySwitchManager.AppCore.Controllers
 {

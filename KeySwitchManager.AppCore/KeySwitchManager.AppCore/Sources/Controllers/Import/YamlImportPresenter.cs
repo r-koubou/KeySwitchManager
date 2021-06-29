@@ -1,4 +1,4 @@
-﻿using KeySwitchManager.AppCore.View.LogView;
+﻿using KeySwitchManager.AppCore.Views.LogView;
 using KeySwitchManager.UseCase.KeySwitches.Import.Text;
 
 namespace KeySwitchManager.AppCore.Controllers.Import

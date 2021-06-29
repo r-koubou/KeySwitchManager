@@ -1,13 +1,13 @@
 ﻿using KeySwitchManager.AppCore.Views.LogView;
-using KeySwitchManager.UseCase.KeySwitches.Import.Spreadsheet;
+using KeySwitchManager.UseCase.KeySwitches.Export.Spreadsheet;
 
-namespace KeySwitchManager.AppCore.Controllers.Import
+namespace KeySwitchManager.AppCore.Controllers.Export
 {
-    public class ImportSpreadSheetPresenter : IImportSpreadsheetPresenter
+    public class ExportXlsxPresenter : IExportSpreadsheetPresenter
     {
         private ILogTextView TextView { get; }
 
-        public ImportSpreadSheetPresenter( ILogTextView textView )
+        public ExportXlsxPresenter( ILogTextView textView )
         {
             TextView = textView;
         }
@@ -20,7 +20,7 @@ namespace KeySwitchManager.AppCore.Controllers.Import
             }
         }
 
-        public void Complete( ImportSpreadSheetResponse response )
+        public void Complete( ExportSpreadsheetResponse response )
         {
             TextView.Append( "Complete" );
         }

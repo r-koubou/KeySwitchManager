@@ -1,35 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e8bcafb5-9d96-47f9-b856-318cadc177d9" name="デフォルト変更リスト" comment="">
-      <change beforePath="$PROJECT_DIR$/../KeySwitchManager.GuiCore/.idea/.idea.KeySwitchManager.GuiCore/.idea/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.KeySwitchManager.GuiCore/.idea/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../KeySwitchManager.GuiCore/.idea/.idea.KeySwitchManager.GuiCore/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.KeySwitchManager.GuiCore/.idea/encodings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../KeySwitchManager.GuiCore/.idea/.idea.KeySwitchManager.GuiCore/.idea/indexLayout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.KeySwitchManager.GuiCore/.idea/indexLayout.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../KeySwitchManager.GuiCore/.idea/.idea.KeySwitchManager.GuiCore/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.KeySwitchManager.GuiCore/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../KeySwitchManager.GuiCore/KeySwitchManager.GuiCore.sln" beforeDir="false" afterPath="$PROJECT_DIR$/KeySwitchManager.AppCore.sln" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../KeySwitchManager.GuiCore/KeySwitchManager.GuiCore.sln.DotSettings" beforeDir="false" afterPath="$PROJECT_DIR$/KeySwitchManager.AppCore.sln.DotSettings" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../KeySwitchManager.GuiCore/KeySwitchManager.GuiCore.sln.DotSettings.user" beforeDir="false" afterPath="$PROJECT_DIR$/KeySwitchManager.AppCore.sln.DotSettings.user" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../KeySwitchManager.GuiCore/KeySwitchManager.GuiCore/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/KeySwitchManager.AppCore/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../KeySwitchManager.GuiCore/KeySwitchManager.GuiCore/KeySwitchManager.GuiCore.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/KeySwitchManager.AppCore/KeySwitchManager.AppCore.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../KeySwitchManager.GuiCore/KeySwitchManager.GuiCore/KeySwitchManager.GuiCore.csproj.DotSettings" beforeDir="false" afterPath="$PROJECT_DIR$/KeySwitchManager.AppCore/KeySwitchManager.AppCore.csproj.DotSettings" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../KeySwitchManager.GuiCore/KeySwitchManager.GuiCore/Sources/Controllers/ControlExecutor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/KeySwitchManager.AppCore/Sources/Controllers/ControlExecutor.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../KeySwitchManager.GuiCore/KeySwitchManager.GuiCore/Sources/Controllers/Create/CreateControllerFactory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/KeySwitchManager.AppCore/Sources/Controllers/Create/CreateControllerFactory.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../KeySwitchManager.GuiCore/KeySwitchManager.GuiCore/Sources/Controllers/Create/CreateXlsxController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/KeySwitchManager.AppCore/Sources/Controllers/Create/CreateXlsxController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../KeySwitchManager.GuiCore/KeySwitchManager.GuiCore/Sources/Controllers/Create/CreateXlsxKeySwitchPresenter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/KeySwitchManager.AppCore/Sources/Controllers/Create/CreateXlsxKeySwitchPresenter.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../KeySwitchManager.GuiCore/KeySwitchManager.GuiCore/Sources/Controllers/Create/CreateYamlController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/KeySwitchManager.AppCore/Sources/Controllers/Create/CreateYamlController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../KeySwitchManager.GuiCore/KeySwitchManager.GuiCore/Sources/Controllers/Create/CreateYamlKeySwitchPresenter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/KeySwitchManager.AppCore/Sources/Controllers/Create/CreateYamlKeySwitchPresenter.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../KeySwitchManager.GuiCore/KeySwitchManager.GuiCore/Sources/Controllers/Find/FindController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/KeySwitchManager.AppCore/Sources/Controllers/Find/FindController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../KeySwitchManager.GuiCore/KeySwitchManager.GuiCore/Sources/Controllers/Find/FindControllerFactory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/KeySwitchManager.AppCore/Sources/Controllers/Find/FindControllerFactory.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../KeySwitchManager.GuiCore/KeySwitchManager.GuiCore/Sources/Controllers/Find/FindPresenter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/KeySwitchManager.AppCore/Sources/Controllers/Find/FindPresenter.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../KeySwitchManager.GuiCore/KeySwitchManager.GuiCore/Sources/Controllers/IController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/KeySwitchManager.AppCore/Sources/Controllers/IController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../KeySwitchManager.GuiCore/KeySwitchManager.GuiCore/Sources/Controllers/Import/ImportControllerFactory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/KeySwitchManager.AppCore/Sources/Controllers/Import/ImportControllerFactory.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../KeySwitchManager.GuiCore/KeySwitchManager.GuiCore/Sources/Controllers/Import/ImportSpreadSheetPresenter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/KeySwitchManager.AppCore/Sources/Controllers/Import/ImportSpreadSheetPresenter.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../KeySwitchManager.GuiCore/KeySwitchManager.GuiCore/Sources/Controllers/Import/ImportXlsxController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/KeySwitchManager.AppCore/Sources/Controllers/Import/ImportXlsxController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../KeySwitchManager.GuiCore/KeySwitchManager.GuiCore/Sources/Controllers/Import/ImportYamlControllerYaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/KeySwitchManager.AppCore/Sources/Controllers/Import/ImportYamlControllerYaml.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../KeySwitchManager.GuiCore/KeySwitchManager.GuiCore/Sources/Controllers/Import/YamlImportPresenter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/KeySwitchManager.AppCore/Sources/Controllers/Import/YamlImportPresenter.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../KeySwitchManager.GuiCore/KeySwitchManager.GuiCore/Sources/View/LogView/ILogTextView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/KeySwitchManager.AppCore/Sources/View/LogView/ILogTextView.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../KeySwitchManager.GuiCore/KeySwitchManager.GuiCore/Sources/View/LogView/LogViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/KeySwitchManager.AppCore/Sources/View/LogView/LogViewModel.cs" afterDir="false" />
-    </list>
+    <list default="true" id="e8bcafb5-9d96-47f9-b856-318cadc177d9" name="デフォルト変更リスト" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -60,13 +32,14 @@
       <option name="presentableId" value="Default" />
       <updated>1624978800238</updated>
       <workItem from="1624978805498" duration="16000" />
+      <workItem from="1624985501803" duration="14000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
-  <component name="UnityProjectConfiguration" hasMinimizedUI="null" />
+  <component name="UnityProjectConfiguration" hasMinimizedUI="false" />
   <component name="UnityUnitTestConfiguration" currentTestLauncher="NUnit" />
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />

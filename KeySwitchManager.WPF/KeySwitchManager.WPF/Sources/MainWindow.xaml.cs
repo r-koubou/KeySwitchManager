@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Threading.Tasks;
 using System.Windows;
 
 using KeySwitchManager.AppCore.Controllers;
 using KeySwitchManager.AppCore.Controllers.Create;
+using KeySwitchManager.AppCore.Controllers.Export;
 using KeySwitchManager.AppCore.Controllers.Find;
 using KeySwitchManager.AppCore.Controllers.Import;
 using KeySwitchManager.WPF.WpfView;
@@ -27,24 +29,21 @@ namespace KeySwitchManager.WPF
         #endregion
 
         private LogTextView LogTextView { get; }
+        private IList<ExportSupportedFormat> ExportSupportedFormatList { get; }
 
         public MainWindow()
         {
             InitializeComponent();
 
-            LogTextView = new LogTextView( LogTextBox, this.Dispatcher );
+            LogTextView               = new LogTextView( LogTextBox, this.Dispatcher );
+            ExportSupportedFormatList = new List<ExportSupportedFormat>( Enum.GetValues<ExportSupportedFormat>() );
+
             InitializeCustomComponent();
         }
 
         private void InitializeCustomComponent()
         {
-            ExportFormatCombobox.ItemsSource = new List<string>
-            {
-                "Spreadsheet (*.xlsx)",
-                "Cubase (*.expressionmap)",
-                "Studio One (*.keyswitch)",
-                "Cakewalk (*.artmap)",
-            };
+            ExportFormatCombobox.ItemsSource = ExportSupportedFormatList;
         }
 
         #region Executions
@@ -206,7 +205,35 @@ namespace KeySwitchManager.WPF
 
         private async void OnExportButtonClicked(object sender, RoutedEventArgs e)
         {
+            var databasePath = FindDatabaseFileText.Text;
+            var developer = FindDeveloperText.Text;
+            var product = FindProductText.Text;
+            var instrument = FindInstrumentText.Text;
+            var output = ExportDirectoryText.Text;
+
+            var format = ExportSupportedFormatList[ ExportFormatCombobox.SelectedIndex ];
+
+            if( StringHelper.IsEmpty( databasePath, developer, product ) )
+            {
+                return;
+            }
+
+            // Append a sub folder by format name
+            output = Path.Combine( output, format.ToString() );
+
+            await ExecuteControllerAsync(
+                () => ExportControllerFactory.Create(
+                    developer,
+                    product,
+                    instrument,
+                    databasePath,
+                    output,
+                    format,
+                    LogTextView
+                )
+            );
         }
+
 
         #endregion
         #endregion

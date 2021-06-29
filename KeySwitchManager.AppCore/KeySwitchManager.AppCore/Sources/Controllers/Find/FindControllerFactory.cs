@@ -1,4 +1,4 @@
-﻿using KeySwitchManager.AppCore.View.LogView;
+﻿using KeySwitchManager.AppCore.Views.LogView;
 using KeySwitchManager.Commons.Data;
 using KeySwitchManager.Infrastructure.Database.LiteDB.KeySwitches;
 
