@@ -2,7 +2,7 @@
 using System.Windows.Controls;
 using System.Windows.Threading;
 
-using KeySwitchManager.AppCore.Views.LogView;
+using Application.Core.Views.LogView;
 
 namespace KeySwitchManager.WPF.WpfView
 {
@@ -31,6 +31,16 @@ namespace KeySwitchManager.WPF.WpfView
                     ScrollToEnd();
                 }
             });
+        }
+
+        public void AppendError( string text )
+        {
+            Append( text );
+        }
+
+        public void AppendError( Exception exception )
+        {
+            AppendError( exception.ToString() );
         }
 
         public void Clear()

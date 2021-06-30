@@ -7,8 +7,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\..\KeySwitchManager.AppCore\KeySwitchManager.AppCore\KeySwitchManager.AppCore.csproj" />
-      <ProjectReference Include="..\..\KeySwitchManager\ForExternalReference\KeySwitchManager.csproj" />
+      <ProjectReference Include="..\..\KeySwitchManager\Runtime\Applications\Applications.Core\Applications.Core.csproj" />
     </ItemGroup>
 
     <ItemGroup>

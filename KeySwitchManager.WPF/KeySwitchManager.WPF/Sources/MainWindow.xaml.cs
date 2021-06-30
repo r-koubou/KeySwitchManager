@@ -4,11 +4,12 @@ using System.IO;
 using System.Threading.Tasks;
 using System.Windows;
 
-using KeySwitchManager.AppCore.Controllers;
-using KeySwitchManager.AppCore.Controllers.Create;
-using KeySwitchManager.AppCore.Controllers.Export;
-using KeySwitchManager.AppCore.Controllers.Find;
-using KeySwitchManager.AppCore.Controllers.Import;
+using Application.Core.Controllers;
+using Application.Core.Controllers.Create;
+using Application.Core.Controllers.Export;
+using Application.Core.Controllers.Find;
+using Application.Core.Controllers.Import;
+
 using KeySwitchManager.WPF.WpfView;
 
 using Microsoft.Win32;
