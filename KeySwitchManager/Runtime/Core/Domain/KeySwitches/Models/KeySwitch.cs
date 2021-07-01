@@ -48,7 +48,10 @@ namespace KeySwitchManager.Domain.KeySwitches.Models
         }
 
         public override string ToString()
-            => $"{DeveloperName}, {ProductName}, {InstrumentName}";
+            => $"{DeveloperName} | {ProductName} | {InstrumentName}";
+
+        public string ToString( string delimiter )
+            => $"{DeveloperName} {delimiter} {ProductName} {delimiter} {InstrumentName}";
 
         #region Equals
         public bool Equals( KeySwitch? other )
