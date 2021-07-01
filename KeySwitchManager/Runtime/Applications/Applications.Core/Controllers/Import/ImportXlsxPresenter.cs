@@ -4,11 +4,11 @@ using KeySwitchManager.UseCase.KeySwitches.Import.Spreadsheet;
 
 namespace Application.Core.Controllers.Import
 {
-    public class ImportSpreadSheetPresenter : IImportSpreadsheetPresenter
+    public class ImportXlsxPresenter : IImportSpreadsheetPresenter
     {
         private ILogTextView TextView { get; }
 
-        public ImportSpreadSheetPresenter( ILogTextView textView )
+        public ImportXlsxPresenter( ILogTextView textView )
         {
             TextView = textView;
         }

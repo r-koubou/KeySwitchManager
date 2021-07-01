@@ -18,20 +18,43 @@ namespace Application.Core.Controllers.Import
             if( path.EndsWith( ".xlsx" ) )
             {
                 var databaseRepository = new LiteDbKeySwitchRepository( new FilePath( databasePath ) );
+                databaseRepository.LoggingObservable.Subscribe( new DatabaseAccessObserver( logTextView ) );
+
                 var spreadSheetFileRepository = new ClosedXmlFileLoadRepository( new FilePath( importFilePath ) );
-                var presenter = new ImportSpreadSheetPresenter( logTextView );
+                var presenter = new ImportXlsxPresenter( logTextView );
                 return new ImportXlsxController( databaseRepository, spreadSheetFileRepository, presenter );
             }
 
             if( path.EndsWith( ".yaml" ) )
             {
                 var databaseRepository = new LiteDbKeySwitchRepository( new FilePath( databasePath ) );
+                databaseRepository.LoggingObservable.Subscribe( new DatabaseAccessObserver( logTextView ) );
+
                 var yamlFileRepository = new YamlKeySwitchFileRepository( new FilePath( importFilePath ), true );
                 var presenter = new YamlImportPresenter( logTextView );
                 return new ImportYamlController( databaseRepository, yamlFileRepository, presenter );
             }
 
             throw new ArgumentException( $"{importFilePath} is unknown file format" );
+        }
+
+        private class DatabaseAccessObserver : IObserver<string>
+        {
+            private ILogTextView LogTextView { get; }
+
+            public DatabaseAccessObserver( ILogTextView logTextView )
+            {
+                LogTextView = logTextView;
+            }
+
+            public void OnCompleted() {}
+
+            public void OnError( Exception error ) {}
+
+            public void OnNext( string value )
+            {
+                LogTextView.Append( value );
+            }
         }
     }
 }

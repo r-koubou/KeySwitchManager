@@ -9,21 +9,13 @@ namespace KeySwitchManager.Infrastructures.Storage.Yaml.KeySwitches
 {
     public class YamlKeySwitchFileRepository : KeySwitchFileRepository
     {
-        private IStorageAccessListener StorageAccessListener { get; }
-
         public YamlKeySwitchFileRepository( IPath yamlDataPath, bool loadFromPathNow ) :
-            this( yamlDataPath, loadFromPathNow, IStorageAccessListener.Null )
-        {}
-
-        public YamlKeySwitchFileRepository( IPath yamlDataPath, bool loadFromPathNow, IStorageAccessListener listener ) :
             base( yamlDataPath, loadFromPathNow )
         {
             if( !yamlDataPath.IsFile )
             {
                 throw new ArgumentException( $"{nameof( yamlDataPath )} is not FilePath" );
             }
-
-            StorageAccessListener = listener;
         }
 
         #region Write to file
@@ -31,10 +23,16 @@ namespace KeySwitchManager.Infrastructures.Storage.Yaml.KeySwitches
         {
             var saved = KeySwitches.Count;
 
-            StorageAccessListener.OnWriteAccess( KeySwitches, DataPath );
+            if( LoggingSubject.HasObservers )
+            {
+                foreach( var k in KeySwitches )
+                {
+                    LoggingSubject.OnNext( k.ToString() );
+                }
+            }
 
             using var stream = File.Create( DataPath.Path );
-            KeySwitchFileWriter.Write( stream, KeySwitches );
+            KeySwitchFileWriter.Write( stream, KeySwitches, LoggingSubject );
 
             return saved;
         }
@@ -43,7 +41,7 @@ namespace KeySwitchManager.Infrastructures.Storage.Yaml.KeySwitches
         #region Load from file
         public override void Load()
         {
-            StorageAccessListener.OnReadAccess( DataPath );
+            //StorageAccessListener.OnReadAccess( DataPath );
 
             if( !DataPath.Exists )
             {
@@ -52,7 +50,7 @@ namespace KeySwitchManager.Infrastructures.Storage.Yaml.KeySwitches
 
             using var stream = File.Open( DataPath.Path, FileMode.Open );
             KeySwitches.Clear();
-            KeySwitches.AddRange(  KeySwitchFileReader.Read( stream ) );
+            KeySwitches.AddRange(  KeySwitchFileReader.Read( stream, LoggingSubject ) );
         }
         #endregion
 

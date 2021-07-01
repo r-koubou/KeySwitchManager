@@ -1,4 +1,5 @@
 using System.IO;
+using System.Reactive.Subjects;
 using System.Text;
 
 using KeySwitchManager.Domain.KeySwitches.Models;
@@ -8,17 +9,19 @@ namespace KeySwitchManager.Infrastructures.Storage.Xml.Cubase.Helpers
 {
     public static class CubaseFileWriter
     {
-        public static void Write( Stream stream, KeySwitch keySwitch, Encoding encoding )
+        public static void Write( Stream stream, KeySwitch keySwitch, Subject<string> loggingSubject, Encoding encoding )
         {
+            loggingSubject.OnNext( keySwitch.ToString() );
+
             using var writer = new StreamWriter( stream, encoding );
             var xmlText = new CubaseExportTranslator().Translate( keySwitch );
 
             writer.WriteLine( xmlText );
         }
 
-        public static void Write( Stream stream, KeySwitch keySwitch )
+        public static void Write( Stream stream, KeySwitch keySwitch, Subject<string> loggingSubject )
         {
-            Write( stream, keySwitch, Encoding.UTF8 );
+            Write( stream, keySwitch, loggingSubject, Encoding.UTF8 );
         }
     }
 }

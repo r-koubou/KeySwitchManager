@@ -32,7 +32,7 @@ namespace KeySwitchManager.Infrastructures.Storage.Xml.Cubase
 
                 using var stream = File.Create( outputFilePath.Path );
 
-                CubaseFileWriter.Write( stream, x );
+                CubaseFileWriter.Write( stream, x, LoggingSubject );
                 saved++;
             }
 

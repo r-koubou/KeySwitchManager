@@ -42,7 +42,6 @@ namespace KeySwitchManager.Interactors.KeySwitches
 
             foreach( var x in queryResult )
             {
-                Presenter.Present( $"Developer=\"{x.DeveloperName}\", Product=\"{x.ProductName}\", Instrument=\"{x.InstrumentName}\"" );
                 OutputRepository.Save( x );
             }
 

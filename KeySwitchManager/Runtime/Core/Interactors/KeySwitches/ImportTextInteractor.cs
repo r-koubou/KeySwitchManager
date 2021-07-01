@@ -33,8 +33,6 @@ namespace KeySwitchManager.Interactors.KeySwitches
 
             foreach( var i in keySwitches )
             {
-                Presenter.Present( $"... {i.ProductName} | {i.InstrumentName}" );
-
                 var r = Repository.Save( i );
                 updatedCount += r.Updated;
                 insertedCount += r.Inserted;

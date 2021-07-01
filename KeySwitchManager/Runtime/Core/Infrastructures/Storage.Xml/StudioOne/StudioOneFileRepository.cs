@@ -29,7 +29,7 @@ namespace KeySwitchManager.Infrastructures.Storage.Xml.StudioOne
                 );
 
                 using var stream = File.Create( outputFilePath.Path );
-                StudioOneFileWriter.Write( stream, x );
+                StudioOneFileWriter.Write( stream, x, LoggingSubject );
 
                 saved++;
             }

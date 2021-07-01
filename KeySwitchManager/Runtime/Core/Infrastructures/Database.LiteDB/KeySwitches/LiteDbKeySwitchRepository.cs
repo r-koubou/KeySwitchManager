@@ -1,5 +1,8 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reactive.Linq;
+using System.Reactive.Subjects;
 
 using KeySwitchManager.Commons.Data;
 using KeySwitchManager.Domain.KeySwitches.Models;
@@ -17,6 +20,9 @@ namespace KeySwitchManager.Infrastructures.Database.LiteDB.KeySwitches
     {
         public const string KeySwitchesTableName = @"keyswitches";
 
+        private Subject<string> LoggingSubject { get; }
+        public IObservable<string> LoggingObservable { get; }
+
         private LiteDatabase Database { get; set; }
 
         private ILiteCollection<KeySwitchModel> KeySwitchTable
@@ -24,7 +30,9 @@ namespace KeySwitchManager.Infrastructures.Database.LiteDB.KeySwitches
 
         public LiteDbKeySwitchRepository( FilePath dbFilePath )
         {
-            Database = new LiteDatabase( dbFilePath.Path );
+            LoggingSubject    = new Subject<string>();
+            LoggingObservable = LoggingSubject.AsObservable();
+            Database          = new LiteDatabase( dbFilePath.Path );
         }
 
         public void Dispose()
@@ -55,6 +63,8 @@ namespace KeySwitchManager.Infrastructures.Database.LiteDB.KeySwitches
         #region Save
         public IKeySwitchRepository.SaveResult Save( KeySwitch keySwitch )
         {
+            LoggingSubject.OnNext( keySwitch.ToString() );
+
             var table = Database.GetCollection<KeySwitchModel>( KeySwitchesTableName );
 
             var translator = new KeySwitchExportTranslator();
@@ -129,6 +139,9 @@ namespace KeySwitchManager.Infrastructures.Database.LiteDB.KeySwitches
 
             foreach( var item in query )
             {
+                var keySwitch = translator.Translate( item );
+
+                LoggingSubject.OnNext( keySwitch.ToString() );
                 result.Add( translator.Translate( item ) );
             }
 

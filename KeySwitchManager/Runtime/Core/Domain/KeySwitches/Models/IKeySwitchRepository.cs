@@ -9,6 +9,8 @@ namespace KeySwitchManager.Domain.KeySwitches.Models
 {
     public interface IKeySwitchRepository : IDisposable
     {
+        public IObservable<string> LoggingObservable { get; }
+
         public int Count();
         public int Flush();
         public SaveResult Save( KeySwitch keySwitch );
@@ -50,6 +52,5 @@ namespace KeySwitchManager.Domain.KeySwitches.Models
                        other.Updated == Updated;
             }
         }
-
     }
 }

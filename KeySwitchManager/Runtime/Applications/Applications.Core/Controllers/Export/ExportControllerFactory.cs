@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 
 using Application.Core.Views.LogView;
 
@@ -8,7 +7,6 @@ using KeySwitchManager.Domain.KeySwitches.Models;
 using KeySwitchManager.Domain.KeySwitches.Models.Values;
 using KeySwitchManager.Infrastructures.Database.LiteDB.KeySwitches;
 using KeySwitchManager.Infrastructures.Storage.Json.Cakewalk;
-using KeySwitchManager.Infrastructures.Storage.KeySwitches;
 using KeySwitchManager.Infrastructures.Storage.Spreadsheet.ClosedXml.KeySwitches;
 using KeySwitchManager.Infrastructures.Storage.Xml.Cubase;
 using KeySwitchManager.Infrastructures.Storage.Xml.StudioOne;
@@ -46,19 +44,23 @@ namespace Application.Core.Controllers.Export
                 switch( format )
                 {
                     case ExportSupportedFormat.Xlsx:
-                        var xlsxRepository = new ClosedXmlFileSaveRepository( outputDir, new FileAccessListener( logTextView ) );
+                        var xlsxRepository = new ClosedXmlFileSaveRepository( outputDir );
+                        xlsxRepository.LoggingObservable.Subscribe( new LoggingObserver( logTextView ) );
                         return new ExportXlsxController( developer, product, sourceDatabase, xlsxRepository, new ExportXlsxPresenter( logTextView ) );
 
                     case ExportSupportedFormat.Cubase:
                         var cubaseRepository = new CubaseFileRepository( outputDir );
+                        cubaseRepository.LoggingObservable.Subscribe( new LoggingObserver( logTextView ) );
                         return CreateDawController( cubaseRepository );
 
                     case ExportSupportedFormat.StudioOne:
                         var studioOneRepository = new StudioOneFileRepository( outputDir );
+                        studioOneRepository.LoggingObservable.Subscribe( new LoggingObserver( logTextView ) );
                         return CreateDawController( studioOneRepository );
 
                     case ExportSupportedFormat.Cakewalk:
                         var cakewalkRepository = new CakewalkFileRepository( outputDir );
+                        cakewalkRepository.LoggingObservable.Subscribe( new LoggingObserver( logTextView ) );
                         return CreateDawController( cakewalkRepository );
                 }
             }
@@ -72,21 +74,25 @@ namespace Application.Core.Controllers.Export
             throw new ArgumentException( $"{format} is not supported" );
         }
 
-        private class FileAccessListener : IStorageAccessListener
+        private class LoggingObserver : IObserver<string>
         {
             private ILogTextView LogTextView { get; }
 
-            public FileAccessListener( ILogTextView logTextView )
+            public LoggingObserver( ILogTextView logTextView )
             {
                 LogTextView = logTextView;
             }
 
-            public void OnWriteAccess( IReadOnlyCollection<KeySwitch> keySwitches, IPath path )
+            public void OnCompleted() {}
+
+            public void OnError( Exception error )
             {
-                foreach( var x in keySwitches )
-                {
-                    LogTextView.Append( $"{x.DeveloperName} {x.ProductName} {x.InstrumentName}" );
-                }
+                LogTextView.Append( error.ToString() );
+            }
+
+            public void OnNext( string value )
+            {
+                LogTextView.Append( value );
             }
         }
 

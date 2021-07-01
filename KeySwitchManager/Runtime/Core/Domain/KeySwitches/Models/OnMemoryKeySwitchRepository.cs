@@ -1,5 +1,8 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reactive.Linq;
+using System.Reactive.Subjects;
 
 using KeySwitchManager.Domain.KeySwitches.Models.Values;
 
@@ -9,14 +12,21 @@ namespace KeySwitchManager.Domain.KeySwitches.Models
     {
         protected List<KeySwitch> KeySwitches { get; }
 
+        protected Subject<string> LoggingSubject { get; }
+        public IObservable<string> LoggingObservable { get; }
+
         protected OnMemoryKeySwitchRepository()
         {
-            KeySwitches = new List<KeySwitch>();
+            KeySwitches       = new List<KeySwitch>();
+            LoggingSubject    = new Subject<string>();
+            LoggingObservable = LoggingSubject.AsObservable();
         }
 
         public OnMemoryKeySwitchRepository( IReadOnlyCollection<KeySwitch> source )
         {
-            KeySwitches = new List<KeySwitch>( source );
+            KeySwitches       = new List<KeySwitch>( source );
+            LoggingSubject    = new Subject<string>();
+            LoggingObservable = LoggingSubject.AsObservable();
         }
 
         public virtual void Dispose()

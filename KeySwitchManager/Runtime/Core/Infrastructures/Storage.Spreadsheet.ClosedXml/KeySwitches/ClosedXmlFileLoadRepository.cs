@@ -43,6 +43,14 @@ namespace KeySwitchManager.Infrastructures.Storage.Spreadsheet.ClosedXml.KeySwit
             KeySwitches.Clear();
             KeySwitches.AddRange( translator.Translate( workBook ) );
 
+            if( LoggingSubject.HasObservers )
+            {
+                foreach( var k in KeySwitches )
+                {
+                    LoggingSubject.OnNext( k.ToString() );
+                }
+            }
+
         }
         #endregion
     }

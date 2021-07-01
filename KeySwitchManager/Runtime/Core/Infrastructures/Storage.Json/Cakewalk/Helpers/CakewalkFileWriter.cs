@@ -1,4 +1,5 @@
 using System.IO;
+using System.Reactive.Subjects;
 using System.Text;
 
 using KeySwitchManager.Domain.KeySwitches.Models;
@@ -8,8 +9,13 @@ namespace KeySwitchManager.Infrastructures.Storage.Json.Cakewalk.Helpers
 {
     public static class CakewalkFileWriter
     {
-        public static void Write( Stream stream, KeySwitch keySwitch, Encoding encoding )
+        public static void Write( Stream stream, KeySwitch keySwitch, Subject<string> loggingSubject, Encoding encoding )
         {
+            if( loggingSubject.HasObservers )
+            {
+                loggingSubject.OnNext( keySwitch.ToString() );
+            }
+
             using var writer = new StreamWriter( stream, encoding );
             // TODO すべての要素を束ねた 1 JSONファイルにしたい(Cakewalkは保持できる)
             var jsonText = new CakewalkExportTranslator( true ).Translate( keySwitch );
@@ -17,9 +23,9 @@ namespace KeySwitchManager.Infrastructures.Storage.Json.Cakewalk.Helpers
             writer.WriteLine( jsonText );
         }
 
-        public static void Write( Stream stream, KeySwitch keySwitch )
+        public static void Write( Stream stream, KeySwitch keySwitch, Subject<string> loggingSubject )
         {
-            Write( stream, keySwitch, Encoding.UTF8 );
+            Write( stream, keySwitch, loggingSubject, Encoding.UTF8 );
         }
     }
 }

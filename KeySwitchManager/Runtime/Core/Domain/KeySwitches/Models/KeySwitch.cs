@@ -47,6 +47,9 @@ namespace KeySwitchManager.Domain.KeySwitches.Models
             ExtraData      = extraData;
         }
 
+        public override string ToString()
+            => $"{DeveloperName}, {ProductName}, {InstrumentName}";
+
         #region Equals
         public bool Equals( KeySwitch? other )
         {

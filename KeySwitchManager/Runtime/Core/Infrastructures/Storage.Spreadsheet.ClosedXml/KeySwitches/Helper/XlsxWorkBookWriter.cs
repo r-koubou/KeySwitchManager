@@ -1,10 +1,10 @@
 using System.Collections.Generic;
+using System.Reactive.Subjects;
 
 using ClosedXML.Excel;
 
 using KeySwitchManager.Commons.Data;
 using KeySwitchManager.Domain.KeySwitches.Models;
-using KeySwitchManager.Infrastructures.Storage.KeySwitches;
 using KeySwitchManager.Infrastructures.Storage.Spreadsheet.ClosedXml.KeySwitches.Translators;
 using KeySwitchManager.Infrastructures.Storage.Spreadsheet.KeySwitches.Helpers;
 
@@ -14,7 +14,7 @@ namespace KeySwitchManager.Infrastructures.Storage.Spreadsheet.ClosedXml.KeySwit
 {
     public static class XlsxWorkBookWriter
     {
-        public static void Write( IReadOnlyCollection<KeySwitch> keySwitches, FilePath target, IStorageAccessListener listener )
+        public static void Write( IReadOnlyCollection<KeySwitch> keySwitches, FilePath target, Subject<string> loggingSubject )
         {
             using var template = new XLWorkbook(
                 StreamHelper.GetAssemblyResourceStream<ClosedXmlFileSaveRepository>( "Template.xlsx" )
@@ -30,7 +30,13 @@ namespace KeySwitchManager.Infrastructures.Storage.Spreadsheet.ClosedXml.KeySwit
                 removingSheet.Delete();
             }
 
-            listener.OnWriteAccess( keySwitches, target );
+            if( loggingSubject.HasObservers )
+            {
+                foreach( var k in keySwitches )
+                {
+                    loggingSubject.OnNext( k.ToString() );
+                }
+            }
 
             workbook.SaveAs( target.Path );
         }

@@ -6,16 +6,8 @@ namespace KeySwitchManager.Infrastructures.Storage.KeySwitches
 {
     public abstract class SaveOnlyKeySwitchFileRepository : KeySwitchFileRepository
     {
-        protected IStorageAccessListener StorageAccessListener { get; }
-
         protected SaveOnlyKeySwitchFileRepository( IPath dataPath ) :
-            this( dataPath, IStorageAccessListener.Null ) {}
-
-        protected SaveOnlyKeySwitchFileRepository( IPath dataPath, IStorageAccessListener listener ) :
-            base( dataPath, false )
-        {
-            StorageAccessListener = listener;
-        }
+            base( dataPath, false ) {}
 
         public override void Load()
             => throw new NotSupportedException(

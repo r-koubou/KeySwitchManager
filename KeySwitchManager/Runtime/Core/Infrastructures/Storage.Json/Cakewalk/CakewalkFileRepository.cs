@@ -31,7 +31,7 @@ namespace KeySwitchManager.Infrastructures.Storage.Json.Cakewalk
                 );
 
                 using var stream = File.Create( outputFilePath.Path );
-                CakewalkFileWriter.Write( stream, x );
+                CakewalkFileWriter.Write( stream, x, LoggingSubject );
                 saved++;
             }
 
