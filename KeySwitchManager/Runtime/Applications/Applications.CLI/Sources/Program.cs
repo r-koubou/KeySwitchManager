@@ -14,7 +14,7 @@ namespace KeySwitchManager.Applications.CLI
             var types = new[]
             {
                 typeof(BatchMode.CommandOption),
-                typeof(Search.CommandOption),
+                typeof(Find.CommandOption),
                 typeof(Import.CommandOption),
                 typeof(Delete.CommandOption),
                 typeof(New.CommandOption),
@@ -27,7 +27,7 @@ namespace KeySwitchManager.Applications.CLI
 
             return Parser.Default.ParseArguments( args, types ).MapResult(
                 ( BatchMode.CommandOption option ) => new BatchMode().Execute( option ),
-                ( Search.CommandOption option ) => new Search().Execute( option ),
+                ( Find.CommandOption option ) => new Find().Execute( option ),
                 ( Import.CommandOption option ) => new Import().Execute( option ),
                 ( Delete.CommandOption option ) => new Delete().Execute( option ),
                 ( New.CommandOption option ) => new New().Execute( option ),

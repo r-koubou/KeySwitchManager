@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Text;
 
 using Application.Core.Views.LogView;
@@ -33,12 +34,10 @@ namespace Application.Core.Controllers.Find
                                       .ThenBy( x => x.InstrumentName.Value ) )
             {
                 sb.Clear();
-                sb.Append( k.DeveloperName ).Append( ", " )
-                  .Append( k.ProductName ).Append( ", " )
-                  .Append( k.InstrumentName );
-
+                sb.Append( k );
                 TextView.Append( sb.ToString() );
             }
+
             TextView.Append( "---------------------------------" );
             TextView.Append( $"{response.FoundCount} record(s) found" );
             TextView.Append( "Complete" );
