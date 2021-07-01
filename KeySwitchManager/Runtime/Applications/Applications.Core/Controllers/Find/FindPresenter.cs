@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using System.Linq;
+using System.Text;
 
 using Application.Core.Views.LogView;
 
@@ -26,18 +27,17 @@ namespace Application.Core.Controllers.Find
         public void Complete( FindResponse response )
         {
             var sb = new StringBuilder( 128 );
-            var i = 1;
 
-            foreach( var x in response.Result )
+            foreach( var k in response.Result.OrderBy( x => x.DeveloperName.Value )
+                                      .ThenBy( x=> x.ProductName.Value)
+                                      .ThenBy( x => x.InstrumentName.Value ) )
             {
                 sb.Clear();
-                sb.Append( $"[{i:D5}] " )
-                  .Append( x.DeveloperName ).Append( ", " )
-                  .Append( x.ProductName ).Append( ", " )
-                  .Append( x.InstrumentName );
+                sb.Append( k.DeveloperName ).Append( ", " )
+                  .Append( k.ProductName ).Append( ", " )
+                  .Append( k.InstrumentName );
 
                 TextView.Append( sb.ToString() );
-                i++;
             }
             TextView.Append( "---------------------------------" );
             TextView.Append( $"{response.FoundCount} record(s) found" );

@@ -1,4 +1,6 @@
-﻿using KeySwitchManager.Domain.KeySwitches.Models;
+﻿using System.Linq;
+
+using KeySwitchManager.Domain.KeySwitches.Models;
 using KeySwitchManager.Interactors.KeySwitches;
 using KeySwitchManager.UseCase.KeySwitches.Find;
 
@@ -46,6 +48,14 @@ namespace Application.Core.Controllers.Find
             var interactor = new FindInteractor( DatabaseRepository, Presenter );
             var request = new FindRequest( DeveloperName, ProductName, InstrumentName );
             var response = interactor.Execute( request );
+
+            foreach( var k in response.Result.OrderBy( x => x.DeveloperName.Value )
+                                      .ThenBy( x=> x.ProductName.Value)
+                                      .ThenBy( x => x.InstrumentName.Value ) )
+            {
+                Presenter.Present( k.ToString() );
+            }
+
             Presenter.Complete( response );
         }
     }

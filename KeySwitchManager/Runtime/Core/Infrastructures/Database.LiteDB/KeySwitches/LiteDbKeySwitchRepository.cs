@@ -139,9 +139,6 @@ namespace KeySwitchManager.Infrastructures.Database.LiteDB.KeySwitches
 
             foreach( var item in query )
             {
-                var keySwitch = translator.Translate( item );
-
-                LoggingSubject.OnNext( keySwitch.ToString() );
                 result.Add( translator.Translate( item ) );
             }
 
