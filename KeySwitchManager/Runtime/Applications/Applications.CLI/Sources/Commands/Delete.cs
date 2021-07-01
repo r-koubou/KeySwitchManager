@@ -1,17 +1,13 @@
-using System;
+using Application.Core.Controllers.Delete;
+using Application.Core.Views.LogView;
 
 using CommandLine;
-
-using KeySwitchManager.Commons.Data;
-using KeySwitchManager.Infrastructures.Database.LiteDB.KeySwitches;
-using KeySwitchManager.Interactors.KeySwitches;
-using KeySwitchManager.UseCase.KeySwitches.Delete;
 
 namespace KeySwitchManager.Applications.CLI.Commands
 {
     public class Delete : ICommand
     {
-        [Verb( "delete", false, HelpText = "delete records from database")]
+        [Verb( "delete", HelpText = "delete records from database")]
         public class CommandOption : ICommandOption
         {
             [Option( 'd', "developer", Required = true )]
@@ -30,22 +26,13 @@ namespace KeySwitchManager.Applications.CLI.Commands
         public int Execute( ICommandOption opt )
         {
             var option = (CommandOption)opt;
+            var logView = new ConsoleLogView();
 
-            using var repository = new LiteDbKeySwitchRepository( new FilePath( option.DatabasePath ) );
-            var interactor = new DeleteInteractor( repository );
-            var request = new DeleteRequest( option.Developer, option.Product, option.Instrument );
+            logView.Append( $"Developer=\"{option.Developer}\", Product=\"{option.Product}\", Instrument=\"{option.Instrument}\"" );
 
-            Console.WriteLine( $"Developer=\"{option.Developer}\", Product=\"{option.Product}\", Instrument=\"{option.Instrument}\"" );
+            using var controller = DeleteControllerFactory.Create( option.DatabasePath, option.Developer, option.Product, option.Instrument, logView );
+            controller.Execute();
 
-            var response = interactor.Execute( request );
-
-            if( response.RemovedCount > 0 )
-            {
-                Console.WriteLine( $"{response.RemovedCount} records deleted from database({option.DatabasePath})" );
-                return 0;
-            }
-
-            Console.WriteLine( "records not found" );
             return 0;
         }
     }

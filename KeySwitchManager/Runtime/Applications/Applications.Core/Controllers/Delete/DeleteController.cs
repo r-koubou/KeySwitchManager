@@ -46,6 +46,16 @@ namespace Application.Core.Controllers.Delete
             var interactor = new DeleteInteractor( DatabaseRepository, Presenter );
             var request = new DeleteRequest( DeveloperName, ProductName, InstrumentName );
             var response = interactor.Execute( request );
+
+            if( response.RemovedCount > 0 )
+            {
+                Presenter.Present( $"{response.RemovedCount} records deleted from database" );
+            }
+            else
+            {
+                Presenter.Present( "records not found" );
+            }
+
             Presenter.Complete( response );
         }
     }
