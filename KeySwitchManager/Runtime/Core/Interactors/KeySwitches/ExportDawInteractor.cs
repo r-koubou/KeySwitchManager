@@ -1,3 +1,5 @@
+using System.Linq;
+
 using KeySwitchManager.Domain.KeySwitches.Helpers;
 using KeySwitchManager.Domain.KeySwitches.Models;
 using KeySwitchManager.UseCase.KeySwitches.Export.Daw;
@@ -39,6 +41,12 @@ namespace KeySwitchManager.Interactors.KeySwitches
                 productName,
                 instrumentName
             );
+
+            if( !queryResult.Any() )
+            {
+                Presenter.Present( "No keyswitch(es) found" );
+                return new ExportDawResponse( false, queryResult );
+            }
 
             foreach( var x in queryResult )
             {

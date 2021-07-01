@@ -1,8 +1,6 @@
-using CommandLine;
+using Application.Core.Controllers.Export;
 
-using KeySwitchManager.Commons.Data;
-using KeySwitchManager.Domain.KeySwitches.Models;
-using KeySwitchManager.Infrastructures.Storage.Json.Cakewalk;
+using CommandLine;
 
 namespace KeySwitchManager.Applications.CLI.Commands
 {
@@ -12,7 +10,6 @@ namespace KeySwitchManager.Applications.CLI.Commands
         public new class CommandOption : ExportDawArticulation.CommandOption
         {}
 
-        public override IKeySwitchRepository CreateOutputRepository( DirectoryPath outputDirectory )
-            => new CakewalkFileRepository( outputDirectory );
+        protected override ExportSupportedFormat SupportedFormat => ExportSupportedFormat.Cakewalk;
     }
 }

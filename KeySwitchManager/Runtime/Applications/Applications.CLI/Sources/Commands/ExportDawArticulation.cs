@@ -1,14 +1,12 @@
-using System;
-using System.Linq;
+using System.IO;
+
+using Application.Core.Controllers.Export;
+using Application.Core.Views.LogView;
 
 using CommandLine;
 
 using KeySwitchManager.Commons.Data;
-using KeySwitchManager.Domain.KeySwitches.Helpers;
 using KeySwitchManager.Domain.KeySwitches.Models;
-using KeySwitchManager.Infrastructures.Database.LiteDB.KeySwitches;
-using KeySwitchManager.Interactors.KeySwitches;
-using KeySwitchManager.UseCase.KeySwitches.Export.Daw;
 
 namespace KeySwitchManager.Applications.CLI.Commands
 {
@@ -19,13 +17,13 @@ namespace KeySwitchManager.Applications.CLI.Commands
             [Option( 'q', "quiet" )]
             public bool Quiet { get; set; } = false;
 
-            [Option( 'd', "developer" )]
+            [Option( 'd', "developer", Default = "*")]
             public string Developer { get; set; } = string.Empty;
 
-            [Option( 'p', "product" )]
+            [Option( 'p', "product", Default = "*")]
             public string Product { get; set; } = string.Empty;
 
-            [Option( 'i', "instrument" )]
+            [Option( 'i', "instrument", Default = "*")]
             public string Instrument { get; set; } = string.Empty;
 
             [Option( 'f', "database", Required = true )]
@@ -38,35 +36,23 @@ namespace KeySwitchManager.Applications.CLI.Commands
         public virtual int Execute( ICommandOption opt )
         {
             var option = (CommandOption)opt;
+            var logView = new ConsoleLogView();
 
-            using var repository = new LiteDbKeySwitchRepository( new FilePath( option.DatabasePath ) );
+            using var controller = ExportControllerFactory.Create(
+                option.Developer,
+                option.Product,
+                option.Instrument,
+                option.DatabasePath,
+                Path.Combine( option.OutputDirectory, SupportedFormat.ToString() ),
+                SupportedFormat,
+                logView
+            );
 
-            var keySwitches = SearchHelper.Search( repository, option.Developer, option.Product, option.Instrument );
+            controller.Execute();
 
-            if( !keySwitches.Any() )
-            {
-                if( !option.Quiet )
-                {
-                    Console.WriteLine( "records not found" );
-                }
-
-                return 0;
-            }
-
-            using var outputRepository = CreateOutputRepository( new DirectoryPath( option.OutputDirectory ) );
-
-            IExportDawPresenter presenter = option.Quiet ?
-                new IExportDawPresenter.Null() :
-                new IExportDawPresenter.Console();
-
-            var interactor = new ExportDawInteractor( repository, outputRepository, presenter );
-
-            var request = new ExportDawRequest( option.Developer, option.Product, option.Instrument );
-            var response = interactor.Execute( request );
-
-            return response.Result ? 0 : 1;
+            return 0;
         }
 
-        public abstract IKeySwitchRepository CreateOutputRepository( DirectoryPath outputDirectory );
+        protected abstract ExportSupportedFormat SupportedFormat { get; }
     }
 }
