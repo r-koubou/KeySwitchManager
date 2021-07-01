@@ -10,7 +10,7 @@ namespace KeySwitchManager.Applications.CLI.Commands
         [Verb( "find", HelpText = "search a data from database by given parameter")]
         public class CommandOption : ICommandOption
         {
-            [Option( 'd', "developer", Required = true)]
+            [Option( 'd', "developer", Default = "*" )]
             public string Developer { get; set; } = string.Empty;
 
             [Option( 'p', "product", Default = "*" )]
