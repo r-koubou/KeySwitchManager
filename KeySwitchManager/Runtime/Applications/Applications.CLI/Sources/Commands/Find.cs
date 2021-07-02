@@ -3,6 +3,8 @@ using Application.Core.Views.LogView;
 
 using CommandLine;
 
+using KeySwitchManager.Domain.KeySwitches.Models.Values;
+
 namespace KeySwitchManager.Applications.CLI.Commands
 {
     public class Find
@@ -10,14 +12,14 @@ namespace KeySwitchManager.Applications.CLI.Commands
         [Verb( "find", HelpText = "search a data from database by given parameter")]
         public class CommandOption : ICommandOption
         {
-            [Option( 'd', "developer", Default = "*" )]
-            public string Developer { get; set; } = string.Empty;
+            [Option( 'd', "developer" )]
+            public string Developer { get; set; } = DeveloperName.Any.Value;
 
-            [Option( 'p', "product", Default = "*" )]
-            public string Product { get; set; } = string.Empty;
+            [Option( 'p', "product")]
+            public string Product { get; set; } = ProductName.Any.Value;
 
-            [Option( 'i', "instrument", Default = "*" )]
-            public string Instrument { get; set; } = string.Empty;
+            [Option( 'i', "instrument" )]
+            public string Instrument { get; set; } = InstrumentName.Any.Value;
 
             [Option( 'f', "database", Required = true )]
             public string DatabasePath { get; set; } = string.Empty;

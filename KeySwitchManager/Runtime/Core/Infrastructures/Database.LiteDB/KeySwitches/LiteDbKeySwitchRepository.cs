@@ -162,9 +162,9 @@ namespace KeySwitchManager.Infrastructures.Database.LiteDB.KeySwitches
             return CreateEntities(
                 KeySwitchTable.Find(
                     x =>
-                        ( d == "*" || x.DeveloperName.Contains( d ) ) &&
-                        ( p == "*" || x.ProductName.Contains( p ) ) &&
-                        ( i == "*" || x.InstrumentName.Contains( i ) )
+                        ( d == DeveloperName.Any.Value  || x.DeveloperName.Contains( d ) ) &&
+                        ( p == ProductName.Any.Value    || x.ProductName.Contains( p ) )   &&
+                        ( i == InstrumentName.Any.Value || x.InstrumentName.Contains( i ) )
                 )
             );
         }
@@ -177,8 +177,8 @@ namespace KeySwitchManager.Infrastructures.Database.LiteDB.KeySwitches
             return CreateEntities(
                 KeySwitchTable.Find(
                     x =>
-                        ( d == "*" || x.DeveloperName.Contains( d ) ) &&
-                        ( p == "*" || x.ProductName.Contains( p ) )
+                        ( d == DeveloperName.Any.Value || x.DeveloperName.Contains( d ) ) &&
+                        ( p == ProductName.Any.Value   || x.ProductName.Contains( p ) )
                 )
             );
         }
@@ -187,7 +187,7 @@ namespace KeySwitchManager.Infrastructures.Database.LiteDB.KeySwitches
         {
             var d = developerName.Value;
 
-            if( d == "*" )
+            if( d == DeveloperName.Any.Value )
             {
                 return FindAll();
             }
@@ -204,7 +204,7 @@ namespace KeySwitchManager.Infrastructures.Database.LiteDB.KeySwitches
         {
             var p = productName.Value;
 
-            if( p == "*" )
+            if( p == ProductName.Any.Value )
             {
                 return FindAll();
             }

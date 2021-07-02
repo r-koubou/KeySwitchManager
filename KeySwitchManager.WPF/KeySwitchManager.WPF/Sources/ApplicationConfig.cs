@@ -1,9 +1,10 @@
-﻿using System;
-using System.IO;
+﻿using System.IO;
 using System.Reflection;
 using System.Text;
 
 using Application.Core.Controllers.Export;
+
+using KeySwitchManager.Domain.KeySwitches.Models.Values;
 
 using YamlDotNet.Serialization;
 
@@ -13,9 +14,9 @@ namespace KeySwitchManager.WPF
     {
         public string ImportDatabasePath { get; set; } = string.Empty;
         public string ExportDatabasePath { get; set; } = string.Empty;
-        public string DeveloperName { get; set; } = "*";
-        public string ProductName { get; set; } = "*";
-        public string InstrumentName { get; set; } = "*";
+        public string FindDeveloperName { get; set; } = DeveloperName.Any.Value;
+        public string FindProductName { get; set; } = ProductName.Any.Value;
+        public string FindInstrumentName { get; set; } = InstrumentName.Any.Value;
         public string ExportDirectory { get; set; } = string.Empty;
         public string ExportFormat { get; set; } = ExportSupportedFormat.Xlsx.ToString();
     }

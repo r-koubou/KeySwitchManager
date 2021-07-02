@@ -5,8 +5,7 @@ using Application.Core.Views.LogView;
 
 using CommandLine;
 
-using KeySwitchManager.Commons.Data;
-using KeySwitchManager.Domain.KeySwitches.Models;
+using KeySwitchManager.Domain.KeySwitches.Models.Values;
 
 namespace KeySwitchManager.Applications.CLI.Commands
 {
@@ -17,14 +16,14 @@ namespace KeySwitchManager.Applications.CLI.Commands
             [Option( 'q', "quiet" )]
             public bool Quiet { get; set; } = false;
 
-            [Option( 'd', "developer", Default = "*")]
-            public string Developer { get; set; } = string.Empty;
+            [Option( 'd', "developer")]
+            public string Developer { get; set; } = DeveloperName.Any.Value;
 
-            [Option( 'p', "product", Default = "*")]
-            public string Product { get; set; } = string.Empty;
+            [Option( 'p', "product")]
+            public string Product { get; set; } = ProductName.Any.Value;
 
-            [Option( 'i', "instrument", Default = "*")]
-            public string Instrument { get; set; } = string.Empty;
+            [Option( 'i', "instrument")]
+            public string Instrument { get; set; } = InstrumentName.Any.Value;
 
             [Option( 'f', "database", Required = true )]
             public string DatabasePath { get; set; } = string.Empty;

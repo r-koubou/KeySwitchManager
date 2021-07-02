@@ -1,6 +1,4 @@
-﻿using System.Linq;
-
-using KeySwitchManager.Domain.KeySwitches.Models;
+﻿using KeySwitchManager.Domain.KeySwitches.Models;
 using KeySwitchManager.Interactors.KeySwitches;
 using KeySwitchManager.UseCase.KeySwitches.Find;
 

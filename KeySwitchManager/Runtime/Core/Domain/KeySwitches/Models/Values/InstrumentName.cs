@@ -7,5 +7,8 @@ namespace KeySwitchManager.Domain.KeySwitches.Models.Values
     /// </summary>
     [ValueObject( typeof( string ) )]
     [NotEmpty]
-    public partial class InstrumentName {}
+    public partial class InstrumentName
+    {
+        public static readonly InstrumentName Any = new InstrumentName( "*" );
+    }
 }
