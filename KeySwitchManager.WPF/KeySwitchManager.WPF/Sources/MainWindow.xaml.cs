@@ -266,9 +266,6 @@ namespace KeySwitchManager.WPF
                     var config = ApplicationConfig.Load();
                     ImportDatabaseFileText.Text        = config.ImportDatabasePath;
                     FindDatabaseFileText.Text          = config.ExportDatabasePath;
-                    FindDeveloperText.Text             = config.FindDeveloperName;
-                    FindProductText.Text               = config.FindProductName;
-                    FindInstrumentText.Text            = config.FindInstrumentName;
                     ExportDirectoryText.Text           = config.ExportDirectory;
                     ExportFormatCombobox.SelectedIndex = (int)EnumHelper.Parse( config.ExportFormat, ExportSupportedFormat.Xlsx );
                 }
@@ -282,9 +279,6 @@ namespace KeySwitchManager.WPF
                     {
                         ImportDatabasePath = ImportDatabaseFileText.Text,
                         ExportDatabasePath = FindDatabaseFileText.Text,
-                        FindDeveloperName      = FindDeveloperText.Text,
-                        FindProductName        = FindProductText.Text,
-                        FindInstrumentName     = FindInstrumentText.Text,
                         ExportDirectory    = ExportDirectoryText.Text,
                         ExportFormat       = ExportSupportedFormatList[ ExportFormatCombobox.SelectedIndex ].ToString()
                     };
