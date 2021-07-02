@@ -49,10 +49,6 @@ namespace KeySwitchManager.WPF
         {
             try
             {
-                var appDir = Path.GetDirectoryName(
-                    Assembly.GetExecutingAssembly().Location
-                );
-
                 var sb = new StringBuilder();
                 using var writer = new StringWriter( sb );
 
