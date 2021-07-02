@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.IO;
 using System.Threading.Tasks;
 using System.Windows;
@@ -15,6 +16,7 @@ using KeySwitchManager.WPF.WpfView;
 using Microsoft.Win32;
 using Microsoft.WindowsAPICodePack.Dialogs;
 
+using RkHelper.Enumeration;
 using RkHelper.Text;
 
 using MSAPI = Microsoft.WindowsAPICodePack;
@@ -45,6 +47,7 @@ namespace KeySwitchManager.WPF
         private void InitializeCustomComponent()
         {
             ExportFormatCombobox.ItemsSource = ExportSupportedFormatList;
+            LoadApplicationConfig();
         }
 
         #region Executions
@@ -192,6 +195,11 @@ namespace KeySwitchManager.WPF
                 return;
             }
 
+            if( !File.Exists( databasePath ) )
+            {
+                return;
+            }
+
             await ExecuteControllerAsync( () => FindControllerFactory.Create( databasePath, developer, product, instrument, LogTextView ) );
         }
 
@@ -219,6 +227,11 @@ namespace KeySwitchManager.WPF
                 return;
             }
 
+            if( !File.Exists( databasePath ) )
+            {
+                return;
+            }
+
             // Append a sub folder by format name
             output = Path.Combine( output, format.ToString() );
 
@@ -239,5 +252,46 @@ namespace KeySwitchManager.WPF
         #endregion
         #endregion
 
+        #region Window Event Handling
+        protected override void OnClosing( CancelEventArgs e )
+        {
+            SaveApplicationConfig();
+            base.OnClosing( e );
+        }
+        #endregion
+
+        private void LoadApplicationConfig()
+        {
+            Dispatcher.Invoke( () => {
+                    var config = ApplicationConfig.Load();
+                    ImportDatabaseFileText.Text        = config.ImportDatabasePath;
+                    FindDatabaseFileText.Text          = config.ExportDatabasePath;
+                    FindDeveloperText.Text             = config.DeveloperName;
+                    FindProductText.Text               = config.ProductName;
+                    FindInstrumentText.Text            = config.InstrumentName;
+                    ExportDirectoryText.Text           = config.ExportDirectory;
+                    ExportFormatCombobox.SelectedIndex = (int)EnumHelper.Parse( config.ExportFormat, ExportSupportedFormat.Xlsx );
+                }
+            );
+        }
+
+        private void SaveApplicationConfig()
+        {
+            Dispatcher.Invoke( () => {
+                    var config = new ApplicationConfigModel
+                    {
+                        ImportDatabasePath = ImportDatabaseFileText.Text,
+                        ExportDatabasePath = FindDatabaseFileText.Text,
+                        DeveloperName      = FindDeveloperText.Text,
+                        ProductName        = FindProductText.Text,
+                        InstrumentName     = FindInstrumentText.Text,
+                        ExportDirectory    = ExportDirectoryText.Text,
+                        ExportFormat       = ExportSupportedFormatList[ ExportFormatCombobox.SelectedIndex ].ToString()
+                    };
+
+                    ApplicationConfig.Save( config );
+                }
+            );
+        }
     }
 }
