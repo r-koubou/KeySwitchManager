@@ -21,7 +21,7 @@ namespace KeySwitchManager.WPF
         private static string ApplicationDirectory =>
             Path.GetDirectoryName(
                 Assembly.GetExecutingAssembly().Location
-            );
+            )!;
 
         private static string ConfigFilePath =>
             Path.Combine( ApplicationDirectory, "config.yaml" );

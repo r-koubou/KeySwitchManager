@@ -4,8 +4,17 @@
         <OutputType>WinExe</OutputType>
         <TargetFramework>net5.0-windows</TargetFramework>
         <UseWPF>true</UseWPF>
+        <AssemblyName>KeySwitchManager</AssemblyName>
+        <Product>KeySwitchManager WPF Application</Product>
+        <Description>KeySwitchManager WPF Application</Description>
+        <Version>0.2.0</Version>
+        <Nullable>enable</Nullable>        
     </PropertyGroup>
 
+    <ItemGroup>
+        <ApplicationDefinition Include="Sources\App.xaml" />
+    </ItemGroup>
+    
     <ItemGroup>
       <ProjectReference Include="..\..\KeySwitchManager\Runtime\Applications\Applications.Core\Applications.Core.csproj" />
     </ItemGroup>
@@ -15,5 +24,8 @@
       <PackageReference Include="RkHelper" Version="0.0.6" />
       <PackageReference Include="YamlDotNet" Version="11.2.1" />
     </ItemGroup>
+
+    <!-- Output assenbly version to text file for including on deploy by msbuild script. -->
+    <Import Project="GenerateVersion.msbuild" />
 
 </Project>
