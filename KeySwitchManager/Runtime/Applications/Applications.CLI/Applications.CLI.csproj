@@ -4,7 +4,7 @@
         <!-- Assembly / Common -->
         <OutputType>Exe</OutputType>
         <TargetFramework>net5.0</TargetFramework>
-        <AssemblyName>KeySwitchManager.Applications.CLI</AssemblyName>
+        <AssemblyName>KeySwitchManager</AssemblyName>
         <RootNamespace>KeySwitchManager.Applications.CLI</RootNamespace>
         <Company>R-Koubou</Company>
         <Product>KeySwitchManager CLI Application</Product>

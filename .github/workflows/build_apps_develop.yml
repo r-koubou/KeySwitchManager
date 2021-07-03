@@ -1,9 +1,12 @@
-name: "Build Apps (Release)"
+name: "Build Apps (Development)"
 on:
   push:
+    branches:
+      - "develop"
+      - "feature/*"
+      - "refactor/*"
     tags:
-      - ver-*.*.*
-      - ver-[0-9]+
+      - "!#*"
 
 jobs:
 
@@ -18,23 +21,19 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v2
 
-    - name: Collect Tag value
-      run: echo "VER_TAG=${GITHUB_REF#refs/tags/ver-}" >> $GITHUB_ENV
-      shell: bash
-
     - name: Install SDK
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: '5.0.100'
 
     - name: CLI Build
-      run: dotnet msbuild /nologo /t:Archive /p:Configuration=Release /p:PublishDir=${{ github.workspace }}/publish %ProjectFile%
+      run: dotnet msbuild /nologo /t:Archive /p:Configuration=Debug /p:PublishDir=${{ github.workspace }}/publish %ProjectFile%
       shell: cmd
       env:
         ProjectFile: KeySwitchManager/Runtime/Applications/Applications.CLI/publish.msbuild
 
     - name: WPF Build
-      run: dotnet msbuild /nologo /t:Archive /p:Configuration=Release /p:PublishDir=${{ github.workspace }}/publish %ProjectFile%
+      run: dotnet msbuild /nologo /t:Archive /p:Configuration=Debug /p:PublishDir=${{ github.workspace }}/publish %ProjectFile%
       shell: cmd
       env:
         ProjectFile: KeySwitchManager.Gui/KeySwitchManager.WPF/publish.msbuild
@@ -42,11 +41,11 @@ jobs:
     - name: Artifact CLI
       uses: actions/upload-artifact@v2
       with:
-        name: KeySwitchManager.CLI-${{ env.VER_TAG }}
+        name: KeySwitchManager.CLI-dev
         path: ${{ github.workspace }}/publish/KeySwitchManager.CLI*/
 
     - name: Artifact WPF
       uses: actions/upload-artifact@v2
       with:
-        name: KeySwitchManager.WPF-${{ env.VER_TAG }}
+        name: KeySwitchManager.WPF-dev
         path: ${{ github.workspace }}/publish/KeySwitchManager.WPF*/
