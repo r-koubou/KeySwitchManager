@@ -126,6 +126,28 @@ namespace KeySwitchManager.WPF
 
             return string.Empty;
         }
+
+        private static void HandleDnDFilePreviewDragOver( DragEventArgs e )
+        {
+            e.Effects = DragDropEffects.None;
+
+            if( e.Data.GetDataPresent( DataFormats.FileDrop, true ) )
+            {
+                e.Effects = DragDropEffects.Copy;
+            }
+
+            e.Handled = true;
+        }
+
+        private static void HandleDnDFileDrop( DragEventArgs e, Action<List<string>> resultPathList )
+        {
+            if( e.Data.GetData( DataFormats.FileDrop ) is not string[] files )
+            {
+                return;
+            }
+
+            resultPathList( new List<string>( files ) );
+        }
         #endregion
 
         #region UI Event handlers
@@ -249,6 +271,44 @@ namespace KeySwitchManager.WPF
         }
 
 
+        #endregion
+
+        #region Textbox D&D
+        private void OnImportDatabaseFileTextPreviewDragOver( object sender, DragEventArgs e )
+        {
+            HandleDnDFilePreviewDragOver( e );
+        }
+
+        private void OnImportDatabaseFileTextDrop( object sender, DragEventArgs e )
+        {
+            HandleDnDFileDrop( e, ( files ) => {
+                ImportDatabaseFileText.Text = files[ 0 ];
+            });
+        }
+
+        private void OnImportFileTextPreviewDragOver( object sender, DragEventArgs e )
+        {
+            HandleDnDFilePreviewDragOver( e );
+        }
+
+        private void OnImportFileTextDrop( object sender, DragEventArgs e )
+        {
+            HandleDnDFileDrop( e, ( files ) => {
+                ImportFileText.Text = files[ 0 ];
+            });
+        }
+
+        private void OnFindDatabaseFileTextPreviewDragOver( object sender, DragEventArgs e )
+        {
+            HandleDnDFilePreviewDragOver( e );
+        }
+
+        private void OnFindDatabaseFileTextDrop( object sender, DragEventArgs e )
+        {
+            HandleDnDFileDrop( e, ( files ) => {
+                FindDatabaseFileText.Text = files[ 0 ];
+            });
+        }
         #endregion
         #endregion
 
