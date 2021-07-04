@@ -2,7 +2,7 @@
 
     <PropertyGroup>
         <ProjectName>KeySwitchManager.CLI</ProjectName>
-        <ProjectFile>Applications.CLI.csproj</ProjectFile>
+        <ProjectFile>KeySwitchManager.CLI.csproj</ProjectFile>
         <BuildDate>$([System.DateTime]::Now.ToString("yyyyMMdd"))</BuildDate>
     </PropertyGroup>
 
@@ -43,25 +43,30 @@
 
         <!-- Build for Specific OS native code -->
         <PropertyGroup Condition="$(ForDotNetCore) == 'false'">
-            <ProprtyArgs>
+            <PropertyArgs>
                 OutDir=$(PublishWorkDir);PublishDir=$(PublishWorkDir);Configuration=$(Configuration);SelfContained=true;RuntimeIdentifier=$(RID)
-            </ProprtyArgs>
+            </PropertyArgs>
         </PropertyGroup>
         <!-- Build for .net Core code -->
         <PropertyGroup Condition="$(ForDotNetCore) == 'true'">
-            <ProprtyArgs>
+            <PropertyArgs>
                 OutDir=$(PublishWorkDir);PublishDir=$(PublishWorkDir);Configuration=$(Configuration)
-            </ProprtyArgs>
+            </PropertyArgs>
         </PropertyGroup>
 
         <MSBuild
                 Projects="$(ProjectFile)"
                 Targets="restore;publish"
-                Properties="$(ProprtyArgs)"/>
+                Properties="$(PropertyArgs)"/>
 
     </Target>
 
     <Target Name="Archive" DependsOnTargets="Build">
+
+        <Copy
+                SourceFiles="VERSION.md"
+                DestinationFolder="$(PublishWorkDir)"
+                ContinueOnError="true" />
 
         <ZipDirectory
                 Condition="'$(EnableArchive)'==true"
