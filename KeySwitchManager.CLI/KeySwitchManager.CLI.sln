@@ -2,7 +2,7 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KeySwitchManager.CLI", "KeySwitchManager.CLI.csproj", "{16288CF1-4C16-45AB-ADEB-43F10FBEA0AA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Applications.Core", "..\KeySwitchManager\Runtime\Applications.Core\Applications.Core.csproj", "{66C71A7A-E480-4516-BA21-6F712144D81B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Applications.Core", "..\KeySwitchManager\Sources\Runtime\Applications.Core\Applications.Core.csproj", "{66C71A7A-E480-4516-BA21-6F712144D81B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

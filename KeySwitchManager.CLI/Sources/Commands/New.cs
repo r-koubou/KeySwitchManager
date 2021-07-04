@@ -1,6 +1,6 @@
 using CommandLine;
-using KeySwitchManager.Core.Applications.Controllers.Create;
-using KeySwitchManager.Core.Applications.Views.LogView;
+using KeySwitchManager.Applications.Core.Controllers.Create;
+using KeySwitchManager.Applications.Core.Views.LogView;
 
 namespace KeySwitchManager.Applications.CLI.Commands
 {

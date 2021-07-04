@@ -5,11 +5,11 @@ using System.IO;
 using System.Threading.Tasks;
 using System.Windows;
 
-using KeySwitchManager.Core.Applications.Controllers;
-using KeySwitchManager.Core.Applications.Controllers.Create;
-using KeySwitchManager.Core.Applications.Controllers.Export;
-using KeySwitchManager.Core.Applications.Controllers.Find;
-using KeySwitchManager.Core.Applications.Controllers.Import;
+using KeySwitchManager.Applications.Core.Controllers;
+using KeySwitchManager.Applications.Core.Controllers.Create;
+using KeySwitchManager.Applications.Core.Controllers.Export;
+using KeySwitchManager.Applications.Core.Controllers.Find;
+using KeySwitchManager.Applications.Core.Controllers.Import;
 using KeySwitchManager.WPF.WpfView;
 
 using Microsoft.Win32;
