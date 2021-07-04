@@ -8,15 +8,15 @@
         <Product>KeySwitchManager WPF Application</Product>
         <Description>KeySwitchManager WPF Application</Description>
         <Version>0.2.0</Version>
-        <Nullable>enable</Nullable>        
+        <Nullable>enable</Nullable>
     </PropertyGroup>
 
     <ItemGroup>
         <ApplicationDefinition Include="Sources\App.xaml" />
     </ItemGroup>
-    
+
     <ItemGroup>
-      <ProjectReference Include="..\..\KeySwitchManager\Runtime\Applications\Applications.Core\Applications.Core.csproj" />
+      <ProjectReference Include="..\..\KeySwitchManager\Runtime\Applications.Core\Applications.Core.csproj" />
     </ItemGroup>
 
     <ItemGroup>

@@ -1,4 +1,4 @@
-KeySwitchManager WPF Application
+KeySwitchManager CLI Application
 ==============================
 
 ## Assembly Version
@@ -7,4 +7,4 @@ KeySwitchManager WPF Application
 
 ## Build At
 
-2021-07-05 03:14:58 +09:00
+2021-07-05 03:13:25 +09:00
