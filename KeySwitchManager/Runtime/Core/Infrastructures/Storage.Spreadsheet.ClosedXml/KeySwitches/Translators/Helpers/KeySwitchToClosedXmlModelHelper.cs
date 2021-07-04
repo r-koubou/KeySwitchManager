@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 using ClosedXML.Excel;
 
@@ -36,11 +37,8 @@ namespace KeySwitchManager.Infrastructures.Storage.Spreadsheet.ClosedXml.KeySwit
 
             var worksheetName = keySwitch.InstrumentName.Value;
 
-            // xlsx worksheet name length must be <= 31
-            if( worksheetName.Length > 31 )
-            {
-                worksheetName = worksheetName.Substring( 0, 31 );
-            }
+            // if sheet name is already created, numbering to workSheetName
+            worksheetName = FormatWorksheetName( book, worksheetName );
 
             var newWorksheet = book.Worksheet( SpreadsheetConstants.TemplateSheetName )
                                    .CopyTo( worksheetName, book.Worksheets.Count - 1 );
@@ -110,6 +108,41 @@ namespace KeySwitchManager.Infrastructures.Storage.Spreadsheet.ClosedXml.KeySwit
             // }
 
             #endregion
+        }
+
+        private static string FormatWorksheetName( IXLWorkbook book, string worksheetName )
+        {
+            var originalSheetName = worksheetName;
+
+            // xlsx worksheet name length must be <= 31 - 5 (5: '(###)'.Length for numbering if sheet name is duplicated
+            if( worksheetName.Length > 26 )
+            {
+                worksheetName = worksheetName.Substring( 0, 26 );
+            }
+
+            // if sheet name is already created, numbering to workSheetName
+            var duplicateIndex = 1;
+            const int duplicationLimit = 999;
+
+            while( true )
+            {
+                if( duplicateIndex > duplicationLimit )
+                {
+                    // Too many duplicated sheet names
+                    throw new NoMoreDuplicateSheetNameException( worksheetName );
+                }
+
+                if( book.Worksheets.All( x => x.Name != worksheetName ) )
+                {
+                    break;
+                }
+
+                worksheetName = $"{originalSheetName}({duplicateIndex})";
+                duplicateIndex++;
+
+            }
+
+            return worksheetName;
         }
 
         private static int TranslateArticulation( KeySwitch keySwitch, Articulation articulation, IXLWorksheet sheet, int row )
