@@ -2,9 +2,9 @@
 /shelf/
 /workspace.xml
 # Rider ignored files
-/contentModel.xml
-/projectSettingsUpdater.xml
-/.idea.KeySwitchManager.CLI.iml
 /modules.xml
+/projectSettingsUpdater.xml
+/contentModel.xml
+/.idea.KeySwitchManager.CLI.iml
 # エディターベースの HTTP クライアントリクエスト
 /httpRequests/

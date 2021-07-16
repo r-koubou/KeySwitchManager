@@ -1,10 +1,7 @@
 using CommandLine;
+using KeySwitchManager.Applications.Core.Controllers.Export;
 
-using KeySwitchManager.Commons.Data;
-using KeySwitchManager.Domain.KeySwitches.Models;
-using KeySwitchManager.Infrastructure.Storage.Xml.Cubase;
-
-namespace KeySwitchManager.CLI.Commands
+namespace KeySwitchManager.Applications.CLI.Commands
 {
     public class ExportDawCubaseArticulation : ExportDawArticulation
     {
@@ -12,7 +9,6 @@ namespace KeySwitchManager.CLI.Commands
         public new class CommandOption : ExportDawArticulation.CommandOption
         {}
 
-        public override IKeySwitchRepository CreateOutputRepository( DirectoryPath outputDirectory )
-            => new CubaseFileRepository( outputDirectory );
+        protected override ExportSupportedFormat SupportedFormat => ExportSupportedFormat.Cubase;
     }
 }

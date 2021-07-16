@@ -6,7 +6,7 @@ using System.Text;
 
 using CommandLine;
 
-namespace KeySwitchManager.CLI.Commands
+namespace KeySwitchManager.Applications.CLI.Commands
 {
     public class BatchMode : ICommand
     {

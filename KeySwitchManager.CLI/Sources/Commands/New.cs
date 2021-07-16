@@ -1,33 +1,26 @@
-using System;
-
 using CommandLine;
+using KeySwitchManager.Applications.Core.Controllers.Create;
+using KeySwitchManager.Applications.Core.Views.LogView;
 
-using KeySwitchManager.Commons.Data;
-using KeySwitchManager.Interactor.KeySwitches;
-using KeySwitchManager.Storage.Yaml.KeySwitches;
-
-namespace KeySwitchManager.CLI.Commands
+namespace KeySwitchManager.Applications.CLI.Commands
 {
     public class New : ICommand
     {
-        [Verb( "new", HelpText = "export a template generic yaml to file" )]
+        [Verb( "new", HelpText = "export a template file" )]
         public class CommandOption : ICommandOption
         {
-            [Value( index: 0, MetaName = "output", HelpText = "Output path for template file", Default = "(ProductName).yaml" )]
+            [Value( index: 0, MetaName = "output", HelpText = "Output path for template file (*.yaml or *.xlsx)", Default = "(ProductName).yaml" )]
             public string OutputPath { get; set; } = string.Empty;
         }
 
         public int Execute( ICommandOption opt )
         {
             var option = (CommandOption)opt;
-            var outputPath = option.OutputPath;
+            var logView = new ConsoleLogView();
 
-            using var outputRepository = new YamlKeySwitchFileRepository( new FilePath( outputPath ), false );
-
-            Console.WriteLine( $"generating keyswitch template to {outputPath}" );
-
-            var interactor = new TemplateKeySwitchCreateInteractor( outputRepository );
-            _ = interactor.Execute();
+            using var controller = CreateControllerFactory.Create( option.OutputPath, logView );
+            logView.Append( $"generating keyswitch template to {option.OutputPath}" );
+            controller.Execute();
 
             return 0;
         }
