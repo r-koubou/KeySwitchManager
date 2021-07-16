@@ -2,18 +2,23 @@
 
 # KeySwitchManager
 
-KeySwitchManager is a tool and librarian that specializes in creating keyswitch definition files for multiple DAWs, allowing keyswitch information to be edited in text and spreadsheets, and managed in local database files.
+KeySwitchManager is a tool that specializes in creating keyswitch definition files for multiple DAWs, allowing keyswitch information to be edited in text and spreadsheets, and managed in local database files.
 
-Go to the wiki for usage and more information.
+Usage and more information.
 
-- [Wiki](https://github.com/r-koubou/KeySwitchManager/wiki)
+- [Documentation](https://keyswitchmanager.readthedocs.io/)
 
 
-## Supported DAWs
 
-- Cubase (Pro), Nuendo
-- Studio One 5.2 (or later)
-- Cakewalk
+## Japanese
+
+KeySwitchManager は複数のDAW用キースイッチ定義ファイル作成に特化した、キースイッチ情報をテキストやスプレッドシートで編集、ローカルデータベースファイルで管理可能なツール。
+
+使い方など、詳しい情報はこちら
+
+- [ドキュメント](https://ja-keyswitchmanager.readthedocs.io/)
+
+
 
 ## License
 
