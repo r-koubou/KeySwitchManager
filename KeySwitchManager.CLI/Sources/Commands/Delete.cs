@@ -1,26 +1,21 @@
-using System;
-
 using CommandLine;
+using KeySwitchManager.Applications.Core.Controllers.Delete;
+using KeySwitchManager.Applications.Core.Views.LogView;
 
-using KeySwitchManager.Commons.Data;
-using KeySwitchManager.Infrastructure.Database.LiteDB.KeySwitches;
-using KeySwitchManager.Interactor.KeySwitches;
-using KeySwitchManager.UseCase.KeySwitches.Delete;
-
-namespace KeySwitchManager.CLI.Commands
+namespace KeySwitchManager.Applications.CLI.Commands
 {
     public class Delete : ICommand
     {
-        [Verb( "delete", false, HelpText = "delete records from database")]
+        [Verb( "delete", HelpText = "delete records from database" )]
         public class CommandOption : ICommandOption
         {
             [Option( 'd', "developer", Required = true )]
             public string Developer { get; set; } = string.Empty;
 
-            [Option( 'p', "product" )]
+            [Option( 'p', "product", Required = true )]
             public string Product { get; set; } = string.Empty;
 
-            [Option( 'i', "instrument" )]
+            [Option( 'i', "instrument", Required = true )]
             public string Instrument { get; set; } = string.Empty;
 
             [Option( 'f', "database", Required = true )]
@@ -30,22 +25,13 @@ namespace KeySwitchManager.CLI.Commands
         public int Execute( ICommandOption opt )
         {
             var option = (CommandOption)opt;
+            var logView = new ConsoleLogView();
 
-            using var repository = new LiteDbKeySwitchRepository( new FilePath( option.DatabasePath ) );
-            var interactor = new DeleteInteractor( repository );
-            var request = new DeleteRequest( option.Developer, option.Product, option.Instrument );
+            logView.Append( $"Developer=\"{option.Developer}\", Product=\"{option.Product}\", Instrument=\"{option.Instrument}\"" );
 
-            Console.WriteLine( $"Developer=\"{option.Developer}\", Product=\"{option.Product}\", Instrument=\"{option.Instrument}\"" );
+            using var controller = DeleteControllerFactory.Create( option.DatabasePath, option.Developer, option.Product, option.Instrument, logView );
+            controller.Execute();
 
-            var response = interactor.Execute( request );
-
-            if( response.RemovedCount > 0 )
-            {
-                Console.WriteLine( $"{response.RemovedCount} records deleted from database({option.DatabasePath})" );
-                return 0;
-            }
-
-            Console.WriteLine( "records not found" );
             return 0;
         }
     }

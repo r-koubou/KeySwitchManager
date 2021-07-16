@@ -1,8 +1,8 @@
 using CommandLine;
 
-using KeySwitchManager.CLI.Commands;
+using KeySwitchManager.Applications.CLI.Commands;
 
-namespace KeySwitchManager.CLI
+namespace KeySwitchManager.Applications.CLI
 {
     public class Program
     {
@@ -14,12 +14,10 @@ namespace KeySwitchManager.CLI
             var types = new[]
             {
                 typeof(BatchMode.CommandOption),
-                typeof(Search.CommandOption),
+                typeof(Find.CommandOption),
                 typeof(Import.CommandOption),
                 typeof(Delete.CommandOption),
                 typeof(New.CommandOption),
-                typeof(NewXlsx.CommandOption),
-                typeof(ImportXlsx.CommandOption),
                 typeof(ExportDawCubaseArticulation.CommandOption),
                 typeof(ExportDawStudioOneArticulation.CommandOption),
                 typeof(ExportDawCakewalkArticulation.CommandOption),
@@ -29,12 +27,10 @@ namespace KeySwitchManager.CLI
 
             return Parser.Default.ParseArguments( args, types ).MapResult(
                 ( BatchMode.CommandOption option ) => new BatchMode().Execute( option ),
-                ( Search.CommandOption option ) => new Search().Execute( option ),
+                ( Find.CommandOption option ) => new Find().Execute( option ),
                 ( Import.CommandOption option ) => new Import().Execute( option ),
                 ( Delete.CommandOption option ) => new Delete().Execute( option ),
                 ( New.CommandOption option ) => new New().Execute( option ),
-                ( NewXlsx.CommandOption option ) => new NewXlsx().Execute( option ),
-                ( ImportXlsx.CommandOption option ) => new ImportXlsx().Execute( option ),
                 ( ExportDawCubaseArticulation.CommandOption option ) => new ExportDawCubaseArticulation().Execute( option ),
                 ( ExportDawStudioOneArticulation.CommandOption option ) => new ExportDawStudioOneArticulation().Execute( option ),
                 ( ExportDawCakewalkArticulation.CommandOption option ) => new ExportDawCakewalkArticulation().Execute( option ),

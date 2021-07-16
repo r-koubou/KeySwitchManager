@@ -4,12 +4,12 @@
         <!-- Assembly / Common -->
         <OutputType>Exe</OutputType>
         <TargetFramework>net5.0</TargetFramework>
-        <AssemblyName>KeySwitchManager.CLI</AssemblyName>
-        <RootNamespace>KeySwitchManager</RootNamespace>
+        <AssemblyName>KeySwitchManager</AssemblyName>
+        <RootNamespace>KeySwitchManager.Applications.CLI</RootNamespace>
         <Company>R-Koubou</Company>
         <Product>KeySwitchManager CLI Application</Product>
-        <Version>0.1.1</Version>
-        <Description>KeySwitchManager.Apps.CLI app</Description>
+        <Version>0.2.0</Version>
+        <Description>KeySwitchManager CLI Application</Description>
         <Nullable>enable</Nullable>
     </PropertyGroup>
 
@@ -18,35 +18,31 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Content Include="..\LICENSE">
-        <Link>LICENSE</Link>
-        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      </Content>
+      <ProjectReference Include="..\KeySwitchManager\Sources\Runtime\Applications.Core\Applications.Core.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
       <Content Include="..\NOTICE.md">
         <Link>NOTICE.md</Link>
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </Content>
-      <Content Include="..\README.ja.md">
-        <Link>README.ja.md</Link>
-        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      </Content>
-      <Content Include="..\README.md">
-        <Link>README.md</Link>
-        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      </Content>
-      <None Update="VERSION.md">
-        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      </None>
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\KeySwitchManager\ForExternalReference\LibKeySwitchManager.csproj" />
+      <None Update="LICENSE">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </None>
+      <None Update="README.md">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </None>
+      <None Update="README.ja.md">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </None>
     </ItemGroup>
 
     <!-- Output assenbly version to text file for including on deploy by msbuild script. -->
     <Import Project="GenerateVersion.msbuild" />
     <!-- Output shellscript for launch -->
     <Import Project="GenerateLauncher.msbuild" />
-
 
 </Project>

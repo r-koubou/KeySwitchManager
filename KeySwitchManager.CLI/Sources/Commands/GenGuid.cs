@@ -6,7 +6,7 @@ using CommandLine;
 
 using RkHelper.Text;
 
-namespace KeySwitchManager.CLI.Commands
+namespace KeySwitchManager.Applications.CLI.Commands
 {
     public class GenGuid : ICommand
     {
