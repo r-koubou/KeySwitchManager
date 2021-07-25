@@ -1,19 +1,18 @@
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Text.Json.Serialization;
+
+using Newtonsoft.Json;
 
 namespace KeySwitchManager.Infrastructures.Storage.Json.Cakewalk.Models
 {
     public class ArticulationMap
     {
-        [JsonPropertyName( "name" )]
-        [Required]
+        [JsonProperty( "name", Required = Required.Always )]
         public string Name { get; }
 
-        [JsonPropertyName( "groups" )]
+        [JsonProperty( "groups" )]
         public IList<Group> Groups { get; }
 
-        [JsonPropertyName( "articulations" )]
+        [JsonProperty( "articulations" )]
         public IList<Articulation> Articulations { get; }
 
         public ArticulationMap(

@@ -1,11 +1,9 @@
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 
 namespace KeySwitchManager.Infrastructures.Storage.Yaml.KeySwitches.Models.Aggregations
 {
     public class ArticulationModel
     {
-        [Required]
         public string Name { get; set; } = default!;
 
         public MidiModel MidiMessage { get; set; } = new MidiModel();

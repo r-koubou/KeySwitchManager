@@ -1,4 +1,4 @@
-using System.Text.Json.Serialization;
+using Newtonsoft.Json;
 
 namespace KeySwitchManager.Infrastructures.Storage.Json.Cakewalk.Models
 {
@@ -16,51 +16,51 @@ namespace KeySwitchManager.Infrastructures.Storage.Json.Cakewalk.Models
     public class Transform
     {
         #region Input
-        [JsonPropertyName( "evtKndIn" )]
+        [JsonProperty( "evtKndIn" )]
         public EventKind InputKind { get; set; } = EventKind.Default;
-        [JsonPropertyName( "minInCh" )]
+        [JsonProperty( "minInCh" )]
         public int InputMidiChannelMin { get; set; } = 0;
-        [JsonPropertyName( "maxInCh" )]
+        [JsonProperty( "maxInCh" )]
         public int InputMidiChannelMax { get; set; } = 0;
-        [JsonPropertyName( "minInKyCN" )]
+        [JsonProperty( "minInKyCN" )]
         public int InputMidiNoteOrCcNoMin { get; set; } = 0;
-        [JsonPropertyName( "maxInKyCN" )]
+        [JsonProperty( "maxInKyCN" )]
         public int InputMidiNoteOrCcNoMax { get; set; } = 0;
-        [JsonPropertyName( "minInVlCV" )]
+        [JsonProperty( "minInVlCV" )]
         public int InputMidiVelOrCcValMin { get; set; } = 0;
-        [JsonPropertyName( "maxInVlCV" )]
+        [JsonProperty( "maxInVlCV" )]
         public int InputMidiVelOrCcValMax { get; set; } = 0;
         #endregion
 
         #region Output
-        [JsonPropertyName( "evtKndOut" )]
+        [JsonProperty( "evtKndOut" )]
         public EventKind OutputKind { get; set; } = EventKind.Default;
-        [JsonPropertyName( "minOutCh" )]
+        [JsonProperty( "minOutCh" )]
         public int OutputMidiChannelMin { get; set; } = 0;
-        [JsonPropertyName( "maxOutCh" )]
+        [JsonProperty( "maxOutCh" )]
         public int OutputMidiChannelMax { get; set; } = 0;
-        [JsonPropertyName( "minOutKyCN" )]
+        [JsonProperty( "minOutKyCN" )]
         public int OutputNoteOrCcNoMin { get; set; } = 0;
-        [JsonPropertyName( "maxOutKyCN" )]
+        [JsonProperty( "maxOutKyCN" )]
         public int OutputNoteOrCcNoMax { get; set; } = 0;
-        [JsonPropertyName( "minOutVlCV" )]
+        [JsonProperty( "minOutVlCV" )]
         public int OutputVelOrCcValMin { get; set; } = 0;
-        [JsonPropertyName( "maxOutVlCV" )]
+        [JsonProperty( "maxOutVlCV" )]
         public int OutputVelOrCcValMax { get; set; } = 0;
         #endregion
 
         #region Offset
-        [JsonPropertyName( "offsetCh" )]
+        [JsonProperty( "offsetCh" )]
         public int OffsetChannel { get; set; } = 0;
-        [JsonPropertyName( "offsetKyCN" )]
+        [JsonProperty( "offsetKyCN" )]
         public int OffsetNoteOrCcNo { get; set; } = 0;
-        [JsonPropertyName( "offsetVlCV" )]
+        [JsonProperty( "offsetVlCV" )]
         public int OffsetVelOrCcVal { get; set; } = 0;
-        [JsonPropertyName( "scaleCh" )]
+        [JsonProperty( "scaleCh" )]
         public bool EnableScaleChannel { get; set; } = false;
-        [JsonPropertyName( "scaleKyCN" )]
+        [JsonProperty( "scaleKyCN" )]
         public bool EnableScaleNoteOrCcNo { get; set; } = false;
-        [JsonPropertyName( "scaleVlCV" )]
+        [JsonProperty( "scaleVlCV" )]
         public bool EnableScaleVelOrCcVal { get; set; } = false;
         #endregion
 

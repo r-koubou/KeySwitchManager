@@ -1,9 +1,8 @@
-using System.Text.Encodings.Web;
-using System.Text.Json;
-
 using KeySwitchManager.Commons.Data;
 using KeySwitchManager.Domain.KeySwitches.Models;
 using KeySwitchManager.Infrastructures.Storage.Json.Cakewalk.Translators.Helpers;
+
+using Newtonsoft.Json;
 
 namespace KeySwitchManager.Infrastructures.Storage.Json.Cakewalk.Translators
 {
@@ -18,14 +17,8 @@ namespace KeySwitchManager.Infrastructures.Storage.Json.Cakewalk.Translators
 
         public IText Translate( KeySwitch source )
         {
-            var articulationMap = KeySwitchToCakewalkModelHelper.Translate( source );
-            var serializeOption = new JsonSerializerOptions
-            {
-                Encoder       = JavaScriptEncoder.UnsafeRelaxedJsonEscaping,
-                WriteIndented = Formatted
-            };
-
-            var jsonText = JsonSerializer.Serialize( articulationMap, serializeOption );
+            var jsonRoot = KeySwitchToCakewalkModelHelper.Translate( source );
+            var jsonText = JsonConvert.SerializeObject( jsonRoot, Formatted ? Formatting.Indented : Formatting.None );
 
             return new PlainText( jsonText );
         }

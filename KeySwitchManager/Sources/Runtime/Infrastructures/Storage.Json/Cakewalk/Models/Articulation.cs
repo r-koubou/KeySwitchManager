@@ -1,25 +1,26 @@
 using System.Collections.Generic;
-using System.Text.Json.Serialization;
+
+using Newtonsoft.Json;
 
 namespace KeySwitchManager.Infrastructures.Storage.Json.Cakewalk.Models
 {
     public class Articulation
     {
-        [JsonPropertyName( "id" )]
+        [JsonProperty( "id" )]
         public int Id { get; }
-        [JsonPropertyName( "name" )]
+        [JsonProperty( "name" )]
         public string Name { get; }
-        [JsonPropertyName( "index" )]
+        [JsonProperty( "index" )]
         public int Index { get; }
-        [JsonPropertyName( "groupId" )]
+        [JsonProperty( "groupId" )]
         public int GroupId { get; }
-        [JsonPropertyName( "color" )]
+        [JsonProperty( "color" )]
         public string Color { get; } // = "ffff0000"; // ARGB
-        [JsonPropertyName( "duration" )]
+        [JsonProperty( "duration" )]
         public int Duration { get; }
-        [JsonPropertyName( "events" )]
+        [JsonProperty( "events" )]
         public IList<MidiEvent> Events { get; }
-        [JsonPropertyName( "transforms" )]
+        [JsonProperty( "transforms" )]
         public IList<Transform> Transforms { get; }
 
         public Articulation(
