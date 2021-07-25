@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
+        <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="18122"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -671,22 +672,22 @@
         <scene sceneID="hIz-AP-VOD">
             <objects>
                 <viewController id="XfG-lQ-9wD" customClass="ViewController" sceneMemberID="viewController">
-                    <view key="view" wantsLayer="YES" translatesAutoresizingMaskIntoConstraints="NO" id="m2S-Jp-Qdl">
-                        <rect key="frame" x="0.0" y="0.0" width="480" height="800"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES"/>
+                    <view key="view" wantsLayer="YES" id="m2S-Jp-Qdl">
+                        <rect key="frame" x="0.0" y="0.0" width="480" height="740"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tabView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UYP-7Y-win">
-                                <rect key="frame" x="0.0" y="316" width="480" height="480"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES"/>
+                                <rect key="frame" x="0.0" y="297" width="480" height="440"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <font key="font" metaFont="system"/>
                                 <tabViewItems>
                                     <tabViewItem label="New" identifier="" id="4IT-t5-FkF" userLabel="NewView">
                                         <view key="view" translatesAutoresizingMaskIntoConstraints="NO" id="uSV-qN-o78">
-                                            <rect key="frame" x="10" y="33" width="460" height="434"/>
+                                            <rect key="frame" x="10" y="33" width="460" height="394"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
                                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="35m-Lg-udG">
-                                                    <rect key="frame" x="16" y="415" width="47" height="16"/>
+                                                    <rect key="frame" x="16" y="375" width="47" height="16"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <textFieldCell key="cell" lineBreakMode="clipping" title="SaveTo" id="e6a-dV-7V5">
                                                         <font key="font" usesAppearanceFont="YES"/>
@@ -695,7 +696,7 @@
                                                     </textFieldCell>
                                                 </textField>
                                                 <stackView distribution="fill" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" id="Txy-Kr-cMj">
-                                                    <rect key="frame" x="17" y="381" width="385" height="25"/>
+                                                    <rect key="frame" x="17" y="340" width="385" height="25"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                                     <subviews>
                                                         <textField verticalHuggingPriority="750" id="cnQ-mH-10H">
@@ -714,6 +715,9 @@
                                                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                                 <font key="font" metaFont="system"/>
                                                             </buttonCell>
+                                                            <connections>
+                                                                <action selector="OnOpenNewFileButtonClicked:" target="XfG-lQ-9wD" id="dFT-o4-Igi"/>
+                                                            </connections>
                                                         </button>
                                                     </subviews>
                                                     <visibilityPriorities>
@@ -726,7 +730,7 @@
                                                     </customSpacing>
                                                 </stackView>
                                                 <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ob6-b9-gea">
-                                                    <rect key="frame" x="10" y="335" width="75" height="32"/>
+                                                    <rect key="frame" x="10" y="295" width="75" height="32"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <buttonCell key="cell" type="push" title="Create" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="LLZ-b1-FK3">
                                                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -738,53 +742,57 @@
                                     </tabViewItem>
                                     <tabViewItem label="Import" identifier="" id="w3V-ol-9Dz" userLabel="ImportView">
                                         <view key="view" id="SuN-BW-4Qc">
-                                            <rect key="frame" x="10" y="33" width="460" height="438"/>
+                                            <rect key="frame" x="10" y="33" width="460" height="434"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         </view>
                                     </tabViewItem>
                                 </tabViewItems>
                             </tabView>
                             <scrollView fixedFrame="YES" borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" translatesAutoresizingMaskIntoConstraints="NO" id="PFh-CQ-6QW">
-                                <rect key="frame" x="7" y="37" width="466" height="281"/>
-                                <autoresizingMask key="autoresizingMask"/>
+                                <rect key="frame" x="7" y="34" width="466" height="265"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <clipView key="contentView" drawsBackground="NO" id="uqL-Fr-AOc">
-                                    <rect key="frame" x="0.0" y="0.0" width="466" height="281"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="466" height="265"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <textView importsGraphics="NO" richText="NO" verticallyResizable="YES" spellingCorrection="YES" smartInsertDelete="YES" id="JsR-DP-O7O">
-                                            <rect key="frame" x="0.0" y="0.0" width="466" height="281"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="466" height="265"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                            <size key="minSize" width="466" height="281"/>
-                                            <size key="maxSize" width="466" height="10000000"/>
+                                            <size key="minSize" width="466" height="265"/>
+                                            <size key="maxSize" width="620" height="10000000"/>
                                             <color key="insertionPointColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                         </textView>
                                     </subviews>
                                 </clipView>
                                 <scroller key="horizontalScroller" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="4Z1-tW-nKR">
-                                    <rect key="frame" x="0.0" y="265" width="466" height="16"/>
+                                    <rect key="frame" x="0.0" y="249" width="466" height="16"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                                 <scroller key="verticalScroller" wantsLayer="YES" verticalHuggingPriority="750" horizontal="NO" id="ELA-wV-IUc">
-                                    <rect key="frame" x="450" y="0.0" width="16" height="281"/>
+                                    <rect key="frame" x="450" y="0.0" width="16" height="265"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                             </scrollView>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="x2P-Od-vBL">
-                                <rect key="frame" x="0.0" y="1" width="75" height="32"/>
+                                <rect key="frame" x="5" y="1" width="66" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES"/>
-                                <buttonCell key="cell" type="push" title="Button" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="zaU-Kh-gAO">
+                                <buttonCell key="cell" type="push" title="Clear" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="zaU-Kh-gAO">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
                             </button>
                         </subviews>
                     </view>
+                    <connections>
+                        <outlet property="NewFileTextField" destination="cnQ-mH-10H" id="TgM-Av-mez"/>
+                        <outlet property="OpenNewFileButton" destination="ekA-uY-0ID" id="O8a-xY-JyV"/>
+                    </connections>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="74" y="986"/>
+            <point key="canvasLocation" x="74" y="956"/>
         </scene>
     </scenes>
 </document>
