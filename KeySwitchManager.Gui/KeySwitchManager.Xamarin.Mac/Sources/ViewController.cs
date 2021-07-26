@@ -1,12 +1,30 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+
 using AppKit;
+
 using Foundation;
+
+using KeySwitchManager.Applications.Core.Controllers;
+using KeySwitchManager.Applications.Core.Controllers.Create;
+using KeySwitchManager.Applications.Core.Controllers.Export;
+using KeySwitchManager.Xamarin.Mac.UiKitView;
+
+using RkHelper.Text;
 
 namespace KeySwitchManager.Xamarin.Mac
 {
     public partial class ViewController : NSViewController
     {
+        private LogTextView LogView { get; set; }
+        private IList<ExportSupportedFormat> ExportSupportedFormatList { get; set; }
+
+        #region Ctor
+#pragma warning disable 8618
         public ViewController( IntPtr handle ) : base( handle ) {}
+#pragma warning restore 8618
+        #endregion
 
         #region Application LifeCycle
         public override void ViewDidLoad()
@@ -14,6 +32,7 @@ namespace KeySwitchManager.Xamarin.Mac
             base.ViewDidLoad();
 
             // Do any additional setup after loading the view.
+            LogView = new LogTextView( LogTextView, this );
         }
 
         public override NSObject RepresentedObject
@@ -27,18 +46,69 @@ namespace KeySwitchManager.Xamarin.Mac
         }
         #endregion
 
-        #region UI Event Handlers
-        partial void OnOpenNewFileButtonClicked( Foundation.NSObject sender )
+        #region Executions
+        private void PreExecuteController()
         {
-            var selectedFile = ChooseSaveFilePath( "yaml", "xlsx" );
+            InvokeOnMainThread( () => {
+                LogView.Clear();
+                // ProgressBar.IsIndeterminate = true;
+                // LogClearButton.IsEnabled    = false;
+                // MainTabPanel.IsEnabled      = false;
+            } );
+        }
+
+        private void PostExecuteController()
+        {
+            InvokeOnMainThread( () => {
+                //ProgressBar.IsIndeterminate = false;
+
+                var alert = new NSAlert()
+                {
+                    AlertStyle  = NSAlertStyle.Informational,
+                    MessageText = "Done",
+                };
+                alert.RunModal();
+
+                // LogClearButton.IsEnabled = true;
+                // MainTabPanel.IsEnabled   = true;
+            } );
+        }
+
+        private async Task ExecuteControllerAsync( Func<IController> controllerFactory )
+        {
+            PreExecuteController();
+            await ControlExecutor.ExecuteAsync( controllerFactory, LogView );
+            PostExecuteController();
         }
         #endregion
 
-        #region Utilities
-        private string ChooseOpenFilePath( params string[] extensions )
+        #region UI Event Handlers
+        #region New
+        partial void OnCreateDefinitionFileChooserButtonClicked( NSObject sender )
         {
-            var result = string.Empty;
+            ChooseSaveFilePath( ( path ) => {
+                NewFileTextField.StringValue = path;
+            }, "yaml", "xlsx" );
+        }
 
+        async partial void OnOpenNewFileButtonClicked( NSObject sender )
+        {
+            var path = NewFileTextField.StringValue;
+
+            if( StringHelper.IsEmpty( path ) )
+            {
+                return;
+            }
+
+            await ExecuteControllerAsync( () => CreateControllerFactory.Create( path, LogView ) );
+        }
+
+        #endregion
+        #endregion
+
+        #region Utilities
+        private void ChooseOpenFilePath( Action<string> complete, params string[] extensions )
+        {
             var dialog = new NSOpenPanel()
             {
                 CanChooseDirectories = false,
@@ -49,17 +119,13 @@ namespace KeySwitchManager.Xamarin.Mac
             dialog.Begin( ( num ) => {
                 if( num == (long)NSModalResponse.OK )
                 {
-                    result = dialog.Filenames[ 0 ];
+                    complete.Invoke( dialog.Filenames[ 0 ] );
                 }
             });
-
-            return result;
         }
 
-        private string ChooseSaveFilePath( params string[] extensions )
+        private void ChooseSaveFilePath( Action<string> complete, params string[] extensions )
         {
-            var result = string.Empty;
-
             var dialog = new NSSavePanel()
             {
                 CanCreateDirectories    = true,
@@ -70,11 +136,9 @@ namespace KeySwitchManager.Xamarin.Mac
             dialog.Begin( ( num ) => {
                 if( num == (long)NSModalResponse.OK )
                 {
-                    result = dialog.Filename;
+                    complete.Invoke( dialog.Filename );
                 }
             });
-
-            return result;
         }
         #endregion
     }

@@ -716,7 +716,7 @@
                                                                 <font key="font" metaFont="system"/>
                                                             </buttonCell>
                                                             <connections>
-                                                                <action selector="OnOpenNewFileButtonClicked:" target="XfG-lQ-9wD" id="dFT-o4-Igi"/>
+                                                                <action selector="OnCreateDefinitionFileChooserButtonClicked:" target="XfG-lQ-9wD" id="n8w-GJ-rGP"/>
                                                             </connections>
                                                         </button>
                                                     </subviews>
@@ -736,6 +736,9 @@
                                                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                         <font key="font" metaFont="system"/>
                                                     </buttonCell>
+                                                    <connections>
+                                                        <action selector="OnOpenNewFileButtonClicked:" target="XfG-lQ-9wD" id="mmr-ut-itC"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                         </view>
@@ -786,6 +789,7 @@
                         </subviews>
                     </view>
                     <connections>
+                        <outlet property="LogTextView" destination="JsR-DP-O7O" id="17K-k1-5PM"/>
                         <outlet property="NewFileTextField" destination="cnQ-mH-10H" id="TgM-Av-mez"/>
                         <outlet property="OpenNewFileButton" destination="ekA-uY-0ID" id="O8a-xY-JyV"/>
                     </connections>

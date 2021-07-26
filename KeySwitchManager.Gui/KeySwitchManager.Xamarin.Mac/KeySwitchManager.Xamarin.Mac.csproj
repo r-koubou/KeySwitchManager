@@ -64,6 +64,7 @@
     <ItemGroup>
         <Compile Include="Sources\AppDelegate.cs" />
         <Compile Include="Sources\Main.cs" />
+        <Compile Include="Sources\UiKitView\LogTextView.cs" />
         <Compile Include="Sources\ViewController.cs" />
         <Compile Include="Sources\ViewController.designer.cs">
           <DependentUpon>ViewController.cs</DependentUpon>
@@ -71,6 +72,16 @@
     </ItemGroup>
     <ItemGroup>
         <InterfaceDefinition Include="Main.storyboard" />
+    </ItemGroup>
+    <ItemGroup>
+      <ProjectReference Include="..\..\KeySwitchManager\Sources\Runtime\Applications.Core\Applications.Core.csproj">
+        <Project>{b2e7ec33-b3a6-4556-a2a7-8a0cf5f14056}</Project>
+        <Name>Applications.Core</Name>
+      </ProjectReference>
+    </ItemGroup>
+    <ItemGroup>
+        <PackageReference Include="RkHelper" Version="0.0.7" />
+        <PackageReference Include="YamlDotNet" Version="11.2.1" />
     </ItemGroup>
     <Import Project="$(MSBuildExtensionsPath)\Xamarin\Mac\Xamarin.Mac.CSharp.targets" />
 </Project>
