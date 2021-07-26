@@ -1,4 +1,4 @@
-using System.Text.Json.Serialization;
+using Newtonsoft.Json;
 
 namespace KeySwitchManager.Infrastructures.Storage.Json.Cakewalk.Models
 {
@@ -21,23 +21,23 @@ namespace KeySwitchManager.Infrastructures.Storage.Json.Cakewalk.Models
 
     public class MidiEvent
     {
-        [JsonPropertyName( "b1" )]
+        [JsonProperty( "b1" )]
         public int Byte1 { get; set; } = 0x00;
-        [JsonPropertyName( "b2" )]
+        [JsonProperty( "b2" )]
         public int Byte2 { get; set; } = 0x00;
-        [JsonPropertyName( "b3" )]
+        [JsonProperty( "b3" )]
         public int Byte3 { get; set; } = 0x00;
-        [JsonPropertyName( "b4" )]
+        [JsonProperty( "b4" )]
         public int Byte4 { get; set; } = 0x00;
 
-        [JsonPropertyName( "allowTranspose" )]
+        [JsonProperty( "allowTranspose" )]
         public int AllowTranspose { get; set; } = 0;
 
-        [JsonPropertyName( "allowTransposeMidiCh" )]
+        [JsonProperty( "allowTransposeMidiCh" )]
         public int AllowTransposeMidiCh { get; set; } = 1;
-        [JsonPropertyName( "triggerAt" )]
+        [JsonProperty( "triggerAt" )]
         public PlayAt TriggerAt { get; set; } = PlayAt.Default;
-        [JsonPropertyName( "chaseMode" )]
+        [JsonProperty( "chaseMode" )]
         public ChaseMode ChaseMode { get; set; } = ChaseMode.Default;
 
         public MidiEvent()
