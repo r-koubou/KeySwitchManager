@@ -673,17 +673,17 @@
             <objects>
                 <viewController id="XfG-lQ-9wD" customClass="ViewController" sceneMemberID="viewController">
                     <view key="view" wantsLayer="YES" id="m2S-Jp-Qdl">
-                        <rect key="frame" x="0.0" y="0.0" width="480" height="740"/>
+                        <rect key="frame" x="0.0" y="0.0" width="512" height="740"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tabView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UYP-7Y-win">
-                                <rect key="frame" x="0.0" y="297" width="480" height="440"/>
+                                <rect key="frame" x="0.0" y="297" width="512" height="440"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <font key="font" metaFont="system"/>
                                 <tabViewItems>
                                     <tabViewItem label="New" identifier="" id="4IT-t5-FkF" userLabel="NewView">
                                         <view key="view" translatesAutoresizingMaskIntoConstraints="NO" id="uSV-qN-o78">
-                                            <rect key="frame" x="10" y="33" width="460" height="394"/>
+                                            <rect key="frame" x="10" y="33" width="492" height="394"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
                                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="35m-Lg-udG">
@@ -696,11 +696,11 @@
                                                     </textFieldCell>
                                                 </textField>
                                                 <stackView distribution="fill" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" id="Txy-Kr-cMj">
-                                                    <rect key="frame" x="17" y="340" width="385" height="25"/>
+                                                    <rect key="frame" x="17" y="340" width="384" height="25"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                                     <subviews>
                                                         <textField verticalHuggingPriority="750" id="cnQ-mH-10H">
-                                                            <rect key="frame" x="0.0" y="2" width="306" height="21"/>
+                                                            <rect key="frame" x="0.0" y="2" width="273" height="21"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" id="pVv-vY-SIN">
                                                                 <font key="font" metaFont="system"/>
@@ -709,7 +709,7 @@
                                                             </textFieldCell>
                                                         </textField>
                                                         <button verticalHuggingPriority="750" id="ekA-uY-0ID">
-                                                            <rect key="frame" x="325" y="-5" width="67" height="32"/>
+                                                            <rect key="frame" x="324" y="-5" width="67" height="32"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
                                                             <buttonCell key="cell" type="push" title="Open" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="6De-rT-YNI">
                                                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -745,36 +745,135 @@
                                     </tabViewItem>
                                     <tabViewItem label="Import" identifier="" id="w3V-ol-9Dz" userLabel="ImportView">
                                         <view key="view" id="SuN-BW-4Qc">
-                                            <rect key="frame" x="10" y="33" width="460" height="434"/>
+                                            <rect key="frame" x="10" y="33" width="492" height="394"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                            <subviews>
+                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aqI-yo-KPK" userLabel="Database File">
+                                                    <rect key="frame" x="16" y="375" width="86" height="16"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                    <textFieldCell key="cell" lineBreakMode="clipping" title="Database File" id="twD-Ja-TwS">
+                                                        <font key="font" usesAppearanceFont="YES"/>
+                                                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                    </textFieldCell>
+                                                </textField>
+                                                <stackView distribution="fill" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" id="Gov-jy-gPg">
+                                                    <rect key="frame" x="17" y="340" width="385" height="25"/>
+                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                                    <subviews>
+                                                        <textField verticalHuggingPriority="750" id="992-hx-6he">
+                                                            <rect key="frame" x="0.0" y="2" width="274" height="21"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" id="Ab1-eb-22R">
+                                                                <font key="font" metaFont="system"/>
+                                                                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                            </textFieldCell>
+                                                        </textField>
+                                                        <button verticalHuggingPriority="750" id="DfQ-Sv-l8V">
+                                                            <rect key="frame" x="325" y="-5" width="67" height="32"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                            <buttonCell key="cell" type="push" title="Open" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="VqW-nW-Oxu">
+                                                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                                <font key="font" metaFont="system"/>
+                                                            </buttonCell>
+                                                            <connections>
+                                                                <action selector="OnOpenDatabaseFileChooserButtonClicked:" target="XfG-lQ-9wD" id="W2m-Ta-rgf"/>
+                                                            </connections>
+                                                        </button>
+                                                    </subviews>
+                                                    <visibilityPriorities>
+                                                        <integer value="1000"/>
+                                                        <integer value="1000"/>
+                                                    </visibilityPriorities>
+                                                    <customSpacing>
+                                                        <real value="3.4028234663852886e+38"/>
+                                                        <real value="3.4028234663852886e+38"/>
+                                                    </customSpacing>
+                                                </stackView>
+                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SBO-wU-nC4" userLabel="Import File">
+                                                    <rect key="frame" x="17" y="300" width="69" height="16"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                    <textFieldCell key="cell" lineBreakMode="clipping" title="Import File" id="tkv-ew-EIH">
+                                                        <font key="font" usesAppearanceFont="YES"/>
+                                                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                    </textFieldCell>
+                                                </textField>
+                                                <stackView distribution="fill" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" id="YrZ-Ll-yGt">
+                                                    <rect key="frame" x="17" y="267" width="351" height="25"/>
+                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                                    <subviews>
+                                                        <textField verticalHuggingPriority="750" id="fOT-ic-1yT">
+                                                            <rect key="frame" x="0.0" y="2" width="274" height="21"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" id="Q7q-Gh-Afk">
+                                                                <font key="font" metaFont="system"/>
+                                                                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                            </textFieldCell>
+                                                        </textField>
+                                                        <button verticalHuggingPriority="750" id="i5V-lJ-KHq">
+                                                            <rect key="frame" x="325" y="-5" width="67" height="32"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                            <buttonCell key="cell" type="push" title="Open" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Y9s-DN-GsN">
+                                                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                                <font key="font" metaFont="system"/>
+                                                            </buttonCell>
+                                                            <connections>
+                                                                <action selector="OnOpenFileChooserButtonClicked:" target="XfG-lQ-9wD" id="SgV-ty-mBD"/>
+                                                            </connections>
+                                                        </button>
+                                                    </subviews>
+                                                    <visibilityPriorities>
+                                                        <integer value="1000"/>
+                                                        <integer value="1000"/>
+                                                    </visibilityPriorities>
+                                                    <customSpacing>
+                                                        <real value="3.4028234663852886e+38"/>
+                                                        <real value="3.4028234663852886e+38"/>
+                                                    </customSpacing>
+                                                </stackView>
+                                                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3Hm-pJ-Owh" userLabel="Import Button">
+                                                    <rect key="frame" x="10" y="196" width="75" height="32"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                    <buttonCell key="cell" type="push" title="Import" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="T9m-T1-gLu">
+                                                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                        <font key="font" metaFont="system"/>
+                                                    </buttonCell>
+                                                    <connections>
+                                                        <action selector="OnDoImportButtonClicked:" target="XfG-lQ-9wD" id="LP5-5F-m2W"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
                                         </view>
                                     </tabViewItem>
                                 </tabViewItems>
                             </tabView>
                             <scrollView fixedFrame="YES" borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" translatesAutoresizingMaskIntoConstraints="NO" id="PFh-CQ-6QW">
-                                <rect key="frame" x="7" y="34" width="466" height="265"/>
+                                <rect key="frame" x="7" y="34" width="498" height="265"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <clipView key="contentView" drawsBackground="NO" id="uqL-Fr-AOc">
-                                    <rect key="frame" x="0.0" y="0.0" width="466" height="265"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="498" height="265"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <textView importsGraphics="NO" richText="NO" verticallyResizable="YES" spellingCorrection="YES" smartInsertDelete="YES" id="JsR-DP-O7O">
-                                            <rect key="frame" x="0.0" y="0.0" width="466" height="265"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="498" height="265"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                            <size key="minSize" width="466" height="265"/>
-                                            <size key="maxSize" width="620" height="10000000"/>
+                                            <size key="minSize" width="498" height="265"/>
+                                            <size key="maxSize" width="2902" height="10000000"/>
                                             <color key="insertionPointColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                         </textView>
                                     </subviews>
                                 </clipView>
                                 <scroller key="horizontalScroller" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="4Z1-tW-nKR">
-                                    <rect key="frame" x="0.0" y="249" width="466" height="16"/>
+                                    <rect key="frame" x="0.0" y="249" width="498" height="16"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                                 <scroller key="verticalScroller" wantsLayer="YES" verticalHuggingPriority="750" horizontal="NO" id="ELA-wV-IUc">
-                                    <rect key="frame" x="450" y="0.0" width="16" height="265"/>
+                                    <rect key="frame" x="482" y="0.0" width="16" height="265"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                             </scrollView>
@@ -785,13 +884,24 @@
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
+                                <connections>
+                                    <action selector="OnLogClearButtonClicked:" target="XfG-lQ-9wD" id="ujH-kn-h6p"/>
+                                </connections>
                             </button>
+                            <progressIndicator fixedFrame="YES" maxValue="100" displayedWhenStopped="NO" indeterminate="YES" style="bar" translatesAutoresizingMaskIntoConstraints="NO" id="AQF-2p-Wfs" userLabel="Progressbar">
+                                <rect key="frame" x="106" y="8" width="291" height="20"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            </progressIndicator>
                         </subviews>
                     </view>
                     <connections>
+                        <outlet property="ImportDatabaseFileText" destination="992-hx-6he" id="tBz-AH-w59"/>
+                        <outlet property="ImportFileText" destination="fOT-ic-1yT" id="kAL-l0-IFz"/>
                         <outlet property="LogTextView" destination="JsR-DP-O7O" id="17K-k1-5PM"/>
-                        <outlet property="NewFileTextField" destination="cnQ-mH-10H" id="TgM-Av-mez"/>
+                        <outlet property="NewFileText" destination="cnQ-mH-10H" id="TgM-Av-mez"/>
                         <outlet property="OpenNewFileButton" destination="ekA-uY-0ID" id="O8a-xY-JyV"/>
+                        <outlet property="ProgressBar" destination="AQF-2p-Wfs" id="Zkp-dj-FwX"/>
+                        <outlet property="lll" destination="cnQ-mH-10H" id="uki-aX-VEF"/>
                     </connections>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>

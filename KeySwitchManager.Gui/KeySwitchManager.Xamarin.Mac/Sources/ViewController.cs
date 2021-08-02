@@ -35,6 +35,7 @@ namespace KeySwitchManager.Xamarin.Mac
             LogView = new LogTextView( LogTextView, this );
         }
 
+
         public override NSObject RepresentedObject
         {
             get { return base.RepresentedObject; }
@@ -51,7 +52,7 @@ namespace KeySwitchManager.Xamarin.Mac
         {
             InvokeOnMainThread( () => {
                 LogView.Clear();
-                // ProgressBar.IsIndeterminate = true;
+                ProgressBar.StartAnimation( this );
                 // LogClearButton.IsEnabled    = false;
                 // MainTabPanel.IsEnabled      = false;
             } );
@@ -60,7 +61,6 @@ namespace KeySwitchManager.Xamarin.Mac
         private void PostExecuteController()
         {
             InvokeOnMainThread( () => {
-                //ProgressBar.IsIndeterminate = false;
 
                 var alert = new NSAlert()
                 {
@@ -68,6 +68,8 @@ namespace KeySwitchManager.Xamarin.Mac
                     MessageText = "Done",
                 };
                 alert.RunModal();
+
+                ProgressBar.StopAnimation( this );
 
                 // LogClearButton.IsEnabled = true;
                 // MainTabPanel.IsEnabled   = true;
@@ -83,17 +85,22 @@ namespace KeySwitchManager.Xamarin.Mac
         #endregion
 
         #region UI Event Handlers
+        partial void OnLogClearButtonClicked( Foundation.NSObject sender )
+        {
+            LogView.Clear();
+        }
+
         #region New
         partial void OnCreateDefinitionFileChooserButtonClicked( NSObject sender )
         {
             ChooseSaveFilePath( ( path ) => {
-                NewFileTextField.StringValue = path;
+                NewFileText.StringValue = path;
             }, "yaml", "xlsx" );
         }
 
         async partial void OnOpenNewFileButtonClicked( NSObject sender )
         {
-            var path = NewFileTextField.StringValue;
+            var path = NewFileText.StringValue;
 
             if( StringHelper.IsEmpty( path ) )
             {
