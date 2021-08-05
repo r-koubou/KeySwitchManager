@@ -14,6 +14,24 @@ namespace KeySwitchManager.Xamarin.Mac
 	partial class ViewController
 	{
 		[Outlet]
+		AppKit.NSTextField ExportDirectoryText { get; set; }
+
+		[Outlet]
+		AppKit.NSPopUpButton ExportFormatCombobox { get; set; }
+
+		[Outlet]
+		AppKit.NSTextField FindDatabaseFileText { get; set; }
+
+		[Outlet]
+		AppKit.NSTextField FindDeveloperText { get; set; }
+
+		[Outlet]
+		AppKit.NSTextField FindInstrumentText { get; set; }
+
+		[Outlet]
+		AppKit.NSTextField FindProductText { get; set; }
+
+		[Outlet]
 		AppKit.NSTextField ImportDatabaseFileText { get; set; }
 
 		[Outlet]
@@ -26,9 +44,6 @@ namespace KeySwitchManager.Xamarin.Mac
 		AppKit.NSTextField NewFileText { get; set; }
 
 		[Outlet]
-		AppKit.NSButton OpenNewFileButton { get; set; }
-
-		[Outlet]
 		AppKit.NSProgressIndicator ProgressBar { get; set; }
 
 		[Action ("OnCreateDefinitionFileChooserButtonClicked:")]
@@ -36,6 +51,12 @@ namespace KeySwitchManager.Xamarin.Mac
 
 		[Action ("OnDoImportButtonClicked:")]
 		partial void OnDoImportButtonClicked (Foundation.NSObject sender);
+
+		[Action ("OnExportButtonClicked:")]
+		partial void OnExportButtonClicked (Foundation.NSObject sender);
+
+		[Action ("OnFindButtonClicked:")]
+		partial void OnFindButtonClicked (Foundation.NSObject sender);
 
 		[Action ("OnLogClearButtonClicked:")]
 		partial void OnLogClearButtonClicked (Foundation.NSObject sender);
@@ -49,8 +70,44 @@ namespace KeySwitchManager.Xamarin.Mac
 		[Action ("OnOpenNewFileButtonClicked:")]
 		partial void OnOpenNewFileButtonClicked (Foundation.NSObject sender);
 
+		[Action ("OnSaveExportDirectoryChooserButtonClicked:")]
+		partial void OnSaveExportDirectoryChooserButtonClicked (Foundation.NSObject sender);
+
+		[Action ("OpenFindDatabaseFileChooserButtonClicked:")]
+		partial void OpenFindDatabaseFileChooserButtonClicked (Foundation.NSObject sender);
+
 		void ReleaseDesignerOutlets ()
 		{
+			if (ExportDirectoryText != null) {
+				ExportDirectoryText.Dispose ();
+				ExportDirectoryText = null;
+			}
+
+			if (ExportFormatCombobox != null) {
+				ExportFormatCombobox.Dispose ();
+				ExportFormatCombobox = null;
+			}
+
+			if (FindDatabaseFileText != null) {
+				FindDatabaseFileText.Dispose ();
+				FindDatabaseFileText = null;
+			}
+
+			if (FindDeveloperText != null) {
+				FindDeveloperText.Dispose ();
+				FindDeveloperText = null;
+			}
+
+			if (FindInstrumentText != null) {
+				FindInstrumentText.Dispose ();
+				FindInstrumentText = null;
+			}
+
+			if (FindProductText != null) {
+				FindProductText.Dispose ();
+				FindProductText = null;
+			}
+
 			if (ImportDatabaseFileText != null) {
 				ImportDatabaseFileText.Dispose ();
 				ImportDatabaseFileText = null;
@@ -69,11 +126,6 @@ namespace KeySwitchManager.Xamarin.Mac
 			if (NewFileText != null) {
 				NewFileText.Dispose ();
 				NewFileText = null;
-			}
-
-			if (OpenNewFileButton != null) {
-				OpenNewFileButton.Dispose ();
-				OpenNewFileButton = null;
 			}
 
 			if (ProgressBar != null) {
