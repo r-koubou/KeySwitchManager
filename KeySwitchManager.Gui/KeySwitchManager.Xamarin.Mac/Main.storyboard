@@ -947,7 +947,7 @@
                                                                 <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lzX-H9-9Ov">
                                                                     <rect key="frame" x="108" y="7" width="272" height="21"/>
                                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
-                                                                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" id="uf5-nL-YkU">
+                                                                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" title="*" drawsBackground="YES" id="uf5-nL-YkU">
                                                                         <font key="font" metaFont="system"/>
                                                                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -971,7 +971,7 @@
                                                                 <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uGL-QR-VZR">
                                                                     <rect key="frame" x="108" y="7" width="272" height="21"/>
                                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
-                                                                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" id="WrX-cJ-1Dw">
+                                                                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" title="*" drawsBackground="YES" id="WrX-cJ-1Dw">
                                                                         <font key="font" metaFont="system"/>
                                                                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -995,7 +995,7 @@
                                                                 <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Mtj-Yl-9Gx">
                                                                     <rect key="frame" x="108" y="7" width="272" height="21"/>
                                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
-                                                                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" id="MYn-K3-xu1">
+                                                                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" title="*" drawsBackground="YES" id="MYn-K3-xu1">
                                                                         <font key="font" metaFont="system"/>
                                                                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -1074,12 +1074,12 @@
                                                 <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xKU-Kb-iVu" userLabel="FormatList">
                                                     <rect key="frame" x="131" y="40" width="153" height="25"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                                                    <popUpButtonCell key="cell" type="push" title="Item 1" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" pullsDown="YES" selectedItem="53d-E2-bXW" id="PjH-lH-rqL">
+                                                    <popUpButtonCell key="cell" type="push" title="Item 1" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="53d-E2-bXW" id="PjH-lH-rqL">
                                                         <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                                                         <font key="font" metaFont="menu"/>
                                                         <menu key="menu" id="0mn-JE-Dgj">
                                                             <items>
-                                                                <menuItem title="Item 1" state="on" hidden="YES" id="53d-E2-bXW"/>
+                                                                <menuItem title="Item 1" state="on" id="53d-E2-bXW"/>
                                                                 <menuItem title="Item 2" id="DJh-hg-xDq"/>
                                                                 <menuItem title="Item 3" id="Acr-sD-8rC"/>
                                                             </items>

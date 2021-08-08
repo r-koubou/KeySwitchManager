@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Threading.Tasks;
 
 using AppKit;
@@ -9,8 +10,11 @@ using Foundation;
 using KeySwitchManager.Applications.Core.Controllers;
 using KeySwitchManager.Applications.Core.Controllers.Create;
 using KeySwitchManager.Applications.Core.Controllers.Export;
+using KeySwitchManager.Applications.Core.Controllers.Find;
+using KeySwitchManager.Applications.Core.Controllers.Import;
 using KeySwitchManager.Xamarin.Mac.UiKitView;
 
+using RkHelper.Enumeration;
 using RkHelper.Text;
 
 namespace KeySwitchManager.Xamarin.Mac
@@ -18,7 +22,9 @@ namespace KeySwitchManager.Xamarin.Mac
     public partial class ViewController : NSViewController
     {
         private LogTextView LogView { get; set; }
-        private IList<ExportSupportedFormat> ExportSupportedFormatList { get; set; }
+
+        private IList<ExportSupportedFormat> ExportSupportedFormatList { get; }
+            = new List<ExportSupportedFormat>( EnumHelper.GetValues<ExportSupportedFormat>() );
 
         #region Ctor
 #pragma warning disable 8618
@@ -33,6 +39,17 @@ namespace KeySwitchManager.Xamarin.Mac
 
             // Do any additional setup after loading the view.
             LogView = new LogTextView( LogTextView, this );
+
+            // Format combobox
+            ExportFormatCombobox.RemoveAllItems();
+            foreach( var f in ExportSupportedFormatList )
+            {
+                var menu = new NSMenuItem( f.ToString() )
+                {
+                    Target = this
+                };
+                ExportFormatCombobox.Menu?.AddItem( menu );
+            }
         }
 
 
@@ -85,7 +102,7 @@ namespace KeySwitchManager.Xamarin.Mac
         #endregion
 
         #region UI Event Handlers
-        partial void OnLogClearButtonClicked( Foundation.NSObject sender )
+        partial void OnLogClearButtonClicked( NSObject sender )
         {
             LogView.Clear();
         }
@@ -111,6 +128,119 @@ namespace KeySwitchManager.Xamarin.Mac
         }
 
         #endregion
+
+        #region Import
+        partial void OnOpenDatabaseFileChooserButtonClicked( NSObject sender )
+        {
+            ChooseOpenFilePath( ( path ) => {
+                ImportDatabaseFileText.StringValue = path;
+            }, "db" );
+        }
+
+        partial void OnOpenFileChooserButtonClicked( NSObject sender )
+        {
+            ChooseOpenFilePath( ( path ) => {
+                ImportFileText.StringValue = path;
+            }, "yaml", "xlsx" );
+        }
+
+        async partial void OnDoImportButtonClicked( NSObject sender )
+        {
+            var databasePath = ImportDatabaseFileText.StringValue;
+            var importFilePath = ImportFileText.StringValue;
+
+            if( StringHelper.IsEmpty( databasePath, importFilePath ) )
+            {
+                return;
+            }
+            await ExecuteControllerAsync( () => ImportControllerFactory.Create( databasePath, importFilePath, LogView ) );
+        }
+
+        #endregion
+
+        #region Find
+        partial void OpenFindDatabaseFileChooserButtonClicked( NSObject sender )
+        {
+            ChooseOpenFilePath( ( path ) => {
+                FindDatabaseFileText.StringValue = path;
+            }, "db" );
+        }
+
+        async partial void OnFindButtonClicked( NSObject sender )
+        {
+            var databasePath = FindDatabaseFileText.StringValue;
+            var developer = FindDeveloperText.StringValue;
+            var product = FindProductText.StringValue;
+            var instrument = FindInstrumentText.StringValue;
+
+            if( StringHelper.IsEmpty( databasePath, developer, product, instrument ) )
+            {
+                return;
+            }
+
+            if( !File.Exists( databasePath ) )
+            {
+                return;
+            }
+
+            await ExecuteControllerAsync( () => FindControllerFactory.Create( databasePath, developer, product, instrument, LogView ) );
+        }
+
+
+        #endregion
+
+        #region Export
+        partial void OnSaveExportDirectoryChooserButtonClicked( NSObject sender )
+        {
+            ChooseDirectoryPath( ( path ) => {
+                ExportDirectoryText.StringValue = path;
+            });
+        }
+        async partial void OnExportButtonClicked( NSObject sender )
+        {
+            var databasePath = FindDatabaseFileText.StringValue;
+            var developer = FindDeveloperText.StringValue;
+            var product = FindProductText.StringValue;
+            var instrument = FindInstrumentText.StringValue;
+            var output = ExportDirectoryText.StringValue;
+
+            var comboboxIndex = Convert.ToInt32( ExportFormatCombobox.IndexOfSelectedItem );
+
+            if( comboboxIndex < 0 )
+            {
+                return;
+            }
+
+            var format = ExportSupportedFormatList[ comboboxIndex ];
+
+            if( StringHelper.IsEmpty( databasePath, developer, product ) )
+            {
+                return;
+            }
+
+            if( !File.Exists( databasePath ) )
+            {
+                return;
+            }
+
+            // Append a sub folder by format name
+            output = Path.Combine( output, format.ToString() );
+
+            await ExecuteControllerAsync(
+                () => ExportControllerFactory.Create(
+                    developer,
+                    product,
+                    instrument,
+                    databasePath,
+                    output,
+                    format,
+                    LogView
+                )
+            );
+        }
+
+        #endregion
+
         #endregion
 
         #region Utilities
@@ -147,6 +277,25 @@ namespace KeySwitchManager.Xamarin.Mac
                 }
             });
         }
+
+        private void ChooseDirectoryPath( Action<string> complete )
+        {
+            var dialog = new NSOpenPanel()
+            {
+                CanCreateDirectories    = true,
+                CanChooseFiles          = false,
+                CanChooseDirectories    = true,
+                AllowsMultipleSelection = false,
+            };
+
+            dialog.Begin( ( num ) => {
+                if( num == (long)NSModalResponse.OK )
+                {
+                    complete.Invoke( dialog.Filenames[ 0 ] );
+                }
+            });
+        }
+
         #endregion
     }
 }

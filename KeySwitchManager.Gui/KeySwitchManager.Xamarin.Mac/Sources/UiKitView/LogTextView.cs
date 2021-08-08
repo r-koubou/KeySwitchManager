@@ -2,6 +2,8 @@
 
 using AppKit;
 
+using Foundation;
+
 using KeySwitchManager.Applications.Core.Views.LogView;
 
 namespace KeySwitchManager.Xamarin.Mac.UiKitView
@@ -51,7 +53,13 @@ namespace KeySwitchManager.Xamarin.Mac.UiKitView
             });
         }
 
-        public void ScrollToEnd() {}
+        public void ScrollToEnd()
+        {
+            UiThreadDispatcher.InvokeOnMainThread( () => {
+                var range = new NSRange( Target.Value.Length, 0 );
+                Target.ScrollRangeToVisible( range );
+            });
+        }
         #endregion
     }
 }
