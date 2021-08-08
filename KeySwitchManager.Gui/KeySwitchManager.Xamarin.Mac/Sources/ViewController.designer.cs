@@ -46,6 +46,9 @@ namespace KeySwitchManager.Xamarin.Mac
 		[Outlet]
 		AppKit.NSProgressIndicator ProgressBar { get; set; }
 
+		[Outlet]
+		AppKit.NSTabView TabView { get; set; }
+
 		[Action ("OnCreateDefinitionFileChooserButtonClicked:")]
 		partial void OnCreateDefinitionFileChooserButtonClicked (Foundation.NSObject sender);
 
@@ -78,6 +81,11 @@ namespace KeySwitchManager.Xamarin.Mac
 
 		void ReleaseDesignerOutlets ()
 		{
+			if (TabView != null) {
+				TabView.Dispose ();
+				TabView = null;
+			}
+
 			if (ExportDirectoryText != null) {
 				ExportDirectoryText.Dispose ();
 				ExportDirectoryText = null;

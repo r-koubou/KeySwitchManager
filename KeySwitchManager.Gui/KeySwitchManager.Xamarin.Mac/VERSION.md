@@ -7,4 +7,4 @@ KeySwitchManager Xamarin.Mac Application
 
 ## Build At
 
-2021-08-08 17:46:05 +09:00
+2021-08-08 18:49:14 +09:00

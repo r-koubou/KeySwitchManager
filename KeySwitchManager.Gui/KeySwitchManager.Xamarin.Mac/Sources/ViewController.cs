@@ -70,6 +70,7 @@ namespace KeySwitchManager.Xamarin.Mac
             InvokeOnMainThread( () => {
                 LogView.Clear();
                 ProgressBar.StartAnimation( this );
+                SetEnableViews( TabView, false );
                 // LogClearButton.IsEnabled    = false;
                 // MainTabPanel.IsEnabled      = false;
             } );
@@ -79,6 +80,8 @@ namespace KeySwitchManager.Xamarin.Mac
         {
             InvokeOnMainThread( () => {
 
+                ProgressBar.StopAnimation( this );
+
                 var alert = new NSAlert()
                 {
                     AlertStyle  = NSAlertStyle.Informational,
@@ -86,7 +89,7 @@ namespace KeySwitchManager.Xamarin.Mac
                 };
                 alert.RunModal();
 
-                ProgressBar.StopAnimation( this );
+                SetEnableViews( TabView, true );
 
                 // LogClearButton.IsEnabled = true;
                 // MainTabPanel.IsEnabled   = true;
@@ -294,6 +297,22 @@ namespace KeySwitchManager.Xamarin.Mac
                     complete.Invoke( dialog.Filenames[ 0 ] );
                 }
             });
+        }
+
+
+        private static void SetEnableViews( NSView view, bool enabled )
+        {
+            foreach( var v in view.Subviews )
+            {
+                if( v is NSControl c )
+                {
+                    c.Enabled = enabled;
+                }
+                else
+                {
+                    SetEnableViews( v, enabled );
+                }
+            }
         }
 
         #endregion
