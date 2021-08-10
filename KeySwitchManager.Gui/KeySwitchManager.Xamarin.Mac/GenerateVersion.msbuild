@@ -1,17 +1,14 @@
 <Project>
     <!-- Output assenbly version to text file for including on deploy by msbuild script. -->
     <Target Name="GenerateVersionText" AfterTargets="Build">
-        <GetAssemblyIdentity AssemblyFiles="$(TargetPath)">
-            <Output TaskParameter="Assemblies" ItemName="MyAssemblyIdentities" />
-        </GetAssemblyIdentity>
         <PropertyGroup>
             <VersionText>
 $(Product)
 ==============================
 
-## Assembly Version
+## Version
 
-%(MyAssemblyIdentities.Version)
+$(Version)
 
 ## Build At
 

@@ -9,7 +9,7 @@
         <Version>0.2.0</Version>
         <Product>KeySwitchManager Xamarin.Mac Application</Product>
         <RootNamespace>KeySwitchManager.Xamarin.Mac</RootNamespace>
-        <AssemblyName>KeySwitchManager.Xamarin.Mac</AssemblyName>
+        <AssemblyName>KeySwitchManager</AssemblyName>
         <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
         <TargetFrameworkIdentifier>Xamarin.Mac</TargetFrameworkIdentifier>
         <MonoMacResourcePrefix>Resources</MonoMacResourcePrefix>
@@ -54,6 +54,9 @@
         <Reference Include="Xamarin.Mac" />
     </ItemGroup>
     <ItemGroup>
+        <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json">
+          <Visible>False</Visible>
+        </ImageAsset>
         <ImageAsset Include="Assets.xcassets\Contents.json" />
     </ItemGroup>
     <ItemGroup>
@@ -84,6 +87,11 @@
     <ItemGroup>
         <PackageReference Include="RkHelper" Version="0.0.8" />
         <PackageReference Include="YamlDotNet" Version="11.2.1" />
+    </ItemGroup>
+    <ItemGroup>
+      <Content Include="VERSION.md">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Content>
     </ItemGroup>
     <Import Project="$(MSBuildExtensionsPath)\Xamarin\Mac\Xamarin.Mac.CSharp.targets" />
 

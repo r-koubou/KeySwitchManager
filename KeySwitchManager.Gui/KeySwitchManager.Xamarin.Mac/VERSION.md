@@ -1,10 +1,10 @@
 KeySwitchManager Xamarin.Mac Application
 ==============================
 
-## Assembly Version
+## Version
 
-0.0.0.0
+0.2.0
 
 ## Build At
 
-2021-08-08 18:49:14 +09:00
+2021-08-11 01:56:39 +09:00
