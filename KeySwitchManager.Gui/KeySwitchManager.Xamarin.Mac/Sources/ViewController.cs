@@ -256,12 +256,10 @@ namespace KeySwitchManager.Xamarin.Mac
                 AllowedFileTypes = extensions
             };
 
-            dialog.Begin( ( num ) => {
-                if( num == (long)NSModalResponse.OK )
-                {
-                    complete.Invoke( dialog.Filenames[ 0 ] );
-                }
-            });
+            if( dialog.RunModal() == (long)NSModalResponse.OK )
+            {
+                complete.Invoke( dialog.Filenames[ 0 ] );
+            }
         }
 
         private void ChooseSaveFilePath( Action<string> complete, params string[] extensions )
@@ -273,12 +271,10 @@ namespace KeySwitchManager.Xamarin.Mac
                 AllowedFileTypes        = extensions
             };
 
-            dialog.Begin( ( num ) => {
-                if( num == (long)NSModalResponse.OK )
-                {
-                    complete.Invoke( dialog.Filename );
-                }
-            });
+            if( dialog.RunModal() == (long)NSModalResponse.OK )
+            {
+                complete.Invoke( dialog.Filename );
+            }
         }
 
         private void ChooseDirectoryPath( Action<string> complete )
@@ -291,12 +287,10 @@ namespace KeySwitchManager.Xamarin.Mac
                 AllowsMultipleSelection = false,
             };
 
-            dialog.Begin( ( num ) => {
-                if( num == (long)NSModalResponse.OK )
-                {
-                    complete.Invoke( dialog.Filenames[ 0 ] );
-                }
-            });
+            if( dialog.RunModal() == (long)NSModalResponse.OK )
+            {
+                complete.Invoke( dialog.Filenames[ 0 ] );
+            }
         }
 
 
