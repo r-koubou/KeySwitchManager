@@ -109,19 +109,58 @@ namespace KeySwitchManager.Infrastructures.Database.LiteDB.KeySwitches
             ProductName productName,
             InstrumentName instrumentName )
         {
+            var d = developerName.Value;
+            var p = productName.Value;
+            var i = instrumentName.Value;
+
             return KeySwitchTable.DeleteMany(
                 x =>
-                    x.DeveloperName == developerName.Value &&
-                    x.ProductName == productName.Value &&
-                    x.InstrumentName == instrumentName.Value );
+                    ( d == DeveloperName.Any.Value || x.DeveloperName.Contains( d ) ) &&
+                    ( p == ProductName.Any.Value || x.ProductName.Contains( p ) ) &&
+                    ( i == InstrumentName.Any.Value || x.InstrumentName.Contains( i ) )
+            );
         }
 
         public int Delete( DeveloperName developerName, ProductName productName )
         {
+            var d = developerName.Value;
+            var p = productName.Value;
+
             return KeySwitchTable.DeleteMany(
                 x =>
-                    x.DeveloperName == developerName.Value &&
-                    x.ProductName == productName.Value );
+                    ( d == DeveloperName.Any.Value || x.DeveloperName.Contains( d ) ) &&
+                    ( p == ProductName.Any.Value || x.ProductName.Contains( p ) )
+            );
+        }
+
+        public int Delete( DeveloperName developerName )
+        {
+            var d = developerName.Value;
+
+            return KeySwitchTable.DeleteMany(
+                x =>
+                    d == DeveloperName.Any.Value || x.DeveloperName.Contains( d )
+            );
+        }
+
+        public int Delete( ProductName productName )
+        {
+            var p = productName.Value;
+
+            return KeySwitchTable.DeleteMany(
+                x =>
+                    p == ProductName.Any.Value || x.ProductName.Contains( p )
+            );
+        }
+
+        public int Delete( InstrumentName instrumentName )
+        {
+            var i = instrumentName.Value;
+
+            return KeySwitchTable.DeleteMany(
+                x =>
+                    i == InstrumentName.Any.Value || x.InstrumentName.Contains( i )
+            );
         }
 
         public int DeleteAll()
@@ -213,6 +252,18 @@ namespace KeySwitchManager.Infrastructures.Database.LiteDB.KeySwitches
                 KeySwitchTable.Find(
                     x =>
                         x.ProductName.Contains( p )
+                )
+            );
+        }
+
+        public IReadOnlyCollection<KeySwitch> Find( InstrumentName instrumentName )
+        {
+            var i = instrumentName.Value;
+
+            return CreateEntities(
+                KeySwitchTable.Find(
+                    x =>
+                        i == InstrumentName.Any.Value || x.InstrumentName.Contains( i )
                 )
             );
         }
