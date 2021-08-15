@@ -7,6 +7,7 @@ using System.Windows;
 
 using KeySwitchManager.Applications.Core.Controllers;
 using KeySwitchManager.Applications.Core.Controllers.Create;
+using KeySwitchManager.Applications.Core.Controllers.Delete;
 using KeySwitchManager.Applications.Core.Controllers.Export;
 using KeySwitchManager.Applications.Core.Controllers.Find;
 using KeySwitchManager.Applications.Core.Controllers.Import;
@@ -224,6 +225,34 @@ namespace KeySwitchManager.WPF
             await ExecuteControllerAsync( () => FindControllerFactory.Create( databasePath, developer, product, instrument, LogTextView ) );
         }
 
+        #endregion
+
+        #region Delete
+        private async void OnDeleteButtonClicked( object sender, RoutedEventArgs e )
+        {
+            if( MessageBox.Show( "Are you sure?", "Warning", MessageBoxButton.YesNo, MessageBoxImage.Warning ) != MessageBoxResult.Yes )
+            {
+                return;
+            }
+
+            var databasePath = FindDatabaseFileText.Text;
+            var developer = FindDeveloperText.Text;
+            var product = FindProductText.Text;
+            var instrument = FindInstrumentText.Text;
+
+            if( StringHelper.IsEmpty( databasePath, developer, product, instrument ) )
+            {
+                return;
+            }
+
+            if( !File.Exists( databasePath ) )
+            {
+                return;
+            }
+
+            await ExecuteControllerAsync( () => DeleteControllerFactory.Create( databasePath, developer, product, instrument, LogTextView ) );
+
+        }
         #endregion
 
         #region Export
