@@ -52,6 +52,9 @@ namespace KeySwitchManager.Xamarin.Mac
 		[Action ("OnCreateDefinitionFileChooserButtonClicked:")]
 		partial void OnCreateDefinitionFileChooserButtonClicked (Foundation.NSObject sender);
 
+		[Action ("OnDeleteButtonClicked:")]
+		partial void OnDeleteButtonClicked (Foundation.NSObject sender);
+
 		[Action ("OnDoImportButtonClicked:")]
 		partial void OnDoImportButtonClicked (Foundation.NSObject sender);
 
@@ -81,11 +84,6 @@ namespace KeySwitchManager.Xamarin.Mac
 
 		void ReleaseDesignerOutlets ()
 		{
-			if (TabView != null) {
-				TabView.Dispose ();
-				TabView = null;
-			}
-
 			if (ExportDirectoryText != null) {
 				ExportDirectoryText.Dispose ();
 				ExportDirectoryText = null;
@@ -139,6 +137,11 @@ namespace KeySwitchManager.Xamarin.Mac
 			if (ProgressBar != null) {
 				ProgressBar.Dispose ();
 				ProgressBar = null;
+			}
+
+			if (TabView != null) {
+				TabView.Dispose ();
+				TabView = null;
 			}
 
 		}

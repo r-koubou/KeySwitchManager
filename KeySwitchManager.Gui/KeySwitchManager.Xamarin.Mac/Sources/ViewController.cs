@@ -9,6 +9,7 @@ using Foundation;
 
 using KeySwitchManager.Applications.Core.Controllers;
 using KeySwitchManager.Applications.Core.Controllers.Create;
+using KeySwitchManager.Applications.Core.Controllers.Delete;
 using KeySwitchManager.Applications.Core.Controllers.Export;
 using KeySwitchManager.Applications.Core.Controllers.Find;
 using KeySwitchManager.Applications.Core.Controllers.Import;
@@ -192,6 +193,35 @@ namespace KeySwitchManager.Xamarin.Mac
 
         #endregion
 
+        #region Delete
+        async partial void OnDeleteButtonClicked( NSObject sender )
+        {
+            var databasePath = FindDatabaseFileText.StringValue;
+            var developer = FindDeveloperText.StringValue;
+            var product = FindProductText.StringValue;
+            var instrument = FindInstrumentText.StringValue;
+
+            if( StringHelper.IsEmpty( databasePath, developer, product, instrument ) )
+            {
+                return;
+            }
+
+            if( !File.Exists( databasePath ) )
+            {
+                return;
+            }
+
+            if( !ChooseYesNoDialog( "Warning", "Are you sure?" ) )
+            {
+                return;
+            }
+
+            await ExecuteControllerAsync( () => DeleteControllerFactory.Create( databasePath, developer, product, instrument, LogView ) );
+
+        }
+
+        #endregion
+
         #region Export
         partial void OnSaveExportDirectoryChooserButtonClicked( NSObject sender )
         {
@@ -247,6 +277,21 @@ namespace KeySwitchManager.Xamarin.Mac
         #endregion
 
         #region Utilities
+        private bool ChooseYesNoDialog( string title, string message )
+        {
+            var dialog = new NSAlert
+            {
+                AlertStyle      = NSAlertStyle.Warning,
+                MessageText     = title,
+                InformativeText = message
+            };
+
+            dialog.AddButton( "Yes" );
+            dialog.AddButton( "No" );
+
+            return dialog.RunModal() == (long)NSAlertButtonReturn.First;
+        }
+
         private void ChooseOpenFilePath( Action<string> complete, params string[] extensions )
         {
             var dialog = new NSOpenPanel()
