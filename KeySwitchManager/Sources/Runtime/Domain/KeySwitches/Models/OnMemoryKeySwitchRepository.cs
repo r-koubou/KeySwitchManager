@@ -58,9 +58,9 @@ namespace KeySwitchManager.Domain.KeySwitches.Models
         #endregion
 
         #region Delete
-        public int Delete( DeveloperName developerName, ProductName productName )
+        public int Delete( KeySwitchId keySwitchId )
         {
-            var founds = Find( developerName, productName );
+            var founds = Find( keySwitchId );
             return founds.Sum( x => KeySwitches.Remove( x ) ? 1 : 0 );
         }
 
@@ -70,9 +70,27 @@ namespace KeySwitchManager.Domain.KeySwitches.Models
             return founds.Sum( x => KeySwitches.Remove( x ) ? 1 : 0 );
         }
 
-        public int Delete( KeySwitchId keySwitchId )
+        public int Delete( DeveloperName developerName, ProductName productName )
         {
-            var founds = Find( keySwitchId );
+            var founds = Find( developerName, productName );
+            return founds.Sum( x => KeySwitches.Remove( x ) ? 1 : 0 );
+        }
+
+        public int Delete( DeveloperName developerName )
+        {
+            var founds = Find( developerName );
+            return founds.Sum( x => KeySwitches.Remove( x ) ? 1 : 0 );
+        }
+
+        public int Delete( ProductName productName )
+        {
+            var founds = Find( productName );
+            return founds.Sum( x => KeySwitches.Remove( x ) ? 1 : 0 );
+        }
+
+        public int Delete( InstrumentName instrumentName )
+        {
+            var founds = Find( instrumentName );
             return founds.Sum( x => KeySwitches.Remove( x ) ? 1 : 0 );
         }
 
@@ -91,31 +109,60 @@ namespace KeySwitchManager.Domain.KeySwitches.Models
             );
 
         public IReadOnlyCollection<KeySwitch> Find( DeveloperName developerName, ProductName productName, InstrumentName instrumentName )
-            => KeySwitches.FindAll(
+        {
+            var d = developerName.Value;
+            var p = productName.Value;
+            var i = instrumentName.Value;
+
+            return KeySwitches.FindAll(
                 x =>
-                    x.DeveloperName == developerName &&
-                    x.ProductName == productName &&
-                    x.InstrumentName == instrumentName
+                    ( d == DeveloperName.Any.Value || x.DeveloperName.Value.Contains( d ) ) &&
+                    ( p == ProductName.Any.Value || x.ProductName.Value.Contains( p ) ) &&
+                    ( i == InstrumentName.Any.Value || x.InstrumentName.Value.Contains( i ) )
             );
+        }
 
         public IReadOnlyCollection<KeySwitch> Find( DeveloperName developerName, ProductName productName )
-            => KeySwitches.FindAll(
+        {
+            var d = developerName.Value;
+            var p = productName.Value;
+
+            return KeySwitches.FindAll(
                 x =>
-                    x.DeveloperName == developerName &&
-                    x.ProductName == productName
+                    ( d == DeveloperName.Any.Value || x.DeveloperName.Value.Contains( d ) ) &&
+                    ( p == ProductName.Any.Value || x.ProductName.Value.Contains( p ) )
             );
+        }
 
         public IReadOnlyCollection<KeySwitch> Find( DeveloperName developerName )
-            => KeySwitches.FindAll(
+        {
+            var d = developerName.Value;
+
+            return KeySwitches.FindAll(
                 x =>
-                    x.DeveloperName == developerName
+                    d == DeveloperName.Any.Value || x.DeveloperName.Value.Contains( d )
             );
+        }
 
         public IReadOnlyCollection<KeySwitch> Find( ProductName productName )
-            => KeySwitches.FindAll(
+        {
+            var p = productName.Value;
+
+            return KeySwitches.FindAll(
                 x =>
-                    x.ProductName == productName
+                    p == ProductName.Any.Value || x.ProductName.Value.Contains( p )
             );
+        }
+
+        public IReadOnlyCollection<KeySwitch> Find( InstrumentName instrumentName )
+        {
+            var i = instrumentName.Value;
+
+            return KeySwitches.FindAll(
+                x =>
+                    i == InstrumentName.Any.Value || x.InstrumentName.Value.Contains( i )
+            );
+        }
 
         public IReadOnlyCollection<KeySwitch> FindAll()
             => new List<KeySwitch>( KeySwitches );
