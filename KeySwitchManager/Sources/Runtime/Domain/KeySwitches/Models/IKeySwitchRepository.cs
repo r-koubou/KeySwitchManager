@@ -14,8 +14,11 @@ namespace KeySwitchManager.Domain.KeySwitches.Models
         public int Count();
         public int Flush();
         public SaveResult Save( KeySwitch keySwitch );
-        public int Delete( DeveloperName developerName, ProductName productName );
         public int Delete( DeveloperName developerName, ProductName productName, InstrumentName instrumentName );
+        public int Delete( DeveloperName developerName, ProductName productName );
+        public int Delete( DeveloperName developerName );
+        public int Delete( ProductName productName );
+        public int Delete( InstrumentName instrumentName );
         public int Delete( KeySwitchId keySwitchId );
         public int DeleteAll();
         public IReadOnlyCollection<KeySwitch> Find( KeySwitchId keySwitchId );
@@ -23,6 +26,7 @@ namespace KeySwitchManager.Domain.KeySwitches.Models
         public IReadOnlyCollection<KeySwitch> Find( DeveloperName developerName, ProductName productName );
         public IReadOnlyCollection<KeySwitch> Find( DeveloperName developerName );
         public IReadOnlyCollection<KeySwitch> Find( ProductName productName );
+        public IReadOnlyCollection<KeySwitch> Find( InstrumentName instrumentName );
         public IReadOnlyCollection<KeySwitch> FindAll();
 
         public class SaveResult : IEquatable<SaveResult>

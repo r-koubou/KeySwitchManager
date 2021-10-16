@@ -1,12 +1,12 @@
-using System.Text.Json.Serialization;
+using Newtonsoft.Json;
 
 namespace KeySwitchManager.Infrastructures.Storage.Json.Cakewalk.Models
 {
     public class Group
     {
-        [JsonPropertyName( "id" )]
+        [JsonProperty( "id" )]
         public int Id { get; }
-        [JsonPropertyName( "name" )]
+        [JsonProperty( "name" )]
         public string Name { get; }
 
         public Group( int id, string name )

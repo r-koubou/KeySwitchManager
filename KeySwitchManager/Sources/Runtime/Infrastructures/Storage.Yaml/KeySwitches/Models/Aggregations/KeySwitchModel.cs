@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 
 using RkHelper.Time;
 
@@ -18,13 +17,10 @@ namespace KeySwitchManager.Infrastructures.Storage.Yaml.KeySwitches.Models.Aggre
 
         public DateTime LastUpdated { get; set; } = DateTimeHelper.NowUtc();
 
-        [Required]
         public string DeveloperName { get; set; } = default!;
 
-        [Required]
         public string ProductName { get; set; } = default!;
 
-        [Required]
         public string InstrumentName { get; set; } = default!;
 
         public IList<ArticulationModel> Articulations { get; set; } = new List<ArticulationModel>();
