@@ -1,0 +1,25 @@
+<Project>
+    <!-- Output assenbly version to text file for including on deploy by msbuild script. -->
+    <Target Name="GenerateVersionText" AfterTargets="Build">
+        <PropertyGroup>
+            <VersionText>
+$(Product)
+==============================
+
+## Version
+
+$(Version)
+
+## Build At
+
+$([System.DateTime]::Now.ToString("yyyy-MM-dd HH:mm:ss %K"))
+            </VersionText>
+        </PropertyGroup>
+
+        <WriteLinesToFile
+                File="VERSION.md"
+                Overwrite="true"
+                Lines="$(VersionText)" />
+    </Target>
+
+</Project>
