@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>netstandard2.1</TargetFramework>
+        <!-- Assembly / Common -->
+        <Copyright>R-Koubou</Copyright>
+        <Company>R-Koubou</Company>
+        <Product>KeySwitchManager.Commons</Product>
+        <AssemblyName>KeySwitchManager.Commons</AssemblyName>
+        <RootNamespace>KeySwitchManager.Commons</RootNamespace>
+        <Version>0.0.1</Version>
+        <LangVersion>9</LangVersion>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <PackageReference Include="RkHelper" Version="0.0.8" />
+      <PackageReference Include="System.Reactive" Version="5.0.0" />
+      <PackageReference Include="ValueObjectGenerator" Version="1.2.1" />
+    </ItemGroup>
+
+</Project>

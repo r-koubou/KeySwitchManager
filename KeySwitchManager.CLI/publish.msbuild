@@ -1,0 +1,81 @@
+<Project>
+
+    <PropertyGroup>
+        <ProjectName>KeySwitchManager.CLI</ProjectName>
+        <ProjectFile>KeySwitchManager.CLI.csproj</ProjectFile>
+        <BuildDate>$([System.DateTime]::Now.ToString("yyyyMMdd"))</BuildDate>
+    </PropertyGroup>
+
+    <Target Name="Initialize">
+        <!-- Build for Specific OS native code -->
+        <PropertyGroup Condition="$(RID) != ''">
+            <Prefix>$(ProjectName)-$(RID)</Prefix>
+            <ForDotNetCore>false</ForDotNetCore>
+        </PropertyGroup>
+        <!-- Build for .net Core code -->
+        <PropertyGroup Condition="$(RID) == ''">
+            <Prefix>$(ProjectName)-dotnet</Prefix>
+            <ForDotNetCore>true</ForDotNetCore>
+        </PropertyGroup>
+
+        <PropertyGroup>
+            <PublishWorkDir>$(PublishDir)/$(Prefix)</PublishWorkDir>
+        </PropertyGroup>
+
+        <!--#region Value check -->
+        <Error
+                Condition="$(Configuration) == ''"
+                Text="Property: `Configuration` is not set."/>
+        <Error
+                Condition="$(ProjectName) == ''"
+                Text="Property: `ProjectName` is not set."/>
+        <Error
+                Condition="$(ProjectFile) == ''"
+                Text="Property: `ProjectFile` is not set."/>
+        <Error
+                Condition="$(PublishDir) == ''"
+                Text="Property: `PublishDir` is not set."/>
+        <!--#endregion-->
+
+    </Target>
+
+    <Target Name="Build" DependsOnTargets="Initialize">
+
+        <!-- Build for Specific OS native code -->
+        <PropertyGroup Condition="$(ForDotNetCore) == 'false'">
+            <PropertyArgs>
+                OutDir=$(PublishWorkDir);PublishDir=$(PublishWorkDir);Configuration=$(Configuration);SelfContained=true;RuntimeIdentifier=$(RID)
+            </PropertyArgs>
+        </PropertyGroup>
+        <!-- Build for .net Core code -->
+        <PropertyGroup Condition="$(ForDotNetCore) == 'true'">
+            <PropertyArgs>
+                OutDir=$(PublishWorkDir);PublishDir=$(PublishWorkDir);Configuration=$(Configuration)
+            </PropertyArgs>
+        </PropertyGroup>
+
+        <MSBuild
+                Projects="$(ProjectFile)"
+                Targets="restore;publish"
+                Properties="$(PropertyArgs)"/>
+
+    </Target>
+
+    <Target Name="Archive" DependsOnTargets="Build">
+
+        <Copy
+                SourceFiles="VERSION.md"
+                DestinationFolder="$(PublishWorkDir)"
+                ContinueOnError="true" />
+
+        <ZipDirectory
+                Condition="'$(EnableArchive)'==true"
+                SourceDirectory="$(PublishWorkDir)"
+                DestinationFile="$(PublishDir)/$(Prefix)-$(BuildDate).zip"
+                Overwrite="true" />
+        <RemoveDir
+                Condition="'$(EnableArchive)'==true"
+                Directories="$(PublishWorkDir)/"/>
+    </Target>
+
+</Project>

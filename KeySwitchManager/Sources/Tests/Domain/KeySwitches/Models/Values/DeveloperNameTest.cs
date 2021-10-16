@@ -1,0 +1,40 @@
+using System;
+
+using KeySwitchManager.Domain.KeySwitches.Models.Values;
+
+using NUnit.Framework;
+
+namespace KeySwitchManager.Testing.Domain.KeySwitches.Models.Values
+{
+    [TestFixture]
+    public class DeveloperNameTest
+    {
+        [Test]
+        public void EmptyNameTest()
+        {
+            Assert.Throws<ArgumentException>( () => _ = new DeveloperName( "" ) );
+            Assert.Throws<ArgumentException>( () => _ = new DeveloperName( "  " ) );
+            _ = new DeveloperName( "Hoge" );
+        }
+
+        [Test]
+        public void EqualityTest()
+        {
+            var hoge = new DeveloperName( "Hoge" );
+            var huga = new DeveloperName( "Huga" );
+            Assert.IsFalse( hoge.Equals( huga ) );
+
+            var hoge1 = new DeveloperName( "Hoge" );
+            var hoge2 = new DeveloperName( "Hoge" );
+            Assert.IsTrue( hoge1.Equals( hoge2 ) );
+        }
+
+        [Test]
+        public void ToStringEqualityTest()
+        {
+            Assert.AreEqual( new DeveloperName( "Hoge" ).ToString(), "Hoge" );
+            Assert.IsTrue( new DeveloperName( "Hoge" ).ToString() == "Hoge" );
+        }
+
+    }
+}

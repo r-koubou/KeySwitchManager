@@ -1,121 +1,25 @@
 [日本語](README.ja.md)
 
-# A Keyswitch file management tool for DAW
+# KeySwitchManager
 
-This tool manages keyswitch information in a database and can be converted to and from the corresponding DAW keyswitch definition files.
+KeySwitchManager is a tool that specializes in creating keyswitch definition files for multiple DAWs, allowing keyswitch information to be edited in text and spreadsheets, and managed in local database files.
 
-![overview](https://i.gyazo.com/db570b52d9c59fad54fc1d7b043a1d21.png)
+Usage and more information.
 
-
-
-## Input Formats
-
-- Spreadsheet
-- JSON
+- [Documentation](https://keyswitchmanager.readthedocs.io/)
 
 
 
-## Supported DAWs
+## Japanese
 
-- Cubase (Pro only)
-- Nuendo
-- Studio One 5 (Pro only)
+KeySwitchManager は複数のDAW用キースイッチ定義ファイル作成に特化した、キースイッチ情報をテキストやスプレッドシートで編集、ローカルデータベースファイルで管理可能なツール。
 
+使い方など、詳しい情報はこちら
 
-
-## Command Line Options
-
-### Command
-
-Common
-
-```bash
-KeySwitchManager.CLI <command> [<options>|--help]
-```
-
-- Shell Script
-
-```bash
-KeySwitchManager.CLI.sh
-```
-
-- DOS Batch
-
-```bash
-KeySwitchManager.CLI.bat
-```
+- [ドキュメント](https://ja-keyswitchmanager.readthedocs.io/)
 
 
 
-## The flow of data creation
+## License
 
-1. Register the keyswitch information to the database
-2. Output the DAW keyswitch file
-
-### Register the keyswitch information to the database
-
-#### Command
-
-- import-xlsx 
-
-Fill out the spreadsheet
-
-Copy Template.xlsm under an alias and run the following command after editing it.
-
-```Bash
-KeySwitchManager.CLI import-xlsx -[andpfih]
-```
-
-
-| Option | Required | Description          |
-| :----: | -------- | -------------------- |
-|   -a   | No       | Author               |
-|   -n   | No       | Description          |
-|   -d   | Yes      | Developrt name       |
-|   -p   | Yes      | Product name         |
-|   -f   | Yes      | Database filename    |
-|   -i   | Yes      | Spreadsheet filename |
-
-
-
-#### Command
-
-- template
-
-Output JSON text for templates
-
-- import
-
-After editing the JSON file, run the following command.
-
-```bash
-KeySwitchManager.CLI import -i "jsonfile" -f "Database file"
-```
-
-
-
-### Output the DAW keyswitch file
-
-#### Command
-
-- expressionmap
-- studio-one
-
-```bash
-KeySwitchManager.CLI <command> -[sdof]
-```
-
-
-|    Command    | Description                              |
-| :-----------: | ---------------------------------------- |
-| expressionmap | Cubase / Nuendo : VST Expressionmap file |
-|  studio-one   | Studio One 5 : Keyswitch file            |
-
-
-
-| Option | Required | Description    |
-| :----: | -------- | -------------- |
-|   -s   | No       | Author         |
-|   -d   | No       | Description    |
-|   -o   | Yes      | Developrt name |
-|   -f   | Yes      | Product name   |
+[MIT](LICENSE)

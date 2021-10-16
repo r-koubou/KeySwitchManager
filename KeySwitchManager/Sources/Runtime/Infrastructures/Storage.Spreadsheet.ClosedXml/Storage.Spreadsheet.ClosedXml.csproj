@@ -1,0 +1,30 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <LangVersion>9</LangVersion>
+        <TargetFramework>netstandard2.1</TargetFramework>
+        <!-- Assembly -->
+        <Copyright>R-Koubou</Copyright>
+        <Company>R-Koubou</Company>
+        <Product>KeySwitchManager.Storage.Spreadsheet.ClosedXml</Product>
+        <AssemblyName>KeySwitchManager.Infrastructures.Storage.Spreadsheet.ClosedXml</AssemblyName>
+        <RootNamespace>KeySwitchManager.Infrastructures.Storage.Spreadsheet.ClosedXml</RootNamespace>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\..\Domain\Domain.csproj" />
+      <ProjectReference Include="..\Storage.Spreadsheet\Storage.Spreadsheet.csproj" />
+      <ProjectReference Include="..\Storage\Storage.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="ClosedXML" Version="0.95.4" />
+      <PackageReference Include="System.Text.Encoding.CodePages" Version="5.0.0" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <EmbeddedResource Include="Template.xlsx" />
+    </ItemGroup>
+
+</Project>

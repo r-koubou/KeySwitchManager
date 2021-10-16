@@ -1,0 +1,160 @@
+﻿<Window x:Class="KeySwitchManager.WPF.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        Title="KeySwitchManager" Height="840" Width="480" MinWidth="480" MinHeight="800" ResizeMode="CanResizeWithGrip"
+        WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="420" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <TabControl x:Name="MainTabPanel" Grid.Row="0" HorizontalAlignment="Stretch" VerticalAlignment="Top">
+            <TabItem Header="New">
+                <Grid>
+                    <StackPanel HorizontalAlignment="Stretch" Orientation="Vertical">
+                        <GroupBox Margin="8" Header="SaveTo" VerticalAlignment="Stretch">
+                            <Grid Margin="8">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="0.9*"/>
+                                    <ColumnDefinition Width="0.1*"/>
+                                </Grid.ColumnDefinitions>
+                                <TextBox Grid.Column="0" x:Name="NewFileText" HorizontalAlignment="Stretch" Margin="10,10,0,0" Text="" TextWrapping="NoWrap" VerticalAlignment="Top" Width="Auto"/>
+                                <Button x:Name="CreateDefinitionFileChooserButton" Grid.Column="1" Content="Open" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Click="OnCreateDefinitionFileChooserButtonClicked"/>
+                            </Grid>
+                        </GroupBox>
+                        <Button x:Name="DoCreateNewDefinitionButton" Content="Create" Margin="10,10,10,0" FontWeight="Normal" Click="OnDoCreateNewDefinitionButtonClicked"/>
+                    </StackPanel>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Import">
+                <StackPanel Orientation="Vertical" Margin="0,8,0,8">
+                    <!-- Database File -->
+                    <Grid HorizontalAlignment="Stretch">
+                        <GroupBox Header="Database File" HorizontalAlignment="Stretch" Margin="8" VerticalAlignment="Stretch">
+                            <Grid Margin="0,10,0,10">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="0.9*"/>
+                                    <ColumnDefinition Width="0.1*"/>
+                                </Grid.ColumnDefinitions>
+                                <TextBox Grid.Column="0" x:Name="ImportDatabaseFileText" HorizontalAlignment="Stretch" Margin="10,0,0,0" Text="" TextWrapping="NoWrap" VerticalAlignment="Stretch" Width="Auto" PreviewDragOver="OnImportDatabaseFileTextPreviewDragOver" Drop="OnImportDatabaseFileTextDrop" />
+                                <Button x:Name="OpenDatabaseFileChooserButton" Grid.Column="1" Content="Open" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" Click="OnOpenDatabaseFileChooserButtonClicked"/>
+                            </Grid>
+                        </GroupBox>
+                    </Grid>
+                    <!-- Import File -->
+                    <Grid HorizontalAlignment="Stretch">
+                        <GroupBox Header="Import File" HorizontalAlignment="Stretch" Margin="8" VerticalAlignment="Stretch">
+                            <Grid Margin="0,10,0,10">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="0.9*"/>
+                                    <ColumnDefinition Width="0.1*"/>
+                                </Grid.ColumnDefinitions>
+                                <TextBox Grid.Column="0" x:Name="ImportFileText" HorizontalAlignment="Stretch" Margin="10,0,0,0" Text="" TextWrapping="NoWrap" VerticalAlignment="Stretch" Width="Auto" PreviewDragOver="OnImportFileTextPreviewDragOver" Drop="OnImportFileTextDrop"/>
+                                <Button x:Name="OpenFileChooserButton" Grid.Column="1" Content="Open" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" Click="OnOpenFileChooserButtonClicked"/>
+                            </Grid>
+                        </GroupBox>
+                    </Grid>
+
+                    <!-- Import -->
+                    <Button x:Name="DoImportButton" Content="Import" Margin="10,10,10,0" Click="OnDoImportButtonClick"/>
+                </StackPanel>
+            </TabItem>
+            <TabItem Header="Find / Delete / Export" Height="20" VerticalAlignment="Top">
+                <StackPanel>
+                    <!-- Database File -->
+                    <Grid HorizontalAlignment="Stretch">
+                        <GroupBox Header="Database File" HorizontalAlignment="Stretch" Margin="8" VerticalAlignment="Stretch">
+                            <Grid Margin="0,10,0,10">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="0.9*"/>
+                                    <ColumnDefinition Width="0.1*"/>
+                                </Grid.ColumnDefinitions>
+                                <TextBox Grid.Column="0" x:Name="FindDatabaseFileText" HorizontalAlignment="Stretch" Margin="10,0,0,0" Text="" TextWrapping="NoWrap" VerticalAlignment="Stretch" Width="Auto" PreviewDragOver="OnFindDatabaseFileTextPreviewDragOver" Drop="OnFindDatabaseFileTextDrop"/>
+                                <Button x:Name="OpenFindDatabaseFileChooserButton" Grid.Column="1" Content="Open" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" Click="OpenFindDatabaseFileChooserButtonClicked"/>
+                            </Grid>
+                        </GroupBox>
+                    </Grid>
+
+                    <GroupBox Header="Condition">
+                        <StackPanel>
+                            <!-- Developer -->
+                            <Grid Margin="10,4,40,4" >
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="0.2*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Column="0" Content="Developer"/>
+                                <TextBox x:Name="FindDeveloperText" Grid.Column="1" Text="*"/>
+                            </Grid>
+                            <!-- Product -->
+                            <Grid Margin="10,4,40,4">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="0.2*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Column="0" Content="Product"/>
+                                <TextBox x:Name="FindProductText" Grid.Column="1" Text="*"/>
+                            </Grid>
+                            <!-- Instrument -->
+                            <Grid Margin="10,4,40,4">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="0.2*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Column="0" Content="Instrument"/>
+                                <TextBox x:Name="FindInstrumentText" Grid.Column="1" Text="*"/>
+                            </Grid>
+                            <Button x:Name="FindButton" Content="Find" Margin="0,10,0,0" Click="OnFindButtonClicked"/>
+                            <Button x:Name="DeleteButton" Content="Delete" Margin="0,10,0,0" Click="OnDeleteButtonClicked"/>
+                        </StackPanel>
+                    </GroupBox>
+                    <GroupBox Header="Export" Margin="0,4,0,10">
+                        <StackPanel>
+                            <Grid Margin="0,10,10,10">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="0.3*"/>
+                                    <ColumnDefinition Width="0.6*"/>
+                                    <ColumnDefinition Width="0.1*"/>
+                                </Grid.ColumnDefinitions>
+                                <Label Content="Output Directory"/>
+                                <TextBox Grid.Column="1" x:Name="ExportDirectoryText" HorizontalAlignment="Stretch" Margin="10,0,0,0" Text="" TextWrapping="NoWrap" VerticalAlignment="Stretch" Width="Auto"/>
+                                <Button x:Name="SaveExportDirectoryChooserButton" Grid.Column="2" Content="Open" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" Click="OnSaveExportDirectoryChooserButtonClicked"/>
+                            </Grid>
+
+                            <Grid Margin="0,0,10,10">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="0.3*"/>
+                                    <ColumnDefinition Width="0.7*"/>
+                                </Grid.ColumnDefinitions>
+                                <Label Content="Format" Grid.Column="0"/>
+                                <ComboBox x:Name="ExportFormatCombobox" Grid.Column="1" SelectedIndex="0" Margin="10,0,0,0"/>
+                            </Grid>
+                            <Button x:Name="ExportButton" Content="Export" Click="OnExportButtonClicked"/>
+                        </StackPanel>
+                    </GroupBox>
+                </StackPanel>
+            </TabItem>
+        </TabControl>
+        <GroupBox Header="Log" Grid.Row="1">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="0.9*"/>
+                    <RowDefinition Height="0.1*"/>
+                </Grid.RowDefinitions>
+                <TextBox x:Name="LogTextBox" Grid.Row="0" AcceptsReturn="True" HorizontalAlignment="Stretch" TextWrapping="NoWrap" Margin="0,4,0,4" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto"/>
+                <Grid Grid.Row="1" VerticalAlignment="Center">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Button x:Name="LogClearButton" Grid.Column="0" Content="Clear" HorizontalAlignment="Left" VerticalAlignment="Top" Click="OnLogClearButtonClick" Margin="10,0,30,0"/>
+                    <ProgressBar x:Name="ProgressBar" Grid.Column="1" VerticalAlignment="Stretch" Margin="0,0,30,0"/>
+                </Grid>
+            </Grid>
+        </GroupBox>
+    </Grid>
+</Window>

@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Applications.Core", "..\..\KeySwitchManager\Sources\Runtime\Applications.Core\Applications.Core.csproj", "{7F188846-5ABB-4998-8DC0-F99701D8B348}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KeySwitchManager.WPF", "KeySwitchManager.WPF.csproj", "{10B48B99-8752-46E5-948E-EB0548C80156}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7F188846-5ABB-4998-8DC0-F99701D8B348}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7F188846-5ABB-4998-8DC0-F99701D8B348}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7F188846-5ABB-4998-8DC0-F99701D8B348}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7F188846-5ABB-4998-8DC0-F99701D8B348}.Release|Any CPU.Build.0 = Release|Any CPU
+		{10B48B99-8752-46E5-948E-EB0548C80156}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{10B48B99-8752-46E5-948E-EB0548C80156}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{10B48B99-8752-46E5-948E-EB0548C80156}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{10B48B99-8752-46E5-948E-EB0548C80156}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
