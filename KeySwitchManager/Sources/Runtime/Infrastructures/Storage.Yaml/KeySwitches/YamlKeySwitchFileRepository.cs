@@ -1,9 +1,9 @@
 using System;
 using System.IO;
+using System.Text;
 
 using KeySwitchManager.Commons.Data;
 using KeySwitchManager.Infrastructures.Storage.KeySwitches;
-using KeySwitchManager.Infrastructures.Storage.Yaml.KeySwitches.Helpers;
 
 namespace KeySwitchManager.Infrastructures.Storage.Yaml.KeySwitches
 {
@@ -19,8 +19,13 @@ namespace KeySwitchManager.Infrastructures.Storage.Yaml.KeySwitches
         }
 
         #region Write to file
+        [Obsolete]
         public override int Flush()
         {
+            // TODO メソッドを消す
+
+            throw new NotSupportedException();
+#if false
             var saved = KeySwitches.Count;
 
             if( LoggingSubject.HasObservers )
@@ -32,25 +37,27 @@ namespace KeySwitchManager.Infrastructures.Storage.Yaml.KeySwitches
             }
 
             using var stream = File.Create( DataPath.Path );
-            KeySwitchFileWriter.Write( stream, KeySwitches, LoggingSubject );
+            using var writer = new YamlKeySwitchWriter( stream );
+
+            writer.Write( KeySwitches, LoggingSubject );
 
             return saved;
+#endif
         }
         #endregion
 
         #region Load from file
         public override void Load()
         {
-            //StorageAccessListener.OnReadAccess( DataPath );
-
             if( !DataPath.Exists )
             {
                 throw new FileNotFoundException( DataPath.Path );
             }
 
             using var stream = File.Open( DataPath.Path, FileMode.Open );
+            using var reader = new KeySwitchFileReader( stream );
             KeySwitches.Clear();
-            KeySwitches.AddRange(  KeySwitchFileReader.Read( stream, LoggingSubject ) );
+            KeySwitches.AddRange( reader.Read( LoggingSubject ) );
         }
         #endregion
 
