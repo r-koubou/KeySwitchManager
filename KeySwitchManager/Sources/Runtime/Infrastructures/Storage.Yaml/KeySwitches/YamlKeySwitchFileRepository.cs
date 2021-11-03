@@ -1,6 +1,5 @@
 using System;
 using System.IO;
-using System.Text;
 
 using KeySwitchManager.Commons.Data;
 using KeySwitchManager.Infrastructures.Storage.KeySwitches;

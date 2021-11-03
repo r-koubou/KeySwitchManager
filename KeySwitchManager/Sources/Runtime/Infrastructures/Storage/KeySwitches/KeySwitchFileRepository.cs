@@ -1,3 +1,5 @@
+using System;
+
 using KeySwitchManager.Commons.Data;
 using KeySwitchManager.Domain.KeySwitches.Models;
 
@@ -7,6 +9,7 @@ namespace KeySwitchManager.Infrastructures.Storage.KeySwitches
     {
         public IPath DataPath { get; }
 
+        [Obsolete]
         protected KeySwitchFileRepository( IPath dataPath, bool loadFromPathNow )
         {
             DataPath = dataPath;
@@ -18,7 +21,9 @@ namespace KeySwitchManager.Infrastructures.Storage.KeySwitches
             }
         }
 
+        [Obsolete]
         public abstract override int Flush();
+        [Obsolete]
         public abstract void Load();
     }
 }
