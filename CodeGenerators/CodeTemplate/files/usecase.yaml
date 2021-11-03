@@ -1,0 +1,21 @@
+namespace: com.example.hoge
+suffix: ".cs"
+output_dir: out/usecase
+
+variables:
+  - NAMESPACE_BASE: KeySwitchManager.UseCase.KeySwitches
+  - NAMESPACE_INTERACTOR_BASE: KeySwitchManager.Interactors.KeySwitches
+
+classes:
+  #---------------------------------------------------------
+  # Export
+  #---------------------------------------------------------
+  - name: ExportFile
+    namespace: ${NAMESPACE_BASE}.Export
+    templates:
+      - name: usecase
+      - name: usecase.request
+      - name: usecase.response
+      - name: usecase.presenter
+      - name: usecase.interactor
+        namespace: ${NAMESPACE_INTERACTOR_BASE}

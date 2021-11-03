@@ -1,0 +1,25 @@
+templates:
+  - name: usecase
+    path: "usecase/usecase.cs"
+    prefix: I
+    suffix: UseCase
+
+  - name: usecase.request
+    path: "usecase/request.cs"
+    prefix: ""
+    suffix: Request
+
+  - name: usecase.response
+    path: "usecase/response.cs"
+    prefix: ""
+    suffix: Response
+
+  - name: usecase.presenter
+    path: "usecase/presenter.cs"
+    prefix: ""
+    suffix: Presenter
+
+  - name: usecase.interactor
+    path: "usecase/interactor.cs"
+    prefix: ""
+    suffix: Interactor
