@@ -5,9 +5,12 @@ using KeySwitchManager.Domain.KeySwitches.Models;
 
 namespace KeySwitchManager.Infrastructures.Storage.KeySwitches
 {
+    [Obsolete]
     public abstract class KeySwitchFileRepository : OnMemoryKeySwitchRepository
     {
         public IPath DataPath { get; }
+
+        protected KeySwitchFileRepository( IPath dataPath ) : this( dataPath, false ){}
 
         [Obsolete]
         protected KeySwitchFileRepository( IPath dataPath, bool loadFromPathNow )

@@ -28,7 +28,7 @@ namespace KeySwitchManager.Applications.Core.Controllers.Import
                 var databaseRepository = new LiteDbKeySwitchRepository( new FilePath( databasePath ) );
                 databaseRepository.LoggingObservable.Subscribe( new DatabaseAccessObserver( logTextView ) );
 
-                var yamlFileRepository = new YamlKeySwitchFileRepository( new FilePath( importFilePath ), true );
+                var yamlFileRepository = new YamlFileKeySwitchRepositoryFactory( new FilePath( importFilePath ) ).Create();
                 var presenter = new YamlImportPresenter( logTextView );
                 return new ImportYamlController( databaseRepository, yamlFileRepository, presenter );
             }
