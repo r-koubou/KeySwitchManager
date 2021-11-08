@@ -4,6 +4,8 @@ using KeySwitchManager.Domain.KeySwitches.Helpers;
 using KeySwitchManager.Domain.KeySwitches.Models;
 using KeySwitchManager.UseCase.KeySwitches.Create.Text;
 
+using RkHelper.System;
+
 namespace KeySwitchManager.Applications.Core.Controllers.Create
 {
     public class CreateYamlController : IController
@@ -19,7 +21,13 @@ namespace KeySwitchManager.Applications.Core.Controllers.Create
             Presenter = presenter;
         }
 
-        public void Dispose() {}
+        public void Dispose()
+        {
+            if( !Writer.LeaveOpen )
+            {
+                Disposer.Dispose( Writer );
+            }
+        }
 
         public void Execute()
         {

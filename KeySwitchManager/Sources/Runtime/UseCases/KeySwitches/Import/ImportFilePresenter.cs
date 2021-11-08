@@ -1,13 +1,16 @@
 using KeySwitchManager.UseCase.Commons;
 
-namespace KeySwitchManager.UseCase.KeySwitches.Import.Spreadsheet
+namespace KeySwitchManager.UseCase.KeySwitches.Import
 {
-    public interface IImportSpreadsheetPresenter : IPresenter<ImportSpreadSheetResponse>
+    public interface IImportFilePresenter : IPresenter<ImportFileResponse>
     {
-        public class Null : IImportSpreadsheetPresenter
-        {}
+        public class Null : IImportFilePresenter
+        {
+            public void Complete( ImportFileResponse response )
+            {}
+        }
 
-        public class Console : IImportSpreadsheetPresenter
+        public class Console : IImportFilePresenter
         {
             public void Present<T>( T param )
             {

@@ -10,16 +10,16 @@ using KeySwitchManager.Infrastructures.Storage.Yaml.KeySwitches.Translators;
 
 namespace KeySwitchManager.Infrastructures.Storage.Yaml.KeySwitches
 {
-    public class KeySwitchFileReader : IKeySwitchReader
+    public class YamlKeySwitchReader : IKeySwitchReader
     {
         private Encoding FileEncoding { get; }
         private Stream? Stream { get; set; }
 
         public bool LeaveOpen { get; }
 
-        public KeySwitchFileReader( Stream stream ) : this( stream, Encoding.UTF8 ) {}
+        public YamlKeySwitchReader( Stream stream ) : this( stream, Encoding.UTF8 ) {}
 
-        public KeySwitchFileReader( Stream stream, Encoding filEncoding, bool leaveOpen = false )
+        public YamlKeySwitchReader( Stream stream, Encoding filEncoding, bool leaveOpen = false )
         {
             FileEncoding = filEncoding ?? throw new ArgumentNullException( nameof( filEncoding ) );
             Stream      = stream ?? throw new ArgumentNullException( nameof( stream ) );

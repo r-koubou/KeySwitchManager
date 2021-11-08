@@ -21,7 +21,7 @@ namespace KeySwitchManager.Applications.Core.Controllers.Create
 
             if( path.EndsWith( ".yaml" ) )
             {
-                using var stream = new FilePath( outputFilePath ).OpenWriteStream();
+                var stream = new FilePath( outputFilePath ).OpenWriteStream();
                 var writer = new YamlKeySwitchWriter( stream );
                 var presenter = new CreateYamlKeySwitchPresenter( logTextView );
                 return new CreateYamlController( writer, presenter );

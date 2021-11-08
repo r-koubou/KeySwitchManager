@@ -8,6 +8,18 @@ variables:
 
 classes:
   #---------------------------------------------------------
+  # Import
+  #---------------------------------------------------------
+  - name: ImportFile
+    namespace: ${NAMESPACE_BASE}.Import
+    templates:
+      - name: usecase
+      - name: usecase.request
+      - name: usecase.response
+      - name: usecase.presenter
+      - name: usecase.interactor
+        namespace: ${NAMESPACE_INTERACTOR_BASE}
+  #---------------------------------------------------------
   # Export
   #---------------------------------------------------------
   - name: ExportFile

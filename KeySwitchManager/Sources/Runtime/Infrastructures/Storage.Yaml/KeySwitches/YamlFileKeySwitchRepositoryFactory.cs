@@ -17,8 +17,8 @@ namespace KeySwitchManager.Infrastructures.Storage.Yaml.KeySwitches
                 throw new FileNotFoundException( DataPath.Path );
             }
 
-            using var stream = File.Open( DataPath.Path, FileMode.Open );
-            using var reader = new KeySwitchFileReader( stream );
+            using var stream = DataPath.OpenReadStream();
+            using var reader = new YamlKeySwitchReader( stream );
 
             return new OnMemoryKeySwitchRepository( reader.Read() );
         }

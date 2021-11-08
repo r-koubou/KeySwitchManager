@@ -1,13 +1,13 @@
-﻿using KeySwitchManager.Applications.Core.Views.LogView;
-using KeySwitchManager.UseCase.KeySwitches.Import.Spreadsheet;
+using KeySwitchManager.Applications.Core.Views.LogView;
+using KeySwitchManager.UseCase.KeySwitches.Import;
 
 namespace KeySwitchManager.Applications.Core.Controllers.Import
 {
-    public class ImportXlsxPresenter : IImportSpreadsheetPresenter
+    public class ImportFilePresenter : IImportFilePresenter
     {
         private ILogTextView TextView { get; }
 
-        public ImportXlsxPresenter( ILogTextView textView )
+        public ImportFilePresenter( ILogTextView textView )
         {
             TextView = textView;
         }
@@ -20,7 +20,7 @@ namespace KeySwitchManager.Applications.Core.Controllers.Import
             }
         }
 
-        public void Complete( ImportSpreadSheetResponse response )
+        public void Complete( ImportFileResponse response )
         {
             TextView.Append( "Complete" );
         }
