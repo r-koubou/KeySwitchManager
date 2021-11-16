@@ -38,14 +38,14 @@ namespace KeySwitchManager.Infrastructures.Storage.Yaml.KeySwitches
             Stream = null;
         }
 
-        public void Write( IReadOnlyCollection<KeySwitch> keySwitches, Subject<string>? loggingSubject = null )
+        public void Write( IReadOnlyCollection<KeySwitch> keySwitches, IObserver<string>? loggingSubject = null )
         {
             if( Stream == null )
             {
                 throw new NullReferenceException( nameof( Stream ) );
             }
 
-            if( loggingSubject is { HasObservers: true } )
+            if( loggingSubject != null )
             {
                 foreach( var k in keySwitches )
                 {

@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -29,7 +30,7 @@ namespace KeySwitchManager.Interactors.KeySwitches
             Presenter  = presenter;
         }
 
-        public ExportFileResponse Execute( ExportFileRequest request )
+        public ExportFileResponse Execute( ExportFileRequest request, IObserver<string>? loggingSubject = null )
         {
             var developerName = request.DeveloperName;
             var productName = request.ProductName;
@@ -44,7 +45,7 @@ namespace KeySwitchManager.Interactors.KeySwitches
 
             if( queryResult.Any() )
             {
-                Writer.Write( queryResult );
+                Writer.Write( queryResult, loggingSubject );
                 return new ExportFileResponse( queryResult );
             }
 

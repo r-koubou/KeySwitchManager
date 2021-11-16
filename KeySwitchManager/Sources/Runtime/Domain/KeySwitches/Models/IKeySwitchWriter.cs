@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Reactive.Subjects;
 
 namespace KeySwitchManager.Domain.KeySwitches.Models
 {
@@ -8,6 +7,6 @@ namespace KeySwitchManager.Domain.KeySwitches.Models
     {
         public bool LeaveOpen { get; }
 
-        public void Write( IReadOnlyCollection<KeySwitch> keySwitches, Subject<string>? loggingSubject = null );
+        public void Write( IReadOnlyCollection<KeySwitch> keySwitches, IObserver<string>? loggingSubject = null );
     }
 }
