@@ -22,6 +22,7 @@ namespace ${namespace}
 
         public ${name}Response Execute( ${name}Request request )
         {
+            throw new System.NotImplementedException();
         }
     }
 }
