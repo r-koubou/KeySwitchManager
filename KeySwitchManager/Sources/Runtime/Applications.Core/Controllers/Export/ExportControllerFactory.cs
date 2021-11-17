@@ -74,6 +74,7 @@ namespace KeySwitchManager.Applications.Core.Controllers.Export
                         cakewalkRepository.LoggingObservable.Subscribe( new LoggingObserver( logTextView ) );
                         return CreateDawController( cakewalkRepository );
                     default:
+                        Disposer.Dispose( sourceDatabase );
                         throw new ArgumentException( $"Unsupported format :{format}" );
                 }
             }
@@ -82,9 +83,6 @@ namespace KeySwitchManager.Applications.Core.Controllers.Export
                 Disposer.Dispose( sourceDatabase );
                 throw;
             }
-
-            Disposer.Dispose( sourceDatabase );
-            throw new ArgumentException( $"{format} is not supported" );
         }
 
         private class LoggingObserver : IObserver<string>
