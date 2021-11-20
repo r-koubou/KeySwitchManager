@@ -4,6 +4,7 @@ using KeySwitchManager.Commons.Data;
 
 namespace KeySwitchManager.Infrastructures.Storage.KeySwitches
 {
+    [Obsolete]
     public abstract class LoadOnlyKeySwitchFileRepository : KeySwitchFileRepository
     {
         protected LoadOnlyKeySwitchFileRepository( IPath dataPath ) :

@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Reactive;
+using System.Reactive.Subjects;
+
 using KeySwitchManager.Applications.Core.Views.LogView;
 using KeySwitchManager.Commons.Data;
 using KeySwitchManager.Domain.KeySwitches.Models;
@@ -8,6 +11,8 @@ using KeySwitchManager.Infrastructures.Storage.Json.Cakewalk;
 using KeySwitchManager.Infrastructures.Storage.Spreadsheet.ClosedXml.KeySwitches;
 using KeySwitchManager.Infrastructures.Storage.Xml.Cubase;
 using KeySwitchManager.Infrastructures.Storage.Xml.StudioOne;
+using KeySwitchManager.Infrastructures.Storage.Yaml.KeySwitches;
+
 using RkHelper.System;
 
 namespace KeySwitchManager.Applications.Core.Controllers.Export
@@ -33,13 +38,22 @@ namespace KeySwitchManager.Applications.Core.Controllers.Export
 
             IController CreateDawController( IKeySwitchRepository targetFileRepository )
             {
-                return new ExportDawController( developer!, product!, instrument!, sourceDatabase!, targetFileRepository, new ExportDawPresenter( logTextView ) );
+                return new ExportDawController( developer, product, instrument, sourceDatabase, targetFileRepository, new ExportDawPresenter( logTextView ) );
             }
 
             try
             {
+                var subject = new Subject<string>();
+                subject.Subscribe( new LoggingObserver( logTextView ) );
+
+                var observer = new Subject<string>().AsObserver();
+
                 switch( format )
                 {
+                    case ExportSupportedFormat.Yaml:
+                        var yamlWriter = new MultipleYamlFileWriter( outputDir );
+                        return new ExportFileController( developer, product, instrument, sourceDatabase, yamlWriter, new ExportFilePresenter( logTextView ), observer );
+
                     case ExportSupportedFormat.Xlsx:
                         var xlsxRepository = new ClosedXmlFileSaveRepository( outputDir );
                         xlsxRepository.LoggingObservable.Subscribe( new LoggingObserver( logTextView ) );
@@ -59,6 +73,9 @@ namespace KeySwitchManager.Applications.Core.Controllers.Export
                         var cakewalkRepository = new CakewalkFileRepository( outputDir );
                         cakewalkRepository.LoggingObservable.Subscribe( new LoggingObserver( logTextView ) );
                         return CreateDawController( cakewalkRepository );
+                    default:
+                        Disposer.Dispose( sourceDatabase );
+                        throw new ArgumentException( $"Unsupported format :{format}" );
                 }
             }
             catch
@@ -66,9 +83,6 @@ namespace KeySwitchManager.Applications.Core.Controllers.Export
                 Disposer.Dispose( sourceDatabase );
                 throw;
             }
-
-            Disposer.Dispose( sourceDatabase );
-            throw new ArgumentException( $"{format} is not supported" );
         }
 
         private class LoggingObserver : IObserver<string>

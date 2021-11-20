@@ -22,6 +22,15 @@ namespace KeySwitchManager.Commons.Data
             }
         }
 
+        public Stream OpenStream( FileMode mode, FileAccess access )
+            => File.Open( Path, mode, access );
+
+        public Stream OpenReadStream()
+            => File.OpenRead( Path );
+
+        public Stream OpenWriteStream()
+            => File.OpenWrite( Path );
+
         public override string ToString() => Path;
     }
 }

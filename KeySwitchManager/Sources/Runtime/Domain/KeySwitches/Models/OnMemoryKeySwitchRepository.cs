@@ -15,7 +15,7 @@ namespace KeySwitchManager.Domain.KeySwitches.Models
         protected Subject<string> LoggingSubject { get; }
         public IObservable<string> LoggingObservable { get; }
 
-        protected OnMemoryKeySwitchRepository()
+        public OnMemoryKeySwitchRepository()
         {
             KeySwitches       = new List<KeySwitch>();
             LoggingSubject    = new Subject<string>();

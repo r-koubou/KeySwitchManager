@@ -23,6 +23,7 @@ namespace KeySwitchManager.Applications.CLI
                 typeof(ExportDawCakewalkArticulation.CommandOption),
                 typeof(ExportXlsx.CommandOption),
                 typeof(GenGuid.CommandOption),
+                typeof(Dump.CommandOption),
             };
 
             return Parser.Default.ParseArguments( args, types ).MapResult(
@@ -36,6 +37,7 @@ namespace KeySwitchManager.Applications.CLI
                 ( ExportDawCakewalkArticulation.CommandOption option ) => new ExportDawCakewalkArticulation().Execute( option ),
                 ( ExportXlsx.CommandOption option ) => new ExportXlsx().Execute( option ),
                 ( GenGuid.CommandOption option ) => new GenGuid().Execute( option ),
+                ( Dump.CommandOption option ) => new Dump().Execute( option ),
                 errors => 1
             );
         }

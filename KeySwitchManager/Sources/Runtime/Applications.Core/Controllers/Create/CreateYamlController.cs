@@ -1,28 +1,44 @@
-﻿using KeySwitchManager.Domain.KeySwitches.Models;
-using KeySwitchManager.Interactors.KeySwitches;
+﻿using System.Collections.Generic;
+
+using KeySwitchManager.Domain.KeySwitches.Helpers;
+using KeySwitchManager.Domain.KeySwitches.Models;
 using KeySwitchManager.UseCase.KeySwitches.Create.Text;
+
+using RkHelper.System;
 
 namespace KeySwitchManager.Applications.Core.Controllers.Create
 {
     public class CreateYamlController : IController
     {
-        private IKeySwitchRepository OutputRepository { get; }
+        private IKeySwitchWriter Writer { get; }
         private ICreateTextTemplatePresenter Presenter { get; }
 
         public CreateYamlController(
-            IKeySwitchRepository outputRepository,
+            IKeySwitchWriter writer,
             ICreateTextTemplatePresenter presenter )
         {
-            OutputRepository = outputRepository;
-            Presenter        = presenter;
+            Writer    = writer;
+            Presenter = presenter;
         }
 
-        public void Dispose() {}
+        public void Dispose()
+        {
+            if( !Writer.LeaveOpen )
+            {
+                Disposer.Dispose( Writer );
+            }
+        }
 
         public void Execute()
         {
-            var interactor = new CreateTextTemplateInteractor( OutputRepository, Presenter );
-            var response = interactor.Execute();
+            var source = new List<KeySwitch>
+            {
+                KeySwitchFactoryHelper.CreateTemplate()
+            };
+
+            Writer.Write( source );
+
+            var response = new CreateTextTemplateResponse();
             Presenter.Complete( response );
         }
     }

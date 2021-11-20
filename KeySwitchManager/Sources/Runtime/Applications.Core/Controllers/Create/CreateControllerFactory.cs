@@ -21,9 +21,10 @@ namespace KeySwitchManager.Applications.Core.Controllers.Create
 
             if( path.EndsWith( ".yaml" ) )
             {
-                var yamlFileRepository = new YamlKeySwitchFileRepository( new FilePath( outputFilePath ), false );
+                var stream = new FilePath( outputFilePath ).OpenWriteStream();
+                var writer = new YamlKeySwitchWriter( stream );
                 var presenter = new CreateYamlKeySwitchPresenter( logTextView );
-                return new CreateYamlController( yamlFileRepository, presenter );
+                return new CreateYamlController( writer, presenter );
             }
 
             throw new ArgumentException( $"{outputFilePath} is unknown file format" );
