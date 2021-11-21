@@ -1,22 +1,42 @@
 using System;
 using System.Collections.Generic;
-using System.Reactive.Subjects;
+using System.IO;
 
 using ClosedXML.Excel;
 
-using KeySwitchManager.Commons.Data;
 using KeySwitchManager.Domain.KeySwitches.Models;
 using KeySwitchManager.Infrastructures.Storage.Spreadsheet.ClosedXml.KeySwitches.Translators;
 using KeySwitchManager.Infrastructures.Storage.Spreadsheet.KeySwitches.Helpers;
 
 using RkHelper.IO;
 
-namespace KeySwitchManager.Infrastructures.Storage.Spreadsheet.ClosedXml.KeySwitches.Helper
+namespace KeySwitchManager.Infrastructures.Storage.Spreadsheet.ClosedXml.KeySwitches
 {
-    [Obsolete]
-    public static class XlsxWorkBookWriter
+    public class ClosedXmlWriter : IKeySwitchWriter
     {
-        public static void Write( IReadOnlyCollection<KeySwitch> keySwitches, FilePath target, Subject<string> loggingSubject )
+        public bool LeaveOpen { get; }
+        private Stream? Stream { get; set; }
+
+        public ClosedXmlWriter( Stream target, bool leaveOpen = false )
+        {
+            Stream    = target ?? throw new ArgumentNullException( nameof( target ) );
+            LeaveOpen = leaveOpen;
+        }
+
+        public void Dispose()
+        {
+            if( LeaveOpen || Stream == null )
+            {
+                return;
+            }
+
+            Stream?.Flush();
+            Stream?.Close();
+            Stream?.Dispose();
+            Stream = null;
+        }
+
+        public void Write( IReadOnlyCollection<KeySwitch> keySwitches, IObserver<string>? loggingSubject = null )
         {
             using var template = new XLWorkbook(
                 StreamHelper.GetAssemblyResourceStream<ClosedXmlFileSaveRepository>( "Template.xlsx" )
@@ -32,7 +52,7 @@ namespace KeySwitchManager.Infrastructures.Storage.Spreadsheet.ClosedXml.KeySwit
                 removingSheet.Delete();
             }
 
-            if( loggingSubject.HasObservers )
+            if( loggingSubject != null )
             {
                 foreach( var k in keySwitches )
                 {
@@ -40,7 +60,7 @@ namespace KeySwitchManager.Infrastructures.Storage.Spreadsheet.ClosedXml.KeySwit
                 }
             }
 
-            workbook.SaveAs( target.Path );
+            workbook.SaveAs( Stream );
         }
     }
 }

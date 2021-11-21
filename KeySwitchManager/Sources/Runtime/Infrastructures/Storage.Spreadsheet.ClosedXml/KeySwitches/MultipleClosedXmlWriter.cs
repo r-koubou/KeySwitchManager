@@ -1,28 +1,23 @@
 using System;
 using System.Collections.Generic;
-using System.Text;
 
 using KeySwitchManager.Commons.Data;
 using KeySwitchManager.Domain.KeySwitches.Helpers;
 using KeySwitchManager.Domain.KeySwitches.Models;
 using KeySwitchManager.Infrastructures.Storage.KeySwitches.Helper;
 
-namespace KeySwitchManager.Infrastructures.Storage.Yaml.KeySwitches
+namespace KeySwitchManager.Infrastructures.Storage.Spreadsheet.ClosedXml.KeySwitches
 {
-    public class MultipleYamlFileWriter : IKeySwitchWriter
+    public class MultipleClosedXmlWriter : IKeySwitchWriter
     {
-        private const string Suffix = ".yaml";
+        private const string Suffix = ".xlsx";
 
         public DirectoryPath OutputDirectory { get; }
-        private Encoding FileEncoding { get; }
         public bool LeaveOpen => false;
 
-        public MultipleYamlFileWriter( DirectoryPath outputDirectory ) : this( outputDirectory, Encoding.UTF8 ) {}
-
-        public MultipleYamlFileWriter( DirectoryPath outputDirectory, Encoding filEncoding )
+        public MultipleClosedXmlWriter( DirectoryPath outputDirectory )
         {
             OutputDirectory = outputDirectory;
-            FileEncoding    = filEncoding;
         }
 
         public void Dispose() {}
@@ -40,7 +35,7 @@ namespace KeySwitchManager.Infrastructures.Storage.Yaml.KeySwitches
                 {
                     var filePath = CreatePathHelper.CreateFilePath( k, Suffix, baseDirectory );
                     using var stream = filePath.OpenWriteStream();
-                    using var fileWriter = new YamlKeySwitchWriter( stream, FileEncoding );
+                    using var fileWriter = new ClosedXmlWriter( stream );
 
                     fileWriter.Write( new[] { k }, loggingSubject );
                 }
