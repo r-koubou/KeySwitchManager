@@ -1,7 +1,10 @@
+using System;
+
 using KeySwitchManager.UseCase.Commons;
 
 namespace KeySwitchManager.UseCase.KeySwitches.Export.Daw
 {
+    [Obsolete]
     public interface IExportDawPresenter: IPresenter<ExportDawResponse>
     {
         public class Null : IExportDawPresenter

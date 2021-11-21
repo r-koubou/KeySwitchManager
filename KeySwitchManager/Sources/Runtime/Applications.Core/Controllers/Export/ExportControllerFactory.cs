@@ -60,9 +60,7 @@ namespace KeySwitchManager.Applications.Core.Controllers.Export
                         return CreateImpl( new MultipleClosedXmlWriter( outputDir ) );
 
                     case ExportSupportedFormat.Cubase:
-                        var cubaseRepository = new CubaseFileRepository( outputDir );
-                        cubaseRepository.LoggingObservable.Subscribe( new LoggingObserver( logTextView ) );
-                        return CreateDawController( cubaseRepository );
+                        return CreateImpl( new MultipleCubaseWriter( outputDir ) );
 
                     case ExportSupportedFormat.StudioOne:
                         var studioOneRepository = new StudioOneFileRepository( outputDir );

@@ -1,3 +1,4 @@
+using System;
 using System.Linq;
 
 using KeySwitchManager.Domain.KeySwitches.Helpers;
@@ -6,6 +7,7 @@ using KeySwitchManager.UseCase.KeySwitches.Export.Daw;
 
 namespace KeySwitchManager.Interactors.KeySwitches
 {
+    [Obsolete]
     public class ExportDawInteractor : IExportDawUseCase
     {
         private IKeySwitchRepository Repository { get; }

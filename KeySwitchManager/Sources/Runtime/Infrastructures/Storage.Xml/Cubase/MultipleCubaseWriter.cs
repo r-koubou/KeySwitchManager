@@ -1,23 +1,27 @@
 using System;
 using System.Collections.Generic;
+using System.Text;
 
 using KeySwitchManager.Commons.Data;
-using KeySwitchManager.Domain.KeySwitches.Helpers;
 using KeySwitchManager.Domain.KeySwitches.Models;
 using KeySwitchManager.Infrastructures.Storage.KeySwitches.Helper;
 
-namespace KeySwitchManager.Infrastructures.Storage.Spreadsheet.ClosedXml.KeySwitches
+namespace KeySwitchManager.Infrastructures.Storage.Xml.Cubase
 {
-    public class MultipleClosedXmlWriter : IKeySwitchWriter
+    public class MultipleCubaseWriter : IKeySwitchWriter
     {
-        private const string Suffix = ".xlsx";
+        private const string Suffix = ".expressionmap";
 
         public DirectoryPath OutputDirectory { get; }
+        private Encoding FileEncoding { get; }
         public bool LeaveOpen => false;
 
-        public MultipleClosedXmlWriter( DirectoryPath outputDirectory )
+        public MultipleCubaseWriter( DirectoryPath outputDirectory ) : this( outputDirectory, Encoding.UTF8 ) {}
+
+        public MultipleCubaseWriter( DirectoryPath outputDirectory, Encoding filEncoding )
         {
             OutputDirectory = outputDirectory;
+            FileEncoding    = filEncoding;
         }
 
         public void Dispose() {}
@@ -29,7 +33,7 @@ namespace KeySwitchManager.Infrastructures.Storage.Spreadsheet.ClosedXml.KeySwit
                 OutputDirectory,
                 Suffix,
                 loggingSubject,
-                stream => new ClosedXmlWriter( stream )
+                stream => new CubaseWriter( stream, FileEncoding )
             );
         }
     }
