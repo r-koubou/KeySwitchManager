@@ -1,5 +1,6 @@
 ﻿using System.Linq;
 using System.Text;
+
 using KeySwitchManager.Applications.Core.Views.LogView;
 using KeySwitchManager.UseCase.KeySwitches.Find;
 

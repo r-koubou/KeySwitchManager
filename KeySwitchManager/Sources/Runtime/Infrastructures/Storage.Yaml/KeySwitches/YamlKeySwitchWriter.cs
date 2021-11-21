@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Reactive.Subjects;
 using System.Text;
 
 using KeySwitchManager.Domain.KeySwitches.Models;

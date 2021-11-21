@@ -1,6 +1,5 @@
 ﻿using KeySwitchManager.Applications.Core.Views.LogView;
 using KeySwitchManager.UseCase.KeySwitches.Dump;
-using KeySwitchManager.UseCase.KeySwitches.Export;
 
 namespace KeySwitchManager.Applications.Core.Controllers.Dump
 {

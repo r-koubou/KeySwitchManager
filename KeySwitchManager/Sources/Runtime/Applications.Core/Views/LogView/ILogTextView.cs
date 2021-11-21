@@ -1,4 +1,6 @@
-﻿namespace KeySwitchManager.Applications.Core.Views.LogView
+﻿using System;
+
+namespace KeySwitchManager.Applications.Core.Views.LogView
 {
     public interface ILogTextView
     {
@@ -6,7 +8,7 @@
 
         void Append( string text );
         void AppendError( string text );
-        void AppendError( System.Exception exception );
+        void AppendError( Exception exception );
         void Clear();
         void ScrollToEnd();
 
@@ -20,7 +22,7 @@
             public void AppendError( string text )
             {}
 
-            public void AppendError( System.Exception exception )
+            public void AppendError( Exception exception )
             {}
 
             public void Clear()
