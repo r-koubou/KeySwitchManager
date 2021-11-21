@@ -63,9 +63,7 @@ namespace KeySwitchManager.Applications.Core.Controllers.Export
                         return CreateImpl( new MultipleCubaseWriter( outputDir ) );
 
                     case ExportSupportedFormat.StudioOne:
-                        var studioOneRepository = new StudioOneFileRepository( outputDir );
-                        studioOneRepository.LoggingObservable.Subscribe( new LoggingObserver( logTextView ) );
-                        return CreateDawController( studioOneRepository );
+                        return CreateImpl( new MultipleStudioOneWriter( outputDir ) );
 
                     case ExportSupportedFormat.Cakewalk:
                         var cakewalkRepository = new CakewalkFileRepository( outputDir );
