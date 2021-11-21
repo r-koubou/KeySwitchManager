@@ -1,4 +1,6 @@
-﻿using KeySwitchManager.Domain.KeySwitches.Models;
+﻿using System;
+
+using KeySwitchManager.Domain.KeySwitches.Models;
 using KeySwitchManager.Domain.KeySwitches.Models.Values;
 using KeySwitchManager.Interactors.KeySwitches;
 using KeySwitchManager.UseCase.KeySwitches.Export.Daw;
@@ -6,6 +8,7 @@ using RkHelper.System;
 
 namespace KeySwitchManager.Applications.Core.Controllers.Export
 {
+    [Obsolete]
     public class ExportDawController : IController
     {
         private IKeySwitchRepository SourceRepository { get; }

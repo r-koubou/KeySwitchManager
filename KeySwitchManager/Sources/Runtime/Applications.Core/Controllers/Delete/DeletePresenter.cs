@@ -1,5 +1,4 @@
-﻿using System.Text;
-using KeySwitchManager.Applications.Core.Views.LogView;
+﻿using KeySwitchManager.Applications.Core.Views.LogView;
 using KeySwitchManager.UseCase.KeySwitches.Delete;
 
 namespace KeySwitchManager.Applications.Core.Controllers.Delete

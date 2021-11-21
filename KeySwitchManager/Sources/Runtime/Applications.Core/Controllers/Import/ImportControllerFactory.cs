@@ -11,8 +11,6 @@ namespace KeySwitchManager.Applications.Core.Controllers.Import
     {
         public static IController Create( string databasePath, string importFilePath, ILogTextView logTextView )
         {
-            var path = importFilePath.ToLower();
-
             var databaseRepository = new LiteDbKeySwitchRepository( new FilePath( databasePath ) );
             databaseRepository.LoggingObservable.Subscribe( new DatabaseAccessObserver( logTextView ) );
 
