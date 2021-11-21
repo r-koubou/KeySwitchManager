@@ -1,7 +1,5 @@
-namespace KeySwitchManager.UseCase.KeySwitches.Export
+namespace KeySwitchManager.UseCase.KeySwitches.Dump
 {
     public class DumpFileRequest
-    {
-        public DumpFileRequest() {}
-    }
+    {}
 }

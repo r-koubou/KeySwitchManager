@@ -1,6 +1,6 @@
 ﻿using KeySwitchManager.Domain.KeySwitches.Models;
 using KeySwitchManager.Interactors.KeySwitches;
-using KeySwitchManager.UseCase.KeySwitches.Export;
+using KeySwitchManager.UseCase.KeySwitches.Dump;
 
 using RkHelper.System;
 

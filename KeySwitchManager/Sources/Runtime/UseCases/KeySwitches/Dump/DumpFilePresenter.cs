@@ -1,7 +1,6 @@
 using KeySwitchManager.UseCase.Commons;
-using KeySwitchManager.UseCase.KeySwitches.Dump;
 
-namespace KeySwitchManager.UseCase.KeySwitches.Export
+namespace KeySwitchManager.UseCase.KeySwitches.Dump
 {
     public interface IDumpFilePresenter : IPresenter<DumpFileResponse>
     {

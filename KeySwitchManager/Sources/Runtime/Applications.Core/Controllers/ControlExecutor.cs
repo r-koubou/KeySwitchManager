@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
+
 using KeySwitchManager.Applications.Core.Views.LogView;
 
 namespace KeySwitchManager.Applications.Core.Controllers

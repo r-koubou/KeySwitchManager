@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 
 using KeySwitchManager.Commons.Data;
-using KeySwitchManager.Domain.KeySwitches.Helpers;
 using KeySwitchManager.Domain.KeySwitches.Models;
 using KeySwitchManager.Infrastructures.Storage.KeySwitches.Helper;
 
