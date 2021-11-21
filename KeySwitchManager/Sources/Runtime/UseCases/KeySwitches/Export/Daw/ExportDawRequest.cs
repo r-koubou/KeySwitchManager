@@ -2,6 +2,7 @@ using System;
 
 namespace KeySwitchManager.UseCase.KeySwitches.Export.Daw
 {
+    [Obsolete]
     public class ExportDawRequest
     {
         public Guid Guid { get; }

@@ -1,9 +1,11 @@
+using System;
 using System.Collections.Generic;
 
 using KeySwitchManager.Domain.KeySwitches.Models;
 
 namespace KeySwitchManager.UseCase.KeySwitches.Export.Daw
 {
+    [Obsolete]
     public class ExportDawResponse
     {
         public bool Result { get; }
