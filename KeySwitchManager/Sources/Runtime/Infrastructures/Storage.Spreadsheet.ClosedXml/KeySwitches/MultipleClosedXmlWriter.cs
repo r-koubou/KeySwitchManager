@@ -24,22 +24,13 @@ namespace KeySwitchManager.Infrastructures.Storage.Spreadsheet.ClosedXml.KeySwit
 
         public void Write( IReadOnlyCollection<KeySwitch> keySwitches, IObserver<string>? loggingSubject = null )
         {
-            var multipleKeySwitches = KeySwitchHelper.GroupBy( keySwitches );
-
-            foreach( var key in multipleKeySwitches.Keys )
-            {
-                var x = multipleKeySwitches[ key ];
-                var baseDirectory = CreatePathHelper.CreateDirectoryTree( key.Item1, key.Item2, OutputDirectory );
-
-                foreach( var k in x )
-                {
-                    var filePath = CreatePathHelper.CreateFilePath( k, Suffix, baseDirectory );
-                    using var stream = filePath.OpenWriteStream();
-                    using var fileWriter = new ClosedXmlWriter( stream );
-
-                    fileWriter.Write( new[] { k }, loggingSubject );
-                }
-            }
+            MultipleWritingHelper.Write(
+                keySwitches,
+                OutputDirectory,
+                Suffix,
+                loggingSubject,
+                stream => new ClosedXmlWriter( stream )
+            );
         }
     }
 }
