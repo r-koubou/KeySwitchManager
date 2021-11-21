@@ -14,7 +14,9 @@ namespace KeySwitchManager.Infrastructures.Storage.KeySwitches.Helper
             foreach( var x in keySwitches )
             {
                 var filePath = CreatePathHelper.CreateFilePath( x, suffix, outputDirectory );
-                using var stream = filePath.OpenWriteStream();
+
+                // Some writers require Read/Write access stream
+                using var stream = filePath.OpenStream( FileMode.Create, FileAccess.ReadWrite );
                 using var fileWriter = writerFactory.Invoke( stream );
 
                 fileWriter.Write( new[] { x }, loggingSubject );

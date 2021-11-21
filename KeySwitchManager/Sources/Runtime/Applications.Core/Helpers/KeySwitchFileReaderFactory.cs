@@ -2,6 +2,7 @@ using System;
 using System.IO;
 
 using KeySwitchManager.Domain.KeySwitches.Models;
+using KeySwitchManager.Infrastructures.Storage.Spreadsheet.ClosedXml.KeySwitches;
 using KeySwitchManager.Infrastructures.Storage.Yaml.KeySwitches;
 
 namespace KeySwitchManager.Applications.Core.Helpers
@@ -14,7 +15,7 @@ namespace KeySwitchManager.Applications.Core.Helpers
 
             if( path.EndsWith( ".xlsx" ) )
             {
-                throw new NotImplementedException( $"{filePath}({nameof( IKeySwitchReader )}) for .xlsx is not ready" );
+                return new ClosedXmlReader( File.OpenRead( filePath ) );
             }
 
             if( path.EndsWith( ".yaml" ) || path.EndsWith( ".yml" ) )
