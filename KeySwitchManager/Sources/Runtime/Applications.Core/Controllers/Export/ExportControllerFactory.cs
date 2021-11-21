@@ -46,18 +46,18 @@ namespace KeySwitchManager.Applications.Core.Controllers.Export
                 var subject = new Subject<string>();
                 subject.Subscribe( new LoggingObserver( logTextView ) );
 
-                var observer = new Subject<string>().AsObserver();
+                var observer = subject.AsObserver();
+
+                IController CreateImpl( IKeySwitchWriter writer )
+                    => new ExportFileController( developer, product, instrument, sourceDatabase, writer, new ExportFilePresenter( logTextView ), observer );
 
                 switch( format )
                 {
                     case ExportSupportedFormat.Yaml:
-                        var yamlWriter = new MultipleYamlFileWriter( outputDir );
-                        return new ExportFileController( developer, product, instrument, sourceDatabase, yamlWriter, new ExportFilePresenter( logTextView ), observer );
+                        return CreateImpl( new MultipleYamlFileWriter( outputDir ) );
 
                     case ExportSupportedFormat.Xlsx:
-                        var xlsxRepository = new ClosedXmlFileSaveRepository( outputDir );
-                        xlsxRepository.LoggingObservable.Subscribe( new LoggingObserver( logTextView ) );
-                        return new ExportXlsxController( developer, product, sourceDatabase, xlsxRepository, new ExportXlsxPresenter( logTextView ) );
+                        return CreateImpl( new MultipleClosedXmlWriter( outputDir ) );
 
                     case ExportSupportedFormat.Cubase:
                         var cubaseRepository = new CubaseFileRepository( outputDir );

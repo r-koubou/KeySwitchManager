@@ -39,7 +39,7 @@ namespace KeySwitchManager.Infrastructures.Storage.Spreadsheet.ClosedXml.KeySwit
         public void Write( IReadOnlyCollection<KeySwitch> keySwitches, IObserver<string>? loggingSubject = null )
         {
             using var template = new XLWorkbook(
-                StreamHelper.GetAssemblyResourceStream<ClosedXmlFileSaveRepository>( "Template.xlsx" )
+                StreamHelper.GetAssemblyResourceStream<ClosedXmlWriter>( "Template.xlsx" )
             );
 
             var translator = new KeySwitchClosedXmlExportTranslator( template );
