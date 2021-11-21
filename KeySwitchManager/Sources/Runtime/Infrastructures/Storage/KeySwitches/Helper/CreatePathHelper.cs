@@ -23,12 +23,7 @@ namespace KeySwitchManager.Infrastructures.Storage.KeySwitches.Helper
                 productName.Value
             );
 
-            if( !Directory.Exists( outputDirectory ) )
-            {
-                Directory.CreateDirectory( outputDirectory );
-            }
-
-            var result =new DirectoryPath( outputDirectory );
+            var result = new DirectoryPath( outputDirectory );
             result.CreateNew();
 
             return result;

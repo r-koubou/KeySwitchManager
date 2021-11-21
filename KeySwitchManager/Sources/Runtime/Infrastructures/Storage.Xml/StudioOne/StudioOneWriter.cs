@@ -57,10 +57,7 @@ namespace KeySwitchManager.Infrastructures.Storage.Xml.StudioOne
 
             var source = keySwitches.First();
 
-            if( loggingSubject != null )
-            {
-                loggingSubject.OnNext( source.ToString() );
-            }
+            loggingSubject?.OnNext( source.ToString() );
 
             using var writer = new StreamWriter( Stream, FileEncoding );
             var xmlText = new StudioOneExportTranslator().Translate( source );

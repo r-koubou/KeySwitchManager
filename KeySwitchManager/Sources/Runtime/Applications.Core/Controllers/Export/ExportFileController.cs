@@ -63,7 +63,8 @@ namespace KeySwitchManager.Applications.Core.Controllers.Export
                     DeveloperName.Value,
                     ProductName.Value,
                     InstrumentName.Value
-                )
+                ),
+                LoggingObserver
             );
 
             Presenter.Complete( response );

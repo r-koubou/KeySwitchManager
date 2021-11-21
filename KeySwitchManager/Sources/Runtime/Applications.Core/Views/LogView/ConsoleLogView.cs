@@ -2,11 +2,11 @@ using System;
 
 namespace KeySwitchManager.Applications.Core.Views.LogView
 {
-    public class ConsoleLogView : ILogTextView
+    public sealed class ConsoleLogView : ILogTextView
     {
-        public virtual bool AutoScroll { get; set; } // Ignore
+        public bool AutoScroll { get; set; } // Ignore
 
-        public virtual void Append( string text )
+        public void Append( string text )
         {
             Console.Out.WriteLine( text );
         }
@@ -16,17 +16,17 @@ namespace KeySwitchManager.Applications.Core.Views.LogView
             Console.Error.WriteLine( text );
         }
 
-        public virtual void AppendError( Exception exception )
+        public void AppendError( Exception exception )
         {
             Console.Error.WriteLine( exception.ToString() );
         }
 
-        public virtual void Clear()
+        public void Clear()
         {
             // None
         }
 
-        public virtual void ScrollToEnd()
+        public void ScrollToEnd()
         {
             // None
         }

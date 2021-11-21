@@ -33,7 +33,7 @@ namespace KeySwitchManager.Infrastructures.Storage.Yaml.KeySwitches
                 OutputDirectory,
                 Suffix,
                 loggingSubject,
-                stream => new YamlKeySwitchWriter( stream, FileEncoding )
+                stream => new YamlKeySwitchWriter( stream, FileEncoding, true )
             );
         }
     }

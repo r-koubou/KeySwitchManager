@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.IO;
 
 using KeySwitchManager.Commons.Data;
-using KeySwitchManager.Domain.KeySwitches.Helpers;
 using KeySwitchManager.Domain.KeySwitches.Models;
 
 namespace KeySwitchManager.Infrastructures.Storage.KeySwitches.Helper
@@ -12,22 +11,16 @@ namespace KeySwitchManager.Infrastructures.Storage.KeySwitches.Helper
     {
         public static void Write( IReadOnlyCollection<KeySwitch> keySwitches, DirectoryPath outputDirectory, string suffix, IObserver<string>? loggingSubject, Func<Stream, IKeySwitchWriter> writerFactory )
         {
-            var multipleKeySwitches = KeySwitchHelper.GroupBy( keySwitches );
-
-            foreach( var key in multipleKeySwitches.Keys )
+            foreach( var x in keySwitches )
             {
-                var x = multipleKeySwitches[ key ];
-                var baseDirectory = CreatePathHelper.CreateDirectoryTree( key.Item1, key.Item2, outputDirectory );
+                var filePath = CreatePathHelper.CreateFilePath( x, suffix, outputDirectory );
+                using var stream = filePath.OpenWriteStream();
+                using var fileWriter = writerFactory.Invoke( stream );
 
-                foreach( var k in x )
-                {
-                    var filePath = CreatePathHelper.CreateFilePath( k, suffix, baseDirectory );
-                    using var stream = filePath.OpenWriteStream();
-                    using var fileWriter = writerFactory.Invoke( stream );
-
-                    fileWriter.Write( new[] { k }, loggingSubject );
-                }
+                fileWriter.Write( new[] { x }, loggingSubject );
             }
+
+            loggingSubject?.OnNext( $"{nameof(MultipleWritingHelper)} : {keySwitches.Count} records has been written" );
         }
     }
 }

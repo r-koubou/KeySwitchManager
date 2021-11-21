@@ -33,7 +33,7 @@ namespace KeySwitchManager.Infrastructures.Storage.Json.Cakewalk
                 OutputDirectory,
                 Suffix,
                 loggingSubject,
-                stream => new CakewalkWriter( stream, FileEncoding )
+                stream => new CakewalkWriter( stream, FileEncoding, true )
             );
         }
     }

@@ -28,7 +28,7 @@ namespace KeySwitchManager.Infrastructures.Storage.Spreadsheet.ClosedXml.KeySwit
                 OutputDirectory,
                 Suffix,
                 loggingSubject,
-                stream => new ClosedXmlWriter( stream )
+                stream => new ClosedXmlWriter( stream, true )
             );
         }
     }

@@ -33,7 +33,7 @@ namespace KeySwitchManager.Infrastructures.Storage.Xml.StudioOne
                 OutputDirectory,
                 Suffix,
                 loggingSubject,
-                stream => new StudioOneWriter( stream, FileEncoding )
+                stream => new StudioOneWriter( stream, FileEncoding, true )
             );
         }
     }

@@ -33,7 +33,7 @@ namespace KeySwitchManager.Infrastructures.Storage.Xml.Cubase
                 OutputDirectory,
                 Suffix,
                 loggingSubject,
-                stream => new CubaseWriter( stream, FileEncoding )
+                stream => new CubaseWriter( stream, FileEncoding, true )
             );
         }
     }
