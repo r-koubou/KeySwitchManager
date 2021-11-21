@@ -5,6 +5,7 @@ using System.Reactive.Linq;
 using System.Reactive.Subjects;
 
 using KeySwitchManager.Commons.Data;
+using KeySwitchManager.Domain.KeySwitches.Helpers;
 using KeySwitchManager.Domain.KeySwitches.Models;
 using KeySwitchManager.Domain.KeySwitches.Models.Values;
 using KeySwitchManager.Infrastructures.Database.LiteDB.KeySwitches.Models;
@@ -181,7 +182,7 @@ namespace KeySwitchManager.Infrastructures.Database.LiteDB.KeySwitches
                 result.Add( translator.Translate( item ) );
             }
 
-            return result;
+            return KeySwitchHelper.SortByAlphabetical( result );
         }
 
         public IReadOnlyCollection<KeySwitch> Find( KeySwitchId keySwitchId )
