@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Reactive.Subjects;
 using System.Text;
 
 using KeySwitchManager.Commons.Data;
@@ -38,7 +37,7 @@ namespace KeySwitchManager.Infrastructures.Storage.Yaml.KeySwitches
             Stream = null;
         }
 
-        public IReadOnlyCollection<KeySwitch> Read( Subject<string>? loggingSubject = null )
+        public IReadOnlyCollection<KeySwitch> Read( IObserver<string>? loggingSubject = null )
         {
             if( Stream == null )
             {
@@ -50,7 +49,7 @@ namespace KeySwitchManager.Infrastructures.Storage.Yaml.KeySwitches
 
             var keySwitches = new YamlKeySwitchImportTranslator().Translate( new PlainText( jsonText ) );
 
-            if( loggingSubject is not { HasObservers: true } )
+            if( loggingSubject == null )
             {
                 return keySwitches;
             }

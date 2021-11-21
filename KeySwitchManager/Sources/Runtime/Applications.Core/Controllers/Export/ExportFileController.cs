@@ -31,13 +31,13 @@ namespace KeySwitchManager.Applications.Core.Controllers.Export
             IExportFilePresenter presenter,
             IObserver<string> loggingObserver )
         {
-            DeveloperName     = developerName;
-            ProductName       = productName;
-            InstrumentName    = instrumentName;
-            SourceRepository  = sourceRepository;
-            Writer            = writer;
-            Presenter         = presenter;
-            LoggingObserver = loggingObserver;
+            DeveloperName    = developerName;
+            ProductName      = productName;
+            InstrumentName   = instrumentName;
+            SourceRepository = sourceRepository;
+            Writer           = writer;
+            Presenter        = presenter;
+            LoggingObserver  = loggingObserver;
         }
 
         public void Dispose()

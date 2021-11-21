@@ -1,16 +1,16 @@
 using KeySwitchManager.UseCase.Commons;
 
-namespace KeySwitchManager.UseCase.KeySwitches.Create.Text
+namespace KeySwitchManager.UseCase.KeySwitches.Create
 {
-    public interface ICreateTextTemplatePresenter : IPresenter<CreateTextTemplateResponse>
+    public interface ICreateFilePresenter : IPresenter<CreateFileResponse>
     {
-        public class Null : ICreateTextTemplatePresenter
+        public class Null : ICreateFilePresenter
         {
-            public void Complete( CreateTextTemplateResponse response )
+            public void Complete( CreateFileResponse response )
             {}
         }
 
-        public class Console : ICreateTextTemplatePresenter
+        public class Console : ICreateFilePresenter
         {
             public void Present<T>( T param )
             {

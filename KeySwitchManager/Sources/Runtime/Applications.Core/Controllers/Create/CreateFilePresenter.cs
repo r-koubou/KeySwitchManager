@@ -1,13 +1,13 @@
 ﻿using KeySwitchManager.Applications.Core.Views.LogView;
-using KeySwitchManager.UseCase.KeySwitches.Create.Spreadsheet;
+using KeySwitchManager.UseCase.KeySwitches.Create;
 
 namespace KeySwitchManager.Applications.Core.Controllers.Create
 {
-    public class CreateXlsxKeySwitchPresenter : ICreateSpreadsheetTemplatePresenter
+    public class CreateFilePresenter : ICreateFilePresenter
     {
         private ILogTextView TextView { get; }
 
-        public CreateXlsxKeySwitchPresenter( ILogTextView textView )
+        public CreateFilePresenter( ILogTextView textView )
         {
             TextView = textView;
         }
@@ -20,7 +20,7 @@ namespace KeySwitchManager.Applications.Core.Controllers.Create
             }
         }
 
-        public void Complete( CreateSpreadsheetTemplateResponse response )
+        public void Complete( CreateFileResponse response )
         {
             TextView.Append( "Complete" );
         }
