@@ -36,11 +36,6 @@ namespace KeySwitchManager.Applications.Core.Controllers.Export
 
             var sourceDatabase = new LiteDbKeySwitchRepository( databasePath );
 
-            IController CreateDawController( IKeySwitchRepository targetFileRepository )
-            {
-                return new ExportDawController( developer, product, instrument, sourceDatabase, targetFileRepository, new ExportDawPresenter( logTextView ) );
-            }
-
             try
             {
                 var subject = new Subject<string>();
@@ -66,9 +61,7 @@ namespace KeySwitchManager.Applications.Core.Controllers.Export
                         return CreateImpl( new MultipleStudioOneWriter( outputDir ) );
 
                     case ExportSupportedFormat.Cakewalk:
-                        var cakewalkRepository = new CakewalkFileRepository( outputDir );
-                        cakewalkRepository.LoggingObservable.Subscribe( new LoggingObserver( logTextView ) );
-                        return CreateDawController( cakewalkRepository );
+                        return CreateImpl( new MultipleCakewalkWriter( outputDir ) );
                     default:
                         Disposer.Dispose( sourceDatabase );
                         throw new ArgumentException( $"Unsupported format :{format}" );
