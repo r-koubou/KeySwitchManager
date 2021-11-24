@@ -95,6 +95,8 @@ namespace KeySwitchManager.Infrastructures.Storage.Xml.KeySwitches.Cubase.Transl
                 pSoundSlot.Member.Add( PSoundSlot.Sv( slotVisualList ) );
 
                 // PSoundSlot.color
+                // TODO アーティキュレーション変数にアクセスできないため、 ExtraData の Color を参照できず
+                //pSoundSlot.Int.Add( new IntElement( "color", ConvertColorIndex( ....[ExtraDataKeys.Color] ) ) );
                 pSoundSlot.Int.Add( new IntElement( "color", 0 ) );
 
                 // Aggregate
