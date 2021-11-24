@@ -3,12 +3,12 @@ using System.Linq;
 
 using KeySwitchManager.Domain.KeySwitches.Models;
 using KeySwitchManager.Domain.MidiMessages.Models.Aggregations;
-using KeySwitchManager.Infrastructures.Storage.Json.Cakewalk.Models;
+using KeySwitchManager.Infrastructures.Storage.Json.KeySwitches.Cakewalk.Models;
 
 using Articulation = KeySwitchManager.Domain.KeySwitches.Models.Aggregations.Articulation;
-using CwArticulation = KeySwitchManager.Infrastructures.Storage.Json.Cakewalk.Models.Articulation;
+using CwArticulation = KeySwitchManager.Infrastructures.Storage.Json.KeySwitches.Cakewalk.Models.Articulation;
 
-namespace KeySwitchManager.Infrastructures.Storage.Json.Cakewalk.Translators.Helpers
+namespace KeySwitchManager.Infrastructures.Storage.Json.KeySwitches.Cakewalk.Translators.Helpers
 {
     internal static class KeySwitchToCakewalkModelHelper
     {

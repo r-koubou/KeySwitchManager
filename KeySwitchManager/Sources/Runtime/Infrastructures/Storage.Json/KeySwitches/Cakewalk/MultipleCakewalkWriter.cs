@@ -6,7 +6,7 @@ using KeySwitchManager.Commons.Data;
 using KeySwitchManager.Domain.KeySwitches.Models;
 using KeySwitchManager.Infrastructures.Storage.KeySwitches.Helper;
 
-namespace KeySwitchManager.Infrastructures.Storage.Json.Cakewalk
+namespace KeySwitchManager.Infrastructures.Storage.Json.KeySwitches.Cakewalk
 {
     public class MultipleCakewalkWriter : IKeySwitchWriter
     {

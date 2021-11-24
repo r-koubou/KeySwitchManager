@@ -1,10 +1,10 @@
 using KeySwitchManager.Commons.Data;
 using KeySwitchManager.Domain.KeySwitches.Models;
-using KeySwitchManager.Infrastructures.Storage.Json.Cakewalk.Translators.Helpers;
+using KeySwitchManager.Infrastructures.Storage.Json.KeySwitches.Cakewalk.Translators.Helpers;
 
 using Newtonsoft.Json;
 
-namespace KeySwitchManager.Infrastructures.Storage.Json.Cakewalk.Translators
+namespace KeySwitchManager.Infrastructures.Storage.Json.KeySwitches.Cakewalk.Translators
 {
     public class CakewalkExportTranslator : IDataTranslator<KeySwitch, IText>
     {

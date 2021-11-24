@@ -2,7 +2,6 @@ using System.Linq;
 
 using KeySwitchManager.Domain.KeySwitches.Models;
 using KeySwitchManager.UseCase.KeySwitches.Dump;
-using KeySwitchManager.UseCase.KeySwitches.Export;
 
 namespace KeySwitchManager.Interactors.KeySwitches
 {

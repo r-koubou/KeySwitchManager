@@ -5,9 +5,9 @@ using System.Linq;
 using System.Text;
 
 using KeySwitchManager.Domain.KeySwitches.Models;
-using KeySwitchManager.Infrastructures.Storage.Json.Cakewalk.Translators;
+using KeySwitchManager.Infrastructures.Storage.Json.KeySwitches.Cakewalk.Translators;
 
-namespace KeySwitchManager.Infrastructures.Storage.Json.Cakewalk
+namespace KeySwitchManager.Infrastructures.Storage.Json.KeySwitches.Cakewalk
 {
     public sealed class CakewalkWriter : IKeySwitchWriter
     {

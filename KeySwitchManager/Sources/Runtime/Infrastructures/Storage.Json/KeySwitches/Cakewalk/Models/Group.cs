@@ -1,6 +1,6 @@
 using Newtonsoft.Json;
 
-namespace KeySwitchManager.Infrastructures.Storage.Json.Cakewalk.Models
+namespace KeySwitchManager.Infrastructures.Storage.Json.KeySwitches.Cakewalk.Models
 {
     public class Group
     {

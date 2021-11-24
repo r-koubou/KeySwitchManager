@@ -93,9 +93,6 @@ namespace KeySwitchManager.Infrastructures.Database.LiteDB.KeySwitches
             );
         }
 
-        public int Flush()
-            => 1;
-        // Always return 1 (A database file will be flushed to storage with disposing)
         #endregion
 
         #region Delete
