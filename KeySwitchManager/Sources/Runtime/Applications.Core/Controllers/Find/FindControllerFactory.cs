@@ -8,7 +8,7 @@ namespace KeySwitchManager.Applications.Core.Controllers.Find
     {
         public static IController Create( string databasePath, string developer, string product, string instrument, ILogTextView logTextView )
         {
-            var databaseRepository = new LiteDbKeySwitchRepository( new FilePath( databasePath ) );
+            var databaseRepository = new LiteDbRepository( new FilePath( databasePath ) );
             var presenter = new FindPresenter( logTextView );
 
             return new FindController( databaseRepository, presenter, developer, product, instrument );

@@ -34,7 +34,7 @@ namespace KeySwitchManager.Applications.Core.Controllers.Export
             var databasePath = new FilePath( databaseFile );
             var outputDir = new DirectoryPath( outputDirectory );
 
-            var sourceDatabase = new LiteDbKeySwitchRepository( databasePath );
+            var sourceDatabase = new LiteDbRepository( databasePath );
 
             try
             {

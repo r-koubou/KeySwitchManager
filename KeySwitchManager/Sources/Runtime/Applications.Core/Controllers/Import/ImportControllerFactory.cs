@@ -11,7 +11,7 @@ namespace KeySwitchManager.Applications.Core.Controllers.Import
     {
         public static IController Create( string databasePath, string importFilePath, ILogTextView logTextView )
         {
-            var databaseRepository = new LiteDbKeySwitchRepository( new FilePath( databasePath ) );
+            var databaseRepository = new LiteDbRepository( new FilePath( databasePath ) );
             databaseRepository.LoggingObservable.Subscribe( new DatabaseAccessObserver( logTextView ) );
 
             var reader = KeySwitchFileReaderFactory.Create( importFilePath );
@@ -23,7 +23,7 @@ namespace KeySwitchManager.Applications.Core.Controllers.Import
 #if false
             if( path.EndsWith( ".xlsx" ) )
             {
-                var databaseRepository = new LiteDbKeySwitchRepository( new FilePath( databasePath ) );
+                var databaseRepository = new LiteDbRepository( new FilePath( databasePath ) );
                 databaseRepository.LoggingObservable.Subscribe( new DatabaseAccessObserver( logTextView ) );
 
                 var spreadSheetFileRepository = new ClosedXmlFileLoadRepository( new FilePath( importFilePath ) );
@@ -33,7 +33,7 @@ namespace KeySwitchManager.Applications.Core.Controllers.Import
 
             if( path.EndsWith( ".yaml" ) )
             {
-                var databaseRepository = new LiteDbKeySwitchRepository( new FilePath( databasePath ) );
+                var databaseRepository = new LiteDbRepository( new FilePath( databasePath ) );
                 databaseRepository.LoggingObservable.Subscribe( new DatabaseAccessObserver( logTextView ) );
 
                 var reader = new YamlKeySwitchReader( File.OpenRead( importFilePath ) );

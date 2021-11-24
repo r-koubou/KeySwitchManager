@@ -13,7 +13,7 @@ namespace KeySwitchManager.Applications.Core.Controllers.Dump
     {
         public static IController Create( string databasePath, string outputPath, ILogTextView logTextView )
         {
-            var database = new LiteDbKeySwitchRepository( new FilePath( databasePath ) );
+            var database = new LiteDbRepository( new FilePath( databasePath ) );
             var writer = new YamlKeySwitchWriter( File.Create( outputPath ), Encoding.UTF8, true );
 
             var presenter = new IDumpFilePresenter.Console();

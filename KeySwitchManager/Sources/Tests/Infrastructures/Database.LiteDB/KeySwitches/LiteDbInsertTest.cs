@@ -18,7 +18,7 @@ namespace KeySwitchManager.Testing.Database.LiteDB.KeySwitches
         [Test]
         public void InsertTest()
         {
-            using var repository = new LiteDbKeySwitchRepository( new FilePath( $"{Path.GetTempFileName()}.db" ) );
+            using var repository = new LiteDbRepository( new FilePath( $"{Path.GetTempFileName()}.db" ) );
             var articulation = TestDataGenerator.CreateArticulation(
                 new List<MidiNoteOn>()
                 {

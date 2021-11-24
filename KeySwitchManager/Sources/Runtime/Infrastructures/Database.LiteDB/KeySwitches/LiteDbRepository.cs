@@ -17,7 +17,7 @@ using RkHelper.Time;
 
 namespace KeySwitchManager.Infrastructures.Database.LiteDB.KeySwitches
 {
-    public class LiteDbKeySwitchRepository : IKeySwitchRepository
+    public class LiteDbRepository : IKeySwitchRepository
     {
         public const string KeySwitchesTableName = @"keyswitches";
 
@@ -29,7 +29,7 @@ namespace KeySwitchManager.Infrastructures.Database.LiteDB.KeySwitches
         private ILiteCollection<KeySwitchModel> KeySwitchTable
             => Database.GetCollection<KeySwitchModel>( KeySwitchesTableName );
 
-        public LiteDbKeySwitchRepository( FilePath dbFilePath )
+        public LiteDbRepository( FilePath dbFilePath )
         {
             LoggingSubject    = new Subject<string>();
             LoggingObservable = LoggingSubject.AsObservable();
