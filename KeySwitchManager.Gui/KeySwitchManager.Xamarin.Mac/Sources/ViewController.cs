@@ -116,7 +116,7 @@ namespace KeySwitchManager.Xamarin.Mac
         {
             ChooseSaveFilePath( ( path ) => {
                 NewFileText.StringValue = path;
-            }, "yaml", "xlsx" );
+            }, "db", "yaml", "xlsx" );
         }
 
         async partial void OnOpenNewFileButtonClicked( NSObject sender )
