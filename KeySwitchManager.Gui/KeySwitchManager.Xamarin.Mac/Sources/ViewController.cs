@@ -5,6 +5,8 @@ using System.Threading.Tasks;
 
 using AppKit;
 
+using CoreGraphics;
+
 using Foundation;
 
 using KeySwitchManager.Applications.Core.Controllers;
@@ -14,6 +16,8 @@ using KeySwitchManager.Applications.Core.Controllers.Export;
 using KeySwitchManager.Applications.Core.Controllers.Find;
 using KeySwitchManager.Applications.Core.Controllers.Import;
 using KeySwitchManager.Xamarin.Mac.UiKitView;
+
+using ObjCRuntime;
 
 using RkHelper.Enumeration;
 using RkHelper.Text;
@@ -309,16 +313,34 @@ namespace KeySwitchManager.Xamarin.Mac
 
         private void ChooseSaveFilePath( Action<string> complete, params string[] extensions )
         {
+            var accessoryView = new NSView( new CGRect( 0,  0,  200, 50 ) );
+            var popup = new NSPopUpButton( new CGRect( 100, 10, 100, 25 ), false );
+            var label = new NSTextField( new CGRect( 20,    15, 80, 15 ) );
+
+            popup.AddItems( extensions );
+
+            label.StringValue     = "Format: ";
+            label.Alignment       = NSTextAlignment.Center;
+            label.Bordered        = false;
+            label.Selectable      = false;
+            label.Editable        = false;
+            label.BackgroundColor = NSColor.Clear;
+            label.TextColor       = NSColor.LabelColor;
+
+            accessoryView.AddSubview( popup );
+            accessoryView.AddSubview( label );
+
             var dialog = new NSSavePanel()
             {
-                CanCreateDirectories    = true,
-                AllowsOtherFileTypes    = false,
-                AllowedFileTypes        = extensions
+                CanCreateDirectories = true,
+                AllowsOtherFileTypes = false,
+                AllowedFileTypes     = extensions,
+                AccessoryView        = accessoryView,
             };
 
             if( dialog.RunModal() == (long)NSModalResponse.OK )
             {
-                complete.Invoke( dialog.Filename );
+                complete.Invoke( $"{dialog.Filename}.{popup.SelectedItem.Title}" );
             }
         }
 
