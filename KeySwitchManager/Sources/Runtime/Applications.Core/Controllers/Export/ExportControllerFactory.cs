@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Reactive;
 using System.Reactive.Subjects;
 
@@ -62,6 +63,12 @@ namespace KeySwitchManager.Applications.Core.Controllers.Export
 
                     case ExportSupportedFormat.Cakewalk:
                         return CreateImpl( new MultipleCakewalkWriter( outputDir ) );
+                    case ExportSupportedFormat.Dump:
+                        outputDir.CreateNew();
+                        var timeStamp = DateTime.Now.ToString( "yyyyMMdd-HHmmss" );
+                        var dumpPath = new FilePath( Path.Combine( outputDir.Path, $"dump@{timeStamp}.yaml" ) );
+                        var dumpStream = dumpPath.OpenStream( FileMode.Create, FileAccess.Write );
+                        return CreateImpl( new YamlKeySwitchWriter( dumpStream ) );
                     default:
                         Disposer.Dispose( sourceDatabase );
                         throw new ArgumentException( $"Unsupported format :{format}" );
