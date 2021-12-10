@@ -5,6 +5,8 @@ using System.Threading.Tasks;
 
 using AppKit;
 
+using CoreGraphics;
+
 using Foundation;
 
 using KeySwitchManager.Applications.Core.Controllers;
@@ -53,16 +55,6 @@ namespace KeySwitchManager.Xamarin.Mac
             }
         }
 
-
-        public override NSObject RepresentedObject
-        {
-            get { return base.RepresentedObject; }
-            set
-            {
-                base.RepresentedObject = value;
-                // Update the view, if already loaded.
-            }
-        }
         #endregion
 
         #region Executions
@@ -116,7 +108,7 @@ namespace KeySwitchManager.Xamarin.Mac
         {
             ChooseSaveFilePath( ( path ) => {
                 NewFileText.StringValue = path;
-            }, "yaml", "xlsx" );
+            }, "db", "yaml", "xlsx" );
         }
 
         async partial void OnOpenNewFileButtonClicked( NSObject sender )
@@ -303,23 +295,62 @@ namespace KeySwitchManager.Xamarin.Mac
 
             if( dialog.RunModal() == (long)NSModalResponse.OK )
             {
-                complete.Invoke( dialog.Filenames[ 0 ] );
+                complete.Invoke( dialog.Filename );
             }
         }
 
         private void ChooseSaveFilePath( Action<string> complete, params string[] extensions )
         {
+            if( extensions == null! || extensions.Length == 0 )
+            {
+                throw new ArgumentException( nameof( extensions ) );
+            }
+
+            var (accessoryView, popup) = CreateFileChooserAccessoryView( extensions );
             var dialog = new NSSavePanel()
             {
-                CanCreateDirectories    = true,
-                AllowsOtherFileTypes    = false,
-                AllowedFileTypes        = extensions
+                ExtensionHidden      = true,
+                ShowsTagField        = false,
+                CanCreateDirectories = true,
+                AllowsOtherFileTypes = false,
+                AllowedFileTypes     = new[] { extensions[ 0 ] }, // 全要素指定はNG。popupで動的に書き換える必要があるため
+            };
+
+            if( extensions.Length >= 2 )
+            {
+                dialog.AccessoryView = accessoryView;
+            }
+
+            popup.Activated += ( _, _ ) => {
+                dialog.AllowedFileTypes = new[] { extensions[ popup.IndexOfSelectedItem ] };
             };
 
             if( dialog.RunModal() == (long)NSModalResponse.OK )
             {
                 complete.Invoke( dialog.Filename );
             }
+        }
+
+        private static(NSView, NSPopUpButton) CreateFileChooserAccessoryView( string[] fileExtensions )
+        {
+            var accessoryView = new NSView( new CGRect( 0,  0,  200, 50 ) );
+            var popup = new NSPopUpButton( new CGRect( 100, 10, 100, 25 ), false );
+            var label = new NSTextField( new CGRect( 20,    15, 80,  15 ) );
+
+            popup.AddItems( fileExtensions );
+
+            label.StringValue     = "Format: ";
+            label.Alignment       = NSTextAlignment.Center;
+            label.Bordered        = false;
+            label.Selectable      = false;
+            label.Editable        = false;
+            label.BackgroundColor = NSColor.Clear;
+            label.TextColor       = NSColor.LabelColor;
+
+            accessoryView.AddSubview( popup );
+            accessoryView.AddSubview( label );
+
+            return ( accessoryView, popup );
         }
 
         private void ChooseDirectoryPath( Action<string> complete )
