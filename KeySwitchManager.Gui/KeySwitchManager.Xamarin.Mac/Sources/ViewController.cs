@@ -17,8 +17,6 @@ using KeySwitchManager.Applications.Core.Controllers.Find;
 using KeySwitchManager.Applications.Core.Controllers.Import;
 using KeySwitchManager.Xamarin.Mac.UiKitView;
 
-using ObjCRuntime;
-
 using RkHelper.Enumeration;
 using RkHelper.Text;
 
@@ -57,16 +55,6 @@ namespace KeySwitchManager.Xamarin.Mac
             }
         }
 
-
-        public override NSObject RepresentedObject
-        {
-            get { return base.RepresentedObject; }
-            set
-            {
-                base.RepresentedObject = value;
-                // Update the view, if already loaded.
-            }
-        }
         #endregion
 
         #region Executions
@@ -307,17 +295,49 @@ namespace KeySwitchManager.Xamarin.Mac
 
             if( dialog.RunModal() == (long)NSModalResponse.OK )
             {
-                complete.Invoke( dialog.Filenames[ 0 ] );
+                complete.Invoke( dialog.Filename );
             }
         }
 
         private void ChooseSaveFilePath( Action<string> complete, params string[] extensions )
         {
+            if( extensions == null! || extensions.Length == 0 )
+            {
+                throw new ArgumentException( nameof( extensions ) );
+            }
+
+            var (accessoryView, popup) = CreateFileChooserAccessoryView( extensions );
+            var dialog = new NSSavePanel()
+            {
+                ExtensionHidden      = true,
+                ShowsTagField        = false,
+                CanCreateDirectories = true,
+                AllowsOtherFileTypes = false,
+                AllowedFileTypes     = new[] { extensions[ 0 ] }, // 全要素指定はNG。popupで動的に書き換える必要があるため
+            };
+
+            if( extensions.Length >= 2 )
+            {
+                dialog.AccessoryView = accessoryView;
+            }
+
+            popup.Activated += ( _, _ ) => {
+                dialog.AllowedFileTypes = new[] { extensions[ popup.IndexOfSelectedItem ] };
+            };
+
+            if( dialog.RunModal() == (long)NSModalResponse.OK )
+            {
+                complete.Invoke( dialog.Filename );
+            }
+        }
+
+        private static(NSView, NSPopUpButton) CreateFileChooserAccessoryView( string[] fileExtensions )
+        {
             var accessoryView = new NSView( new CGRect( 0,  0,  200, 50 ) );
             var popup = new NSPopUpButton( new CGRect( 100, 10, 100, 25 ), false );
-            var label = new NSTextField( new CGRect( 20,    15, 80, 15 ) );
+            var label = new NSTextField( new CGRect( 20,    15, 80,  15 ) );
 
-            popup.AddItems( extensions );
+            popup.AddItems( fileExtensions );
 
             label.StringValue     = "Format: ";
             label.Alignment       = NSTextAlignment.Center;
@@ -330,18 +350,7 @@ namespace KeySwitchManager.Xamarin.Mac
             accessoryView.AddSubview( popup );
             accessoryView.AddSubview( label );
 
-            var dialog = new NSSavePanel()
-            {
-                CanCreateDirectories = true,
-                AllowsOtherFileTypes = false,
-                AllowedFileTypes     = extensions,
-                AccessoryView        = accessoryView,
-            };
-
-            if( dialog.RunModal() == (long)NSModalResponse.OK )
-            {
-                complete.Invoke( $"{dialog.Filename}.{popup.SelectedItem.Title}" );
-            }
+            return ( accessoryView, popup );
         }
 
         private void ChooseDirectoryPath( Action<string> complete )
