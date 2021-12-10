@@ -19,9 +19,6 @@ namespace KeySwitchManager.Applications.Core.Controllers.Export
         private IExportFilePresenter Presenter { get; }
         private IObserver<string> LoggingObserver { get; }
 
-
-        // TODO 引数で IKeySwitchWriter を受け取ればポリモーフィズムできるが、単一ファイルのみの出力になる。
-        // → そもそも IKeySwitchWriter == 単一ファイルのみ、に制限をしていないので MultipleFileWriter的クラスを実装すれば良い？
         public ExportFileController(
             DeveloperName developerName,
             ProductName productName,
