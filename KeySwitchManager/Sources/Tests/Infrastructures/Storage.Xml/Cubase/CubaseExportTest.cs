@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 using KeySwitchManager.Domain.MidiMessages.Models.Aggregations;
 using KeySwitchManager.Domain.MidiMessages.Models.Factory;
-using KeySwitchManager.Infrastructures.Storage.Xml.Cubase.Translators;
+using KeySwitchManager.Infrastructures.Storage.Xml.KeySwitches.Cubase.Translators;
 using KeySwitchManager.Testing.Commons.KeySwitches;
 
 using NUnit.Framework;

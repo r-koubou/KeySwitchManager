@@ -1,0 +1,82 @@
+$schema: "http://json-schema.org/draft-07/schema#"
+$ref: "#/definitions/root"
+
+definitions:
+  #---------------------------------------------------------
+  # Root
+  #---------------------------------------------------------
+  root:
+    type: object
+    properties:
+      variables:
+        type: array
+        default: []
+      namespace:
+        type: string
+        default: ""
+      suffix:
+        type: string
+      output_dir:
+        type: string
+        default: ""
+      classes:
+        type: array
+        default: []
+        items:
+          $ref: "#/definitions/Class"
+    required:
+      - suffix
+  #---------------------------------------------------------
+  # Class
+  #---------------------------------------------------------
+  Class:
+    type: object
+    properties:
+      name:
+        type: string
+      description:
+        type: string
+        default: ""
+      namespace:
+        type: string
+        default: ""
+      templates:
+        type: array
+        default: []
+        items:
+          $ref: '#/definitions/TemplateMeta'
+      user_variables:
+        $ref: "#/definitions/UserVariables"
+    required:
+    - name
+    - templates
+  #---------------------------------------------------------
+  # Template Meta
+  #---------------------------------------------------------
+  TemplateMeta:
+    type: object
+    properties:
+      name:
+        type: string
+      namespace:
+        type: string
+        default: ""
+      output_dir:
+        type: string
+        default: ""
+      file_name_prefix:
+        type: string
+        default: ""
+      file_name_suffix:
+        type: string
+        default: ""
+    required:
+      - name
+  #---------------------------------------------------------
+  # User Variables
+  #---------------------------------------------------------
+  UserVariables:
+    type: object
+    properties:
+      __allow_any_keys_and_values__:
+        type: string

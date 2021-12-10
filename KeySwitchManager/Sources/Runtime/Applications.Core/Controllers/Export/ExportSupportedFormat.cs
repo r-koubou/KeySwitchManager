@@ -2,9 +2,11 @@
 {
     public enum ExportSupportedFormat
     {
+        Yaml,
         Xlsx,
         Cubase,
         StudioOne,
-        Cakewalk
+        Cakewalk,
+        Dump
     }
 }

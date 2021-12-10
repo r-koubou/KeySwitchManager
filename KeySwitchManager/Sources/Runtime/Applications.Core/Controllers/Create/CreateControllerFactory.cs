@@ -1,6 +1,10 @@
 ﻿using System;
+using System.IO;
+
 using KeySwitchManager.Applications.Core.Views.LogView;
 using KeySwitchManager.Commons.Data;
+using KeySwitchManager.Domain.KeySwitches.Models;
+using KeySwitchManager.Infrastructures.Database.LiteDB.KeySwitches;
 using KeySwitchManager.Infrastructures.Storage.Spreadsheet.ClosedXml.KeySwitches;
 using KeySwitchManager.Infrastructures.Storage.Yaml.KeySwitches;
 
@@ -14,19 +18,35 @@ namespace KeySwitchManager.Applications.Core.Controllers.Create
 
             if( path.EndsWith( ".xlsx" ) )
             {
-                var xlsxFileRepository = new ClosedXmlFileSaveTemplateRepository( new FilePath( outputFilePath ) );
-                var presenter = new CreateXlsxKeySwitchPresenter( logTextView );
-                return new CreateXlsxController( xlsxFileRepository, presenter );
+                return CreateImpl( outputFilePath, logTextView, ( stream ) => new ClosedXmlWriter( stream ) );
             }
 
-            if( path.EndsWith( ".yaml" ) )
+            if( path.EndsWith( ".yaml" ) || path.EndsWith( ".yml" ) )
             {
-                var yamlFileRepository = new YamlKeySwitchFileRepository( new FilePath( outputFilePath ), false );
-                var presenter = new CreateYamlKeySwitchPresenter( logTextView );
-                return new CreateYamlController( yamlFileRepository, presenter );
+                return CreateImpl( outputFilePath, logTextView, ( stream ) => new YamlKeySwitchWriter( stream ) );
+            }
+
+            if( path.EndsWith( ".db" ) )
+            {
+                return CreateImpl( logTextView, new LiteDbFileWriter( new FilePath( outputFilePath ) ) );
             }
 
             throw new ArgumentException( $"{outputFilePath} is unknown file format" );
         }
+
+        private static IController CreateImpl( string outputFilePath, ILogTextView logTextView, Func<Stream, IKeySwitchWriter> factory )
+        {
+            var stream = new FilePath( outputFilePath ).OpenWriteStream();
+            var writer = factory.Invoke( stream );
+            var presenter = new CreateFilePresenter( logTextView );
+            return new CreateFileController( writer, presenter );
+        }
+
+        private static IController CreateImpl( ILogTextView logTextView, IKeySwitchWriter writer )
+        {
+            var presenter = new CreateFilePresenter( logTextView );
+            return new CreateFileController( writer, presenter );
+        }
+
     }
 }

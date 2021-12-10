@@ -1,13 +1,19 @@
 ﻿using System;
+using System.IO;
+using System.Reactive;
+using System.Reactive.Subjects;
+
 using KeySwitchManager.Applications.Core.Views.LogView;
 using KeySwitchManager.Commons.Data;
 using KeySwitchManager.Domain.KeySwitches.Models;
 using KeySwitchManager.Domain.KeySwitches.Models.Values;
 using KeySwitchManager.Infrastructures.Database.LiteDB.KeySwitches;
-using KeySwitchManager.Infrastructures.Storage.Json.Cakewalk;
+using KeySwitchManager.Infrastructures.Storage.Json.KeySwitches.Cakewalk;
 using KeySwitchManager.Infrastructures.Storage.Spreadsheet.ClosedXml.KeySwitches;
-using KeySwitchManager.Infrastructures.Storage.Xml.Cubase;
-using KeySwitchManager.Infrastructures.Storage.Xml.StudioOne;
+using KeySwitchManager.Infrastructures.Storage.Xml.KeySwitches.Cubase;
+using KeySwitchManager.Infrastructures.Storage.Xml.KeySwitches.StudioOne;
+using KeySwitchManager.Infrastructures.Storage.Yaml.KeySwitches;
+
 using RkHelper.System;
 
 namespace KeySwitchManager.Applications.Core.Controllers.Export
@@ -29,36 +35,43 @@ namespace KeySwitchManager.Applications.Core.Controllers.Export
             var databasePath = new FilePath( databaseFile );
             var outputDir = new DirectoryPath( outputDirectory );
 
-            var sourceDatabase = new LiteDbKeySwitchRepository( databasePath );
-
-            IController CreateDawController( IKeySwitchRepository targetFileRepository )
-            {
-                return new ExportDawController( developer!, product!, instrument!, sourceDatabase!, targetFileRepository, new ExportDawPresenter( logTextView ) );
-            }
+            var sourceDatabase = new LiteDbRepository( databasePath );
 
             try
             {
+                var subject = new Subject<string>();
+                subject.Subscribe( new LoggingObserver( logTextView ) );
+
+                var observer = subject.AsObserver();
+
+                IController CreateImpl( IKeySwitchWriter writer )
+                    => new ExportFileController( developer, product, instrument, sourceDatabase, writer, new ExportFilePresenter( logTextView ), observer );
+
                 switch( format )
                 {
+                    case ExportSupportedFormat.Yaml:
+                        return CreateImpl( new MultipleYamlFileWriter( outputDir ) );
+
                     case ExportSupportedFormat.Xlsx:
-                        var xlsxRepository = new ClosedXmlFileSaveRepository( outputDir );
-                        xlsxRepository.LoggingObservable.Subscribe( new LoggingObserver( logTextView ) );
-                        return new ExportXlsxController( developer, product, sourceDatabase, xlsxRepository, new ExportXlsxPresenter( logTextView ) );
+                        return CreateImpl( new MultipleClosedXmlWriter( outputDir ) );
 
                     case ExportSupportedFormat.Cubase:
-                        var cubaseRepository = new CubaseFileRepository( outputDir );
-                        cubaseRepository.LoggingObservable.Subscribe( new LoggingObserver( logTextView ) );
-                        return CreateDawController( cubaseRepository );
+                        return CreateImpl( new MultipleCubaseWriter( outputDir ) );
 
                     case ExportSupportedFormat.StudioOne:
-                        var studioOneRepository = new StudioOneFileRepository( outputDir );
-                        studioOneRepository.LoggingObservable.Subscribe( new LoggingObserver( logTextView ) );
-                        return CreateDawController( studioOneRepository );
+                        return CreateImpl( new MultipleStudioOneWriter( outputDir ) );
 
                     case ExportSupportedFormat.Cakewalk:
-                        var cakewalkRepository = new CakewalkFileRepository( outputDir );
-                        cakewalkRepository.LoggingObservable.Subscribe( new LoggingObserver( logTextView ) );
-                        return CreateDawController( cakewalkRepository );
+                        return CreateImpl( new MultipleCakewalkWriter( outputDir ) );
+                    case ExportSupportedFormat.Dump:
+                        outputDir.CreateNew();
+                        var timeStamp = DateTime.Now.ToString( "yyyyMMdd-HHmmss" );
+                        var dumpPath = new FilePath( Path.Combine( outputDir.Path, $"dump@{timeStamp}.yaml" ) );
+                        var dumpStream = dumpPath.OpenStream( FileMode.Create, FileAccess.Write );
+                        return CreateImpl( new YamlKeySwitchWriter( dumpStream ) );
+                    default:
+                        Disposer.Dispose( sourceDatabase );
+                        throw new ArgumentException( $"Unsupported format :{format}" );
                 }
             }
             catch
@@ -66,9 +79,6 @@ namespace KeySwitchManager.Applications.Core.Controllers.Export
                 Disposer.Dispose( sourceDatabase );
                 throw;
             }
-
-            Disposer.Dispose( sourceDatabase );
-            throw new ArgumentException( $"{format} is not supported" );
         }
 
         private class LoggingObserver : IObserver<string>

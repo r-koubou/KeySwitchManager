@@ -28,6 +28,10 @@ namespace KeySwitchManager.WPF
     /// </summary>
     public partial class MainWindow
     {
+        private const string KeySwitchDefinitionFileFilter = "KeySwitch definition File|*.xlsx;*.yaml;*.yml";
+        private const string KeySwitchDatabaseFileFilter = "KeySwitch Database File|*.db";
+        private const string KeySwitchAllFileFilter = "Supported File|*.xlsx;*.yaml;*.yml;*.db";
+
         #region UI Binding
         #endregion
 
@@ -173,12 +177,12 @@ namespace KeySwitchManager.WPF
         #region Import
         private void OnOpenDatabaseFileChooserButtonClicked( object sender, RoutedEventArgs e )
         {
-            ImportDatabaseFileText.Text = ChooseOpenFilePath( "Database File|*.db|All Types|*" );
+            ImportDatabaseFileText.Text = ChooseSaveFilePath( KeySwitchDatabaseFileFilter );
         }
 
         private void OnOpenFileChooserButtonClicked( object sender, RoutedEventArgs e )
         {
-            ImportFileText.Text = ChooseOpenFilePath( "KeySwitch definition File|*.yaml;*.xlsx" );
+            ImportFileText.Text = ChooseOpenFilePath( KeySwitchDefinitionFileFilter );
         }
 
         private async void OnDoImportButtonClick( object sender, RoutedEventArgs e )
@@ -197,12 +201,12 @@ namespace KeySwitchManager.WPF
         #region Find
         private void OnCreateDefinitionFileChooserButtonClicked( object sender, RoutedEventArgs e )
         {
-            NewFileText.Text = ChooseSaveFilePath( "KeySwitch definition File|*.xlsx|KeySwitch definition File|*.yaml" );
+            NewFileText.Text = ChooseSaveFilePath( KeySwitchAllFileFilter );
         }
 
         private void OpenFindDatabaseFileChooserButtonClicked( object sender, RoutedEventArgs e )
         {
-            FindDatabaseFileText.Text = ChooseOpenFilePath( "Database File|*.db|All Types|*" );
+            FindDatabaseFileText.Text = ChooseOpenFilePath( KeySwitchDatabaseFileFilter );
         }
 
         private async void OnFindButtonClicked( object sender, RoutedEventArgs e )

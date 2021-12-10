@@ -1,0 +1,33 @@
+$schema: "http://json-schema.org/draft-07/schema#"
+$ref: "#/definitions/root"
+
+definitions:
+  root:
+    type: object
+    properties:
+      variables:
+        type: array
+        default: []
+      templates:
+        type: array
+        items:
+          $ref: "#/definitions/TemplateInfo"
+    required:
+      - templates
+
+  TemplateInfo:
+    type: object
+    properties:
+      name:
+        type: string
+      path:
+        type: string
+      prefix:
+        type: string
+        default: ""
+      suffix:
+        type: string
+        default: ""
+    required:
+      - name
+      - path

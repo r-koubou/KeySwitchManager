@@ -12,7 +12,6 @@ namespace KeySwitchManager.Domain.KeySwitches.Models
         public IObservable<string> LoggingObservable { get; }
 
         public int Count();
-        public int Flush();
         public SaveResult Save( KeySwitch keySwitch );
         public int Delete( DeveloperName developerName, ProductName productName, InstrumentName instrumentName );
         public int Delete( DeveloperName developerName, ProductName productName );

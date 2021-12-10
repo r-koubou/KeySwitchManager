@@ -15,7 +15,7 @@ namespace KeySwitchManager.Testing.Database.LiteDB.KeySwitches
     public class LiteDbDeleteTest
     {
         private static IKeySwitchRepository CreateRepository()
-            => new LiteDbKeySwitchRepository( new FilePath( $"{Path.GetTempFileName()}.db" ) );
+            => new LiteDbRepository( new FilePath( $"{Path.GetTempFileName()}.db" ) );
 
         [Test]
         public void DeleteByIdTest()

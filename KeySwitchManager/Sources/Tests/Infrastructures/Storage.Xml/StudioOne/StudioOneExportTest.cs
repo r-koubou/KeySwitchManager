@@ -2,7 +2,7 @@ using System;
 
 using KeySwitchManager.Domain.MidiMessages.Models.Aggregations;
 using KeySwitchManager.Domain.MidiMessages.Models.Factory;
-using KeySwitchManager.Infrastructures.Storage.Xml.StudioOne.Translators;
+using KeySwitchManager.Infrastructures.Storage.Xml.KeySwitches.StudioOne.Translators;
 using KeySwitchManager.Testing.Commons.KeySwitches;
 
 using NUnit.Framework;
