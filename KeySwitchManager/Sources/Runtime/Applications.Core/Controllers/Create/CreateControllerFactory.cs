@@ -36,7 +36,7 @@ namespace KeySwitchManager.Applications.Core.Controllers.Create
 
         private static IController CreateImpl( string outputFilePath, ILogTextView logTextView, Func<Stream, IKeySwitchWriter> factory )
         {
-            var stream = new FilePath( outputFilePath ).OpenWriteStream();
+            var stream = new FilePath( outputFilePath ).OpenStream( FileMode.Create, FileAccess.ReadWrite );
             var writer = factory.Invoke( stream );
             var presenter = new CreateFilePresenter( logTextView );
             return new CreateFileController( writer, presenter );
