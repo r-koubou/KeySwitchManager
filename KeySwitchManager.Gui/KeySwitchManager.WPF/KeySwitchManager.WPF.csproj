@@ -7,7 +7,7 @@
         <AssemblyName>KeySwitchManager</AssemblyName>
         <Product>KeySwitchManager WPF Application</Product>
         <Description>KeySwitchManager WPF Application</Description>
-        <Version>0.3.0</Version>
+        <Version>0.3.1</Version>
         <Nullable>enable</Nullable>
     </PropertyGroup>
 
