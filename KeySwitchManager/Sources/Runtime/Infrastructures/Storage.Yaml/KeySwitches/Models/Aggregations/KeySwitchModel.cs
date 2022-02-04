@@ -13,10 +13,6 @@ namespace KeySwitchManager.Infrastructures.Storage.Yaml.KeySwitches.Models.Aggre
 
         public string Description { get; set; } = default!;
 
-        public DateTime Created { get; set; } = DateTimeHelper.NowUtc();
-
-        public DateTime LastUpdated { get; set; } = DateTimeHelper.NowUtc();
-
         public string DeveloperName { get; set; } = default!;
 
         public string ProductName { get; set; } = default!;
@@ -34,8 +30,6 @@ namespace KeySwitchManager.Infrastructures.Storage.Yaml.KeySwitches.Models.Aggre
             Guid id,
             string author,
             string description,
-            DateTime created,
-            DateTime lastUpdated,
             string developerName,
             string productName,
             string instrumentName,
@@ -45,8 +39,6 @@ namespace KeySwitchManager.Infrastructures.Storage.Yaml.KeySwitches.Models.Aggre
             Id             = id;
             Author         = author;
             Description    = description;
-            Created        = created;
-            LastUpdated    = lastUpdated;
             DeveloperName  = developerName;
             ProductName    = productName;
             InstrumentName = instrumentName;

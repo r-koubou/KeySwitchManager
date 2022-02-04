@@ -7,6 +7,8 @@ using KeySwitchManager.Domain.MidiMessages.Models.Aggregations;
 using KeySwitchManager.Domain.MidiMessages.Models.Factory;
 using KeySwitchManager.Infrastructures.Storage.Yaml.KeySwitches.Models.Aggregations;
 
+using RkHelper.Time;
+
 namespace KeySwitchManager.Infrastructures.Storage.Yaml.KeySwitches.Translators.Helpers
 {
     internal static class YamlModelToKeySwitchHelper
@@ -14,13 +16,14 @@ namespace KeySwitchManager.Infrastructures.Storage.Yaml.KeySwitches.Translators.
         public static KeySwitch Translate( KeySwitchModel model )
         {
             var articulations = TranslateImpl( model );
+            var now = DateTimeHelper.NowUtc();
 
             return IKeySwitchFactory.Default.Create(
                 model.Id,
                 model.Author,
                 model.Description,
-                model.Created,
-                model.LastUpdated,
+                now,
+                now,
                 model.DeveloperName,
                 model.ProductName,
                 model.InstrumentName,
