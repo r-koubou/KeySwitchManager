@@ -43,8 +43,6 @@ namespace KeySwitchManager.Infrastructures.Storage.Yaml.KeySwitches.Translators.
                 source.Id.Value,
                 source.Author.Value,
                 source.Description.Value,
-                UtcDateTimeHelper.ToDateTime( source.Created ),
-                UtcDateTimeHelper.ToDateTime( source.LastUpdated ),
                 source.DeveloperName.Value,
                 source.ProductName.Value,
                 source.InstrumentName.Value,
