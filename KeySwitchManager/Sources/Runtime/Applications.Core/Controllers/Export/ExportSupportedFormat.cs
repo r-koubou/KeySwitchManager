@@ -4,6 +4,7 @@
     {
         Yaml,
         Xlsx,
+        XlsxCombined,
         Cubase,
         StudioOne,
         Cakewalk,
