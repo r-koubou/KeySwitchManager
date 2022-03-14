@@ -55,6 +55,9 @@ namespace KeySwitchManager.Applications.Core.Controllers.Export
                     case ExportSupportedFormat.Xlsx:
                         return CreateImpl( new MultipleClosedXmlWriter( outputDir ) );
 
+                    case ExportSupportedFormat.XlsxCombined:
+                        return CreateImpl( new CombinedClosedXmlWriter( outputDir ) );
+
                     case ExportSupportedFormat.Cubase:
                         return CreateImpl( new MultipleCubaseWriter( outputDir ) );
 

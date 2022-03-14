@@ -147,8 +147,8 @@ namespace KeySwitchManager.Infrastructures.Storage.Spreadsheet.ClosedXml.KeySwit
             var description = sourceSheet.Row( SpreadsheetConstants.RowDescription )
                                     .Cell( SpreadsheetConstants.ColumnDescription ).Value.ToString();
 
-            worksheet.DescriptionCell = author == null ?
-                DescriptionCell.Empty : new DescriptionCell( author );
+            worksheet.DescriptionCell = description == null ?
+                DescriptionCell.Empty : new DescriptionCell( description );
             #endregion
 
             return worksheet;
