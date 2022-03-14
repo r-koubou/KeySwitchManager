@@ -59,7 +59,7 @@ namespace KeySwitchManager.Infrastructures.Storage.Json.KeySwitches.Cakewalk
 
             loggingSubject?.OnNext( source.ToString() );
 
-            using var writer = new StreamWriter( Stream, FileEncoding );
+            using var writer = new StreamWriter( Stream, FileEncoding, IKeySwitchWriter.DefaultStreamWriterBufferSize, LeaveOpen );
             // TODO すべての要素を束ねた 1 JSONファイルにしたい(Cakewalkは保持できる)
             var jsonText = new CakewalkExportTranslator( true ).Translate( source );
 
