@@ -59,7 +59,7 @@ namespace KeySwitchManager.Infrastructures.Storage.Xml.KeySwitches.StudioOne
 
             loggingSubject?.OnNext( source.ToString() );
 
-            using var writer = new StreamWriter( Stream, FileEncoding );
+            using var writer = new StreamWriter( Stream, FileEncoding, IKeySwitchWriter.DefaultStreamWriterBufferSize, LeaveOpen );
             var xmlText = new StudioOneExportTranslator().Translate( source );
 
             writer.WriteLine( xmlText );

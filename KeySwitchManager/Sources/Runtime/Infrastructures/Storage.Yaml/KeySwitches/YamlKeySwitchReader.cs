@@ -44,7 +44,7 @@ namespace KeySwitchManager.Infrastructures.Storage.Yaml.KeySwitches
                 throw new NullReferenceException( nameof( Stream ) );
             }
 
-            using var reader = new StreamReader( Stream, FileEncoding );
+            using var reader = new StreamReader( Stream, FileEncoding, true, IKeySwitchReader.DefaultStreamReaderBufferSize, LeaveOpen );
             var jsonText = reader.ReadToEnd();
 
             var keySwitches = new YamlKeySwitchImportTranslator().Translate( new PlainText( jsonText ) );
