@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Reactive.Linq;
 using System.Reactive.Subjects;
 
 using KeySwitchManager.Commons.Data;
@@ -13,6 +12,7 @@ using KeySwitchManager.Infrastructures.Database.LiteDB.KeySwitches.Translators;
 
 using LiteDB;
 
+using RkHelper.System;
 using RkHelper.Time;
 
 namespace KeySwitchManager.Infrastructures.Database.LiteDB.KeySwitches
@@ -21,8 +21,8 @@ namespace KeySwitchManager.Infrastructures.Database.LiteDB.KeySwitches
     {
         public const string KeySwitchesTableName = @"keyswitches";
 
-        private Subject<string> LoggingSubject { get; }
-        public IObservable<string> LoggingObservable { get; }
+        private readonly Subject<string> logging = new();
+        public IObservable<string> OnLogging => logging;
 
         private LiteDatabase Database { get; set; }
 
@@ -31,13 +31,12 @@ namespace KeySwitchManager.Infrastructures.Database.LiteDB.KeySwitches
 
         public LiteDbRepository( FilePath dbFilePath )
         {
-            LoggingSubject    = new Subject<string>();
-            LoggingObservable = LoggingSubject.AsObservable();
-            Database          = new LiteDatabase( dbFilePath.Path );
+            Database = new LiteDatabase( dbFilePath.Path );
         }
 
         public void Dispose()
         {
+            Disposer.Dispose( logging );
             Close();
         }
 
@@ -64,7 +63,7 @@ namespace KeySwitchManager.Infrastructures.Database.LiteDB.KeySwitches
         #region Save
         public IKeySwitchRepository.SaveResult Save( KeySwitch keySwitch )
         {
-            LoggingSubject.OnNext( keySwitch.ToString() );
+            logging.OnNext( keySwitch.ToString() );
 
             var table = Database.GetCollection<KeySwitchModel>( KeySwitchesTableName );
 

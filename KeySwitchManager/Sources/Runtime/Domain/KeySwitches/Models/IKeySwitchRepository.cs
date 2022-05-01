@@ -9,7 +9,7 @@ namespace KeySwitchManager.Domain.KeySwitches.Models
 {
     public interface IKeySwitchRepository : IDisposable
     {
-        public IObservable<string> LoggingObservable { get; }
+        public IObservable<string> OnLogging { get; }
 
         public int Count();
         public SaveResult Save( KeySwitch keySwitch );

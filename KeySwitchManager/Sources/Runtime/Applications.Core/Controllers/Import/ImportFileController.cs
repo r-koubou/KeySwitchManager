@@ -1,3 +1,5 @@
+using System;
+
 using KeySwitchManager.Domain.KeySwitches.Models;
 using KeySwitchManager.Interactors.KeySwitches;
 using KeySwitchManager.UseCase.KeySwitches.Import;
@@ -13,6 +15,8 @@ namespace KeySwitchManager.Applications.Core.Controllers.Import
         private IImportFilePresenter Presenter { get; }
         private bool LeaveOpen { get; }
 
+        private readonly IDisposable loggingSubscriber;
+
         #region Ctor
         public ImportFileController(
             IKeySwitchRepository databaseRepository,
@@ -24,11 +28,14 @@ namespace KeySwitchManager.Applications.Core.Controllers.Import
             KeySwitchReader    = reader;
             Presenter          = presenter;
             LeaveOpen          = leaveOpen;
+            loggingSubscriber  = databaseRepository.OnLogging.Subscribe( onNext: presenter.Present, onError: presenter.Present );
         }
         #endregion
 
         public void Dispose()
         {
+            Disposer.Dispose( loggingSubscriber );
+
             if( LeaveOpen )
             {
                 return;

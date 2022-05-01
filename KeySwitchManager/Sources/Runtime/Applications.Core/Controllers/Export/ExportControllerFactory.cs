@@ -1,7 +1,5 @@
 ﻿using System;
 using System.IO;
-using System.Reactive;
-using System.Reactive.Subjects;
 
 using KeySwitchManager.Applications.Core.Views.LogView;
 using KeySwitchManager.Commons.Data;
@@ -39,13 +37,8 @@ namespace KeySwitchManager.Applications.Core.Controllers.Export
 
             try
             {
-                var subject = new Subject<string>();
-                subject.Subscribe( new LoggingObserver( logTextView ) );
-
-                var observer = subject.AsObserver();
-
                 IController CreateImpl( IKeySwitchWriter writer )
-                    => new ExportFileController( developer, product, instrument, sourceDatabase, writer, new ExportFilePresenter( logTextView ), observer );
+                    => new ExportFileController( developer, product, instrument, sourceDatabase, writer, new ExportFilePresenter( logTextView ) );
 
                 switch( format )
                 {
@@ -83,28 +76,5 @@ namespace KeySwitchManager.Applications.Core.Controllers.Export
                 throw;
             }
         }
-
-        private class LoggingObserver : IObserver<string>
-        {
-            private ILogTextView LogTextView { get; }
-
-            public LoggingObserver( ILogTextView logTextView )
-            {
-                LogTextView = logTextView;
-            }
-
-            public void OnCompleted() {}
-
-            public void OnError( Exception error )
-            {
-                LogTextView.Append( error.ToString() );
-            }
-
-            public void OnNext( string value )
-            {
-                LogTextView.Append( value );
-            }
-        }
-
     }
 }

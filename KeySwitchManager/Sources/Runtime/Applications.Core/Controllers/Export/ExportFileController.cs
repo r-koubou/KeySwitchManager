@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Reactive.Subjects;
 
 using KeySwitchManager.Domain.KeySwitches.Models;
 using KeySwitchManager.Domain.KeySwitches.Models.Values;
@@ -17,7 +18,7 @@ namespace KeySwitchManager.Applications.Core.Controllers.Export
         private ProductName ProductName { get; }
         private InstrumentName InstrumentName { get; }
         private IExportFilePresenter Presenter { get; }
-        private IObserver<string> LoggingObserver { get; }
+        private readonly Subject<string> logging = new();
 
         public ExportFileController(
             DeveloperName developerName,
@@ -25,8 +26,7 @@ namespace KeySwitchManager.Applications.Core.Controllers.Export
             InstrumentName instrumentName,
             IKeySwitchRepository sourceRepository,
             IKeySwitchWriter writer,
-            IExportFilePresenter presenter,
-            IObserver<string> loggingObserver )
+            IExportFilePresenter presenter )
         {
             DeveloperName    = developerName;
             ProductName      = productName;
@@ -34,11 +34,17 @@ namespace KeySwitchManager.Applications.Core.Controllers.Export
             SourceRepository = sourceRepository;
             Writer           = writer;
             Presenter        = presenter;
-            LoggingObserver  = loggingObserver;
+
+            logging.Subscribe(
+                onNext: presenter.Present,
+                onError: presenter.Present
+            );
+
         }
 
         public void Dispose()
         {
+            Disposer.Dispose( logging );
             Disposer.Dispose( SourceRepository );
 
             if( !Writer.LeaveOpen )
@@ -61,7 +67,7 @@ namespace KeySwitchManager.Applications.Core.Controllers.Export
                     ProductName.Value,
                     InstrumentName.Value
                 ),
-                LoggingObserver
+                logging
             );
 
             Presenter.Complete( response );
