@@ -6,6 +6,8 @@ using System.Reactive.Subjects;
 using KeySwitchManager.Domain.KeySwitches.Helpers;
 using KeySwitchManager.Domain.KeySwitches.Models.Values;
 
+using RkHelper.System;
+
 namespace KeySwitchManager.Domain.KeySwitches.Models
 {
     public class OnMemoryKeySwitchRepository : IKeySwitchRepository
@@ -27,6 +29,7 @@ namespace KeySwitchManager.Domain.KeySwitches.Models
 
         public virtual void Dispose()
         {
+            Disposer.Dispose( logging );
             KeySwitches.Clear();
         }
 
