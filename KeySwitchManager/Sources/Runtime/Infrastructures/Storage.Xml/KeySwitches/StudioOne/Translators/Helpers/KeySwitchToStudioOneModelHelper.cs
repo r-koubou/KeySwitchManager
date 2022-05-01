@@ -15,14 +15,33 @@ namespace KeySwitchManager.Infrastructures.Storage.Xml.KeySwitches.StudioOne.Tra
     {
         public static RootElement Translate( KeySwitch source )
         {
-            var rootElement = new RootElement
+            var rootElement = TranslateRootElement( source );
+            var attributeElements = TranslateElementAttributes( source.Articulations );
+
+            rootElement.Attributes.AddRange( attributeElements );
+
+            return rootElement;
+        }
+
+        #region Translate Attribute
+        public static RootElement TranslateRootElement( ProductName productName )
+            => new()
+            {
+                Name = $"{productName.Value}"
+            };
+
+        public static RootElement TranslateRootElement( KeySwitch source )
+            => new()
             {
                 Name = $"{source.ProductName.Value} {source.InstrumentName.Value}"
             };
 
+        public static IReadOnlyCollection<ElementAttribute> TranslateElementAttributes( IEnumerable<Articulation> articulations )
+        {
+            var result = new List<ElementAttribute>();
             var id = 0;
 
-            foreach( var i in source.Articulations )
+            foreach( var i in articulations )
             {
                 if( !i.MidiNoteOns.Any() )
                 {
@@ -32,13 +51,12 @@ namespace KeySwitchManager.Infrastructures.Storage.Xml.KeySwitches.StudioOne.Tra
                 var attr = TranslateElementAttribute( i, id );
                 id++;
 
-                rootElement.Attributes.Add( attr );
+                result.Add( attr );
             }
 
-            return rootElement;
+            return result;
         }
 
-        #region Translate Attribute
         private static ElementAttribute TranslateElementAttribute( Articulation articulation, int id )
         {
             var name = articulation.ArticulationName.Value;
