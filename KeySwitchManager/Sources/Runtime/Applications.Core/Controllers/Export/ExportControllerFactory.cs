@@ -55,7 +55,7 @@ namespace KeySwitchManager.Applications.Core.Controllers.Export
                         return CreateImpl( new MultipleCubaseWriter( outputDir ) );
 
                     case ExportSupportedFormat.StudioOne:
-                        return CreateImpl( new CombinedStudioOneWriter( outputDir ) );
+                        return CreateImpl( new StudioOneWriter( outputDir ) );
 
                     case ExportSupportedFormat.Cakewalk:
                         return CreateImpl( new MultipleCakewalkWriter( outputDir ) );
