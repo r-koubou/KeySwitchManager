@@ -74,6 +74,10 @@ namespace KeySwitchManager.Infrastructures.Storage.KeySwitches.Helper
             );
         }
 
+        public static FilePath CreateFilePath( DeveloperName developerName, ProductName productName, string suffix, DirectoryPath baseDirectory, params DirectoryPath[] subDirectories )
+        {
+            return CreateFilePath( developerName, productName, string.Empty, suffix, baseDirectory );
+        }
 
         public static FilePath CreateFilePath( KeySwitch keySwitch, string suffix, DirectoryPath baseDirectory, params DirectoryPath[] subDirectories )
         {

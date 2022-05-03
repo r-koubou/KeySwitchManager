@@ -8,6 +8,7 @@ using KeySwitchManager.Infrastructures.Storage.KeySwitches.Helper;
 
 namespace KeySwitchManager.Infrastructures.Storage.Xml.KeySwitches.StudioOne
 {
+    [Obsolete]
     public class MultipleStudioOneWriter : IKeySwitchWriter
     {
         private const string Suffix = ".keyswitch";

@@ -9,6 +9,7 @@ using KeySwitchManager.Infrastructures.Storage.Xml.KeySwitches.StudioOne.Transla
 
 namespace KeySwitchManager.Infrastructures.Storage.Xml.KeySwitches.StudioOne
 {
+    [Obsolete]
     public sealed class StudioOneWriter : IKeySwitchWriter
     {
         private Encoding FileEncoding { get; }
