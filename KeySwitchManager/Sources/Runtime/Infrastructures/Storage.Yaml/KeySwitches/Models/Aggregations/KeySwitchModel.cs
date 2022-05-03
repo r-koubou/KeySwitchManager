@@ -1,8 +1,6 @@
 using System;
 using System.Collections.Generic;
 
-using RkHelper.Time;
-
 namespace KeySwitchManager.Infrastructures.Storage.Yaml.KeySwitches.Models.Aggregations
 {
     public class KeySwitchModel

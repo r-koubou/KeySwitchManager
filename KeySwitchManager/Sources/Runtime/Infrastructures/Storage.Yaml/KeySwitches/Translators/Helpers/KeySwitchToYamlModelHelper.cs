@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 
-using KeySwitchManager.Commons.Helpers;
 using KeySwitchManager.Domain.KeySwitches.Models;
 using KeySwitchManager.Domain.KeySwitches.Models.Factory;
 using KeySwitchManager.Domain.KeySwitches.Models.Values;
