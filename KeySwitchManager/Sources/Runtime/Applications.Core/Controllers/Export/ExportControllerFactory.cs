@@ -58,7 +58,7 @@ namespace KeySwitchManager.Applications.Core.Controllers.Export
                         return CreateImpl( new StudioOneWriter( outputDir ) );
 
                     case ExportSupportedFormat.Cakewalk:
-                        return CreateImpl( new MultipleCakewalkWriter( outputDir ) );
+                        return CreateImpl( new DividedCakewalkWriter( outputDir ) );
                     case ExportSupportedFormat.Dump:
                         outputDir.CreateNew();
                         var timeStamp = DateTime.Now.ToString( "yyyyMMdd-HHmmss" );

@@ -8,7 +8,7 @@ using KeySwitchManager.Infrastructures.Storage.KeySwitches.Helper;
 
 namespace KeySwitchManager.Infrastructures.Storage.Json.KeySwitches.Cakewalk
 {
-    public class MultipleCakewalkWriter : IKeySwitchWriter
+    public class DividedCakewalkWriter : IKeySwitchWriter
     {
         private const string Suffix = ".artmap";
 
@@ -16,9 +16,9 @@ namespace KeySwitchManager.Infrastructures.Storage.Json.KeySwitches.Cakewalk
         private Encoding FileEncoding { get; }
         public bool LeaveOpen => false;
 
-        public MultipleCakewalkWriter( DirectoryPath outputDirectory ) : this( outputDirectory, Encoding.UTF8 ) {}
+        public DividedCakewalkWriter( DirectoryPath outputDirectory ) : this( outputDirectory, Encoding.UTF8 ) {}
 
-        public MultipleCakewalkWriter( DirectoryPath outputDirectory, Encoding filEncoding )
+        public DividedCakewalkWriter( DirectoryPath outputDirectory, Encoding filEncoding )
         {
             OutputDirectory = outputDirectory;
             FileEncoding    = filEncoding;
