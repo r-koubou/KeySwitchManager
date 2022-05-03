@@ -9,7 +9,6 @@ namespace KeySwitchManager.Infrastructures.Storage.KeySwitches.Helper
 {
     public static class MultipleWritingHelper
     {
-        [Obsolete]
         public static void Write( IReadOnlyCollection<KeySwitch> keySwitches, DirectoryPath outputDirectory, string suffix, IObserver<string>? loggingSubject, Func<Stream, IKeySwitchWriter> writerFactory )
         {
             foreach( var x in keySwitches )

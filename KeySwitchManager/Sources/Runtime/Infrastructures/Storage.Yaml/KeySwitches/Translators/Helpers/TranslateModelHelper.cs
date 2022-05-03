@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 
-using KeySwitchManager.Commons.Helpers;
 using KeySwitchManager.Domain.KeySwitches.Models;
 using KeySwitchManager.Domain.KeySwitches.Models.Factory;
 using KeySwitchManager.Domain.KeySwitches.Models.Values;
@@ -10,7 +9,7 @@ using KeySwitchManager.Infrastructures.Storage.Yaml.KeySwitches.Models.Factory;
 
 namespace KeySwitchManager.Infrastructures.Storage.Yaml.KeySwitches.Translators.Helpers
 {
-    internal static class KeySwitchToYamlModelHelper
+    internal static class TranslateModelHelper
     {
         public static KeySwitchModel Translate( KeySwitch source )
         {

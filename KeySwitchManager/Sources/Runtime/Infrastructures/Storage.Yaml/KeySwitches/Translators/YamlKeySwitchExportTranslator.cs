@@ -20,7 +20,7 @@ namespace KeySwitchManager.Infrastructures.Storage.Yaml.KeySwitches.Translators
 
             foreach( var i in source )
             {
-                yamlModel.KeySwitches.Add( KeySwitchToYamlModelHelper.Translate( i ) );
+                yamlModel.KeySwitches.Add( TranslateModelHelper.Translate( i ) );
             }
 
             var sb = new StringBuilder( 8192 );
