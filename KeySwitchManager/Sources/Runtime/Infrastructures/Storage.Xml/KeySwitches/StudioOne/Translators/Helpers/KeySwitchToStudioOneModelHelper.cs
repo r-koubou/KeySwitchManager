@@ -18,27 +18,33 @@ namespace KeySwitchManager.Infrastructures.Storage.Xml.KeySwitches.StudioOne.Tra
             var rootElement = TranslateRootElement( source );
             var attributeElements = TranslateElementAttributes( source.Articulations );
 
-            rootElement.Attributes.AddRange( attributeElements );
+            rootElement.AttributeElements.AddRange( attributeElements );
 
             return rootElement;
         }
 
         #region Translate Attribute
-        public static RootElement TranslateRootElement( ProductName productName )
-            => new()
-            {
-                Name = $"{productName.Value}"
-            };
-
         public static RootElement TranslateRootElement( KeySwitch source )
             => new()
             {
-                Name = $"{source.ProductName.Value} {source.InstrumentName.Value}"
+                Name = $"{source.ProductName.Value} {source.InstrumentName}"
             };
 
-        public static IReadOnlyCollection<ElementAttribute> TranslateElementAttributes( IEnumerable<Articulation> articulations )
+        public static RootElement TranslateRootElement( DeveloperName developerName, ProductName productName )
+            => new()
+            {
+                Name = $"{developerName.Value} {productName.Value}"
+            };
+
+        public static RootElement TranslateRootElement( ProductName productName, InstrumentName instrumentName  )
+            => new()
+            {
+                Name = $"{productName.Value} {instrumentName.Value}"
+            };
+
+        public static IReadOnlyCollection<AttributeElement> TranslateElementAttributes( IEnumerable<Articulation> articulations )
         {
-            var result = new List<ElementAttribute>();
+            var result = new List<AttributeElement>();
             var id = 0;
 
             foreach( var i in articulations )
@@ -57,7 +63,7 @@ namespace KeySwitchManager.Infrastructures.Storage.Xml.KeySwitches.StudioOne.Tra
             return result;
         }
 
-        private static ElementAttribute TranslateElementAttribute( Articulation articulation, int id )
+        private static AttributeElement TranslateElementAttribute( Articulation articulation, int id )
         {
             var name = articulation.ArticulationName.Value;
             var pitch = articulation.MidiNoteOns[ 0 ].DataByte1.Value;
@@ -74,7 +80,7 @@ namespace KeySwitchManager.Infrastructures.Storage.Xml.KeySwitches.StudioOne.Tra
                 ExtraDataKeys.Momentary, new ExtraDataValue( "0" )
             ).Value == "0" ? 0 : 1;
 
-            return new ElementAttribute( name, id, color, pitch, momentary, activation );
+            return new AttributeElement( name, id, color, pitch, momentary, activation );
         }
 
         #region Translate Activations

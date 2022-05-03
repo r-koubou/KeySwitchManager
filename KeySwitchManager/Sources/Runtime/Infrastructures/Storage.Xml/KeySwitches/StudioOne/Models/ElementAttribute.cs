@@ -1,31 +1,38 @@
+using System.Collections.Generic;
 using System.Xml.Serialization;
 
 namespace KeySwitchManager.Infrastructures.Storage.Xml.KeySwitches.StudioOne.Models
 {
-    public class ElementAttribute
+    public class AttributeElement
     {
+        [XmlAttribute( AttributeName = "folder" )]
+        public string Folder { get; set; } = default!;
+
         [XmlAttribute( AttributeName = "name" )]
         public string Name { get; set; } = string.Empty;
 
         [XmlAttribute( AttributeName = "id" )]
-        public int Id { get; set; }
+        public string Id { get; set; } = default!;
 
         [XmlAttribute( AttributeName = "color" )]
         public string Color { get; set; } = default!; // AABBGGRR
 
         [XmlAttribute( AttributeName = "pitch" )]
-        public int Pitch { get; set; }
+        public string Pitch { get; set; } = default!;
 
         [XmlAttribute( AttributeName = "momentary" )]
-        public int Momentary { get; set; }
+        public string Momentary { get; set; } = default!;
 
         [XmlAttribute( AttributeName = "activation" ) ]
-        public string Activation { get; set; } = string.Empty;
+        public string Activation { get; set; } = default!;
 
-        public ElementAttribute()
+        [XmlElement( ElementName = "Attributes" )]
+        public List<AttributeElement> Children { get; } = new();
+
+        public AttributeElement()
         {}
 
-        public ElementAttribute(
+        public AttributeElement(
             string name,
             int id,
             string color,
@@ -34,10 +41,10 @@ namespace KeySwitchManager.Infrastructures.Storage.Xml.KeySwitches.StudioOne.Mod
             string activation )
         {
             Name       = name;
-            Id         = id;
+            Id         = id.ToString();
             Color      = color;
-            Pitch      = pitch;
-            Momentary  = momentary;
+            Pitch      = pitch.ToString();
+            Momentary  = momentary.ToString();
             Activation = activation;
         }
     }
