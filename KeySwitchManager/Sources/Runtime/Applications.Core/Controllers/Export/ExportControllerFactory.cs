@@ -46,7 +46,7 @@ namespace KeySwitchManager.Applications.Core.Controllers.Export
                         return CreateImpl( new DividedYamlFileWriter( outputDir ) );
 
                     case ExportSupportedFormat.Xlsx:
-                        return CreateImpl( new MultipleClosedXmlWriter( outputDir ) );
+                        return CreateImpl( new DividedClosedXmlWriter( outputDir ) );
 
                     case ExportSupportedFormat.XlsxCombined:
                         return CreateImpl( new CombinedClosedXmlWriter( outputDir ) );
