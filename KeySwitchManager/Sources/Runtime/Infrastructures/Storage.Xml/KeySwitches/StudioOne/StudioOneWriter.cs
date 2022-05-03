@@ -10,13 +10,13 @@ using KeySwitchManager.Domain.KeySwitches.Models;
 using KeySwitchManager.Domain.KeySwitches.Models.Values;
 using KeySwitchManager.Infrastructures.Storage.KeySwitches.Helper;
 using KeySwitchManager.Infrastructures.Storage.Xml.KeySwitches.StudioOne.Models;
-using KeySwitchManager.Infrastructures.Storage.Xml.KeySwitches.StudioOne.Translators.Helpers;
+using KeySwitchManager.Infrastructures.Storage.Xml.KeySwitches.StudioOne.Translators;
 
 using RkHelper.Text.Xml;
 
 namespace KeySwitchManager.Infrastructures.Storage.Xml.KeySwitches.StudioOne
 {
-    public class CombinedStudioOneWriter : IKeySwitchWriter
+    public class StudioOneWriter : IKeySwitchWriter
     {
         private const string Suffix = ".keyswitch";
 
@@ -24,9 +24,9 @@ namespace KeySwitchManager.Infrastructures.Storage.Xml.KeySwitches.StudioOne
         private Encoding FileEncoding { get; }
         public bool LeaveOpen => false;
 
-        public CombinedStudioOneWriter( DirectoryPath outputDirectory ) : this( outputDirectory, Encoding.UTF8 ) {}
+        public StudioOneWriter( DirectoryPath outputDirectory ) : this( outputDirectory, Encoding.UTF8 ) {}
 
-        public CombinedStudioOneWriter( DirectoryPath outputDirectory, Encoding filEncoding )
+        public StudioOneWriter( DirectoryPath outputDirectory, Encoding filEncoding )
         {
             OutputDirectory = outputDirectory;
             FileEncoding    = filEncoding;
@@ -45,7 +45,7 @@ namespace KeySwitchManager.Infrastructures.Storage.Xml.KeySwitches.StudioOne
 
             foreach( var ((developerName, productName), x) in group )
             {
-                var rootElement = KeySwitchToStudioOneModelHelper.TranslateRootElement( developerName, productName );
+                var rootElement = StudioOneExportTranslator.TranslateRootElement( developerName, productName );
 
                 Translate( rootElement, developerName, productName, x, logging );
 
@@ -75,7 +75,7 @@ namespace KeySwitchManager.Infrastructures.Storage.Xml.KeySwitches.StudioOne
                     Name = x.InstrumentName.Value
                 };
 
-                var elementAttributes = KeySwitchToStudioOneModelHelper.TranslateElementAttributes( x.Articulations );
+                var elementAttributes = StudioOneExportTranslator.TranslateElementAttributes( x.Articulations );
                 folder.Children.AddRange( elementAttributes );
                 rootElement.AttributeElements.Add( folder );
             }
