@@ -17,7 +17,7 @@ namespace KeySwitchManager.Infrastructures.Storage.Json.KeySwitches.Cakewalk.Tra
 
         public IText Translate( KeySwitch source )
         {
-            var jsonRoot = KeySwitchToCakewalkModelHelper.Translate( source );
+            var jsonRoot = TranslateModelHelper.Translate( source );
             var jsonText = JsonConvert.SerializeObject( jsonRoot, Formatted ? Formatting.Indented : Formatting.None );
 
             return new PlainText( jsonText );

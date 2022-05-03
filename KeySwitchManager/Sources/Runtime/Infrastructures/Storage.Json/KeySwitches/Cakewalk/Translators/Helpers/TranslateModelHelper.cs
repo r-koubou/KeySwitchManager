@@ -10,7 +10,7 @@ using CwArticulation = KeySwitchManager.Infrastructures.Storage.Json.KeySwitches
 
 namespace KeySwitchManager.Infrastructures.Storage.Json.KeySwitches.Cakewalk.Translators.Helpers
 {
-    internal static class KeySwitchToCakewalkModelHelper
+    internal static class TranslateModelHelper
     {
         public static CakewalkArticulationMap Translate( KeySwitch source )
         {
