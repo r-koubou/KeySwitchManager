@@ -7,14 +7,14 @@ using KeySwitchManager.Infrastructures.Storage.KeySwitches.Helper;
 
 namespace KeySwitchManager.Infrastructures.Storage.Spreadsheet.ClosedXml.KeySwitches
 {
-    public class MultipleClosedXmlWriter : IKeySwitchWriter
+    public class DividedClosedXmlWriter : IKeySwitchWriter
     {
         private const string Suffix = ".xlsx";
 
         public DirectoryPath OutputDirectory { get; }
         public bool LeaveOpen => false;
 
-        public MultipleClosedXmlWriter( DirectoryPath outputDirectory )
+        public DividedClosedXmlWriter( DirectoryPath outputDirectory )
         {
             OutputDirectory = outputDirectory;
         }
