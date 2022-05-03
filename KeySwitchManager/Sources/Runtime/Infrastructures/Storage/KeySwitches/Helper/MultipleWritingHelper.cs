@@ -30,6 +30,8 @@ namespace KeySwitchManager.Infrastructures.Storage.KeySwitches.Helper
         {
             foreach( var x in keySwitches )
             {
+                logging?.OnNext( $"{x.DeveloperName} | {x.ProductName} | {x.InstrumentName}" );
+
                 var filePath = CreatePathHelper.CreateFilePath( x, suffix, outputDirectory );
 
                 // Some writers require Read/Write access stream
