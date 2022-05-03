@@ -43,7 +43,7 @@ namespace KeySwitchManager.Applications.Core.Controllers.Export
                 switch( format )
                 {
                     case ExportSupportedFormat.Yaml:
-                        return CreateImpl( new MultipleYamlFileWriter( outputDir ) );
+                        return CreateImpl( new DividedYamlFileWriter( outputDir ) );
 
                     case ExportSupportedFormat.Xlsx:
                         return CreateImpl( new MultipleClosedXmlWriter( outputDir ) );

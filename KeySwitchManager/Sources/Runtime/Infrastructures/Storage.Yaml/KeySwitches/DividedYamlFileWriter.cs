@@ -8,7 +8,7 @@ using KeySwitchManager.Infrastructures.Storage.KeySwitches.Helper;
 
 namespace KeySwitchManager.Infrastructures.Storage.Yaml.KeySwitches
 {
-    public class MultipleYamlFileWriter : IKeySwitchWriter
+    public class DividedYamlFileWriter : IKeySwitchWriter
     {
         private const string Suffix = ".yaml";
 
@@ -16,9 +16,9 @@ namespace KeySwitchManager.Infrastructures.Storage.Yaml.KeySwitches
         private Encoding FileEncoding { get; }
         public bool LeaveOpen => false;
 
-        public MultipleYamlFileWriter( DirectoryPath outputDirectory ) : this( outputDirectory, Encoding.UTF8 ) {}
+        public DividedYamlFileWriter( DirectoryPath outputDirectory ) : this( outputDirectory, Encoding.UTF8 ) {}
 
-        public MultipleYamlFileWriter( DirectoryPath outputDirectory, Encoding filEncoding )
+        public DividedYamlFileWriter( DirectoryPath outputDirectory, Encoding filEncoding )
         {
             OutputDirectory = outputDirectory;
             FileEncoding    = filEncoding;

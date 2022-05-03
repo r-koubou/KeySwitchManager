@@ -11,7 +11,7 @@ using RkHelper.Time;
 
 namespace KeySwitchManager.Infrastructures.Storage.Yaml.KeySwitches.Translators.Helpers
 {
-    internal static class YamlModelToKeySwitchHelper
+    internal static class TranslateKeySwitchHelper
     {
         public static KeySwitch Translate( KeySwitchModel model )
         {

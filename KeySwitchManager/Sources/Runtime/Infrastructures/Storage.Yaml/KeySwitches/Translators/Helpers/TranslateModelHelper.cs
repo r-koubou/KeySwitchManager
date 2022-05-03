@@ -9,7 +9,7 @@ using KeySwitchManager.Infrastructures.Storage.Yaml.KeySwitches.Models.Factory;
 
 namespace KeySwitchManager.Infrastructures.Storage.Yaml.KeySwitches.Translators.Helpers
 {
-    internal static class KeySwitchToYamlModelHelper
+    internal static class TranslateModelHelper
     {
         public static KeySwitchModel Translate( KeySwitch source )
         {
