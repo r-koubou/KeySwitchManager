@@ -52,7 +52,7 @@ namespace KeySwitchManager.Applications.Core.Controllers.Export
                         return CreateImpl( new CombinedClosedXmlWriter( outputDir ) );
 
                     case ExportSupportedFormat.Cubase:
-                        return CreateImpl( new MultipleCubaseWriter( outputDir ) );
+                        return CreateImpl( new CubaseWriter( outputDir ) );
 
                     case ExportSupportedFormat.StudioOne:
                         return CreateImpl( new StudioOneWriter( outputDir ) );

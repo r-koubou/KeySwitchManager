@@ -10,7 +10,7 @@ namespace KeySwitchManager.Infrastructures.Storage.Xml.KeySwitches.Cubase.Transl
     {
         public IText Translate( KeySwitch source )
         {
-            var rootElement = KeySwitchToCubaseModelHelper.Translate( source );
+            var rootElement = TranslateModelHelper.TranslateRootElement( source );
             return new PlainText( XmlHelper.ToXmlString( rootElement ) );
         }
     }
