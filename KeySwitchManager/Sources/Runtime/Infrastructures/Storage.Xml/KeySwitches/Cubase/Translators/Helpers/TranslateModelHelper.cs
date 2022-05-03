@@ -9,9 +9,9 @@ using KeySwitchManager.Infrastructures.Storage.Xml.KeySwitches.Cubase.Models.Xml
 
 namespace KeySwitchManager.Infrastructures.Storage.Xml.KeySwitches.Cubase.Translators.Helpers
 {
-    internal static class KeySwitchToCubaseModelHelper
+    internal static class TranslateModelHelper
     {
-        public static RootElement Translate( KeySwitch source )
+        public static RootElement TranslateRootElement( KeySwitch source )
         {
             var slotTable = CollectSlotTable( source );
 
