@@ -18,7 +18,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\KeySwitchManager\Sources\Runtime\Applications.Core\Applications.Core.csproj" />
+      <ProjectReference Include="..\Core\Applications.Core.csproj" />
     </ItemGroup>
 
     <ItemGroup>
