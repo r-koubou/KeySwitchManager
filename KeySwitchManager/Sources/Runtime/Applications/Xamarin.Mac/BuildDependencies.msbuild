@@ -1,7 +1,0 @@
-<Project>
-
-    <Target Name="BuildDependencies">
-        <MSBuild Projects="..\Core\Applications.Core.csproj" Properties="Configuration=$(Configuration)" />
-    </Target>
-
-</Project>
