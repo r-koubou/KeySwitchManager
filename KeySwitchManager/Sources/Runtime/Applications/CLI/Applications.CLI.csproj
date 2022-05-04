@@ -22,7 +22,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Content Include="..\NOTICE.md">
+      <Content Include="..\..\..\..\..\NOTICE.md">
         <Link>NOTICE.md</Link>
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </Content>
