@@ -31,13 +31,13 @@ jobs:
       run: dotnet msbuild /nologo /t:Archive /p:Configuration=Release /p:PublishDir=${{ github.workspace }}/publish %ProjectFile%
       shell: cmd
       env:
-        ProjectFile: KeySwitchManager.CLI/publish.msbuild
+        ProjectFile: KeySwitchManager/Sources/Runtime/Applications/CLI/publish.msbuild
 
     - name: WPF Build
       run: dotnet msbuild /nologo /t:Archive /p:Configuration=Release /p:PublishDir=${{ github.workspace }}/publish %ProjectFile%
       shell: cmd
       env:
-        ProjectFile: KeySwitchManager.Gui/KeySwitchManager.WPF/publish.msbuild
+        ProjectFile: KeySwitchManager/Sources/Runtime/Applications/WPF/publish.msbuild
 
     - name: Artifact CLI
       uses: actions/upload-artifact@v2

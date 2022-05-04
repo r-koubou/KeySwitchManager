@@ -2,7 +2,7 @@
 
     <PropertyGroup>
         <ProjectName>KeySwitchManager.WPF</ProjectName>
-        <ProjectFile>KeySwitchManager.WPF.csproj</ProjectFile>
+        <ProjectFile>Applications.WPF.csproj</ProjectFile>
         <BuildDate>$([System.DateTime]::Now.ToString("yyyyMMdd"))</BuildDate>
     </PropertyGroup>
 
