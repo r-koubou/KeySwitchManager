@@ -60,9 +60,6 @@
         <ImageAsset Include="Assets.xcassets\Contents.json" />
     </ItemGroup>
     <ItemGroup>
-        <Folder Include="Resources\" />
-    </ItemGroup>
-    <ItemGroup>
         <None Include="Info.plist" />
         <None Include="Entitlements.plist" />
     </ItemGroup>
@@ -79,7 +76,7 @@
         <InterfaceDefinition Include="Main.storyboard" />
     </ItemGroup>
     <ItemGroup>
-      <ProjectReference Include="..\..\KeySwitchManager\Sources\Runtime\Applications.Core\Applications.Core.csproj">
+      <ProjectReference Include="..\Core\Applications.Core.csproj">
         <Project>{b2e7ec33-b3a6-4556-a2a7-8a0cf5f14056}</Project>
         <Name>Applications.Core</Name>
       </ProjectReference>
