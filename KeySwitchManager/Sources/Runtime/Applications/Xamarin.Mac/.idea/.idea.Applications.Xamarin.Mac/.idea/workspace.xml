@@ -5,9 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e8a92dc3-8619-429d-923f-36b8ce0d37fa" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Applications.Xamarin.Mac/.idea/.name" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Applications.Xamarin.Mac/.idea/.name" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Applications.Xamarin.Mac/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Applications.Xamarin.Mac/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Applications.Xamarin.Mac.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Applications.Xamarin.Mac.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Applications.Xamarin.Mac.csproj.sln" beforeDir="false" afterPath="$PROJECT_DIR$/Applications.Xamarin.Mac.sln" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Applications.Xamarin.Mac.csproj.sln.DotSettings" beforeDir="false" afterPath="$PROJECT_DIR$/Applications.Xamarin.Mac.sln.DotSettings" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/VERSION.md" beforeDir="false" afterPath="$PROJECT_DIR$/VERSION.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,6 +59,8 @@
       <option name="presentableId" value="Default" />
       <updated>1651680890364</updated>
       <workItem from="1651680900923" duration="766000" />
+      <workItem from="1651739695827" duration="879000" />
+      <workItem from="1651740748141" duration="98000" />
     </task>
     <servers />
   </component>

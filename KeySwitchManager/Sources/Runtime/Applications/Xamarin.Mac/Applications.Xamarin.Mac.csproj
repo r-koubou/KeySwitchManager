@@ -85,12 +85,26 @@
         <PackageReference Include="RkHelper" Version="0.0.8" />
         <PackageReference Include="YamlDotNet" Version="11.2.1" />
     </ItemGroup>
-    <ItemGroup>
+    <Import Project="$(MSBuildExtensionsPath)\Xamarin\Mac\Xamarin.Mac.CSharp.targets" />
+
+   <ItemGroup>
       <Content Include="VERSION.md">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </Content>
+      <Content Include="LICENSE">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Content>
+      <Content Include="README.md">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Content>
+      <Content Include="README.ja.md">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Content>
+      <Content Include="..\..\..\..\..\NOTICE.md">
+        <Link>NOTICE.md</Link>
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Content>
     </ItemGroup>
-    <Import Project="$(MSBuildExtensionsPath)\Xamarin\Mac\Xamarin.Mac.CSharp.targets" />
 
     <!-- Output assenbly version to text file for including on deploy by msbuild script. -->
     <Import Project="GenerateVersion.msbuild" />
