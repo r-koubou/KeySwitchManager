@@ -45,7 +45,7 @@ namespace KeySwitchManager.Infrastructures.Storage.Xml.KeySwitches.StudioOne
 
             foreach( var ((developerName, productName), x) in group )
             {
-                var rootElement = StudioOneExportTranslator.TranslateRootElement( developerName, productName );
+                var rootElement = StudioOneExportTranslator.TranslateRootElement( productName );
 
                 Translate( rootElement, developerName, productName, x, logging );
 
@@ -62,22 +62,33 @@ namespace KeySwitchManager.Infrastructures.Storage.Xml.KeySwitches.StudioOne
             RootElement rootElement,
             DeveloperName developerName,
             ProductName productName,
-            IEnumerable<KeySwitch> keySwitches,
+            IReadOnlyCollection<KeySwitch> keySwitches,
             IObserver<string>? logging )
         {
+            var count = keySwitches.Count();
+
             logging?.OnNext( $"{developerName} | {productName}" );
 
             foreach( var x in keySwitches )
             {
-                var folder = new AttributeElement
-                {
-                    Folder = "1",
-                    Name = x.InstrumentName.Value
-                };
-
                 var elementAttributes = StudioOneExportTranslator.TranslateElementAttributes( x.Articulations );
-                folder.Children.AddRange( elementAttributes );
-                rootElement.AttributeElements.Add( folder );
+
+                // Create a folder element if count more than 2
+                if( count >= 2 )
+                {
+                    var folder = new AttributeElement
+                    {
+                        Folder = "1",
+                        Name   = x.InstrumentName.Value
+                    };
+
+                    folder.Children.AddRange( elementAttributes );
+                    rootElement.AttributeElements.Add( folder );
+                }
+                else
+                {
+                    rootElement.AttributeElements.AddRange( elementAttributes );
+                }
             }
         }
     }

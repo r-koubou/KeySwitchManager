@@ -40,10 +40,16 @@ namespace KeySwitchManager.Infrastructures.Storage.Xml.KeySwitches.StudioOne.Tra
                 Name = $"{developerName.Value} {productName.Value}"
             };
 
-        public static RootElement TranslateRootElement( ProductName productName, InstrumentName instrumentName  )
+        public static RootElement TranslateRootElement( ProductName productName, InstrumentName instrumentName )
             => new()
             {
                 Name = $"{productName.Value} {instrumentName.Value}"
+            };
+
+        public static RootElement TranslateRootElement( ProductName productName )
+            => new()
+            {
+                Name = $"{productName.Value}"
             };
 
         public static IReadOnlyCollection<AttributeElement> TranslateElementAttributes( IEnumerable<Articulation> articulations )
