@@ -449,3 +449,7 @@ fabric.properties
 # My rule
 #-------------------------------------------------------------------------------
 .temp/
+*test*.db
+*test*.json
+*test*.xls*
+(ProductName).*

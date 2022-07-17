@@ -24,5 +24,22 @@ namespace KeySwitchManager.Infrastructures.Storage.KeySwitches.Helper
 
             loggingSubject?.OnNext( $"{nameof(MultipleWritingHelper)} : {keySwitches.Count} records has been written" );
         }
+
+        public static void Write( IReadOnlyCollection<KeySwitch> keySwitches, DirectoryPath outputDirectory, string suffix, IObserver<string>? logging, Action<Stream, KeySwitch, IObserver<string>?> write )
+        {
+            foreach( var x in keySwitches )
+            {
+                logging?.OnNext( $"{x.DeveloperName} | {x.ProductName} | {x.InstrumentName}" );
+
+                var filePath = CreatePathHelper.CreateFilePath( x, suffix, outputDirectory );
+
+                // Some writers require Read/Write access stream
+                using var stream = filePath.OpenStream( FileMode.Create, FileAccess.ReadWrite );
+                write.Invoke( stream, x, logging );
+            }
+
+            logging?.OnNext( $"{nameof(MultipleWritingHelper)} : {keySwitches.Count} records has been written" );
+        }
+
     }
 }

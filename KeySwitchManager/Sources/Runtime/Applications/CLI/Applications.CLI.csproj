@@ -1,0 +1,48 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <!-- Assembly / Common -->
+        <OutputType>Exe</OutputType>
+        <TargetFramework>net5.0</TargetFramework>
+        <AssemblyName>KeySwitchManager</AssemblyName>
+        <RootNamespace>KeySwitchManager.Applications.CLI</RootNamespace>
+        <Company>R-Koubou</Company>
+        <Product>KeySwitchManager CLI Application</Product>
+        <Version>0.3.1</Version>
+        <Description>KeySwitchManager CLI Application</Description>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <PackageReference Include="CommandLineParser" Version="2.8.0" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\Core\Applications.Core.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Content Include="..\..\..\..\..\NOTICE.md">
+        <Link>NOTICE.md</Link>
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Content>
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Update="LICENSE">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </None>
+      <None Update="README.md">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </None>
+      <None Update="README.ja.md">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </None>
+    </ItemGroup>
+
+    <!-- Output assenbly version to text file for including on deploy by msbuild script. -->
+    <Import Project="GenerateVersion.msbuild" />
+    <!-- Output shellscript for launch -->
+    <Import Project="GenerateLauncher.msbuild" />
+
+</Project>

@@ -7,7 +7,7 @@ namespace KeySwitchManager.Infrastructures.Storage.Xml.KeySwitches.StudioOne.Mod
     public class RootElement
     {
         [XmlElement( ElementName = "Attributes" )]
-        public List<ElementAttribute> Attributes { get; set; } = new List<ElementAttribute>();
+        public List<AttributeElement> AttributeElements { get; set; } = new();
 
         [XmlAttribute( AttributeName = "name" )]
         public string Name { get; set; } = string.Empty;

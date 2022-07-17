@@ -4,65 +4,93 @@ using System.IO;
 using System.Linq;
 using System.Text;
 
+using KeySwitchManager.Commons.Data;
+using KeySwitchManager.Domain.KeySwitches.Helpers;
 using KeySwitchManager.Domain.KeySwitches.Models;
+using KeySwitchManager.Domain.KeySwitches.Models.Values;
+using KeySwitchManager.Infrastructures.Storage.KeySwitches.Helper;
+using KeySwitchManager.Infrastructures.Storage.Xml.KeySwitches.StudioOne.Models;
 using KeySwitchManager.Infrastructures.Storage.Xml.KeySwitches.StudioOne.Translators;
+
+using RkHelper.Text.Xml;
 
 namespace KeySwitchManager.Infrastructures.Storage.Xml.KeySwitches.StudioOne
 {
-    public sealed class StudioOneWriter : IKeySwitchWriter
+    public class StudioOneWriter : IKeySwitchWriter
     {
+        private const string Suffix = ".keyswitch";
+
+        private DirectoryPath OutputDirectory { get; }
         private Encoding FileEncoding { get; }
-        private Stream? Stream { get; set; }
+        public bool LeaveOpen => false;
 
-        public bool LeaveOpen { get; }
+        public StudioOneWriter( DirectoryPath outputDirectory ) : this( outputDirectory, Encoding.UTF8 ) {}
 
-        public StudioOneWriter( Stream stream ) : this( stream, Encoding.UTF8 ) {}
-
-        public StudioOneWriter( Stream stream, Encoding filEncoding, bool leaveOpen = false )
+        public StudioOneWriter( DirectoryPath outputDirectory, Encoding filEncoding )
         {
-            FileEncoding = filEncoding ?? throw new ArgumentNullException( nameof( filEncoding ) );
-            Stream       = stream ?? throw new ArgumentNullException( nameof( stream ) );
-            LeaveOpen    = leaveOpen;
+            OutputDirectory = outputDirectory;
+            FileEncoding    = filEncoding;
         }
 
-        public void Dispose()
+        public void Dispose() {}
+
+        public void Write( IReadOnlyCollection<KeySwitch> keySwitches, IObserver<string>? logging = null )
         {
-            if( LeaveOpen || Stream == null )
-            {
-                return;
-            }
-
-            Stream.Flush();
-            Stream.Close();
-            Stream.Dispose();
-            Stream = null;
-        }
-
-        public void Write( IReadOnlyCollection<KeySwitch> keySwitches, IObserver<string>? loggingSubject = null )
-        {
-            if( Stream == null )
-            {
-                throw new NullReferenceException( nameof( Stream ) );
-            }
-
             if( !keySwitches.Any() )
             {
                 throw new ArgumentException( $"{nameof( keySwitches )} is empty" );
             }
 
-            if( keySwitches.Count >= 2 )
+            var group = KeySwitchHelper.GroupBy( keySwitches );
+
+            foreach( var ((developerName, productName), x) in group )
             {
-                throw new ArgumentException( $"{nameof( keySwitches )} has 1 element only" );
+                var rootElement = StudioOneExportTranslator.TranslateRootElement( productName );
+
+                Translate( rootElement, developerName, productName, x, logging );
+
+                var filePath = CreatePathHelper.CreateFilePath( developerName, productName, Suffix, OutputDirectory );
+                using var stream = filePath.OpenStream( FileMode.Create, FileAccess.ReadWrite );
+                using var writer = new StreamWriter( stream, FileEncoding, IKeySwitchWriter.DefaultStreamWriterBufferSize, LeaveOpen );
+
+                var xmlText = XmlHelper.ToXmlString( rootElement );
+                writer.WriteLine( xmlText );
             }
+        }
 
-            var source = keySwitches.First();
+        private static void Translate(
+            RootElement rootElement,
+            DeveloperName developerName,
+            ProductName productName,
+            IReadOnlyCollection<KeySwitch> keySwitches,
+            IObserver<string>? logging )
+        {
+            var assignId = 0;
+            var count = keySwitches.Count();
 
-            loggingSubject?.OnNext( source.ToString() );
+            logging?.OnNext( $"{developerName} | {productName}" );
 
-            using var writer = new StreamWriter( Stream, FileEncoding );
-            var xmlText = new StudioOneExportTranslator().Translate( source );
+            foreach( var x in keySwitches )
+            {
+                var elementAttributes = StudioOneExportTranslator.TranslateElementAttributes( x.Articulations, ref assignId );
 
-            writer.WriteLine( xmlText );
+                // Create a folder element if count more than 2
+                if( count >= 2 )
+                {
+                    var folder = new AttributeElement
+                    {
+                        Folder = "1",
+                        Name   = x.InstrumentName.Value
+                    };
+
+                    folder.Children.AddRange( elementAttributes );
+                    rootElement.AttributeElements.Add( folder );
+                }
+                else
+                {
+                    rootElement.AttributeElements.AddRange( elementAttributes );
+                }
+            }
         }
     }
 }

@@ -52,7 +52,7 @@ namespace KeySwitchManager.Infrastructures.Storage.Yaml.KeySwitches
                 }
             }
 
-            using var writer = new StreamWriter( Stream, FileEncoding, 512, false );
+            using var writer = new StreamWriter( Stream, FileEncoding, IKeySwitchWriter.DefaultStreamWriterBufferSize, LeaveOpen );
             var yamlText = new YamlKeySwitchExportTranslator().Translate( keySwitches );
 
             writer.WriteLine( yamlText );
