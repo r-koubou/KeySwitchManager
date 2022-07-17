@@ -16,10 +16,18 @@ namespace KeySwitchManager.Infrastructures.Storage.Xml.KeySwitches.StudioOne.Tra
 {
     public class StudioOneExportTranslator : IDataTranslator<KeySwitch, IText>
     {
+        // Need to assign a unique ID.
+        private int assignId = 0;
+
+        public void ResetId()
+            => assignId = 0;
+
         public IText Translate( KeySwitch source )
         {
+            ResetId();
+
             var rootElement = TranslateRootElement( source );
-            var attributeElements = TranslateElementAttributes( source.Articulations );
+            var attributeElements = TranslateElementAttributes( source.Articulations, ref assignId );
 
             rootElement.AttributeElements.AddRange( attributeElements );
 
@@ -52,10 +60,9 @@ namespace KeySwitchManager.Infrastructures.Storage.Xml.KeySwitches.StudioOne.Tra
                 Name = $"{productName.Value}"
             };
 
-        public static IReadOnlyCollection<AttributeElement> TranslateElementAttributes( IEnumerable<Articulation> articulations )
+        public static IReadOnlyCollection<AttributeElement> TranslateElementAttributes( IEnumerable<Articulation> articulations, ref int id )
         {
             var result = new List<AttributeElement>();
-            var id = 0;
 
             foreach( var i in articulations )
             {
