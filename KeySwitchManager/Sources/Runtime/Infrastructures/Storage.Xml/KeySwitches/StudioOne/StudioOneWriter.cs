@@ -65,13 +65,14 @@ namespace KeySwitchManager.Infrastructures.Storage.Xml.KeySwitches.StudioOne
             IReadOnlyCollection<KeySwitch> keySwitches,
             IObserver<string>? logging )
         {
+            var assignId = 0;
             var count = keySwitches.Count();
 
             logging?.OnNext( $"{developerName} | {productName}" );
 
             foreach( var x in keySwitches )
             {
-                var elementAttributes = StudioOneExportTranslator.TranslateElementAttributes( x.Articulations );
+                var elementAttributes = StudioOneExportTranslator.TranslateElementAttributes( x.Articulations, ref assignId );
 
                 // Create a folder element if count more than 2
                 if( count >= 2 )
