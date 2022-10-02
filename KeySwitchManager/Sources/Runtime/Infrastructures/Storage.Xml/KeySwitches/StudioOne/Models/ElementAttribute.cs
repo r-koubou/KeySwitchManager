@@ -5,6 +5,8 @@ namespace KeySwitchManager.Infrastructures.Storage.Xml.KeySwitches.StudioOne.Mod
 {
     public class AttributeElement
     {
+        public const int NoPitch = -1;
+
         [XmlAttribute( AttributeName = "folder" )]
         public string Folder { get; set; } = default!;
 
@@ -43,9 +45,17 @@ namespace KeySwitchManager.Infrastructures.Storage.Xml.KeySwitches.StudioOne.Mod
             Name       = name;
             Id         = id.ToString();
             Color      = color;
-            Pitch      = pitch.ToString();
+            Pitch      = pitch != NoPitch ? pitch.ToString() : default!;
             Momentary  = momentary.ToString();
             Activation = activation;
         }
+
+        public AttributeElement(
+            string name,
+            int id,
+            string color,
+            int momentary,
+            string activation ) : this( name, id, color, NoPitch, momentary, activation )
+        {}
     }
 }
