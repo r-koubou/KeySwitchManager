@@ -66,11 +66,6 @@ namespace KeySwitchManager.Infrastructures.Storage.Xml.KeySwitches.StudioOne.Tra
 
             foreach( var i in articulations )
             {
-                if( !i.MidiNoteOns.Any() )
-                {
-                    continue;
-                }
-
                 var attr = TranslateElementAttribute( i, id );
                 id++;
 
@@ -83,10 +78,15 @@ namespace KeySwitchManager.Infrastructures.Storage.Xml.KeySwitches.StudioOne.Tra
         private static AttributeElement TranslateElementAttribute( Articulation articulation, int id )
         {
             var name = articulation.ArticulationName.Value;
-            var pitch = articulation.MidiNoteOns[ 0 ].DataByte1.Value;
+            var pitch = AttributeElement.NoPitch;
             var activation = TranslateActivation( articulation );
 
             string color = default!;
+
+            if( articulation.MidiNoteOns.Any() )
+            {
+                pitch = articulation.MidiNoteOns[ 0 ].DataByte1.Value;
+            }
 
             if( articulation.ExtraData.ContainsKey( ExtraDataKeys.Color ) )
             {
