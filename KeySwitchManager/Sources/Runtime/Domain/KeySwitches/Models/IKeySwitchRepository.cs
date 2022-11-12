@@ -13,6 +13,7 @@ namespace KeySwitchManager.Domain.KeySwitches.Models
 
         public int Count();
         public SaveResult Save( KeySwitch keySwitch );
+        public int Flush() => 0;
         public int Delete( DeveloperName developerName, ProductName productName, InstrumentName instrumentName );
         public int Delete( DeveloperName developerName, ProductName productName );
         public int Delete( DeveloperName developerName );

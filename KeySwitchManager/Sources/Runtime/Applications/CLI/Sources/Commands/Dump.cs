@@ -5,7 +5,6 @@ using CommandLine;
 using KeySwitchManager.Applications.Core.Controllers.Dump;
 using KeySwitchManager.Applications.Core.Views.LogView;
 using KeySwitchManager.Commons.Data;
-using KeySwitchManager.Infrastructures.Database.LiteDB.KeySwitches;
 using KeySwitchManager.Infrastructures.Storage.Yaml.KeySwitches;
 using KeySwitchManager.UseCase.KeySwitches.Export;
 
