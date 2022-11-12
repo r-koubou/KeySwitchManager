@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 
+using KeySwitchManager.Commons.Data.Extensions;
 using KeySwitchManager.Domain.KeySwitches.Models;
 using KeySwitchManager.Domain.KeySwitches.Models.Factory;
 using KeySwitchManager.Domain.KeySwitches.Models.Values;
@@ -42,6 +43,8 @@ namespace KeySwitchManager.Infrastructures.Storage.Yaml.KeySwitches.Translators.
                 source.Id.Value,
                 source.Author.Value,
                 source.Description.Value,
+                source.Created.As(),
+                source.LastUpdated.As(),
                 source.DeveloperName.Value,
                 source.ProductName.Value,
                 source.InstrumentName.Value,
