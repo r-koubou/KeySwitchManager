@@ -1,7 +1,7 @@
 ﻿using KeySwitchManager.Applications.Core.Helpers;
 using KeySwitchManager.Applications.Core.Views.LogView;
 using KeySwitchManager.Commons.Data;
-using KeySwitchManager.Infrastructures.Database.LiteDB.KeySwitches;
+using KeySwitchManager.Infrastructures.Storage.Yaml.KeySwitches;
 
 namespace KeySwitchManager.Applications.Core.Controllers.Import
 {
@@ -9,7 +9,7 @@ namespace KeySwitchManager.Applications.Core.Controllers.Import
     {
         public static IController Create( string databasePath, string importFilePath, ILogTextView logTextView )
         {
-            var databaseRepository = new LiteDbRepository( new FilePath( databasePath ) );
+            var databaseRepository = new YamlRepository( new FilePath( databasePath ) );
             var reader = KeySwitchFileReaderFactory.Create( importFilePath );
             var presenter = new ImportFilePresenter( logTextView );
 
