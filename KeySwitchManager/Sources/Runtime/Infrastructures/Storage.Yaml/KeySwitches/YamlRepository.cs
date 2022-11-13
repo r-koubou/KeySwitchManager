@@ -10,6 +10,8 @@ using KeySwitchManager.Domain.KeySwitches.Helpers;
 using KeySwitchManager.Domain.KeySwitches.Models;
 using KeySwitchManager.Domain.KeySwitches.Models.Values;
 using KeySwitchManager.Infrastructures.Storage.Yaml.KeySwitches.Models;
+using KeySwitchManager.Infrastructures.Storage.Yaml.KeySwitches.Models.Aggregations;
+using KeySwitchManager.Infrastructures.Storage.Yaml.KeySwitches.Models.Extensions;
 using KeySwitchManager.Infrastructures.Storage.Yaml.KeySwitches.Translators.Helpers;
 
 using YamlDotNet.Serialization;
@@ -37,7 +39,7 @@ namespace KeySwitchManager.Infrastructures.Storage.Yaml.KeySwitches
 
         public void Dispose()
         {
-            throw new NotImplementedException();
+            Flush();
         }
 
         public int Count()
@@ -81,11 +83,7 @@ namespace KeySwitchManager.Infrastructures.Storage.Yaml.KeySwitches
         public int Delete( DeveloperName developerName, ProductName productName, InstrumentName instrumentName )
         {
             var keySwitches = YamlModel.KeySwitches;
-            var founds = keySwitches.Where( x =>
-                                                 x.DeveloperName == developerName.Value &&
-                                                 x.ProductName == productName.Value &&
-                                                 x.InstrumentName == instrumentName.Value
-            );
+            var founds = YamlModel.Find( developerName, productName, instrumentName );
 
             return founds.Sum( x => keySwitches.Remove( x ) ? 1 : 0 );
         }
@@ -93,10 +91,7 @@ namespace KeySwitchManager.Infrastructures.Storage.Yaml.KeySwitches
         public int Delete( DeveloperName developerName, ProductName productName )
         {
             var keySwitches = YamlModel.KeySwitches;
-            var founds = keySwitches.Where( x =>
-                                                x.DeveloperName == developerName.Value &&
-                                                x.ProductName == productName.Value
-            );
+            var founds = YamlModel.Find( developerName, productName );
 
             return founds.Sum( x => keySwitches.Remove( x ) ? 1 : 0 );
         }
@@ -104,7 +99,7 @@ namespace KeySwitchManager.Infrastructures.Storage.Yaml.KeySwitches
         public int Delete( DeveloperName developerName )
         {
             var keySwitches = YamlModel.KeySwitches;
-            var founds = keySwitches.Where( x => x.DeveloperName == developerName.Value );
+            var founds = YamlModel.Find( developerName );
 
             return founds.Sum( x => keySwitches.Remove( x ) ? 1 : 0 );
         }
@@ -112,7 +107,7 @@ namespace KeySwitchManager.Infrastructures.Storage.Yaml.KeySwitches
         public int Delete( ProductName productName )
         {
             var keySwitches = YamlModel.KeySwitches;
-            var founds = keySwitches.Where( x => x.ProductName == productName.Value );
+            var founds = YamlModel.Find( productName );
 
             return founds.Sum( x => keySwitches.Remove( x ) ? 1 : 0 );
 
@@ -121,7 +116,7 @@ namespace KeySwitchManager.Infrastructures.Storage.Yaml.KeySwitches
         public int Delete( InstrumentName instrumentName )
         {
             var keySwitches = YamlModel.KeySwitches;
-            var founds = keySwitches.Where( x => x.InstrumentName == instrumentName.Value );
+            var founds = YamlModel.Find( instrumentName );
 
             return founds.Sum( x => keySwitches.Remove( x ) ? 1 : 0 );
         }
@@ -129,7 +124,7 @@ namespace KeySwitchManager.Infrastructures.Storage.Yaml.KeySwitches
         public int Delete( KeySwitchId keySwitchId )
         {
             var keySwitches = YamlModel.KeySwitches;
-            var founds = keySwitches.Where( x => x.Id == keySwitchId.Value );
+            var founds = YamlModel.Find( keySwitchId );
 
             return founds.Sum( x => keySwitches.Remove( x ) ? 1 : 0 );
         }
@@ -144,107 +139,52 @@ namespace KeySwitchManager.Infrastructures.Storage.Yaml.KeySwitches
         #endregion
 
         #region Find
-        public IReadOnlyCollection<KeySwitch> Find( KeySwitchId keySwitchId )
+        private static IReadOnlyCollection<KeySwitch> Convert( IReadOnlyCollection<KeySwitchModel> source )
         {
             var result = new List<KeySwitch>();
-            var founds = YamlModel.KeySwitches.Where( x => x.Id == keySwitchId.Value );
 
-            foreach( var x in founds )
+            foreach( var x in source )
             {
                 result.Add( TranslateKeySwitchHelper.Translate( x ) );
             }
 
             return KeySwitchHelper.SortByAlphabetical( result );
+        }
+
+
+        public IReadOnlyCollection<KeySwitch> Find( KeySwitchId keySwitchId )
+        {
+            return Convert( YamlModel.Find( keySwitchId ) );
         }
 
         public IReadOnlyCollection<KeySwitch> Find( DeveloperName developerName, ProductName productName, InstrumentName instrumentName )
         {
-            var result = new List<KeySwitch>();
-            var founds =
-                YamlModel.KeySwitches.FindAll(
-                    x =>
-                        x.DeveloperName == developerName.Value &&
-                        x.ProductName == productName.Value &&
-                        x.InstrumentName == instrumentName.Value
-            );
-
-            foreach( var x in founds )
-            {
-                result.Add( TranslateKeySwitchHelper.Translate( x ) );
-            }
-
-            return KeySwitchHelper.SortByAlphabetical( result );
+            return Convert( YamlModel.Find( developerName, productName, instrumentName ) );
         }
 
         public IReadOnlyCollection<KeySwitch> Find( DeveloperName developerName, ProductName productName )
         {
-            var result = new List<KeySwitch>();
-            var founds =
-                YamlModel.KeySwitches.FindAll(
-                    x =>
-                        x.DeveloperName == developerName.Value &&
-                        x.ProductName == productName.Value
-                );
-
-            foreach( var x in founds )
-            {
-                result.Add( TranslateKeySwitchHelper.Translate( x ) );
-            }
-
-            return KeySwitchHelper.SortByAlphabetical( result );
+            return Convert( YamlModel.Find( developerName, productName ) );
         }
 
         public IReadOnlyCollection<KeySwitch> Find( DeveloperName developerName )
         {
-            var result = new List<KeySwitch>();
-            var founds =
-                YamlModel.KeySwitches.FindAll( x => x.DeveloperName == developerName.Value );
-
-            foreach( var x in founds )
-            {
-                result.Add( TranslateKeySwitchHelper.Translate( x ) );
-            }
-
-            return KeySwitchHelper.SortByAlphabetical( result );
+            return Convert( YamlModel.Find( developerName ) );
         }
 
         public IReadOnlyCollection<KeySwitch> Find( ProductName productName )
         {
-            var result = new List<KeySwitch>();
-            var founds =
-                YamlModel.KeySwitches.FindAll( x => x.ProductName == productName.Value );
-
-            foreach( var x in founds )
-            {
-                result.Add( TranslateKeySwitchHelper.Translate( x ) );
-            }
-
-            return KeySwitchHelper.SortByAlphabetical( result );
+            return Convert( YamlModel.Find( productName ) );
         }
 
         public IReadOnlyCollection<KeySwitch> Find( InstrumentName instrumentName )
         {
-            var result = new List<KeySwitch>();
-            var founds =
-                YamlModel.KeySwitches.FindAll( x => x.InstrumentName == instrumentName.Value );
-
-            foreach( var x in founds )
-            {
-                result.Add( TranslateKeySwitchHelper.Translate( x ) );
-            }
-
-            return KeySwitchHelper.SortByAlphabetical( result );
+            return Convert( YamlModel.Find( instrumentName ) );
         }
 
         public IReadOnlyCollection<KeySwitch> FindAll()
         {
-            var result = new List<KeySwitch>();
-            foreach( var x in YamlModel.KeySwitches )
-            {
-                result.Add( TranslateKeySwitchHelper.Translate( x ) );
-            }
-
-            return KeySwitchHelper.SortByAlphabetical( result );
+            return Convert( YamlModel.KeySwitches );
         }
         #endregion
     }

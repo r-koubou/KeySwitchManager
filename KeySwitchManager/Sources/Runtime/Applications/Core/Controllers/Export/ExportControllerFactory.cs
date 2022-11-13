@@ -1,11 +1,9 @@
 ﻿using System;
-using System.IO;
 
 using KeySwitchManager.Applications.Core.Views.LogView;
 using KeySwitchManager.Commons.Data;
 using KeySwitchManager.Domain.KeySwitches.Models;
 using KeySwitchManager.Domain.KeySwitches.Models.Values;
-using KeySwitchManager.Infrastructures.Database.LiteDB.KeySwitches;
 using KeySwitchManager.Infrastructures.Storage.Json.KeySwitches.Cakewalk;
 using KeySwitchManager.Infrastructures.Storage.Spreadsheet.ClosedXml.KeySwitches;
 using KeySwitchManager.Infrastructures.Storage.Xml.KeySwitches.Cubase;
@@ -33,7 +31,7 @@ namespace KeySwitchManager.Applications.Core.Controllers.Export
             var databasePath = new FilePath( databaseFile );
             var outputDir = new DirectoryPath( outputDirectory );
 
-            var sourceDatabase = new LiteDbRepository( databasePath );
+            var sourceDatabase = new YamlRepository( databasePath );
 
             try
             {
@@ -59,12 +57,6 @@ namespace KeySwitchManager.Applications.Core.Controllers.Export
 
                     case ExportSupportedFormat.Cakewalk:
                         return CreateImpl( new DividedCakewalkWriter( outputDir ) );
-                    case ExportSupportedFormat.Dump:
-                        outputDir.CreateNew();
-                        var timeStamp = DateTime.Now.ToString( "yyyyMMdd-HHmmss" );
-                        var dumpPath = new FilePath( Path.Combine( outputDir.Path, $"dump@{timeStamp}.yaml" ) );
-                        var dumpStream = dumpPath.OpenStream( FileMode.Create, FileAccess.Write );
-                        return CreateImpl( new YamlKeySwitchWriter( dumpStream ) );
                     default:
                         Disposer.Dispose( sourceDatabase );
                         throw new ArgumentException( $"Unsupported format :{format}" );

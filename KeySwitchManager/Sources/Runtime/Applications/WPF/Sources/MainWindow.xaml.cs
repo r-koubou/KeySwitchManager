@@ -29,8 +29,8 @@ namespace KeySwitchManager.WPF
     public partial class MainWindow
     {
         private const string KeySwitchDefinitionFileFilter = "KeySwitch definition File|*.xlsx;*.yaml;*.yml";
-        private const string KeySwitchDatabaseFileFilter = "KeySwitch Database File|*.db";
-        private const string KeySwitchAllFileFilter = "Supported File|*.xlsx;*.yaml;*.yml;*.db";
+        private const string KeySwitchDatabaseFileFilter = "KeySwitch Database File|*.yaml;*.yml";
+        private const string KeySwitchAllFileFilter = "Supported File|*.xlsx;*.yaml;*.yml";
 
         #region UI Binding
         #endregion

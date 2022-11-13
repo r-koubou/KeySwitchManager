@@ -28,8 +28,11 @@ namespace KeySwitchManager.Commons.Data
         public Stream OpenReadStream()
             => File.OpenRead( Path );
 
-        public Stream OpenWriteStream()
-            => File.OpenWrite( Path );
+        public Stream OpenWriteStream(bool overWrite = true)
+            => File.Open( Path, overWrite ? FileMode.Create : FileMode.Append, FileAccess.Write );
+
+        public Stream OpenReadWriteStream(bool overWrite = true)
+            => File.Open( Path, overWrite ? FileMode.Create : FileMode.Append, FileAccess.ReadWrite );
 
         public override string ToString() => Path;
     }
