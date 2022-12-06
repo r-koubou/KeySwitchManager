@@ -7,7 +7,6 @@
         XlsxCombined,
         Cubase,
         StudioOne,
-        Cakewalk,
-        Dump
+        Cakewalk
     }
 }

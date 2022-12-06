@@ -31,9 +31,17 @@ namespace KeySwitchManager.Infrastructures.Storage.Yaml.KeySwitches
                 return;
             }
 
-            Stream.Flush();
-            Stream.Close();
-            Stream.Dispose();
+            try
+            {
+                Stream.Flush();
+                Stream.Close();
+                Stream.Dispose();
+            }
+            catch
+            {
+                // ignored
+            }
+
             Stream = null;
         }
 

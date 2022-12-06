@@ -13,7 +13,7 @@ namespace KeySwitchManager.Commons.Data
         {
             get
             {
-                var now = TimeZoneInfo.ConvertTimeToUtc( DateTime.Now );
+                var now = NowAsDateTime;
 
                 return new UtcDateTime(
                     now.Year,
@@ -26,6 +26,10 @@ namespace KeySwitchManager.Commons.Data
                 );
             }
         }
+
+        public static DateTime NowAsDateTime
+            => TimeZoneInfo.ConvertTimeToUtc( DateTime.Now );
+
         public int Year { get; }
         public int Month { get; }
         public int Day { get; }

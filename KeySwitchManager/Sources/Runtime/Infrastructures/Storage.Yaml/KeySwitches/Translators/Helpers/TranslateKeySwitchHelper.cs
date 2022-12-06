@@ -16,14 +16,13 @@ namespace KeySwitchManager.Infrastructures.Storage.Yaml.KeySwitches.Translators.
         public static KeySwitch Translate( KeySwitchModel model )
         {
             var articulations = TranslateImpl( model );
-            var now = DateTimeHelper.NowUtc();
 
             return IKeySwitchFactory.Default.Create(
                 model.Id,
                 model.Author,
                 model.Description,
-                now,
-                now,
+                model.Created,
+                model.LastUpdated,
                 model.DeveloperName,
                 model.ProductName,
                 model.InstrumentName,

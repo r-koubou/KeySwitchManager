@@ -55,6 +55,7 @@ namespace KeySwitchManager.Applications.Core.Controllers.Import
             var interactor = new ImportFileInteractor( DatabaseRepository, Presenter );
             var request = new ImportFileRequest( keySwitches );
             var response = interactor.Execute( request );
+            DatabaseRepository.Flush();
             Presenter.Complete( response );
         }
 

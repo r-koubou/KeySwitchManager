@@ -17,6 +17,7 @@ using RkHelper.Time;
 
 namespace KeySwitchManager.Infrastructures.Database.LiteDB.KeySwitches
 {
+    [Obsolete( "Use YamlhRepository instead" )]
     public class LiteDbRepository : IKeySwitchRepository
     {
         public const string KeySwitchesTableName = @"keyswitches";
