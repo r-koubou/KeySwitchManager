@@ -1,9 +1,8 @@
 using System.IO;
 using System.Text;
 
+using KeySwitchManager.Applications.Core.Helpers;
 using KeySwitchManager.Applications.Core.Views.LogView;
-using KeySwitchManager.Commons.Data;
-using KeySwitchManager.Infrastructures.Database.LiteDB.KeySwitches;
 using KeySwitchManager.Infrastructures.Storage.Yaml.KeySwitches;
 using KeySwitchManager.UseCase.KeySwitches.Dump;
 
@@ -13,7 +12,7 @@ namespace KeySwitchManager.Applications.Core.Controllers.Dump
     {
         public static IController Create( string databasePath, string outputPath, ILogTextView logTextView )
         {
-            var database = new YamlRepository( new FilePath( databasePath ) );
+            var database = KeySwitchRepositoryFactory.CreateFileRepository( databasePath );
             var writer = new YamlKeySwitchWriter( File.Create( outputPath ), Encoding.UTF8, true );
 
             var presenter = new IDumpFilePresenter.Console();

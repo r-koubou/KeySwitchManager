@@ -1,5 +1,6 @@
 ﻿using System;
 
+using KeySwitchManager.Applications.Core.Helpers;
 using KeySwitchManager.Applications.Core.Views.LogView;
 using KeySwitchManager.Commons.Data;
 using KeySwitchManager.Domain.KeySwitches.Models;
@@ -28,10 +29,9 @@ namespace KeySwitchManager.Applications.Core.Controllers.Export
             var developer = new DeveloperName( developerName );
             var product = new ProductName( productName );
             var instrument = new InstrumentName( instrumentName );
-            var databasePath = new FilePath( databaseFile );
             var outputDir = new DirectoryPath( outputDirectory );
 
-            var sourceDatabase = new YamlRepository( databasePath );
+            var sourceDatabase = KeySwitchRepositoryFactory.CreateFileRepository( databaseFile );
 
             try
             {
