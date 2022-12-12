@@ -58,6 +58,7 @@ namespace KeySwitchManager.Infrastructures.Storage.Yaml.KeySwitches
             {
                 var index = yamlModels.IndexOf( exist );
 
+                model.Created       = exist.Created;
                 model.LastUpdated   = UtcDateTime.NowAsDateTime;
                 yamlModels[ index ] = model;
                 return new IKeySwitchRepository.SaveResult( 0, 1 );
