@@ -5,7 +5,6 @@ using Claunia.PropertyList;
 using KeySwitchManager.Domain.KeySwitches.Models;
 using KeySwitchManager.Domain.KeySwitches.Models.Aggregations;
 using KeySwitchManager.Domain.MidiMessages.Models.Aggregations;
-using KeySwitchManager.Infrastructures.Storage.Plist.KeySwitches.Logic.Models.Aggregations;
 
 namespace KeySwitchManager.Infrastructures.Storage.Plist.KeySwitches.Logic.Translators.Helpers
 {
@@ -85,72 +84,5 @@ namespace KeySwitchManager.Infrastructures.Storage.Plist.KeySwitches.Logic.Trans
             }
         }
         #endregion
-
-
-        // public static RootModel Translate( KeySwitch source )
-        // {
-        //     int id = 1001;
-        //     int articulationId = 1;
-        //
-        //     var result = new RootModel();
-        //
-        //     foreach( var i in source.Articulations )
-        //     {
-        //         result.Articulations.Add( TranslateArticulation( i, id, articulationId ) );
-        //     }
-        //
-        //     return result;
-        // }
-        //
-        // public static ArticulationModel TranslateArticulation( Articulation articulation, int id, int articulationId )
-        // {
-        //     var result = new ArticulationModel
-        //     {
-        //         Id = id,
-        //         ArticulationId = articulationId,
-        //         Name = articulation.ArticulationName.Value,
-        //         Output = TranslateOutput( articulation )
-        //     };
-        //
-        //     return result;
-        // }
-        //
-        // public static OutputModel TranslateOutput( Articulation articulation )
-        // {
-        //     var noteOn = new List<MidiNoteOnModel>();
-        //     var controlChange = new List<MidiControlChangeModel>();
-        //     var programChange = new List<MidiProgramChangeModel>();
-        //
-        //     ConvertChannelVoiceMessageList( articulation.MidiNoteOns,        noteOn,        IMidiNoteOnModelFactory.Default );
-        //     ConvertChannelVoiceMessageList( articulation.MidiControlChanges, controlChange, IMidiControlChangeModelFactory.Default );
-        //     ConvertChannelVoiceMessageList( articulation.MidiProgramChanges, programChange, IMidiProgramChangeModelFactory.Default );
-        //
-        //     var result = new OutputModel();
-        //     result.MidiMessageModels.AddRange( noteOn );
-        //     result.MidiMessageModels.AddRange( controlChange );
-        //     result.MidiMessageModels.AddRange( programChange );
-        //
-        //     return result;
-        // }
-        //
-        //
-        // #region Converting
-        // private static void ConvertChannelVoiceMessageList<T>(
-        //     IEnumerable<IMidiMessage> src,
-        //     ICollection<T> dest,
-        //     IMidiChannelVoiceMessageModelFactory<T> factory ) where T : IMidiChannelVoiceMessageModel
-        // {
-        //     foreach( var i in src )
-        //     {
-        //         dest.Add(
-        //             factory.Create(
-        //                 i.Status.Value & 0xF,
-        //                 i.DataByte1.Value,
-        //                 i.DataByte2.Value
-        //             )
-        //         );
-        //     }
-        // }
-        // #endregion
     }
 }

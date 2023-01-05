@@ -58,8 +58,10 @@ namespace KeySwitchManager.Applications.Core.Controllers.Export
 
                     case ExportSupportedFormat.Cakewalk:
                         return CreateImpl( new DividedCakewalkWriter( outputDir ) );
+
                     case ExportSupportedFormat.Logic:
                         return CreateImpl( new LogicWriter( outputDir ) );
+
                     default:
                         Disposer.Dispose( sourceDatabase );
                         throw new ArgumentException( $"Unsupported format :{format}" );
