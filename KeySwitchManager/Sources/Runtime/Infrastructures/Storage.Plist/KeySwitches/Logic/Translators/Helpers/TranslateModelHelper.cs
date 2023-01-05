@@ -39,11 +39,10 @@ namespace KeySwitchManager.Infrastructures.Storage.Plist.KeySwitches.Logic.Trans
         {
             var outputDictionary = new NSDictionary();
 
-            ConvertChannelVoiceMessageList( articulation.MidiNoteOns,        outputDictionary );
-            ConvertChannelVoiceMessageList( articulation.MidiControlChanges, outputDictionary );
-            ConvertChannelVoiceMessageList( articulation.MidiProgramChanges, outputDictionary );
-
-            var outputArray = new NSArray(outputDictionary);
+            var outputArray = new NSArray();
+            ConvertChannelVoiceMessageList( articulation.MidiNoteOns,        outputArray );
+            ConvertChannelVoiceMessageList( articulation.MidiControlChanges, outputArray );
+            ConvertChannelVoiceMessageList( articulation.MidiProgramChanges, outputArray );
 
             var result = new NSDictionary();
             result.Add( "ArticulationID", articulationId );
@@ -56,31 +55,33 @@ namespace KeySwitchManager.Infrastructures.Storage.Plist.KeySwitches.Logic.Trans
 
 
         #region Converting
-        private static void ConvertChannelVoiceMessageList(
-            IEnumerable<IMidiMessage> src,
-            NSDictionary dest )
+        private static void ConvertChannelVoiceMessageList( IEnumerable<IMidiMessage> src, NSArray dest )
         {
             foreach( var i in src )
             {
+                var midiMessageDictionary = new NSDictionary();
+
                 var data1 = i.DataByte1.Value;
                 var data2 = i.DataByte2.Value;
 
-                dest.Add( "MB1",    data1 );
+                midiMessageDictionary.Add( "MB1",    data1 );
 
                 if( i is MidiNoteOn )
                 {
-                    dest.Add( "Status", "Note On" );
+                    midiMessageDictionary.Add( "Status", "Note On" );
                 }
                 else if( i is MidiControlChange )
                 {
-                    dest.Add( "Status", "Controller" );
+                    midiMessageDictionary.Add( "Status", "Controller" );
                 }
                 else if( i is MidiProgramChange )
                 {
-                    dest.Add( "Status", "Program" );
+                    midiMessageDictionary.Add( "Status", "Program" );
                 }
 
-                dest.Add( "ValueLow", data2 );
+                midiMessageDictionary.Add( "ValueLow", data2 );
+
+                dest.Add( midiMessageDictionary );
             }
         }
         #endregion
