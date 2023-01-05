@@ -23,10 +23,14 @@ namespace KeySwitchManager.Infrastructures.Storage.Plist.KeySwitches.Logic.Trans
                 foreach( var articulation in source.Articulations )
                 {
                     articulations.Add( TranslateArticulation( articulation, id, articulationId ) );
+                    id++;
+                    articulationId++;
                 }
                 result.Add( "Articulations", articulations );
             }
             #endregion
+
+            result.Add( "Name", $"{source.InstrumentName.Value}.plist" );
 
 
             return result;
@@ -59,22 +63,25 @@ namespace KeySwitchManager.Infrastructures.Storage.Plist.KeySwitches.Logic.Trans
         {
             foreach( var i in src )
             {
-                dest.Add( "MB1",    i.DataByte1 );
+                var data1 = i.DataByte1.Value;
+                var data2 = i.DataByte2.Value;
 
-                if( i is MidiNoteOnModel )
+                dest.Add( "MB1",    data1 );
+
+                if( i is MidiNoteOn )
                 {
                     dest.Add( "Status", "Note On" );
                 }
-                else if( i is MidiControlChangeModel )
+                else if( i is MidiControlChange )
                 {
                     dest.Add( "Status", "Controller" );
                 }
-                else if( i is MidiProgramChangeModel )
+                else if( i is MidiProgramChange )
                 {
                     dest.Add( "Status", "Program" );
                 }
 
-                dest.Add( "ValueLow", i.DataByte2 );
+                dest.Add( "ValueLow", data2 );
             }
         }
         #endregion
