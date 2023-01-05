@@ -20,9 +20,4 @@
       <PackageReference Include="plist-cil" Version="2.2.0" />
     </ItemGroup>
 
-    <ItemGroup>
-      <Folder Include="KeySwitches\Models" />
-      <Folder Include="KeySwitches\Translaters" />
-    </ItemGroup>
-
 </Project>
