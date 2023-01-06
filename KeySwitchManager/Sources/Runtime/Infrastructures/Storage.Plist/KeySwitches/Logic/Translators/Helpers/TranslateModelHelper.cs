@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 
 using Claunia.PropertyList;
 
@@ -29,7 +30,24 @@ namespace KeySwitchManager.Infrastructures.Storage.Plist.KeySwitches.Logic.Trans
             }
             #endregion
 
+            #region Switches
+            {
+                result.Add( "Switches", new NSArray() );
+            }
+            #endregion
+
+            #region MultipleOutputsActive
+            {
+                var multipleOutputsActive = source.Articulations.Any(
+                    x => ( x.MidiNoteOns.Count + x.MidiControlChanges.Count + x.MidiProgramChanges.Count ) >= 2
+                );
+
+                result.Add( "MultipleOutputsActive", multipleOutputsActive );
+            }
+            #endregion
+
             result.Add( "Name", $"{source.InstrumentName.Value}.plist" );
+            result.Add( "OctaveOffset", 0 );
 
 
             return result;
