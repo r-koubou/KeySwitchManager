@@ -2,6 +2,7 @@ name: "Build Apps (Release)"
 on:
   push:
     tags:
+      - v*.*.*
       - ver-*.*.*
       - ver-[0-9]+
 
