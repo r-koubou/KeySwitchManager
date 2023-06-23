@@ -3,12 +3,12 @@
     <PropertyGroup>
         <!-- Assembly / Common -->
         <OutputType>Exe</OutputType>
-        <TargetFramework>net5.0</TargetFramework>
+        <TargetFramework>net7.0</TargetFramework>
         <AssemblyName>KeySwitchManager</AssemblyName>
         <RootNamespace>KeySwitchManager.Applications.CLI</RootNamespace>
         <Company>R-Koubou</Company>
         <Product>KeySwitchManager CLI Application</Product>
-        <Version>0.5.1</Version>
+        <Version>0.5.2</Version>
         <Description>KeySwitchManager CLI Application</Description>
         <Nullable>enable</Nullable>
     </PropertyGroup>
