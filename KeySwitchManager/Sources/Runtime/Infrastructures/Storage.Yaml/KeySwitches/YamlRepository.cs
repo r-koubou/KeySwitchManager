@@ -141,7 +141,7 @@ namespace KeySwitchManager.Infrastructures.Storage.Yaml.KeySwitches
         #endregion
 
         #region Find
-        private static IReadOnlyCollection<KeySwitch> Convert( IReadOnlyCollection<KeySwitchModel> source )
+        private static async Task<IReadOnlyCollection<KeySwitch>> ConvertAsync( IReadOnlyCollection<KeySwitchModel> source )
         {
             var result = new List<KeySwitch>();
 
@@ -150,43 +150,43 @@ namespace KeySwitchManager.Infrastructures.Storage.Yaml.KeySwitches
                 result.Add( TranslateKeySwitchHelper.Translate( x ) );
             }
 
-            return KeySwitchHelper.SortByAlphabetical( result );
+            return await Task.FromResult( KeySwitchHelper.SortByAlphabetical( result ) );
         }
 
 
-        public IReadOnlyCollection<KeySwitch> Find( KeySwitchId keySwitchId )
+        public async Task<IReadOnlyCollection<KeySwitch>> FindAsync( KeySwitchId keySwitchId )
         {
-            return Convert( YamlModel.Find( keySwitchId ) );
+            return await ConvertAsync( YamlModel.Find( keySwitchId ) );
         }
 
-        public IReadOnlyCollection<KeySwitch> Find( DeveloperName developerName, ProductName productName, InstrumentName instrumentName )
+        public async Task<IReadOnlyCollection<KeySwitch>> FindAsync( DeveloperName developerName, ProductName productName, InstrumentName instrumentName )
         {
-            return Convert( YamlModel.Find( developerName, productName, instrumentName ) );
+            return await ConvertAsync( YamlModel.Find( developerName, productName, instrumentName ) );
         }
 
-        public IReadOnlyCollection<KeySwitch> Find( DeveloperName developerName, ProductName productName )
+        public async Task<IReadOnlyCollection<KeySwitch>> FindAsync( DeveloperName developerName, ProductName productName )
         {
-            return Convert( YamlModel.Find( developerName, productName ) );
+            return await ConvertAsync( YamlModel.Find( developerName, productName ) );
         }
 
-        public IReadOnlyCollection<KeySwitch> Find( DeveloperName developerName )
+        public async Task<IReadOnlyCollection<KeySwitch>> FindAsync( DeveloperName developerName )
         {
-            return Convert( YamlModel.Find( developerName ) );
+            return await ConvertAsync( YamlModel.Find( developerName ) );
         }
 
-        public IReadOnlyCollection<KeySwitch> Find( ProductName productName )
+        public async Task<IReadOnlyCollection<KeySwitch>> FindAsync( ProductName productName )
         {
-            return Convert( YamlModel.Find( productName ) );
+            return await ConvertAsync( YamlModel.Find( productName ) );
         }
 
-        public IReadOnlyCollection<KeySwitch> Find( InstrumentName instrumentName )
+        public async Task<IReadOnlyCollection<KeySwitch>> FindAsync( InstrumentName instrumentName )
         {
-            return Convert( YamlModel.Find( instrumentName ) );
+            return await ConvertAsync( YamlModel.Find( instrumentName ) );
         }
 
-        public IReadOnlyCollection<KeySwitch> FindAll()
+        public async Task<IReadOnlyCollection<KeySwitch>> FindAllAsync()
         {
-            return Convert( YamlModel.KeySwitches );
+            return await ConvertAsync( YamlModel.KeySwitches );
         }
         #endregion
     }

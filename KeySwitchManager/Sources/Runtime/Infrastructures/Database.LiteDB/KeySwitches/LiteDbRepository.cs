@@ -183,12 +183,12 @@ namespace KeySwitchManager.Infrastructures.Database.LiteDB.KeySwitches
             return KeySwitchHelper.SortByAlphabetical( result );
         }
 
-        public IReadOnlyCollection<KeySwitch> Find( KeySwitchId keySwitchId )
+        public async Task<IReadOnlyCollection<KeySwitch>> FindAsync( KeySwitchId keySwitchId )
         {
-            return CreateEntities( KeySwitchTable.Find( x => x.Id == keySwitchId.Value ) );
+            return await Task.FromResult( CreateEntities( KeySwitchTable.Find( x => x.Id == keySwitchId.Value ) ) );
         }
 
-        public IReadOnlyCollection<KeySwitch> Find(
+        public async Task<IReadOnlyCollection<KeySwitch>> FindAsync(
             DeveloperName developerName,
             ProductName productName,
             InstrumentName instrumentName )
@@ -197,79 +197,79 @@ namespace KeySwitchManager.Infrastructures.Database.LiteDB.KeySwitches
             var p = productName.Value;
             var i = instrumentName.Value;
 
-            return CreateEntities(
+            return await Task.FromResult( CreateEntities(
                 KeySwitchTable.Find(
                     x =>
                         ( d == DeveloperName.Any.Value  || x.DeveloperName.Contains( d ) ) &&
                         ( p == ProductName.Any.Value    || x.ProductName.Contains( p ) )   &&
                         ( i == InstrumentName.Any.Value || x.InstrumentName.Contains( i ) )
                 )
-            );
+            ));
         }
 
-        public IReadOnlyCollection<KeySwitch> Find( DeveloperName developerName, ProductName productName )
+        public async Task<IReadOnlyCollection<KeySwitch>> FindAsync( DeveloperName developerName, ProductName productName )
         {
             var d = developerName.Value;
             var p = productName.Value;
 
-            return CreateEntities(
+            return await Task.FromResult( CreateEntities(
                 KeySwitchTable.Find(
                     x =>
                         ( d == DeveloperName.Any.Value || x.DeveloperName.Contains( d ) ) &&
                         ( p == ProductName.Any.Value   || x.ProductName.Contains( p ) )
                 )
-            );
+            ));
         }
 
-        public IReadOnlyCollection<KeySwitch> Find( DeveloperName developerName )
+        public async Task<IReadOnlyCollection<KeySwitch>> FindAsync( DeveloperName developerName )
         {
             var d = developerName.Value;
 
             if( d == DeveloperName.Any.Value )
             {
-                return FindAll();
+                return await FindAllAsync();
             }
 
-            return CreateEntities(
+            return await Task.FromResult( CreateEntities(
                 KeySwitchTable.Find(
                     x =>
                         x.DeveloperName.Contains( d )
                 )
-            );
+            ));
         }
 
-        public IReadOnlyCollection<KeySwitch> Find( ProductName productName )
+        public async Task<IReadOnlyCollection<KeySwitch>> FindAsync( ProductName productName )
         {
             var p = productName.Value;
 
             if( p == ProductName.Any.Value )
             {
-                return FindAll();
+                return await FindAllAsync();
             }
 
-            return CreateEntities(
+            return await Task.FromResult( CreateEntities(
                 KeySwitchTable.Find(
                     x =>
                         x.ProductName.Contains( p )
                 )
-            );
+            ));
         }
 
-        public IReadOnlyCollection<KeySwitch> Find( InstrumentName instrumentName )
+        public async Task<IReadOnlyCollection<KeySwitch>> FindAsync( InstrumentName instrumentName )
         {
             var i = instrumentName.Value;
 
-            return CreateEntities(
+            return await Task.FromResult( CreateEntities(
                 KeySwitchTable.Find(
                     x =>
                         i == InstrumentName.Any.Value || x.InstrumentName.Contains( i )
                 )
-            );
+            ));
         }
 
-        public IReadOnlyCollection<KeySwitch> FindAll()
+        public async Task<IReadOnlyCollection<KeySwitch>> FindAllAsync()
         {
-            return CreateEntities( KeySwitchTable.FindAll() );
+            return await Task.FromResult( CreateEntities( KeySwitchTable.FindAll() ) );
         }
         #endregion
     }
