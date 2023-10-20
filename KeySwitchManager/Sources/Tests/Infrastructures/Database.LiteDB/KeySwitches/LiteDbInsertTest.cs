@@ -3,6 +3,7 @@ using System.IO;
 using System.Linq;
 
 using KeySwitchManager.Commons.Data;
+using KeySwitchManager.Domain.KeySwitches.Models;
 using KeySwitchManager.Domain.MidiMessages.Models.Aggregations;
 using KeySwitchManager.Domain.MidiMessages.Models.Values;
 using KeySwitchManager.Infrastructures.Database.LiteDB.KeySwitches;
@@ -18,7 +19,7 @@ namespace KeySwitchManager.Testing.Database.LiteDB.KeySwitches
         [Test]
         public void InsertTest()
         {
-            using var repository = new LiteDbRepository( new FilePath( $"{Path.GetTempFileName()}.db" ) );
+            using IKeySwitchRepository repository = new LiteDbRepository( new FilePath( $"{Path.GetTempFileName()}.db" ) );
             var articulation = TestDataGenerator.CreateArticulation(
                 new List<MidiNoteOn>()
                 {

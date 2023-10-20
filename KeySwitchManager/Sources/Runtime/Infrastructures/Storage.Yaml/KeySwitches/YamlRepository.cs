@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Reactive.Subjects;
 using System.Text;
+using System.Threading.Tasks;
 
 using KeySwitchManager.Commons.Data;
 using KeySwitchManager.Domain.KeySwitches.Helpers;
@@ -46,7 +47,7 @@ namespace KeySwitchManager.Infrastructures.Storage.Yaml.KeySwitches
             => YamlModel.KeySwitches.Count;
 
         #region Save
-        public IKeySwitchRepository.SaveResult Save( KeySwitch keySwitch )
+        public async Task<IKeySwitchRepository.SaveResult> SaveAsync( KeySwitch keySwitch )
         {
             var yamlModels = YamlModel.KeySwitches;
             var model = TranslateModelHelper.Translate( keySwitch );
@@ -61,11 +62,11 @@ namespace KeySwitchManager.Infrastructures.Storage.Yaml.KeySwitches
                 model.Created       = exist.Created;
                 model.LastUpdated   = UtcDateTime.NowAsDateTime;
                 yamlModels[ index ] = model;
-                return new IKeySwitchRepository.SaveResult( 0, 1 );
+                return await Task.FromResult( new IKeySwitchRepository.SaveResult( 0, 1 ) );
             }
 
             yamlModels.Add( model );
-            return new IKeySwitchRepository.SaveResult( 1, 0 );
+            return await Task.FromResult( new IKeySwitchRepository.SaveResult( 1, 0 ) );
         }
 
         public int Flush()

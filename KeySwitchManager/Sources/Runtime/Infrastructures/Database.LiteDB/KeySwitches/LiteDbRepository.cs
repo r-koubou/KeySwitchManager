@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reactive.Subjects;
+using System.Threading.Tasks;
 
 using KeySwitchManager.Commons.Data;
 using KeySwitchManager.Domain.KeySwitches.Helpers;
@@ -62,7 +63,7 @@ namespace KeySwitchManager.Infrastructures.Database.LiteDB.KeySwitches
         }
 
         #region Save
-        public IKeySwitchRepository.SaveResult Save( KeySwitch keySwitch )
+        public async Task<IKeySwitchRepository.SaveResult> SaveAsync( KeySwitch keySwitch )
         {
             logging.OnNext( keySwitch.ToString() );
 
@@ -78,19 +79,19 @@ namespace KeySwitchManager.Infrastructures.Database.LiteDB.KeySwitches
                 entity.LastUpdated = DateTimeHelper.NowUtc();
                 var updated = table.Update( entity ) ? 1 : 0;
 
-                return new IKeySwitchRepository.SaveResult(
+                return await Task.FromResult( new IKeySwitchRepository.SaveResult(
                     inserted: 0,
                     updated: updated
-                );
+                ));
             }
 
             entity.Id = keySwitch.Id.Value;
 
             var insertedId = table.Insert( entity ).AsGuid;
-            return new IKeySwitchRepository.SaveResult(
+            return await Task.FromResult( new IKeySwitchRepository.SaveResult(
                 inserted: insertedId == entity.Id ? 1 : 0,
                 updated: 0
-            );
+            ));
         }
 
         #endregion

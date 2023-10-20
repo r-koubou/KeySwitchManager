@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 using KeySwitchManager.Domain.KeySwitches.Models.Values;
 
@@ -12,7 +13,11 @@ namespace KeySwitchManager.Domain.KeySwitches.Models
         public IObservable<string> OnLogging { get; }
 
         public int Count();
-        public SaveResult Save( KeySwitch keySwitch );
+
+        #region Save
+        public SaveResult Save( KeySwitch keySwitch ) => SaveAsync( keySwitch ).GetAwaiter().GetResult();
+        public Task<SaveResult> SaveAsync( KeySwitch keySwitch );
+        #endregion
         public int Flush() => 0;
         public int Delete( DeveloperName developerName, ProductName productName, InstrumentName instrumentName );
         public int Delete( DeveloperName developerName, ProductName productName );

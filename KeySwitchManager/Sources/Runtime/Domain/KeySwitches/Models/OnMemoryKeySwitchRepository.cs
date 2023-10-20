@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reactive.Subjects;
+using System.Threading.Tasks;
 
 using KeySwitchManager.Domain.KeySwitches.Helpers;
 using KeySwitchManager.Domain.KeySwitches.Models.Values;
@@ -37,19 +38,20 @@ namespace KeySwitchManager.Domain.KeySwitches.Models
             => KeySwitches.Count;
 
         #region Save
-        public IKeySwitchRepository.SaveResult Save( KeySwitch keySwitch )
+        public async Task<IKeySwitchRepository.SaveResult> SaveAsync( KeySwitch keySwitch )
         {
             var exist = KeySwitches.Find( x => x.Id.Value.Equals( keySwitch.Id.Value ) );
 
             if( exist != null )
             {
                 var index = KeySwitches.IndexOf( exist );
-                KeySwitches[ index ]  = keySwitch;
-                return new IKeySwitchRepository.SaveResult( 0, 1 );
+                KeySwitches[ index ] = keySwitch;
+                return await Task.FromResult( new IKeySwitchRepository.SaveResult( 0, 1 ) );
             }
 
             KeySwitches.Add( keySwitch );
-            return new IKeySwitchRepository.SaveResult( 1, 0 );
+
+            return await Task.FromResult( new IKeySwitchRepository.SaveResult( 1, 0 ) );
         }
 
         public virtual int Flush()

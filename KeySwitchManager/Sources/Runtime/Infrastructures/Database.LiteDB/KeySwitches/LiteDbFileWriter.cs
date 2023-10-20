@@ -10,7 +10,7 @@ namespace KeySwitchManager.Infrastructures.Database.LiteDB.KeySwitches
 {
     public class LiteDbFileWriter : IKeySwitchWriter
     {
-        private LiteDbRepository Repository { get; }
+        private IKeySwitchRepository Repository { get; }
 
         public bool LeaveOpen => false;
 
