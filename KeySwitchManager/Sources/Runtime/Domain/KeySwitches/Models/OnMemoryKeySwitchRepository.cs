@@ -54,52 +54,52 @@ namespace KeySwitchManager.Domain.KeySwitches.Models
             return await Task.FromResult( new IKeySwitchRepository.SaveResult( 1, 0 ) );
         }
 
-        public virtual int Flush()
-            => Count();
+        public virtual async Task<int> FlushAsync()
+            => await Task.FromResult( Count() );
         #endregion
 
         #region Delete
-        public int Delete( KeySwitchId keySwitchId )
+        public async Task<int> DeleteAsync( KeySwitchId keySwitchId )
         {
             var founds = Find( keySwitchId );
-            return founds.Sum( x => KeySwitches.Remove( x ) ? 1 : 0 );
+            return await Task.FromResult( founds.Sum( x => KeySwitches.Remove( x ) ? 1 : 0 ) );
         }
 
-        public int Delete( DeveloperName developerName, ProductName productName, InstrumentName instrumentName )
+        public async Task<int> DeleteAsync( DeveloperName developerName, ProductName productName, InstrumentName instrumentName )
         {
             var founds = Find( developerName, productName, instrumentName );
-            return founds.Sum( x => KeySwitches.Remove( x ) ? 1 : 0 );
+            return await Task.FromResult( founds.Sum( x => KeySwitches.Remove( x ) ? 1 : 0 ) );
         }
 
-        public int Delete( DeveloperName developerName, ProductName productName )
+        public async Task<int> DeleteAsync( DeveloperName developerName, ProductName productName )
         {
             var founds = Find( developerName, productName );
-            return founds.Sum( x => KeySwitches.Remove( x ) ? 1 : 0 );
+            return await Task.FromResult( founds.Sum( x => KeySwitches.Remove( x ) ? 1 : 0 ) );
         }
 
-        public int Delete( DeveloperName developerName )
+        public async Task<int> DeleteAsync( DeveloperName developerName )
         {
             var founds = Find( developerName );
-            return founds.Sum( x => KeySwitches.Remove( x ) ? 1 : 0 );
+            return await Task.FromResult( founds.Sum( x => KeySwitches.Remove( x ) ? 1 : 0 ) );
         }
 
-        public int Delete( ProductName productName )
+        public async Task<int> DeleteAsync( ProductName productName )
         {
             var founds = Find( productName );
-            return founds.Sum( x => KeySwitches.Remove( x ) ? 1 : 0 );
+            return await Task.FromResult( founds.Sum( x => KeySwitches.Remove( x ) ? 1 : 0 ) );
         }
 
-        public int Delete( InstrumentName instrumentName )
+        public async Task<int> DeleteAsync( InstrumentName instrumentName )
         {
             var founds = Find( instrumentName );
-            return founds.Sum( x => KeySwitches.Remove( x ) ? 1 : 0 );
+            return await Task.FromResult( founds.Sum( x => KeySwitches.Remove( x ) ? 1 : 0 ) );
         }
 
-        public int DeleteAll()
+        public async Task<int> DeleteAllAsync()
         {
             var count = KeySwitches.Count;
             KeySwitches.Clear();
-            return count;
+            return await Task.FromResult( count );
         }
         #endregion
 
