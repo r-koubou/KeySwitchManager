@@ -18,7 +18,12 @@ namespace KeySwitchManager.Domain.KeySwitches.Models
         public SaveResult Save( KeySwitch keySwitch ) => SaveAsync( keySwitch ).GetAwaiter().GetResult();
         public Task<SaveResult> SaveAsync( KeySwitch keySwitch );
         #endregion
-        public int Flush() => 0;
+
+        #region Flush
+        public int Flush() => FlushAsync().GetAwaiter().GetResult();
+        public Task<int> FlushAsync() => Task.FromResult( 0 );
+        #endregion
+
         public int Delete( DeveloperName developerName, ProductName productName, InstrumentName instrumentName );
         public int Delete( DeveloperName developerName, ProductName productName );
         public int Delete( DeveloperName developerName );
