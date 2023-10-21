@@ -1,4 +1,6 @@
-﻿using KeySwitchManager.Domain.KeySwitches.Models;
+﻿using System.Threading.Tasks;
+
+using KeySwitchManager.Domain.KeySwitches.Models;
 using KeySwitchManager.Interactors.KeySwitches;
 using KeySwitchManager.UseCase.KeySwitches.Find;
 
@@ -41,11 +43,11 @@ namespace KeySwitchManager.Applications.Core.Controllers.Find
             }
         }
 
-        public void Execute()
+        async Task IController.ExecuteAsync()
         {
-            var interactor = new FindInteractor( DatabaseRepository, Presenter );
+            IFindUseCase interactor = new FindInteractor( DatabaseRepository, Presenter );
             var request = new FindRequest( DeveloperName, ProductName, InstrumentName );
-            var response = interactor.Execute( request );
+            var response = await interactor.ExecuteAsync( request );
 
             Presenter.Complete( response );
         }

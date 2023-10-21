@@ -8,11 +8,14 @@ namespace KeySwitchManager.Applications.Core.Controllers
     public static class ControlExecutor
     {
         public static void Execute( Func<IController> controllerFactory, ILogTextView logTextView )
+            => ExecuteAsync( controllerFactory, logTextView ).GetAwaiter().GetResult();
+
+        public static async Task ExecuteAsync( Func<IController> controllerFactory, ILogTextView logTextView )
         {
             try
             {
                 using var controller = controllerFactory.Invoke();
-                ExecuteImpl( controller, logTextView );
+                await ExecuteImplAsync( controller, logTextView );
             }
             catch( Exception exception )
             {
@@ -20,23 +23,16 @@ namespace KeySwitchManager.Applications.Core.Controllers
             }
         }
 
-        private static void ExecuteImpl( IController controller, ILogTextView logTextView )
+        private static async Task ExecuteImplAsync( IController controller, ILogTextView logTextView )
         {
             try
             {
-                controller.Execute();
+                await controller.ExecuteAsync();
             }
             catch( Exception e )
             {
                 logTextView.Append( e.ToString() );
             }
-        }
-
-        public static async Task ExecuteAsync( Func<IController> controllerFactory, ILogTextView logTextView )
-        {
-            await Task.Run( () => {
-                Execute( controllerFactory, logTextView );
-            } );
         }
     }
 }
