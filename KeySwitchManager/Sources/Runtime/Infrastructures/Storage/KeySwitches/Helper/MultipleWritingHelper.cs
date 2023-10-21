@@ -13,7 +13,7 @@ namespace KeySwitchManager.Infrastructures.Storage.KeySwitches.Helper
         public static void Write( IReadOnlyCollection<KeySwitch> keySwitches, DirectoryPath outputDirectory, string suffix, IObserver<string>? loggingSubject, Func<Stream, IKeySwitchWriter> writerFactory )
             => WriteAsync( keySwitches, outputDirectory, suffix, loggingSubject, writerFactory ).GetAwaiter().GetResult();
 
-        public async static Task WriteAsync( IReadOnlyCollection<KeySwitch> keySwitches, DirectoryPath outputDirectory, string suffix, IObserver<string>? loggingSubject, Func<Stream, IKeySwitchWriter> writerFactory )
+        public static async Task WriteAsync( IReadOnlyCollection<KeySwitch> keySwitches, DirectoryPath outputDirectory, string suffix, IObserver<string>? loggingSubject, Func<Stream, IKeySwitchWriter> writerFactory )
         {
             foreach( var x in keySwitches )
             {
@@ -32,7 +32,7 @@ namespace KeySwitchManager.Infrastructures.Storage.KeySwitches.Helper
         public static void Write( IReadOnlyCollection<KeySwitch> keySwitches, DirectoryPath outputDirectory, string suffix, IObserver<string>? logging, Func<Stream, KeySwitch, IObserver<string>?, Task> write )
             => WriteAsync( keySwitches, outputDirectory, suffix, logging, write ).GetAwaiter().GetResult();
 
-        public async static Task WriteAsync( IReadOnlyCollection<KeySwitch> keySwitches, DirectoryPath outputDirectory, string suffix, IObserver<string>? logging, Func<Stream, KeySwitch, IObserver<string>?, Task> write )
+        public static async Task WriteAsync( IReadOnlyCollection<KeySwitch> keySwitches, DirectoryPath outputDirectory, string suffix, IObserver<string>? logging, Func<Stream, KeySwitch, IObserver<string>?, Task> write )
         {
             foreach( var x in keySwitches )
             {

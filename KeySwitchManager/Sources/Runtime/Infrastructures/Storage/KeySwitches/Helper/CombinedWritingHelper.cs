@@ -13,7 +13,7 @@ namespace KeySwitchManager.Infrastructures.Storage.KeySwitches.Helper
         public static void Write( IReadOnlyCollection<KeySwitch> keySwitches, DirectoryPath outputDirectory, KeySwitch prefix, string suffix, IObserver<string>? loggingSubject, Func<Stream, IKeySwitchWriter> writerFactory )
             => WriteAsync( keySwitches, outputDirectory, prefix, suffix, loggingSubject, writerFactory ).GetAwaiter().GetResult();
 
-        public async static Task WriteAsync( IReadOnlyCollection<KeySwitch> keySwitches, DirectoryPath outputDirectory, KeySwitch prefix, string suffix, IObserver<string>? loggingSubject, Func<Stream, IKeySwitchWriter> writerFactory )
+        public static async Task WriteAsync( IReadOnlyCollection<KeySwitch> keySwitches, DirectoryPath outputDirectory, KeySwitch prefix, string suffix, IObserver<string>? loggingSubject, Func<Stream, IKeySwitchWriter> writerFactory )
         {
             var filePath = CreatePathHelper.CreateFilePath( prefix.DeveloperName, prefix.ProductName, string.Empty, suffix, outputDirectory );
 
