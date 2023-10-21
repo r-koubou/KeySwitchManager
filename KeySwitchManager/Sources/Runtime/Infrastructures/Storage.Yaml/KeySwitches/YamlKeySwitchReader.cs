@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
+using System.Threading.Tasks;
 
 using KeySwitchManager.Commons.Data;
 using KeySwitchManager.Domain.KeySwitches.Models;
@@ -37,7 +38,7 @@ namespace KeySwitchManager.Infrastructures.Storage.Yaml.KeySwitches
             Stream = null;
         }
 
-        public IReadOnlyCollection<KeySwitch> Read( IObserver<string>? loggingSubject = null )
+        async Task<IReadOnlyCollection<KeySwitch>> IKeySwitchReader.ReadAsync( IObserver<string>? loggingSubject )
         {
             if( Stream == null )
             {
@@ -45,7 +46,7 @@ namespace KeySwitchManager.Infrastructures.Storage.Yaml.KeySwitches
             }
 
             using var reader = new StreamReader( Stream, FileEncoding, true, IKeySwitchReader.DefaultStreamReaderBufferSize, LeaveOpen );
-            var jsonText = reader.ReadToEnd();
+            var jsonText = await reader.ReadToEndAsync();
 
             var keySwitches = new YamlKeySwitchImportTranslator().Translate( new PlainText( jsonText ) );
 
