@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 
 using KeySwitchManager.Domain.KeySwitches.Models;
 using KeySwitchManager.Infrastructures.Storage.Json.KeySwitches.Cakewalk.Translators;
@@ -38,7 +39,7 @@ namespace KeySwitchManager.Infrastructures.Storage.Json.KeySwitches.Cakewalk
             Stream = null;
         }
 
-        public void Write( IReadOnlyCollection<KeySwitch> keySwitches, IObserver<string>? loggingSubject = null )
+        async Task IKeySwitchWriter.WriteAsync( IReadOnlyCollection<KeySwitch> keySwitches, IObserver<string>? loggingSubject )
         {
             if( Stream == null )
             {
@@ -59,11 +60,11 @@ namespace KeySwitchManager.Infrastructures.Storage.Json.KeySwitches.Cakewalk
 
             loggingSubject?.OnNext( source.ToString() );
 
-            using var writer = new StreamWriter( Stream, FileEncoding, IKeySwitchWriter.DefaultStreamWriterBufferSize, LeaveOpen );
+            await using var writer = new StreamWriter( Stream, FileEncoding, IKeySwitchWriter.DefaultStreamWriterBufferSize, LeaveOpen );
             // TODO すべての要素を束ねた 1 JSONファイルにしたい(Cakewalkは保持できる)
             var jsonText = new CakewalkExportTranslator( true ).Translate( source );
 
-            writer.WriteLine( jsonText );
+            await writer.WriteLineAsync( jsonText.Value );
         }
     }
 }
