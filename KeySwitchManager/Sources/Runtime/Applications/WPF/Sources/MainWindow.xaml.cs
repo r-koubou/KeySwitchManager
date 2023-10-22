@@ -49,7 +49,19 @@ namespace KeySwitchManager.Applications.WPF
         private void InitializeCustomComponent()
         {
             ExportFormatCombobox.ItemsSource = ExportSupportedFormatList;
+            InitializeWindowTitle();
             LoadApplicationConfig();
+        }
+
+        private void InitializeWindowTitle()
+        {
+            var version = typeof( MainWindow ).Assembly.GetName().Version;
+
+            if( version != null )
+            {
+                Title = $"{Title} (Version {version.ToString( 3 )})";
+            }
+
         }
 
         #region Executions
