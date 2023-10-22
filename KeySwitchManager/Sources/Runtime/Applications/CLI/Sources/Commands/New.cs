@@ -9,7 +9,7 @@ namespace KeySwitchManager.Applications.CLI.Commands
         [Verb( "new", HelpText = "export a template file" )]
         public class CommandOption : ICommandOption
         {
-            [Value( index: 0, MetaName = "output", HelpText = "Output path for template file (*.yaml or *.xlsx or *.db)", Default = "(ProductName).yaml" )]
+            [Value( index: 0, MetaName = "output", HelpText = "Output path for template file (*.yaml or *.xlsx)", Default = "(ProductName).yaml" )]
             public string OutputPath { get; set; } = string.Empty;
         }
 

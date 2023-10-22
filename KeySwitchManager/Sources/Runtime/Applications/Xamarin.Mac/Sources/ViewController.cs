@@ -92,7 +92,12 @@ namespace KeySwitchManager.Xamarin.Mac
         private async Task ExecuteControllerAsync( Func<IController> controllerFactory )
         {
             PreExecuteController();
-            await ControlExecutor.ExecuteAsync( controllerFactory, LogView );
+
+            await Task.Run( async () => {
+                    await ControlExecutor.ExecuteAsync( controllerFactory, LogView );
+                }
+            );
+
             PostExecuteController();
         }
         #endregion
@@ -108,7 +113,7 @@ namespace KeySwitchManager.Xamarin.Mac
         {
             ChooseSaveFilePath( ( path ) => {
                 NewFileText.StringValue = path;
-            }, "db", "yaml", "xlsx" );
+            }, "yaml", "yml", "xlsx" );
         }
 
         async partial void OnOpenNewFileButtonClicked( NSObject sender )
@@ -130,14 +135,14 @@ namespace KeySwitchManager.Xamarin.Mac
         {
             ChooseOpenFilePath( ( path ) => {
                 ImportDatabaseFileText.StringValue = path;
-            }, "db" );
+            }, "yaml", "yml" );
         }
 
         partial void OnOpenFileChooserButtonClicked( NSObject sender )
         {
             ChooseOpenFilePath( ( path ) => {
                 ImportFileText.StringValue = path;
-            }, "yaml", "xlsx" );
+            }, "yaml", "yml", "xlsx" );
         }
 
         async partial void OnDoImportButtonClicked( NSObject sender )
@@ -159,7 +164,7 @@ namespace KeySwitchManager.Xamarin.Mac
         {
             ChooseOpenFilePath( ( path ) => {
                 FindDatabaseFileText.StringValue = path;
-            }, "db" );
+            }, "yaml", "yml" );
         }
 
         async partial void OnFindButtonClicked( NSObject sender )

@@ -14,7 +14,6 @@
 
     <ItemGroup>
       <ProjectReference Include="..\..\Commons\Commons.csproj" />
-      <ProjectReference Include="..\..\Infrastructures\Database.LiteDB\Database.LiteDB.csproj" />
       <ProjectReference Include="..\..\Infrastructures\Storage.Json\Storage.Json.csproj" />
       <ProjectReference Include="..\..\Infrastructures\Storage.Spreadsheet.ClosedXml\Storage.Spreadsheet.ClosedXml.csproj" />
       <ProjectReference Include="..\..\Infrastructures\Storage.Xml\Storage.Xml.csproj" />
