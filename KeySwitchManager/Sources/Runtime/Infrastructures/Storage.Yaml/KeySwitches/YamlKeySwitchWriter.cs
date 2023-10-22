@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
+using System.Threading.Tasks;
 
 using KeySwitchManager.Domain.KeySwitches.Models;
 using KeySwitchManager.Infrastructures.Storage.Yaml.KeySwitches.Translators;
@@ -45,7 +46,7 @@ namespace KeySwitchManager.Infrastructures.Storage.Yaml.KeySwitches
             Stream = null;
         }
 
-        public void Write( IReadOnlyCollection<KeySwitch> keySwitches, IObserver<string>? loggingSubject = null )
+        async Task IKeySwitchWriter.WriteAsync( IReadOnlyCollection<KeySwitch> keySwitches, IObserver<string>? loggingSubject )
         {
             if( Stream == null )
             {
@@ -60,10 +61,10 @@ namespace KeySwitchManager.Infrastructures.Storage.Yaml.KeySwitches
                 }
             }
 
-            using var writer = new StreamWriter( Stream, FileEncoding, IKeySwitchWriter.DefaultStreamWriterBufferSize, LeaveOpen );
+            await using var writer = new StreamWriter( Stream, FileEncoding, IKeySwitchWriter.DefaultStreamWriterBufferSize, LeaveOpen );
             var yamlText = new YamlKeySwitchExportTranslator().Translate( keySwitches );
 
-            writer.WriteLine( yamlText );
+            await writer.WriteLineAsync( yamlText.Value );
         }
     }
 }

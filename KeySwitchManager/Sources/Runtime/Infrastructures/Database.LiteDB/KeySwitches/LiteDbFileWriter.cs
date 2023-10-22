@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 using KeySwitchManager.Commons.Data;
 using KeySwitchManager.Domain.KeySwitches.Models;
@@ -10,7 +11,7 @@ namespace KeySwitchManager.Infrastructures.Database.LiteDB.KeySwitches
 {
     public class LiteDbFileWriter : IKeySwitchWriter
     {
-        private LiteDbRepository Repository { get; }
+        private IKeySwitchRepository Repository { get; }
 
         public bool LeaveOpen => false;
 
@@ -24,12 +25,12 @@ namespace KeySwitchManager.Infrastructures.Database.LiteDB.KeySwitches
             Disposer.Dispose( Repository );
         }
 
-        public void Write( IReadOnlyCollection<KeySwitch> keySwitches, IObserver<string>? loggingSubject = null )
+        async Task IKeySwitchWriter.WriteAsync( IReadOnlyCollection<KeySwitch> keySwitches, IObserver<string>? loggingSubject )
         {
             foreach( var x in keySwitches )
             {
                 loggingSubject?.OnNext( x.ToString() );
-                Repository.Save( x );
+                await Repository.SaveAsync( x );
             }
         }
     }

@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reactive.Subjects;
+using System.Threading.Tasks;
 
 using KeySwitchManager.Commons.Data;
 using KeySwitchManager.Domain.KeySwitches.Helpers;
@@ -62,7 +63,7 @@ namespace KeySwitchManager.Infrastructures.Database.LiteDB.KeySwitches
         }
 
         #region Save
-        public IKeySwitchRepository.SaveResult Save( KeySwitch keySwitch )
+        public async Task<IKeySwitchRepository.SaveResult> SaveAsync( KeySwitch keySwitch )
         {
             logging.OnNext( keySwitch.ToString() );
 
@@ -78,31 +79,31 @@ namespace KeySwitchManager.Infrastructures.Database.LiteDB.KeySwitches
                 entity.LastUpdated = DateTimeHelper.NowUtc();
                 var updated = table.Update( entity ) ? 1 : 0;
 
-                return new IKeySwitchRepository.SaveResult(
+                return await Task.FromResult( new IKeySwitchRepository.SaveResult(
                     inserted: 0,
                     updated: updated
-                );
+                ));
             }
 
             entity.Id = keySwitch.Id.Value;
 
             var insertedId = table.Insert( entity ).AsGuid;
-            return new IKeySwitchRepository.SaveResult(
+            return await Task.FromResult( new IKeySwitchRepository.SaveResult(
                 inserted: insertedId == entity.Id ? 1 : 0,
                 updated: 0
-            );
+            ));
         }
 
         #endregion
 
         #region Delete
-        public int Delete( KeySwitchId keySwitchId )
+        public async Task<int> DeleteAsync( KeySwitchId keySwitchId )
         {
             var result = KeySwitchTable.Delete( keySwitchId.Value );
-            return result ? 1 : 0;
+            return await Task.FromResult( result ? 1 : 0 );
         }
 
-        public int Delete(
+        public async Task<int> DeleteAsync(
             DeveloperName developerName,
             ProductName productName,
             InstrumentName instrumentName )
@@ -111,60 +112,60 @@ namespace KeySwitchManager.Infrastructures.Database.LiteDB.KeySwitches
             var p = productName.Value;
             var i = instrumentName.Value;
 
-            return KeySwitchTable.DeleteMany(
+            return await Task.FromResult( KeySwitchTable.DeleteMany(
                 x =>
                     ( d == DeveloperName.Any.Value || x.DeveloperName.Contains( d ) ) &&
                     ( p == ProductName.Any.Value || x.ProductName.Contains( p ) ) &&
                     ( i == InstrumentName.Any.Value || x.InstrumentName.Contains( i ) )
-            );
+            ));
         }
 
-        public int Delete( DeveloperName developerName, ProductName productName )
+        public async Task<int> DeleteAsync( DeveloperName developerName, ProductName productName )
         {
             var d = developerName.Value;
             var p = productName.Value;
 
-            return KeySwitchTable.DeleteMany(
+            return await Task.FromResult( KeySwitchTable.DeleteMany(
                 x =>
                     ( d == DeveloperName.Any.Value || x.DeveloperName.Contains( d ) ) &&
                     ( p == ProductName.Any.Value || x.ProductName.Contains( p ) )
-            );
+            ));
         }
 
-        public int Delete( DeveloperName developerName )
+        public async Task<int> DeleteAsync( DeveloperName developerName )
         {
             var d = developerName.Value;
 
-            return KeySwitchTable.DeleteMany(
+            return await Task.FromResult( KeySwitchTable.DeleteMany(
                 x =>
                     d == DeveloperName.Any.Value || x.DeveloperName.Contains( d )
-            );
+            ));
         }
 
-        public int Delete( ProductName productName )
+        public async Task<int> DeleteAsync( ProductName productName )
         {
             var p = productName.Value;
 
-            return KeySwitchTable.DeleteMany(
+            return await Task.FromResult( KeySwitchTable.DeleteMany(
                 x =>
                     p == ProductName.Any.Value || x.ProductName.Contains( p )
-            );
+            ));
         }
 
-        public int Delete( InstrumentName instrumentName )
+        public async Task<int> DeleteAsync( InstrumentName instrumentName )
         {
             var i = instrumentName.Value;
 
-            return KeySwitchTable.DeleteMany(
+            return await Task.FromResult( KeySwitchTable.DeleteMany(
                 x =>
                     i == InstrumentName.Any.Value || x.InstrumentName.Contains( i )
-            );
+            ));
         }
 
-        public int DeleteAll()
+        public async Task<int> DeleteAllAsync()
         {
             var table = Database.GetCollection<ArticulationModel>( KeySwitchesTableName );
-            return table.DeleteAll();
+            return await Task.FromResult( table.DeleteAll() );
         }
         #endregion
 
@@ -182,12 +183,12 @@ namespace KeySwitchManager.Infrastructures.Database.LiteDB.KeySwitches
             return KeySwitchHelper.SortByAlphabetical( result );
         }
 
-        public IReadOnlyCollection<KeySwitch> Find( KeySwitchId keySwitchId )
+        public async Task<IReadOnlyCollection<KeySwitch>> FindAsync( KeySwitchId keySwitchId )
         {
-            return CreateEntities( KeySwitchTable.Find( x => x.Id == keySwitchId.Value ) );
+            return await Task.FromResult( CreateEntities( KeySwitchTable.Find( x => x.Id == keySwitchId.Value ) ) );
         }
 
-        public IReadOnlyCollection<KeySwitch> Find(
+        public async Task<IReadOnlyCollection<KeySwitch>> FindAsync(
             DeveloperName developerName,
             ProductName productName,
             InstrumentName instrumentName )
@@ -196,79 +197,79 @@ namespace KeySwitchManager.Infrastructures.Database.LiteDB.KeySwitches
             var p = productName.Value;
             var i = instrumentName.Value;
 
-            return CreateEntities(
+            return await Task.FromResult( CreateEntities(
                 KeySwitchTable.Find(
                     x =>
                         ( d == DeveloperName.Any.Value  || x.DeveloperName.Contains( d ) ) &&
                         ( p == ProductName.Any.Value    || x.ProductName.Contains( p ) )   &&
                         ( i == InstrumentName.Any.Value || x.InstrumentName.Contains( i ) )
                 )
-            );
+            ));
         }
 
-        public IReadOnlyCollection<KeySwitch> Find( DeveloperName developerName, ProductName productName )
+        public async Task<IReadOnlyCollection<KeySwitch>> FindAsync( DeveloperName developerName, ProductName productName )
         {
             var d = developerName.Value;
             var p = productName.Value;
 
-            return CreateEntities(
+            return await Task.FromResult( CreateEntities(
                 KeySwitchTable.Find(
                     x =>
                         ( d == DeveloperName.Any.Value || x.DeveloperName.Contains( d ) ) &&
                         ( p == ProductName.Any.Value   || x.ProductName.Contains( p ) )
                 )
-            );
+            ));
         }
 
-        public IReadOnlyCollection<KeySwitch> Find( DeveloperName developerName )
+        public async Task<IReadOnlyCollection<KeySwitch>> FindAsync( DeveloperName developerName )
         {
             var d = developerName.Value;
 
             if( d == DeveloperName.Any.Value )
             {
-                return FindAll();
+                return await FindAllAsync();
             }
 
-            return CreateEntities(
+            return await Task.FromResult( CreateEntities(
                 KeySwitchTable.Find(
                     x =>
                         x.DeveloperName.Contains( d )
                 )
-            );
+            ));
         }
 
-        public IReadOnlyCollection<KeySwitch> Find( ProductName productName )
+        public async Task<IReadOnlyCollection<KeySwitch>> FindAsync( ProductName productName )
         {
             var p = productName.Value;
 
             if( p == ProductName.Any.Value )
             {
-                return FindAll();
+                return await FindAllAsync();
             }
 
-            return CreateEntities(
+            return await Task.FromResult( CreateEntities(
                 KeySwitchTable.Find(
                     x =>
                         x.ProductName.Contains( p )
                 )
-            );
+            ));
         }
 
-        public IReadOnlyCollection<KeySwitch> Find( InstrumentName instrumentName )
+        public async Task<IReadOnlyCollection<KeySwitch>> FindAsync( InstrumentName instrumentName )
         {
             var i = instrumentName.Value;
 
-            return CreateEntities(
+            return await Task.FromResult( CreateEntities(
                 KeySwitchTable.Find(
                     x =>
                         i == InstrumentName.Any.Value || x.InstrumentName.Contains( i )
                 )
-            );
+            ));
         }
 
-        public IReadOnlyCollection<KeySwitch> FindAll()
+        public async Task<IReadOnlyCollection<KeySwitch>> FindAllAsync()
         {
-            return CreateEntities( KeySwitchTable.FindAll() );
+            return await Task.FromResult( CreateEntities( KeySwitchTable.FindAll() ) );
         }
         #endregion
     }

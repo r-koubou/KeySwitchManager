@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 using KeySwitchManager.Domain.KeySwitches.Helpers;
 using KeySwitchManager.Domain.KeySwitches.Models;
@@ -30,13 +31,13 @@ namespace KeySwitchManager.Interactors.KeySwitches
             Presenter  = presenter;
         }
 
-        public ExportFileResponse Execute( ExportFileRequest request, IObserver<string>? loggingSubject = null )
+        async Task<ExportFileResponse> IExportFileUseCase.ExecuteAsync( ExportFileRequest request, IObserver<string>? loggingSubject )
         {
             var developerName = request.DeveloperName;
             var productName = request.ProductName;
             var instrumentName = request.InstrumentName;
 
-            var queryResult = SearchHelper.Search(
+            var queryResult = await SearchHelper.SearchAsync(
                 Repository,
                 developerName,
                 productName,
@@ -45,7 +46,7 @@ namespace KeySwitchManager.Interactors.KeySwitches
 
             if( queryResult.Any() )
             {
-                Writer.Write( queryResult, loggingSubject );
+                await Writer.WriteAsync( queryResult, loggingSubject );
                 return new ExportFileResponse( queryResult );
             }
 

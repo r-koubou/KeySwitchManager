@@ -6,7 +6,7 @@ using KeySwitchManager.Applications.Core.Controllers.Export;
 
 using YamlDotNet.Serialization;
 
-namespace KeySwitchManager.WPF
+namespace KeySwitchManager.Applications.WPF
 {
     public class ApplicationConfigModel
     {

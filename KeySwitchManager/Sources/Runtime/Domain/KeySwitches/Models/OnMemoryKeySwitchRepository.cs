@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reactive.Subjects;
+using System.Threading.Tasks;
 
 using KeySwitchManager.Domain.KeySwitches.Helpers;
 using KeySwitchManager.Domain.KeySwitches.Models.Values;
@@ -37,140 +38,141 @@ namespace KeySwitchManager.Domain.KeySwitches.Models
             => KeySwitches.Count;
 
         #region Save
-        public IKeySwitchRepository.SaveResult Save( KeySwitch keySwitch )
+        public async Task<IKeySwitchRepository.SaveResult> SaveAsync( KeySwitch keySwitch )
         {
             var exist = KeySwitches.Find( x => x.Id.Value.Equals( keySwitch.Id.Value ) );
 
             if( exist != null )
             {
                 var index = KeySwitches.IndexOf( exist );
-                KeySwitches[ index ]  = keySwitch;
-                return new IKeySwitchRepository.SaveResult( 0, 1 );
+                KeySwitches[ index ] = keySwitch;
+                return await Task.FromResult( new IKeySwitchRepository.SaveResult( 0, 1 ) );
             }
 
             KeySwitches.Add( keySwitch );
-            return new IKeySwitchRepository.SaveResult( 1, 0 );
+
+            return await Task.FromResult( new IKeySwitchRepository.SaveResult( 1, 0 ) );
         }
 
-        public virtual int Flush()
-            => Count();
+        public virtual async Task<int> FlushAsync()
+            => await Task.FromResult( Count() );
         #endregion
 
         #region Delete
-        public int Delete( KeySwitchId keySwitchId )
+        public async Task<int> DeleteAsync( KeySwitchId keySwitchId )
         {
-            var founds = Find( keySwitchId );
+            var founds = await FindAsync( keySwitchId );
             return founds.Sum( x => KeySwitches.Remove( x ) ? 1 : 0 );
         }
 
-        public int Delete( DeveloperName developerName, ProductName productName, InstrumentName instrumentName )
+        public async Task<int> DeleteAsync( DeveloperName developerName, ProductName productName, InstrumentName instrumentName )
         {
-            var founds = Find( developerName, productName, instrumentName );
+            var founds = await FindAsync( developerName, productName, instrumentName );
             return founds.Sum( x => KeySwitches.Remove( x ) ? 1 : 0 );
         }
 
-        public int Delete( DeveloperName developerName, ProductName productName )
+        public async Task<int> DeleteAsync( DeveloperName developerName, ProductName productName )
         {
-            var founds = Find( developerName, productName );
+            var founds = await FindAsync( developerName, productName );
             return founds.Sum( x => KeySwitches.Remove( x ) ? 1 : 0 );
         }
 
-        public int Delete( DeveloperName developerName )
+        public async Task<int> DeleteAsync( DeveloperName developerName )
         {
-            var founds = Find( developerName );
+            var founds = await FindAsync( developerName );
             return founds.Sum( x => KeySwitches.Remove( x ) ? 1 : 0 );
         }
 
-        public int Delete( ProductName productName )
+        public async Task<int> DeleteAsync( ProductName productName )
         {
-            var founds = Find( productName );
+            var founds = await FindAsync( productName );
             return founds.Sum( x => KeySwitches.Remove( x ) ? 1 : 0 );
         }
 
-        public int Delete( InstrumentName instrumentName )
+        public async Task<int> DeleteAsync( InstrumentName instrumentName )
         {
-            var founds = Find( instrumentName );
+            var founds = await FindAsync( instrumentName );
             return founds.Sum( x => KeySwitches.Remove( x ) ? 1 : 0 );
         }
 
-        public int DeleteAll()
+        public async Task<int> DeleteAllAsync()
         {
             var count = KeySwitches.Count;
             KeySwitches.Clear();
-            return count;
+            return await Task.FromResult( count );
         }
         #endregion
 
         #region Find
-        public IReadOnlyCollection<KeySwitch> Find( KeySwitchId keySwitchId )
-            => KeySwitchHelper.SortByAlphabetical(
+        public async Task<IReadOnlyCollection<KeySwitch>> FindAsync( KeySwitchId keySwitchId )
+            => await Task.FromResult( KeySwitchHelper.SortByAlphabetical(
                 KeySwitches.FindAll(
                 x => x.Id.Value == keySwitchId.Value
-            ));
+            )));
 
-        public IReadOnlyCollection<KeySwitch> Find( DeveloperName developerName, ProductName productName, InstrumentName instrumentName )
+        public async Task<IReadOnlyCollection<KeySwitch>> FindAsync( DeveloperName developerName, ProductName productName, InstrumentName instrumentName )
         {
             var d = developerName.Value;
             var p = productName.Value;
             var i = instrumentName.Value;
 
-            return KeySwitchHelper.SortByAlphabetical(
+            return await Task.FromResult( KeySwitchHelper.SortByAlphabetical(
                 KeySwitches.FindAll(
                     x =>
                         ( d == DeveloperName.Any.Value || x.DeveloperName.Value.Contains( d ) ) &&
                         ( p == ProductName.Any.Value || x.ProductName.Value.Contains( p ) ) &&
                         ( i == InstrumentName.Any.Value || x.InstrumentName.Value.Contains( i ) )
-                ));
+                )));
         }
 
-        public IReadOnlyCollection<KeySwitch> Find( DeveloperName developerName, ProductName productName )
+        public async Task<IReadOnlyCollection<KeySwitch>> FindAsync( DeveloperName developerName, ProductName productName )
         {
             var d = developerName.Value;
             var p = productName.Value;
 
-            return KeySwitchHelper.SortByAlphabetical(
+            return await Task.FromResult( KeySwitchHelper.SortByAlphabetical(
                 KeySwitches.FindAll(
                     x =>
                         ( d == DeveloperName.Any.Value || x.DeveloperName.Value.Contains( d ) ) &&
                         ( p == ProductName.Any.Value || x.ProductName.Value.Contains( p ) )
-                ));
+                )));
         }
 
-        public IReadOnlyCollection<KeySwitch> Find( DeveloperName developerName )
+        public async Task<IReadOnlyCollection<KeySwitch>> FindAsync( DeveloperName developerName )
         {
             var d = developerName.Value;
 
-            return KeySwitchHelper.SortByAlphabetical(
+            return await Task.FromResult( KeySwitchHelper.SortByAlphabetical(
                 KeySwitches.FindAll(
                     x =>
                         d == DeveloperName.Any.Value || x.DeveloperName.Value.Contains( d )
-            ));
+            )));
         }
 
-        public IReadOnlyCollection<KeySwitch> Find( ProductName productName )
+        public async Task<IReadOnlyCollection<KeySwitch>> FindAsync( ProductName productName )
         {
             var p = productName.Value;
 
-            return KeySwitchHelper.SortByAlphabetical(
+            return await Task.FromResult( KeySwitchHelper.SortByAlphabetical(
                 KeySwitches.FindAll(
                     x =>
                         p == ProductName.Any.Value || x.ProductName.Value.Contains( p )
-            ));
+            )));
         }
 
-        public IReadOnlyCollection<KeySwitch> Find( InstrumentName instrumentName )
+        public async Task<IReadOnlyCollection<KeySwitch>> FindAsync( InstrumentName instrumentName )
         {
             var i = instrumentName.Value;
 
-            return KeySwitchHelper.SortByAlphabetical(
+            return await Task.FromResult( KeySwitchHelper.SortByAlphabetical(
                 KeySwitches.FindAll(
                     x =>
                         i == InstrumentName.Any.Value || x.InstrumentName.Value.Contains( i )
-            ));
+            )));
         }
 
-        public IReadOnlyCollection<KeySwitch> FindAll()
-            => KeySwitchHelper.SortByAlphabetical( new List<KeySwitch>( KeySwitches ) );
+        public async Task<IReadOnlyCollection<KeySwitch>> FindAllAsync()
+            => await Task.FromResult( KeySwitchHelper.SortByAlphabetical( new List<KeySwitch>( KeySwitches ) ) );
         #endregion
     }
 }

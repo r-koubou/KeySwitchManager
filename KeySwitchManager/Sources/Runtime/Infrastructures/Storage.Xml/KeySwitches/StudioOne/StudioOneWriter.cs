@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 
 using KeySwitchManager.Commons.Data;
 using KeySwitchManager.Domain.KeySwitches.Helpers;
@@ -34,7 +35,7 @@ namespace KeySwitchManager.Infrastructures.Storage.Xml.KeySwitches.StudioOne
 
         public void Dispose() {}
 
-        public void Write( IReadOnlyCollection<KeySwitch> keySwitches, IObserver<string>? logging = null )
+        async Task IKeySwitchWriter.WriteAsync( IReadOnlyCollection<KeySwitch> keySwitches, IObserver<string>? logging )
         {
             if( !keySwitches.Any() )
             {
@@ -50,11 +51,11 @@ namespace KeySwitchManager.Infrastructures.Storage.Xml.KeySwitches.StudioOne
                 Translate( rootElement, developerName, productName, x, logging );
 
                 var filePath = CreatePathHelper.CreateFilePath( developerName, productName, Suffix, OutputDirectory );
-                using var stream = filePath.OpenStream( FileMode.Create, FileAccess.ReadWrite );
-                using var writer = new StreamWriter( stream, FileEncoding, IKeySwitchWriter.DefaultStreamWriterBufferSize, LeaveOpen );
+                await using var stream = filePath.OpenStream( FileMode.Create, FileAccess.ReadWrite );
+                await using var writer = new StreamWriter( stream, FileEncoding, IKeySwitchWriter.DefaultStreamWriterBufferSize, LeaveOpen );
 
                 var xmlText = XmlHelper.ToXmlString( rootElement );
-                writer.WriteLine( xmlText );
+                await writer.WriteLineAsync( xmlText );
             }
         }
 

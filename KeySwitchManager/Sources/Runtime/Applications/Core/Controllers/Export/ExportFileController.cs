@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Reactive.Subjects;
+using System.Threading.Tasks;
 
 using KeySwitchManager.Domain.KeySwitches.Models;
 using KeySwitchManager.Domain.KeySwitches.Models.Values;
@@ -53,15 +54,15 @@ namespace KeySwitchManager.Applications.Core.Controllers.Export
             }
         }
 
-        public void Execute()
+        async Task IController.ExecuteAsync()
         {
-            var interactor = new ExportFileInteractor(
+            IExportFileUseCase interactor = new ExportFileInteractor(
                 SourceRepository,
                 Writer,
                 Presenter
             );
 
-            var response = interactor.Execute(
+            var response = await interactor.ExecuteAsync(
                 new ExportFileRequest(
                     DeveloperName.Value,
                     ProductName.Value,

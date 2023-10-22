@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
+using System.Threading.Tasks;
 
 using KeySwitchManager.Commons.Data;
 using KeySwitchManager.Domain.KeySwitches.Models;
@@ -28,15 +29,15 @@ namespace KeySwitchManager.Infrastructures.Storage.Xml.KeySwitches.Cubase
 
         public void Dispose() {}
 
-        public void Write( IReadOnlyCollection<KeySwitch> keySwitches, IObserver<string>? logging = null )
-            => MultipleWritingHelper.Write( keySwitches, OutputDirectory, Suffix, logging, WriteImpl );
+        async Task IKeySwitchWriter.WriteAsync( IReadOnlyCollection<KeySwitch> keySwitches, IObserver<string>? logging )
+            => await MultipleWritingHelper.WriteAsync( keySwitches, OutputDirectory, Suffix, logging, WriteImplAsync );
 
-        private void WriteImpl( Stream stream, KeySwitch keySwitch, IObserver<string>? logging )
+        private async Task WriteImplAsync( Stream stream, KeySwitch keySwitch, IObserver<string>? logging )
         {
-            using var writer = new StreamWriter( stream, FileEncoding, IKeySwitchWriter.DefaultStreamWriterBufferSize, LeaveOpen );
+            await using var writer = new StreamWriter( stream, FileEncoding, IKeySwitchWriter.DefaultStreamWriterBufferSize, LeaveOpen );
             var xmlText = new CubaseExportTranslator().Translate( keySwitch );
 
-            writer.WriteLine( xmlText );
+            await writer.WriteLineAsync( xmlText.Value );
 
         }
     }

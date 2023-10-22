@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 using KeySwitchManager.Commons.Data;
 using KeySwitchManager.Domain.KeySwitches.Helpers;
@@ -23,7 +24,7 @@ namespace KeySwitchManager.Infrastructures.Storage.Spreadsheet.ClosedXml.KeySwit
 
         public void Dispose() {}
 
-        public void Write( IReadOnlyCollection<KeySwitch> keySwitches, IObserver<string>? loggingSubject = null )
+        async Task IKeySwitchWriter.WriteAsync( IReadOnlyCollection<KeySwitch> keySwitches, IObserver<string>? loggingSubject )
         {
             var groupByDeveloperAndProduct = KeySwitchHelper.GroupBy( keySwitches );
 
@@ -33,7 +34,7 @@ namespace KeySwitchManager.Infrastructures.Storage.Spreadsheet.ClosedXml.KeySwit
                 var product = kvp.Key.Item2;
                 var items = kvp.Value;
 
-                CombinedWritingHelper.Write(
+                await CombinedWritingHelper.WriteAsync(
                     items,
                     OutputDirectory,
                     items.First(),

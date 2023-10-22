@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Threading.Tasks;
 
 using ClosedXML.Excel;
 
@@ -36,7 +37,7 @@ namespace KeySwitchManager.Infrastructures.Storage.Spreadsheet.ClosedXml.KeySwit
             Stream = null;
         }
 
-        public void Write( IReadOnlyCollection<KeySwitch> keySwitches, IObserver<string>? loggingSubject = null )
+        async Task IKeySwitchWriter.WriteAsync( IReadOnlyCollection<KeySwitch> keySwitches, IObserver<string>? loggingSubject )
         {
             using var template = new XLWorkbook(
                 StreamHelper.GetAssemblyResourceStream<ClosedXmlWriter>( "Template.xlsx" )
@@ -61,6 +62,8 @@ namespace KeySwitchManager.Infrastructures.Storage.Spreadsheet.ClosedXml.KeySwit
             }
 
             workbook.SaveAs( Stream );
+
+            await Task.CompletedTask;
         }
     }
 }
