@@ -7,4 +7,4 @@ KeySwitchManager WPF Application
 
 ## Build At
 
-2023-10-22 18:18:14 +09:00
+2023-10-22 18:31:13 +09:00

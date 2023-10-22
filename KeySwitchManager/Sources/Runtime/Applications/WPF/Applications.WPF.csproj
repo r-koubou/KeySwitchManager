@@ -5,6 +5,7 @@
         <TargetFramework>net7.0-windows</TargetFramework>
         <UseWPF>true</UseWPF>
         <AssemblyName>KeySwitchManager</AssemblyName>
+        <RootNamespace>KeySwitchManager.Applications.WPF</RootNamespace>
         <Product>KeySwitchManager WPF Application</Product>
         <Description>KeySwitchManager WPF Application</Description>
         <Version>0.5.3</Version>

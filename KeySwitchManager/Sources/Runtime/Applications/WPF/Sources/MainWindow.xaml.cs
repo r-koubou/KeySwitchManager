@@ -11,7 +11,7 @@ using KeySwitchManager.Applications.Core.Controllers.Delete;
 using KeySwitchManager.Applications.Core.Controllers.Export;
 using KeySwitchManager.Applications.Core.Controllers.Find;
 using KeySwitchManager.Applications.Core.Controllers.Import;
-using KeySwitchManager.WPF.WpfView;
+using KeySwitchManager.Applications.WPF.WpfView;
 
 using Microsoft.Win32;
 using Microsoft.WindowsAPICodePack.Dialogs;
@@ -19,9 +19,7 @@ using Microsoft.WindowsAPICodePack.Dialogs;
 using RkHelper.Enumeration;
 using RkHelper.Text;
 
-using MSAPI = Microsoft.WindowsAPICodePack;
-
-namespace KeySwitchManager.WPF
+namespace KeySwitchManager.Applications.WPF
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml

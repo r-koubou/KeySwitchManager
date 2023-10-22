@@ -4,7 +4,7 @@ using System.Windows.Threading;
 
 using KeySwitchManager.Applications.Core.Views.LogView;
 
-namespace KeySwitchManager.WPF.WpfView
+namespace KeySwitchManager.Applications.WPF.WpfView
 {
     public class LogTextView : ILogTextView
     {
