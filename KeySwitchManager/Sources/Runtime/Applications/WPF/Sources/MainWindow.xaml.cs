@@ -89,7 +89,12 @@ namespace KeySwitchManager.Applications.WPF
         private async Task ExecuteControllerAsync( Func<IController> controllerFactory )
         {
             PreExecuteController();
-            await Task.Run( async () => await ControlExecutor.ExecuteAsync( controllerFactory, LogTextView ) );
+
+            await Task.Run( async () => {
+                    await ControlExecutor.ExecuteAsync( controllerFactory, LogTextView );
+                }
+            );
+
             PostExecuteController();
         }
         #endregion
