@@ -1,4 +1,6 @@
-﻿using KeySwitchManager.Domain.KeySwitches.Models;
+﻿using System.Threading.Tasks;
+
+using KeySwitchManager.Domain.KeySwitches.Models;
 using KeySwitchManager.Interactors.KeySwitches;
 using KeySwitchManager.UseCase.KeySwitches.Create;
 
@@ -27,10 +29,10 @@ namespace KeySwitchManager.Applications.Core.Controllers.Create
             }
         }
 
-        public void Execute()
+        async Task IController.ExecuteAsync()
         {
-            var interactor = new CreateFileInteractor( Presenter );
-            var response = interactor.Execute( new CreateFileRequest( Writer ) );
+            ICreateFileUseCase interactor = new CreateFileInteractor( Presenter );
+            var response = await interactor.ExecuteAsync( new CreateFileRequest( Writer ) );
             Presenter.Complete( response );
         }
     }

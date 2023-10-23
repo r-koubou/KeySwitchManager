@@ -1,4 +1,5 @@
 using System.Linq;
+using System.Threading.Tasks;
 
 using KeySwitchManager.Domain.KeySwitches.Models;
 using KeySwitchManager.UseCase.KeySwitches.Dump;
@@ -26,9 +27,9 @@ namespace KeySwitchManager.Interactors.KeySwitches
             Presenter  = presenter;
         }
 
-        public DumpFileResponse Execute( DumpFileRequest request )
+        async Task<DumpFileResponse> IDumpFileUseCase.ExecuteAsync( DumpFileRequest request )
         {
-            var all = Repository.FindAll();
+            var all = await Repository.FindAllAsync();
 
             var sorted = all.OrderBy( x => x.DeveloperName.Value )
                .ThenBy( x => x.ProductName.Value )
@@ -36,7 +37,7 @@ namespace KeySwitchManager.Interactors.KeySwitches
 
             if( sorted.Count > 0 )
             {
-                Writer.Write( sorted );
+                await Writer.WriteAsync( sorted, null );
                 return new DumpFileResponse( sorted.Count );
             }
 

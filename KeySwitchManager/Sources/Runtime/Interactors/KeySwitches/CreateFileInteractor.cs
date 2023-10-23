@@ -1,3 +1,5 @@
+using System.Threading.Tasks;
+
 using KeySwitchManager.Domain.KeySwitches.Helpers;
 using KeySwitchManager.UseCase.KeySwitches.Create;
 
@@ -15,10 +17,10 @@ namespace KeySwitchManager.Interactors.KeySwitches
             Presenter = presenter;
         }
 
-        public CreateFileResponse Execute( CreateFileRequest request )
+        async Task<CreateFileResponse> ICreateFileUseCase.ExecuteAsync( CreateFileRequest request )
         {
             var keyswitch = KeySwitchFactoryHelper.CreateTemplate();
-            request.Writer.Write( new[] { keyswitch } );
+            await request.Writer.WriteAsync( new[] { keyswitch }, null );
 
             return new CreateFileResponse();
         }

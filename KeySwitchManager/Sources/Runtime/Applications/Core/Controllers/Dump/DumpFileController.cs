@@ -1,4 +1,6 @@
-﻿using KeySwitchManager.Domain.KeySwitches.Models;
+﻿using System.Threading.Tasks;
+
+using KeySwitchManager.Domain.KeySwitches.Models;
 using KeySwitchManager.Interactors.KeySwitches;
 using KeySwitchManager.UseCase.KeySwitches.Dump;
 
@@ -32,15 +34,15 @@ namespace KeySwitchManager.Applications.Core.Controllers.Dump
             }
         }
 
-        public void Execute()
+        async Task IController.ExecuteAsync()
         {
-            var interactor = new DumpFileInteractor(
+            IDumpFileUseCase interactor = new DumpFileInteractor(
                 SourceRepository,
                 Writer,
                 Presenter
             );
 
-            var response = interactor.Execute( new DumpFileRequest() );
+            var response = await interactor.ExecuteAsync( new DumpFileRequest() );
             Presenter.Complete( response );
         }
     }

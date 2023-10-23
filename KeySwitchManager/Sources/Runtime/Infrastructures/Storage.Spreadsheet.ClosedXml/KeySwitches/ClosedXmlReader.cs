@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Threading.Tasks;
 
 using KeySwitchManager.Domain.KeySwitches.Models;
 using KeySwitchManager.Infrastructures.Storage.Spreadsheet.ClosedXml.KeySwitches.Helper;
@@ -37,7 +38,7 @@ namespace KeySwitchManager.Infrastructures.Storage.Spreadsheet.ClosedXml.KeySwit
             Stream = null;
         }
 
-        public IReadOnlyCollection<KeySwitch> Read( IObserver<string>? loggingSubject = null )
+        async Task<IReadOnlyCollection<KeySwitch>> IKeySwitchReader.ReadAsync( IObserver<string>? loggingSubject )
         {
             if( Stream == null )
             {
@@ -46,8 +47,8 @@ namespace KeySwitchManager.Infrastructures.Storage.Spreadsheet.ClosedXml.KeySwit
 
             using var memory = new MemoryStream( InitialBufferSize );
 
-            StreamHelper.ReadAllAndWrite( Stream, memory );
-            byte[] xlsxBytes = memory.ToArray();
+            await StreamHelper.ReadAllAndWriteAsync( Stream, memory );
+            var xlsxBytes = memory.ToArray();
 
             var workBook = XlsxWorkBookParsingHelper.Parse( xlsxBytes );
             var translator = new SpreadsheetImportTranslator();

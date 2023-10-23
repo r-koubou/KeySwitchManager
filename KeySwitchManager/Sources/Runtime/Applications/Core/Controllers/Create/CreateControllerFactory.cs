@@ -4,7 +4,6 @@ using System.IO;
 using KeySwitchManager.Applications.Core.Views.LogView;
 using KeySwitchManager.Commons.Data;
 using KeySwitchManager.Domain.KeySwitches.Models;
-using KeySwitchManager.Infrastructures.Database.LiteDB.KeySwitches;
 using KeySwitchManager.Infrastructures.Storage.Spreadsheet.ClosedXml.KeySwitches;
 using KeySwitchManager.Infrastructures.Storage.Yaml.KeySwitches;
 
@@ -24,11 +23,6 @@ namespace KeySwitchManager.Applications.Core.Controllers.Create
             if( path.EndsWith( ".yaml" ) || path.EndsWith( ".yml" ) )
             {
                 return CreateImpl( outputFilePath, logTextView, ( stream ) => new YamlKeySwitchWriter( stream ) );
-            }
-
-            if( path.EndsWith( ".db" ) )
-            {
-                return CreateImpl( logTextView, new LiteDbFileWriter( new FilePath( outputFilePath ) ) );
             }
 
             throw new ArgumentException( $"{outputFilePath} is unknown file format" );

@@ -1,3 +1,5 @@
+using System.Threading.Tasks;
+
 using KeySwitchManager.Domain.KeySwitches.Models;
 using KeySwitchManager.Domain.KeySwitches.Models.Values;
 using KeySwitchManager.UseCase.KeySwitches.Delete;
@@ -23,7 +25,7 @@ namespace KeySwitchManager.Interactors.KeySwitches
             Presenter  = presenter;
         }
 
-        public DeleteResponse Execute( DeleteRequest request )
+        async Task<DeleteResponse> IDeleteUseCase.ExecuteAsync( DeleteRequest request )
         {
             var developerName = request.DeveloperName;
             var productName = request.ProductName;
@@ -35,7 +37,7 @@ namespace KeySwitchManager.Interactors.KeySwitches
 
             if( !StringHelper.IsEmpty( developerName, productName, instrumentName ) )
             {
-                removedCount = Repository.Delete(
+                removedCount = await Repository.DeleteAsync(
                     new DeveloperName( developerName ),
                     new ProductName( productName ),
                     new InstrumentName( instrumentName )
@@ -43,7 +45,7 @@ namespace KeySwitchManager.Interactors.KeySwitches
             }
             else if( !StringHelper.IsEmpty( developerName, productName ) )
             {
-                removedCount = Repository.Delete(
+                removedCount = await Repository.DeleteAsync(
                     new DeveloperName( developerName ),
                     new ProductName( productName )
                 );
