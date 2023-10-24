@@ -1,5 +1,6 @@
 using System.Threading.Tasks;
 
+using KeySwitchManager.Domain.KeySwitches;
 using KeySwitchManager.Domain.KeySwitches.Models;
 using KeySwitchManager.Domain.KeySwitches.Models.Values;
 using KeySwitchManager.UseCase.KeySwitches.Delete;

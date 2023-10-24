@@ -1,3 +1,4 @@
+using KeySwitchManager.Domain.KeySwitches;
 using KeySwitchManager.Domain.KeySwitches.Models;
 
 namespace KeySwitchManager.UseCase.KeySwitches.Create

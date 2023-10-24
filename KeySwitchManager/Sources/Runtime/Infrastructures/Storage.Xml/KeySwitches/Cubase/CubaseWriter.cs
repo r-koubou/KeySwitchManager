@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 using KeySwitchManager.Commons.Data;
+using KeySwitchManager.Domain.KeySwitches;
 using KeySwitchManager.Domain.KeySwitches.Models;
 using KeySwitchManager.Infrastructures.Storage.KeySwitches.Helper;
 using KeySwitchManager.Infrastructures.Storage.Xml.KeySwitches.Cubase.Translators;

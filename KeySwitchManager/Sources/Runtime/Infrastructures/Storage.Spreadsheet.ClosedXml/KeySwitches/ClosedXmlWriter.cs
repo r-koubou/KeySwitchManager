@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 
 using ClosedXML.Excel;
 
+using KeySwitchManager.Domain.KeySwitches;
 using KeySwitchManager.Domain.KeySwitches.Models;
 using KeySwitchManager.Infrastructures.Storage.Spreadsheet.ClosedXml.KeySwitches.Translators;
 using KeySwitchManager.Infrastructures.Storage.Spreadsheet.KeySwitches.Helpers;

@@ -1,4 +1,4 @@
-namespace KeySwitchManager.Domain.KeySwitches.Models
+namespace KeySwitchManager.Domain.KeySwitches
 {
     public interface IKeySwitchRepositoryFactory
     {

@@ -2,11 +2,12 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
+using KeySwitchManager.Domain.KeySwitches.Models;
 using KeySwitchManager.Domain.KeySwitches.Models.Values;
 
 using RkHelper.Number;
 
-namespace KeySwitchManager.Domain.KeySwitches.Models
+namespace KeySwitchManager.Domain.KeySwitches
 {
     public interface IKeySwitchRepository : IDisposable
     {
