@@ -3,6 +3,7 @@
 using KeySwitchManager.Applications.Core.Helpers;
 using KeySwitchManager.Applications.Core.Views.LogView;
 using KeySwitchManager.Commons.Data;
+using KeySwitchManager.Domain.KeySwitches;
 using KeySwitchManager.Domain.KeySwitches.Models;
 using KeySwitchManager.Domain.KeySwitches.Models.Values;
 using KeySwitchManager.Infrastructures.Storage.Json.KeySwitches.Cakewalk;

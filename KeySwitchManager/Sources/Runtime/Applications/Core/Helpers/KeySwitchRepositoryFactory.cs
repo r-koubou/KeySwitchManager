@@ -1,6 +1,7 @@
 using System;
 
 using KeySwitchManager.Commons.Data;
+using KeySwitchManager.Domain.KeySwitches;
 using KeySwitchManager.Domain.KeySwitches.Models;
 using KeySwitchManager.Infrastructures.Storage.Yaml.KeySwitches;
 

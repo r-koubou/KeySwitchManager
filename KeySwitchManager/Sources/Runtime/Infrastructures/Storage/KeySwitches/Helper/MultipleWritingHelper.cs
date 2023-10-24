@@ -4,6 +4,7 @@ using System.IO;
 using System.Threading.Tasks;
 
 using KeySwitchManager.Commons.Data;
+using KeySwitchManager.Domain.KeySwitches;
 using KeySwitchManager.Domain.KeySwitches.Models;
 
 namespace KeySwitchManager.Infrastructures.Storage.KeySwitches.Helper

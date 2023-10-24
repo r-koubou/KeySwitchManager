@@ -3,6 +3,7 @@ using System.IO;
 
 using KeySwitchManager.Applications.Core.Views.LogView;
 using KeySwitchManager.Commons.Data;
+using KeySwitchManager.Domain.KeySwitches;
 using KeySwitchManager.Domain.KeySwitches.Models;
 using KeySwitchManager.Infrastructures.Storage.Spreadsheet.ClosedXml.KeySwitches;
 using KeySwitchManager.Infrastructures.Storage.Yaml.KeySwitches;

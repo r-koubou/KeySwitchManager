@@ -2,7 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace KeySwitchManager.Domain.KeySwitches.Models
+using KeySwitchManager.Domain.KeySwitches.Models;
+
+namespace KeySwitchManager.Domain.KeySwitches
 {
     public interface IKeySwitchWriter : IDisposable
     {

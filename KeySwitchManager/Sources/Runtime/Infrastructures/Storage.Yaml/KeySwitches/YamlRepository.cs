@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 using KeySwitchManager.Commons.Data;
+using KeySwitchManager.Domain.KeySwitches;
 using KeySwitchManager.Domain.KeySwitches.Helpers;
 using KeySwitchManager.Domain.KeySwitches.Models;
 using KeySwitchManager.Domain.KeySwitches.Models.Values;

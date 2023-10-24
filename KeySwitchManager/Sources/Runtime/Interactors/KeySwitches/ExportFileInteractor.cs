@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
+using KeySwitchManager.Domain.KeySwitches;
 using KeySwitchManager.Domain.KeySwitches.Helpers;
 using KeySwitchManager.Domain.KeySwitches.Models;
 using KeySwitchManager.UseCase.KeySwitches.Export;
