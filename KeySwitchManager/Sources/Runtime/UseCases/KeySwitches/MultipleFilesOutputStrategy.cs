@@ -7,18 +7,18 @@ namespace KeySwitchManager.UseCase.KeySwitches
 {
     public class MultipleFilesOutputStrategy : IExportStrategy
     {
-        private IContentDataTranslator DataTranslator { get; }
+        private IExportContentFactory ContentFactory { get; }
 
-        public MultipleFilesOutputStrategy( IContentDataTranslator dataTranslator )
+        public MultipleFilesOutputStrategy( IExportContentFactory contentFactory )
         {
-            DataTranslator = dataTranslator;
+            ContentFactory = contentFactory;
         }
 
         async Task IExportStrategy.ExportAsync( IReadOnlyCollection<KeySwitch> keySwitches, IContentWriter contentWriter )
         {
             foreach( var keySwitch in keySwitches )
             {
-                var content = DataTranslator.Translate( keySwitches );
+                var content = ContentFactory.Create( keySwitches );
                 await contentWriter.WriteAsync( content );
             }
         }

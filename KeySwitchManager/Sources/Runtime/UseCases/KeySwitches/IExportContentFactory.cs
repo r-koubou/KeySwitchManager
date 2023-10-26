@@ -5,5 +5,8 @@ using KeySwitchManager.Domain.KeySwitches.Models;
 
 namespace KeySwitchManager.UseCase.KeySwitches
 {
-    public interface IContentDataTranslator : IDataTranslator<IReadOnlyCollection<KeySwitch>, IContent> {}
+    public interface IExportContentFactory
+    {
+        IContent Create( IReadOnlyCollection<KeySwitch> keySwitches );
+    }
 }
