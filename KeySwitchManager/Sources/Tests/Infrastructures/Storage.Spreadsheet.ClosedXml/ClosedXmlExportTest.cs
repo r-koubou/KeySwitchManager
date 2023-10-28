@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 
 using KeySwitchManager.Commons.Data;
 using KeySwitchManager.Domain.KeySwitches.Models;
@@ -45,40 +44,22 @@ namespace KeySwitchManager.Testing.Storage.Spreadsheet.ClosedXml
         {
             var keySwitches = new List<KeySwitch>
             {
-                TestDataGenerator.CreateKeySwitch( instrumentName: "instrument1" ),
-                TestDataGenerator.CreateKeySwitch( instrumentName: "instrument2" ),
-                TestDataGenerator.CreateKeySwitch( instrumentName: "instrument3" ),
+                TestDataGenerator.CreateKeySwitch( productName: "product", instrumentName: "instrument1" ),
+                TestDataGenerator.CreateKeySwitch( productName: "product", instrumentName: "instrument2" ),
+                TestDataGenerator.CreateKeySwitch( productName: "product", instrumentName: "instrument3" ),
             };
 
-            var outputDirectory = Path.Combine( TestOutputDirectory, nameof( ExportGroupedTest ) );
+            var outputDirectory = new DirectoryPath( Path.Combine( TestOutputDirectory, nameof( ExportGroupedTest ) ) );
 
             IExportContentWriterFactory contentWriterFactory
                 = new KeySwitchExportContentFileWriterFactory(
-                    ".xlsx",
-                    new DirectoryPath( outputDirectory ),
-                    ( items ) => items.First()
+                    outputDirectory,
+                    new ClosedXmlGroupedExportPathBuilder( ".xlsx", outputDirectory )
                 );
             IExportContentFactory exportContentFactory = new ClosedXmlExportContentFactory();
             IExportStrategy strategy = new GroupedExportStrategy( contentWriterFactory, exportContentFactory);
 
             Assert.DoesNotThrowAsync( async () => await strategy.ExportAsync( keySwitches ) );
         }
-        //
-        // [Test]
-        // public void Export_Fail_ElementSizeOverThan_2_To_SingleFile_Test()
-        // {
-        //     var outputDirectory = Path.Combine( TestOutputDirectory, nameof( Export_Fail_ElementSizeOverThan_2_To_SingleFile_Test ) );
-        //     var keySwitches = new List<KeySwitch>
-        //     {
-        //         TestDataGenerator.CreateKeySwitch(),
-        //         TestDataGenerator.CreateKeySwitch(),
-        //     };
-        //
-        //     IExportContentWriterFactory contentWriterFactory = new KeySwitchExportContentFileWriterFactory( ".json", new DirectoryPath( outputDirectory ) );
-        //     IExportContentFactory exportContentFactory = new CakewalkExportContentFactory();
-        //     IExportStrategy strategy = new SingleExportStrategy( contentWriterFactory, exportContentFactory );
-        //
-        //     Assert.ThrowsAsync<ArgumentException>( async () => await strategy.ExportAsync( keySwitches ) );
-        // }
     }
 }

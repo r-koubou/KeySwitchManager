@@ -8,9 +8,9 @@ namespace KeySwitchManager.Infrastructures.Storage.KeySwitches
 {
     public class FileExportContentWriter : IExportContentWriter
     {
-        private FilePath OutputPath { get; }
+        private IFilePath OutputPath { get; }
 
-        public FileExportContentWriter( FilePath outputPath )
+        public FileExportContentWriter( IFilePath outputPath )
         {
             OutputPath = outputPath;
         }
