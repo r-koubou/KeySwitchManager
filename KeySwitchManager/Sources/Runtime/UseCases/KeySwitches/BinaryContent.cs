@@ -1,4 +1,5 @@
 using System.IO;
+using System.Threading.Tasks;
 
 using RkHelper.Primitives;
 
@@ -21,9 +22,9 @@ namespace KeySwitchManager.UseCase.KeySwitches
             this.length = length;
         }
 
-        public Stream GetContentStream()
+        public Task<Stream> GetContentStreamAsync()
         {
-            return new MemoryStream( data, offset, length );
+            return Task.FromResult<Stream>( new MemoryStream( data, offset, length ) );
         }
     }
 }

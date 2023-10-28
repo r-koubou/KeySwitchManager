@@ -7,6 +7,9 @@ namespace KeySwitchManager.UseCase.KeySwitches.Export
 {
     public interface IExportStrategy
     {
-        Task ExportAsync( IReadOnlyCollection<KeySwitch> keySwitches, IExportContentWriter exportContentWriter );
+        Task ExportAsync(
+            IReadOnlyCollection<KeySwitch> keySwitches,
+            IExportContentWriter contentWriter,
+            IExportContentFactory contentFactory );
     }
 }

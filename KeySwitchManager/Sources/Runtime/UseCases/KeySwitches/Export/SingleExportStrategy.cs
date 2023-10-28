@@ -7,17 +7,13 @@ namespace KeySwitchManager.UseCase.KeySwitches.Export
 {
     public class SingleExportStrategy : IExportStrategy
     {
-        private IExportContentFactory ContentFactory { get; }
-
-        public SingleExportStrategy( IExportContentFactory contentFactory )
+        async Task IExportStrategy.ExportAsync(
+            IReadOnlyCollection<KeySwitch> keySwitches,
+            IExportContentWriter contentWriter,
+            IExportContentFactory contentFactory )
         {
-            ContentFactory = contentFactory;
-        }
-
-        async Task IExportStrategy.ExportAsync( IReadOnlyCollection<KeySwitch> keySwitches, IExportContentWriter exportContentWriter )
-        {
-            var content = ContentFactory.Create( keySwitches );
-            await exportContentWriter.WriteAsync( content );
+            var content = await contentFactory.CreateAsync( keySwitches );
+            await contentWriter.WriteAsync( content );
         }
     }
 }
