@@ -3,23 +3,23 @@ using System.Threading.Tasks;
 
 using KeySwitchManager.Domain.KeySwitches.Models;
 
-namespace KeySwitchManager.UseCase.KeySwitches
+namespace KeySwitchManager.UseCase.KeySwitches.Export
 {
-    public class MultipleFilesOutputStrategy : IExportStrategy
+    public class MultipleExportStrategy : IExportStrategy
     {
         private IExportContentFactory ContentFactory { get; }
 
-        public MultipleFilesOutputStrategy( IExportContentFactory contentFactory )
+        public MultipleExportStrategy( IExportContentFactory contentFactory )
         {
             ContentFactory = contentFactory;
         }
 
-        async Task IExportStrategy.ExportAsync( IReadOnlyCollection<KeySwitch> keySwitches, IContentWriter contentWriter )
+        async Task IExportStrategy.ExportAsync( IReadOnlyCollection<KeySwitch> keySwitches, IExportContentWriter exportContentWriter )
         {
             foreach( var keySwitch in keySwitches )
             {
                 var content = ContentFactory.Create( keySwitches );
-                await contentWriter.WriteAsync( content );
+                await exportContentWriter.WriteAsync( content );
             }
         }
     }
