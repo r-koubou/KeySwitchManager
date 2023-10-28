@@ -7,10 +7,10 @@ namespace KeySwitchManager.UseCase.KeySwitches.Export
 {
     public class MultipleExportStrategy : IExportStrategy
     {
-        private IExportContentWriterFactory<KeySwitch> ContentWriterFactory { get; }
+        private IExportContentWriterFactory ContentWriterFactory { get; }
         private IExportContentFactory ContentFactory { get; }
 
-        public MultipleExportStrategy( IExportContentWriterFactory<KeySwitch> contentWriterFactory, IExportContentFactory contentFactory )
+        public MultipleExportStrategy( IExportContentWriterFactory contentWriterFactory, IExportContentFactory contentFactory )
         {
             ContentWriterFactory = contentWriterFactory;
             ContentFactory       = contentFactory;
@@ -20,8 +20,9 @@ namespace KeySwitchManager.UseCase.KeySwitches.Export
         {
             foreach( var x in keySwitches )
             {
-                var content = await ContentFactory.CreateAsync( new[] { x } );
-                var contentWriter = ContentWriterFactory.Create( x );
+                var source = new[] { x };
+                var content = await ContentFactory.CreateAsync( source );
+                var contentWriter = await ContentWriterFactory.CreateAsync( source );
                 await contentWriter.WriteAsync( content );
             }
         }

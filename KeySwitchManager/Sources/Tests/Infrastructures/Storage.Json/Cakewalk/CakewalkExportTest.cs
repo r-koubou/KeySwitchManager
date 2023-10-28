@@ -30,15 +30,14 @@ namespace KeySwitchManager.Testing.Storage.Xml.Cakewalk
         [Test]
         public void ExportTest()
         {
-            var outputPath = Path.Combine( TestOutputDirectory, $"{nameof( ExportTest )}.json" );
+            var outputDirectory = Path.Combine( TestOutputDirectory, nameof( ExportTest ) );
             var keyswitch = TestDataGenerator.CreateKeySwitch();
-            IExportContentWriter contentWriter = new FileExportContentWriter( new FilePath( outputPath ) );
+
+            IExportContentWriterFactory contentWriterFactory = new KeySwitchExportContentFileWriterFactory( ".json", new DirectoryPath( outputDirectory ) );
             IExportContentFactory exportContentFactory = new CakewalkExportContentFactory();
-            IExportStrategy strategy = new SingleExportStrategy( contentWriter, exportContentFactory );
+            IExportStrategy strategy = new SingleExportStrategy( contentWriterFactory, exportContentFactory );
 
             Assert.DoesNotThrowAsync( async () => await strategy.ExportAsync( new[] { keyswitch } ) );
-
-            Console.WriteLine( File.ReadAllText( outputPath ) );
         }
 
         [Test]
@@ -46,13 +45,13 @@ namespace KeySwitchManager.Testing.Storage.Xml.Cakewalk
         {
             var keySwitches = new List<KeySwitch>
             {
-                TestDataGenerator.CreateKeySwitch( developerName: "TestDev1" ),
-                TestDataGenerator.CreateKeySwitch( developerName: "TestDev2" ),
+                TestDataGenerator.CreateKeySwitch( productName: "Product1" ),
+                TestDataGenerator.CreateKeySwitch( productName: "Product2" ),
             };
 
             var outputDirectory = Path.Combine( TestOutputDirectory, nameof( ExportMultipleTest ) );
 
-            IExportContentWriterFactory<KeySwitch> contentWriterFactory = new KeySwitchExportContentFileWriterFactory( ".json", new DirectoryPath( outputDirectory ) );
+            IExportContentWriterFactory contentWriterFactory = new KeySwitchExportContentFileWriterFactory( ".json", new DirectoryPath( outputDirectory ) );
             IExportContentFactory exportContentFactory = new CakewalkExportContentFactory();
             IExportStrategy strategy = new MultipleExportStrategy( contentWriterFactory, exportContentFactory);
 
@@ -62,16 +61,16 @@ namespace KeySwitchManager.Testing.Storage.Xml.Cakewalk
         [Test]
         public void Export_Fail_ElementSizeOverThan_2_To_SingleFile_Test()
         {
-            var outputPath = Path.Combine( TestOutputDirectory, $"{nameof( ExportTest )}.json" );
+            var outputDirectory = Path.Combine( TestOutputDirectory, nameof( Export_Fail_ElementSizeOverThan_2_To_SingleFile_Test ) );
             var keySwitches = new List<KeySwitch>
             {
                 TestDataGenerator.CreateKeySwitch(),
                 TestDataGenerator.CreateKeySwitch(),
             };
 
-            IExportContentWriter contentWriter = new FileExportContentWriter( new FilePath( outputPath ) );
+            IExportContentWriterFactory contentWriterFactory = new KeySwitchExportContentFileWriterFactory( ".json", new DirectoryPath( outputDirectory ) );
             IExportContentFactory exportContentFactory = new CakewalkExportContentFactory();
-            IExportStrategy strategy = new SingleExportStrategy( contentWriter, exportContentFactory );
+            IExportStrategy strategy = new SingleExportStrategy( contentWriterFactory, exportContentFactory );
 
             Assert.ThrowsAsync<ArgumentException>( async () => await strategy.ExportAsync( keySwitches ) );
         }
