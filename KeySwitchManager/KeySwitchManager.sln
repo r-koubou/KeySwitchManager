@@ -50,6 +50,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Applications.CLI", "Sources
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Storage.Json", "Sources\Tests\Infrastructures\Storage.Json\Storage.Json.csproj", "{61CEC52E-8F9F-4A98-87B8-9AC0E764A3D9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Storage.Spreadsheet.ClosedXml", "Sources\Tests\Infrastructures\Storage.Spreadsheet.ClosedXml\Storage.Spreadsheet.ClosedXml.csproj", "{7ABC44B5-2B89-44C1-8B6C-951D3169E05B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -128,6 +130,10 @@ Global
 		{61CEC52E-8F9F-4A98-87B8-9AC0E764A3D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{61CEC52E-8F9F-4A98-87B8-9AC0E764A3D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{61CEC52E-8F9F-4A98-87B8-9AC0E764A3D9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7ABC44B5-2B89-44C1-8B6C-951D3169E05B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7ABC44B5-2B89-44C1-8B6C-951D3169E05B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7ABC44B5-2B89-44C1-8B6C-951D3169E05B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7ABC44B5-2B89-44C1-8B6C-951D3169E05B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{EAE5D07E-8455-4C33-BCD1-07EFF958E21B} = {505E86DD-3A59-4038-B109-22B3678D035E}
@@ -153,5 +159,6 @@ Global
 		{634AFB40-DAF4-4A06-8C2C-95880D514C28} = {43EB4457-4958-43C4-80A0-5279D3D7EE6D}
 		{D35DCF05-CE3B-4258-AF17-5D73C2A9EE86} = {43EB4457-4958-43C4-80A0-5279D3D7EE6D}
 		{61CEC52E-8F9F-4A98-87B8-9AC0E764A3D9} = {B1FC3859-B078-471F-81F2-FBB0A25C974B}
+		{7ABC44B5-2B89-44C1-8B6C-951D3169E05B} = {B1FC3859-B078-471F-81F2-FBB0A25C974B}
 	EndGlobalSection
 EndGlobal
