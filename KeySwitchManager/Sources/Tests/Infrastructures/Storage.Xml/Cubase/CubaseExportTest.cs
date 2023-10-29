@@ -4,7 +4,6 @@ using System.IO;
 using KeySwitchManager.Commons.Data;
 using KeySwitchManager.Domain.MidiMessages.Models.Aggregations;
 using KeySwitchManager.Domain.MidiMessages.Models.Factory;
-using KeySwitchManager.Infrastructures.Storage.KeySwitches;
 using KeySwitchManager.Infrastructures.Storage.Xml.KeySwitches.Cubase;
 using KeySwitchManager.Testing.Commons.KeySwitches;
 using KeySwitchManager.UseCase.KeySwitches.Export;
@@ -35,7 +34,7 @@ namespace KeySwitchManager.Testing.Storage.Xml.Cubase
 
             var keySwitch = TestDataGenerator.CreateKeySwitch( articulation );
 
-            IExportContentWriterFactory contentWriterFactory = new KeySwitchExportContentFileWriterFactory( ".xml", new DirectoryPath( outputDirectory ) );
+            IExportContentWriterFactory contentWriterFactory = new CubaseExportContentFileWriterFactory( new DirectoryPath( outputDirectory ) );
             IExportContentFactory exportContentFactory = new CubaseExportContentFactory();
             IExportStrategy strategy = new SingleExportStrategy( contentWriterFactory, exportContentFactory );
 

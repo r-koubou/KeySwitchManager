@@ -3,7 +3,6 @@ using System.IO;
 
 using KeySwitchManager.Commons.Data;
 using KeySwitchManager.Domain.KeySwitches.Models;
-using KeySwitchManager.Infrastructures.Storage.KeySwitches;
 using KeySwitchManager.Infrastructures.Storage.Spreadsheet.ClosedXml.KeySwitches;
 using KeySwitchManager.Testing.Commons.KeySwitches;
 using KeySwitchManager.UseCase.KeySwitches.Export;
@@ -32,7 +31,7 @@ namespace KeySwitchManager.Testing.Storage.Spreadsheet.ClosedXml
             var outputDirectory = Path.Combine( TestOutputDirectory, nameof( ExportTest ) );
             var keyswitch = TestDataGenerator.CreateKeySwitch();
 
-            IExportContentWriterFactory contentWriterFactory = new KeySwitchExportContentFileWriterFactory( ".xlsx", new DirectoryPath( outputDirectory ) );
+            IExportContentWriterFactory contentWriterFactory = new ClosedXmlExportContentFileWriterFactory( new DirectoryPath( outputDirectory ) );
             IExportContentFactory exportContentFactory = new ClosedXmlExportContentFactory();
             IExportStrategy strategy = new SingleExportStrategy( contentWriterFactory, exportContentFactory );
 
@@ -52,7 +51,7 @@ namespace KeySwitchManager.Testing.Storage.Spreadsheet.ClosedXml
             var outputDirectory = new DirectoryPath( Path.Combine( TestOutputDirectory, nameof( ExportGroupedTest ) ) );
 
             IExportContentWriterFactory contentWriterFactory
-                = new KeySwitchExportContentFileWriterFactory(
+                = new ClosedXmlExportContentFileWriterFactory(
                     outputDirectory,
                     new ClosedXmlGroupedExportPathBuilder( ".xlsx", outputDirectory )
                 );

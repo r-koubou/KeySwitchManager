@@ -7,23 +7,23 @@ using KeySwitchManager.UseCase.KeySwitches.Export;
 
 namespace KeySwitchManager.Infrastructures.Storage.KeySwitches
 {
-    public class KeySwitchExportContentFileWriterFactory : IExportContentWriterFactory
+    public abstract class KeySwitchExportContentFileWriterFactory : IExportContentWriterFactory
     {
         private DirectoryPath OutputDirectory { get; }
         private IExportPathBuilder PathBuilder { get; }
 
-        public KeySwitchExportContentFileWriterFactory( string suffix, DirectoryPath outputDirectory )
+        protected KeySwitchExportContentFileWriterFactory( string suffix, DirectoryPath outputDirectory )
           : this(
               outputDirectory,
               new DefaultExportPathBuilder( suffix, outputDirectory ) ) {}
 
-        public KeySwitchExportContentFileWriterFactory( DirectoryPath outputDirectory, IExportPathBuilder pathBuilder )
+        protected KeySwitchExportContentFileWriterFactory( DirectoryPath outputDirectory, IExportPathBuilder pathBuilder )
         {
             OutputDirectory = outputDirectory;
             PathBuilder     = pathBuilder;
         }
 
-        public Task<IExportContentWriter> CreateAsync( IReadOnlyCollection<KeySwitch> keySwitches )
+        public virtual Task<IExportContentWriter> CreateAsync( IReadOnlyCollection<KeySwitch> keySwitches )
         {
             var outputPath = PathBuilder.Build( keySwitches );
             OutputDirectory.CreateNew();

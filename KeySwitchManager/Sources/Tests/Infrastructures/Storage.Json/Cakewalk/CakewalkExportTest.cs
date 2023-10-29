@@ -5,7 +5,6 @@ using System.IO;
 using KeySwitchManager.Commons.Data;
 using KeySwitchManager.Domain.KeySwitches.Models;
 using KeySwitchManager.Infrastructures.Storage.Json.KeySwitches.Cakewalk;
-using KeySwitchManager.Infrastructures.Storage.KeySwitches;
 using KeySwitchManager.Testing.Commons.KeySwitches;
 using KeySwitchManager.UseCase.KeySwitches.Export;
 
@@ -33,7 +32,7 @@ namespace KeySwitchManager.Testing.Storage.Xml.Cakewalk
             var outputDirectory = Path.Combine( TestOutputDirectory, nameof( ExportTest ) );
             var keyswitch = TestDataGenerator.CreateKeySwitch();
 
-            IExportContentWriterFactory contentWriterFactory = new KeySwitchExportContentFileWriterFactory( ".json", new DirectoryPath( outputDirectory ) );
+            IExportContentWriterFactory contentWriterFactory = new CakewalkExportContentFileWriterFactory( new DirectoryPath( outputDirectory ) );
             IExportContentFactory exportContentFactory = new CakewalkExportContentFactory();
             IExportStrategy strategy = new SingleExportStrategy( contentWriterFactory, exportContentFactory );
 
@@ -51,7 +50,7 @@ namespace KeySwitchManager.Testing.Storage.Xml.Cakewalk
 
             var outputDirectory = Path.Combine( TestOutputDirectory, nameof( ExportMultipleTest ) );
 
-            IExportContentWriterFactory contentWriterFactory = new KeySwitchExportContentFileWriterFactory( ".json", new DirectoryPath( outputDirectory ) );
+            IExportContentWriterFactory contentWriterFactory = new CakewalkExportContentFileWriterFactory( new DirectoryPath( outputDirectory ) );
             IExportContentFactory exportContentFactory = new CakewalkExportContentFactory();
             IExportStrategy strategy = new MultipleExportStrategy( contentWriterFactory, exportContentFactory);
 
@@ -68,7 +67,7 @@ namespace KeySwitchManager.Testing.Storage.Xml.Cakewalk
                 TestDataGenerator.CreateKeySwitch(),
             };
 
-            IExportContentWriterFactory contentWriterFactory = new KeySwitchExportContentFileWriterFactory( ".json", new DirectoryPath( outputDirectory ) );
+            IExportContentWriterFactory contentWriterFactory = new CakewalkExportContentFileWriterFactory( new DirectoryPath( outputDirectory ) );
             IExportContentFactory exportContentFactory = new CakewalkExportContentFactory();
             IExportStrategy strategy = new SingleExportStrategy( contentWriterFactory, exportContentFactory );
 
