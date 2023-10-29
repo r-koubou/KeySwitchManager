@@ -11,7 +11,7 @@ namespace KeySwitchManager.Infrastructures.Storage.KeySwitches
     public sealed class DefaultExportPathBuilder : IExportPathBuilder
     {
         public string Suffix { get; }
-        private DirectoryPath OutputDirectory { get; }
+        public DirectoryPath OutputDirectory { get; }
 
         public DefaultExportPathBuilder( string suffix, DirectoryPath outputDirectory )
         {

@@ -51,7 +51,6 @@ namespace KeySwitchManager.Testing.Storage.Spreadsheet.ClosedXml
 
             IExportContentWriterFactory contentWriterFactory
                 = new ClosedXmlExportContentFileWriterFactory(
-                    outputDirectory,
                     new ClosedXmlGroupedExportPathBuilder( ".xlsx", outputDirectory )
                 );
             IExportContentFactory exportContentFactory = new ClosedXmlExportContentFactory();

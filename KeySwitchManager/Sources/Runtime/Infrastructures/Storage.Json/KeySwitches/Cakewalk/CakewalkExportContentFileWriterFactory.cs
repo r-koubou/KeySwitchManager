@@ -7,9 +7,9 @@ namespace KeySwitchManager.Infrastructures.Storage.Json.KeySwitches.Cakewalk
     public sealed class CakewalkExportContentFileWriterFactory : KeySwitchExportContentFileWriterFactory
     {
         public CakewalkExportContentFileWriterFactory( DirectoryPath outputDirectory )
-            : base( outputDirectory, new DefaultExportPathBuilder( ".json", outputDirectory ) ) {}
+            : base( new DefaultExportPathBuilder( ".json", outputDirectory ) ) {}
 
-        public CakewalkExportContentFileWriterFactory( DirectoryPath outputDirectory, IExportPathBuilder pathBuilder )
-            : base( outputDirectory, pathBuilder ) {}
+        public CakewalkExportContentFileWriterFactory( IExportPathBuilder pathBuilder )
+            : base( pathBuilder ) {}
     }
 }

@@ -10,8 +10,9 @@ namespace KeySwitchManager.Infrastructures.Storage.Spreadsheet.ClosedXml.KeySwit
 {
     public sealed class ClosedXmlGroupedExportPathBuilder : IExportPathBuilder
     {
+
         public string Suffix { get; }
-        private DirectoryPath OutputDirectory { get; }
+        public DirectoryPath OutputDirectory { get; }
 
         public ClosedXmlGroupedExportPathBuilder( string suffix, DirectoryPath outputDirectory )
         {

@@ -31,7 +31,6 @@ namespace KeySwitchManager.Testing.Storage.Xml.StudioOne
 
             IExportContentWriterFactory contentWriterFactory
                 = new StudioOneExportContentFileWriterFactory(
-                    outputDirectory,
                     new StudioOneGroupedExportPathBuilder( outputDirectory )
                 );
             IExportContentFactory exportContentFactory = new StudioOneExportContentFactory();

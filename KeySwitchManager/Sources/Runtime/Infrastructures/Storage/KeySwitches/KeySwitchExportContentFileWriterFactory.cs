@@ -13,13 +13,11 @@ namespace KeySwitchManager.Infrastructures.Storage.KeySwitches
         private IExportPathBuilder PathBuilder { get; }
 
         protected KeySwitchExportContentFileWriterFactory( string suffix, DirectoryPath outputDirectory )
-          : this(
-              outputDirectory,
-              new DefaultExportPathBuilder( suffix, outputDirectory ) ) {}
+          : this( new DefaultExportPathBuilder( suffix, outputDirectory ) ) {}
 
-        protected KeySwitchExportContentFileWriterFactory( DirectoryPath outputDirectory, IExportPathBuilder pathBuilder )
+        protected KeySwitchExportContentFileWriterFactory( IExportPathBuilder pathBuilder )
         {
-            OutputDirectory = outputDirectory;
+            OutputDirectory = pathBuilder.OutputDirectory;
             PathBuilder     = pathBuilder;
         }
 

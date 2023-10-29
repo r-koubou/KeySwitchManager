@@ -11,7 +11,7 @@ namespace KeySwitchManager.Infrastructures.Storage.Xml.KeySwitches.StudioOne
     public sealed class StudioOneGroupedExportPathBuilder : IExportPathBuilder
     {
         public string Suffix => ".keyswitch";
-        private DirectoryPath OutputDirectory { get; }
+        public DirectoryPath OutputDirectory { get; }
 
         public StudioOneGroupedExportPathBuilder( DirectoryPath outputDirectory )
         {
