@@ -1,39 +1,30 @@
 ﻿using System.Threading.Tasks;
 
-using KeySwitchManager.Domain.KeySwitches;
-using KeySwitchManager.Domain.KeySwitches.Models;
 using KeySwitchManager.Interactors.KeySwitches;
 using KeySwitchManager.UseCase.KeySwitches.Create;
-
-using RkHelper.System;
+using KeySwitchManager.UseCase.KeySwitches.Export;
 
 namespace KeySwitchManager.Applications.Core.Controllers.Create
 {
     public class CreateFileController : IController
     {
-        private IKeySwitchWriter Writer { get; }
+        private IExportStrategy Strategy { get; }
         private ICreateFilePresenter Presenter { get; }
 
         public CreateFileController(
-            IKeySwitchWriter writer,
+            IExportStrategy strategy,
             ICreateFilePresenter presenter )
         {
-            Writer    = writer;
+            Strategy  = strategy;
             Presenter = presenter;
         }
 
-        public void Dispose()
-        {
-            if( !Writer.LeaveOpen )
-            {
-                Disposer.Dispose( Writer );
-            }
-        }
+        public void Dispose() {}
 
         async Task IController.ExecuteAsync()
         {
-            ICreateFileUseCase interactor = new CreateFileInteractor( Presenter );
-            var response = await interactor.ExecuteAsync( new CreateFileRequest( Writer ) );
+            ICreateFileUseCase interactor = new CreateFileInteractor( Strategy, Presenter );
+            var response = await interactor.ExecuteAsync();
             Presenter.Complete( response );
         }
     }

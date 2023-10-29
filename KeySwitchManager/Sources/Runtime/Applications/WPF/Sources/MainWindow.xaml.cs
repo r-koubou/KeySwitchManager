@@ -185,7 +185,9 @@ namespace KeySwitchManager.Applications.WPF
                 return;
             }
 
-            await ExecuteControllerAsync( () => CreateControllerFactory.Create( path, LogTextView ) );
+            ICreateControllerFactory factory = new CreateFileControllerFactory();
+
+            await ExecuteControllerAsync( () => factory.Create( path, LogTextView ) );
         }
         #endregion
 

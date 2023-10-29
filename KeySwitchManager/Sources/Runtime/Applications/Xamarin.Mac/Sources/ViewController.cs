@@ -125,7 +125,9 @@ namespace KeySwitchManager.Xamarin.Mac
                 return;
             }
 
-            await ExecuteControllerAsync( () => CreateControllerFactory.Create( path, LogView ) );
+            ICreateControllerFactory factory = new CreateFileControllerFactory();
+
+            await ExecuteControllerAsync( () => factory.Create( path, LogView ) );
         }
 
         #endregion
