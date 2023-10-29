@@ -1,9 +1,9 @@
 ﻿using System.Threading.Tasks;
 
 using KeySwitchManager.Domain.KeySwitches;
-using KeySwitchManager.Domain.KeySwitches.Models;
 using KeySwitchManager.Interactors.KeySwitches;
 using KeySwitchManager.UseCase.KeySwitches.Dump;
+using KeySwitchManager.UseCase.KeySwitches.Export;
 
 using RkHelper.System;
 
@@ -12,34 +12,29 @@ namespace KeySwitchManager.Applications.Core.Controllers.Dump
     public class DumpFileController : IController
     {
         private IKeySwitchRepository SourceRepository { get; }
-        private IKeySwitchWriter Writer { get; }
+        private IExportStrategy Strategy { get; }
         private IDumpFilePresenter Presenter { get; }
 
         public DumpFileController(
             IKeySwitchRepository sourceRepository,
-            IKeySwitchWriter writer,
+            IExportStrategy strategy,
             IDumpFilePresenter presenter )
         {
             SourceRepository = sourceRepository;
-            Writer           = writer;
+            Strategy         = strategy;
             Presenter        = presenter;
         }
 
         public void Dispose()
         {
             Disposer.Dispose( SourceRepository );
-
-            if( !Writer.LeaveOpen )
-            {
-                Disposer.Dispose( Writer );
-            }
         }
 
         async Task IController.ExecuteAsync()
         {
             IDumpFileUseCase interactor = new DumpFileInteractor(
                 SourceRepository,
-                Writer,
+                Strategy,
                 Presenter
             );
 

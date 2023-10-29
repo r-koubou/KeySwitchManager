@@ -1,12 +1,7 @@
-using System.IO;
-
 using CommandLine;
 
 using KeySwitchManager.Applications.Core.Controllers.Dump;
 using KeySwitchManager.Applications.Core.Views.LogView;
-using KeySwitchManager.Commons.Data;
-using KeySwitchManager.Infrastructures.Storage.Yaml.KeySwitches;
-using KeySwitchManager.UseCase.KeySwitches.Export;
 
 namespace KeySwitchManager.Applications.CLI.Commands
 {
@@ -24,8 +19,9 @@ namespace KeySwitchManager.Applications.CLI.Commands
         public int Execute( ICommandOption opt )
         {
             var option = (CommandOption)opt;
+            IDumpControllerFactory factory = new DumpFileControllerFactory();
 
-            using var controller = DumpFileControllerFactory.Create(
+            using var controller = factory.Create(
                 option.DatabasePath,
                 option.OutputPath,
                 new ConsoleLogView()
