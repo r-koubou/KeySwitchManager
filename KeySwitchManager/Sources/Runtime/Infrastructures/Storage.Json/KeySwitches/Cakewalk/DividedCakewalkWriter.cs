@@ -10,6 +10,7 @@ using KeySwitchManager.Infrastructures.Storage.KeySwitches.Helper;
 
 namespace KeySwitchManager.Infrastructures.Storage.Json.KeySwitches.Cakewalk
 {
+    [Obsolete( "Use " + nameof(CakewalkExportContentFactory) + " instead" )]
     public class DividedCakewalkWriter : IKeySwitchWriter
     {
         private const string Suffix = ".artmap";

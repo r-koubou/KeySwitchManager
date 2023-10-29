@@ -14,6 +14,7 @@ using RkHelper.IO;
 
 namespace KeySwitchManager.Infrastructures.Storage.Spreadsheet.ClosedXml.KeySwitches
 {
+    [Obsolete( "Use " + nameof(ClosedXmlExportContentFactory) + " instead" )]
     public class ClosedXmlWriter : IKeySwitchWriter
     {
         public bool LeaveOpen { get; }

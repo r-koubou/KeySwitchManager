@@ -11,6 +11,7 @@ using KeySwitchManager.Infrastructures.Storage.KeySwitches.Helper;
 
 namespace KeySwitchManager.Infrastructures.Storage.Spreadsheet.ClosedXml.KeySwitches
 {
+    [Obsolete( "Use " + nameof(ClosedXmlExportContentFactory) + " instead" )]
     public class CombinedClosedXmlWriter : IKeySwitchWriter
     {
         private const string Suffix = ".xlsx";

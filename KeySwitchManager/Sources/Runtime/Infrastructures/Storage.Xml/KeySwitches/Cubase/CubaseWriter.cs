@@ -12,6 +12,7 @@ using KeySwitchManager.Infrastructures.Storage.Xml.KeySwitches.Cubase.Translator
 
 namespace KeySwitchManager.Infrastructures.Storage.Xml.KeySwitches.Cubase
 {
+    [Obsolete( "Use " + nameof(CubaseExportContentFactory) + " instead" )]
     public sealed class CubaseWriter : IKeySwitchWriter
     {
         private const string Suffix = ".expressionmap";

@@ -10,6 +10,7 @@ using KeySwitchManager.Infrastructures.Storage.Yaml.KeySwitches.Translators;
 
 namespace KeySwitchManager.Infrastructures.Storage.Yaml.KeySwitches
 {
+    [Obsolete( "Use " + nameof(YamlExportContentFactory) + " instead" )]
     public sealed class YamlKeySwitchWriter : IKeySwitchWriter
     {
         private Encoding FileEncoding { get; }

@@ -10,6 +10,7 @@ using KeySwitchManager.Infrastructures.Storage.KeySwitches.Helper;
 
 namespace KeySwitchManager.Infrastructures.Storage.Yaml.KeySwitches
 {
+    [Obsolete( "Use " + nameof(YamlExportContentFactory) + " instead" )]
     public class DividedYamlFileWriter : IKeySwitchWriter
     {
         private const string Suffix = ".yaml";

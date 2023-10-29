@@ -11,6 +11,7 @@ using KeySwitchManager.Infrastructures.Storage.Json.KeySwitches.Cakewalk.Transla
 
 namespace KeySwitchManager.Infrastructures.Storage.Json.KeySwitches.Cakewalk
 {
+    [Obsolete( "Use " + nameof(CakewalkExportContentFactory) + " instead" )]
     public sealed class CakewalkWriter : IKeySwitchWriter
     {
         private Encoding FileEncoding { get; }
