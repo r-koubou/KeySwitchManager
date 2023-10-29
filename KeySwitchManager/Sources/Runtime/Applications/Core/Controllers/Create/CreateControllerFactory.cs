@@ -4,12 +4,18 @@ using System.IO;
 using KeySwitchManager.Applications.Core.Views.LogView;
 using KeySwitchManager.Commons.Data;
 using KeySwitchManager.Domain.KeySwitches;
-using KeySwitchManager.Domain.KeySwitches.Models;
 using KeySwitchManager.Infrastructures.Storage.Spreadsheet.ClosedXml.KeySwitches;
 using KeySwitchManager.Infrastructures.Storage.Yaml.KeySwitches;
 
 namespace KeySwitchManager.Applications.Core.Controllers.Create
 {
+    #error TODO
+
+    // TODO
+    // 旧 Writerを置き換え、Factoryクラスをインターフェースに落とし込む。このクラスはファイル書き込みとして振る舞う
+    // ICreateControllerFactory
+    // CreateControllerFactory -> CreateFileControllerFactory
+
     public static class CreateControllerFactory
     {
         public static IController Create( string outputFilePath, ILogTextView logTextView )
