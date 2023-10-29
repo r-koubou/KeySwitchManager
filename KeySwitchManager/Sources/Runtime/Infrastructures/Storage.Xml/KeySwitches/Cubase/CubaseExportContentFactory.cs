@@ -3,25 +3,23 @@ using System.Linq;
 using System.Threading.Tasks;
 
 using KeySwitchManager.Domain.KeySwitches.Models;
-using KeySwitchManager.Infrastructures.Storage.Json.KeySwitches.Cakewalk.Translators;
 using KeySwitchManager.Infrastructures.Storage.KeySwitches.Helper;
+using KeySwitchManager.Infrastructures.Storage.Xml.KeySwitches.Cubase.Translators;
 using KeySwitchManager.UseCase.KeySwitches;
 using KeySwitchManager.UseCase.KeySwitches.Export;
 
-namespace KeySwitchManager.Infrastructures.Storage.Json.KeySwitches.Cakewalk
+namespace KeySwitchManager.Infrastructures.Storage.Xml.KeySwitches.Cubase
 {
-    public class CakewalkExportContentFactory : IExportContentFactory
+    public class CubaseExportContentFactory : IExportContentFactory
     {
         public Task<IContent> CreateAsync( IReadOnlyCollection<KeySwitch> keySwitches )
         {
             KeySwitchValidateHelper.ValidateOneElement( keySwitches );
 
             var source = keySwitches.First();
+            var xmlText = new CubaseExportTranslator().Translate( source );
 
-            // TODO すべての要素を束ねた 1 JSONファイルにしたい(Cakewalkは保持できる)
-            var jsonText = new CakewalkExportTranslator( true ).Translate( source );
-
-            return Task.FromResult<IContent>( new StringContent( jsonText.Value ) );
+            return Task.FromResult<IContent>( new StringContent( xmlText.Value ) );
         }
     }
 }
