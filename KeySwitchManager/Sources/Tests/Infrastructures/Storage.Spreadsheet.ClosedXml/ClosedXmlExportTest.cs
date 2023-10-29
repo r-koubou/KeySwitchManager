@@ -17,7 +17,6 @@ namespace KeySwitchManager.Testing.Storage.Spreadsheet.ClosedXml
         private static readonly string TestDirectory = TestContext.CurrentContext.TestDirectory;
         private static readonly string TestOutputDirectory = Path.Combine( TestDirectory, $"{nameof( ClosedXmlExportTest )}_Output" );
 
-
         [OneTimeSetUp]
         public void Setup()
         {

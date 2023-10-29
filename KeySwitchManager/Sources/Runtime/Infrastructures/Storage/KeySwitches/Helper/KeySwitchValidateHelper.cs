@@ -19,7 +19,14 @@ namespace KeySwitchManager.Infrastructures.Storage.KeySwitches.Helper
             {
                 throw new ArgumentException( $"{nameof( keySwitches )} has 1 element only" );
             }
+        }
 
+        public static void ValidateNotEmpty( IReadOnlyCollection<KeySwitch> keySwitches )
+        {
+            if( !keySwitches.Any() )
+            {
+                throw new ArgumentException( $"{nameof( keySwitches )} is empty" );
+            }
         }
 
     }
