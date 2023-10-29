@@ -49,10 +49,10 @@ namespace KeySwitchManager.Domain.MidiMessages.Models.Aggregations
                 }
                 if( x != null )
                 {
-                    return y != null && x.Equals( y );
+                    return y != null && ( (Object)x ).Equals( y );
                 }
 
-                return x != null && y != null && y.Equals( x );
+                return x != null && y != null && ( (Object)y ).Equals( x );
             }
 
             public int GetHashCode( IMidiMessage message )

@@ -7,8 +7,6 @@ using KeySwitchManager.Domain.MidiMessages.Models.Aggregations;
 using KeySwitchManager.Domain.MidiMessages.Models.Factory;
 using KeySwitchManager.Infrastructures.Storage.Yaml.KeySwitches.Models.Aggregations;
 
-using RkHelper.Time;
-
 namespace KeySwitchManager.Infrastructures.Storage.Yaml.KeySwitches.Translators.Helpers
 {
     internal static class TranslateKeySwitchHelper
