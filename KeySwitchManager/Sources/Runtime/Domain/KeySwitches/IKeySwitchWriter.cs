@@ -6,6 +6,7 @@ using KeySwitchManager.Domain.KeySwitches.Models;
 
 namespace KeySwitchManager.Domain.KeySwitches
 {
+    [Obsolete( "Use `KeySwitchManager.UseCase.KeySwitches.Export.IExportContentWriter` instead" )]
     public interface IKeySwitchWriter : IDisposable
     {
         public const int DefaultStreamWriterBufferSize = 1024; // System.IO.StreamWriter.DefaultBufferSize is 1024
