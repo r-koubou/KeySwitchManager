@@ -3,7 +3,6 @@ using System.Reactive.Subjects;
 using System.Threading.Tasks;
 
 using KeySwitchManager.Domain.KeySwitches;
-using KeySwitchManager.Domain.KeySwitches.Models;
 using KeySwitchManager.Domain.KeySwitches.Models.Values;
 using KeySwitchManager.Interactors.KeySwitches;
 using KeySwitchManager.UseCase.KeySwitches.Export;
@@ -15,7 +14,7 @@ namespace KeySwitchManager.Applications.Core.Controllers.Export
     public class ExportFileController : IController
     {
         private IKeySwitchRepository SourceRepository { get; }
-        private IKeySwitchWriter Writer { get; }
+        private IExportStrategy Strategy { get; }
         private DeveloperName DeveloperName { get; }
         private ProductName ProductName { get; }
         private InstrumentName InstrumentName { get; }
@@ -27,14 +26,14 @@ namespace KeySwitchManager.Applications.Core.Controllers.Export
             ProductName productName,
             InstrumentName instrumentName,
             IKeySwitchRepository sourceRepository,
-            IKeySwitchWriter writer,
+            IExportStrategy strategy,
             IExportFilePresenter presenter )
         {
             DeveloperName    = developerName;
             ProductName      = productName;
             InstrumentName   = instrumentName;
             SourceRepository = sourceRepository;
-            Writer           = writer;
+            Strategy           = strategy;
             Presenter        = presenter;
 
             logging.Subscribe(
@@ -48,18 +47,13 @@ namespace KeySwitchManager.Applications.Core.Controllers.Export
         {
             Disposer.Dispose( logging );
             Disposer.Dispose( SourceRepository );
-
-            if( !Writer.LeaveOpen )
-            {
-                Disposer.Dispose( Writer );
-            }
         }
 
         async Task IController.ExecuteAsync()
         {
             IExportFileUseCase interactor = new ExportFileInteractor(
                 SourceRepository,
-                Writer,
+                Strategy,
                 Presenter
             );
 
