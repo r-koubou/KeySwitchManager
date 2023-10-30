@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.Threading;
+using System.Threading.Tasks;
 
 using KeySwitchManager.Domain.KeySwitches;
 using KeySwitchManager.Interactors.KeySwitches;
@@ -30,7 +31,7 @@ namespace KeySwitchManager.Applications.Core.Controllers.Dump
             Disposer.Dispose( SourceRepository );
         }
 
-        async Task IController.ExecuteAsync()
+        async Task IController.ExecuteAsync( CancellationToken cancellationToken )
         {
             IDumpFileUseCase interactor = new DumpFileInteractor(
                 SourceRepository,
@@ -38,7 +39,7 @@ namespace KeySwitchManager.Applications.Core.Controllers.Dump
                 Presenter
             );
 
-            var response = await interactor.ExecuteAsync( new DumpFileRequest() );
+            var response = await interactor.ExecuteAsync( new DumpFileRequest(), cancellationToken );
             Presenter.Complete( response );
         }
     }

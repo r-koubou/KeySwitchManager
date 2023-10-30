@@ -1,3 +1,4 @@
+using System.Threading;
 using System.Threading.Tasks;
 
 using KeySwitchManager.Domain.KeySwitches;
@@ -23,14 +24,19 @@ namespace KeySwitchManager.Interactors.KeySwitches
             Presenter  = presenter;
         }
 
-        async Task<ImportFileResponse> IImportFileUseCase.ExecuteAsync( ImportFileRequest request )
+        async Task<ImportFileResponse> IImportFileUseCase.ExecuteAsync( ImportFileRequest request, CancellationToken cancellationToken )
         {
             var insertedCount = 0;
             var updatedCount = 0;
 
             foreach( var i in request.KeySwitches )
             {
-                var r = await Repository.SaveAsync( i );
+                if( cancellationToken.IsCancellationRequested )
+                {
+                    break;
+                }
+
+                var r = await Repository.SaveAsync( i, cancellationToken );
                 updatedCount  += r.Updated;
                 insertedCount += r.Inserted;
             }

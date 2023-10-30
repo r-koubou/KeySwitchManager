@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Threading;
 using System.Threading.Tasks;
 
 using KeySwitchManager.Domain.KeySwitches.Models;
@@ -10,6 +11,6 @@ namespace KeySwitchManager.UseCase.KeySwitches.Export
         IContent Create( IReadOnlyCollection<KeySwitch> keySwitches )
             => CreateAsync( keySwitches ).GetAwaiter().GetResult();
 
-        Task<IContent> CreateAsync( IReadOnlyCollection<KeySwitch> keySwitches );
+        Task<IContent> CreateAsync( IReadOnlyCollection<KeySwitch> keySwitches, CancellationToken cancellationToken = default );
     }
 }

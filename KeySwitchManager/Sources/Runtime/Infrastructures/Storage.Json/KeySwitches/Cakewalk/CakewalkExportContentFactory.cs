@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 
 using KeySwitchManager.Domain.KeySwitches.Models;
@@ -12,7 +13,7 @@ namespace KeySwitchManager.Infrastructures.Storage.Json.KeySwitches.Cakewalk
 {
     public class CakewalkExportContentFactory : IExportContentFactory
     {
-        public Task<IContent> CreateAsync( IReadOnlyCollection<KeySwitch> keySwitches )
+        public Task<IContent> CreateAsync( IReadOnlyCollection<KeySwitch> keySwitches, CancellationToken cancellationToken = default )
         {
             KeySwitchValidateHelper.ValidateOneElement( keySwitches );
 

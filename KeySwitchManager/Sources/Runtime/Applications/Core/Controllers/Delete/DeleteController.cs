@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.Threading;
+using System.Threading.Tasks;
 
 using KeySwitchManager.Domain.KeySwitches;
 using KeySwitchManager.Interactors.KeySwitches;
@@ -43,11 +44,11 @@ namespace KeySwitchManager.Applications.Core.Controllers.Delete
             }
         }
 
-        async Task IController.ExecuteAsync()
+        async Task IController.ExecuteAsync( CancellationToken cancellationToken )
         {
             IDeleteUseCase interactor = new DeleteInteractor( DatabaseRepository, Presenter );
             var request = new DeleteRequest( DeveloperName, ProductName, InstrumentName );
-            var response = await interactor.ExecuteAsync( request );
+            var response = await interactor.ExecuteAsync( request, cancellationToken );
 
             if( response.RemovedCount > 0 )
             {

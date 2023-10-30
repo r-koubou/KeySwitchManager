@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Threading;
 using System.Threading.Tasks;
 
 using KeySwitchManager.Commons.Data;
@@ -21,7 +22,7 @@ namespace KeySwitchManager.Infrastructures.Storage.KeySwitches
             PathBuilder     = pathBuilder;
         }
 
-        public virtual Task<IExportContentWriter> CreateAsync( IReadOnlyCollection<KeySwitch> keySwitches )
+        public virtual Task<IExportContentWriter> CreateAsync( IReadOnlyCollection<KeySwitch> keySwitches, CancellationToken cancellationToken = default )
         {
             var outputPath = PathBuilder.Build( keySwitches );
             OutputDirectory.CreateNew();

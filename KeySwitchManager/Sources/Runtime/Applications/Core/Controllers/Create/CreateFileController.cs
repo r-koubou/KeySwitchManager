@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.Threading;
+using System.Threading.Tasks;
 
 using KeySwitchManager.Interactors.KeySwitches;
 using KeySwitchManager.UseCase.KeySwitches.Create;
@@ -21,10 +22,10 @@ namespace KeySwitchManager.Applications.Core.Controllers.Create
 
         public void Dispose() {}
 
-        async Task IController.ExecuteAsync()
+        async Task IController.ExecuteAsync( CancellationToken cancellationToken )
         {
             ICreateFileUseCase interactor = new CreateFileInteractor( Strategy, Presenter );
-            var response = await interactor.ExecuteAsync();
+            var response = await interactor.ExecuteAsync( cancellationToken );
             Presenter.Complete( response );
         }
     }

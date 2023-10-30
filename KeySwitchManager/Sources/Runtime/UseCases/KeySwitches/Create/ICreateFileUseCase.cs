@@ -1,3 +1,4 @@
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace KeySwitchManager.UseCase.KeySwitches.Create
@@ -7,6 +8,6 @@ namespace KeySwitchManager.UseCase.KeySwitches.Create
         public CreateFileResponse Execute()
             => ExecuteAsync().GetAwaiter().GetResult();
 
-        public Task<CreateFileResponse> ExecuteAsync();
+        public Task<CreateFileResponse> ExecuteAsync( CancellationToken cancellationToken = default );
     }
 }

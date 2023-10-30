@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 
 using KeySwitchManager.Domain.KeySwitches.Models;
@@ -15,7 +16,7 @@ namespace KeySwitchManager.Infrastructures.Storage.Xml.KeySwitches.StudioOne
 {
     public class StudioOneExportContentFactory : IExportContentFactory
     {
-        public Task<IContent> CreateAsync( IReadOnlyCollection<KeySwitch> keySwitches )
+        public Task<IContent> CreateAsync( IReadOnlyCollection<KeySwitch> keySwitches, CancellationToken cancellationToken = default )
         {
             KeySwitchValidateHelper.ValidateNotEmpty( keySwitches );
 

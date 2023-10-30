@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Threading;
 using System.Threading.Tasks;
 
 using KeySwitchManager.Domain.KeySwitches;
@@ -28,7 +29,7 @@ namespace KeySwitchManager.Interactors.KeySwitches
             Presenter  = presenter;
         }
 
-        async Task<FindResponse> IFindUseCase.ExecuteAsync( FindRequest request )
+        async Task<FindResponse> IFindUseCase.ExecuteAsync( FindRequest request, CancellationToken cancellationToken )
         {
             var developerName = request.DeveloperName;
             var productName = request.ProductName;
@@ -40,7 +41,8 @@ namespace KeySwitchManager.Interactors.KeySwitches
                 var keySwitches = await Repository.FindAsync(
                     new DeveloperName( request.DeveloperName ),
                     new ProductName( request.ProductName ),
-                    new InstrumentName( request.InstrumentName )
+                    new InstrumentName( request.InstrumentName ),
+                    cancellationToken
                 );
 
                 return new FindResponse( keySwitches );
@@ -52,7 +54,8 @@ namespace KeySwitchManager.Interactors.KeySwitches
             {
                 var keySwitches = await Repository.FindAsync(
                     new DeveloperName( request.DeveloperName ),
-                    new ProductName( request.ProductName )
+                    new ProductName( request.ProductName ),
+                    cancellationToken
                 );
 
                 return new FindResponse( keySwitches );
@@ -63,7 +66,8 @@ namespace KeySwitchManager.Interactors.KeySwitches
             if( !StringHelper.IsEmpty( developerName ) )
             {
                 var keySwitches = await Repository.FindAsync(
-                    new DeveloperName( request.DeveloperName )
+                    new DeveloperName( request.DeveloperName ),
+                    cancellationToken
                 );
 
                 return new FindResponse( keySwitches );

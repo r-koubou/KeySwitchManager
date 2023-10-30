@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Reactive.Subjects;
+using System.Threading;
 using System.Threading.Tasks;
 
 using KeySwitchManager.Domain.KeySwitches;
@@ -49,7 +50,7 @@ namespace KeySwitchManager.Applications.Core.Controllers.Export
             Disposer.Dispose( SourceRepository );
         }
 
-        async Task IController.ExecuteAsync()
+        async Task IController.ExecuteAsync( CancellationToken cancellationToken )
         {
             IExportFileUseCase interactor = new ExportFileInteractor(
                 SourceRepository,
@@ -63,7 +64,7 @@ namespace KeySwitchManager.Applications.Core.Controllers.Export
                     ProductName.Value,
                     InstrumentName.Value
                 ),
-                logging
+                cancellationToken
             );
 
             Presenter.Complete( response );

@@ -1,3 +1,4 @@
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace KeySwitchManager.UseCase.KeySwitches.Import
@@ -7,6 +8,6 @@ namespace KeySwitchManager.UseCase.KeySwitches.Import
         public ImportFileResponse Execute( ImportFileRequest request )
             => ExecuteAsync( request ).GetAwaiter().GetResult();
 
-        public Task<ImportFileResponse> ExecuteAsync( ImportFileRequest request );
+        public Task<ImportFileResponse> ExecuteAsync( ImportFileRequest request, CancellationToken cancellationToken = default );
     }
 }
