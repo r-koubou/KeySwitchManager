@@ -1,3 +1,4 @@
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace KeySwitchManager.UseCase.KeySwitches.Dump
@@ -5,8 +6,8 @@ namespace KeySwitchManager.UseCase.KeySwitches.Dump
     public interface IDumpFileUseCase
     {
         public DumpFileResponse Execute( DumpFileRequest request )
-            => ExecuteAsync( request ).GetAwaiter().GetResult();
+            => ExecuteAsync( request, default ).GetAwaiter().GetResult();
 
-        public Task<DumpFileResponse> ExecuteAsync( DumpFileRequest request );
+        public Task<DumpFileResponse> ExecuteAsync( DumpFileRequest request, CancellationToken cancellationToken );
     }
 }

@@ -1,3 +1,4 @@
+using System.Threading;
 using System.Threading.Tasks;
 
 using KeySwitchManager.Domain.KeySwitches.Helpers;
@@ -17,10 +18,10 @@ namespace KeySwitchManager.Interactors.KeySwitches
             Presenter  = presenter;
         }
 
-        async Task<CreateFileResponse> ICreateFileUseCase.ExecuteAsync()
+        async Task<CreateFileResponse> ICreateFileUseCase.ExecuteAsync( CancellationToken cancellationToken )
         {
             var keyswitch = KeySwitchFactoryHelper.CreateTemplate();
-            await Strategy.ExportAsync( new[] { keyswitch } );
+            await Strategy.ExportAsync( new[] { keyswitch }, cancellationToken );
 
             return new CreateFileResponse();
         }
