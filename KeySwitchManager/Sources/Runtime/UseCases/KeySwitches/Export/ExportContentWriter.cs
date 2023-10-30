@@ -1,4 +1,5 @@
 using System.IO;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace KeySwitchManager.UseCase.KeySwitches.Export
@@ -12,6 +13,6 @@ namespace KeySwitchManager.UseCase.KeySwitches.Export
             Stream = stream;
         }
 
-        public abstract Task WriteAsync( IContent content );
+        public abstract Task WriteAsync( IContent content, CancellationToken cancellationToken );
     }
 }

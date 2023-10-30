@@ -1,3 +1,4 @@
+using System.Threading;
 using System.Threading.Tasks;
 
 using KeySwitchManager.Commons.Data;
@@ -15,11 +16,11 @@ namespace KeySwitchManager.Infrastructures.Storage.KeySwitches
             OutputPath = outputPath;
         }
 
-        public async Task WriteAsync( IContent content )
+        public async Task WriteAsync( IContent content, CancellationToken cancellationToken )
         {
             await using var outputStream = OutputPath.OpenWriteStream();
             await using var contentStream = await content.GetContentStreamAsync();
-            await contentStream.CopyToAsync( outputStream );
+            await contentStream.CopyToAsync( outputStream, cancellationToken );
         }
     }
 }
