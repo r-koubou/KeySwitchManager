@@ -27,9 +27,20 @@ namespace KeySwitchManager.UseCase.KeySwitches.Export
                 }
 
                 var source = new[] { x };
-                var content = await ContentFactory.CreateAsync( source );
-                var contentWriter = await ContentWriterFactory.CreateAsync( source );
-                await contentWriter.WriteAsync( content );
+
+                var content = await ContentFactory.CreateAsync( source , cancellationToken);
+                if( cancellationToken.IsCancellationRequested )
+                {
+                    return;
+                }
+
+                var contentWriter = await ContentWriterFactory.CreateAsync( source, cancellationToken );
+                if( cancellationToken.IsCancellationRequested )
+                {
+                    return;
+                }
+
+                await contentWriter.WriteAsync( content, cancellationToken );
             }
         }
     }

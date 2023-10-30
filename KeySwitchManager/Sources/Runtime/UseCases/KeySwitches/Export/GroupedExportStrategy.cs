@@ -29,14 +29,21 @@ namespace KeySwitchManager.UseCase.KeySwitches.Export
                     break;
                 }
 
-                var developer = kvp.Key.Item1;
-                var product = kvp.Key.Item2;
                 var items = kvp.Value;
 
-                var content = await ContentFactory.CreateAsync( items );
-                var contentWriter = await ContentWriterFactory.CreateAsync( items );
+                var content = await ContentFactory.CreateAsync( items, cancellationToken );
+                if( cancellationToken.IsCancellationRequested )
+                {
+                    return;
+                }
 
-                await contentWriter.WriteAsync( content );
+                var contentWriter = await ContentWriterFactory.CreateAsync( items, cancellationToken );
+                if( cancellationToken.IsCancellationRequested )
+                {
+                    return;
+                }
+
+                await contentWriter.WriteAsync( content, cancellationToken );
             }
         }
     }
