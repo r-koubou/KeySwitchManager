@@ -36,7 +36,7 @@ namespace KeySwitchManager.Testing.Storage.Xml.StudioOne
             IExportContentFactory exportContentFactory = new StudioOneExportContentFactory();
             IExportStrategy strategy = new GroupedExportStrategy( contentWriterFactory, exportContentFactory);
 
-            Assert.DoesNotThrowAsync( async () => await strategy.ExportAsync( keySwitches ) );
+            Assert.DoesNotThrowAsync( async () => await strategy.ExportAsync( keySwitches, default ) );
         }
     }
 }

@@ -36,7 +36,7 @@ namespace KeySwitchManager.Testing.Storage.Xml.Cakewalk
             IExportContentFactory exportContentFactory = new CakewalkExportContentFactory();
             IExportStrategy strategy = new SingleExportStrategy( contentWriterFactory, exportContentFactory );
 
-            Assert.DoesNotThrowAsync( async () => await strategy.ExportAsync( new[] { keyswitch } ) );
+            Assert.DoesNotThrowAsync( async () => await strategy.ExportAsync( new[] { keyswitch }, default ) );
         }
 
         [Test]
@@ -54,7 +54,7 @@ namespace KeySwitchManager.Testing.Storage.Xml.Cakewalk
             IExportContentFactory exportContentFactory = new CakewalkExportContentFactory();
             IExportStrategy strategy = new MultipleExportStrategy( contentWriterFactory, exportContentFactory);
 
-            Assert.DoesNotThrowAsync( async () => await strategy.ExportAsync( keySwitches ) );
+            Assert.DoesNotThrowAsync( async () => await strategy.ExportAsync( keySwitches, default ) );
         }
 
         [Test]
@@ -71,7 +71,7 @@ namespace KeySwitchManager.Testing.Storage.Xml.Cakewalk
             IExportContentFactory exportContentFactory = new CakewalkExportContentFactory();
             IExportStrategy strategy = new SingleExportStrategy( contentWriterFactory, exportContentFactory );
 
-            Assert.ThrowsAsync<ArgumentException>( async () => await strategy.ExportAsync( keySwitches ) );
+            Assert.ThrowsAsync<ArgumentException>( async () => await strategy.ExportAsync( keySwitches, default ) );
         }
     }
 }

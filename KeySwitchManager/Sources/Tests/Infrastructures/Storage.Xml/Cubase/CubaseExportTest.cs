@@ -38,7 +38,7 @@ namespace KeySwitchManager.Testing.Storage.Xml.Cubase
             IExportContentFactory exportContentFactory = new CubaseExportContentFactory();
             IExportStrategy strategy = new SingleExportStrategy( contentWriterFactory, exportContentFactory );
 
-            Assert.DoesNotThrowAsync( async () => await strategy.ExportAsync( new[] { keySwitch } ) );
+            Assert.DoesNotThrowAsync( async () => await strategy.ExportAsync( new[] { keySwitch }, default ) );
 
         }
     }

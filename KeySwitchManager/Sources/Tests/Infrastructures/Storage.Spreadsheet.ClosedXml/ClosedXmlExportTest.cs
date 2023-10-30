@@ -34,7 +34,7 @@ namespace KeySwitchManager.Testing.Storage.Spreadsheet.ClosedXml
             IExportContentFactory exportContentFactory = new ClosedXmlExportContentFactory();
             IExportStrategy strategy = new SingleExportStrategy( contentWriterFactory, exportContentFactory );
 
-            Assert.DoesNotThrowAsync( async () => await strategy.ExportAsync( new[] { keyswitch } ) );
+            Assert.DoesNotThrowAsync( async () => await strategy.ExportAsync( new[] { keyswitch }, default ) );
         }
 
         [Test]
@@ -56,7 +56,7 @@ namespace KeySwitchManager.Testing.Storage.Spreadsheet.ClosedXml
             IExportContentFactory exportContentFactory = new ClosedXmlExportContentFactory();
             IExportStrategy strategy = new GroupedExportStrategy( contentWriterFactory, exportContentFactory);
 
-            Assert.DoesNotThrowAsync( async () => await strategy.ExportAsync( keySwitches ) );
+            Assert.DoesNotThrowAsync( async () => await strategy.ExportAsync( keySwitches, default ) );
         }
     }
 }
