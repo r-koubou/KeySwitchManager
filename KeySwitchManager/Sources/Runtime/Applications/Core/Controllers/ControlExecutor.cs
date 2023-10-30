@@ -9,9 +9,9 @@ namespace KeySwitchManager.Applications.Core.Controllers
     public static class ControlExecutor
     {
         public static void Execute( Func<IController> controllerFactory, ILogTextView logTextView )
-            => ExecuteAsync( controllerFactory, logTextView, default ).GetAwaiter().GetResult();
+            => ExecuteAsync( controllerFactory, logTextView ).GetAwaiter().GetResult();
 
-        public static async Task ExecuteAsync( Func<IController> controllerFactory, ILogTextView logTextView, CancellationToken cancellationToken )
+        public static async Task ExecuteAsync( Func<IController> controllerFactory, ILogTextView logTextView, CancellationToken cancellationToken = default )
         {
             try
             {
@@ -28,7 +28,7 @@ namespace KeySwitchManager.Applications.Core.Controllers
             }
         }
 
-        private static async Task ExecuteImplAsync( IController controller, ILogTextView logTextView, CancellationToken cancellationToken )
+        private static async Task ExecuteImplAsync( IController controller, ILogTextView logTextView, CancellationToken cancellationToken = default )
         {
             try
             {

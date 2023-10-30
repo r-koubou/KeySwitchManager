@@ -5,6 +5,6 @@ namespace KeySwitchManager.UseCase.KeySwitches.Export
 {
     public interface IExportContentWriter
     {
-        Task WriteAsync( IContent content, CancellationToken cancellationToken );
+        Task WriteAsync( IContent content, CancellationToken cancellationToken = default );
     }
 }

@@ -8,6 +8,6 @@ namespace KeySwitchManager.UseCase.KeySwitches.Export
 {
     public interface IExportStrategy
     {
-        Task ExportAsync( IReadOnlyCollection<KeySwitch> keySwitches, CancellationToken cancellationToken );
+        Task ExportAsync( IReadOnlyCollection<KeySwitch> keySwitches, CancellationToken cancellationToken = default );
     }
 }

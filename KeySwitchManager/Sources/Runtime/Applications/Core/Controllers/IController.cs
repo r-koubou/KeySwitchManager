@@ -7,8 +7,8 @@ namespace KeySwitchManager.Applications.Core.Controllers
     public interface IController : IDisposable
     {
         void Execute()
-            => ExecuteAsync( default ).GetAwaiter().GetResult();
+            => ExecuteAsync().GetAwaiter().GetResult();
 
-        Task ExecuteAsync( CancellationToken cancellationToken );
+        Task ExecuteAsync( CancellationToken cancellationToken = default );
     }
 }

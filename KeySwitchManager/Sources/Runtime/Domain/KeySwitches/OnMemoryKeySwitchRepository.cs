@@ -56,42 +56,42 @@ namespace KeySwitchManager.Domain.KeySwitches
             return await Task.FromResult( new IKeySwitchRepository.SaveResult( 1, 0 ) );
         }
 
-        public virtual async Task<int> FlushAsync( CancellationToken cancellationToken )
+        public virtual async Task<int> FlushAsync( CancellationToken cancellationToken = default )
             => await Task.FromResult( Count() );
         #endregion
 
         #region Delete
-        public async Task<int> DeleteAsync( KeySwitchId keySwitchId, CancellationToken cancellationToken )
+        public async Task<int> DeleteAsync( KeySwitchId keySwitchId, CancellationToken cancellationToken = default )
         {
             var founds = await FindAsync( keySwitchId, cancellationToken );
             return founds.Sum( x => KeySwitches.Remove( x ) ? 1 : 0 );
         }
 
-        public async Task<int> DeleteAsync( DeveloperName developerName, ProductName productName, InstrumentName instrumentName, CancellationToken cancellationToken )
+        public async Task<int> DeleteAsync( DeveloperName developerName, ProductName productName, InstrumentName instrumentName, CancellationToken cancellationToken = default )
         {
             var founds = await FindAsync( developerName, productName, instrumentName, cancellationToken );
             return founds.Sum( x => KeySwitches.Remove( x ) ? 1 : 0 );
         }
 
-        public async Task<int> DeleteAsync( DeveloperName developerName, ProductName productName, CancellationToken cancellationToken )
+        public async Task<int> DeleteAsync( DeveloperName developerName, ProductName productName, CancellationToken cancellationToken = default )
         {
             var founds = await FindAsync( developerName, productName, cancellationToken );
             return founds.Sum( x => KeySwitches.Remove( x ) ? 1 : 0 );
         }
 
-        public async Task<int> DeleteAsync( DeveloperName developerName, CancellationToken cancellationToken )
+        public async Task<int> DeleteAsync( DeveloperName developerName, CancellationToken cancellationToken = default )
         {
             var founds = await FindAsync( developerName, cancellationToken );
             return founds.Sum( x => KeySwitches.Remove( x ) ? 1 : 0 );
         }
 
-        public async Task<int> DeleteAsync( ProductName productName, CancellationToken cancellationToken )
+        public async Task<int> DeleteAsync( ProductName productName, CancellationToken cancellationToken = default )
         {
             var founds = await FindAsync( productName, cancellationToken );
             return founds.Sum( x => KeySwitches.Remove( x ) ? 1 : 0 );
         }
 
-        public async Task<int> DeleteAsync( InstrumentName instrumentName, CancellationToken cancellationToken )
+        public async Task<int> DeleteAsync( InstrumentName instrumentName, CancellationToken cancellationToken = default )
         {
             var founds = await FindAsync( instrumentName, cancellationToken );
             return founds.Sum( x => KeySwitches.Remove( x ) ? 1 : 0 );

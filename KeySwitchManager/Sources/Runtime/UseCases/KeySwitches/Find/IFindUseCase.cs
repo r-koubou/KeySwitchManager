@@ -6,8 +6,8 @@ namespace KeySwitchManager.UseCase.KeySwitches.Find
     public interface IFindUseCase
     {
         public FindResponse Execute( FindRequest request )
-            => ExecuteAsync( request, default ).GetAwaiter().GetResult();
+            => ExecuteAsync( request ).GetAwaiter().GetResult();
 
-        public Task<FindResponse> ExecuteAsync( FindRequest request, CancellationToken cancellationToken );
+        public Task<FindResponse> ExecuteAsync( FindRequest request, CancellationToken cancellationToken = default );
     }
 }

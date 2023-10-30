@@ -28,7 +28,7 @@ namespace KeySwitchManager.Domain.KeySwitches.Helpers
             string instrumentName = "",
             CancellationToken cancellationToken = default )
         {
-            return await SearchAsync( repository, default, developerName, productName, instrumentName );
+            return await SearchAsync( repository, default, developerName, productName, instrumentName, cancellationToken );
         }
 
         public static IReadOnlyCollection<KeySwitch> Search(

@@ -6,8 +6,8 @@ namespace KeySwitchManager.UseCase.KeySwitches.Dump
     public interface IDumpFileUseCase
     {
         public DumpFileResponse Execute( DumpFileRequest request )
-            => ExecuteAsync( request, default ).GetAwaiter().GetResult();
+            => ExecuteAsync( request ).GetAwaiter().GetResult();
 
-        public Task<DumpFileResponse> ExecuteAsync( DumpFileRequest request, CancellationToken cancellationToken );
+        public Task<DumpFileResponse> ExecuteAsync( DumpFileRequest request, CancellationToken cancellationToken = default );
     }
 }

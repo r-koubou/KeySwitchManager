@@ -18,91 +18,91 @@ namespace KeySwitchManager.Domain.KeySwitches
 
         #region Save
         public SaveResult Save( KeySwitch keySwitch )
-            => SaveAsync( keySwitch, default).GetAwaiter().GetResult();
+            => SaveAsync( keySwitch ).GetAwaiter().GetResult();
 
-        public Task<SaveResult> SaveAsync( KeySwitch keySwitch, CancellationToken cancellationToken );
+        public Task<SaveResult> SaveAsync( KeySwitch keySwitch, CancellationToken cancellationToken = default );
         #endregion
 
         #region Flush
         public int Flush()
-            => FlushAsync( default ).GetAwaiter().GetResult();
+            => FlushAsync().GetAwaiter().GetResult();
 
-        public Task<int> FlushAsync( CancellationToken cancellationToken )
+        public Task<int> FlushAsync( CancellationToken cancellationToken = default )
             => Task.FromResult( 0 );
         #endregion
 
         #region Delete
         public int Delete( DeveloperName developerName, ProductName productName, InstrumentName instrumentName )
-            => DeleteAsync(developerName, productName, instrumentName, default ).GetAwaiter().GetResult();
+            => DeleteAsync(developerName, productName, instrumentName ).GetAwaiter().GetResult();
 
-        public Task<int> DeleteAsync( DeveloperName developerName, ProductName productName, InstrumentName instrumentName, CancellationToken cancellationToken );
+        public Task<int> DeleteAsync( DeveloperName developerName, ProductName productName, InstrumentName instrumentName, CancellationToken cancellationToken = default );
 
         public int Delete( DeveloperName developerName, ProductName productName )
-            => DeleteAsync( developerName, productName, default ).GetAwaiter().GetResult();
+            => DeleteAsync( developerName, productName ).GetAwaiter().GetResult();
 
-        public Task<int> DeleteAsync( DeveloperName developerName, ProductName productName, CancellationToken cancellationToken );
+        public Task<int> DeleteAsync( DeveloperName developerName, ProductName productName, CancellationToken cancellationToken = default );
 
         public int Delete( DeveloperName developerName )
-            => DeleteAsync( developerName, default ).GetAwaiter().GetResult();
+            => DeleteAsync( developerName ).GetAwaiter().GetResult();
 
-        public Task<int> DeleteAsync( DeveloperName developerName, CancellationToken cancellationToken );
+        public Task<int> DeleteAsync( DeveloperName developerName, CancellationToken cancellationToken = default );
 
         public int Delete( ProductName productName )
-            => DeleteAsync( productName, default ).GetAwaiter().GetResult();
+            => DeleteAsync( productName ).GetAwaiter().GetResult();
 
-        public Task<int> DeleteAsync( ProductName productName, CancellationToken cancellationToken );
+        public Task<int> DeleteAsync( ProductName productName, CancellationToken cancellationToken = default );
 
         public int Delete( InstrumentName instrumentName )
-            => DeleteAsync( instrumentName, default ).GetAwaiter().GetResult();
+            => DeleteAsync( instrumentName ).GetAwaiter().GetResult();
 
-        public Task<int> DeleteAsync( InstrumentName instrumentName, CancellationToken cancellationToken );
+        public Task<int> DeleteAsync( InstrumentName instrumentName, CancellationToken cancellationToken = default );
 
         public int Delete( KeySwitchId keySwitchId )
-            => DeleteAsync( keySwitchId, default ).GetAwaiter().GetResult();
+            => DeleteAsync( keySwitchId ).GetAwaiter().GetResult();
 
-        public Task<int> DeleteAsync( KeySwitchId keySwitchId, CancellationToken cancellationToken );
+        public Task<int> DeleteAsync( KeySwitchId keySwitchId, CancellationToken cancellationToken = default );
 
         public int DeleteAll()
-            => DeleteAllAsync( default ).GetAwaiter().GetResult();
+            => DeleteAllAsync().GetAwaiter().GetResult();
 
-        public Task<int> DeleteAllAsync( CancellationToken cancellationToken );
+        public Task<int> DeleteAllAsync( CancellationToken cancellationToken = default );
         #endregion
 
         #region Find
         public IReadOnlyCollection<KeySwitch> Find( KeySwitchId keySwitchId )
-            => FindAsync( keySwitchId, default ).GetAwaiter().GetResult();
+            => FindAsync( keySwitchId ).GetAwaiter().GetResult();
 
-        public Task<IReadOnlyCollection<KeySwitch>> FindAsync( KeySwitchId keySwitchId, CancellationToken cancellationToken );
+        public Task<IReadOnlyCollection<KeySwitch>> FindAsync( KeySwitchId keySwitchId, CancellationToken cancellationToken = default );
 
         public IReadOnlyCollection<KeySwitch> Find( DeveloperName developerName, ProductName productName, InstrumentName instrumentName )
-            => FindAsync( developerName, productName, instrumentName, default ).GetAwaiter().GetResult();
+            => FindAsync( developerName, productName, instrumentName ).GetAwaiter().GetResult();
 
-        public Task<IReadOnlyCollection<KeySwitch>> FindAsync( DeveloperName developerName, ProductName productName, InstrumentName instrumentName, CancellationToken cancellationToken );
+        public Task<IReadOnlyCollection<KeySwitch>> FindAsync( DeveloperName developerName, ProductName productName, InstrumentName instrumentName, CancellationToken cancellationToken = default );
 
         public IReadOnlyCollection<KeySwitch> Find( DeveloperName developerName, ProductName productName )
-            => FindAsync( developerName, productName, default ).GetAwaiter().GetResult();
+            => FindAsync( developerName, productName ).GetAwaiter().GetResult();
 
-        public Task<IReadOnlyCollection<KeySwitch>> FindAsync( DeveloperName developerName, ProductName productName, CancellationToken cancellationToken );
+        public Task<IReadOnlyCollection<KeySwitch>> FindAsync( DeveloperName developerName, ProductName productName, CancellationToken cancellationToken = default );
 
         public IReadOnlyCollection<KeySwitch> Find( DeveloperName developerName )
-            => FindAsync( developerName, default ).GetAwaiter().GetResult();
+            => FindAsync( developerName ).GetAwaiter().GetResult();
 
-        public Task<IReadOnlyCollection<KeySwitch>> FindAsync( DeveloperName developerName, CancellationToken cancellationToken );
+        public Task<IReadOnlyCollection<KeySwitch>> FindAsync( DeveloperName developerName, CancellationToken cancellationToken = default );
 
         public IReadOnlyCollection<KeySwitch> Find( ProductName productName )
-            => FindAsync( productName, default ).GetAwaiter().GetResult();
+            => FindAsync( productName ).GetAwaiter().GetResult();
 
-        public Task<IReadOnlyCollection<KeySwitch>> FindAsync( ProductName productName, CancellationToken cancellationToken );
+        public Task<IReadOnlyCollection<KeySwitch>> FindAsync( ProductName productName, CancellationToken cancellationToken = default );
 
         public IReadOnlyCollection<KeySwitch> Find( InstrumentName instrumentName )
-            => FindAsync( instrumentName, default ).GetAwaiter().GetResult();
+            => FindAsync( instrumentName ).GetAwaiter().GetResult();
 
-        public Task<IReadOnlyCollection<KeySwitch>> FindAsync( InstrumentName instrumentName, CancellationToken cancellationToken );
+        public Task<IReadOnlyCollection<KeySwitch>> FindAsync( InstrumentName instrumentName, CancellationToken cancellationToken = default );
 
         public IReadOnlyCollection<KeySwitch> FindAll()
-            => FindAllAsync( default ).GetAwaiter().GetResult();
+            => FindAllAsync().GetAwaiter().GetResult();
 
-        public Task<IReadOnlyCollection<KeySwitch>> FindAllAsync( CancellationToken cancellationToken );
+        public Task<IReadOnlyCollection<KeySwitch>> FindAllAsync( CancellationToken cancellationToken = default );
         #endregion
 
         public class SaveResult : IEquatable<SaveResult>

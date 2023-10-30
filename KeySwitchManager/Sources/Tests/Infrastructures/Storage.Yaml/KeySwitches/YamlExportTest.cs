@@ -33,7 +33,7 @@ namespace KeySwitchManager.Testing.Storage.Yaml.KeySwitches
             IExportContentFactory exportContentFactory = new YamlExportContentFactory();
             IExportStrategy strategy = new SingleExportStrategy( contentWriterFactory, exportContentFactory );
 
-            Assert.DoesNotThrowAsync( async () => await strategy.ExportAsync( keySwitches, default ) );
+            Assert.DoesNotThrowAsync( async () => await strategy.ExportAsync( keySwitches ) );
         }
 
         [Test]
@@ -51,7 +51,7 @@ namespace KeySwitchManager.Testing.Storage.Yaml.KeySwitches
             IExportContentFactory exportContentFactory = new YamlExportContentFactory();
             IExportStrategy strategy = new MultipleExportStrategy( contentWriterFactory, exportContentFactory );
 
-            Assert.DoesNotThrowAsync( async () => await strategy.ExportAsync( keySwitches, default ) );
+            Assert.DoesNotThrowAsync( async () => await strategy.ExportAsync( keySwitches ) );
         }
     }
 }

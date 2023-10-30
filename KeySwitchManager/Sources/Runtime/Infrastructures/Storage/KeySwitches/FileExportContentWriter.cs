@@ -16,7 +16,7 @@ namespace KeySwitchManager.Infrastructures.Storage.KeySwitches
             OutputPath = outputPath;
         }
 
-        public async Task WriteAsync( IContent content, CancellationToken cancellationToken )
+        public async Task WriteAsync( IContent content, CancellationToken cancellationToken = default )
         {
             await using var outputStream = OutputPath.OpenWriteStream();
             await using var contentStream = await content.GetContentStreamAsync();

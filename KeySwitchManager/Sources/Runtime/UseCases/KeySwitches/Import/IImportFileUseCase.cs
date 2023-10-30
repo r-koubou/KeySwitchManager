@@ -6,8 +6,8 @@ namespace KeySwitchManager.UseCase.KeySwitches.Import
     public interface IImportFileUseCase
     {
         public ImportFileResponse Execute( ImportFileRequest request )
-            => ExecuteAsync( request, default ).GetAwaiter().GetResult();
+            => ExecuteAsync( request ).GetAwaiter().GetResult();
 
-        public Task<ImportFileResponse> ExecuteAsync( ImportFileRequest request, CancellationToken cancellationToken );
+        public Task<ImportFileResponse> ExecuteAsync( ImportFileRequest request, CancellationToken cancellationToken = default );
     }
 }

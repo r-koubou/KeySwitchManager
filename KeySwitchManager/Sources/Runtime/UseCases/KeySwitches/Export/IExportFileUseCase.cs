@@ -7,8 +7,8 @@ namespace KeySwitchManager.UseCase.KeySwitches.Export
     public interface IExportFileUseCase
     {
         public ExportFileResponse Execute( ExportFileRequest request, IObserver<string>? loggingSubject = null )
-            => ExecuteAsync( request, default ).GetAwaiter().GetResult();
+            => ExecuteAsync( request ).GetAwaiter().GetResult();
 
-        public Task<ExportFileResponse> ExecuteAsync( ExportFileRequest request, CancellationToken cancellationToken );
+        public Task<ExportFileResponse> ExecuteAsync( ExportFileRequest request, CancellationToken cancellationToken = default );
     }
 }

@@ -9,8 +9,8 @@ namespace KeySwitchManager.UseCase.KeySwitches.Export
     public interface IExportContentWriterFactory
     {
         IExportContentWriter Create( IReadOnlyCollection<KeySwitch> keySwitches )
-            => CreateAsync( keySwitches, default ).GetAwaiter().GetResult();
+            => CreateAsync( keySwitches ).GetAwaiter().GetResult();
 
-        Task<IExportContentWriter> CreateAsync( IReadOnlyCollection<KeySwitch> keySwitches, CancellationToken cancellationToken );
+        Task<IExportContentWriter> CreateAsync( IReadOnlyCollection<KeySwitch> keySwitches, CancellationToken cancellationToken = default );
     }
 }

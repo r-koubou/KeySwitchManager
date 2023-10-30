@@ -13,6 +13,6 @@ namespace KeySwitchManager.UseCase.KeySwitches.Export
             Stream = stream;
         }
 
-        public abstract Task WriteAsync( IContent content, CancellationToken cancellationToken );
+        public abstract Task WriteAsync( IContent content, CancellationToken cancellationToken = default );
     }
 }

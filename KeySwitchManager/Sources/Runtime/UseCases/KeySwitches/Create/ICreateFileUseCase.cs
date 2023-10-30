@@ -6,8 +6,8 @@ namespace KeySwitchManager.UseCase.KeySwitches.Create
     public interface ICreateFileUseCase
     {
         public CreateFileResponse Execute()
-            => ExecuteAsync( default ).GetAwaiter().GetResult();
+            => ExecuteAsync().GetAwaiter().GetResult();
 
-        public Task<CreateFileResponse> ExecuteAsync( CancellationToken cancellationToken );
+        public Task<CreateFileResponse> ExecuteAsync( CancellationToken cancellationToken = default );
     }
 }
