@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Threading;
 using System.Threading.Tasks;
 
 using KeySwitchManager.Domain.KeySwitches.Models;
@@ -16,10 +17,15 @@ namespace KeySwitchManager.UseCase.KeySwitches.Export
             ContentFactory       = contentFactory;
         }
 
-        async Task IExportStrategy.ExportAsync( IReadOnlyCollection<KeySwitch> keySwitches )
+        async Task IExportStrategy.ExportAsync( IReadOnlyCollection<KeySwitch> keySwitches, CancellationToken cancellationToken )
         {
             foreach( var x in keySwitches )
             {
+                if( cancellationToken.IsCancellationRequested )
+                {
+                    break;
+                }
+
                 var source = new[] { x };
                 var content = await ContentFactory.CreateAsync( source );
                 var contentWriter = await ContentWriterFactory.CreateAsync( source );
