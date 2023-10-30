@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.IO;
+using System.Threading;
 using System.Threading.Tasks;
 
 using ClosedXML.Excel;
@@ -16,7 +17,7 @@ namespace KeySwitchManager.Infrastructures.Storage.Spreadsheet.ClosedXml.KeySwit
 {
     public class ClosedXmlExportContentFactory : IExportContentFactory
     {
-        public Task<IContent> CreateAsync( IReadOnlyCollection<KeySwitch> keySwitches )
+        public Task<IContent> CreateAsync( IReadOnlyCollection<KeySwitch> keySwitches, CancellationToken _ )
         {
             using var template = new XLWorkbook(
                 StreamHelper.GetAssemblyResourceStream<ClosedXmlExportContentFactory>( "Template.xlsx" )
