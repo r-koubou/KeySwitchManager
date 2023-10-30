@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Threading;
 using System.Threading.Tasks;
 
 using KeySwitchManager.Domain.KeySwitches;
@@ -28,7 +29,7 @@ namespace KeySwitchManager.Interactors.KeySwitches
             Presenter  = presenter;
         }
 
-        async Task<FindResponse> IFindUseCase.ExecuteAsync( FindRequest request )
+        async Task<FindResponse> IFindUseCase.ExecuteAsync( FindRequest request, CancellationToken cancellationToken )
         {
             var developerName = request.DeveloperName;
             var productName = request.ProductName;

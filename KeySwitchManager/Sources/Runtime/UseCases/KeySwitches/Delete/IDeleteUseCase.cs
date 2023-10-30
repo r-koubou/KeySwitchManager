@@ -1,3 +1,4 @@
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace KeySwitchManager.UseCase.KeySwitches.Delete
@@ -5,8 +6,8 @@ namespace KeySwitchManager.UseCase.KeySwitches.Delete
     public interface IDeleteUseCase
     {
         public DeleteResponse Execute( DeleteRequest request )
-            => ExecuteAsync( request ).GetAwaiter().GetResult();
+            => ExecuteAsync( request, default ).GetAwaiter().GetResult();
 
-        public Task<DeleteResponse> ExecuteAsync( DeleteRequest request );
+        public Task<DeleteResponse> ExecuteAsync( DeleteRequest request, CancellationToken cancellationToken );
     }
 }
