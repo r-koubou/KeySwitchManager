@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading;
 using System.Threading.Tasks;
 
 using KeySwitchManager.Applications.Core.Views.LogView;
@@ -8,14 +9,18 @@ namespace KeySwitchManager.Applications.Core.Controllers
     public static class ControlExecutor
     {
         public static void Execute( Func<IController> controllerFactory, ILogTextView logTextView )
-            => ExecuteAsync( controllerFactory, logTextView ).GetAwaiter().GetResult();
+            => ExecuteAsync( controllerFactory, logTextView, default ).GetAwaiter().GetResult();
 
-        public static async Task ExecuteAsync( Func<IController> controllerFactory, ILogTextView logTextView )
+        public static async Task ExecuteAsync( Func<IController> controllerFactory, ILogTextView logTextView, CancellationToken cancellationToken )
         {
             try
             {
                 using var controller = controllerFactory.Invoke();
-                await ExecuteImplAsync( controller, logTextView );
+                await ExecuteImplAsync( controller, logTextView, cancellationToken );
+            }
+            catch( OperationCanceledException )
+            {
+                throw;
             }
             catch( Exception exception )
             {
@@ -23,11 +28,11 @@ namespace KeySwitchManager.Applications.Core.Controllers
             }
         }
 
-        private static async Task ExecuteImplAsync( IController controller, ILogTextView logTextView )
+        private static async Task ExecuteImplAsync( IController controller, ILogTextView logTextView, CancellationToken cancellationToken )
         {
             try
             {
-                await controller.ExecuteAsync();
+                await controller.ExecuteAsync( cancellationToken );
             }
             catch( Exception e )
             {

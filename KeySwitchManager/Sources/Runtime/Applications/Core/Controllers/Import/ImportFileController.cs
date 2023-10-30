@@ -1,4 +1,5 @@
 using System;
+using System.Threading;
 using System.Threading.Tasks;
 
 using KeySwitchManager.Domain.KeySwitches;
@@ -50,13 +51,13 @@ namespace KeySwitchManager.Applications.Core.Controllers.Import
             }
         }
 
-        async Task IController.ExecuteAsync()
+        async Task IController.ExecuteAsync( CancellationToken cancellationToken )
         {
             var keySwitches = KeySwitchReader.Read();
             IImportFileUseCase interactor = new ImportFileInteractor( DatabaseRepository, Presenter );
             var request = new ImportFileRequest( keySwitches );
-            var response = await interactor.ExecuteAsync( request );
-            await DatabaseRepository.FlushAsync();
+            var response = await interactor.ExecuteAsync( request, cancellationToken );
+            await DatabaseRepository.FlushAsync( cancellationToken );
             Presenter.Complete( response );
         }
 

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace KeySwitchManager.Applications.Core.Controllers
@@ -6,8 +7,8 @@ namespace KeySwitchManager.Applications.Core.Controllers
     public interface IController : IDisposable
     {
         void Execute()
-            => ExecuteAsync().GetAwaiter().GetResult();
+            => ExecuteAsync( default ).GetAwaiter().GetResult();
 
-        Task ExecuteAsync();
+        Task ExecuteAsync( CancellationToken cancellationToken );
     }
 }
