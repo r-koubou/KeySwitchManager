@@ -41,7 +41,8 @@ namespace KeySwitchManager.Interactors.KeySwitches
                 var keySwitches = await Repository.FindAsync(
                     new DeveloperName( request.DeveloperName ),
                     new ProductName( request.ProductName ),
-                    new InstrumentName( request.InstrumentName )
+                    new InstrumentName( request.InstrumentName ),
+                    cancellationToken
                 );
 
                 return new FindResponse( keySwitches );
@@ -53,7 +54,8 @@ namespace KeySwitchManager.Interactors.KeySwitches
             {
                 var keySwitches = await Repository.FindAsync(
                     new DeveloperName( request.DeveloperName ),
-                    new ProductName( request.ProductName )
+                    new ProductName( request.ProductName ),
+                    cancellationToken
                 );
 
                 return new FindResponse( keySwitches );
@@ -64,7 +66,8 @@ namespace KeySwitchManager.Interactors.KeySwitches
             if( !StringHelper.IsEmpty( developerName ) )
             {
                 var keySwitches = await Repository.FindAsync(
-                    new DeveloperName( request.DeveloperName )
+                    new DeveloperName( request.DeveloperName ),
+                    cancellationToken
                 );
 
                 return new FindResponse( keySwitches );

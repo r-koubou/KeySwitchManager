@@ -36,7 +36,7 @@ namespace KeySwitchManager.Interactors.KeySwitches
                     break;
                 }
 
-                var r = await Repository.SaveAsync( i );
+                var r = await Repository.SaveAsync( i, cancellationToken );
                 updatedCount  += r.Updated;
                 insertedCount += r.Inserted;
             }

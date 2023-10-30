@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reactive.Subjects;
+using System.Threading;
 using System.Threading.Tasks;
 
 using KeySwitchManager.Domain.KeySwitches.Helpers;
@@ -39,7 +40,7 @@ namespace KeySwitchManager.Domain.KeySwitches
             => KeySwitches.Count;
 
         #region Save
-        public async Task<IKeySwitchRepository.SaveResult> SaveAsync( KeySwitch keySwitch )
+        public async Task<IKeySwitchRepository.SaveResult> SaveAsync( KeySwitch keySwitch, CancellationToken _ )
         {
             var exist = KeySwitches.Find( x => x.Id.Value.Equals( keySwitch.Id.Value ) );
 
@@ -55,48 +56,48 @@ namespace KeySwitchManager.Domain.KeySwitches
             return await Task.FromResult( new IKeySwitchRepository.SaveResult( 1, 0 ) );
         }
 
-        public virtual async Task<int> FlushAsync()
+        public virtual async Task<int> FlushAsync( CancellationToken cancellationToken )
             => await Task.FromResult( Count() );
         #endregion
 
         #region Delete
-        public async Task<int> DeleteAsync( KeySwitchId keySwitchId )
+        public async Task<int> DeleteAsync( KeySwitchId keySwitchId, CancellationToken cancellationToken )
         {
-            var founds = await FindAsync( keySwitchId );
+            var founds = await FindAsync( keySwitchId, cancellationToken );
             return founds.Sum( x => KeySwitches.Remove( x ) ? 1 : 0 );
         }
 
-        public async Task<int> DeleteAsync( DeveloperName developerName, ProductName productName, InstrumentName instrumentName )
+        public async Task<int> DeleteAsync( DeveloperName developerName, ProductName productName, InstrumentName instrumentName, CancellationToken cancellationToken )
         {
-            var founds = await FindAsync( developerName, productName, instrumentName );
+            var founds = await FindAsync( developerName, productName, instrumentName, cancellationToken );
             return founds.Sum( x => KeySwitches.Remove( x ) ? 1 : 0 );
         }
 
-        public async Task<int> DeleteAsync( DeveloperName developerName, ProductName productName )
+        public async Task<int> DeleteAsync( DeveloperName developerName, ProductName productName, CancellationToken cancellationToken )
         {
-            var founds = await FindAsync( developerName, productName );
+            var founds = await FindAsync( developerName, productName, cancellationToken );
             return founds.Sum( x => KeySwitches.Remove( x ) ? 1 : 0 );
         }
 
-        public async Task<int> DeleteAsync( DeveloperName developerName )
+        public async Task<int> DeleteAsync( DeveloperName developerName, CancellationToken cancellationToken )
         {
-            var founds = await FindAsync( developerName );
+            var founds = await FindAsync( developerName, cancellationToken );
             return founds.Sum( x => KeySwitches.Remove( x ) ? 1 : 0 );
         }
 
-        public async Task<int> DeleteAsync( ProductName productName )
+        public async Task<int> DeleteAsync( ProductName productName, CancellationToken cancellationToken )
         {
-            var founds = await FindAsync( productName );
+            var founds = await FindAsync( productName, cancellationToken );
             return founds.Sum( x => KeySwitches.Remove( x ) ? 1 : 0 );
         }
 
-        public async Task<int> DeleteAsync( InstrumentName instrumentName )
+        public async Task<int> DeleteAsync( InstrumentName instrumentName, CancellationToken cancellationToken )
         {
-            var founds = await FindAsync( instrumentName );
+            var founds = await FindAsync( instrumentName, cancellationToken );
             return founds.Sum( x => KeySwitches.Remove( x ) ? 1 : 0 );
         }
 
-        public async Task<int> DeleteAllAsync()
+        public async Task<int> DeleteAllAsync( CancellationToken _ )
         {
             var count = KeySwitches.Count;
             KeySwitches.Clear();
@@ -105,13 +106,13 @@ namespace KeySwitchManager.Domain.KeySwitches
         #endregion
 
         #region Find
-        public async Task<IReadOnlyCollection<KeySwitch>> FindAsync( KeySwitchId keySwitchId )
+        public async Task<IReadOnlyCollection<KeySwitch>> FindAsync( KeySwitchId keySwitchId, CancellationToken _ )
             => await Task.FromResult( KeySwitchHelper.SortByAlphabetical(
                 KeySwitches.FindAll(
                 x => x.Id.Value == keySwitchId.Value
             )));
 
-        public async Task<IReadOnlyCollection<KeySwitch>> FindAsync( DeveloperName developerName, ProductName productName, InstrumentName instrumentName )
+        public async Task<IReadOnlyCollection<KeySwitch>> FindAsync( DeveloperName developerName, ProductName productName, InstrumentName instrumentName, CancellationToken _ )
         {
             var d = developerName.Value;
             var p = productName.Value;
@@ -126,7 +127,7 @@ namespace KeySwitchManager.Domain.KeySwitches
                 )));
         }
 
-        public async Task<IReadOnlyCollection<KeySwitch>> FindAsync( DeveloperName developerName, ProductName productName )
+        public async Task<IReadOnlyCollection<KeySwitch>> FindAsync( DeveloperName developerName, ProductName productName, CancellationToken _ )
         {
             var d = developerName.Value;
             var p = productName.Value;
@@ -139,7 +140,7 @@ namespace KeySwitchManager.Domain.KeySwitches
                 )));
         }
 
-        public async Task<IReadOnlyCollection<KeySwitch>> FindAsync( DeveloperName developerName )
+        public async Task<IReadOnlyCollection<KeySwitch>> FindAsync( DeveloperName developerName, CancellationToken _ )
         {
             var d = developerName.Value;
 
@@ -150,7 +151,7 @@ namespace KeySwitchManager.Domain.KeySwitches
             )));
         }
 
-        public async Task<IReadOnlyCollection<KeySwitch>> FindAsync( ProductName productName )
+        public async Task<IReadOnlyCollection<KeySwitch>> FindAsync( ProductName productName, CancellationToken _ )
         {
             var p = productName.Value;
 
@@ -161,7 +162,7 @@ namespace KeySwitchManager.Domain.KeySwitches
             )));
         }
 
-        public async Task<IReadOnlyCollection<KeySwitch>> FindAsync( InstrumentName instrumentName )
+        public async Task<IReadOnlyCollection<KeySwitch>> FindAsync( InstrumentName instrumentName, CancellationToken _ )
         {
             var i = instrumentName.Value;
 
@@ -172,7 +173,7 @@ namespace KeySwitchManager.Domain.KeySwitches
             )));
         }
 
-        public async Task<IReadOnlyCollection<KeySwitch>> FindAllAsync()
+        public async Task<IReadOnlyCollection<KeySwitch>> FindAllAsync( CancellationToken _ )
             => await Task.FromResult( KeySwitchHelper.SortByAlphabetical( new List<KeySwitch>( KeySwitches ) ) );
         #endregion
     }

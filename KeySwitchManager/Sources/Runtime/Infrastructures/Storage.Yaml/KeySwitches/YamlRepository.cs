@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Reactive.Subjects;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 using KeySwitchManager.Commons.Data;
@@ -41,14 +42,14 @@ namespace KeySwitchManager.Infrastructures.Storage.Yaml.KeySwitches
 
         public async void Dispose()
         {
-            await FlushAsync();
+            await FlushAsync( default );
         }
 
         public int Count()
             => YamlModel.KeySwitches.Count;
 
         #region Save
-        public async Task<IKeySwitchRepository.SaveResult> SaveAsync( KeySwitch keySwitch )
+        public async Task<IKeySwitchRepository.SaveResult> SaveAsync( KeySwitch keySwitch, CancellationToken _ )
         {
             var yamlModels = YamlModel.KeySwitches;
             var model = TranslateModelHelper.Translate( keySwitch );
@@ -70,7 +71,7 @@ namespace KeySwitchManager.Infrastructures.Storage.Yaml.KeySwitches
             return await Task.FromResult( new IKeySwitchRepository.SaveResult( 1, 0 ) );
         }
 
-        public async Task<int> FlushAsync()
+        public async Task<int> FlushAsync( CancellationToken _ )
         {
             await using var stream = YamlFilePath.OpenWriteStream();
             await using var writer = new StreamWriter( stream, Encoding.UTF8 );
@@ -83,7 +84,7 @@ namespace KeySwitchManager.Infrastructures.Storage.Yaml.KeySwitches
         #endregion
 
         #region Delete
-        public async Task<int> DeleteAsync( DeveloperName developerName, ProductName productName, InstrumentName instrumentName )
+        public async Task<int> DeleteAsync( DeveloperName developerName, ProductName productName, InstrumentName instrumentName, CancellationToken _ )
         {
             var keySwitches = YamlModel.KeySwitches;
             var founds = YamlModel.Find( developerName, productName, instrumentName );
@@ -91,7 +92,7 @@ namespace KeySwitchManager.Infrastructures.Storage.Yaml.KeySwitches
             return await Task.FromResult( founds.Sum( x => keySwitches.Remove( x ) ? 1 : 0 ) );
         }
 
-        public async Task<int> DeleteAsync( DeveloperName developerName, ProductName productName )
+        public async Task<int> DeleteAsync( DeveloperName developerName, ProductName productName, CancellationToken _ )
         {
             var keySwitches = YamlModel.KeySwitches;
             var founds = YamlModel.Find( developerName, productName );
@@ -99,7 +100,7 @@ namespace KeySwitchManager.Infrastructures.Storage.Yaml.KeySwitches
             return await Task.FromResult( founds.Sum( x => keySwitches.Remove( x ) ? 1 : 0 ) );
         }
 
-        public async Task<int> DeleteAsync( DeveloperName developerName )
+        public async Task<int> DeleteAsync( DeveloperName developerName, CancellationToken _ )
         {
             var keySwitches = YamlModel.KeySwitches;
             var founds = YamlModel.Find( developerName );
@@ -107,7 +108,7 @@ namespace KeySwitchManager.Infrastructures.Storage.Yaml.KeySwitches
             return await Task.FromResult( founds.Sum( x => keySwitches.Remove( x ) ? 1 : 0 ) );
         }
 
-        public async Task<int> DeleteAsync( ProductName productName )
+        public async Task<int> DeleteAsync( ProductName productName, CancellationToken _ )
         {
             var keySwitches = YamlModel.KeySwitches;
             var founds = YamlModel.Find( productName );
@@ -116,7 +117,7 @@ namespace KeySwitchManager.Infrastructures.Storage.Yaml.KeySwitches
 
         }
 
-        public async Task<int> DeleteAsync( InstrumentName instrumentName )
+        public async Task<int> DeleteAsync( InstrumentName instrumentName, CancellationToken _ )
         {
             var keySwitches = YamlModel.KeySwitches;
             var founds = YamlModel.Find( instrumentName );
@@ -124,7 +125,7 @@ namespace KeySwitchManager.Infrastructures.Storage.Yaml.KeySwitches
             return await Task.FromResult( founds.Sum( x => keySwitches.Remove( x ) ? 1 : 0 ) );
         }
 
-        public async Task<int> DeleteAsync( KeySwitchId keySwitchId )
+        public async Task<int> DeleteAsync( KeySwitchId keySwitchId, CancellationToken _ )
         {
             var keySwitches = YamlModel.KeySwitches;
             var founds = YamlModel.Find( keySwitchId );
@@ -132,7 +133,7 @@ namespace KeySwitchManager.Infrastructures.Storage.Yaml.KeySwitches
             return await Task.FromResult( founds.Sum( x => keySwitches.Remove( x ) ? 1 : 0 ) );
         }
 
-        public async Task<int> DeleteAllAsync()
+        public async Task<int> DeleteAllAsync( CancellationToken _ )
         {
             var count = YamlModel.KeySwitches.Count;
             YamlModel.KeySwitches.Clear();
@@ -142,7 +143,7 @@ namespace KeySwitchManager.Infrastructures.Storage.Yaml.KeySwitches
         #endregion
 
         #region Find
-        private static async Task<IReadOnlyCollection<KeySwitch>> ConvertAsync( IReadOnlyCollection<KeySwitchModel> source )
+        private static async Task<IReadOnlyCollection<KeySwitch>> ConvertAsync( IReadOnlyCollection<KeySwitchModel> source, CancellationToken _ )
         {
             var result = new List<KeySwitch>();
 
@@ -155,39 +156,39 @@ namespace KeySwitchManager.Infrastructures.Storage.Yaml.KeySwitches
         }
 
 
-        public async Task<IReadOnlyCollection<KeySwitch>> FindAsync( KeySwitchId keySwitchId )
+        public async Task<IReadOnlyCollection<KeySwitch>> FindAsync( KeySwitchId keySwitchId, CancellationToken cancellationToken )
         {
-            return await ConvertAsync( YamlModel.Find( keySwitchId ) );
+            return await ConvertAsync( YamlModel.Find( keySwitchId ), cancellationToken );
         }
 
-        public async Task<IReadOnlyCollection<KeySwitch>> FindAsync( DeveloperName developerName, ProductName productName, InstrumentName instrumentName )
+        public async Task<IReadOnlyCollection<KeySwitch>> FindAsync( DeveloperName developerName, ProductName productName, InstrumentName instrumentName, CancellationToken cancellationToken )
         {
-            return await ConvertAsync( YamlModel.Find( developerName, productName, instrumentName ) );
+            return await ConvertAsync( YamlModel.Find( developerName, productName, instrumentName ), cancellationToken );
         }
 
-        public async Task<IReadOnlyCollection<KeySwitch>> FindAsync( DeveloperName developerName, ProductName productName )
+        public async Task<IReadOnlyCollection<KeySwitch>> FindAsync( DeveloperName developerName, ProductName productName, CancellationToken cancellationToken )
         {
-            return await ConvertAsync( YamlModel.Find( developerName, productName ) );
+            return await ConvertAsync( YamlModel.Find( developerName, productName ), cancellationToken );
         }
 
-        public async Task<IReadOnlyCollection<KeySwitch>> FindAsync( DeveloperName developerName )
+        public async Task<IReadOnlyCollection<KeySwitch>> FindAsync( DeveloperName developerName, CancellationToken cancellationToken )
         {
-            return await ConvertAsync( YamlModel.Find( developerName ) );
+            return await ConvertAsync( YamlModel.Find( developerName ), cancellationToken );
         }
 
-        public async Task<IReadOnlyCollection<KeySwitch>> FindAsync( ProductName productName )
+        public async Task<IReadOnlyCollection<KeySwitch>> FindAsync( ProductName productName, CancellationToken cancellationToken )
         {
-            return await ConvertAsync( YamlModel.Find( productName ) );
+            return await ConvertAsync( YamlModel.Find( productName ), cancellationToken );
         }
 
-        public async Task<IReadOnlyCollection<KeySwitch>> FindAsync( InstrumentName instrumentName )
+        public async Task<IReadOnlyCollection<KeySwitch>> FindAsync( InstrumentName instrumentName, CancellationToken cancellationToken )
         {
-            return await ConvertAsync( YamlModel.Find( instrumentName ) );
+            return await ConvertAsync( YamlModel.Find( instrumentName ), cancellationToken );
         }
 
-        public async Task<IReadOnlyCollection<KeySwitch>> FindAllAsync()
+        public async Task<IReadOnlyCollection<KeySwitch>> FindAllAsync( CancellationToken cancellationToken )
         {
-            return await ConvertAsync( YamlModel.KeySwitches );
+            return await ConvertAsync( YamlModel.KeySwitches, cancellationToken );
         }
         #endregion
     }

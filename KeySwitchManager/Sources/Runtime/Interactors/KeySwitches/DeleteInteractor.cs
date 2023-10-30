@@ -26,7 +26,7 @@ namespace KeySwitchManager.Interactors.KeySwitches
             Presenter  = presenter;
         }
 
-        async Task<DeleteResponse> IDeleteUseCase.ExecuteAsync( DeleteRequest request, CancellationToken _ )
+        async Task<DeleteResponse> IDeleteUseCase.ExecuteAsync( DeleteRequest request, CancellationToken cancellationToken )
         {
             var developerName = request.DeveloperName;
             var productName = request.ProductName;
@@ -41,14 +41,16 @@ namespace KeySwitchManager.Interactors.KeySwitches
                 removedCount = await Repository.DeleteAsync(
                     new DeveloperName( developerName ),
                     new ProductName( productName ),
-                    new InstrumentName( instrumentName )
+                    new InstrumentName( instrumentName ),
+                    cancellationToken
                 );
             }
             else if( !StringHelper.IsEmpty( developerName, productName ) )
             {
                 removedCount = await Repository.DeleteAsync(
                     new DeveloperName( developerName ),
-                    new ProductName( productName )
+                    new ProductName( productName ),
+                    cancellationToken
                 );
             }
 

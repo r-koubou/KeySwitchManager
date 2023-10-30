@@ -30,7 +30,7 @@ namespace KeySwitchManager.Interactors.KeySwitches
 
         async Task<DumpFileResponse> IDumpFileUseCase.ExecuteAsync( DumpFileRequest request, CancellationToken cancellationToken )
         {
-            var all = await Repository.FindAllAsync();
+            var all = await Repository.FindAllAsync( cancellationToken );
 
             var sorted = all.OrderBy( x => x.DeveloperName.Value )
                .ThenBy( x => x.ProductName.Value )
