@@ -12,11 +12,11 @@ namespace KeySwitchManager.Infrastructures.Storage.Spreadsheet.ClosedXml.KeySwit
     {
 
         public string Suffix { get; }
-        public DirectoryPath OutputDirectory { get; }
+        public IDirectoryPath OutputDirectory { get; }
 
-        public ClosedXmlGroupedExportPathBuilder( DirectoryPath outputDirectory ) : this( ".xlsx", outputDirectory ) {}
+        public ClosedXmlGroupedExportPathBuilder( IDirectoryPath outputDirectory ) : this( ".xlsx", outputDirectory ) {}
 
-        public ClosedXmlGroupedExportPathBuilder( string suffix, DirectoryPath outputDirectory )
+        public ClosedXmlGroupedExportPathBuilder( string suffix, IDirectoryPath outputDirectory )
         {
             Suffix          = suffix;
             OutputDirectory = outputDirectory;

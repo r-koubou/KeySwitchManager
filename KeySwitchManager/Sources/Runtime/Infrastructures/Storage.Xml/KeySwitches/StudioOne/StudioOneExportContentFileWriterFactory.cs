@@ -6,7 +6,7 @@ namespace KeySwitchManager.Infrastructures.Storage.Xml.KeySwitches.StudioOne
 {
     public sealed class StudioOneExportContentFileWriterFactory : KeySwitchExportContentFileWriterFactory
     {
-        public StudioOneExportContentFileWriterFactory( DirectoryPath outputDirectory )
+        public StudioOneExportContentFileWriterFactory( IDirectoryPath outputDirectory )
             : base( new DefaultExportPathBuilder( ".keyswitch", outputDirectory ) ) {}
 
         public StudioOneExportContentFileWriterFactory( IExportPathBuilder pathBuilder )

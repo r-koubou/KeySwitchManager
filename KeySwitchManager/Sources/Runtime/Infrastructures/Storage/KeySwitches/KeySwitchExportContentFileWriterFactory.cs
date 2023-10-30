@@ -9,10 +9,10 @@ namespace KeySwitchManager.Infrastructures.Storage.KeySwitches
 {
     public abstract class KeySwitchExportContentFileWriterFactory : IExportContentWriterFactory
     {
-        private DirectoryPath OutputDirectory { get; }
+        private IDirectoryPath OutputDirectory { get; }
         private IExportPathBuilder PathBuilder { get; }
 
-        protected KeySwitchExportContentFileWriterFactory( string suffix, DirectoryPath outputDirectory )
+        protected KeySwitchExportContentFileWriterFactory( string suffix, IDirectoryPath outputDirectory )
           : this( new DefaultExportPathBuilder( suffix, outputDirectory ) ) {}
 
         protected KeySwitchExportContentFileWriterFactory( IExportPathBuilder pathBuilder )

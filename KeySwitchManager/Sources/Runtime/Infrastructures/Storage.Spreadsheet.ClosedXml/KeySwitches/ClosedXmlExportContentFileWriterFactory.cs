@@ -6,7 +6,7 @@ namespace KeySwitchManager.Infrastructures.Storage.Spreadsheet.ClosedXml.KeySwit
 {
     public sealed class ClosedXmlExportContentFileWriterFactory : KeySwitchExportContentFileWriterFactory
     {
-        public ClosedXmlExportContentFileWriterFactory( DirectoryPath outputDirectory )
+        public ClosedXmlExportContentFileWriterFactory( IDirectoryPath outputDirectory )
             : base( new DefaultExportPathBuilder( ".xlsx", outputDirectory ) ) {}
 
         public ClosedXmlExportContentFileWriterFactory( IExportPathBuilder pathBuilder )

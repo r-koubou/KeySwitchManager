@@ -8,7 +8,7 @@ namespace KeySwitchManager.UseCase.KeySwitches.Export
     public interface IExportPathBuilder
     {
         string Suffix { get; }
-        DirectoryPath OutputDirectory { get; }
+        IDirectoryPath OutputDirectory { get; }
         IFilePath Build( IReadOnlyCollection<KeySwitch> keySwitches );
     }
 }

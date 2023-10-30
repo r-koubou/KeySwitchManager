@@ -12,11 +12,11 @@ namespace KeySwitchManager.Infrastructures.Storage.Yaml.KeySwitches
     {
 
         public string Suffix { get; }
-        public DirectoryPath OutputDirectory { get; }
+        public IDirectoryPath OutputDirectory { get; }
 
-        public YamlGroupedExportPathBuilder( DirectoryPath outputDirectory ) : this( ".yaml", outputDirectory ) {}
+        public YamlGroupedExportPathBuilder( IDirectoryPath outputDirectory ) : this( ".yaml", outputDirectory ) {}
 
-        public YamlGroupedExportPathBuilder( string suffix, DirectoryPath outputDirectory )
+        public YamlGroupedExportPathBuilder( string suffix, IDirectoryPath outputDirectory )
         {
             Suffix          = suffix;
             OutputDirectory = outputDirectory;

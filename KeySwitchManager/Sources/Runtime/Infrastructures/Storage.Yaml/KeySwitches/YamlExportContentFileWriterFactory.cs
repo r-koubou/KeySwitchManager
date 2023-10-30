@@ -6,7 +6,7 @@ namespace KeySwitchManager.Infrastructures.Storage.Yaml.KeySwitches
 {
     public sealed class YamlExportContentFileWriterFactory : KeySwitchExportContentFileWriterFactory
     {
-        public YamlExportContentFileWriterFactory( DirectoryPath outputDirectory )
+        public YamlExportContentFileWriterFactory( IDirectoryPath outputDirectory )
             : base( new DefaultExportPathBuilder( ".yaml", outputDirectory ) ) {}
 
         public YamlExportContentFileWriterFactory( IExportPathBuilder pathBuilder )
