@@ -53,8 +53,8 @@ namespace KeySwitchManager.Applications.Core.Controllers.Export
                 {
                     case ExportSupportedFormat.Yaml:
                         contentFactory       = new YamlExportContentFactory();
-                        contentWriterFactory = new YamlExportContentFileWriterFactory( outputDir );
-                        strategy             = new SingleExportStrategy( contentWriterFactory, contentFactory );
+                        contentWriterFactory = new YamlExportContentFileWriterFactory( new YamlGroupedExportPathBuilder( outputDir ) );
+                        strategy             = new GroupedExportStrategy( contentWriterFactory, contentFactory );
                         break;
 
                     case ExportSupportedFormat.Xlsx:
@@ -65,19 +65,19 @@ namespace KeySwitchManager.Applications.Core.Controllers.Export
 
                     case ExportSupportedFormat.XlsxCombined:
                         contentFactory       = new ClosedXmlExportContentFactory();
-                        contentWriterFactory = new ClosedXmlExportContentFileWriterFactory( outputDir );
+                        contentWriterFactory = new ClosedXmlExportContentFileWriterFactory( new ClosedXmlGroupedExportPathBuilder( outputDir ) );
                         strategy             = new GroupedExportStrategy( contentWriterFactory, contentFactory );
                         break;
 
                     case ExportSupportedFormat.Cubase:
                         contentFactory       = new CubaseExportContentFactory();
                         contentWriterFactory = new CubaseExportContentFileWriterFactory( outputDir );
-                        strategy             = new SingleExportStrategy( contentWriterFactory, contentFactory );
+                        strategy             = new MultipleExportStrategy( contentWriterFactory, contentFactory );
                         break;
 
                     case ExportSupportedFormat.StudioOne:
                         contentFactory       = new StudioOneExportContentFactory();
-                        contentWriterFactory = new StudioOneExportContentFileWriterFactory( outputDir );
+                        contentWriterFactory = new StudioOneExportContentFileWriterFactory( new StudioOneGroupedExportPathBuilder( outputDir ) );
                         strategy             = new GroupedExportStrategy( contentWriterFactory, contentFactory );
                         break;
 

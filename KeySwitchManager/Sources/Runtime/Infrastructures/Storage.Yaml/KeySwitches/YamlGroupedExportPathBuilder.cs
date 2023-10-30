@@ -6,17 +6,17 @@ using KeySwitchManager.Domain.KeySwitches.Models;
 using KeySwitchManager.Infrastructures.Storage.KeySwitches.Helper;
 using KeySwitchManager.UseCase.KeySwitches.Export;
 
-namespace KeySwitchManager.Infrastructures.Storage.Spreadsheet.ClosedXml.KeySwitches
+namespace KeySwitchManager.Infrastructures.Storage.Yaml.KeySwitches
 {
-    public sealed class ClosedXmlGroupedExportPathBuilder : IExportPathBuilder
+    public sealed class YamlGroupedExportPathBuilder : IExportPathBuilder
     {
 
         public string Suffix { get; }
         public DirectoryPath OutputDirectory { get; }
 
-        public ClosedXmlGroupedExportPathBuilder( DirectoryPath outputDirectory ) : this( ".xlsx", outputDirectory ) {}
+        public YamlGroupedExportPathBuilder( DirectoryPath outputDirectory ) : this( ".yaml", outputDirectory ) {}
 
-        public ClosedXmlGroupedExportPathBuilder( string suffix, DirectoryPath outputDirectory )
+        public YamlGroupedExportPathBuilder( string suffix, DirectoryPath outputDirectory )
         {
             Suffix          = suffix;
             OutputDirectory = outputDirectory;
