@@ -1,29 +1,32 @@
 using System.IO;
-using System.Text;
 
 using KeySwitchManager.Applications.Core.Helpers;
 using KeySwitchManager.Applications.Core.Views.LogView;
+using KeySwitchManager.Commons.Data;
 using KeySwitchManager.Infrastructures.Storage.Yaml.KeySwitches;
 using KeySwitchManager.UseCase.KeySwitches.Dump;
+using KeySwitchManager.UseCase.KeySwitches.Export;
 
 namespace KeySwitchManager.Applications.Core.Controllers.Dump
 {
-    public static class DumpFileControllerFactory
+    public class DumpFileControllerFactory : IDumpControllerFactory
     {
-        public static IController Create( string databasePath, string outputPath, ILogTextView logTextView )
+        IController IDumpControllerFactory.Create( string databasePath, string outputFilePath, ILogTextView logTextView )
         {
             var database = KeySwitchRepositoryFactory.CreateFileRepository( databasePath );
-            var writer = new YamlKeySwitchWriter( File.Create( outputPath ), Encoding.UTF8, true );
+            var outputDirectory = new DirectoryPath( Path.GetDirectoryName( outputFilePath ) ?? string.Empty );
+
+            var contentFactory       = new YamlExportContentFactory();
+            var contentWriterFactory = new YamlExportContentFileWriterFactory( outputDirectory );
+            var strategy = new SingleExportStrategy( contentWriterFactory, contentFactory );
 
             var presenter = new IDumpFilePresenter.Console();
 
-            var controller = new DumpFileController(
+            return new DumpFileController(
                 database,
-                writer,
+                strategy,
                 presenter
             );
-
-            return controller;
         }
     }
 }

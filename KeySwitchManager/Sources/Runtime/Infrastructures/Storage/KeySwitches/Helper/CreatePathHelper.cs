@@ -8,7 +8,7 @@ namespace KeySwitchManager.Infrastructures.Storage.KeySwitches.Helper
 {
     public static class CreatePathHelper
     {
-        public static DirectoryPath CreateDirectoryTree( DeveloperName developerName, ProductName productName, DirectoryPath baseDirectory, params DirectoryPath[] subDirectories )
+        public static DirectoryPath CreateDirectoryTree( DeveloperName developerName, ProductName productName, IDirectoryPath baseDirectory, params IDirectoryPath[] subDirectories )
         {
             var outputDirectory = baseDirectory.Path;
 
@@ -30,7 +30,7 @@ namespace KeySwitchManager.Infrastructures.Storage.KeySwitches.Helper
 
         }
 
-        public static DirectoryPath CreateDirectoryTree( DeveloperName developerName, DirectoryPath baseDirectory, params DirectoryPath[] subDirectories )
+        public static DirectoryPath CreateDirectoryTree( DeveloperName developerName, IDirectoryPath baseDirectory, params IDirectoryPath[] subDirectories )
         {
             var outputDirectory = baseDirectory.Path;
 
@@ -51,12 +51,12 @@ namespace KeySwitchManager.Infrastructures.Storage.KeySwitches.Helper
 
         }
 
-        public static DirectoryPath CreateDirectoryTree( KeySwitch keySwitch, DirectoryPath baseDirectory, params DirectoryPath[] subDirectories )
+        public static DirectoryPath CreateDirectoryTree( KeySwitch keySwitch, IDirectoryPath baseDirectory, params IDirectoryPath[] subDirectories )
         {
             return CreateDirectoryTree( keySwitch.DeveloperName, keySwitch.ProductName, baseDirectory, subDirectories );
         }
 
-        public static FilePath CreateFilePath( DeveloperName developerName, ProductName productName, InstrumentName instrumentName, string prefix, string suffix, DirectoryPath baseDirectory, params DirectoryPath[] subDirectories )
+        public static FilePath CreateFilePath( DeveloperName developerName, ProductName productName, InstrumentName instrumentName, string prefix, string suffix, IDirectoryPath baseDirectory, params IDirectoryPath[] subDirectories )
         {
             var outputDirectory = CreateDirectoryTree( developerName, productName, baseDirectory, subDirectories );
 
@@ -65,7 +65,7 @@ namespace KeySwitchManager.Infrastructures.Storage.KeySwitches.Helper
             );
         }
 
-        public static FilePath CreateFilePath( DeveloperName developerName, ProductName productName, string prefix, string suffix, DirectoryPath baseDirectory, params DirectoryPath[] subDirectories )
+        public static FilePath CreateFilePath( DeveloperName developerName, ProductName productName, string prefix, string suffix, IDirectoryPath baseDirectory, params IDirectoryPath[] subDirectories )
         {
             var outputDirectory = CreateDirectoryTree( developerName, baseDirectory, subDirectories );
 
@@ -74,12 +74,12 @@ namespace KeySwitchManager.Infrastructures.Storage.KeySwitches.Helper
             );
         }
 
-        public static FilePath CreateFilePath( DeveloperName developerName, ProductName productName, string suffix, DirectoryPath baseDirectory, params DirectoryPath[] subDirectories )
+        public static FilePath CreateFilePath( DeveloperName developerName, ProductName productName, string suffix, IDirectoryPath baseDirectory, params IDirectoryPath[] subDirectories )
         {
             return CreateFilePath( developerName, productName, string.Empty, suffix, baseDirectory );
         }
 
-        public static FilePath CreateFilePath( KeySwitch keySwitch, string suffix, DirectoryPath baseDirectory, params DirectoryPath[] subDirectories )
+        public static FilePath CreateFilePath( KeySwitch keySwitch, string suffix, IDirectoryPath baseDirectory, params IDirectoryPath[] subDirectories )
         {
             return CreateFilePath(
                 keySwitch.DeveloperName,
@@ -92,7 +92,7 @@ namespace KeySwitchManager.Infrastructures.Storage.KeySwitches.Helper
             );
         }
 
-        public static FilePath CreateFilePath( KeySwitch keySwitch, string prefix, string suffix, DirectoryPath baseDirectory, params DirectoryPath[] subDirectories )
+        public static FilePath CreateFilePath( KeySwitch keySwitch, string prefix, string suffix, IDirectoryPath baseDirectory, params IDirectoryPath[] subDirectories )
         {
             return CreateFilePath(
                 keySwitch.DeveloperName,

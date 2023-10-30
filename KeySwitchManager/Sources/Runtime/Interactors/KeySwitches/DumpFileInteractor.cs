@@ -2,29 +2,28 @@ using System.Linq;
 using System.Threading.Tasks;
 
 using KeySwitchManager.Domain.KeySwitches;
-using KeySwitchManager.Domain.KeySwitches.Models;
 using KeySwitchManager.UseCase.KeySwitches.Dump;
+using KeySwitchManager.UseCase.KeySwitches.Export;
 
 namespace KeySwitchManager.Interactors.KeySwitches
 {
     public class DumpFileInteractor : IDumpFileUseCase
     {
         private IKeySwitchRepository Repository { get; }
-        private IKeySwitchWriter Writer { get; }
+        private IExportStrategy Strategy { get; }
         private IDumpFilePresenter Presenter { get; }
 
         public DumpFileInteractor(
-            IKeySwitchRepository repository, IKeySwitchWriter writer ) :
-            this( repository, writer, new IDumpFilePresenter.Null() )
-        {}
+            IKeySwitchRepository repository, IExportStrategy strategy ) :
+            this( repository, strategy, new IDumpFilePresenter.Null() ) {}
 
         public DumpFileInteractor(
             IKeySwitchRepository repository,
-            IKeySwitchWriter writer,
+            IExportStrategy strategy,
             IDumpFilePresenter presenter )
         {
             Repository = repository;
-            Writer     = writer;
+            Strategy     = strategy;
             Presenter  = presenter;
         }
 
@@ -38,7 +37,7 @@ namespace KeySwitchManager.Interactors.KeySwitches
 
             if( sorted.Count > 0 )
             {
-                await Writer.WriteAsync( sorted, null );
+                await Strategy.ExportAsync( sorted );
                 return new DumpFileResponse( sorted.Count );
             }
 

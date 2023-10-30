@@ -1,4 +1,5 @@
 using CommandLine;
+
 using KeySwitchManager.Applications.Core.Controllers.Import;
 using KeySwitchManager.Applications.Core.Views.LogView;
 

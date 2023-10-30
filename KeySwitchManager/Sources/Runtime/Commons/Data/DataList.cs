@@ -41,5 +41,17 @@ namespace KeySwitchManager.Commons.Data
 
         public bool SequenceEqual( IEnumerable<T> other, IEqualityComparer<T> comparer )
             => List.SequenceEqual( other, comparer );
+
+        public override int GetHashCode()
+        {
+            var hashCode = new HashCode();
+
+            foreach( var item in List )
+            {
+                hashCode.Add( item );
+            }
+
+            return hashCode.ToHashCode();
+        }
     }
 }

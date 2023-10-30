@@ -2,25 +2,25 @@ using System.Threading.Tasks;
 
 using KeySwitchManager.Domain.KeySwitches.Helpers;
 using KeySwitchManager.UseCase.KeySwitches.Create;
+using KeySwitchManager.UseCase.KeySwitches.Export;
 
 namespace KeySwitchManager.Interactors.KeySwitches
 {
     public class CreateFileInteractor : ICreateFileUseCase
     {
+        private IExportStrategy Strategy { get; }
         private ICreateFilePresenter Presenter { get; }
 
-        public CreateFileInteractor() : this( new ICreateFilePresenter.Null() )
-        {}
-
-        public CreateFileInteractor( ICreateFilePresenter presenter )
+        public CreateFileInteractor( IExportStrategy strategy, ICreateFilePresenter presenter )
         {
-            Presenter = presenter;
+            Strategy   = strategy;
+            Presenter  = presenter;
         }
 
-        async Task<CreateFileResponse> ICreateFileUseCase.ExecuteAsync( CreateFileRequest request )
+        async Task<CreateFileResponse> ICreateFileUseCase.ExecuteAsync()
         {
             var keyswitch = KeySwitchFactoryHelper.CreateTemplate();
-            await request.Writer.WriteAsync( new[] { keyswitch }, null );
+            await Strategy.ExportAsync( new[] { keyswitch } );
 
             return new CreateFileResponse();
         }

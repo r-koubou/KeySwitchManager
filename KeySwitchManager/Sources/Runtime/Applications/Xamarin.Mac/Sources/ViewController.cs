@@ -125,7 +125,9 @@ namespace KeySwitchManager.Xamarin.Mac
                 return;
             }
 
-            await ExecuteControllerAsync( () => CreateControllerFactory.Create( path, LogView ) );
+            ICreateControllerFactory factory = new CreateFileControllerFactory();
+
+            await ExecuteControllerAsync( () => factory.Create( path, LogView ) );
         }
 
         #endregion
@@ -256,13 +258,13 @@ namespace KeySwitchManager.Xamarin.Mac
             // Append a sub folder by format name
             output = Path.Combine( output, format.ToString() );
 
+            IExportControllerFactory controllerFactory = new ExportFileControllerFactory( databasePath, output );
+
             await ExecuteControllerAsync(
-                () => ExportControllerFactory.Create(
+                () => controllerFactory.Create(
                     developer,
                     product,
                     instrument,
-                    databasePath,
-                    output,
                     format,
                     LogView
                 )

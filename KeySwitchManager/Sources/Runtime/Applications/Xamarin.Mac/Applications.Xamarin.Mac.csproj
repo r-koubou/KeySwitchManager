@@ -82,8 +82,7 @@
       </ProjectReference>
     </ItemGroup>
     <ItemGroup>
-        <PackageReference Include="RkHelper" Version="0.0.8" />
-        <PackageReference Include="YamlDotNet" Version="11.2.1" />
+        <PackageReference Include="RkHelper" Version="0.0.10" />
     </ItemGroup>
     <Import Project="$(MSBuildExtensionsPath)\Xamarin\Mac\Xamarin.Mac.CSharp.targets" />
 

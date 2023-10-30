@@ -1,5 +1,7 @@
 using System.IO;
+
 using CommandLine;
+
 using KeySwitchManager.Applications.Core.Controllers.Export;
 using KeySwitchManager.Applications.Core.Views.LogView;
 using KeySwitchManager.Domain.KeySwitches.Models.Values;
@@ -32,14 +34,16 @@ namespace KeySwitchManager.Applications.CLI.Commands
         public virtual int Execute( ICommandOption opt )
         {
             var option = (CommandOption)opt;
-            var logView = new ConsoleLogView();
+            IExportControllerFactory controllerFactory = new ExportFileControllerFactory(
+                option.DatabasePath,
+                Path.Combine( option.OutputDirectory, SupportedFormat.ToString() )
+            );
+            ILogTextView logView = new ConsoleLogView();
 
-            using var controller = ExportControllerFactory.Create(
+            using var controller = controllerFactory.Create(
                 option.Developer,
                 option.Product,
                 option.Instrument,
-                option.DatabasePath,
-                Path.Combine( option.OutputDirectory, SupportedFormat.ToString() ),
                 SupportedFormat,
                 logView
             );

@@ -67,8 +67,9 @@ namespace KeySwitchManager.Domain.KeySwitches.Models
             }
 
             return other.Id.Equals( Id ) &&
-                   other.Created.Equals( Created ) &&
-                   other.LastUpdated.Equals( LastUpdated ) &&
+                   // Creation and update timestamps are not applicable to equality
+                   // other.Created.Equals( Created ) &&
+                   // other.LastUpdated.Equals( LastUpdated ) &&
                    other.DeveloperName.Equals( DeveloperName ) &&
                    other.ProductName.Equals( ProductName ) &&
                    other.InstrumentName.Equals( InstrumentName ) &&
@@ -86,8 +87,9 @@ namespace KeySwitchManager.Domain.KeySwitches.Models
             hashCode.Add( Id );
             hashCode.Add( Author );
             hashCode.Add( Description );
-            hashCode.Add( Created );
-            hashCode.Add( LastUpdated );
+            // Creation and update timestamps are not applicable to equality
+            // hashCode.Add( Created );
+            // hashCode.Add( LastUpdated );
             hashCode.Add( DeveloperName );
             hashCode.Add( ProductName );
             hashCode.Add( InstrumentName );

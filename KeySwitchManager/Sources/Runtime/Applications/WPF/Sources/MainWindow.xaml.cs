@@ -185,7 +185,9 @@ namespace KeySwitchManager.Applications.WPF
                 return;
             }
 
-            await ExecuteControllerAsync( () => CreateControllerFactory.Create( path, LogTextView ) );
+            ICreateControllerFactory factory = new CreateFileControllerFactory();
+
+            await ExecuteControllerAsync( () => factory.Create( path, LogTextView ) );
         }
         #endregion
 
@@ -304,13 +306,13 @@ namespace KeySwitchManager.Applications.WPF
             // Append a sub folder by format name
             output = Path.Combine( output, format.ToString() );
 
+            IExportControllerFactory controllerFactory = new ExportFileControllerFactory( databasePath, output );
+
             await ExecuteControllerAsync(
-                () => ExportControllerFactory.Create(
+                () => controllerFactory.Create(
                     developer,
                     product,
                     instrument,
-                    databasePath,
-                    output,
                     format,
                     LogTextView
                 )

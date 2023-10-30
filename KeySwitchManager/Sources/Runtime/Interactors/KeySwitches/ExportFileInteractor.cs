@@ -13,22 +13,22 @@ namespace KeySwitchManager.Interactors.KeySwitches
     public class ExportFileInteractor : IExportFileUseCase
     {
         private IKeySwitchRepository Repository { get; }
-        private IKeySwitchWriter Writer { get; }
+        private IExportStrategy Strategy { get; }
         private IExportFilePresenter Presenter { get; }
 
         public ExportFileInteractor(
             IKeySwitchRepository repository,
-            IKeySwitchWriter writer ) :
-            this( repository, writer, new IExportFilePresenter.Null() )
+            IExportStrategy strategy ) :
+            this( repository, strategy, new IExportFilePresenter.Null() )
         {}
 
         public ExportFileInteractor(
             IKeySwitchRepository repository,
-            IKeySwitchWriter writer,
+            IExportStrategy strategy,
             IExportFilePresenter presenter )
         {
             Repository = repository;
-            Writer     = writer;
+            Strategy   = strategy;
             Presenter  = presenter;
         }
 
@@ -47,7 +47,7 @@ namespace KeySwitchManager.Interactors.KeySwitches
 
             if( queryResult.Any() )
             {
-                await Writer.WriteAsync( queryResult, loggingSubject );
+                await Strategy.ExportAsync( queryResult );
                 return new ExportFileResponse( queryResult );
             }
 

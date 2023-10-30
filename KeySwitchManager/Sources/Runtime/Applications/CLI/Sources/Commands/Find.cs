@@ -1,4 +1,5 @@
 using CommandLine;
+
 using KeySwitchManager.Applications.Core.Controllers.Find;
 using KeySwitchManager.Applications.Core.Views.LogView;
 using KeySwitchManager.Domain.KeySwitches.Models.Values;
