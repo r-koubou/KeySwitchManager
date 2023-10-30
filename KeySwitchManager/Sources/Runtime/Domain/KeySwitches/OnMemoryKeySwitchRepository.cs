@@ -40,7 +40,7 @@ namespace KeySwitchManager.Domain.KeySwitches
             => KeySwitches.Count;
 
         #region Save
-        public async Task<IKeySwitchRepository.SaveResult> SaveAsync( KeySwitch keySwitch, CancellationToken _ )
+        public async Task<IKeySwitchRepository.SaveResult> SaveAsync( KeySwitch keySwitch, CancellationToken cancellationToken = default )
         {
             var exist = KeySwitches.Find( x => x.Id.Value.Equals( keySwitch.Id.Value ) );
 
@@ -97,7 +97,7 @@ namespace KeySwitchManager.Domain.KeySwitches
             return founds.Sum( x => KeySwitches.Remove( x ) ? 1 : 0 );
         }
 
-        public async Task<int> DeleteAllAsync( CancellationToken _ )
+        public async Task<int> DeleteAllAsync( CancellationToken cancellationToken = default )
         {
             var count = KeySwitches.Count;
             KeySwitches.Clear();
@@ -106,13 +106,13 @@ namespace KeySwitchManager.Domain.KeySwitches
         #endregion
 
         #region Find
-        public async Task<IReadOnlyCollection<KeySwitch>> FindAsync( KeySwitchId keySwitchId, CancellationToken _ )
+        public async Task<IReadOnlyCollection<KeySwitch>> FindAsync( KeySwitchId keySwitchId, CancellationToken cancellationToken = default )
             => await Task.FromResult( KeySwitchHelper.SortByAlphabetical(
                 KeySwitches.FindAll(
                 x => x.Id.Value == keySwitchId.Value
             )));
 
-        public async Task<IReadOnlyCollection<KeySwitch>> FindAsync( DeveloperName developerName, ProductName productName, InstrumentName instrumentName, CancellationToken _ )
+        public async Task<IReadOnlyCollection<KeySwitch>> FindAsync( DeveloperName developerName, ProductName productName, InstrumentName instrumentName, CancellationToken cancellationToken = default )
         {
             var d = developerName.Value;
             var p = productName.Value;
@@ -127,7 +127,7 @@ namespace KeySwitchManager.Domain.KeySwitches
                 )));
         }
 
-        public async Task<IReadOnlyCollection<KeySwitch>> FindAsync( DeveloperName developerName, ProductName productName, CancellationToken _ )
+        public async Task<IReadOnlyCollection<KeySwitch>> FindAsync( DeveloperName developerName, ProductName productName, CancellationToken cancellationToken = default )
         {
             var d = developerName.Value;
             var p = productName.Value;
@@ -140,7 +140,7 @@ namespace KeySwitchManager.Domain.KeySwitches
                 )));
         }
 
-        public async Task<IReadOnlyCollection<KeySwitch>> FindAsync( DeveloperName developerName, CancellationToken _ )
+        public async Task<IReadOnlyCollection<KeySwitch>> FindAsync( DeveloperName developerName, CancellationToken cancellationToken = default )
         {
             var d = developerName.Value;
 
@@ -151,7 +151,7 @@ namespace KeySwitchManager.Domain.KeySwitches
             )));
         }
 
-        public async Task<IReadOnlyCollection<KeySwitch>> FindAsync( ProductName productName, CancellationToken _ )
+        public async Task<IReadOnlyCollection<KeySwitch>> FindAsync( ProductName productName, CancellationToken cancellationToken = default )
         {
             var p = productName.Value;
 
@@ -162,7 +162,7 @@ namespace KeySwitchManager.Domain.KeySwitches
             )));
         }
 
-        public async Task<IReadOnlyCollection<KeySwitch>> FindAsync( InstrumentName instrumentName, CancellationToken _ )
+        public async Task<IReadOnlyCollection<KeySwitch>> FindAsync( InstrumentName instrumentName, CancellationToken cancellationToken = default )
         {
             var i = instrumentName.Value;
 
@@ -173,7 +173,7 @@ namespace KeySwitchManager.Domain.KeySwitches
             )));
         }
 
-        public async Task<IReadOnlyCollection<KeySwitch>> FindAllAsync( CancellationToken _ )
+        public async Task<IReadOnlyCollection<KeySwitch>> FindAllAsync( CancellationToken cancellationToken = default )
             => await Task.FromResult( KeySwitchHelper.SortByAlphabetical( new List<KeySwitch>( KeySwitches ) ) );
         #endregion
     }

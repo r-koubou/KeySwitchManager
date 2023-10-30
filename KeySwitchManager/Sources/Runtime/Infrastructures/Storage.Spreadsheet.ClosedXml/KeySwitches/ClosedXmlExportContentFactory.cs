@@ -17,7 +17,7 @@ namespace KeySwitchManager.Infrastructures.Storage.Spreadsheet.ClosedXml.KeySwit
 {
     public class ClosedXmlExportContentFactory : IExportContentFactory
     {
-        public Task<IContent> CreateAsync( IReadOnlyCollection<KeySwitch> keySwitches, CancellationToken _ )
+        public Task<IContent> CreateAsync( IReadOnlyCollection<KeySwitch> keySwitches, CancellationToken cancellationToken = default )
         {
             using var template = new XLWorkbook(
                 StreamHelper.GetAssemblyResourceStream<ClosedXmlExportContentFactory>( "Template.xlsx" )

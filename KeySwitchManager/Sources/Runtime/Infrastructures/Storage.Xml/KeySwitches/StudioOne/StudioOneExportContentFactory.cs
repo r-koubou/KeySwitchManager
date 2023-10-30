@@ -16,7 +16,7 @@ namespace KeySwitchManager.Infrastructures.Storage.Xml.KeySwitches.StudioOne
 {
     public class StudioOneExportContentFactory : IExportContentFactory
     {
-        public Task<IContent> CreateAsync( IReadOnlyCollection<KeySwitch> keySwitches, CancellationToken _ )
+        public Task<IContent> CreateAsync( IReadOnlyCollection<KeySwitch> keySwitches, CancellationToken cancellationToken = default )
         {
             KeySwitchValidateHelper.ValidateNotEmpty( keySwitches );
 

@@ -13,7 +13,7 @@ namespace KeySwitchManager.Infrastructures.Storage.Xml.KeySwitches.Cubase
 {
     public class CubaseExportContentFactory : IExportContentFactory
     {
-        public Task<IContent> CreateAsync( IReadOnlyCollection<KeySwitch> keySwitches, CancellationToken _ )
+        public Task<IContent> CreateAsync( IReadOnlyCollection<KeySwitch> keySwitches, CancellationToken cancellationToken = default )
         {
             KeySwitchValidateHelper.ValidateOneElement( keySwitches );
 

@@ -22,7 +22,7 @@ namespace KeySwitchManager.Infrastructures.Storage.KeySwitches
             PathBuilder     = pathBuilder;
         }
 
-        public virtual Task<IExportContentWriter> CreateAsync( IReadOnlyCollection<KeySwitch> keySwitches, CancellationToken _ )
+        public virtual Task<IExportContentWriter> CreateAsync( IReadOnlyCollection<KeySwitch> keySwitches, CancellationToken cancellationToken = default )
         {
             var outputPath = PathBuilder.Build( keySwitches );
             OutputDirectory.CreateNew();
