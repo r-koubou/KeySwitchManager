@@ -6,7 +6,7 @@ using KeySwitchManager.Domain.KeySwitches.Models;
 using KeySwitchManager.Infrastructures.Storage.KeySwitches.Helper;
 using KeySwitchManager.UseCase.KeySwitches.Export;
 
-namespace KeySwitchManager.Infrastructures.Storage.Yaml.KeySwitches
+namespace KeySwitchManager.Infrastructures.Storage.Yaml.KeySwitches.Export
 {
     public sealed class YamlGroupedExportPathBuilder : IExportPathBuilder
     {
