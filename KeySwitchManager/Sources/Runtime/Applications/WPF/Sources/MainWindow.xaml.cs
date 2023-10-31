@@ -211,7 +211,9 @@ namespace KeySwitchManager.Applications.WPF
             {
                 return;
             }
-            await ExecuteControllerAsync( () => ImportControllerFactory.Create( databasePath, importFilePath, LogTextView ) );
+
+            IImportControllerFactory importControllerFactory = new ImportControllerFactory( LogView );
+            await ExecuteControllerAsync( () => ImportControllerFactory.Create( databasePath, importFilePath ) );
         }
         #endregion
 

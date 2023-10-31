@@ -19,7 +19,7 @@ namespace KeySwitchManager.Applications.Core.Controllers.Import
             LogTextView = logTextView;
         }
 
-        public IController Create( string databasePath, string importFilePath )
+        IController IImportControllerFactory.Create( string databasePath, string importFilePath )
         {
             var databaseRepository = KeySwitchRepositoryFactory.CreateFileRepository( databasePath );
             var presenter = new ImportFilePresenter( LogTextView );
