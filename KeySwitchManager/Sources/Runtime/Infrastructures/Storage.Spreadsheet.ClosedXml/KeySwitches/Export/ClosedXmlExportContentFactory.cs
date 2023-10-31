@@ -12,7 +12,7 @@ using KeySwitchManager.UseCase.KeySwitches.Export;
 
 using RkHelper.IO;
 
-namespace KeySwitchManager.Infrastructures.Storage.Spreadsheet.ClosedXml.KeySwitches
+namespace KeySwitchManager.Infrastructures.Storage.Spreadsheet.ClosedXml.KeySwitches.Export
 {
     public class ClosedXmlExportContentFactory : IExportContentFactory
     {

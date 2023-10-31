@@ -4,7 +4,7 @@ using System.IO;
 using KeySwitchManager.Applications.Core.Views.LogView;
 using KeySwitchManager.Commons.Data;
 using KeySwitchManager.Infrastructures.Storage.KeySwitches;
-using KeySwitchManager.Infrastructures.Storage.Spreadsheet.ClosedXml.KeySwitches;
+using KeySwitchManager.Infrastructures.Storage.Spreadsheet.ClosedXml.KeySwitches.Export;
 using KeySwitchManager.Infrastructures.Storage.Yaml.KeySwitches;
 using KeySwitchManager.UseCase.KeySwitches.Export;
 

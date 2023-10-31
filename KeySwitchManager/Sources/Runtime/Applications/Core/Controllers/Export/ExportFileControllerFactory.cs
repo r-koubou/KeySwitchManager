@@ -5,7 +5,7 @@ using KeySwitchManager.Applications.Core.Views.LogView;
 using KeySwitchManager.Commons.Data;
 using KeySwitchManager.Domain.KeySwitches.Models.Values;
 using KeySwitchManager.Infrastructures.Storage.Json.KeySwitches.Cakewalk;
-using KeySwitchManager.Infrastructures.Storage.Spreadsheet.ClosedXml.KeySwitches;
+using KeySwitchManager.Infrastructures.Storage.Spreadsheet.ClosedXml.KeySwitches.Export;
 using KeySwitchManager.Infrastructures.Storage.Xml.KeySwitches.Cubase;
 using KeySwitchManager.Infrastructures.Storage.Xml.KeySwitches.StudioOne;
 using KeySwitchManager.Infrastructures.Storage.Yaml.KeySwitches;
