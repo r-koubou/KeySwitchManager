@@ -10,12 +10,19 @@ using KeySwitchManager.UseCase.KeySwitches.Import;
 
 namespace KeySwitchManager.Applications.Core.Controllers.Import
 {
-    public static class ImportControllerFactory
+    public class ImportControllerFactory : IImportControllerFactory
     {
-        public static IController Create( string databasePath, string importFilePath, ILogTextView logTextView )
+        private ILogTextView LogTextView { get; }
+
+        public ImportControllerFactory( ILogTextView logTextView )
+        {
+            LogTextView = logTextView;
+        }
+
+        public IController Create( string databasePath, string importFilePath )
         {
             var databaseRepository = KeySwitchRepositoryFactory.CreateFileRepository( databasePath );
-            var presenter = new ImportFilePresenter( logTextView );
+            var presenter = new ImportFilePresenter( LogTextView );
 
             IImportContentReader contentReader;
             var fileExtension = Path.GetExtension( importFilePath ).ToLower();

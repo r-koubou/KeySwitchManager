@@ -20,11 +20,11 @@ namespace KeySwitchManager.Applications.CLI.Commands
         public int Execute( ICommandOption opt )
         {
             var option = (CommandOption)opt;
+            var factory = new ImportControllerFactory( new ConsoleLogView() );
 
-            using var controller = ImportControllerFactory.Create(
+            using var controller = factory.Create(
                 option.DatabasePath,
-                option.InputPath,
-                new ConsoleLogView()
+                option.InputPath
             );
 
             controller.Execute();
