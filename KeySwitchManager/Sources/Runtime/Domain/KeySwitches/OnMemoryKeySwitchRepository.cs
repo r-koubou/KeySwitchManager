@@ -1,7 +1,5 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Reactive.Subjects;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -9,16 +7,11 @@ using KeySwitchManager.Domain.KeySwitches.Helpers;
 using KeySwitchManager.Domain.KeySwitches.Models;
 using KeySwitchManager.Domain.KeySwitches.Models.Values;
 
-using RkHelper.System;
-
 namespace KeySwitchManager.Domain.KeySwitches
 {
     public class OnMemoryKeySwitchRepository : IKeySwitchRepository
     {
         protected List<KeySwitch> KeySwitches { get; }
-
-        private readonly Subject<string> logging = new();
-        public IObservable<string> OnLogging => logging;
 
         public OnMemoryKeySwitchRepository()
         {
@@ -32,7 +25,6 @@ namespace KeySwitchManager.Domain.KeySwitches
 
         public virtual void Dispose()
         {
-            Disposer.Dispose( logging );
             KeySwitches.Clear();
         }
 

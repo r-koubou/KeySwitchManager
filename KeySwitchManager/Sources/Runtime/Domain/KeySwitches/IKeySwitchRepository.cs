@@ -12,8 +12,6 @@ namespace KeySwitchManager.Domain.KeySwitches
 {
     public interface IKeySwitchRepository : IDisposable
     {
-        public IObservable<string> OnLogging { get; }
-
         public int Count();
 
         #region Save

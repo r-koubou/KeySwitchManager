@@ -1,8 +1,6 @@
-using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Reactive.Subjects;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -25,10 +23,6 @@ namespace KeySwitchManager.Infrastructures.Storage.Yaml.KeySwitches
     {
         private FilePath YamlFilePath { get; }
         private YamlModel YamlModel { get; }
-
-        private readonly Subject<string> logging = new();
-
-        public IObservable<string> OnLogging => logging;
 
         public YamlRepository(FilePath filePath)
         {
