@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 using KeySwitchManager.Domain.KeySwitches.Models;
 using KeySwitchManager.Infrastructures.Storage.KeySwitches.Helper;
 using KeySwitchManager.Infrastructures.Storage.Xml.KeySwitches.Cubase.Translators;
-using KeySwitchManager.UseCase.KeySwitches;
 using KeySwitchManager.UseCase.KeySwitches.Export;
 
 namespace KeySwitchManager.Infrastructures.Storage.Xml.KeySwitches.Cubase

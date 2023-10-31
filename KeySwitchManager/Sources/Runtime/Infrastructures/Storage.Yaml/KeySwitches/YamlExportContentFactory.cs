@@ -4,7 +4,6 @@ using System.Threading.Tasks;
 
 using KeySwitchManager.Domain.KeySwitches.Models;
 using KeySwitchManager.Infrastructures.Storage.Yaml.KeySwitches.Translators;
-using KeySwitchManager.UseCase.KeySwitches;
 using KeySwitchManager.UseCase.KeySwitches.Export;
 
 namespace KeySwitchManager.Infrastructures.Storage.Yaml.KeySwitches

@@ -8,7 +8,6 @@ using ClosedXML.Excel;
 using KeySwitchManager.Domain.KeySwitches.Models;
 using KeySwitchManager.Infrastructures.Storage.Spreadsheet.ClosedXml.KeySwitches.Translators;
 using KeySwitchManager.Infrastructures.Storage.Spreadsheet.KeySwitches.Helpers;
-using KeySwitchManager.UseCase.KeySwitches;
 using KeySwitchManager.UseCase.KeySwitches.Export;
 
 using RkHelper.IO;
