@@ -1,4 +1,3 @@
-using System;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -18,8 +17,6 @@ namespace KeySwitchManager.Applications.Core.Controllers.Import
         private IImportFilePresenter Presenter { get; }
         private bool LeaveOpen { get; }
 
-        private readonly IDisposable loggingSubscriber;
-
         #region Ctor
         public ImportFileController(
             IKeySwitchRepository databaseRepository,
@@ -33,14 +30,11 @@ namespace KeySwitchManager.Applications.Core.Controllers.Import
             Content              = content;
             Presenter            = presenter;
             LeaveOpen            = leaveOpen;
-            loggingSubscriber    = databaseRepository.OnLogging.Subscribe( onNext: presenter.Present, onError: presenter.Present );
         }
         #endregion
 
         public void Dispose()
         {
-            Disposer.Dispose( loggingSubscriber );
-
             if( LeaveOpen )
             {
                 return;

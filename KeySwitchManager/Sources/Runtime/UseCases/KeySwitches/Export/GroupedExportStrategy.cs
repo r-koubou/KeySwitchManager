@@ -1,4 +1,6 @@
+using System;
 using System.Collections.Generic;
+using System.Reactive.Subjects;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -9,6 +11,9 @@ namespace KeySwitchManager.UseCase.KeySwitches.Export
 {
     public class GroupedExportStrategy : IExportStrategy
     {
+        private readonly Subject<KeySwitch> exported = new();
+        IObservable<KeySwitch> IExportStrategy.OnExported => exported;
+
         private IExportContentWriterFactory ContentWriterFactory { get; }
         private IExportContentFactory ContentFactory { get; }
 
@@ -44,6 +49,11 @@ namespace KeySwitchManager.UseCase.KeySwitches.Export
                 }
 
                 await contentWriter.WriteAsync( content, cancellationToken );
+
+                foreach( var x in items )
+                {
+                    exported.OnNext( x );
+                }
             }
         }
     }
