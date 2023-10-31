@@ -3,7 +3,7 @@ using System.IO;
 
 using KeySwitchManager.Commons.Data;
 using KeySwitchManager.Domain.KeySwitches.Models;
-using KeySwitchManager.Infrastructures.Storage.Yaml.KeySwitches;
+using KeySwitchManager.Infrastructures.Storage.Yaml.KeySwitches.Export;
 using KeySwitchManager.Testing.Commons.KeySwitches;
 using KeySwitchManager.UseCase.KeySwitches.Export;
 

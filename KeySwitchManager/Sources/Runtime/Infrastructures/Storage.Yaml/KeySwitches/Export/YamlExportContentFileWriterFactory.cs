@@ -2,7 +2,7 @@ using KeySwitchManager.Commons.Data;
 using KeySwitchManager.Infrastructures.Storage.KeySwitches;
 using KeySwitchManager.UseCase.KeySwitches.Export;
 
-namespace KeySwitchManager.Infrastructures.Storage.Yaml.KeySwitches
+namespace KeySwitchManager.Infrastructures.Storage.Yaml.KeySwitches.Export
 {
     public sealed class YamlExportContentFileWriterFactory : KeySwitchExportContentFileWriterFactory
     {

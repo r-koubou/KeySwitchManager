@@ -1,7 +1,7 @@
 using System.IO;
 using System.Threading.Tasks;
 
-namespace KeySwitchManager.UseCase.KeySwitches
+namespace KeySwitchManager.UseCase.KeySwitches.Export
 {
     public interface IContent
     {

@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 
 using RkHelper.Primitives;
 
-namespace KeySwitchManager.UseCase.KeySwitches
+namespace KeySwitchManager.UseCase.KeySwitches.Export
 {
     public class BinaryContent : IContent
     {

@@ -2,7 +2,7 @@ using System.IO;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace KeySwitchManager.UseCase.KeySwitches
+namespace KeySwitchManager.UseCase.KeySwitches.Export
 {
     public class StringContent : IContent
     {

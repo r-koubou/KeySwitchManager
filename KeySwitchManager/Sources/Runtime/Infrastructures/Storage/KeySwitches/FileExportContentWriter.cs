@@ -2,7 +2,6 @@ using System.Threading;
 using System.Threading.Tasks;
 
 using KeySwitchManager.Commons.Data;
-using KeySwitchManager.UseCase.KeySwitches;
 using KeySwitchManager.UseCase.KeySwitches.Export;
 
 namespace KeySwitchManager.Infrastructures.Storage.KeySwitches
