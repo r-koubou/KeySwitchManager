@@ -29,7 +29,9 @@ namespace KeySwitchManager.Interactors.KeySwitches
             var insertedCount = 0;
             var updatedCount = 0;
 
-            foreach( var i in request.KeySwitches )
+            var keySwitches = await request.ContentReader.ReadAsync( request.Content, cancellationToken );
+
+            foreach( var i in keySwitches )
             {
                 if( cancellationToken.IsCancellationRequested )
                 {
