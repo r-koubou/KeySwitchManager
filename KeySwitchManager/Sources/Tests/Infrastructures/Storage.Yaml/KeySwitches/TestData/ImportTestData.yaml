@@ -1,0 +1,19 @@
+KeySwitches:
+- Id: ba6252a7-57b0-486f-87ad-cf1ed871b530
+  Author: Author
+  Description: Description
+  Created: 2023-10-29T17:20:49.2450000
+  LastUpdated: 2023-10-29T17:20:49.2450000
+  DeveloperName: DeveloperName
+  ProductName: Product
+  InstrumentName: E.Guitar
+  Articulations:
+  - Name: Power Chord
+    MidiMessage:
+      NoteOn: []
+      ControlChange: []
+      ProgramChange: []
+    ExtraData:
+      extKey: extValue
+  ExtraData:
+    extKey: extValue

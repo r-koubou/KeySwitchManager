@@ -20,4 +20,14 @@
       <ProjectReference Include="..\..\Commons\Commons.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="TestData\" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Update="TestData\ImportTestData.xlsx">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </None>
+    </ItemGroup>
+
 </Project>

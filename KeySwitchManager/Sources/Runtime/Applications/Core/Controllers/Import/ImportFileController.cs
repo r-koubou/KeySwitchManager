@@ -13,7 +13,8 @@ namespace KeySwitchManager.Applications.Core.Controllers.Import
     public class ImportFileController : IController
     {
         private IKeySwitchRepository DatabaseRepository { get; }
-        private IKeySwitchReader KeySwitchReader { get; }
+        private IImportContentReader ContentContentReader { get; }
+        private IContent Content { get; }
         private IImportFilePresenter Presenter { get; }
         private bool LeaveOpen { get; }
 
@@ -22,15 +23,17 @@ namespace KeySwitchManager.Applications.Core.Controllers.Import
         #region Ctor
         public ImportFileController(
             IKeySwitchRepository databaseRepository,
-            IKeySwitchReader reader,
+            IImportContentReader contentReader,
+            IContent content,
             IImportFilePresenter presenter,
             bool leaveOpen = false )
         {
-            DatabaseRepository = databaseRepository;
-            KeySwitchReader    = reader;
-            Presenter          = presenter;
-            LeaveOpen          = leaveOpen;
-            loggingSubscriber  = databaseRepository.OnLogging.Subscribe( onNext: presenter.Present, onError: presenter.Present );
+            DatabaseRepository   = databaseRepository;
+            ContentContentReader = contentReader;
+            Content              = content;
+            Presenter            = presenter;
+            LeaveOpen            = leaveOpen;
+            loggingSubscriber    = databaseRepository.OnLogging.Subscribe( onNext: presenter.Present, onError: presenter.Present );
         }
         #endregion
 
@@ -44,18 +47,12 @@ namespace KeySwitchManager.Applications.Core.Controllers.Import
             }
 
             Disposer.Dispose( DatabaseRepository );
-
-            if( !KeySwitchReader.LeaveOpen )
-            {
-                Disposer.Dispose( KeySwitchReader );
-            }
         }
 
         async Task IController.ExecuteAsync( CancellationToken cancellationToken )
         {
-            var keySwitches = KeySwitchReader.Read();
             IImportFileUseCase interactor = new ImportFileInteractor( DatabaseRepository, Presenter );
-            var request = new ImportFileRequest( keySwitches );
+            var request = new ImportFileRequest( ContentContentReader, Content );
             var response = await interactor.ExecuteAsync( request, cancellationToken );
             await DatabaseRepository.FlushAsync( cancellationToken );
             Presenter.Complete( response );

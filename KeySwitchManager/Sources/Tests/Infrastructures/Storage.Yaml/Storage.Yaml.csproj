@@ -19,4 +19,14 @@
       <ProjectReference Include="..\..\Commons\Commons.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="KeySwitches\TestData\" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Update="KeySwitches\TestData\ImportTestData.yaml">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </None>
+    </ItemGroup>
+
 </Project>
