@@ -22,7 +22,7 @@ namespace KeySwitchManager.UseCase.KeySwitches.Export
             ContentFactory       = contentFactory;
         }
 
-        async Task IExportStrategy.ExportAsync( IReadOnlyCollection<KeySwitch> keySwitches, CancellationToken cancellationToken )
+        public async Task ExportAsync( IReadOnlyCollection<KeySwitch> keySwitches, CancellationToken cancellationToken = default )
         {
             var contentWriter = await ContentWriterFactory.CreateAsync( keySwitches, cancellationToken );
             if( cancellationToken.IsCancellationRequested )

@@ -24,7 +24,7 @@ namespace KeySwitchManager.Interactors.KeySwitches
             Presenter  = presenter;
         }
 
-        async Task<ImportFileResponse> IImportFileUseCase.ExecuteAsync( ImportFileRequest request, CancellationToken cancellationToken )
+        public async Task<ImportFileResponse> ExecuteAsync( ImportFileRequest request, CancellationToken cancellationToken )
         {
             var insertedCount = 0;
             var updatedCount = 0;

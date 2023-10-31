@@ -33,7 +33,7 @@ namespace KeySwitchManager.Interactors.KeySwitches
             Presenter  = presenter;
         }
 
-        async Task<ExportFileResponse> IExportFileUseCase.ExecuteAsync( ExportFileRequest request, CancellationToken cancellationToken )
+        public async Task<ExportFileResponse> ExecuteAsync( ExportFileRequest request, CancellationToken cancellationToken )
         {
             IDisposable? subscription = null;
 

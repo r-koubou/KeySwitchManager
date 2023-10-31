@@ -29,9 +29,9 @@ namespace KeySwitchManager.Testing.Storage.Yaml.KeySwitches
             };
 
 
-            IExportContentWriterFactory contentWriterFactory = new YamlExportContentFileWriterFactory( new DirectoryPath( outputDirectory ) );
-            IExportContentFactory exportContentFactory = new YamlExportContentFactory();
-            IExportStrategy strategy = new SingleExportStrategy( contentWriterFactory, exportContentFactory );
+            var contentWriterFactory = new YamlExportContentFileWriterFactory( new DirectoryPath( outputDirectory ) );
+            var exportContentFactory = new YamlExportContentFactory();
+            var strategy = new SingleExportStrategy( contentWriterFactory, exportContentFactory );
 
             Assert.DoesNotThrowAsync( async () => await strategy.ExportAsync( keySwitches ) );
         }
@@ -47,9 +47,9 @@ namespace KeySwitchManager.Testing.Storage.Yaml.KeySwitches
                 TestDataGenerator.CreateKeySwitch( productName: "Product2" ),
             };
 
-            IExportContentWriterFactory contentWriterFactory = new YamlExportContentFileWriterFactory( new DirectoryPath( outputDirectory ) );
-            IExportContentFactory exportContentFactory = new YamlExportContentFactory();
-            IExportStrategy strategy = new MultipleExportStrategy( contentWriterFactory, exportContentFactory );
+            var contentWriterFactory = new YamlExportContentFileWriterFactory( new DirectoryPath( outputDirectory ) );
+            var exportContentFactory = new YamlExportContentFactory();
+            var strategy = new MultipleExportStrategy( contentWriterFactory, exportContentFactory );
 
             Assert.DoesNotThrowAsync( async () => await strategy.ExportAsync( keySwitches ) );
         }

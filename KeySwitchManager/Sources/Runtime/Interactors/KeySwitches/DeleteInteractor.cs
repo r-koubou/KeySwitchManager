@@ -26,7 +26,7 @@ namespace KeySwitchManager.Interactors.KeySwitches
             Presenter  = presenter;
         }
 
-        async Task<DeleteResponse> IDeleteUseCase.ExecuteAsync( DeleteRequest request, CancellationToken cancellationToken )
+        public async Task<DeleteResponse> ExecuteAsync( DeleteRequest request, CancellationToken cancellationToken )
         {
             var developerName = request.DeveloperName;
             var productName = request.ProductName;

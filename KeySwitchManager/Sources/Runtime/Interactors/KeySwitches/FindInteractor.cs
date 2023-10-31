@@ -29,7 +29,7 @@ namespace KeySwitchManager.Interactors.KeySwitches
             Presenter  = presenter;
         }
 
-        async Task<FindResponse> IFindUseCase.ExecuteAsync( FindRequest request, CancellationToken cancellationToken )
+        public async Task<FindResponse> ExecuteAsync( FindRequest request, CancellationToken cancellationToken )
         {
             var developerName = request.DeveloperName;
             var productName = request.ProductName;
