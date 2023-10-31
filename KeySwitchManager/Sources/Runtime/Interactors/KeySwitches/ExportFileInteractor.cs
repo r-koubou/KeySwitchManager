@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
@@ -34,25 +35,44 @@ namespace KeySwitchManager.Interactors.KeySwitches
 
         async Task<ExportFileResponse> IExportFileUseCase.ExecuteAsync( ExportFileRequest request, CancellationToken cancellationToken )
         {
-            var developerName = request.DeveloperName;
-            var productName = request.ProductName;
-            var instrumentName = request.InstrumentName;
+            IDisposable? subscription = null;
 
-            var queryResult = await SearchHelper.SearchAsync(
-                Repository,
-                developerName,
-                productName,
-                instrumentName
-            );
-
-            if( queryResult.Any() )
+            try
             {
+                var developerName = request.DeveloperName;
+                var productName = request.ProductName;
+                var instrumentName = request.InstrumentName;
+
+                var queryResult = await SearchHelper.SearchAsync(
+                    Repository,
+                    developerName,
+                    productName,
+                    instrumentName,
+                    cancellationToken
+                );
+
+                if( !queryResult.Any() )
+                {
+                    Presenter.Present( $"No keyswitch(es) found. ({nameof( developerName )}={developerName}, {nameof( productName )}={productName}, {nameof( instrumentName )}={instrumentName})" );
+
+                    return new ExportFileResponse( new List<KeySwitch>() );
+                }
+
+                subscription = Strategy.OnExported.Subscribe( x =>
+                {
+                    Presenter.Present( $"Exported: {x}" );
+                });
+
                 await Strategy.ExportAsync( queryResult, cancellationToken );
+
+                Presenter.Present( $"{queryResult.Count} exported" );
+
                 return new ExportFileResponse( queryResult );
             }
-
-            Presenter.Present( $"No keyswitch(es) found. ({nameof( developerName )}={developerName}, {nameof( productName )}={productName}, {nameof( instrumentName )}={instrumentName})" );
-            return new ExportFileResponse( new List<KeySwitch>() );
+            finally
+            {
+                subscription?.Dispose();
+            }
         }
     }
 }
