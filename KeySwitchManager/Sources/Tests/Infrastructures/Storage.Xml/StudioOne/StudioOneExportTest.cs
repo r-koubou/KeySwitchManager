@@ -29,12 +29,12 @@ namespace KeySwitchManager.Testing.Storage.Xml.StudioOne
 
             var outputDirectory = new DirectoryPath( Path.Combine( TestOutputDirectory, nameof( ExportTest ) ) );
 
-            IExportContentWriterFactory contentWriterFactory
+            var contentWriterFactory
                 = new StudioOneExportContentFileWriterFactory(
                     new StudioOneGroupedExportPathBuilder( outputDirectory )
                 );
-            IExportContentFactory exportContentFactory = new StudioOneExportContentFactory();
-            IExportStrategy strategy = new GroupedExportStrategy( contentWriterFactory, exportContentFactory);
+            var exportContentFactory = new StudioOneExportContentFactory();
+            var strategy = new GroupedExportStrategy( contentWriterFactory, exportContentFactory);
 
             Assert.DoesNotThrowAsync( async () => await strategy.ExportAsync( keySwitches ) );
         }

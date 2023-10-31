@@ -30,9 +30,9 @@ namespace KeySwitchManager.Testing.Storage.Spreadsheet.ClosedXml
             var outputDirectory = Path.Combine( TestOutputDirectory, nameof( ExportTest ) );
             var keyswitch = TestDataGenerator.CreateKeySwitch();
 
-            IExportContentWriterFactory contentWriterFactory = new ClosedXmlExportContentFileWriterFactory( new DirectoryPath( outputDirectory ) );
-            IExportContentFactory exportContentFactory = new ClosedXmlExportContentFactory();
-            IExportStrategy strategy = new SingleExportStrategy( contentWriterFactory, exportContentFactory );
+            var contentWriterFactory = new ClosedXmlExportContentFileWriterFactory( new DirectoryPath( outputDirectory ) );
+            var exportContentFactory = new ClosedXmlExportContentFactory();
+            var strategy = new SingleExportStrategy( contentWriterFactory, exportContentFactory );
 
             Assert.DoesNotThrowAsync( async () => await strategy.ExportAsync( new[] { keyswitch } ) );
         }
@@ -49,12 +49,12 @@ namespace KeySwitchManager.Testing.Storage.Spreadsheet.ClosedXml
 
             var outputDirectory = new DirectoryPath( Path.Combine( TestOutputDirectory, nameof( ExportGroupedTest ) ) );
 
-            IExportContentWriterFactory contentWriterFactory
+            var contentWriterFactory
                 = new ClosedXmlExportContentFileWriterFactory(
                     new ClosedXmlGroupedExportPathBuilder( ".xlsx", outputDirectory )
                 );
-            IExportContentFactory exportContentFactory = new ClosedXmlExportContentFactory();
-            IExportStrategy strategy = new GroupedExportStrategy( contentWriterFactory, exportContentFactory);
+            var exportContentFactory = new ClosedXmlExportContentFactory();
+            var strategy = new GroupedExportStrategy( contentWriterFactory, exportContentFactory);
 
             Assert.DoesNotThrowAsync( async () => await strategy.ExportAsync( keySwitches ) );
         }

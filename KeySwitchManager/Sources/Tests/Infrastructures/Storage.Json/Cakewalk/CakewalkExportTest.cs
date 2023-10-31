@@ -32,9 +32,9 @@ namespace KeySwitchManager.Testing.Storage.Xml.Cakewalk
             var outputDirectory = Path.Combine( TestOutputDirectory, nameof( ExportTest ) );
             var keyswitch = TestDataGenerator.CreateKeySwitch();
 
-            IExportContentWriterFactory contentWriterFactory = new CakewalkExportContentFileWriterFactory( new DirectoryPath( outputDirectory ) );
-            IExportContentFactory exportContentFactory = new CakewalkExportContentFactory();
-            IExportStrategy strategy = new SingleExportStrategy( contentWriterFactory, exportContentFactory );
+            var contentWriterFactory = new CakewalkExportContentFileWriterFactory( new DirectoryPath( outputDirectory ) );
+            var exportContentFactory = new CakewalkExportContentFactory();
+            var strategy = new SingleExportStrategy( contentWriterFactory, exportContentFactory );
 
             Assert.DoesNotThrowAsync( async () => await strategy.ExportAsync( new[] { keyswitch } ) );
         }
@@ -50,9 +50,9 @@ namespace KeySwitchManager.Testing.Storage.Xml.Cakewalk
 
             var outputDirectory = Path.Combine( TestOutputDirectory, nameof( ExportMultipleTest ) );
 
-            IExportContentWriterFactory contentWriterFactory = new CakewalkExportContentFileWriterFactory( new DirectoryPath( outputDirectory ) );
-            IExportContentFactory exportContentFactory = new CakewalkExportContentFactory();
-            IExportStrategy strategy = new MultipleExportStrategy( contentWriterFactory, exportContentFactory);
+            var contentWriterFactory = new CakewalkExportContentFileWriterFactory( new DirectoryPath( outputDirectory ) );
+            var exportContentFactory = new CakewalkExportContentFactory();
+            var strategy = new MultipleExportStrategy( contentWriterFactory, exportContentFactory);
 
             Assert.DoesNotThrowAsync( async () => await strategy.ExportAsync( keySwitches ) );
         }
@@ -67,9 +67,9 @@ namespace KeySwitchManager.Testing.Storage.Xml.Cakewalk
                 TestDataGenerator.CreateKeySwitch(),
             };
 
-            IExportContentWriterFactory contentWriterFactory = new CakewalkExportContentFileWriterFactory( new DirectoryPath( outputDirectory ) );
-            IExportContentFactory exportContentFactory = new CakewalkExportContentFactory();
-            IExportStrategy strategy = new SingleExportStrategy( contentWriterFactory, exportContentFactory );
+            var contentWriterFactory = new CakewalkExportContentFileWriterFactory( new DirectoryPath( outputDirectory ) );
+            var exportContentFactory = new CakewalkExportContentFactory();
+            var strategy = new SingleExportStrategy( contentWriterFactory, exportContentFactory );
 
             Assert.ThrowsAsync<ArgumentException>( async () => await strategy.ExportAsync( keySwitches ) );
         }

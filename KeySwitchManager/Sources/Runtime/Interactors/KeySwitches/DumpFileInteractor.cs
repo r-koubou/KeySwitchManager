@@ -28,7 +28,7 @@ namespace KeySwitchManager.Interactors.KeySwitches
             Presenter  = presenter;
         }
 
-        async Task<DumpFileResponse> IDumpFileUseCase.ExecuteAsync( DumpFileRequest request, CancellationToken cancellationToken )
+        public async Task<DumpFileResponse> ExecuteAsync( DumpFileRequest request, CancellationToken cancellationToken )
         {
             var all = await Repository.FindAllAsync( cancellationToken );
 

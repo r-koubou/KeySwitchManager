@@ -34,9 +34,9 @@ namespace KeySwitchManager.Testing.Storage.Xml.Cubase
 
             var keySwitch = TestDataGenerator.CreateKeySwitch( articulation );
 
-            IExportContentWriterFactory contentWriterFactory = new CubaseExportContentFileWriterFactory( new DirectoryPath( outputDirectory ) );
-            IExportContentFactory exportContentFactory = new CubaseExportContentFactory();
-            IExportStrategy strategy = new SingleExportStrategy( contentWriterFactory, exportContentFactory );
+            var contentWriterFactory = new CubaseExportContentFileWriterFactory( new DirectoryPath( outputDirectory ) );
+            var exportContentFactory = new CubaseExportContentFactory();
+            var strategy = new SingleExportStrategy( contentWriterFactory, exportContentFactory );
 
             Assert.DoesNotThrowAsync( async () => await strategy.ExportAsync( new[] { keySwitch } ) );
 

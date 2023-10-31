@@ -44,7 +44,7 @@ namespace KeySwitchManager.Applications.Core.Controllers.Delete
             }
         }
 
-        async Task IController.ExecuteAsync( CancellationToken cancellationToken )
+        public async Task ExecuteAsync( CancellationToken cancellationToken )
         {
             IDeleteUseCase interactor = new DeleteInteractor( DatabaseRepository, Presenter );
             var request = new DeleteRequest( DeveloperName, ProductName, InstrumentName );

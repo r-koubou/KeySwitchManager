@@ -43,7 +43,7 @@ namespace KeySwitchManager.Applications.Core.Controllers.Import
             Disposer.Dispose( DatabaseRepository );
         }
 
-        async Task IController.ExecuteAsync( CancellationToken cancellationToken )
+        public async Task ExecuteAsync( CancellationToken cancellationToken )
         {
             IImportFileUseCase interactor = new ImportFileInteractor( DatabaseRepository, Presenter );
             var request = new ImportFileRequest( ContentContentReader, Content );

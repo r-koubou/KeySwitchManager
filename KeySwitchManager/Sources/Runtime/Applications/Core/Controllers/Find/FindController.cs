@@ -44,7 +44,7 @@ namespace KeySwitchManager.Applications.Core.Controllers.Find
             }
         }
 
-        async Task IController.ExecuteAsync( CancellationToken cancellationToken )
+        public async Task ExecuteAsync( CancellationToken cancellationToken )
         {
             IFindUseCase interactor = new FindInteractor( DatabaseRepository, Presenter );
             var request = new FindRequest( DeveloperName, ProductName, InstrumentName );
