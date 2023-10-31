@@ -26,7 +26,7 @@ namespace KeySwitchManager.Applications.Core.Controllers.Export
             OutputDirectory  = outputDirectory;
         }
 
-        IController IExportControllerFactory.Create(
+        public IController Create(
             string developerName,
             string productName,
             string instrumentName,

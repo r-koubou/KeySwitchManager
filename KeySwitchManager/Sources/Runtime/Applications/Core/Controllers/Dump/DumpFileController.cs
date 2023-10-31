@@ -31,7 +31,7 @@ namespace KeySwitchManager.Applications.Core.Controllers.Dump
             Disposer.Dispose( SourceRepository );
         }
 
-        async Task IController.ExecuteAsync( CancellationToken cancellationToken )
+        public async Task ExecuteAsync( CancellationToken cancellationToken )
         {
             IDumpFileUseCase interactor = new DumpFileInteractor(
                 SourceRepository,

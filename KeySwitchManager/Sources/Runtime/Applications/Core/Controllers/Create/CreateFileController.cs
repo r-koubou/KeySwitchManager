@@ -22,7 +22,7 @@ namespace KeySwitchManager.Applications.Core.Controllers.Create
 
         public void Dispose() {}
 
-        async Task IController.ExecuteAsync( CancellationToken cancellationToken )
+        public async Task ExecuteAsync( CancellationToken cancellationToken )
         {
             ICreateFileUseCase interactor = new CreateFileInteractor( Strategy, Presenter );
             var response = await interactor.ExecuteAsync( cancellationToken );

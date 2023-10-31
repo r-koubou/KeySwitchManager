@@ -50,7 +50,7 @@ namespace KeySwitchManager.Applications.Core.Controllers.Export
             Disposer.Dispose( SourceRepository );
         }
 
-        async Task IController.ExecuteAsync( CancellationToken cancellationToken )
+        public async Task ExecuteAsync( CancellationToken cancellationToken )
         {
             IExportFileUseCase interactor = new ExportFileInteractor(
                 SourceRepository,
