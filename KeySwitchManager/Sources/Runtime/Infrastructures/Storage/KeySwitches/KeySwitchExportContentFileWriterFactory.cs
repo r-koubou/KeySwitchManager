@@ -13,6 +13,9 @@ namespace KeySwitchManager.Infrastructures.Storage.KeySwitches
         private IDirectoryPath OutputDirectory { get; }
         private IExportPathBuilder PathBuilder { get; }
 
+        protected KeySwitchExportContentFileWriterFactory( string suffix = "" )
+            : this( new DefaultExportPathBuilder( suffix, DirectoryPath.Default ) ) {}
+
         protected KeySwitchExportContentFileWriterFactory( string suffix, IDirectoryPath outputDirectory )
           : this( new DefaultExportPathBuilder( suffix, outputDirectory ) ) {}
 

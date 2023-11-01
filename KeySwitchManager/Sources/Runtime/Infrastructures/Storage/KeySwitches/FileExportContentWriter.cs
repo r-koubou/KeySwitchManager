@@ -1,12 +1,10 @@
-using System.Threading;
-using System.Threading.Tasks;
+using System.IO;
 
 using KeySwitchManager.Commons.Data;
-using KeySwitchManager.UseCase.KeySwitches.Export;
 
 namespace KeySwitchManager.Infrastructures.Storage.KeySwitches
 {
-    public class FileExportContentWriter : IExportContentWriter
+    public class FileExportContentWriter : StreamExportContentWriter
     {
         private IFilePath OutputPath { get; }
 
@@ -15,11 +13,9 @@ namespace KeySwitchManager.Infrastructures.Storage.KeySwitches
             OutputPath = outputPath;
         }
 
-        public async Task WriteAsync( IContent content, CancellationToken cancellationToken = default )
+        protected override Stream OpenStream()
         {
-            await using var outputStream = OutputPath.OpenWriteStream();
-            await using var contentStream = await content.GetContentStreamAsync();
-            await contentStream.CopyToAsync( outputStream, cancellationToken );
+            return OutputPath.OpenWriteStream();
         }
     }
 }
