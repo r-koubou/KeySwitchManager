@@ -6,13 +6,13 @@ using KeySwitchManager.Domain.KeySwitches.Models;
 using KeySwitchManager.Infrastructures.Storage.KeySwitches.Helper;
 using KeySwitchManager.UseCase.KeySwitches.Export;
 
-namespace KeySwitchManager.Infrastructures.Storage.Spreadsheet.ClosedXml.KeySwitches.Export
+namespace KeySwitchManager.Infrastructures.Storage.KeySwitches
 {
-    public sealed class ClosedXmlGroupedExportPathBuilder : ExportPathBuilder
+    public abstract class GroupedExportPathBuilder : ExportPathBuilder
     {
-        public ClosedXmlGroupedExportPathBuilder() : this( DirectoryPath.Default ) {}
+        protected GroupedExportPathBuilder( string suffix ) : base( suffix, DirectoryPath.Default ) {}
 
-        public ClosedXmlGroupedExportPathBuilder( IDirectoryPath outputDirectory ) : base( ".xlsx", outputDirectory ) {}
+        protected GroupedExportPathBuilder( string suffix, IDirectoryPath outputDirectory ) : base( suffix, outputDirectory ) {}
 
         public override IFilePath Build( IReadOnlyCollection<KeySwitch> keySwitches )
         {

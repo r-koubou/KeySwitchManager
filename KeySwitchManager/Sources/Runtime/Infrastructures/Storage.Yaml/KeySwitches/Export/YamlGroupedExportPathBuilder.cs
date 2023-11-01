@@ -8,21 +8,13 @@ using KeySwitchManager.UseCase.KeySwitches.Export;
 
 namespace KeySwitchManager.Infrastructures.Storage.Yaml.KeySwitches.Export
 {
-    public sealed class YamlGroupedExportPathBuilder : IExportPathBuilder
+    public sealed class YamlGroupedExportPathBuilder : ExportPathBuilder
     {
+        public YamlGroupedExportPathBuilder() : this( DirectoryPath.Default ) {}
 
-        public string Suffix { get; }
-        public IDirectoryPath OutputDirectory { get; }
+        public YamlGroupedExportPathBuilder( IDirectoryPath outputDirectory ) : base( ".yaml", outputDirectory ) {}
 
-        public YamlGroupedExportPathBuilder( IDirectoryPath outputDirectory ) : this( ".yaml", outputDirectory ) {}
-
-        public YamlGroupedExportPathBuilder( string suffix, IDirectoryPath outputDirectory )
-        {
-            Suffix          = suffix;
-            OutputDirectory = outputDirectory;
-        }
-
-        public IFilePath Build( IReadOnlyCollection<KeySwitch> keySwitches )
+        public override IFilePath Build( IReadOnlyCollection<KeySwitch> keySwitches )
         {
             var source = keySwitches.First();
             var developer = source.DeveloperName;

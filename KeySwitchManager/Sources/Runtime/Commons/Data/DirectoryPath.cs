@@ -4,6 +4,8 @@ namespace KeySwitchManager.Commons.Data
 {
     public class DirectoryPath : IDirectoryPath
     {
+        public static DirectoryPath Default { get; } = new DirectoryPath( "." );
+
         public string Path { get; }
         public bool Exists => Directory.Exists( Path );
 

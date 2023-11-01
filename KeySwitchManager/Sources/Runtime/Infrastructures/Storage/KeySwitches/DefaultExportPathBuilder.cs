@@ -8,20 +8,13 @@ using KeySwitchManager.UseCase.KeySwitches.Export;
 
 namespace KeySwitchManager.Infrastructures.Storage.KeySwitches
 {
-    public sealed class DefaultExportPathBuilder : IExportPathBuilder
+    public sealed class DefaultExportPathBuilder : ExportPathBuilder
     {
-        public string Suffix { get; }
-        public IDirectoryPath OutputDirectory { get; }
+        public DefaultExportPathBuilder( string suffix = "" ) : this( suffix, DirectoryPath.Default ) {}
 
-        public DefaultExportPathBuilder( string suffix ) : this( suffix, new DirectoryPath( "." ) ) {}
+        public DefaultExportPathBuilder( string suffix, IDirectoryPath outputDirectory ) : base( suffix, outputDirectory ) {}
 
-        public DefaultExportPathBuilder( string suffix, IDirectoryPath outputDirectory )
-        {
-            Suffix          = suffix;
-            OutputDirectory = outputDirectory;
-        }
-
-        public IFilePath Build( IReadOnlyCollection<KeySwitch> keySwitches )
+        public override IFilePath Build( IReadOnlyCollection<KeySwitch> keySwitches )
         {
             return CreatePathHelper.CreateFilePath( keySwitches.First(), Suffix, OutputDirectory );
         }

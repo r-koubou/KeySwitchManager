@@ -13,7 +13,7 @@ namespace KeySwitchManager.Infrastructures.Storage.KeySwitches
         public string Suffix => string.Empty;
 
         // no use
-        public IDirectoryPath OutputDirectory { get; } = new DirectoryPath( "." );
+        public IDirectoryPath OutputDirectory { get; } = DirectoryPath.Default;
 
         public SpecificExportPathBuilder( IFilePath filePath )
         {
