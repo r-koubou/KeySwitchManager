@@ -13,6 +13,8 @@ namespace KeySwitchManager.Infrastructures.Storage.KeySwitches
         public string Suffix { get; }
         public IDirectoryPath OutputDirectory { get; }
 
+        public DefaultExportPathBuilder( string suffix ) : this( suffix, new DirectoryPath( "." ) ) {}
+
         public DefaultExportPathBuilder( string suffix, IDirectoryPath outputDirectory )
         {
             Suffix          = suffix;
