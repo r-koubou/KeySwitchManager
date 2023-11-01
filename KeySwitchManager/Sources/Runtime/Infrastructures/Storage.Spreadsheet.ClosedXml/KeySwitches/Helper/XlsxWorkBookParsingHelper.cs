@@ -12,7 +12,7 @@ using KeySwitchManager.Infrastructures.Storage.Spreadsheet.KeySwitches.Models;
 using KeySwitchManager.Infrastructures.Storage.Spreadsheet.KeySwitches.Models.Aggregations;
 using KeySwitchManager.Infrastructures.Storage.Spreadsheet.KeySwitches.Models.Values;
 
-using RkHelper.Text;
+using RkHelper.Primitives;
 
 namespace KeySwitchManager.Infrastructures.Storage.Spreadsheet.ClosedXml.KeySwitches.Helper
 {

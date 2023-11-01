@@ -1,4 +1,4 @@
-using RkHelper.Text;
+using RkHelper.Primitives;
 
 namespace KeySwitchManager.Domain.KeySwitches.Helpers
 {
