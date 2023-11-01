@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using KeySwitchManager.Domain.KeySwitches.Models;
 using KeySwitchManager.Domain.KeySwitches.Models.Values;
 
-using RkHelper.Text;
+using RkHelper.Primitives;
 
 namespace KeySwitchManager.Domain.KeySwitches.Helpers
 {

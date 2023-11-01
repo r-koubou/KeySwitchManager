@@ -1,6 +1,6 @@
 using System;
 
-using RkHelper.Number;
+using RkHelper.Primitives;
 
 namespace KeySwitchManager.Commons.Data
 {

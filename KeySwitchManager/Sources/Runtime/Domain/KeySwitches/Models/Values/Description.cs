@@ -1,4 +1,4 @@
-using RkHelper.Text;
+using RkHelper.Primitives;
 
 using ValueObjectGenerator;
 

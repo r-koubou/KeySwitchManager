@@ -5,7 +5,7 @@ using KeySwitchManager.Domain.KeySwitches;
 using KeySwitchManager.Domain.KeySwitches.Models.Values;
 using KeySwitchManager.UseCase.KeySwitches.Delete;
 
-using RkHelper.Text;
+using RkHelper.Primitives;
 
 namespace KeySwitchManager.Interactors.KeySwitches
 {
