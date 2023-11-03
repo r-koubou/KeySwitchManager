@@ -52,7 +52,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Storage.Json", "Sources\Tes
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Storage.Spreadsheet.ClosedXml", "Sources\Tests\Infrastructures\Storage.Spreadsheet.ClosedXml\Storage.Spreadsheet.ClosedXml.csproj", "{7ABC44B5-2B89-44C1-8B6C-951D3169E05B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Applications.Blazor", "Sources\Runtime\Applications\Applications.Blazor\Applications.Blazor.csproj", "{90BD9ED2-8853-4215-A14B-DA41ECEC2792}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Applications.Blazor", "Sources\Runtime\Applications\Blazor\Applications.Blazor.csproj", "{30D5B2F8-59A6-408D-9697-1339B3943BA5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -136,10 +136,10 @@ Global
 		{7ABC44B5-2B89-44C1-8B6C-951D3169E05B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7ABC44B5-2B89-44C1-8B6C-951D3169E05B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7ABC44B5-2B89-44C1-8B6C-951D3169E05B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{90BD9ED2-8853-4215-A14B-DA41ECEC2792}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{90BD9ED2-8853-4215-A14B-DA41ECEC2792}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{90BD9ED2-8853-4215-A14B-DA41ECEC2792}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{90BD9ED2-8853-4215-A14B-DA41ECEC2792}.Release|Any CPU.Build.0 = Release|Any CPU
+		{30D5B2F8-59A6-408D-9697-1339B3943BA5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{30D5B2F8-59A6-408D-9697-1339B3943BA5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{30D5B2F8-59A6-408D-9697-1339B3943BA5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{30D5B2F8-59A6-408D-9697-1339B3943BA5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{EAE5D07E-8455-4C33-BCD1-07EFF958E21B} = {505E86DD-3A59-4038-B109-22B3678D035E}
@@ -166,6 +166,6 @@ Global
 		{D35DCF05-CE3B-4258-AF17-5D73C2A9EE86} = {43EB4457-4958-43C4-80A0-5279D3D7EE6D}
 		{61CEC52E-8F9F-4A98-87B8-9AC0E764A3D9} = {B1FC3859-B078-471F-81F2-FBB0A25C974B}
 		{7ABC44B5-2B89-44C1-8B6C-951D3169E05B} = {B1FC3859-B078-471F-81F2-FBB0A25C974B}
-		{90BD9ED2-8853-4215-A14B-DA41ECEC2792} = {43EB4457-4958-43C4-80A0-5279D3D7EE6D}
+		{30D5B2F8-59A6-408D-9697-1339B3943BA5} = {43EB4457-4958-43C4-80A0-5279D3D7EE6D}
 	EndGlobalSection
 EndGlobal
