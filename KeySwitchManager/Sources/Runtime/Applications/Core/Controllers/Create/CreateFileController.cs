@@ -10,11 +10,11 @@ namespace KeySwitchManager.Applications.Core.Controllers.Create
     public class CreateFileController : IController
     {
         private IExportStrategy Strategy { get; }
-        private ICreateFilePresenter Presenter { get; }
+        private ICreatePresenter Presenter { get; }
 
         public CreateFileController(
             IExportStrategy strategy,
-            ICreateFilePresenter presenter )
+            ICreatePresenter presenter )
         {
             Strategy  = strategy;
             Presenter = presenter;
@@ -24,7 +24,7 @@ namespace KeySwitchManager.Applications.Core.Controllers.Create
 
         public async Task ExecuteAsync( CancellationToken cancellationToken )
         {
-            ICreateFileUseCase interactor = new CreateFileInteractor( Strategy, Presenter );
+            ICreateUseCase interactor = new CreateInteractor( Strategy, Presenter );
             var response = await interactor.ExecuteAsync( cancellationToken );
             Presenter.Complete( response );
         }

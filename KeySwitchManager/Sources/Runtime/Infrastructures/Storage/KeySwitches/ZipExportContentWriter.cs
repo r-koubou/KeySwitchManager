@@ -1,11 +1,14 @@
+using System;
 using System.IO;
 using System.IO.Compression;
 
 using KeySwitchManager.Commons.Data;
 
+using RkHelper.System;
+
 namespace KeySwitchManager.Infrastructures.Storage.KeySwitches
 {
-    public class ZipExportContentWriter : StreamExportContentWriter
+    public class ZipExportContentWriter : AbstractStreamExportContentWriter
     {
         private ZipArchive ZipArchive { get; }
         private IFilePath ArchivePath { get; }
@@ -22,5 +25,11 @@ namespace KeySwitchManager.Infrastructures.Storage.KeySwitches
         {
             return ZipArchive.CreateEntry( ArchivePath.Path, CompressionLevel ).Open();
         }
+
+        protected override void DisposeStream( Stream stream )
+        {
+            Disposer.Dispose( stream );
+        }
+
     }
 }

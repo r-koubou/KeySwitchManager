@@ -1,0 +1,38 @@
+@page "/create_db"
+
+@inject FileDownloadService DownloadService
+
+@using KeySwitchManager.Applications.Core.Controllers.Create
+@using KeySwitchManager.Applications.Core.Controllers.Export
+@using KeySwitchManager.Applications.Core.Views.LogView
+@using KeySwitchManager.Applications.Blazor.Services
+
+<PageTitle>Create Database File</PageTitle>
+
+<MudText Typo="Typo.h3" GutterBottom="true">Create Database</MudText>
+<MudText Class="mb-8">Click a `Create Database` button to new database file</MudText>
+
+<MudButton OnClick="@(OnCreateButtonClicked)">Create Database</MudButton>
+
+@code {
+
+    private CancellationTokenSource cts = new ();
+
+    public async void OnCreateButtonClicked( MouseEventArgs e )
+    {
+        var target = new MemoryStream();
+        var factory = new CreateToStreamControllerFactory();
+        var controller = factory.Create( target, ExportSupportedFormat.Yaml, new ILogTextView.Null() );
+
+        cts = new ();
+
+        await Task.Run( async () =>
+        {
+            await controller.ExecuteAsync( cts.Token );
+
+            target.Seek( 0, SeekOrigin.Begin );
+
+            await DownloadService.TriggerDownloadAsync( target.ToArray(), "new_file.db.yaml" );
+        });
+    }
+}

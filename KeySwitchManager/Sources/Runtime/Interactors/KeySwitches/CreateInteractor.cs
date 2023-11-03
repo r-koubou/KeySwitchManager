@@ -7,23 +7,24 @@ using KeySwitchManager.UseCase.KeySwitches.Export;
 
 namespace KeySwitchManager.Interactors.KeySwitches
 {
-    public class CreateFileInteractor : ICreateFileUseCase
+    public class CreateInteractor : ICreateUseCase
     {
         private IExportStrategy Strategy { get; }
-        private ICreateFilePresenter Presenter { get; }
+        private ICreatePresenter Presenter { get; }
 
-        public CreateFileInteractor( IExportStrategy strategy, ICreateFilePresenter presenter )
+        public CreateInteractor( IExportStrategy strategy, ICreatePresenter presenter )
         {
             Strategy   = strategy;
             Presenter  = presenter;
         }
 
-        public async Task<CreateFileResponse> ExecuteAsync( CancellationToken cancellationToken )
+        public async Task<CreateResponse> ExecuteAsync( CancellationToken cancellationToken )
         {
             var keyswitch = KeySwitchFactoryHelper.CreateTemplate();
             await Strategy.ExportAsync( new[] { keyswitch }, cancellationToken );
 
-            return new CreateFileResponse();
+            return new CreateResponse();
         }
     }
 }
+
