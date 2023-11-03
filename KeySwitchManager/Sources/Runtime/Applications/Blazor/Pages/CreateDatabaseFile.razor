@@ -29,9 +29,7 @@
         await Task.Run( async () =>
         {
             await controller.ExecuteAsync( cts.Token );
-
             target.Seek( 0, SeekOrigin.Begin );
-
             await DownloadService.TriggerDownloadAsync( target.ToArray(), "new_file.db.yaml" );
         });
     }
