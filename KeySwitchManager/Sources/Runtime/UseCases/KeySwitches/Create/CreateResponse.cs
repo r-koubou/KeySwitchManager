@@ -1,5 +1,5 @@
 namespace KeySwitchManager.UseCase.KeySwitches.Create
 {
-    public class CreateFileResponse
+    public class CreateResponse
     {}
 }

@@ -3,11 +3,11 @@ using KeySwitchManager.UseCase.KeySwitches.Create;
 
 namespace KeySwitchManager.Applications.Core.Controllers.Create
 {
-    public class CreateFilePresenter : ICreateFilePresenter
+    public class CreatePresenter : ICreatePresenter
     {
         private ILogTextView TextView { get; }
 
-        public CreateFilePresenter( ILogTextView textView )
+        public CreatePresenter( ILogTextView textView )
         {
             TextView = textView;
         }
@@ -20,7 +20,7 @@ namespace KeySwitchManager.Applications.Core.Controllers.Create
             }
         }
 
-        public void Complete( CreateFileResponse response )
+        public void Complete( CreateResponse response )
         {
             TextView.Append( "Complete" );
         }

@@ -1,14 +1,12 @@
 using System.IO;
 
-using RkHelper.System;
-
 namespace KeySwitchManager.Infrastructures.Storage.KeySwitches
 {
-    public class StreamExportContentWriter : AbstractStreamExportContentWriter
+    public class KeepOpenedStreamExportContentWriter : AbstractStreamExportContentWriter
     {
         private Stream TargetStream { get; }
 
-        public StreamExportContentWriter( Stream targetStream )
+        public KeepOpenedStreamExportContentWriter( Stream targetStream )
         {
             TargetStream = targetStream;
         }
@@ -18,9 +16,6 @@ namespace KeySwitchManager.Infrastructures.Storage.KeySwitches
             return TargetStream;
         }
 
-        protected override void DisposeStream( Stream stream )
-        {
-            Disposer.Dispose( stream );
-        }
+        protected override void DisposeStream( Stream stream ) {}
     }
 }

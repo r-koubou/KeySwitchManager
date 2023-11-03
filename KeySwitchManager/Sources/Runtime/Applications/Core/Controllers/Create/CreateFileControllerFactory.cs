@@ -43,7 +43,7 @@ namespace KeySwitchManager.Applications.Core.Controllers.Create
                 throw new ArgumentException( $"{outputFilePath} is unknown file format" );
             }
 
-            return new CreateFileController( strategy, new CreateFilePresenter( logTextView ) );
+            return new CreateFileController( strategy, new CreatePresenter( logTextView ) );
         }
     }
 }
