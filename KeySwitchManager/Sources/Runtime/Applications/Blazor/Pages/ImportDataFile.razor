@@ -1,0 +1,86 @@
+@page "/import_file"
+@using KeySwitchManager.Applications.Blazor.Services
+
+@inject FileDownloadService DownloadService
+@inject ISnackbar Snackbar
+
+<PageTitle>Create Database File</PageTitle>
+
+<MudText Typo="Typo.h3" GutterBottom="true">Import data to database file</MudText>
+<MudText Class="mb-8">Click a `Create Database` button to new database or spreadsheet template file</MudText>
+
+@* @if( Processing ) *@
+@* { *@
+@*     <MudPaper Class="pa-16 ma-2"> *@
+@*     <MudText>Processing...</MudText> *@
+@*     </MudPaper> *@
+@*     return; *@
+@* } *@
+
+<MudText Typo="Typo.h4" GutterBottom="true">1. Select a database file</MudText>
+
+<SelectSingleFile OnFilesChanged="OnDatabaseFileChanged" Accept=".yaml,.yml" />
+
+<MudElement HtmlTag="div" Style="height:40px;" />
+
+<MudText Typo="Typo.h4" GutterBottom="true">2. Select import file(s)</MudText>
+
+<DragAndDropFiles Accept=".yaml,.yml,.xlsx" OnFilesChanged="OnImportFileChanged" OnClear="OnImportFilesCleared" />
+
+<MudElement HtmlTag="div" Style="height:40px;" />
+
+<MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="@(OnSubmit)">Import</MudButton>
+
+@code
+{
+    private IBrowserFile? databaseFile;
+
+    private void OnDatabaseFileChanged( IBrowserFile file )
+    {
+        switch( Path.GetExtension( file.Name ) )
+        {
+            case ".yaml":
+            case ".yml":
+            case ".xlsx":
+                databaseFile = file;
+                break;
+            default:
+                Snackbar.Configuration.PositionClass = Defaults.Classes.Position.TopCenter;
+                Snackbar.Add( $"Unsupported file type: {file.Name}", Severity.Error );
+                break;
+        }
+    }
+
+    private readonly List<IBrowserFile> importFiles = new();
+
+    private void OnImportFileChanged( (IReadOnlyList<IBrowserFile> browserFiles, List<string> displayFIleNames ) args )
+    {
+        var (browserFiles, displayFIleNames) = args;
+        importFiles.Clear();
+
+        foreach( var file in browserFiles )
+        {
+            switch( Path.GetExtension( file.Name ) )
+            {
+                case ".yaml":
+                case ".xlsx":
+                    importFiles.Add( file );
+                    displayFIleNames.Add( file.Name );
+                    break;
+                default:
+                    Snackbar.Configuration.PositionClass = Defaults.Classes.Position.TopCenter;
+                    Snackbar.Add( $"Unsupported file type: {file.Name}", Severity.Error );
+                    break;
+            }
+        }
+    }
+
+    private void OnImportFilesCleared()
+    {
+        importFiles.Clear();
+    }
+
+    private async Task OnSubmit()
+    {
+    }
+}

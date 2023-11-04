@@ -1,0 +1,35 @@
+<MudFileUpload T="IBrowserFile" Accept="@Accept" FilesChanged="OnInputFileChanged" MaximumFileCount="100">
+    <ButtonTemplate>
+        <MudButton HtmlTag="label"
+                   Variant="Variant.Filled"
+                   Color="Color.Primary"
+                   StartIcon="@Icons.Material.Filled.FileOpen"
+                   for="@context">
+            Select
+        </MudButton>
+    </ButtonTemplate>
+</MudFileUpload>
+
+<MudList>
+@if( SelectedFile != null )
+{
+    <MudListItem Icon="@Icons.Material.Filled.AttachFile" @key="@SelectedFile">
+        @SelectedFile.Name
+    </MudListItem>
+}
+</MudList>
+
+@code
+{
+    [Parameter] public string Accept { get; set; } = string.Empty;
+    [Parameter] public EventCallback<IBrowserFile> OnFilesChanged { get; set; }
+    [Parameter] public EventCallback OnClear { get; set; }
+
+    private IBrowserFile? SelectedFile { get; set; }
+
+    private async Task OnInputFileChanged( IBrowserFile file )
+    {
+        SelectedFile = file;
+        await OnFilesChanged.InvokeAsync( file );
+    }
+}
