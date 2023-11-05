@@ -15,8 +15,8 @@ namespace KeySwitchManager.Domain.KeySwitches.Models
         public KeySwitchId Id { get; }
         public Author Author { get; }
         public Description Description { get; }
-        public UtcDateTime Created { get; }
-        public UtcDateTime LastUpdated { get; }
+        public UtcDateTime Created { get; private set; }
+        public UtcDateTime LastUpdated { get; private set; }
         public DeveloperName DeveloperName { get; }
         public ProductName ProductName { get; }
         public InstrumentName InstrumentName { get; }
@@ -45,6 +45,16 @@ namespace KeySwitchManager.Domain.KeySwitches.Models
             InstrumentName = instrumentName;
             Articulations  = articulations;
             ExtraData      = extraData;
+        }
+
+        public void UpdateCreatedDate( UtcDateTime newCreatedDateTime )
+        {
+            Created = newCreatedDateTime;
+        }
+
+        public void UpdateLastUpdatedDate( UtcDateTime newLastUpdatedDateTime )
+        {
+            LastUpdated = newLastUpdatedDateTime;
         }
 
         public override string ToString()

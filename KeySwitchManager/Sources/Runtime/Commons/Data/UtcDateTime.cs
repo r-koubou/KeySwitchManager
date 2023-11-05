@@ -28,7 +28,7 @@ namespace KeySwitchManager.Commons.Data
         }
 
         public static DateTime NowAsDateTime
-            => TimeZoneInfo.ConvertTimeToUtc( DateTime.Now );
+            => DateTime.UtcNow;
 
         public int Year { get; }
         public int Month { get; }
