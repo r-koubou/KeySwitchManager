@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 
+using KeySwitchManager.Commons.Data;
 using KeySwitchManager.Domain.KeySwitches.Models;
 using KeySwitchManager.Domain.KeySwitches.Models.Aggregations;
 using KeySwitchManager.Domain.KeySwitches.Models.Factory;
@@ -30,8 +31,8 @@ namespace KeySwitchManager.Domain.KeySwitches.Helpers
                 Guid.NewGuid(),
                 "Author",
                 "Description",
-                DateTime.Now,
-                DateTime.Now,
+                UtcDateTime.NowAsDateTime,
+                UtcDateTime.NowAsDateTime,
                 "Developer Name",
                 "Product name",
                 "Instrument name",
