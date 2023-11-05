@@ -14,7 +14,7 @@ namespace KeySwitchManager.Applications.Core.Helpers
 
             if( path.EndsWith( ".yaml" ) || path.EndsWith( ".yml" ) )
             {
-                return new YamlRepository( new FilePath( filePath ) );
+                return new YamlFileRepository( new FilePath( filePath ) );
             }
 
             throw new ArgumentException( $"{filePath} is unknown file format" );
