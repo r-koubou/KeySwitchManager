@@ -1,0 +1,49 @@
+using System;
+using System.IO;
+using System.Text;
+using System.Threading;
+using System.Threading.Tasks;
+
+using KeySwitchManager.Commons.Data;
+using KeySwitchManager.Domain.KeySwitches;
+using KeySwitchManager.Infrastructures.Storage.Yaml.KeySwitches.Translators;
+
+using RkHelper.System;
+
+namespace KeySwitchManager.Infrastructures.Storage.Yaml.KeySwitches
+{
+    public abstract class YamlMemoryRepository : OnMemoryKeySwitchRepository
+    {
+        protected YamlMemoryRepository( Stream stream, bool leaveOpen = false ) : base()
+        {
+            StreamReader? reader = null;
+
+            try
+            {
+                reader = new StreamReader( stream, Encoding.UTF8 );
+                var yaml = reader.ReadToEnd();
+                KeySwitches.AddRange( new YamlKeySwitchImportTranslator().Translate( new PlainText( yaml ) ) );
+            }
+            finally
+            {
+                if( !leaveOpen && reader is not null )
+                {
+                    Disposer.Dispose( reader );
+                    Disposer.Dispose( stream );
+                }
+            }
+        }
+
+        public override async Task WriteBinaryToAsync( Stream stream, CancellationToken cancellationToken = default )
+        {
+            await using var writer = new StreamWriter( stream, Encoding.UTF8 );
+
+            var yaml = new ReadOnlyMemory<char>(
+                new YamlKeySwitchExportTranslator().Translate( KeySwitches ).Value.ToCharArray()
+            );
+
+            await writer.WriteAsync( yaml, cancellationToken );
+            await writer.FlushAsync();
+        }
+    }
+}
