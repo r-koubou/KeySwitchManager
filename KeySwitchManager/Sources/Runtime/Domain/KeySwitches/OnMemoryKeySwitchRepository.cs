@@ -1,26 +1,25 @@
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
+using KeySwitchManager.Commons.Data;
 using KeySwitchManager.Domain.KeySwitches.Helpers;
 using KeySwitchManager.Domain.KeySwitches.Models;
 using KeySwitchManager.Domain.KeySwitches.Models.Values;
 
 namespace KeySwitchManager.Domain.KeySwitches
 {
-    public class OnMemoryKeySwitchRepository : IKeySwitchRepository
+    public abstract class OnMemoryKeySwitchRepository : IKeySwitchRepository
     {
-        protected List<KeySwitch> KeySwitches { get; }
+        protected List<KeySwitch> KeySwitches { get; } = new();
 
-        public OnMemoryKeySwitchRepository()
-        {
-            KeySwitches = new List<KeySwitch>();
-        }
+        protected OnMemoryKeySwitchRepository() {}
 
-        public OnMemoryKeySwitchRepository( IReadOnlyCollection<KeySwitch> source )
+        protected OnMemoryKeySwitchRepository( IReadOnlyCollection<KeySwitch> source )
         {
-            KeySwitches = new List<KeySwitch>( source );
+            KeySwitches.AddRange( source );
         }
 
         public virtual void Dispose()
@@ -31,6 +30,11 @@ namespace KeySwitchManager.Domain.KeySwitches
         public int Count()
             => KeySwitches.Count;
 
+        public void WriteBinaryTo( Stream stream )
+            => WriteBinaryToAsync( stream ).GetAwaiter().GetResult();
+
+        public abstract Task WriteBinaryToAsync( Stream stream, CancellationToken cancellationToken = default );
+
         #region Save
         public async Task<IKeySwitchRepository.SaveResult> SaveAsync( KeySwitch keySwitch, CancellationToken cancellationToken = default )
         {
@@ -39,6 +43,7 @@ namespace KeySwitchManager.Domain.KeySwitches
             if( exist != null )
             {
                 var index = KeySwitches.IndexOf( exist );
+                keySwitch.UpdateLastUpdatedDate( UtcDateTime.Now );
                 KeySwitches[ index ] = keySwitch;
                 return await Task.FromResult( new IKeySwitchRepository.SaveResult( 0, 1 ) );
             }
