@@ -27,12 +27,14 @@ namespace KeySwitchManager.Domain.KeySwitches.Helpers
             IMidiNoteOnFactory midiNoteOnFactory,
             IMidiControlChangeFactory midiControlChangeFactory,
             IMidiProgramChangeFactory midiProgramChangeFactory )
-            => factory.Create(
+        {
+            var now = UtcDateTime.NowAsDateTime;
+            return factory.Create(
                 Guid.NewGuid(),
                 "Author",
                 "Description",
-                UtcDateTime.NowAsDateTime,
-                UtcDateTime.NowAsDateTime,
+                now,
+                now,
                 "Developer Name",
                 "Product name",
                 "Instrument name",
@@ -65,5 +67,6 @@ namespace KeySwitchManager.Domain.KeySwitches.Helpers
                     { "extra2 key", "extra2 value" },
                 }
             );
+        }
     }
 }

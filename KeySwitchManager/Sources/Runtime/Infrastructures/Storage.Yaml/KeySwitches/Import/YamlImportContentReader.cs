@@ -1,10 +1,10 @@
 using System.Collections.Generic;
 using System.IO;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
 using KeySwitchManager.Commons.Data;
+using KeySwitchManager.Commons.Helpers;
 using KeySwitchManager.Domain.KeySwitches.Models;
 using KeySwitchManager.Infrastructures.Storage.Yaml.KeySwitches.Translators;
 using KeySwitchManager.UseCase.KeySwitches.Import;
@@ -16,7 +16,7 @@ namespace KeySwitchManager.Infrastructures.Storage.Yaml.KeySwitches.Import
         public async Task<IReadOnlyCollection<KeySwitch>> ReadAsync( IContent content, CancellationToken cancellationToken = default )
         {
             await using var stream = await content.GetContentStreamAsync( cancellationToken );
-            using var reader = new StreamReader( stream, Encoding.UTF8, true );
+            using var reader = new StreamReader( stream, EncodingHelper.UTF8N );
 
             var jsonText = await reader.ReadToEndAsync();
 
