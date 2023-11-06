@@ -66,7 +66,7 @@ namespace KeySwitchManager.Testing.Storage.Xml.Cubase
 
             using var zipArchive = ZipFile.Open( zipFilePath, ZipArchiveMode.Create );
 
-            var contentWriterFactory = new ZipExportContentFileWriterFactory( zipArchive, ".xml" );
+            var contentWriterFactory = new ZipExportContentFileWriterFactory( zipArchive, ".expressionmap" );
             var exportContentFactory = new CubaseExportContentFactory();
             var strategy = new MultipleExportStrategy( contentWriterFactory, exportContentFactory );
 
