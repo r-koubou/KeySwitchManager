@@ -39,9 +39,6 @@ namespace KeySwitchManager.Domain.KeySwitches.Models.Factory
                 IEnumerable<Articulation> articulations,
                 IReadOnlyDictionary<string, string> extraData )
             {
-                created     = DateTimeHelper.ToUtc( created );
-                lastUpdated = DateTimeHelper.ToUtc( lastUpdated );
-
                 return new KeySwitch(
                     new KeySwitchId( id ),
                     new Author( author ),

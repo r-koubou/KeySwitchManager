@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 
 using KeySwitchManager.Commons.Data;
+using KeySwitchManager.Commons.Data.Extensions;
 using KeySwitchManager.Domain.KeySwitches.Models;
 using KeySwitchManager.Domain.KeySwitches.Models.Aggregations;
 using KeySwitchManager.Domain.KeySwitches.Models.Factory;
@@ -33,7 +34,7 @@ namespace KeySwitchManager.Infrastructures.Storage.Spreadsheet.KeySwitches.Trans
 
         private KeySwitch TranslateWorkSheet( Worksheet sheet, ICollection<Guid> parsedGuidList )
         {
-            var now = DateTimeHelper.NowUtc();
+            var now = UtcDateTime.NowAsDateTime;
             var articulations = new List<Articulation>();
             var extraData = new Dictionary<string, string>();
 
