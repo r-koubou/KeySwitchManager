@@ -2,6 +2,8 @@ using System.IO;
 using System.Text;
 using System.Threading.Tasks;
 
+using KeySwitchManager.Commons.Helpers;
+
 namespace KeySwitchManager.UseCase.KeySwitches.Export
 {
     public class StringContent : IContent
@@ -9,7 +11,7 @@ namespace KeySwitchManager.UseCase.KeySwitches.Export
         private readonly string data;
         private readonly Encoding encoding;
 
-        public StringContent( string data ) : this( data, Encoding.UTF8 ) {}
+        public StringContent( string data ) : this( data, EncodingHelper.UTF8N ) {}
 
         public StringContent( string data, Encoding encoding )
         {
