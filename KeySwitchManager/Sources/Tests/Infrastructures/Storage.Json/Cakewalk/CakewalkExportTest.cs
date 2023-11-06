@@ -97,7 +97,7 @@ namespace KeySwitchManager.Testing.Storage.Xml.Cakewalk
 
             using var zipArchive = ZipFile.Open( zipFilePath, ZipArchiveMode.Create );
 
-            var contentWriterFactory = new ZipExportContentFileWriterFactory( zipArchive, ".json" );
+            var contentWriterFactory = new ZipExportContentFileWriterFactory( zipArchive, ".artmap" );
             var exportContentFactory = new CakewalkExportContentFactory();
             var strategy = new MultipleExportStrategy( contentWriterFactory, exportContentFactory );
 
