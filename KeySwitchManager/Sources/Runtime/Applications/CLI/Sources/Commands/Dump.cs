@@ -1,7 +1,7 @@
 using CommandLine;
 
-using KeySwitchManager.Applications.Core.Controllers.Dump;
-using KeySwitchManager.Applications.Core.Views.LogView;
+using KeySwitchManager.Applications.Standalone.Core.Controllers.Dump;
+using KeySwitchManager.Applications.Standalone.Core.Views.LogView;
 
 namespace KeySwitchManager.Applications.CLI.Commands
 {
