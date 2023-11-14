@@ -2,7 +2,7 @@
 using System.Reflection;
 using System.Text;
 
-using KeySwitchManager.Applications.Core.Controllers.Export;
+using KeySwitchManager.Applications.Standalone.Core.Controllers.Export;
 
 using YamlDotNet.Serialization;
 

@@ -2,8 +2,8 @@ using System.IO;
 
 using CommandLine;
 
-using KeySwitchManager.Applications.Core.Controllers.Export;
-using KeySwitchManager.Applications.Core.Views.LogView;
+using KeySwitchManager.Applications.Standalone.Core.Controllers.Export;
+using KeySwitchManager.Applications.Standalone.Core.Views.LogView;
 using KeySwitchManager.Domain.KeySwitches.Models.Values;
 
 namespace KeySwitchManager.Applications.CLI.Commands
