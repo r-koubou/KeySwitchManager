@@ -1,4 +1,4 @@
-name: "Build Apps (Manually)"
+name: build
 
 env:
   DOTNET_SDK_VERSION: '7.0.*'
@@ -58,7 +58,7 @@ jobs:
     - name: Artifact CLI
       uses: actions/upload-artifact@v3
       with:
-        name: KeySwitchManager.CLI-${{ inputs.build-configuration }}
+        name: KeySwitchManager.CLI-${{ inputs.build-configuration }}-${{ github.sha }}
         path: ${{ github.workspace }}/publish/KeySwitchManager.CLI*/
 
   #--------------------------------------------------------------
@@ -89,5 +89,5 @@ jobs:
     - name: Artifact WPF
       uses: actions/upload-artifact@v3
       with:
-        name: KeySwitchManager.WPF-${{ inputs.build-configuration }}
+        name: KeySwitchManager.WPF-${{ inputs.build-configuration }}-${{ github.sha }}
         path: ${{ github.workspace }}/publish/KeySwitchManager.WPF*/
