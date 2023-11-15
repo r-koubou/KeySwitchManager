@@ -41,23 +41,23 @@ jobs:
 
     steps:
     - name: Checkout
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
 
     - name: Install SDK
-      uses: actions/setup-dotnet@v2
+      uses: actions/setup-dotnet@v3
       with:
         dotnet-version: ${{ env.DOTNET_SDK_VERSION }}
 
     - name: CLI Build
-      run: dotnet msbuild /nologo /t:Archive /p:Configuration=${{ inputs.build-build-configuration }} /p:PublishDir=${{ github.workspace }}/publish $ProjectFile
+      run: dotnet msbuild /nologo /t:Archive /p:Configuration=${{ inputs.build-configuration }} /p:PublishDir=${{ github.workspace }}/publish $ProjectFile
       shell: bash
       env:
         ProjectFile: KeySwitchManager/Sources/Runtime/Applications/CLI/publish.msbuild
 
     - name: Artifact CLI
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v3
       with:
-        name: KeySwitchManager.CLI-dev
+        name: KeySwitchManager.CLI-${{ inputs.build-configuration }}
         path: ${{ github.workspace }}/publish/KeySwitchManager.CLI*/
 
   #--------------------------------------------------------------
@@ -72,21 +72,21 @@ jobs:
 
     steps:
     - name: Checkout
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
 
     - name: Install SDK
-      uses: actions/setup-dotnet@v2
+      uses: actions/setup-dotnet@v3
       with:
         dotnet-version: ${{ env.DOTNET_SDK_VERSION }}
 
     - name: WPF Build
-      run: dotnet msbuild /nologo /t:Archive /p:Configuration=Debug /p:PublishDir=${{ github.workspace }}/publish %ProjectFile%
+      run: dotnet msbuild /nologo /t:Archive /p:Configuration=${{ inputs.build-configuration }} /p:PublishDir=${{ github.workspace }}/publish %ProjectFile%
       shell: cmd
       env:
         ProjectFile: KeySwitchManager/Sources/Runtime/Applications/WPF/publish.msbuild
 
     - name: Artifact WPF
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v3
       with:
-        name: KeySwitchManager.WPF-${{ inputs.build-build-configuration }}
+        name: KeySwitchManager.WPF-${{ inputs.build-configuration }}
         path: ${{ github.workspace }}/publish/KeySwitchManager.WPF*/
