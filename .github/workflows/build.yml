@@ -11,7 +11,7 @@ on:
         type: string
         default: "CLI, WPF, Xamarin.Mac"
       build-configuration:
-        required: true
+        required: false
         type: string
 
   workflow_dispatch:
@@ -22,8 +22,8 @@ on:
         type: string
         default: "CLI, WPF, Xamarin.Mac"
       build-configuration:
-        description: "Build configuration"
-        required: true
+        description: "Build configuration for msbuild"
+        required: false
         type: choice
         options:
           - Debug
