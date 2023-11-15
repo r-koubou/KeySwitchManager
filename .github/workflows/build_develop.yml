@@ -3,7 +3,10 @@ name: develop
 on:
   push:
     branches:
-      - "feature/ci_build"
+      - develop
+    paths-ignore:
+      - "**.md"
+
   workflow_dispatch:
 
 jobs:
