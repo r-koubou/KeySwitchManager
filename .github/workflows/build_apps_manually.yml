@@ -1,0 +1,92 @@
+name: "Build Apps (Manually)"
+
+env:
+  DOTNET_SDK_VERSION: '7.0.*'
+
+on:
+  workflow_call:
+    inputs:
+      build-app-kind:
+        required: true
+        type: string
+      build-configuration:
+        required: true
+        type: string
+
+  workflow_dispatch:
+    inputs:
+      build-app-kind:
+        description: "Kind of Application"
+        required: true
+        type: string
+        default: "CLI, WPF, Xamarin.Mac"
+      build-configuration:
+        description: "Build configuration"
+        required: true
+        type: choice
+        options:
+          - Debug
+          - Release
+
+jobs:
+  #--------------------------------------------------------------
+  # CLI
+  #--------------------------------------------------------------
+  cli-build:
+    if: contains(github.event.inputs.build-app-kind, 'CLI')
+    runs-on: ubuntu-latest
+    env:
+      DOTNET_CLI_TELEMETRY_OPTOUT: 1
+      DOTNET_SKIP_FIRST_TIME_EXPERIENCE: 1
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    - name: Install SDK
+      uses: actions/setup-dotnet@v2
+      with:
+        dotnet-version: ${{ env.DOTNET_SDK_VERSION }}
+
+    - name: CLI Build
+      run: dotnet msbuild /nologo /t:Archive /p:Configuration=${{ inputs.build-build-configuration }} /p:PublishDir=${{ github.workspace }}/publish $ProjectFile
+      shell: bash
+      env:
+        ProjectFile: KeySwitchManager/Sources/Runtime/Applications/CLI/publish.msbuild
+
+    - name: Artifact CLI
+      uses: actions/upload-artifact@v2
+      with:
+        name: KeySwitchManager.CLI-dev
+        path: ${{ github.workspace }}/publish/KeySwitchManager.CLI*/
+
+  #--------------------------------------------------------------
+  # WPF
+  #--------------------------------------------------------------
+  wpf-build:
+    if: contains(github.event.inputs.build-app-kind, 'WPF')
+    runs-on: windows-latest
+    env:
+      DOTNET_CLI_TELEMETRY_OPTOUT: 1
+      DOTNET_SKIP_FIRST_TIME_EXPERIENCE: 1
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    - name: Install SDK
+      uses: actions/setup-dotnet@v2
+      with:
+        dotnet-version: ${{ env.DOTNET_SDK_VERSION }}
+
+    - name: WPF Build
+      run: dotnet msbuild /nologo /t:Archive /p:Configuration=Debug /p:PublishDir=${{ github.workspace }}/publish %ProjectFile%
+      shell: cmd
+      env:
+        ProjectFile: KeySwitchManager/Sources/Runtime/Applications/WPF/publish.msbuild
+
+    - name: Artifact WPF
+      uses: actions/upload-artifact@v2
+      with:
+        name: KeySwitchManager.WPF-${{ inputs.build-build-configuration }}
+        path: ${{ github.workspace }}/publish/KeySwitchManager.WPF*/
