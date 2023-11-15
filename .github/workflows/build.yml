@@ -34,7 +34,7 @@ jobs:
   # CLI
   #--------------------------------------------------------------
   cli-build:
-    if: contains(github.event.inputs.build-app-kind, 'CLI')
+    if: contains(inputs.build-app-kind, 'CLI')
     runs-on: ubuntu-latest
     env:
       DOTNET_CLI_TELEMETRY_OPTOUT: 1
@@ -65,7 +65,7 @@ jobs:
   # WPF
   #--------------------------------------------------------------
   wpf-build:
-    if: contains(github.event.inputs.build-app-kind, 'WPF')
+    if: contains(inputs.build-app-kind, 'WPF')
     runs-on: windows-latest
     env:
       DOTNET_CLI_TELEMETRY_OPTOUT: 1
