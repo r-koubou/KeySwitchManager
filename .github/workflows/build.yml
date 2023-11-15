@@ -1,7 +1,6 @@
 name: "Build Apps (Manually)"
 
 env:
-  WORKFLOW_DEFAULT_APP_KIND: "CLI, WPF, Xamarin.Mac"
   DOTNET_SDK_VERSION: '7.0.*'
 
 on:
@@ -10,7 +9,7 @@ on:
       build-app-kind:
         required: true
         type: string
-        default: ${{ env.WORKFLOW_DEFAULT_APP_KIND }}
+        default: "CLI, WPF, Xamarin.Mac"
       build-configuration:
         required: true
         type: string
@@ -21,7 +20,7 @@ on:
         description: "Kind of Application"
         required: true
         type: string
-        default: ${{ env.WORKFLOW_DEFAULT_APP_KIND }}
+        default: "CLI, WPF, Xamarin.Mac"
       build-configuration:
         description: "Build configuration"
         required: true
