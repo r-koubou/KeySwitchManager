@@ -7,23 +7,23 @@ on:
   workflow_call:
     inputs:
       build-app-kind:
-        required: true
+        required: false
         type: string
         default: "CLI, WPF, Xamarin.Mac"
       build-configuration:
-        required: false
+        required: true
         type: string
 
   workflow_dispatch:
     inputs:
       build-app-kind:
         description: "Kind of Application"
-        required: true
+        required: false
         type: string
         default: "CLI, WPF, Xamarin.Mac"
       build-configuration:
         description: "Build configuration for msbuild"
-        required: false
+        required: true
         type: choice
         options:
           - Debug
