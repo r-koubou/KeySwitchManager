@@ -13,6 +13,9 @@ on:
       build-configuration:
         required: true
         type: string
+      custom-suffix:
+        required: false
+        type: string
 
   workflow_dispatch:
     inputs:
@@ -28,6 +31,11 @@ on:
         options:
           - Debug
           - Release
+      custom-suffix:
+        description: "Custom suffix for artifact name"
+        required: false
+        type: string
+        default: ""
 
 jobs:
   #--------------------------------------------------------------
@@ -58,7 +66,7 @@ jobs:
     - name: Artifact CLI
       uses: actions/upload-artifact@v3
       with:
-        name: KeySwitchManager.CLI-${{ inputs.build-configuration }}-${{ github.sha }}
+        name: KeySwitchManager.CLI-${{ inputs.build-configuration }}${{ inputs.custom-suffix }}-${{ github.sha }}
         path: ${{ github.workspace }}/publish/KeySwitchManager.CLI*/
 
   #--------------------------------------------------------------
@@ -89,5 +97,5 @@ jobs:
     - name: Artifact WPF
       uses: actions/upload-artifact@v3
       with:
-        name: KeySwitchManager.WPF-${{ inputs.build-configuration }}-${{ github.sha }}
+        name: KeySwitchManager.WPF-${{ inputs.build-configuration }}${{ inputs.custom-suffix }}-${{ github.sha }}
         path: ${{ github.workspace }}/publish/KeySwitchManager.WPF*/
