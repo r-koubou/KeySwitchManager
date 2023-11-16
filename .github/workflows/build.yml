@@ -9,7 +9,7 @@ on:
       build-app-kind:
         required: false
         type: string
-        default: "CLI, WPF, Xamarin.Mac"
+        default: "CLI, WPF"
       build-configuration:
         required: true
         type: string
@@ -23,7 +23,7 @@ on:
         description: "Kind of Application"
         required: false
         type: string
-        default: "CLI, WPF, Xamarin.Mac"
+        default: "CLI, WPF"
       build-configuration:
         description: "Build configuration for msbuild"
         required: true
