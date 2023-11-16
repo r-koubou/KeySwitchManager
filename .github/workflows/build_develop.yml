@@ -14,5 +14,5 @@ jobs:
     uses: ./.github/workflows/build.yml
     secrets: inherit
     with:
-      build-app-kind: "CLI, WPF, Xamarin.Mac"
+      build-app-kind: "CLI, WPF"
       build-configuration: Debug
