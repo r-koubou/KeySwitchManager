@@ -9,12 +9,12 @@ using CoreGraphics;
 
 using Foundation;
 
-using KeySwitchManager.Applications.Core.Controllers;
-using KeySwitchManager.Applications.Core.Controllers.Create;
-using KeySwitchManager.Applications.Core.Controllers.Delete;
-using KeySwitchManager.Applications.Core.Controllers.Export;
-using KeySwitchManager.Applications.Core.Controllers.Find;
-using KeySwitchManager.Applications.Core.Controllers.Import;
+using KeySwitchManager.Applications.Standalone.Core.Controllers;
+using KeySwitchManager.Applications.Standalone.Core.Controllers.Create;
+using KeySwitchManager.Applications.Standalone.Core.Controllers.Delete;
+using KeySwitchManager.Applications.Standalone.Core.Controllers.Export;
+using KeySwitchManager.Applications.Standalone.Core.Controllers.Find;
+using KeySwitchManager.Applications.Standalone.Core.Controllers.Import;
 using KeySwitchManager.Xamarin.Mac.UiKitView;
 
 using RkHelper.Enumeration;
@@ -92,7 +92,12 @@ namespace KeySwitchManager.Xamarin.Mac
         private async Task ExecuteControllerAsync( Func<IController> controllerFactory )
         {
             PreExecuteController();
-            await ControlExecutor.ExecuteAsync( controllerFactory, LogView );
+
+            await Task.Run( async () => {
+                    await ControlExecutor.ExecuteAsync( controllerFactory, LogView );
+                }
+            );
+
             PostExecuteController();
         }
         #endregion
@@ -108,7 +113,7 @@ namespace KeySwitchManager.Xamarin.Mac
         {
             ChooseSaveFilePath( ( path ) => {
                 NewFileText.StringValue = path;
-            }, "db", "yaml", "xlsx" );
+            }, "yaml", "yml", "xlsx" );
         }
 
         async partial void OnOpenNewFileButtonClicked( NSObject sender )
@@ -120,7 +125,9 @@ namespace KeySwitchManager.Xamarin.Mac
                 return;
             }
 
-            await ExecuteControllerAsync( () => CreateControllerFactory.Create( path, LogView ) );
+            ICreateControllerFactory factory = new CreateFileControllerFactory();
+
+            await ExecuteControllerAsync( () => factory.Create( path, LogView ) );
         }
 
         #endregion
@@ -130,14 +137,14 @@ namespace KeySwitchManager.Xamarin.Mac
         {
             ChooseOpenFilePath( ( path ) => {
                 ImportDatabaseFileText.StringValue = path;
-            }, "db" );
+            }, "yaml", "yml" );
         }
 
         partial void OnOpenFileChooserButtonClicked( NSObject sender )
         {
             ChooseOpenFilePath( ( path ) => {
                 ImportFileText.StringValue = path;
-            }, "yaml", "xlsx" );
+            }, "yaml", "yml", "xlsx" );
         }
 
         async partial void OnDoImportButtonClicked( NSObject sender )
@@ -149,7 +156,9 @@ namespace KeySwitchManager.Xamarin.Mac
             {
                 return;
             }
-            await ExecuteControllerAsync( () => ImportControllerFactory.Create( databasePath, importFilePath, LogView ) );
+
+            IImportControllerFactory importControllerFactory = new ImportControllerFactory( LogView );
+            await ExecuteControllerAsync( () => importControllerFactory.Create( databasePath, importFilePath ) );
         }
 
         #endregion
@@ -159,7 +168,7 @@ namespace KeySwitchManager.Xamarin.Mac
         {
             ChooseOpenFilePath( ( path ) => {
                 FindDatabaseFileText.StringValue = path;
-            }, "db" );
+            }, "yaml", "yml" );
         }
 
         async partial void OnFindButtonClicked( NSObject sender )
@@ -251,13 +260,13 @@ namespace KeySwitchManager.Xamarin.Mac
             // Append a sub folder by format name
             output = Path.Combine( output, format.ToString() );
 
+            IExportControllerFactory controllerFactory = new ExportFileControllerFactory( databasePath, output );
+
             await ExecuteControllerAsync(
-                () => ExportControllerFactory.Create(
+                () => controllerFactory.Create(
                     developer,
                     product,
                     instrument,
-                    databasePath,
-                    output,
                     format,
                     LogView
                 )

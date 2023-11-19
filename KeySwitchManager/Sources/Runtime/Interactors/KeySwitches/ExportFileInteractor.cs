@@ -1,7 +1,10 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
 
+using KeySwitchManager.Domain.KeySwitches;
 using KeySwitchManager.Domain.KeySwitches.Helpers;
 using KeySwitchManager.Domain.KeySwitches.Models;
 using KeySwitchManager.UseCase.KeySwitches.Export;
@@ -11,46 +14,65 @@ namespace KeySwitchManager.Interactors.KeySwitches
     public class ExportFileInteractor : IExportFileUseCase
     {
         private IKeySwitchRepository Repository { get; }
-        private IKeySwitchWriter Writer { get; }
+        private IExportStrategy Strategy { get; }
         private IExportFilePresenter Presenter { get; }
 
         public ExportFileInteractor(
             IKeySwitchRepository repository,
-            IKeySwitchWriter writer ) :
-            this( repository, writer, new IExportFilePresenter.Null() )
+            IExportStrategy strategy ) :
+            this( repository, strategy, new IExportFilePresenter.Null() )
         {}
 
         public ExportFileInteractor(
             IKeySwitchRepository repository,
-            IKeySwitchWriter writer,
+            IExportStrategy strategy,
             IExportFilePresenter presenter )
         {
             Repository = repository;
-            Writer     = writer;
+            Strategy   = strategy;
             Presenter  = presenter;
         }
 
-        public ExportFileResponse Execute( ExportFileRequest request, IObserver<string>? loggingSubject = null )
+        public async Task<ExportFileResponse> ExecuteAsync( ExportFileRequest request, CancellationToken cancellationToken )
         {
-            var developerName = request.DeveloperName;
-            var productName = request.ProductName;
-            var instrumentName = request.InstrumentName;
+            IDisposable? subscription = null;
 
-            var queryResult = SearchHelper.Search(
-                Repository,
-                developerName,
-                productName,
-                instrumentName
-            );
-
-            if( queryResult.Any() )
+            try
             {
-                Writer.Write( queryResult, loggingSubject );
+                var developerName = request.DeveloperName;
+                var productName = request.ProductName;
+                var instrumentName = request.InstrumentName;
+
+                var queryResult = await SearchHelper.SearchAsync(
+                    Repository,
+                    developerName,
+                    productName,
+                    instrumentName,
+                    cancellationToken
+                );
+
+                if( !queryResult.Any() )
+                {
+                    Presenter.Present( $"No keyswitch(es) found. ({nameof( developerName )}={developerName}, {nameof( productName )}={productName}, {nameof( instrumentName )}={instrumentName})" );
+
+                    return new ExportFileResponse( new List<KeySwitch>() );
+                }
+
+                subscription = Strategy.OnExported.Subscribe( x =>
+                {
+                    Presenter.Present( $"Exported: {x}" );
+                });
+
+                await Strategy.ExportAsync( queryResult, cancellationToken );
+
+                Presenter.Present( $"{queryResult.Count} exported" );
+
                 return new ExportFileResponse( queryResult );
             }
-
-            Presenter.Present( $"No keyswitch(es) found. ({nameof( developerName )}={developerName}, {nameof( productName )}={productName}, {nameof( instrumentName )}={instrumentName})" );
-            return new ExportFileResponse( new List<KeySwitch>() );
+            finally
+            {
+                subscription?.Dispose();
+            }
         }
     }
 }

@@ -2,15 +2,15 @@ using KeySwitchManager.UseCase.Commons;
 
 namespace KeySwitchManager.UseCase.KeySwitches.Create
 {
-    public interface ICreateFilePresenter : IPresenter<CreateFileResponse>
+    public interface ICreatePresenter : IPresenter<CreateResponse>
     {
-        public class Null : ICreateFilePresenter
+        public class Null : ICreatePresenter
         {
-            public void Complete( CreateFileResponse response )
+            public void Complete( CreateResponse response )
             {}
         }
 
-        public class Console : ICreateFilePresenter
+        public class Console : ICreatePresenter
         {
             public void Present<T>( T param )
             {

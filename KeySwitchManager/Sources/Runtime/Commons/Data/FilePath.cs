@@ -2,12 +2,10 @@ using System.IO;
 
 namespace KeySwitchManager.Commons.Data
 {
-    public class FilePath : IPath
+    public class FilePath : IFilePath
     {
         public string Path { get; }
         public bool Exists => File.Exists( Path );
-        public bool IsFile => true;
-        public bool IsDirectory => false;
 
         public FilePath( string path )
         {

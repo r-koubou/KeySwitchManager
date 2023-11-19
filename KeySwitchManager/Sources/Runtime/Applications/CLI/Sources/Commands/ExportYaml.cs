@@ -1,5 +1,6 @@
 using CommandLine;
-using KeySwitchManager.Applications.Core.Controllers.Export;
+
+using KeySwitchManager.Applications.Standalone.Core.Controllers.Export;
 
 namespace KeySwitchManager.Applications.CLI.Commands
 {

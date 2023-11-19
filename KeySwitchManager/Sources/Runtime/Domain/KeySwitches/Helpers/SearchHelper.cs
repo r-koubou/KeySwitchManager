@@ -1,23 +1,34 @@
 using System;
 using System.Collections.Generic;
+using System.Threading;
+using System.Threading.Tasks;
 
 using KeySwitchManager.Domain.KeySwitches.Models;
 using KeySwitchManager.Domain.KeySwitches.Models.Values;
 
-using RkHelper.Text;
+using RkHelper.Primitives;
 
 namespace KeySwitchManager.Domain.KeySwitches.Helpers
 {
     public static class SearchHelper
     {
         #region Search
+
         public static IReadOnlyCollection<KeySwitch> Search(
             IKeySwitchRepository repository,
             string developerName = "",
             string productName = "",
             string instrumentName = "" )
+            => SearchAsync( repository, developerName, productName, instrumentName ).GetAwaiter().GetResult();
+
+        public static async Task<IReadOnlyCollection<KeySwitch>> SearchAsync(
+            IKeySwitchRepository repository,
+            string developerName = "",
+            string productName = "",
+            string instrumentName = "",
+            CancellationToken cancellationToken = default )
         {
-            return Search( repository, default, developerName, productName, instrumentName );
+            return await SearchAsync( repository, default, developerName, productName, instrumentName, cancellationToken );
         }
 
         public static IReadOnlyCollection<KeySwitch> Search(
@@ -26,11 +37,20 @@ namespace KeySwitchManager.Domain.KeySwitches.Helpers
             string developerName = "",
             string productName = "",
             string instrumentName = "" )
+            => SearchAsync( repository, guid, developerName, productName, instrumentName ).GetAwaiter().GetResult();
+
+        public static async Task<IReadOnlyCollection<KeySwitch>> SearchAsync(
+            IKeySwitchRepository repository,
+            Guid guid = default,
+            string developerName = "",
+            string productName = "",
+            string instrumentName = "",
+            CancellationToken cancellationToken = default )
         {
             #region By Guid
             if( guid != default )
             {
-                return new List<KeySwitch>( repository.Find( new KeySwitchId( guid ) ) );
+                return new List<KeySwitch>( await repository.FindAsync( new KeySwitchId( guid ), cancellationToken ) );
             }
             #endregion
 
@@ -38,10 +58,10 @@ namespace KeySwitchManager.Domain.KeySwitches.Helpers
             if( !StringHelper.IsEmpty( developerName, productName, instrumentName ) )
             {
                 return new List<KeySwitch>(
-                    repository.Find(
+                    await repository.FindAsync(
                         new DeveloperName( developerName ),
                         new ProductName( productName ),
-                        new InstrumentName( instrumentName ) )
+                        new InstrumentName( instrumentName ), cancellationToken )
                 );
             }
             #endregion
@@ -50,9 +70,10 @@ namespace KeySwitchManager.Domain.KeySwitches.Helpers
             if( !StringHelper.IsEmpty( developerName, productName ) )
             {
                 return new List<KeySwitch>(
-                    repository.Find(
+                    await repository.FindAsync(
                         new DeveloperName( developerName ),
-                        new ProductName( productName )
+                        new ProductName( productName ),
+                        cancellationToken
                     )
                 );
             }
@@ -62,22 +83,28 @@ namespace KeySwitchManager.Domain.KeySwitches.Helpers
             if( !StringHelper.IsEmpty( developerName ) )
             {
                 return new List<KeySwitch>(
-                    repository.Find(
-                        new DeveloperName( developerName )
+                    await repository.FindAsync(
+                        new DeveloperName( developerName ),
+                        cancellationToken
                     )
                 );
             }
             #endregion
 
             // All
-            return new List<KeySwitch>( repository.FindAll() );
+            return new List<KeySwitch>( await repository.FindAllAsync( cancellationToken ) );
         }
 
         public static IReadOnlyCollection<KeySwitch> Search(
             IKeySwitchRepository repository,
             KeySwitchInfo info )
+            => SearchAsync( repository, info ).GetAwaiter().GetResult();
+
+        public static async Task<IReadOnlyCollection<KeySwitch>> SearchAsync(
+            IKeySwitchRepository repository,
+            KeySwitchInfo info )
         {
-            return Search(
+            return await SearchAsync(
                 repository,
                 info.DeveloperName,
                 info.ProductName

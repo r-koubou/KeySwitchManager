@@ -1,0 +1,84 @@
+@page "/create_db"
+
+@inject FileDownloadService DownloadService
+@using KeySwitchManager.Applications.Blazor.Services
+@using KeySwitchManager.Applications.Standalone.Core.Controllers.Create
+@using KeySwitchManager.Applications.Standalone.Core.Controllers.Export
+@using KeySwitchManager.Applications.Standalone.Core.Views.LogView
+
+<PageTitle>Create Database File</PageTitle>
+
+<MudText Typo="Typo.h3" GutterBottom="true">Create Database / Spreadsheet template</MudText>
+<MudText Class="mb-8">Click a `Create Database` button to new database or spreadsheet template file</MudText>
+
+<MudPaper Class="pa-16 ma-2" MaxWidth="50%">
+    @if( Processing )
+    {
+        <MudText>Processing...</MudText>
+    }
+    else
+    {
+        <MudStack Row="false">
+            <MudSelect @bind-value="Format" Margin="Margin.Dense" T=" ExportSupportedFormat " Variant="Variant.Text" Label="Format">
+                <MudSelectItem Value="@(ExportSupportedFormat.Yaml)"/>
+                <MudSelectItem Value="@(ExportSupportedFormat.Xlsx)"/>
+            </MudSelect>
+            <MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="@(OnCreateButtonClicked )">Create</MudButton>
+        </MudStack>
+    }
+</MudPaper>
+
+@code {
+
+    private ExportSupportedFormat Format { get; set; } = ExportSupportedFormat.Yaml;
+    private bool Processing { get; set; } = false;
+    private CancellationTokenSource cts = new ();
+
+    private async Task OnCreateButtonClicked( MouseEventArgs _ )
+    {
+        Processing = true;
+        StateHasChanged();
+
+        await Task.Delay( 1 );
+
+        var target = new MemoryStream();
+        var factory = new CreateToStreamControllerFactory();
+        var controller = factory.Create( target, Format, new ILogTextView.Null() );
+
+        var outputFileName = Format switch
+        {
+            ExportSupportedFormat.Yaml => "new_file.yaml",
+            ExportSupportedFormat.Xlsx => "new_file.xlsx",
+            _                          => "unknown_file"
+        };
+
+        cts = new CancellationTokenSource();
+
+        try
+        {
+            await controller.ExecuteAsync( cts.Token );
+
+            target.Seek( 0, SeekOrigin.Begin );
+            await DownloadService.TriggerDownloadAsync( target.ToArray(), outputFileName );
+
+            await InvokeAsync( () =>
+            {
+                Processing = false;
+                StateHasChanged();
+            });
+        }
+        catch( OperationCanceledException ce ) {}
+        catch( Exception e )
+        {
+            Console.WriteLine( e );
+        }
+        finally
+        {
+            await InvokeAsync( () =>
+            {
+                Processing = false;
+                StateHasChanged();
+            });
+        }
+    }
+}

@@ -5,13 +5,13 @@ using System.IO;
 using System.Threading.Tasks;
 using System.Windows;
 
-using KeySwitchManager.Applications.Core.Controllers;
-using KeySwitchManager.Applications.Core.Controllers.Create;
-using KeySwitchManager.Applications.Core.Controllers.Delete;
-using KeySwitchManager.Applications.Core.Controllers.Export;
-using KeySwitchManager.Applications.Core.Controllers.Find;
-using KeySwitchManager.Applications.Core.Controllers.Import;
-using KeySwitchManager.WPF.WpfView;
+using KeySwitchManager.Applications.Standalone.Core.Controllers;
+using KeySwitchManager.Applications.Standalone.Core.Controllers.Create;
+using KeySwitchManager.Applications.Standalone.Core.Controllers.Delete;
+using KeySwitchManager.Applications.Standalone.Core.Controllers.Export;
+using KeySwitchManager.Applications.Standalone.Core.Controllers.Find;
+using KeySwitchManager.Applications.Standalone.Core.Controllers.Import;
+using KeySwitchManager.Applications.WPF.WpfView;
 
 using Microsoft.Win32;
 using Microsoft.WindowsAPICodePack.Dialogs;
@@ -19,9 +19,7 @@ using Microsoft.WindowsAPICodePack.Dialogs;
 using RkHelper.Enumeration;
 using RkHelper.Text;
 
-using MSAPI = Microsoft.WindowsAPICodePack;
-
-namespace KeySwitchManager.WPF
+namespace KeySwitchManager.Applications.WPF
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
@@ -29,8 +27,8 @@ namespace KeySwitchManager.WPF
     public partial class MainWindow
     {
         private const string KeySwitchDefinitionFileFilter = "KeySwitch definition File|*.xlsx;*.yaml;*.yml";
-        private const string KeySwitchDatabaseFileFilter = "KeySwitch Database File|*.yaml;*.yml;*.db";
-        private const string KeySwitchAllFileFilter = "Supported File|*.xlsx;*.yaml;*.yml;*.db";
+        private const string KeySwitchDatabaseFileFilter = "KeySwitch Database File|*.yaml;*.yml";
+        private const string KeySwitchAllFileFilter = "Supported File|*.xlsx;*.yaml;*.yml";
 
         #region UI Binding
         #endregion
@@ -51,7 +49,19 @@ namespace KeySwitchManager.WPF
         private void InitializeCustomComponent()
         {
             ExportFormatCombobox.ItemsSource = ExportSupportedFormatList;
+            InitializeWindowTitle();
             LoadApplicationConfig();
+        }
+
+        private void InitializeWindowTitle()
+        {
+            var version = typeof( MainWindow ).Assembly.GetName().Version;
+
+            if( version != null )
+            {
+                Title = $"{Title} (Version {version.ToString( 3 )})";
+            }
+
         }
 
         #region Executions
@@ -79,7 +89,12 @@ namespace KeySwitchManager.WPF
         private async Task ExecuteControllerAsync( Func<IController> controllerFactory )
         {
             PreExecuteController();
-            await ControlExecutor.ExecuteAsync( controllerFactory, LogTextView );
+
+            await Task.Run( async () => {
+                    await ControlExecutor.ExecuteAsync( controllerFactory, LogTextView );
+                }
+            );
+
             PostExecuteController();
         }
         #endregion
@@ -170,7 +185,9 @@ namespace KeySwitchManager.WPF
                 return;
             }
 
-            await ExecuteControllerAsync( () => CreateControllerFactory.Create( path, LogTextView ) );
+            ICreateControllerFactory factory = new CreateFileControllerFactory();
+
+            await ExecuteControllerAsync( () => factory.Create( path, LogTextView ) );
         }
         #endregion
 
@@ -194,7 +211,9 @@ namespace KeySwitchManager.WPF
             {
                 return;
             }
-            await ExecuteControllerAsync( () => ImportControllerFactory.Create( databasePath, importFilePath, LogTextView ) );
+
+            IImportControllerFactory importControllerFactory = new ImportControllerFactory( LogTextView );
+            await ExecuteControllerAsync( () => importControllerFactory.Create( databasePath, importFilePath ) );
         }
         #endregion
 
@@ -289,13 +308,13 @@ namespace KeySwitchManager.WPF
             // Append a sub folder by format name
             output = Path.Combine( output, format.ToString() );
 
+            IExportControllerFactory controllerFactory = new ExportFileControllerFactory( databasePath, output );
+
             await ExecuteControllerAsync(
-                () => ExportControllerFactory.Create(
+                () => controllerFactory.Create(
                     developer,
                     product,
                     instrument,
-                    databasePath,
-                    output,
                     format,
                     LogTextView
                 )

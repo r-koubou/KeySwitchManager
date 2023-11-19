@@ -15,8 +15,8 @@ namespace KeySwitchManager.Domain.KeySwitches.Models
         public KeySwitchId Id { get; }
         public Author Author { get; }
         public Description Description { get; }
-        public UtcDateTime Created { get; }
-        public UtcDateTime LastUpdated { get; }
+        public UtcDateTime Created { get; private set; }
+        public UtcDateTime LastUpdated { get; private set; }
         public DeveloperName DeveloperName { get; }
         public ProductName ProductName { get; }
         public InstrumentName InstrumentName { get; }
@@ -47,6 +47,16 @@ namespace KeySwitchManager.Domain.KeySwitches.Models
             ExtraData      = extraData;
         }
 
+        public void UpdateCreatedDate( UtcDateTime newCreatedDateTime )
+        {
+            Created = newCreatedDateTime;
+        }
+
+        public void UpdateLastUpdatedDate( UtcDateTime newLastUpdatedDateTime )
+        {
+            LastUpdated = newLastUpdatedDateTime;
+        }
+
         public override string ToString()
             => $"{DeveloperName} | {ProductName} | {InstrumentName}";
 
@@ -67,8 +77,9 @@ namespace KeySwitchManager.Domain.KeySwitches.Models
             }
 
             return other.Id.Equals( Id ) &&
-                   other.Created.Equals( Created ) &&
-                   other.LastUpdated.Equals( LastUpdated ) &&
+                   // Creation and update timestamps are not applicable to equality
+                   // other.Created.Equals( Created ) &&
+                   // other.LastUpdated.Equals( LastUpdated ) &&
                    other.DeveloperName.Equals( DeveloperName ) &&
                    other.ProductName.Equals( ProductName ) &&
                    other.InstrumentName.Equals( InstrumentName ) &&
@@ -86,8 +97,9 @@ namespace KeySwitchManager.Domain.KeySwitches.Models
             hashCode.Add( Id );
             hashCode.Add( Author );
             hashCode.Add( Description );
-            hashCode.Add( Created );
-            hashCode.Add( LastUpdated );
+            // Creation and update timestamps are not applicable to equality
+            // hashCode.Add( Created );
+            // hashCode.Add( LastUpdated );
             hashCode.Add( DeveloperName );
             hashCode.Add( ProductName );
             hashCode.Add( InstrumentName );

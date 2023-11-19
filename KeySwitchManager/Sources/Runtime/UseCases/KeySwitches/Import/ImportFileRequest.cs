@@ -1,16 +1,14 @@
-using System.Collections.Generic;
-
-using KeySwitchManager.Domain.KeySwitches.Models;
-
 namespace KeySwitchManager.UseCase.KeySwitches.Import
 {
     public class ImportFileRequest
     {
-        public IReadOnlyCollection<KeySwitch> KeySwitches { get; }
+        public IImportContentReader ContentReader { get; }
+        public IContent Content { get; }
 
-        public ImportFileRequest( IReadOnlyCollection<KeySwitch> keySwitches )
+        public ImportFileRequest( IImportContentReader contentReader, IContent content )
         {
-            KeySwitches = new List<KeySwitch>( keySwitches );
+            ContentReader = contentReader;
+            Content       = content;
         }
     }
 }

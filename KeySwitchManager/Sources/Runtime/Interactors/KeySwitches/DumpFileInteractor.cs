@@ -1,34 +1,36 @@
 using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
 
-using KeySwitchManager.Domain.KeySwitches.Models;
+using KeySwitchManager.Domain.KeySwitches;
 using KeySwitchManager.UseCase.KeySwitches.Dump;
+using KeySwitchManager.UseCase.KeySwitches.Export;
 
 namespace KeySwitchManager.Interactors.KeySwitches
 {
     public class DumpFileInteractor : IDumpFileUseCase
     {
         private IKeySwitchRepository Repository { get; }
-        private IKeySwitchWriter Writer { get; }
+        private IExportStrategy Strategy { get; }
         private IDumpFilePresenter Presenter { get; }
 
         public DumpFileInteractor(
-            IKeySwitchRepository repository, IKeySwitchWriter writer ) :
-            this( repository, writer, new IDumpFilePresenter.Null() )
-        {}
+            IKeySwitchRepository repository, IExportStrategy strategy ) :
+            this( repository, strategy, new IDumpFilePresenter.Null() ) {}
 
         public DumpFileInteractor(
             IKeySwitchRepository repository,
-            IKeySwitchWriter writer,
+            IExportStrategy strategy,
             IDumpFilePresenter presenter )
         {
             Repository = repository;
-            Writer     = writer;
+            Strategy     = strategy;
             Presenter  = presenter;
         }
 
-        public DumpFileResponse Execute( DumpFileRequest request )
+        public async Task<DumpFileResponse> ExecuteAsync( DumpFileRequest request, CancellationToken cancellationToken )
         {
-            var all = Repository.FindAll();
+            var all = await Repository.FindAllAsync( cancellationToken );
 
             var sorted = all.OrderBy( x => x.DeveloperName.Value )
                .ThenBy( x => x.ProductName.Value )
@@ -36,7 +38,7 @@ namespace KeySwitchManager.Interactors.KeySwitches
 
             if( sorted.Count > 0 )
             {
-                Writer.Write( sorted );
+                await Strategy.ExportAsync( sorted, cancellationToken );
                 return new DumpFileResponse( sorted.Count );
             }
 

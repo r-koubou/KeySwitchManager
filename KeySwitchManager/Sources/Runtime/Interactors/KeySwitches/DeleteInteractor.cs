@@ -1,8 +1,11 @@
-using KeySwitchManager.Domain.KeySwitches.Models;
+using System.Threading;
+using System.Threading.Tasks;
+
+using KeySwitchManager.Domain.KeySwitches;
 using KeySwitchManager.Domain.KeySwitches.Models.Values;
 using KeySwitchManager.UseCase.KeySwitches.Delete;
 
-using RkHelper.Text;
+using RkHelper.Primitives;
 
 namespace KeySwitchManager.Interactors.KeySwitches
 {
@@ -23,7 +26,7 @@ namespace KeySwitchManager.Interactors.KeySwitches
             Presenter  = presenter;
         }
 
-        public DeleteResponse Execute( DeleteRequest request )
+        public async Task<DeleteResponse> ExecuteAsync( DeleteRequest request, CancellationToken cancellationToken )
         {
             var developerName = request.DeveloperName;
             var productName = request.ProductName;
@@ -35,17 +38,19 @@ namespace KeySwitchManager.Interactors.KeySwitches
 
             if( !StringHelper.IsEmpty( developerName, productName, instrumentName ) )
             {
-                removedCount = Repository.Delete(
+                removedCount = await Repository.DeleteAsync(
                     new DeveloperName( developerName ),
                     new ProductName( productName ),
-                    new InstrumentName( instrumentName )
+                    new InstrumentName( instrumentName ),
+                    cancellationToken
                 );
             }
             else if( !StringHelper.IsEmpty( developerName, productName ) )
             {
-                removedCount = Repository.Delete(
+                removedCount = await Repository.DeleteAsync(
                     new DeveloperName( developerName ),
-                    new ProductName( productName )
+                    new ProductName( productName ),
+                    cancellationToken
                 );
             }
 

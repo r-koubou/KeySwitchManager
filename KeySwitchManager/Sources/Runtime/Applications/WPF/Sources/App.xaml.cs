@@ -1,4 +1,4 @@
-﻿namespace KeySwitchManager.WPF
+﻿namespace KeySwitchManager.Applications.WPF
 {
     /// <summary>
     /// Interaction logic for App.xaml

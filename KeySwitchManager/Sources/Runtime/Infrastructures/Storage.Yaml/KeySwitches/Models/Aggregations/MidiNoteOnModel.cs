@@ -1,7 +1,6 @@
 using KeySwitchManager.Domain.MidiMessages.Models.Values;
 
-using RkHelper.Number;
-using RkHelper.Text;
+using RkHelper.Primitives;
 
 using YamlDotNet.Serialization;
 
