@@ -2,7 +2,7 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Applications.Xamarin.Mac", "Applications.Xamarin.Mac.csproj", "{6343EE02-E18E-4492-B3B3-B0544ACE01E5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Applications.Core", "..\Core\Applications.Core.csproj", "{1AB3D306-52B3-45EE-AE4D-1AE78E1559F8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Applications.Standalone.Core", "..\Standalone.Core\Applications.Standalone.Core.csproj", "{1AB3D306-52B3-45EE-AE4D-1AE78E1559F8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
