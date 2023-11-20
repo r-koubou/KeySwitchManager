@@ -13,11 +13,6 @@ namespace KeySwitchManager.Infrastructures.Storage.Yaml.KeySwitches
             YamlFilePath = filePath;
         }
 
-        public override async void Dispose()
-        {
-            await FlushAsync( default );
-        }
-
         public override async Task<int> FlushAsync( CancellationToken cancellationToken = default )
         {
             await using var stream = YamlFilePath.OpenWriteStream();
