@@ -5,6 +5,7 @@ using KeySwitchManager.Applications.Standalone.Core.Views.LogView;
 using KeySwitchManager.Commons.Data;
 using KeySwitchManager.Domain.KeySwitches.Models.Values;
 using KeySwitchManager.Infrastructures.Storage.Json.KeySwitches.Cakewalk;
+using KeySwitchManager.Infrastructures.Storage.Plist.KeySwitches.Logic;
 using KeySwitchManager.Infrastructures.Storage.Spreadsheet.ClosedXml.KeySwitches.Export;
 using KeySwitchManager.Infrastructures.Storage.Xml.KeySwitches.Cubase;
 using KeySwitchManager.Infrastructures.Storage.Xml.KeySwitches.StudioOne;
@@ -86,6 +87,13 @@ namespace KeySwitchManager.Applications.Standalone.Core.Controllers.Export
                         contentWriterFactory = new CakewalkExportContentFileWriterFactory( outputDir );
                         strategy             = new MultipleExportStrategy( contentWriterFactory, contentFactory );
                         break;
+
+                    case ExportSupportedFormat.Logic:
+                        contentFactory       = new LogicExportContentFactory();
+                        contentWriterFactory = new LogicExportContentFileWriterFactory( outputDir );
+                        strategy             = new MultipleExportStrategy( contentWriterFactory, contentFactory );
+                        break;
+
                     default:
                         Disposer.Dispose( sourceDatabase );
                         throw new ArgumentException( $"Unsupported format :{format}" );

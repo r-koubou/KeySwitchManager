@@ -7,6 +7,7 @@
         XlsxCombined,
         Cubase,
         StudioOne,
-        Cakewalk
+        Cakewalk,
+        Logic
     }
 }
