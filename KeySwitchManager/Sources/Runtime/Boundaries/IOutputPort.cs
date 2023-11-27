@@ -10,4 +10,13 @@ namespace KeySwitchManager.Boundaries
 
         Task HandleAsync( TResponse response, CancellationToken cancellationToken = default );
     }
+
+    public interface IOutputPort<in TResponse, in TProgress>
+    {
+        void Handle( TResponse response )
+            => HandleAsync( response ).GetAwaiter().GetResult();
+
+        Task HandleAsync( TResponse response, CancellationToken cancellationToken = default );
+        Task HandleProgressAsync( TProgress response, CancellationToken cancellationToken = default );
+    }
 }

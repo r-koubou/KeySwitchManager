@@ -1,23 +1,23 @@
 ﻿using System;
 using System.IO;
 
-using KeySwitchManager.Applications.Standalone.Core.Views.LogView;
 using KeySwitchManager.Commons.Data;
 using KeySwitchManager.Infrastructures.Storage.KeySwitches;
 using KeySwitchManager.Infrastructures.Storage.Spreadsheet.ClosedXml.KeySwitches.Export;
 using KeySwitchManager.Infrastructures.Storage.Yaml.KeySwitches.Export;
+using KeySwitchManager.UseCase.KeySwitches.Create;
 using KeySwitchManager.UseCase.KeySwitches.Export;
 
 namespace KeySwitchManager.Applications.Standalone.Core.Controllers.Create
 {
     public interface ICreateControllerFactory
     {
-        IController Create( string outputFilePath, ILogTextView logTextView );
+        IController Create( string outputFilePath, ICreatePresenter logTextView );
     }
 
     public class CreateFileControllerFactory : ICreateControllerFactory
     {
-        IController ICreateControllerFactory.Create( string outputFilePath, ILogTextView logTextView )
+        IController ICreateControllerFactory.Create( string outputFilePath, ICreatePresenter logTextView )
         {
             var outputDirectory = new DirectoryPath( Path.GetDirectoryName( outputFilePath ) ?? string.Empty );
             var fileName = outputFilePath.ToLower();
@@ -43,7 +43,7 @@ namespace KeySwitchManager.Applications.Standalone.Core.Controllers.Create
                 throw new ArgumentException( $"{outputFilePath} is unknown file format" );
             }
 
-            return new CreateFileController( strategy, new CreatePresenter( logTextView ) );
+            return new CreateFileController( strategy,  logTextView );
         }
     }
 }

@@ -2,33 +2,25 @@ using System.Threading;
 using System.Threading.Tasks;
 
 using KeySwitchManager.Boundaries;
+using KeySwitchManager.UseCase.Commons;
 
 namespace KeySwitchManager.UseCase.KeySwitches.Create
 {
     public interface ICreatePresenter : IOutputPort<CreateResponse>
     {
         public static readonly ICreatePresenter Null = new NullImpl();
+        public static readonly ICreatePresenter DefaultConsole = new ConsoleImpl();
 
         private class NullImpl : ICreatePresenter
         {
-            public Task HandleAsync( CreateResponse response, CancellationToken cancellationToken = default )
+            public async Task HandleAsync( CreateResponse response, CancellationToken cancellationToken = default )
             {
-                return Task.CompletedTask;
+                await Task.CompletedTask;
             }
         }
 
-        public class Console : ICreatePresenter
+        private class ConsoleImpl : ICreatePresenter
         {
-            public void Present<T>( T param )
-            {
-                System.Console.WriteLine( param );
-            }
-
-            public void Message( string message )
-            {
-                System.Console.WriteLine( message );
-            }
-
             public async Task HandleAsync( CreateResponse response, CancellationToken cancellationToken = default )
             {
                 if( response.Result )
