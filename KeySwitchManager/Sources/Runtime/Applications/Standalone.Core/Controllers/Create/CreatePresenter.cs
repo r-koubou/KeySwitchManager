@@ -1,4 +1,7 @@
-﻿using KeySwitchManager.Applications.Standalone.Core.Views.LogView;
+﻿using System.Threading;
+using System.Threading.Tasks;
+
+using KeySwitchManager.Applications.Standalone.Core.Views.LogView;
 using KeySwitchManager.UseCase.KeySwitches.Create;
 
 namespace KeySwitchManager.Applications.Standalone.Core.Controllers.Create
@@ -12,17 +15,23 @@ namespace KeySwitchManager.Applications.Standalone.Core.Controllers.Create
             TextView = textView;
         }
 
-        public void Present<T>( T param )
+        public async Task HandleAsync( CreateResponse response, CancellationToken cancellationToken = default )
         {
-            if( param != null )
+            if( response.Result )
             {
-                TextView.Append( param.ToString() ?? string.Empty );
+                TextView.Append( $"Created : {response.Response}" );
             }
-        }
+            else
+            {
+                TextView.Append( "Failed to create." );
 
-        public void Complete( CreateResponse response )
-        {
-            TextView.Append( "Complete" );
+                if( response.Error?.StackTrace != null )
+                {
+                    TextView.Append( response.Error.StackTrace );
+                }
+            }
+
+            await Task.CompletedTask;
         }
     }
 }

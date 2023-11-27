@@ -24,9 +24,9 @@ namespace KeySwitchManager.Applications.Standalone.Core.Controllers.Create
 
         public async Task ExecuteAsync( CancellationToken cancellationToken )
         {
-            ICreateUseCase interactor = new CreateInteractor( Strategy, Presenter );
-            var response = await interactor.ExecuteAsync( cancellationToken );
-            Presenter.Complete( response );
+            ICreateUseCase interactor = new CreateInteractor( Presenter );
+            var request = new CreateRequest( Strategy );
+            await interactor.HandleAsync( request, cancellationToken );
         }
     }
 }

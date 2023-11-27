@@ -33,7 +33,7 @@ namespace KeySwitchManager.Applications.Standalone.Core.Controllers.Create
                     throw new ArgumentOutOfRangeException( nameof( format ), format, null );
             }
 
-            return new CreateFileController( strategy, new ICreatePresenter.Null() );
+            return new CreateFileController( strategy, ICreatePresenter.Null );
         }
     }
 }

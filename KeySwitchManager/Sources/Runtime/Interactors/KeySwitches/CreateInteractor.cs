@@ -1,30 +1,38 @@
+using System;
 using System.Threading;
 using System.Threading.Tasks;
 
+using KeySwitchManager.Boundaries;
 using KeySwitchManager.Domain.KeySwitches.Helpers;
 using KeySwitchManager.UseCase.KeySwitches.Create;
-using KeySwitchManager.UseCase.KeySwitches.Export;
 
 namespace KeySwitchManager.Interactors.KeySwitches
 {
     public class CreateInteractor : ICreateUseCase
     {
-        private IExportStrategy Strategy { get; }
-        private ICreatePresenter Presenter { get; }
+        private IOutputPort<CreateResponse> OutputPort { get; }
 
-        public CreateInteractor( IExportStrategy strategy, ICreatePresenter presenter )
+        public CreateInteractor( IOutputPort<CreateResponse> outputPort )
         {
-            Strategy   = strategy;
-            Presenter  = presenter;
+            OutputPort = outputPort;
         }
 
-        public async Task<CreateResponse> ExecuteAsync( CancellationToken cancellationToken )
+        public async Task HandleAsync( CreateRequest request, CancellationToken cancellationToken = default )
         {
             var keyswitch = KeySwitchFactoryHelper.CreateTemplate();
-            await Strategy.ExportAsync( new[] { keyswitch }, cancellationToken );
+            CreateResponse response;
 
-            return new CreateResponse();
+            try
+            {
+                await request.Request.ExportAsync( new[] { keyswitch }, cancellationToken );
+                response = new CreateResponse( true, keyswitch, null );
+            }
+            catch( Exception e )
+            {
+                response = new CreateResponse( false, null!, e );
+            }
+
+            await OutputPort.HandleAsync( response, cancellationToken );
         }
     }
 }
-
