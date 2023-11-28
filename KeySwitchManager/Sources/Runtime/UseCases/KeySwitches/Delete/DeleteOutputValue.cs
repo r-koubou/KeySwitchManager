@@ -1,10 +1,10 @@
 namespace KeySwitchManager.UseCase.KeySwitches.Delete
 {
-    public class DeleteResponse
+    public class DeleteOutputValue
     {
         public int RemovedCount { get; }
 
-        public DeleteResponse( int removedCount )
+        public DeleteOutputValue( int removedCount )
         {
             RemovedCount = removedCount;
         }

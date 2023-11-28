@@ -1,23 +1,15 @@
+using System.Threading;
+using System.Threading.Tasks;
+
 using KeySwitchManager.UseCase.Commons;
 
 namespace KeySwitchManager.UseCase.KeySwitches.Delete
 {
-    public interface IDeletePresenter : IPresenter<DeleteResponse>
+    public interface IDeletePresenter : IOutputPort<DeleteOutputData>
     {
-        public class Null : IDeletePresenter
-        {}
+        public void HandleDeleteBegin( DeleteInputData inputData )
+            => HandleDeleteBeginAsync( inputData ).GetAwaiter().GetResult();
 
-        public class Console : IDeletePresenter
-        {
-            public void Present<T>( T param )
-            {
-                System.Console.WriteLine( param );
-            }
-
-            public void Message( string message )
-            {
-                System.Console.WriteLine( message );
-            }
-        }
+        public Task HandleDeleteBeginAsync( DeleteInputData inputData, CancellationToken cancellationToken = default );
     }
 }
