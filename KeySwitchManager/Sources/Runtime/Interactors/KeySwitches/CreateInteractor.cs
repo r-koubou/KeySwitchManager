@@ -2,7 +2,6 @@ using System;
 using System.Threading;
 using System.Threading.Tasks;
 
-using KeySwitchManager.Boundaries;
 using KeySwitchManager.Domain.KeySwitches.Helpers;
 using KeySwitchManager.UseCase.Commons;
 using KeySwitchManager.UseCase.KeySwitches.Create;
@@ -11,29 +10,29 @@ namespace KeySwitchManager.Interactors.KeySwitches
 {
     public class CreateInteractor : ICreateUseCase
     {
-        private IOutputPort<CreateResponse> OutputPort { get; }
+        private IOutputPort<CreateOutputData> OutputPort { get; }
 
-        public CreateInteractor( IOutputPort<CreateResponse> outputPort )
+        public CreateInteractor( IOutputPort<CreateOutputData> outputPort )
         {
             OutputPort = outputPort;
         }
 
-        public async Task HandleAsync( CreateRequest request, CancellationToken cancellationToken = default )
+        public async Task HandleAsync( CreateInputData inputData, CancellationToken cancellationToken = default )
         {
             var keyswitch = KeySwitchFactoryHelper.CreateTemplate();
-            CreateResponse response;
+            CreateOutputData outputData;
 
             try
             {
-                await request.Request.ExportAsync( new[] { keyswitch }, cancellationToken );
-                response = new CreateResponse( true, keyswitch, null );
+                await inputData.Value.ExportAsync( new[] { keyswitch }, cancellationToken );
+                outputData = new CreateOutputData( true, keyswitch, null );
             }
             catch( Exception e )
             {
-                response = new CreateResponse( false, null!, e );
+                outputData = new CreateOutputData( false, null!, e );
             }
 
-            await OutputPort.HandleAsync( response, cancellationToken );
+            await OutputPort.HandleAsync( outputData, cancellationToken );
         }
     }
 }

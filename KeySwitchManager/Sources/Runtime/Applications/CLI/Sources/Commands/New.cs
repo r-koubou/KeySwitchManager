@@ -1,8 +1,8 @@
 using CommandLine;
 
 using KeySwitchManager.Applications.Standalone.Core.Controllers.Create;
+using KeySwitchManager.Applications.Standalone.Core.Presenters;
 using KeySwitchManager.Applications.Standalone.Core.Views.LogView;
-using KeySwitchManager.UseCase.KeySwitches.Create;
 
 namespace KeySwitchManager.Applications.CLI.Commands
 {
@@ -22,7 +22,7 @@ namespace KeySwitchManager.Applications.CLI.Commands
 
             ICreateControllerFactory factory = new CreateFileControllerFactory();
 
-            using var controller = factory.Create( option.OutputPath, ICreatePresenter.DefaultConsole );
+            using var controller = factory.Create( option.OutputPath, new CreatePresenter( new ConsoleLogView() ) );
             logView.Append( $"generating keyswitch template to {option.OutputPath}" );
             controller.Execute();
 

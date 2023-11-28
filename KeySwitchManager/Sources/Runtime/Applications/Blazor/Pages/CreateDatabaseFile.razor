@@ -1,10 +1,10 @@
 @page "/create_db"
-
-@inject FileDownloadService DownloadService
-@using KeySwitchManager.Applications.Blazor.Services
-@using KeySwitchManager.Applications.Standalone.Core.Controllers.Create
 @using KeySwitchManager.Applications.Standalone.Core.Controllers.Export
 @using KeySwitchManager.Applications.Standalone.Core.Views.LogView
+@using KeySwitchManager.Applications.Blazor.Services
+@using KeySwitchManager.Applications.Standalone.Core.Controllers.Create
+
+@inject FileDownloadService DownloadService
 
 <PageTitle>Create Database File</PageTitle>
 
@@ -43,7 +43,7 @@
 
         var target = new MemoryStream();
         var factory = new CreateToStreamControllerFactory();
-        var controller = factory.Create( target, Format, new ILogTextView.Null() );
+        var controller = factory.Create( target, Format, ILogTextView.Null );
 
         var outputFileName = Format switch
         {
