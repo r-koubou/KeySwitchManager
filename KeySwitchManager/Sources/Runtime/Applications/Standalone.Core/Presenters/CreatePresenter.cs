@@ -2,14 +2,13 @@ using System.Threading;
 using System.Threading.Tasks;
 
 using KeySwitchManager.Applications.Standalone.Core.Views.LogView;
-using KeySwitchManager.UseCase.Commons;
 using KeySwitchManager.UseCase.KeySwitches.Create;
 
 namespace KeySwitchManager.Applications.Standalone.Core.Presenters
 {
-    public sealed class CreatePresenter : IOutputPort<CreateOutputData>
+    public sealed class CreatePresenter : ICreatePresenter
     {
-        public static readonly IOutputPort<CreateOutputData> Null = new NullImpl();
+        public static readonly ICreatePresenter Null = new NullImpl();
 
         private ILogTextView TextView { get; }
 
@@ -37,7 +36,7 @@ namespace KeySwitchManager.Applications.Standalone.Core.Presenters
             await Task.CompletedTask;
         }
 
-        private class NullImpl : IOutputPort<CreateOutputData>
+        private class NullImpl : ICreatePresenter
         {
             public async Task HandleAsync( CreateOutputData outputData, CancellationToken cancellationToken = default )
             {

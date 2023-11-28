@@ -14,10 +14,6 @@ namespace KeySwitchManager.Interactors.KeySwitches
         private IKeySwitchRepository Repository { get; }
         private IDeletePresenter Presenter { get; }
 
-        public DeleteInteractor( IKeySwitchRepository repository ) :
-            this( repository, new IDeletePresenter.Null() )
-        {}
-
         public DeleteInteractor(
             IKeySwitchRepository repository,
             IDeletePresenter presenter )
@@ -26,15 +22,15 @@ namespace KeySwitchManager.Interactors.KeySwitches
             Presenter  = presenter;
         }
 
-        public async Task<DeleteResponse> ExecuteAsync( DeleteRequest request, CancellationToken cancellationToken )
+        public async Task HandleAsync( DeleteInputData inputData, CancellationToken cancellationToken = default )
         {
-            var developerName = request.DeveloperName;
-            var productName = request.ProductName;
-            var instrumentName = request.InstrumentName;
+            var developerName = inputData.Value.DeveloperName;
+            var productName = inputData.Value.ProductName;
+            var instrumentName = inputData.Value.InstrumentName;
 
             var removedCount = 0;
 
-            Presenter.Present( $"Removing keyswitch: Developer={developerName}, Product={productName}, Instrument={instrumentName}" );
+            await Presenter.HandleDeleteBeginAsync( inputData, cancellationToken );
 
             if( !StringHelper.IsEmpty( developerName, productName, instrumentName ) )
             {
@@ -54,16 +50,15 @@ namespace KeySwitchManager.Interactors.KeySwitches
                 );
             }
 
-            if( removedCount > 0 )
-            {
-                Presenter.Present( $"{removedCount} record(s) removed" );
-            }
-            else
-            {
-                Presenter.Present( $"record not found" );
-            }
+            await Repository.FlushAsync( cancellationToken );
 
-            return new DeleteResponse( removedCount );
+            var outputData = new DeleteOutputData(
+                true,
+                new DeleteOutputValue( removedCount ),
+                null
+            );
+
+            await Presenter.HandleAsync( outputData, cancellationToken );
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using KeySwitchManager.Applications.Standalone.Core.Helpers;
+using KeySwitchManager.Applications.Standalone.Core.Presenters;
 using KeySwitchManager.Applications.Standalone.Core.Views.LogView;
 
 namespace KeySwitchManager.Applications.Standalone.Core.Controllers.Delete

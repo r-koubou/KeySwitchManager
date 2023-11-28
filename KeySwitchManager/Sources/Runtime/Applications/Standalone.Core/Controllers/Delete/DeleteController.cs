@@ -47,19 +47,9 @@ namespace KeySwitchManager.Applications.Standalone.Core.Controllers.Delete
         public async Task ExecuteAsync( CancellationToken cancellationToken )
         {
             IDeleteUseCase interactor = new DeleteInteractor( DatabaseRepository, Presenter );
-            var request = new DeleteRequest( DeveloperName, ProductName, InstrumentName );
-            var response = await interactor.ExecuteAsync( request, cancellationToken );
+            var request = new DeleteInputData( new DeleteInputValue( DeveloperName, ProductName, InstrumentName ) );
 
-            if( response.RemovedCount > 0 )
-            {
-                Presenter.Present( $"{response.RemovedCount} records deleted from database" );
-            }
-            else
-            {
-                Presenter.Present( "records not found" );
-            }
-
-            Presenter.Complete( response );
+            await interactor.HandleAsync( request, cancellationToken );
         }
     }
 }
