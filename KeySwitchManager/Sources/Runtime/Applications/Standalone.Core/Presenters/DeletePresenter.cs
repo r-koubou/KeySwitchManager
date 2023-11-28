@@ -1,23 +1,20 @@
-using System.Reactive.Disposables;
 using System.Threading;
 using System.Threading.Tasks;
 
 using KeySwitchManager.Applications.Standalone.Core.Views.LogView;
-using KeySwitchManager.UseCase.Commons;
-using KeySwitchManager.UseCase.KeySwitches.Create;
 using KeySwitchManager.UseCase.KeySwitches.Delete;
 
 namespace KeySwitchManager.Applications.Standalone.Core.Presenters
 {
     public sealed class DeletePresenter : IDeletePresenter
     {
-        public static readonly IOutputPort<DeleteOutputData> Null = new NullImpl();
+        public static readonly IDeletePresenter Null = new NullImpl();
 
         private ILogTextView TextView { get; }
 
         public DeletePresenter( ILogTextView textView )
         {
-            TextView      = textView;
+            TextView = textView;
         }
 
         public async Task HandleDeleteBeginAsync( DeleteInputData inputData, CancellationToken cancellationToken = default )
@@ -48,8 +45,13 @@ namespace KeySwitchManager.Applications.Standalone.Core.Presenters
         }
 
         #region NullObject
-        private class NullImpl : IOutputPort<DeleteOutputData>
+        private class NullImpl : IDeletePresenter
         {
+            public async Task HandleDeleteBeginAsync( DeleteInputData inputData, CancellationToken cancellationToken = default )
+            {
+                await Task.CompletedTask;
+            }
+
             public async Task HandleAsync( DeleteOutputData outputData, CancellationToken cancellationToken = default )
             {
                 await Task.CompletedTask;
