@@ -67,7 +67,7 @@
                 StateHasChanged();
             });
         }
-        catch( OperationCanceledException ce ) {}
+        catch( OperationCanceledException ) {}
         catch( Exception e )
         {
             Console.WriteLine( e );
