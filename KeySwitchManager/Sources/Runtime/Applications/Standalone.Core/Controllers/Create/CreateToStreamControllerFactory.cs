@@ -2,11 +2,11 @@
 using System.IO;
 
 using KeySwitchManager.Applications.Standalone.Core.Controllers.Export;
+using KeySwitchManager.Applications.Standalone.Core.Presenters;
 using KeySwitchManager.Applications.Standalone.Core.Views.LogView;
 using KeySwitchManager.Infrastructures.Storage.KeySwitches;
 using KeySwitchManager.Infrastructures.Storage.Spreadsheet.ClosedXml.KeySwitches.Export;
 using KeySwitchManager.Infrastructures.Storage.Yaml.KeySwitches.Export;
-using KeySwitchManager.UseCase.KeySwitches.Create;
 using KeySwitchManager.UseCase.KeySwitches.Export;
 
 namespace KeySwitchManager.Applications.Standalone.Core.Controllers.Create
@@ -33,7 +33,7 @@ namespace KeySwitchManager.Applications.Standalone.Core.Controllers.Create
                     throw new ArgumentOutOfRangeException( nameof( format ), format, null );
             }
 
-            return new CreateFileController( strategy, new ICreatePresenter.Null() );
+            return new CreateFileController( strategy, CreatePresenter.Null );
         }
     }
 }

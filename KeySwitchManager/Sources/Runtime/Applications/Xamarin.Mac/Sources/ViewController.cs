@@ -15,10 +15,11 @@ using KeySwitchManager.Applications.Standalone.Core.Controllers.Delete;
 using KeySwitchManager.Applications.Standalone.Core.Controllers.Export;
 using KeySwitchManager.Applications.Standalone.Core.Controllers.Find;
 using KeySwitchManager.Applications.Standalone.Core.Controllers.Import;
+using KeySwitchManager.Applications.Standalone.Core.Presenters;
 using KeySwitchManager.Xamarin.Mac.UiKitView;
 
 using RkHelper.Enumeration;
-using RkHelper.Text;
+using RkHelper.Primitives;
 
 namespace KeySwitchManager.Xamarin.Mac
 {
@@ -126,8 +127,9 @@ namespace KeySwitchManager.Xamarin.Mac
             }
 
             ICreateControllerFactory factory = new CreateFileControllerFactory();
+            var presenter = new CreatePresenter( LogView );
 
-            await ExecuteControllerAsync( () => factory.Create( path, LogView ) );
+            await ExecuteControllerAsync( () => factory.Create( path, presenter ) );
         }
 
         #endregion
@@ -354,7 +356,7 @@ namespace KeySwitchManager.Xamarin.Mac
             label.Selectable      = false;
             label.Editable        = false;
             label.BackgroundColor = NSColor.Clear;
-            label.TextColor       = NSColor.LabelColor;
+            label.TextColor       = NSColor.Label;
 
             accessoryView.AddSubview( popup );
             accessoryView.AddSubview( label );

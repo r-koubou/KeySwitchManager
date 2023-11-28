@@ -5,7 +5,6 @@ using System.Threading;
 using System.Threading.Tasks;
 
 using KeySwitchManager.Commons.Data;
-using KeySwitchManager.Domain.KeySwitches.Helpers;
 using KeySwitchManager.Domain.KeySwitches.Models;
 using KeySwitchManager.Domain.KeySwitches.Models.Values;
 

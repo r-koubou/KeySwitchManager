@@ -11,13 +11,14 @@ using KeySwitchManager.Applications.Standalone.Core.Controllers.Delete;
 using KeySwitchManager.Applications.Standalone.Core.Controllers.Export;
 using KeySwitchManager.Applications.Standalone.Core.Controllers.Find;
 using KeySwitchManager.Applications.Standalone.Core.Controllers.Import;
+using KeySwitchManager.Applications.Standalone.Core.Presenters;
 using KeySwitchManager.Applications.WPF.WpfView;
 
 using Microsoft.Win32;
 using Microsoft.WindowsAPICodePack.Dialogs;
 
 using RkHelper.Enumeration;
-using RkHelper.Text;
+using RkHelper.Primitives;
 
 namespace KeySwitchManager.Applications.WPF
 {
@@ -186,8 +187,9 @@ namespace KeySwitchManager.Applications.WPF
             }
 
             ICreateControllerFactory factory = new CreateFileControllerFactory();
+            var presenter = new CreatePresenter( LogTextView );
 
-            await ExecuteControllerAsync( () => factory.Create( path, LogTextView ) );
+            await ExecuteControllerAsync( () => factory.Create( path, presenter ) );
         }
         #endregion
 
