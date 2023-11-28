@@ -50,7 +50,10 @@ namespace KeySwitchManager.Interactors.KeySwitches
                 );
             }
 
-            await Repository.FlushAsync( cancellationToken );
+            if( removedCount > 0 )
+            {
+                await Repository.FlushAsync( cancellationToken );
+            }
 
             var outputData = new DeleteOutputData(
                 true,
