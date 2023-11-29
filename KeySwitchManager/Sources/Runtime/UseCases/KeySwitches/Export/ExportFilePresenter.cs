@@ -1,26 +1,16 @@
+using System.Threading;
+using System.Threading.Tasks;
+
+using KeySwitchManager.Domain.KeySwitches.Models;
 using KeySwitchManager.UseCase.Commons;
 
 namespace KeySwitchManager.UseCase.KeySwitches.Export
 {
-    public interface IExportFilePresenter : IPresenter<ExportFileResponse>
+    public interface IExportPresenter : IOutputPort<ExportOutputData>
     {
-        public class Null : IExportFilePresenter
-        {
-            public void Complete( ExportFileResponse response )
-            {}
-        }
+        void HandleExported( KeySwitch exported )
+            => HandleExportedAsync( exported ).GetAwaiter().GetResult();
 
-        public class Console : IExportFilePresenter
-        {
-            public void Present<T>( T param )
-            {
-                System.Console.WriteLine( param );
-            }
-
-            public void Message( string message )
-            {
-                System.Console.WriteLine( message );
-            }
-        }
+        Task HandleExportedAsync( KeySwitch exported, CancellationToken cancellationToken = default );
     }
 }

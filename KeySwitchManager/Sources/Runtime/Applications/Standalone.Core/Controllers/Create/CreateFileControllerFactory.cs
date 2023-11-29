@@ -1,5 +1,4 @@
 ﻿using System;
-using System.IO;
 
 using KeySwitchManager.Commons.Data;
 using KeySwitchManager.Infrastructures.Storage.KeySwitches;
@@ -10,16 +9,15 @@ using KeySwitchManager.UseCase.KeySwitches.Export;
 
 namespace KeySwitchManager.Applications.Standalone.Core.Controllers.Create
 {
-    public interface ICreateControllerFactory
+    public interface ICreateFileControllerFactory
     {
         IController Create( string outputFilePath, ICreatePresenter presenter );
     }
 
-    public class CreateFileControllerFactory : ICreateControllerFactory
+    public class CreateFileControllerFactory : ICreateFileControllerFactory
     {
-        IController ICreateControllerFactory.Create( string outputFilePath, ICreatePresenter presenter )
+        IController ICreateFileControllerFactory.Create( string outputFilePath, ICreatePresenter presenter )
         {
-            var outputDirectory = new DirectoryPath( Path.GetDirectoryName( outputFilePath ) ?? string.Empty );
             var fileName = outputFilePath.ToLower();
 
             IExportContentFactory contentFactory;

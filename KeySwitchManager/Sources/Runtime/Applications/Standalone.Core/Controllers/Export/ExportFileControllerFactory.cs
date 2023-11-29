@@ -1,6 +1,7 @@
 ﻿using System;
 
 using KeySwitchManager.Applications.Standalone.Core.Helpers;
+using KeySwitchManager.Applications.Standalone.Core.Presenters;
 using KeySwitchManager.Applications.Standalone.Core.Views.LogView;
 using KeySwitchManager.Commons.Data;
 using KeySwitchManager.Domain.KeySwitches.Models.Values;
@@ -44,7 +45,7 @@ namespace KeySwitchManager.Applications.Standalone.Core.Controllers.Export
             try
             {
                 IController CreateImpl( IExportStrategy strategy )
-                    => new ExportFileController( developer, product, instrument, sourceDatabase, strategy, new ExportFilePresenter( logTextView ) );
+                    => new ExportController( developer, product, instrument, sourceDatabase, strategy, new ExportPresenter( logTextView ) );
 
                 IExportContentFactory contentFactory;
                 IExportContentWriterFactory contentWriterFactory;
