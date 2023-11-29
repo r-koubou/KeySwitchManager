@@ -1,6 +1,4 @@
-﻿using System;
-using System.Reactive.Subjects;
-using System.Threading;
+﻿using System.Threading;
 using System.Threading.Tasks;
 
 using KeySwitchManager.Domain.KeySwitches;
@@ -12,23 +10,22 @@ using RkHelper.System;
 
 namespace KeySwitchManager.Applications.Standalone.Core.Controllers.Export
 {
-    public class ExportFileController : IController
+    public class ExportController : IController
     {
         private IKeySwitchRepository SourceRepository { get; }
         private IExportStrategy Strategy { get; }
         private DeveloperName DeveloperName { get; }
         private ProductName ProductName { get; }
         private InstrumentName InstrumentName { get; }
-        private IExportFilePresenter Presenter { get; }
-        private readonly Subject<string> logging = new();
+        private IExportPresenter Presenter { get; }
 
-        public ExportFileController(
+        public ExportController(
             DeveloperName developerName,
             ProductName productName,
             InstrumentName instrumentName,
             IKeySwitchRepository sourceRepository,
             IExportStrategy strategy,
-            IExportFilePresenter presenter )
+            IExportPresenter presenter )
         {
             DeveloperName    = developerName;
             ProductName      = productName;
@@ -36,38 +33,28 @@ namespace KeySwitchManager.Applications.Standalone.Core.Controllers.Export
             SourceRepository = sourceRepository;
             Strategy           = strategy;
             Presenter        = presenter;
-
-            logging.Subscribe(
-                onNext: presenter.Present,
-                onError: presenter.Present
-            );
-
         }
 
         public void Dispose()
         {
-            Disposer.Dispose( logging );
             Disposer.Dispose( SourceRepository );
         }
 
         public async Task ExecuteAsync( CancellationToken cancellationToken )
         {
-            IExportFileUseCase interactor = new ExportFileInteractor(
+            IExportFileUseCase interactor = new ExportInteractor(
                 SourceRepository,
                 Strategy,
                 Presenter
             );
 
-            var response = await interactor.ExecuteAsync(
-                new ExportFileRequest(
-                    DeveloperName.Value,
-                    ProductName.Value,
-                    InstrumentName.Value
-                ),
-                cancellationToken
+            var inputValue = new ExportInputValue(
+                DeveloperName.Value,
+                ProductName.Value,
+                InstrumentName.Value
             );
 
-            Presenter.Complete( response );
+            await interactor.HandleAsync( new ExportInputData( inputValue ), cancellationToken );
         }
     }
 }

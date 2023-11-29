@@ -20,7 +20,7 @@ namespace KeySwitchManager.Applications.CLI.Commands
             var option = (CommandOption)opt;
             var logView = new ConsoleLogView();
 
-            ICreateControllerFactory factory = new CreateFileControllerFactory();
+            ICreateFileControllerFactory factory = new CreateFileControllerFactory();
 
             using var controller = factory.Create( option.OutputPath, new CreatePresenter( new ConsoleLogView() ) );
             logView.Append( $"generating keyswitch template to {option.OutputPath}" );

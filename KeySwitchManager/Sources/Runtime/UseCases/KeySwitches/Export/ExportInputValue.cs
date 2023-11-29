@@ -1,12 +1,12 @@
 namespace KeySwitchManager.UseCase.KeySwitches.Export
 {
-    public class ExportFileRequest
+    public sealed class ExportInputValue
     {
         public string DeveloperName { get; }
         public string ProductName { get; }
         public string InstrumentName { get; }
 
-        public ExportFileRequest(
+        public ExportInputValue(
             string developerName = "",
             string productName = "",
             string instrumentName = "" )

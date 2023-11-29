@@ -7,7 +7,21 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e8a92dc3-8619-429d-923f-36b8ce0d37fa" name="Changes" comment="" />
+    <list default="true" id="e8a92dc3-8619-429d-923f-36b8ce0d37fa" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../CLI/Sources/Commands/New.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../CLI/Sources/Commands/New.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Standalone.Core/Controllers/Create/CreateFileControllerFactory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../Standalone.Core/Controllers/Create/CreateFileControllerFactory.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Standalone.Core/Controllers/Export/ExportFileController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../Standalone.Core/Controllers/Export/ExportController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Standalone.Core/Controllers/Export/ExportFileControllerFactory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../Standalone.Core/Controllers/Export/ExportFileControllerFactory.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Standalone.Core/Controllers/Export/ExportFilePresenter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../Standalone.Core/Presenters/ExportFilePresenter.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Applications.Xamarin.Mac/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Applications.Xamarin.Mac/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Sources/AppDelegate.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Sources/AppDelegate.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Sources/ViewController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Sources/ViewController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Interactors/KeySwitches/ExportFileInteractor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../../Interactors/KeySwitches/ExportInteractor.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../UseCases/KeySwitches/Export/ExportFilePresenter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../../UseCases/KeySwitches/Export/ExportFilePresenter.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../UseCases/KeySwitches/Export/ExportFileRequest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../../UseCases/KeySwitches/Export/ExportInputData.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../UseCases/KeySwitches/Export/ExportFileResponse.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../../UseCases/KeySwitches/Export/ExportOutputData.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../UseCases/KeySwitches/Export/IExportFileUseCase.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../../UseCases/KeySwitches/Export/IExportFileUseCase.cs" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -21,6 +35,9 @@
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="SWEA" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;customColor&quot;: &quot;&quot;,
@@ -72,6 +89,7 @@
       <workItem from="1651740748141" duration="98000" />
       <workItem from="1701148135004" duration="2092000" />
       <workItem from="1701180496289" duration="662000" />
+      <workItem from="1701273458198" duration="420000" />
     </task>
     <servers />
   </component>
