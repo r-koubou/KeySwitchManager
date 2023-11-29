@@ -1,10 +1,10 @@
 namespace KeySwitchManager.UseCase.KeySwitches.Dump
 {
-    public class DumpFileResponse
+    public class DumpOutputValue
     {
         public int DumpDataCount { get; }
 
-        public DumpFileResponse( int dumpDataCount )
+        public DumpOutputValue( int dumpDataCount )
         {
             DumpDataCount = dumpDataCount;
         }

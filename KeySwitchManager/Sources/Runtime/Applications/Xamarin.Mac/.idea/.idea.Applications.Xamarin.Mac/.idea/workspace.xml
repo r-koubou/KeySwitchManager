@@ -7,45 +7,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e8a92dc3-8619-429d-923f-36b8ce0d37fa" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../Standalone.Core/Presenters/CreatePresenter.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../UseCases/Commons/IInputData.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../UseCases/Commons/IInputPort.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../UseCases/Commons/IOutputPort.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../UseCases/KeySwitches/Create/CreateInputData.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../../KeySwitchManager.sln" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../KeySwitchManager.sln" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Blazor/Pages/CreateDatabaseFile.razor" beforeDir="false" afterPath="$PROJECT_DIR$/../Blazor/Pages/CreateDatabaseFile.razor" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Blazor/Pages/FetchData.razor" beforeDir="false" afterPath="$PROJECT_DIR$/../Blazor/Pages/FetchData.razor" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Blazor/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../Blazor/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../CLI/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../CLI/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../CLI/Sources/Commands/New.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../CLI/Sources/Commands/New.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Standalone.Core/Controllers/Create/CreateFileController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../Standalone.Core/Controllers/Create/CreateFileController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Standalone.Core/Controllers/Create/CreateFileControllerFactory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../Standalone.Core/Controllers/Create/CreateFileControllerFactory.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Standalone.Core/Controllers/Create/CreatePresenter.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Standalone.Core/Controllers/Create/CreateToStreamControllerFactory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../Standalone.Core/Controllers/Create/CreateToStreamControllerFactory.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../WPF/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../WPF/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Applications.Xamarin.Mac/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Applications.Xamarin.Mac/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Applications.Xamarin.Mac.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Applications.Xamarin.Mac.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Sources/ViewController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Sources/ViewController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Boundaries/Boundaries.csproj" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Boundaries/IInputPort.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Boundaries/IOutputPort.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Domain/KeySwitches/Models/Factory/IKeySwitchFactory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../../Domain/KeySwitches/Models/Factory/IKeySwitchFactory.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Domain/KeySwitches/OnMemoryKeySwitchRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../../Domain/KeySwitches/OnMemoryKeySwitchRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Infrastructures/Storage.Spreadsheet/KeySwitches/Translators/SpreadsheetImportTranslator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../../Infrastructures/Storage.Spreadsheet/KeySwitches/Translators/SpreadsheetImportTranslator.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Infrastructures/Storage.Yaml/KeySwitches/YamlMemoryRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../../Infrastructures/Storage.Yaml/KeySwitches/YamlMemoryRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Infrastructures/Storage/KeySwitches/FileExportContentWriter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../../Infrastructures/Storage/KeySwitches/FileExportContentWriter.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Infrastructures/Storage/KeySwitches/ZipExportContentWriter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../../Infrastructures/Storage/KeySwitches/ZipExportContentWriter.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Interactors/KeySwitches/CreateInteractor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../../Interactors/KeySwitches/CreateInteractor.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../UseCases/Commons/IRequest.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../UseCases/Commons/IResponse.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../../UseCases/Commons/IOutputData.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../UseCases/KeySwitches/Create/CreateRequest.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../UseCases/KeySwitches/Create/CreateResponse.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../../UseCases/KeySwitches/Create/CreateOutputData.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../UseCases/KeySwitches/Create/ICreatePresenter.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../UseCases/KeySwitches/Create/ICreateUseCase.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../../UseCases/KeySwitches/Create/ICreateUseCase.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../UseCases/UseCases.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/../../UseCases/UseCases.csproj" afterDir="false" />
-    </list>
+    <list default="true" id="e8a92dc3-8619-429d-923f-36b8ce0d37fa" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -60,32 +22,32 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "customColor": "",
-  "associatedIndex": 1
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 1
+}</component>
   <component name="ProjectId" id="28htxQKznaEaEtAdxcYRavSnCSw" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "rider.run.widget.enabled.cache": "false",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;rider.run.widget.enabled.cache&quot;: &quot;false&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "rider.external.source.directories": [
-      "/Users/hiroaki/Library/Application Support/JetBrains/Rider2023.2/resharper-host/DecompilerCache",
-      "/Users/hiroaki/Library/Application Support/JetBrains/Rider2023.2/resharper-host/SourcesCache",
-      "/Users/hiroaki/.local/share/Symbols/src"
+  &quot;keyToStringList&quot;: {
+    &quot;rider.external.source.directories&quot;: [
+      &quot;/Users/hiroaki/Library/Application Support/JetBrains/Rider2023.2/resharper-host/DecompilerCache&quot;,
+      &quot;/Users/hiroaki/Library/Application Support/JetBrains/Rider2023.2/resharper-host/SourcesCache&quot;,
+      &quot;/Users/hiroaki/.local/share/Symbols/src&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration name="Applications.Xamarin.Mac" type="XamarinMacProject" factoryName="Xamarin.Mac">
       <option name="PROJECT_PATH" value="$PROJECT_DIR$/Applications.Xamarin.Mac.csproj" />
@@ -109,6 +71,7 @@
       <workItem from="1651739695827" duration="879000" />
       <workItem from="1651740748141" duration="98000" />
       <workItem from="1701148135004" duration="2092000" />
+      <workItem from="1701180496289" duration="662000" />
     </task>
     <servers />
   </component>

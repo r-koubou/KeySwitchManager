@@ -1,10 +1,10 @@
 using System.IO;
 
 using KeySwitchManager.Applications.Standalone.Core.Helpers;
+using KeySwitchManager.Applications.Standalone.Core.Presenters;
 using KeySwitchManager.Applications.Standalone.Core.Views.LogView;
 using KeySwitchManager.Commons.Data;
 using KeySwitchManager.Infrastructures.Storage.Yaml.KeySwitches.Export;
-using KeySwitchManager.UseCase.KeySwitches.Dump;
 using KeySwitchManager.UseCase.KeySwitches.Export;
 
 namespace KeySwitchManager.Applications.Standalone.Core.Controllers.Dump
@@ -20,9 +20,9 @@ namespace KeySwitchManager.Applications.Standalone.Core.Controllers.Dump
             var contentWriterFactory = new YamlExportContentFileWriterFactory( outputDirectory );
             var strategy = new SingleExportStrategy( contentWriterFactory, contentFactory );
 
-            var presenter = new IDumpFilePresenter.Console();
+            var presenter = new DumpPresenter( logTextView );
 
-            return new DumpFileController(
+            return new DumpController(
                 database,
                 strategy,
                 presenter
