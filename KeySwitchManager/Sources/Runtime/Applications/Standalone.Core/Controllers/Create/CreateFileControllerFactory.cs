@@ -5,7 +5,6 @@ using KeySwitchManager.Commons.Data;
 using KeySwitchManager.Infrastructures.Storage.KeySwitches;
 using KeySwitchManager.Infrastructures.Storage.Spreadsheet.ClosedXml.KeySwitches.Export;
 using KeySwitchManager.Infrastructures.Storage.Yaml.KeySwitches.Export;
-using KeySwitchManager.UseCase.Commons;
 using KeySwitchManager.UseCase.KeySwitches.Create;
 using KeySwitchManager.UseCase.KeySwitches.Export;
 
@@ -13,12 +12,12 @@ namespace KeySwitchManager.Applications.Standalone.Core.Controllers.Create
 {
     public interface ICreateControllerFactory
     {
-        IController Create( string outputFilePath, IOutputPort<CreateOutputData> presenter );
+        IController Create( string outputFilePath, ICreatePresenter presenter );
     }
 
     public class CreateFileControllerFactory : ICreateControllerFactory
     {
-        IController ICreateControllerFactory.Create( string outputFilePath, IOutputPort<CreateOutputData> presenter )
+        IController ICreateControllerFactory.Create( string outputFilePath, ICreatePresenter presenter )
         {
             var outputDirectory = new DirectoryPath( Path.GetDirectoryName( outputFilePath ) ?? string.Empty );
             var fileName = outputFilePath.ToLower();
