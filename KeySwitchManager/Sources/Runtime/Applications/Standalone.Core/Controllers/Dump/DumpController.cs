@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 
 using KeySwitchManager.Domain.KeySwitches;
 using KeySwitchManager.Interactors.KeySwitches;
+using KeySwitchManager.UseCase.Commons;
 using KeySwitchManager.UseCase.KeySwitches.Dump;
 using KeySwitchManager.UseCase.KeySwitches.Export;
 
@@ -10,16 +11,16 @@ using RkHelper.System;
 
 namespace KeySwitchManager.Applications.Standalone.Core.Controllers.Dump
 {
-    public class DumpFileController : IController
+    public class DumpController : IController
     {
         private IKeySwitchRepository SourceRepository { get; }
         private IExportStrategy Strategy { get; }
-        private IDumpFilePresenter Presenter { get; }
+        private IDumpPresenter Presenter { get; }
 
-        public DumpFileController(
+        public DumpController(
             IKeySwitchRepository sourceRepository,
             IExportStrategy strategy,
-            IDumpFilePresenter presenter )
+            IDumpPresenter presenter )
         {
             SourceRepository = sourceRepository;
             Strategy         = strategy;
@@ -33,14 +34,13 @@ namespace KeySwitchManager.Applications.Standalone.Core.Controllers.Dump
 
         public async Task ExecuteAsync( CancellationToken cancellationToken )
         {
-            IDumpFileUseCase interactor = new DumpFileInteractor(
+            IDumpUseCase interactor = new DumpInteractor(
                 SourceRepository,
                 Strategy,
                 Presenter
             );
 
-            var response = await interactor.ExecuteAsync( new DumpFileRequest(), cancellationToken );
-            Presenter.Complete( response );
+            await interactor.HandleAsync( UnitInputData.Default, cancellationToken );
         }
     }
 }
