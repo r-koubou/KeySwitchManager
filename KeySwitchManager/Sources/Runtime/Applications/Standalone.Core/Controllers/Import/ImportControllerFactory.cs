@@ -43,7 +43,7 @@ namespace KeySwitchManager.Applications.Standalone.Core.Controllers.Import
 
             var content = new FileContent( new FilePath( importFilePath ) );
 
-            return new ImportFileController( databaseRepository, contentReader, content, presenter );
+            return new ImportController( databaseRepository, contentReader, content, presenter );
         }
     }
 }
