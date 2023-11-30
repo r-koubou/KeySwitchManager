@@ -1,6 +1,6 @@
 ﻿using KeySwitchManager.Applications.Standalone.Core.KeySwitches.Helpers;
-using KeySwitchManager.Applications.Standalone.Core.Presenters;
 using KeySwitchManager.Controllers.KeySwitches;
+using KeySwitchManager.Presenters.KeySwitches;
 using KeySwitchManager.Views.LogView;
 
 namespace KeySwitchManager.Applications.Standalone.Core.KeySwitches.Controllers.Find

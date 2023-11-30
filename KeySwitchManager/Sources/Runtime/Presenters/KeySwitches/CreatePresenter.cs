@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 using KeySwitchManager.UseCase.KeySwitches.Create;
 using KeySwitchManager.Views.LogView;
 
-namespace KeySwitchManager.Presenters
+namespace KeySwitchManager.Presenters.KeySwitches
 {
     public sealed class CreatePresenter : ICreatePresenter
     {

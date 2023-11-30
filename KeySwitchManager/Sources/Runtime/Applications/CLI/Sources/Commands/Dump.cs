@@ -2,7 +2,7 @@ using CommandLine;
 
 using KeySwitchManager.Applications.CLI.Views;
 using KeySwitchManager.Applications.Standalone.Core.KeySwitches.Controllers.Dump;
-using KeySwitchManager.Controllers.KeySwitches.Dump;
+using KeySwitchManager.Controllers.KeySwitches;
 
 namespace KeySwitchManager.Applications.CLI.Commands
 {

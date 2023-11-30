@@ -1,10 +1,8 @@
 ﻿using System;
 
 using KeySwitchManager.Applications.Standalone.Core.KeySwitches.Helpers;
-using KeySwitchManager.Applications.Standalone.Core.Presenters;
 using KeySwitchManager.Commons.Data;
 using KeySwitchManager.Controllers.KeySwitches;
-using KeySwitchManager.Controllers.KeySwitches.Export;
 using KeySwitchManager.Domain.KeySwitches.Models.Values;
 using KeySwitchManager.Infrastructures.Storage.Json.KeySwitches.Cakewalk;
 using KeySwitchManager.Infrastructures.Storage.Plist.KeySwitches.Logic;
@@ -12,6 +10,7 @@ using KeySwitchManager.Infrastructures.Storage.Spreadsheet.ClosedXml.KeySwitches
 using KeySwitchManager.Infrastructures.Storage.Xml.KeySwitches.Cubase;
 using KeySwitchManager.Infrastructures.Storage.Xml.KeySwitches.StudioOne;
 using KeySwitchManager.Infrastructures.Storage.Yaml.KeySwitches.Export;
+using KeySwitchManager.Presenters.KeySwitches;
 using KeySwitchManager.UseCase.KeySwitches.Export;
 using KeySwitchManager.Views.LogView;
 

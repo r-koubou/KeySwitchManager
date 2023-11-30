@@ -6,7 +6,7 @@ using KeySwitchManager.Domain.KeySwitches.Models;
 using KeySwitchManager.UseCase.KeySwitches.Export;
 using KeySwitchManager.Views.LogView;
 
-namespace KeySwitchManager.Applications.Standalone.Core.Presenters
+namespace KeySwitchManager.Presenters.KeySwitches
 {
     public sealed class ExportPresenter : IExportPresenter
     {

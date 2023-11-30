@@ -2,8 +2,9 @@ using CommandLine;
 
 using KeySwitchManager.Applications.CLI.Views;
 using KeySwitchManager.Applications.Standalone.Core.KeySwitches.Controllers.Create;
-using KeySwitchManager.Controllers.KeySwitches.Create;
+using KeySwitchManager.Controllers.KeySwitches;
 using KeySwitchManager.Presenters;
+using KeySwitchManager.Presenters.KeySwitches;
 
 namespace KeySwitchManager.Applications.CLI.Commands
 {

@@ -1,6 +1,6 @@
 using KeySwitchManager.UseCase.KeySwitches.Create;
 
-namespace KeySwitchManager.Controllers.KeySwitches.Create
+namespace KeySwitchManager.Controllers.KeySwitches
 {
     public interface ICreateFileControllerFactory
     {

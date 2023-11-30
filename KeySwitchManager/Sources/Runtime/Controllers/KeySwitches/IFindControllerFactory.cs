@@ -1,6 +1,6 @@
 using KeySwitchManager.Views.LogView;
 
-namespace KeySwitchManager.Controllers.KeySwitches.Find
+namespace KeySwitchManager.Controllers.KeySwitches
 {
     public interface IFindControllerFactory
     {

@@ -5,7 +5,6 @@ using CommandLine;
 using KeySwitchManager.Applications.CLI.Views;
 using KeySwitchManager.Applications.Standalone.Core.KeySwitches.Controllers.Export;
 using KeySwitchManager.Controllers.KeySwitches;
-using KeySwitchManager.Controllers.KeySwitches.Export;
 using KeySwitchManager.Domain.KeySwitches.Models.Values;
 using KeySwitchManager.Views.LogView;
 

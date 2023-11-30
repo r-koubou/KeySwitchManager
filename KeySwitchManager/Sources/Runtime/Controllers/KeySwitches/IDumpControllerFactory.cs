@@ -1,6 +1,6 @@
 using KeySwitchManager.Views.LogView;
 
-namespace KeySwitchManager.Controllers.KeySwitches.Dump
+namespace KeySwitchManager.Controllers.KeySwitches
 {
     public interface IDumpControllerFactory
     {

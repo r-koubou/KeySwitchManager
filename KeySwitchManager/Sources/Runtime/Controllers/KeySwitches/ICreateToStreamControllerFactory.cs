@@ -2,7 +2,7 @@ using System.IO;
 
 using KeySwitchManager.Views.LogView;
 
-namespace KeySwitchManager.Controllers.KeySwitches.Create
+namespace KeySwitchManager.Controllers.KeySwitches
 {
     public interface ICreateToStreamControllerFactory
     {

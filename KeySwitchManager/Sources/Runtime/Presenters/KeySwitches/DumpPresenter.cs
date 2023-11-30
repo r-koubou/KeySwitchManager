@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 using KeySwitchManager.UseCase.KeySwitches.Dump;
 using KeySwitchManager.Views.LogView;
 
-namespace KeySwitchManager.Applications.Standalone.Core.Presenters
+namespace KeySwitchManager.Presenters.KeySwitches
 {
     public sealed class DumpPresenter : IDumpPresenter
     {

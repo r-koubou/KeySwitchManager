@@ -1,4 +1,4 @@
-namespace KeySwitchManager.Controllers.KeySwitches.Import
+namespace KeySwitchManager.Controllers.KeySwitches
 {
     public interface IImportControllerFactory
     {
