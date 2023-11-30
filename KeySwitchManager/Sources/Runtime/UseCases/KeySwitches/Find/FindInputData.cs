@@ -1,12 +1,14 @@
+using KeySwitchManager.UseCase.Commons;
+
 namespace KeySwitchManager.UseCase.KeySwitches.Find
 {
-    public class FindRequest
+    public sealed class FindInputValue
     {
         public string DeveloperName { get; }
         public string ProductName { get; }
         public string InstrumentName { get; }
 
-        public FindRequest(
+        public FindInputValue(
             string developerName = "",
             string productName = "",
             string instrumentName = "" )
@@ -15,5 +17,10 @@ namespace KeySwitchManager.UseCase.KeySwitches.Find
             ProductName    = productName;
             InstrumentName = instrumentName;
         }
+    }
+
+    public sealed class FindInputData : InputData<FindInputValue>
+    {
+        public FindInputData( FindInputValue value ) : base( value ) {}
     }
 }
