@@ -1,26 +1,16 @@
+using System.Threading;
+using System.Threading.Tasks;
+
+using KeySwitchManager.Domain.KeySwitches.Models;
 using KeySwitchManager.UseCase.Commons;
 
 namespace KeySwitchManager.UseCase.KeySwitches.Import
 {
-    public interface IImportFilePresenter : IPresenter<ImportFileResponse>
+    public interface IImportFilePresenter : IOutputPort<ImportOutputData>
     {
-        public class Null : IImportFilePresenter
-        {
-            public void Complete( ImportFileResponse response )
-            {}
-        }
+        void HandleImported( KeySwitch keySwitch )
+            => HandleImportedAsync( keySwitch ).GetAwaiter().GetResult();
 
-        public class Console : IImportFilePresenter
-        {
-            public void Present<T>( T param )
-            {
-                System.Console.WriteLine( param );
-            }
-
-            public void Message( string message )
-            {
-                System.Console.WriteLine( message );
-            }
-        }
+        Task HandleImportedAsync( KeySwitch keySwitch, CancellationToken cancellationToken = default );
     }
 }

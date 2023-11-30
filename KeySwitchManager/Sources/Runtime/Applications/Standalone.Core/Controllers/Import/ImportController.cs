@@ -9,7 +9,7 @@ using RkHelper.System;
 
 namespace KeySwitchManager.Applications.Standalone.Core.Controllers.Import
 {
-    public sealed class ImportFileController : IController
+    public sealed class ImportController : IController
     {
         private IKeySwitchRepository DatabaseRepository { get; }
         private IImportContentReader ContentContentReader { get; }
@@ -18,7 +18,7 @@ namespace KeySwitchManager.Applications.Standalone.Core.Controllers.Import
         private bool LeaveOpen { get; }
 
         #region Ctor
-        public ImportFileController(
+        public ImportController(
             IKeySwitchRepository databaseRepository,
             IImportContentReader contentReader,
             IContent content,
@@ -45,12 +45,11 @@ namespace KeySwitchManager.Applications.Standalone.Core.Controllers.Import
 
         public async Task ExecuteAsync( CancellationToken cancellationToken )
         {
-            IImportFileUseCase interactor = new ImportFileInteractor( DatabaseRepository, Presenter );
-            var request = new ImportFileRequest( ContentContentReader, Content );
-            var response = await interactor.ExecuteAsync( request, cancellationToken );
-            await DatabaseRepository.FlushAsync( cancellationToken );
-            Presenter.Complete( response );
-        }
+            IImportUseCase interactor = new ImportInteractor( DatabaseRepository, Presenter );
+            var inputValue = new ImportInputValue( ContentContentReader, Content );
+            var inputData = new ImportInputData( inputValue );
 
+            await interactor.HandleAsync( inputData, cancellationToken );
+        }
     }
 }

@@ -10,6 +10,8 @@ namespace KeySwitchManager.Applications.Standalone.Core.Presenters
 {
     public sealed class ExportPresenter : IExportPresenter
     {
+        public static readonly IExportPresenter Null = new NullImpl();
+
         private ILogTextView TextView { get; }
 
         public ExportPresenter( ILogTextView textView )
@@ -41,5 +43,16 @@ namespace KeySwitchManager.Applications.Standalone.Core.Presenters
             TextView.Append( $"Exported: {exported}" );
             await Task.CompletedTask;
         }
+
+        #region NullObject
+        private class NullImpl : IExportPresenter
+        {
+            public async Task HandleAsync( ExportOutputData outputData, CancellationToken cancellationToken = default )
+                => await Task.CompletedTask;
+
+            public async Task HandleExportedAsync( KeySwitch exported, CancellationToken cancellationToken = default )
+                => await Task.CompletedTask;
+        }
+        #endregion
     }
 }

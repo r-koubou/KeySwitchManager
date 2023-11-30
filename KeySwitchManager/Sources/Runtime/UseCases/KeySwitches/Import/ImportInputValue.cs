@@ -1,11 +1,11 @@
 namespace KeySwitchManager.UseCase.KeySwitches.Import
 {
-    public class ImportFileRequest
+    public sealed class ImportInputValue
     {
         public IImportContentReader ContentReader { get; }
         public IContent Content { get; }
 
-        public ImportFileRequest( IImportContentReader contentReader, IContent content )
+        public ImportInputValue( IImportContentReader contentReader, IContent content )
         {
             ContentReader = contentReader;
             Content       = content;
