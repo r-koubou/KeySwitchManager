@@ -6,17 +6,12 @@ using KeySwitchManager.UseCase.KeySwitches.Import;
 
 namespace KeySwitchManager.Interactors.KeySwitches
 {
-    public class ImportFileInteractor : IImportFileUseCase
+    public class ImportInteractor : IImportUseCase
     {
         private IKeySwitchRepository Repository { get; }
         private IImportFilePresenter Presenter { get; }
 
-        public ImportFileInteractor(
-            IKeySwitchRepository repository ) :
-            this( repository, new IImportFilePresenter.Null() )
-        {}
-
-        public ImportFileInteractor(
+        public ImportInteractor(
             IKeySwitchRepository repository,
             IImportFilePresenter presenter )
         {
@@ -24,12 +19,13 @@ namespace KeySwitchManager.Interactors.KeySwitches
             Presenter  = presenter;
         }
 
-        public async Task<ImportFileResponse> ExecuteAsync( ImportFileRequest request, CancellationToken cancellationToken )
+        public async Task HandleAsync( ImportInputData inputData, CancellationToken cancellationToken = default )
         {
+            var inputValue = inputData.Value;
             var insertedCount = 0;
             var updatedCount = 0;
 
-            var keySwitches = await request.ContentReader.ReadAsync( request.Content, cancellationToken );
+            var keySwitches = await inputValue.ContentReader.ReadAsync( inputValue.Content, cancellationToken );
 
             foreach( var i in keySwitches )
             {
@@ -41,12 +37,18 @@ namespace KeySwitchManager.Interactors.KeySwitches
                 var r = await Repository.SaveAsync( i, cancellationToken );
                 updatedCount  += r.Updated;
                 insertedCount += r.Inserted;
+
+                await Presenter.HandleImportedAsync( i, cancellationToken );
             }
 
-            Presenter.Present( $"{insertedCount} record(s) inserted, {updatedCount} record(s) updated" );
+            if( insertedCount > 0 || updatedCount > 0 )
+            {
+                await Repository.FlushAsync( cancellationToken );
+            }
 
-            return new ImportFileResponse( insertedCount, updatedCount );
+            var outputData = new ImportOutputData( true, new ImportOutputValue( insertedCount, updatedCount ) );
 
+            await Presenter.HandleAsync( outputData, cancellationToken );
         }
     }
 }

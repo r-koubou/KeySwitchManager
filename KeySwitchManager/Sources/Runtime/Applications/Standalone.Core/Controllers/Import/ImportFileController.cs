@@ -45,12 +45,11 @@ namespace KeySwitchManager.Applications.Standalone.Core.Controllers.Import
 
         public async Task ExecuteAsync( CancellationToken cancellationToken )
         {
-            IImportFileUseCase interactor = new ImportFileInteractor( DatabaseRepository, Presenter );
-            var request = new ImportFileRequest( ContentContentReader, Content );
-            var response = await interactor.ExecuteAsync( request, cancellationToken );
-            await DatabaseRepository.FlushAsync( cancellationToken );
-            Presenter.Complete( response );
-        }
+            IImportUseCase interactor = new ImportInteractor( DatabaseRepository, Presenter );
+            var inputValue = new ImportInputValue( ContentContentReader, Content );
+            var inputData = new ImportInputData( inputValue );
 
+            await interactor.HandleAsync( inputData, cancellationToken );
+        }
     }
 }

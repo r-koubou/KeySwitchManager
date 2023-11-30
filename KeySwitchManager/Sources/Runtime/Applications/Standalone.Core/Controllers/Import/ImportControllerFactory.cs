@@ -1,6 +1,7 @@
 ﻿using System.IO;
 
 using KeySwitchManager.Applications.Standalone.Core.Helpers;
+using KeySwitchManager.Applications.Standalone.Core.Presenters;
 using KeySwitchManager.Applications.Standalone.Core.Views.LogView;
 using KeySwitchManager.Commons.Data;
 using KeySwitchManager.Infrastructures.Storage.KeySwitches.Import;
@@ -22,7 +23,7 @@ namespace KeySwitchManager.Applications.Standalone.Core.Controllers.Import
         public IController Create( string databasePath, string importFilePath )
         {
             var databaseRepository = KeySwitchRepositoryFactory.CreateFileRepository( databasePath );
-            var presenter = new ImportFilePresenter( LogTextView );
+            var presenter = new ImportPresenter( LogTextView );
 
             IImportContentReader contentReader;
             var fileExtension = Path.GetExtension( importFilePath ).ToLower();

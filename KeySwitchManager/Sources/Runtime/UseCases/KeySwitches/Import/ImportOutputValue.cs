@@ -1,11 +1,11 @@
 namespace KeySwitchManager.UseCase.KeySwitches.Import
 {
-    public class ImportFileResponse
+    public sealed class ImportOutputValue
     {
         public int InsertedCount { get; }
         public int UpdatedCount { get; }
 
-        public ImportFileResponse( int insertedCount, int updatedCount )
+        public ImportOutputValue( int insertedCount, int updatedCount )
         {
             InsertedCount = insertedCount;
             UpdatedCount  = updatedCount;
