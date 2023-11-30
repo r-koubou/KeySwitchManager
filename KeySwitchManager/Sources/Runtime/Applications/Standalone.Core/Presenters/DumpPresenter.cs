@@ -9,7 +9,7 @@ namespace KeySwitchManager.Applications.Standalone.Core.Presenters
 {
     public sealed class DumpPresenter : IDumpPresenter
     {
-        public static readonly IDeletePresenter Null = new NullImpl();
+        public static readonly IDumpPresenter Null = new NullImpl();
 
         private ILogTextView TextView { get; }
 
@@ -25,17 +25,10 @@ namespace KeySwitchManager.Applications.Standalone.Core.Presenters
         }
 
         #region NullObject
-        private class NullImpl : IDeletePresenter
+        private class NullImpl : IDumpPresenter
         {
-            public async Task HandleDeleteBeginAsync( DeleteInputData inputData, CancellationToken cancellationToken = default )
-            {
-                await Task.CompletedTask;
-            }
-
-            public async Task HandleAsync( DeleteOutputData outputData, CancellationToken cancellationToken = default )
-            {
-                await Task.CompletedTask;
-            }
+            public async Task HandleAsync( DumpOutputData outputData, CancellationToken cancellationToken = default )
+                => await Task.CompletedTask;
         }
         #endregion
     }

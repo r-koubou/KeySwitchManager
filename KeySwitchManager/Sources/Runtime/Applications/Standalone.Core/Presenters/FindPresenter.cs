@@ -10,6 +10,8 @@ namespace KeySwitchManager.Applications.Standalone.Core.Presenters
 {
     public sealed class FindPresenter : IFindPresenter
     {
+        public static readonly IFindPresenter Null = new NullImpl();
+
         private ILogTextView TextView { get; }
 
         public FindPresenter( ILogTextView textView )
@@ -39,5 +41,13 @@ namespace KeySwitchManager.Applications.Standalone.Core.Presenters
 
             await Task.CompletedTask;
         }
+
+        #region NullObject
+        private class NullImpl : IFindPresenter
+        {
+            public async Task HandleAsync( FindOutputData outputData, CancellationToken cancellationToken = default )
+                => await Task.CompletedTask;
+        }
+        #endregion
     }
 }

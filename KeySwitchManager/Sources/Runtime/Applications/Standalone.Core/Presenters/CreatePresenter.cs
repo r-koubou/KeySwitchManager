@@ -36,12 +36,12 @@ namespace KeySwitchManager.Applications.Standalone.Core.Presenters
             await Task.CompletedTask;
         }
 
+        #region NullObject
         private class NullImpl : ICreatePresenter
         {
             public async Task HandleAsync( CreateOutputData outputData, CancellationToken cancellationToken = default )
-            {
-                await Task.CompletedTask;
-            }
+                => await Task.CompletedTask;
         }
+        #endregion
     }
 }

@@ -48,14 +48,10 @@ namespace KeySwitchManager.Applications.Standalone.Core.Presenters
         private class NullImpl : IDeletePresenter
         {
             public async Task HandleDeleteBeginAsync( DeleteInputData inputData, CancellationToken cancellationToken = default )
-            {
-                await Task.CompletedTask;
-            }
+                => await Task.CompletedTask;
 
             public async Task HandleAsync( DeleteOutputData outputData, CancellationToken cancellationToken = default )
-            {
-                await Task.CompletedTask;
-            }
+                => await Task.CompletedTask;
         }
         #endregion
     }
