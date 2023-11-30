@@ -70,7 +70,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "02 Application Business Rul
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "00 Commons", "00 Commons", "{258C0E7F-37CD-4DF3-BCAA-5377DF744EC6}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "02 Interface Adapters", "02 Interface Adapters", "{F86AFA4F-CA74-43F2-8960-C6EC2B411439}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "03 Interface Adapters", "03 Interface Adapters", "{F86AFA4F-CA74-43F2-8960-C6EC2B411439}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
