@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace KeySwitchManager.Applications.Standalone.Core.Views.LogView
+namespace KeySwitchManager.Views.LogView
 {
     public interface ILogTextView
     {

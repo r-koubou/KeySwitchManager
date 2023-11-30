@@ -2,9 +2,9 @@
 using System.Threading;
 using System.Threading.Tasks;
 
-using KeySwitchManager.Applications.Standalone.Core.Views.LogView;
 using KeySwitchManager.Domain.KeySwitches.Models;
 using KeySwitchManager.UseCase.KeySwitches.Export;
+using KeySwitchManager.Views.LogView;
 
 namespace KeySwitchManager.Applications.Standalone.Core.Presenters
 {

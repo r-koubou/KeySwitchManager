@@ -1,6 +1,8 @@
 ﻿using System;
 
 using KeySwitchManager.Commons.Data;
+using KeySwitchManager.Controllers.KeySwitches;
+using KeySwitchManager.Controllers.KeySwitches.Create;
 using KeySwitchManager.Infrastructures.Storage.KeySwitches;
 using KeySwitchManager.Infrastructures.Storage.Spreadsheet.ClosedXml.KeySwitches.Export;
 using KeySwitchManager.Infrastructures.Storage.Yaml.KeySwitches.Export;
@@ -9,11 +11,6 @@ using KeySwitchManager.UseCase.KeySwitches.Export;
 
 namespace KeySwitchManager.Applications.Standalone.Core.Controllers.Create
 {
-    public interface ICreateFileControllerFactory
-    {
-        IController Create( string outputFilePath, ICreatePresenter presenter );
-    }
-
     public class CreateFileControllerFactory : ICreateFileControllerFactory
     {
         IController ICreateFileControllerFactory.Create( string outputFilePath, ICreatePresenter presenter )

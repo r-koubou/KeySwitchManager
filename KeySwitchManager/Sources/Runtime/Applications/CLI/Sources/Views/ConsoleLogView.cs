@@ -1,6 +1,8 @@
 using System;
 
-namespace KeySwitchManager.Applications.Standalone.Core.Views.LogView
+using KeySwitchManager.Views.LogView;
+
+namespace KeySwitchManager.Applications.CLI.Views
 {
     public sealed class ConsoleLogView : ILogTextView
     {

@@ -1,8 +1,9 @@
 using CommandLine;
 
+using KeySwitchManager.Applications.CLI.Views;
 using KeySwitchManager.Applications.Standalone.Core.Controllers.Find;
-using KeySwitchManager.Applications.Standalone.Core.Views.LogView;
 using KeySwitchManager.Domain.KeySwitches.Models.Values;
+using KeySwitchManager.Views.LogView;
 
 namespace KeySwitchManager.Applications.CLI.Commands
 {

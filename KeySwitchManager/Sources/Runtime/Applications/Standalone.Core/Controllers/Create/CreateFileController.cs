@@ -1,6 +1,7 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
 
+using KeySwitchManager.Controllers.KeySwitches;
 using KeySwitchManager.Interactors.KeySwitches;
 using KeySwitchManager.UseCase.KeySwitches.Create;
 using KeySwitchManager.UseCase.KeySwitches.Export;

@@ -2,10 +2,12 @@ using System.IO;
 
 using KeySwitchManager.Applications.Standalone.Core.Helpers;
 using KeySwitchManager.Applications.Standalone.Core.Presenters;
-using KeySwitchManager.Applications.Standalone.Core.Views.LogView;
 using KeySwitchManager.Commons.Data;
+using KeySwitchManager.Controllers.KeySwitches;
+using KeySwitchManager.Controllers.KeySwitches.Dump;
 using KeySwitchManager.Infrastructures.Storage.Yaml.KeySwitches.Export;
 using KeySwitchManager.UseCase.KeySwitches.Export;
+using KeySwitchManager.Views.LogView;
 
 namespace KeySwitchManager.Applications.Standalone.Core.Controllers.Dump
 {

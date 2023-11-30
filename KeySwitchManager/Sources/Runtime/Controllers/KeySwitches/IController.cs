@@ -2,7 +2,7 @@
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace KeySwitchManager.Applications.Standalone.Core.Controllers
+namespace KeySwitchManager.Controllers.KeySwitches
 {
     public interface IController : IDisposable
     {

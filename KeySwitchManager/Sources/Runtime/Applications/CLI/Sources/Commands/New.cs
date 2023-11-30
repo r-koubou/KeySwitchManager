@@ -1,8 +1,11 @@
 using CommandLine;
 
+using KeySwitchManager.Applications.CLI.Views;
 using KeySwitchManager.Applications.Standalone.Core.Controllers.Create;
 using KeySwitchManager.Applications.Standalone.Core.Presenters;
-using KeySwitchManager.Applications.Standalone.Core.Views.LogView;
+using KeySwitchManager.Controllers.KeySwitches.Create;
+using KeySwitchManager.Presenters;
+using KeySwitchManager.Views.LogView;
 
 namespace KeySwitchManager.Applications.CLI.Commands
 {

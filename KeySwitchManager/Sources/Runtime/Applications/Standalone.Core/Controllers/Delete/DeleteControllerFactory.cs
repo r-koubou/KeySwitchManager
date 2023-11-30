@@ -1,17 +1,21 @@
 ﻿using KeySwitchManager.Applications.Standalone.Core.Helpers;
 using KeySwitchManager.Applications.Standalone.Core.Presenters;
-using KeySwitchManager.Applications.Standalone.Core.Views.LogView;
+using KeySwitchManager.Controllers.KeySwitches;
+using KeySwitchManager.Controllers.KeySwitches.Delete;
+using KeySwitchManager.Views.LogView;
 
 namespace KeySwitchManager.Applications.Standalone.Core.Controllers.Delete
 {
-    public static class DeleteControllerFactory
+    public class DeleteControllerFactory : IDeleteControllerFactory
     {
-        public static IController Create( string databasePath, string developer, string product, string instrument, ILogTextView logTextView )
+        public IController Create( string databasePath, string developer, string product, string instrument, ILogTextView logTextView )
         {
             var databaseRepository = KeySwitchRepositoryFactory.CreateFileRepository( databasePath );
             var presenter = new DeletePresenter( logTextView );
 
             return new DeleteController( databaseRepository, presenter, developer, product, instrument );
         }
+
+
     }
 }

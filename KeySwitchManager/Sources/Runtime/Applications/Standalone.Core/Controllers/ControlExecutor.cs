@@ -2,7 +2,8 @@
 using System.Threading;
 using System.Threading.Tasks;
 
-using KeySwitchManager.Applications.Standalone.Core.Views.LogView;
+using KeySwitchManager.Controllers.KeySwitches;
+using KeySwitchManager.Views.LogView;
 
 namespace KeySwitchManager.Applications.Standalone.Core.Controllers
 {

@@ -3,8 +3,8 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-using KeySwitchManager.Applications.Standalone.Core.Views.LogView;
 using KeySwitchManager.UseCase.KeySwitches.Find;
+using KeySwitchManager.Views.LogView;
 
 namespace KeySwitchManager.Applications.Standalone.Core.Presenters
 {

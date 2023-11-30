@@ -1,6 +1,6 @@
-using KeySwitchManager.Applications.Standalone.Core.Views.LogView;
+using KeySwitchManager.Views.LogView;
 
-namespace KeySwitchManager.Applications.Standalone.Core.Controllers.Export
+namespace KeySwitchManager.Controllers.KeySwitches.Export
 {
     public interface IExportControllerFactory
     {
