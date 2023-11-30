@@ -3,7 +3,6 @@ using CommandLine;
 using KeySwitchManager.Applications.CLI.Views;
 using KeySwitchManager.Applications.Standalone.Core.Controllers.Dump;
 using KeySwitchManager.Controllers.KeySwitches.Dump;
-using KeySwitchManager.Views.LogView;
 
 namespace KeySwitchManager.Applications.CLI.Commands
 {
