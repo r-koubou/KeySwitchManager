@@ -1,6 +1,6 @@
 using System.IO;
 
-using KeySwitchManager.Applications.Standalone.Core.Helpers;
+using KeySwitchManager.Applications.Standalone.Core.KeySwitches.Helpers;
 using KeySwitchManager.Applications.Standalone.Core.Presenters;
 using KeySwitchManager.Commons.Data;
 using KeySwitchManager.Controllers.KeySwitches;
@@ -9,7 +9,7 @@ using KeySwitchManager.Infrastructures.Storage.Yaml.KeySwitches.Export;
 using KeySwitchManager.UseCase.KeySwitches.Export;
 using KeySwitchManager.Views.LogView;
 
-namespace KeySwitchManager.Applications.Standalone.Core.Controllers.Dump
+namespace KeySwitchManager.Applications.Standalone.Core.KeySwitches.Controllers.Dump
 {
     public class DumpFileControllerFactory : IDumpControllerFactory
     {

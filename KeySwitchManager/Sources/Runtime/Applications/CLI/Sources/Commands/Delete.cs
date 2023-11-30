@@ -1,7 +1,7 @@
 using CommandLine;
 
 using KeySwitchManager.Applications.CLI.Views;
-using KeySwitchManager.Applications.Standalone.Core.Controllers.Delete;
+using KeySwitchManager.Applications.Standalone.Core.KeySwitches.Controllers.Delete;
 
 namespace KeySwitchManager.Applications.CLI.Commands
 {

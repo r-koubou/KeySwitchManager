@@ -8,7 +8,7 @@ using KeySwitchManager.UseCase.KeySwitches.Import;
 
 using RkHelper.System;
 
-namespace KeySwitchManager.Applications.Standalone.Core.Controllers.Import
+namespace KeySwitchManager.Applications.Standalone.Core.KeySwitches.Controllers.Import
 {
     public sealed class ImportController : IController
     {

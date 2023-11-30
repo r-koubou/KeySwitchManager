@@ -1,9 +1,9 @@
-﻿using KeySwitchManager.Applications.Standalone.Core.Helpers;
+﻿using KeySwitchManager.Applications.Standalone.Core.KeySwitches.Helpers;
 using KeySwitchManager.Applications.Standalone.Core.Presenters;
 using KeySwitchManager.Controllers.KeySwitches;
 using KeySwitchManager.Views.LogView;
 
-namespace KeySwitchManager.Applications.Standalone.Core.Controllers.Find
+namespace KeySwitchManager.Applications.Standalone.Core.KeySwitches.Controllers.Find
 {
     public class FindControllerFactory
     {

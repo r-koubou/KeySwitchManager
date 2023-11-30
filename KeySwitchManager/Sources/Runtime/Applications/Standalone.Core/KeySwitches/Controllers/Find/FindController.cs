@@ -6,7 +6,7 @@ using KeySwitchManager.Domain.KeySwitches;
 using KeySwitchManager.Interactors.KeySwitches;
 using KeySwitchManager.UseCase.KeySwitches.Find;
 
-namespace KeySwitchManager.Applications.Standalone.Core.Controllers.Find
+namespace KeySwitchManager.Applications.Standalone.Core.KeySwitches.Controllers.Find
 {
     public sealed class FindController : IController
     {

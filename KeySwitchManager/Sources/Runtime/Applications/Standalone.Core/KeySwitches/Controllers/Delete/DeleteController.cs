@@ -6,7 +6,7 @@ using KeySwitchManager.Domain.KeySwitches;
 using KeySwitchManager.Interactors.KeySwitches;
 using KeySwitchManager.UseCase.KeySwitches.Delete;
 
-namespace KeySwitchManager.Applications.Standalone.Core.Controllers.Delete
+namespace KeySwitchManager.Applications.Standalone.Core.KeySwitches.Controllers.Delete
 {
     public sealed class DeleteController : IController
     {

@@ -1,7 +1,7 @@
 using CommandLine;
 
 using KeySwitchManager.Applications.CLI.Views;
-using KeySwitchManager.Applications.Standalone.Core.Controllers.Find;
+using KeySwitchManager.Applications.Standalone.Core.KeySwitches.Controllers.Find;
 using KeySwitchManager.Domain.KeySwitches.Models.Values;
 
 namespace KeySwitchManager.Applications.CLI.Commands

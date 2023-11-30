@@ -4,7 +4,7 @@ using KeySwitchManager.Commons.Data;
 using KeySwitchManager.Domain.KeySwitches;
 using KeySwitchManager.Infrastructures.Storage.Yaml.KeySwitches;
 
-namespace KeySwitchManager.Applications.Standalone.Core.Helpers
+namespace KeySwitchManager.Applications.Standalone.Core.KeySwitches.Helpers
 {
     public static class KeySwitchRepositoryFactory
     {

@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using KeySwitchManager.Controllers.KeySwitches;
 using KeySwitchManager.Views.LogView;
 
-namespace KeySwitchManager.Applications.Standalone.Core.Controllers
+namespace KeySwitchManager.Applications.Standalone.Core.KeySwitches.Controllers
 {
     public static class ControlExecutor
     {

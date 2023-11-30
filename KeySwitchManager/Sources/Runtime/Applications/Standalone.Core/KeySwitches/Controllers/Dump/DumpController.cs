@@ -10,7 +10,7 @@ using KeySwitchManager.UseCase.KeySwitches.Export;
 
 using RkHelper.System;
 
-namespace KeySwitchManager.Applications.Standalone.Core.Controllers.Dump
+namespace KeySwitchManager.Applications.Standalone.Core.KeySwitches.Controllers.Dump
 {
     public sealed class DumpController : IController
     {

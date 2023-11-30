@@ -1,6 +1,6 @@
 ﻿using System;
 
-using KeySwitchManager.Applications.Standalone.Core.Helpers;
+using KeySwitchManager.Applications.Standalone.Core.KeySwitches.Helpers;
 using KeySwitchManager.Applications.Standalone.Core.Presenters;
 using KeySwitchManager.Commons.Data;
 using KeySwitchManager.Controllers.KeySwitches;
@@ -17,7 +17,7 @@ using KeySwitchManager.Views.LogView;
 
 using RkHelper.System;
 
-namespace KeySwitchManager.Applications.Standalone.Core.Controllers.Export
+namespace KeySwitchManager.Applications.Standalone.Core.KeySwitches.Controllers.Export
 {
     public class ExportFileControllerFactory : IExportControllerFactory
     {

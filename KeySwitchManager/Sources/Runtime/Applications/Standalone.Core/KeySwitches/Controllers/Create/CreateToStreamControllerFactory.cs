@@ -10,7 +10,7 @@ using KeySwitchManager.Presenters;
 using KeySwitchManager.UseCase.KeySwitches.Export;
 using KeySwitchManager.Views.LogView;
 
-namespace KeySwitchManager.Applications.Standalone.Core.Controllers.Create
+namespace KeySwitchManager.Applications.Standalone.Core.KeySwitches.Controllers.Create
 {
     public class CreateToStreamControllerFactory : ICreateToStreamControllerFactory
     {

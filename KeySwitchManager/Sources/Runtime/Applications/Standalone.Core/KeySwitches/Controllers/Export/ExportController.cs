@@ -9,7 +9,7 @@ using KeySwitchManager.UseCase.KeySwitches.Export;
 
 using RkHelper.System;
 
-namespace KeySwitchManager.Applications.Standalone.Core.Controllers.Export
+namespace KeySwitchManager.Applications.Standalone.Core.KeySwitches.Controllers.Export
 {
     public sealed class ExportController : IController
     {

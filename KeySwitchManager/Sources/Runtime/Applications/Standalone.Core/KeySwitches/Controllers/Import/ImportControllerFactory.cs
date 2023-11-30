@@ -1,6 +1,6 @@
 ﻿using System.IO;
 
-using KeySwitchManager.Applications.Standalone.Core.Helpers;
+using KeySwitchManager.Applications.Standalone.Core.KeySwitches.Helpers;
 using KeySwitchManager.Applications.Standalone.Core.Presenters;
 using KeySwitchManager.Commons.Data;
 using KeySwitchManager.Controllers.KeySwitches;
@@ -11,7 +11,7 @@ using KeySwitchManager.Infrastructures.Storage.Yaml.KeySwitches.Import;
 using KeySwitchManager.UseCase.KeySwitches.Import;
 using KeySwitchManager.Views.LogView;
 
-namespace KeySwitchManager.Applications.Standalone.Core.Controllers.Import
+namespace KeySwitchManager.Applications.Standalone.Core.KeySwitches.Controllers.Import
 {
     public class ImportControllerFactory : IImportControllerFactory
     {

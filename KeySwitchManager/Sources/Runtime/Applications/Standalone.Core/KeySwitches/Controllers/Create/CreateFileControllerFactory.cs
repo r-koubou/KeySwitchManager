@@ -9,7 +9,7 @@ using KeySwitchManager.Infrastructures.Storage.Yaml.KeySwitches.Export;
 using KeySwitchManager.UseCase.KeySwitches.Create;
 using KeySwitchManager.UseCase.KeySwitches.Export;
 
-namespace KeySwitchManager.Applications.Standalone.Core.Controllers.Create
+namespace KeySwitchManager.Applications.Standalone.Core.KeySwitches.Controllers.Create
 {
     public class CreateFileControllerFactory : ICreateFileControllerFactory
     {

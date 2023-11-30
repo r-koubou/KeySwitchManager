@@ -14,18 +14,14 @@
 
     <ItemGroup>
       <ProjectReference Include="..\..\Commons\Commons.csproj" />
+      <ProjectReference Include="..\..\UseCases\UseCases.csproj" />
+      <ProjectReference Include="..\..\Interactors\Interactors.csproj" />
       <ProjectReference Include="..\..\Controllers\Controllers.csproj" />
       <ProjectReference Include="..\..\Infrastructures\Storage.Json\Storage.Json.csproj" />
       <ProjectReference Include="..\..\Infrastructures\Storage.Plist\Storage.Plist.csproj" />
       <ProjectReference Include="..\..\Infrastructures\Storage.Spreadsheet.ClosedXml\Storage.Spreadsheet.ClosedXml.csproj" />
       <ProjectReference Include="..\..\Infrastructures\Storage.Xml\Storage.Xml.csproj" />
       <ProjectReference Include="..\..\Infrastructures\Storage.Yaml\Storage.Yaml.csproj" />
-      <ProjectReference Include="..\..\Interactors\Interactors.csproj" />
-      <ProjectReference Include="..\..\UseCases\UseCases.csproj" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <Folder Include="Presenters\" />
     </ItemGroup>
 
 </Project>

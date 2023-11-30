@@ -1,7 +1,7 @@
 using CommandLine;
 
 using KeySwitchManager.Applications.CLI.Views;
-using KeySwitchManager.Applications.Standalone.Core.Controllers.Import;
+using KeySwitchManager.Applications.Standalone.Core.KeySwitches.Controllers.Import;
 using KeySwitchManager.Controllers.KeySwitches.Import;
 
 namespace KeySwitchManager.Applications.CLI.Commands
