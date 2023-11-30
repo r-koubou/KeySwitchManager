@@ -11,7 +11,7 @@ using RkHelper.System;
 
 namespace KeySwitchManager.Applications.Standalone.Core.Controllers.Dump
 {
-    public class DumpController : IController
+    public sealed class DumpController : IController
     {
         private IKeySwitchRepository SourceRepository { get; }
         private IExportStrategy Strategy { get; }

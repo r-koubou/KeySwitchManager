@@ -4,7 +4,7 @@ using KeySwitchManager.UseCase.Commons;
 
 namespace KeySwitchManager.UseCase.KeySwitches.Delete
 {
-    public class DeleteOutputData : IOutputData<DeleteOutputValue>
+    public sealed class DeleteOutputData : IOutputData<DeleteOutputValue>
     {
         public bool Result { get; }
         public DeleteOutputValue Value { get; }
