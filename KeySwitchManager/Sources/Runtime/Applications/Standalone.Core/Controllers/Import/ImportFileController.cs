@@ -9,7 +9,7 @@ using RkHelper.System;
 
 namespace KeySwitchManager.Applications.Standalone.Core.Controllers.Import
 {
-    public class ImportFileController : IController
+    public sealed class ImportFileController : IController
     {
         private IKeySwitchRepository DatabaseRepository { get; }
         private IImportContentReader ContentContentReader { get; }

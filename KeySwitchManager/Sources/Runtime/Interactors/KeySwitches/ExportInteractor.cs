@@ -10,7 +10,7 @@ using KeySwitchManager.UseCase.KeySwitches.Export;
 
 namespace KeySwitchManager.Interactors.KeySwitches
 {
-    public class ExportInteractor : IExportFileUseCase
+    public sealed class ExportInteractor : IExportFileUseCase
     {
         private IKeySwitchRepository Repository { get; }
         private IExportStrategy Strategy { get; }

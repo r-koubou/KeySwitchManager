@@ -9,7 +9,7 @@ using RkHelper.Primitives;
 
 namespace KeySwitchManager.Interactors.KeySwitches
 {
-    public class DeleteInteractor : IDeleteUseCase
+    public sealed class DeleteInteractor : IDeleteUseCase
     {
         private IKeySwitchRepository Repository { get; }
         private IDeletePresenter Presenter { get; }

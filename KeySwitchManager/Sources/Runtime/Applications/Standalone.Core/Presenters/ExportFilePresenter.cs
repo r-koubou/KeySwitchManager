@@ -8,7 +8,7 @@ using KeySwitchManager.UseCase.KeySwitches.Export;
 
 namespace KeySwitchManager.Applications.Standalone.Core.Presenters
 {
-    public class ExportPresenter : IExportPresenter
+    public sealed class ExportPresenter : IExportPresenter
     {
         private ILogTextView TextView { get; }
 

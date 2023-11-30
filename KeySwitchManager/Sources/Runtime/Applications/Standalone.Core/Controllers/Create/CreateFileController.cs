@@ -7,7 +7,7 @@ using KeySwitchManager.UseCase.KeySwitches.Export;
 
 namespace KeySwitchManager.Applications.Standalone.Core.Controllers.Create
 {
-    public class CreateFileController : IController
+    public sealed class CreateFileController : IController
     {
         private IExportStrategy Strategy { get; }
         private ICreatePresenter Presenter { get; }

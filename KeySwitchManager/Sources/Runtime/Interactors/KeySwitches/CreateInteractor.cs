@@ -8,7 +8,7 @@ using KeySwitchManager.UseCase.KeySwitches.Create;
 
 namespace KeySwitchManager.Interactors.KeySwitches
 {
-    public class CreateInteractor : ICreateUseCase
+    public sealed class CreateInteractor : ICreateUseCase
     {
         private IOutputPort<CreateOutputData> OutputPort { get; }
 

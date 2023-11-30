@@ -7,7 +7,7 @@ using KeySwitchManager.UseCase.KeySwitches.Find;
 
 namespace KeySwitchManager.Applications.Standalone.Core.Controllers.Find
 {
-    public class FindController : IController
+    public sealed class FindController : IController
     {
         private IKeySwitchRepository DatabaseRepository { get; }
         private IFindPresenter Presenter { get; }

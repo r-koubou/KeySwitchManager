@@ -7,7 +7,7 @@ using KeySwitchManager.UseCase.KeySwitches.Delete;
 
 namespace KeySwitchManager.Applications.Standalone.Core.Controllers.Delete
 {
-    public class DeleteController : IController
+    public sealed class DeleteController : IController
     {
         private IKeySwitchRepository DatabaseRepository { get; }
         private IDeletePresenter Presenter { get; }

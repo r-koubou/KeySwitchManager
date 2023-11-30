@@ -10,7 +10,7 @@ using RkHelper.System;
 
 namespace KeySwitchManager.Applications.Standalone.Core.Controllers.Export
 {
-    public class ExportController : IController
+    public sealed class ExportController : IController
     {
         private IKeySwitchRepository SourceRepository { get; }
         private IExportStrategy Strategy { get; }

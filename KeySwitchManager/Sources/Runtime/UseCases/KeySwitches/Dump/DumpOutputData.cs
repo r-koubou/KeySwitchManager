@@ -4,7 +4,7 @@ using KeySwitchManager.UseCase.Commons;
 
 namespace KeySwitchManager.UseCase.KeySwitches.Dump
 {
-    public class DumpOutputData : OutputData<DumpOutputValue>
+    public sealed class DumpOutputData : OutputData<DumpOutputValue>
     {
         public DumpOutputData( bool result, DumpOutputValue value, Exception? error = null ) : base( result, value, error ) {}
     }
