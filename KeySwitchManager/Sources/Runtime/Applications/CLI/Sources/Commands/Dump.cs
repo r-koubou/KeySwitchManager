@@ -3,9 +3,9 @@ using System.IO;
 using CommandLine;
 
 using KeySwitchManager.Applications.CLI.Views;
-using KeySwitchManager.Applications.Standalone.Core.KeySwitches.Controllers;
 using KeySwitchManager.Applications.Standalone.Core.KeySwitches.Helpers;
 using KeySwitchManager.Commons.Data;
+using KeySwitchManager.Controllers.KeySwitches;
 using KeySwitchManager.Infrastructures.Storage.Yaml.KeySwitches.Export;
 using KeySwitchManager.Presenters.KeySwitches;
 using KeySwitchManager.UseCase.KeySwitches.Export;
