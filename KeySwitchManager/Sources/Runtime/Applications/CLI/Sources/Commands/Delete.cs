@@ -27,12 +27,11 @@ namespace KeySwitchManager.Applications.CLI.Commands
         {
             var option = (CommandOption)opt;
             var logView = new ConsoleLogView();
-            var factory = new DeleteControllerFactory();
 
             logView.Append( $"Developer=\"{option.Developer}\", Product=\"{option.Product}\", Instrument=\"{option.Instrument}\"" );
 
-            using var controller = factory.Create( option.DatabasePath, option.Developer, option.Product, option.Instrument, logView );
-            controller.Execute();
+            var controller = new DeleteController();
+            controller.Execute( option.DatabasePath, option.Developer, option.Product, option.Instrument, logView );
 
             return 0;
         }
