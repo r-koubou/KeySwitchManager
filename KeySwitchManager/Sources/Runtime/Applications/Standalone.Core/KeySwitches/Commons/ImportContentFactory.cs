@@ -1,31 +1,17 @@
-﻿using System.IO;
+using System.IO;
 
-using KeySwitchManager.Applications.Standalone.Core.KeySwitches.Helpers;
 using KeySwitchManager.Commons.Data;
-using KeySwitchManager.Controllers.KeySwitches;
 using KeySwitchManager.Infrastructures.Storage.KeySwitches.Import;
 using KeySwitchManager.Infrastructures.Storage.Spreadsheet.ClosedXml.KeySwitches.Import;
 using KeySwitchManager.Infrastructures.Storage.Yaml.KeySwitches.Import;
-using KeySwitchManager.Presenters.KeySwitches;
 using KeySwitchManager.UseCase.KeySwitches.Import;
-using KeySwitchManager.Views.LogView;
 
-namespace KeySwitchManager.Applications.Standalone.Core.KeySwitches.Controllers.Import
+namespace KeySwitchManager.Applications.Standalone.Core.KeySwitches.Commons
 {
-    public class ImportControllerFactory : IImportControllerFactory
+    public static class ImportContentFactory
     {
-        private ILogTextView LogTextView { get; }
-
-        public ImportControllerFactory( ILogTextView logTextView )
+        public static (IContent content, IImportContentReader contentReader) CreateFromLocalFile( string importFilePath )
         {
-            LogTextView = logTextView;
-        }
-
-        public IController Create( string databasePath, string importFilePath )
-        {
-            var databaseRepository = KeySwitchRepositoryFactory.CreateFileRepository( databasePath );
-            var presenter = new ImportPresenter( LogTextView );
-
             IImportContentReader contentReader;
             var fileExtension = Path.GetExtension( importFilePath ).ToLower();
 
@@ -42,9 +28,9 @@ namespace KeySwitchManager.Applications.Standalone.Core.KeySwitches.Controllers.
                     throw new InvalidDataException( $"Unknown file extension: {fileExtension}" );
             }
 
-            var content = new FileContent( new FilePath( importFilePath ) );
+            IContent content = new FileContent( new FilePath( importFilePath ) );
 
-            return new ImportController( databaseRepository, contentReader, content, presenter );
+            return ( content, contentReader );
         }
     }
 }

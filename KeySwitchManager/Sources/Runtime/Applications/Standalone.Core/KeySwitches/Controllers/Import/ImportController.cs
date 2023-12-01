@@ -1,56 +1,35 @@
 using System.Threading;
 using System.Threading.Tasks;
 
-using KeySwitchManager.Controllers.KeySwitches;
 using KeySwitchManager.Domain.KeySwitches;
 using KeySwitchManager.Interactors.KeySwitches;
 using KeySwitchManager.UseCase.KeySwitches.Import;
 
-using RkHelper.System;
-
 namespace KeySwitchManager.Applications.Standalone.Core.KeySwitches.Controllers.Import
 {
-    public sealed class ImportController : IController
+    public sealed class ImportController
     {
-        private IKeySwitchRepository DatabaseRepository { get; }
-        private IImportContentReader ContentContentReader { get; }
-        private IContent Content { get; }
-        private IImportFilePresenter Presenter { get; }
-        private bool LeaveOpen { get; }
-
-        #region Ctor
-        public ImportController(
-            IKeySwitchRepository databaseRepository,
-            IImportContentReader contentReader,
+        #region Import from specified content
+        public void Execute(
             IContent content,
+            IImportContentReader contentReader,
+            IKeySwitchRepository repository,
+            IImportFilePresenter presenter )
+            => ExecuteAsync( content, contentReader, repository, presenter, CancellationToken.None ).GetAwaiter().GetResult();
+
+        public async Task ExecuteAsync(
+            IContent content,
+            IImportContentReader contentReader,
+            IKeySwitchRepository repository,
             IImportFilePresenter presenter,
-            bool leaveOpen = false )
+            CancellationToken cancellationToken = default )
         {
-            DatabaseRepository   = databaseRepository;
-            ContentContentReader = contentReader;
-            Content              = content;
-            Presenter            = presenter;
-            LeaveOpen            = leaveOpen;
-        }
-        #endregion
-
-        public void Dispose()
-        {
-            if( LeaveOpen )
-            {
-                return;
-            }
-
-            Disposer.Dispose( DatabaseRepository );
-        }
-
-        public async Task ExecuteAsync( CancellationToken cancellationToken )
-        {
-            IImportUseCase interactor = new ImportInteractor( DatabaseRepository, Presenter );
-            var inputValue = new ImportInputValue( ContentContentReader, Content );
+            var interactor = new ImportInteractor( repository, presenter );
+            var inputValue = new ImportInputValue( contentReader, content );
             var inputData = new ImportInputData( inputValue );
 
             await interactor.HandleAsync( inputData, cancellationToken );
         }
+        #endregion
     }
 }
