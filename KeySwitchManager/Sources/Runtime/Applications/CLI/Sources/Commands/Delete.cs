@@ -1,7 +1,8 @@
 using CommandLine;
 
 using KeySwitchManager.Applications.CLI.Views;
-using KeySwitchManager.Applications.Standalone.Core.KeySwitches.Controllers;
+using KeySwitchManager.Applications.Standalone.Core.KeySwitches.Extensions.Controllers;
+using KeySwitchManager.Controllers.KeySwitches;
 
 namespace KeySwitchManager.Applications.CLI.Commands
 {
