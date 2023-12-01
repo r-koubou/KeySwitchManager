@@ -14,9 +14,9 @@
 
     <ItemGroup>
       <ProjectReference Include="..\..\Commons\Commons.csproj" />
+      <ProjectReference Include="..\..\Presenters\Presenters.csproj" />
       <ProjectReference Include="..\..\UseCases\UseCases.csproj" />
       <ProjectReference Include="..\..\Interactors\Interactors.csproj" />
-      <ProjectReference Include="..\..\Controllers\Controllers.csproj" />
       <ProjectReference Include="..\..\Infrastructures\Storage.Json\Storage.Json.csproj" />
       <ProjectReference Include="..\..\Infrastructures\Storage.Plist\Storage.Plist.csproj" />
       <ProjectReference Include="..\..\Infrastructures\Storage.Spreadsheet.ClosedXml\Storage.Spreadsheet.ClosedXml.csproj" />
