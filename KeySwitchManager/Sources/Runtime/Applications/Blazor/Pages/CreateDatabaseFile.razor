@@ -42,7 +42,7 @@
         await Task.Delay( 1 );
 
         var target = new MemoryStream();
-        var controller = CreateController.Create( target, Format, CreatePresenter.Null );
+        var controller = new CreateController();
 
         var outputFileName = Format switch
         {
@@ -55,7 +55,7 @@
 
         try
         {
-            await controller.ExecuteAsync( cts.Token );
+            await controller.ExecuteAsync( target, CreatePresenter.Null, Format, cts.Token );
 
             target.Seek( 0, SeekOrigin.Begin );
             await DownloadService.TriggerDownloadAsync( target.ToArray(), outputFileName );

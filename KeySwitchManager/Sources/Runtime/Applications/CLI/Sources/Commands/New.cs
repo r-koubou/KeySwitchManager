@@ -22,9 +22,9 @@ namespace KeySwitchManager.Applications.CLI.Commands
             var option = (CommandOption)opt;
             var logView = new ConsoleLogView();
 
-            IController controller = CreateController.Create( option.OutputPath, new CreatePresenter( new ConsoleLogView() ) );
+            var controller = new CreateController();
             logView.Append( $"generating keyswitch template to {option.OutputPath}" );
-            controller.Execute();
+            controller.Execute( option.OutputPath, new CreatePresenter( new ConsoleLogView() ) );
 
             return 0;
         }
