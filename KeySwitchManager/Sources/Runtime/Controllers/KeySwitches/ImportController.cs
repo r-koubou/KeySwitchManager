@@ -7,7 +7,7 @@ using KeySwitchManager.UseCase.KeySwitches.Import;
 
 namespace KeySwitchManager.Controllers.KeySwitches
 {
-    public class ImportController
+    public sealed class ImportController
     {
         public void Execute(
             IContent content,

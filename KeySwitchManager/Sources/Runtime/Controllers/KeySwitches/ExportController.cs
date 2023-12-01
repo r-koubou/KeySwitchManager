@@ -7,7 +7,7 @@ using KeySwitchManager.UseCase.KeySwitches.Export;
 
 namespace KeySwitchManager.Controllers.KeySwitches
 {
-    public class ExportController
+    public sealed class ExportController
     {
         public void Execute(
             string developerName,

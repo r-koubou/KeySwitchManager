@@ -7,7 +7,7 @@ using KeySwitchManager.UseCase.KeySwitches.Export;
 
 namespace KeySwitchManager.Controllers.KeySwitches
 {
-    public class CreateController
+    public sealed class CreateController
     {
         public async Task ExecuteAsync( IExportStrategy strategy, ICreatePresenter presenter, CancellationToken cancellationToken )
         {

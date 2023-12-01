@@ -9,7 +9,7 @@ using KeySwitchManager.Views.LogView;
 
 namespace KeySwitchManager.Controllers.KeySwitches
 {
-    public class DeleteController
+    public sealed class DeleteController
     {
         public void Execute( IKeySwitchRepository repository, string developer, string product, string instrument, ILogTextView logTextView )
             => ExecuteAsync( repository, developer, product, instrument, logTextView ).GetAwaiter().GetResult();
