@@ -8,7 +8,7 @@ using KeySwitchManager.Domain.KeySwitches;
 using KeySwitchManager.Interactors.KeySwitches;
 using KeySwitchManager.UseCase.KeySwitches.Export;
 
-namespace KeySwitchManager.Applications.Standalone.Core.KeySwitches.Controllers.Export
+namespace KeySwitchManager.Applications.Standalone.Core.KeySwitches.Controllers
 {
     public sealed class ExportController
     {

@@ -7,7 +7,7 @@ using KeySwitchManager.Presenters.KeySwitches;
 using KeySwitchManager.UseCase.KeySwitches.Delete;
 using KeySwitchManager.Views.LogView;
 
-namespace KeySwitchManager.Applications.Standalone.Core.KeySwitches.Controllers.Delete
+namespace KeySwitchManager.Applications.Standalone.Core.KeySwitches.Controllers
 {
     public class DeleteController
     {

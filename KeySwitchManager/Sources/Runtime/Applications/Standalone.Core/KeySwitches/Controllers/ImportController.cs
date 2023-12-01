@@ -5,7 +5,7 @@ using KeySwitchManager.Domain.KeySwitches;
 using KeySwitchManager.Interactors.KeySwitches;
 using KeySwitchManager.UseCase.KeySwitches.Import;
 
-namespace KeySwitchManager.Applications.Standalone.Core.KeySwitches.Controllers.Import
+namespace KeySwitchManager.Applications.Standalone.Core.KeySwitches.Controllers
 {
     public sealed class ImportController
     {

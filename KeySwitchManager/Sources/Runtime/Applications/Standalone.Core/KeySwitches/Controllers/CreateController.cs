@@ -12,7 +12,7 @@ using KeySwitchManager.Interactors.KeySwitches;
 using KeySwitchManager.UseCase.KeySwitches.Create;
 using KeySwitchManager.UseCase.KeySwitches.Export;
 
-namespace KeySwitchManager.Applications.Standalone.Core.KeySwitches.Controllers.Create
+namespace KeySwitchManager.Applications.Standalone.Core.KeySwitches.Controllers
 {
     public sealed class CreateController
     {

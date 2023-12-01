@@ -7,7 +7,7 @@ using KeySwitchManager.UseCase.Commons;
 using KeySwitchManager.UseCase.KeySwitches.Dump;
 using KeySwitchManager.UseCase.KeySwitches.Export;
 
-namespace KeySwitchManager.Applications.Standalone.Core.KeySwitches.Controllers.Dump
+namespace KeySwitchManager.Applications.Standalone.Core.KeySwitches.Controllers
 {
     public sealed class DumpController
     {

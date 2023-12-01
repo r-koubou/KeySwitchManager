@@ -2,7 +2,7 @@ using CommandLine;
 
 using KeySwitchManager.Applications.CLI.Views;
 using KeySwitchManager.Applications.Standalone.Core.KeySwitches.Commons;
-using KeySwitchManager.Applications.Standalone.Core.KeySwitches.Controllers.Import;
+using KeySwitchManager.Applications.Standalone.Core.KeySwitches.Controllers;
 using KeySwitchManager.Applications.Standalone.Core.KeySwitches.Helpers;
 using KeySwitchManager.Presenters.KeySwitches;
 
