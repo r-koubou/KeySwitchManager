@@ -70,7 +70,7 @@ namespace KeySwitchManager.Applications.Standalone.Core.KeySwitches.Controllers.
             IExportPresenter presenter,
             CancellationToken cancellationToken = default )
         {
-            var strategy = StrategyFactory.CreateForDirectory( outputDirectory, format );
+            var strategy = ExportStrategyFactory.CreateForDirectory( outputDirectory, format );
 
             await ExecuteAsync( developerName, productName, instrumentName, strategy, format, sourceRepository, presenter, cancellationToken );
         }
@@ -97,7 +97,7 @@ namespace KeySwitchManager.Applications.Standalone.Core.KeySwitches.Controllers.
             IExportPresenter presenter,
             CancellationToken cancellationToken = default )
         {
-            var strategy = StrategyFactory.CreateForStream( outputStream, format );
+            var strategy = ExportStrategyFactory.CreateForStream( outputStream, format );
 
             await ExecuteAsync( developerName, productName, instrumentName, strategy, format, sourceRepository, presenter, cancellationToken );
         }

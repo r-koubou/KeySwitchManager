@@ -14,7 +14,7 @@ using KeySwitchManager.UseCase.KeySwitches.Export;
 
 namespace KeySwitchManager.Applications.Standalone.Core.KeySwitches.Commons
 {
-    public static class StrategyFactory
+    public static class ExportStrategyFactory
     {
         public static IExportStrategy CreateForLocalFile( string outputFilePath )
         {

@@ -1,44 +1,32 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
 
-using KeySwitchManager.Controllers.KeySwitches;
 using KeySwitchManager.Domain.KeySwitches;
 using KeySwitchManager.Interactors.KeySwitches;
 using KeySwitchManager.UseCase.Commons;
 using KeySwitchManager.UseCase.KeySwitches.Dump;
 using KeySwitchManager.UseCase.KeySwitches.Export;
 
-using RkHelper.System;
-
 namespace KeySwitchManager.Applications.Standalone.Core.KeySwitches.Controllers.Dump
 {
-    public sealed class DumpController : IController
+    public sealed class DumpController
     {
-        private IKeySwitchRepository SourceRepository { get; }
-        private IExportStrategy Strategy { get; }
-        private IDumpPresenter Presenter { get; }
-
-        public DumpController(
-            IKeySwitchRepository sourceRepository,
+        public void Execute(
+            IKeySwitchRepository repository,
             IExportStrategy strategy,
             IDumpPresenter presenter )
-        {
-            SourceRepository = sourceRepository;
-            Strategy         = strategy;
-            Presenter        = presenter;
-        }
+            => ExecuteAsync( repository, strategy, presenter, CancellationToken.None ).GetAwaiter().GetResult();
 
-        public void Dispose()
-        {
-            Disposer.Dispose( SourceRepository );
-        }
-
-        public async Task ExecuteAsync( CancellationToken cancellationToken )
+        public async Task ExecuteAsync(
+            IKeySwitchRepository repository,
+            IExportStrategy strategy,
+            IDumpPresenter presenter,
+            CancellationToken cancellationToken = default )
         {
             IDumpUseCase interactor = new DumpInteractor(
-                SourceRepository,
-                Strategy,
-                Presenter
+                repository,
+                strategy,
+                presenter
             );
 
             await interactor.HandleAsync( UnitInputData.Default, cancellationToken );
