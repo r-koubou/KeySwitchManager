@@ -1,54 +1,32 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
 
-using KeySwitchManager.Controllers.KeySwitches;
 using KeySwitchManager.Domain.KeySwitches;
 using KeySwitchManager.Interactors.KeySwitches;
 using KeySwitchManager.UseCase.KeySwitches.Find;
 
 namespace KeySwitchManager.Applications.Standalone.Core.KeySwitches.Controllers.Find
 {
-    public sealed class FindController : IController
+    public sealed class FindController
     {
-        private IKeySwitchRepository DatabaseRepository { get; }
-        private IFindPresenter Presenter { get; }
-
-        private string DeveloperName { get; }
-        private string ProductName { get; }
-        private string InstrumentName { get; }
-
-        #region Ctor
-        public FindController(
-            IKeySwitchRepository databaseRepository,
-            IFindPresenter presenter,
+        public void Execute(
             string developerName,
             string productName,
-            string instrumentName )
-        {
-            DatabaseRepository = databaseRepository;
-            Presenter          = presenter;
-            DeveloperName      = developerName;
-            ProductName        = productName;
-            InstrumentName     = instrumentName;
-        }
-        #endregion
+            string instrumentName,
+            IKeySwitchRepository repository,
+            IFindPresenter presenter )
+            => ExecuteAsync( developerName, instrumentName, productName, repository, presenter, CancellationToken.None ).GetAwaiter().GetResult();
 
-        public void Dispose()
+        public async Task ExecuteAsync(
+            string developerName,
+            string instrumentName,
+            string productName,
+            IKeySwitchRepository repository,
+            IFindPresenter presenter,
+            CancellationToken cancellationToken = default )
         {
-            try
-            {
-                DatabaseRepository.Dispose();
-            }
-            catch
-            {
-                // ignored
-            }
-        }
-
-        public async Task ExecuteAsync( CancellationToken cancellationToken )
-        {
-            IFindUseCase interactor = new FindInteractor( DatabaseRepository, Presenter );
-            var inputValue = new FindInputValue( DeveloperName, ProductName, InstrumentName );
+            IFindUseCase interactor = new FindInteractor( repository, presenter );
+            var inputValue = new FindInputValue( developerName, productName, instrumentName );
             var inputData = new FindInputData( inputValue );
 
             await interactor.HandleAsync( inputData, cancellationToken );
