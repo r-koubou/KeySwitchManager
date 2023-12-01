@@ -40,7 +40,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{6DACDCA0-D
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "04 Frameworks And Drivers", "04 Frameworks And Drivers", "{43EB4457-4958-43C4-80A0-5279D3D7EE6D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Applications.Standalone.Core", "Sources\Runtime\Applications\Standalone.Core\Applications.Standalone.Core.csproj", "{46F780BE-6786-43D4-BD6D-524C86CE2101}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Applications.Standalone.Base", "Sources\Runtime\Applications\Standalone.Base\Applications.Standalone.Base.csproj", "{46F780BE-6786-43D4-BD6D-524C86CE2101}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "01 Enterprise Business Rules", "01 Enterprise Business Rules", "{4F7FDAC2-788F-437D-8498-7EA665B4B1CA}"
 EndProject
