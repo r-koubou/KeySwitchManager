@@ -7,6 +7,7 @@ using KeySwitchManager.Views.LogView;
 
 namespace KeySwitchManager.Applications.Standalone.Core.KeySwitches.Controllers
 {
+    [Obsolete( "Use Individual controller class instead" )]
     public static class ControlExecutor
     {
         public static void Execute( Func<IController> controllerFactory, ILogTextView logTextView )
