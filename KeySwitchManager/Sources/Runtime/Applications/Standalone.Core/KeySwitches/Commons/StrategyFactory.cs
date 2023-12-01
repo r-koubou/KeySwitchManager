@@ -16,7 +16,7 @@ namespace KeySwitchManager.Applications.Standalone.Core.KeySwitches.Commons
 {
     public static class StrategyFactory
     {
-        public static IExportStrategy Create( string outputFilePath )
+        public static IExportStrategy CreateForLocalFile( string outputFilePath )
         {
             var fileName = outputFilePath.ToLower();
 
@@ -44,7 +44,7 @@ namespace KeySwitchManager.Applications.Standalone.Core.KeySwitches.Commons
             return strategy;
         }
 
-        public static IExportStrategy Create( string outputDirectory, ExportSupportedFormat format )
+        public static IExportStrategy CreateForDirectory( string outputDirectory, ExportSupportedFormat format )
         {
             var outputDir = new DirectoryPath( outputDirectory );
             IExportContentFactory contentFactory;
@@ -102,7 +102,7 @@ namespace KeySwitchManager.Applications.Standalone.Core.KeySwitches.Commons
             return strategy;
         }
 
-        public static IExportStrategy Create( Stream targetStream, ExportSupportedFormat format )
+        public static IExportStrategy CreateForStream( Stream targetStream, ExportSupportedFormat format )
         {
             IExportContentFactory contentFactory;
             IExportContentWriterFactory contentWriterFactory = new ExportLeaveOpenedStreamContentWriterFactory( targetStream );
