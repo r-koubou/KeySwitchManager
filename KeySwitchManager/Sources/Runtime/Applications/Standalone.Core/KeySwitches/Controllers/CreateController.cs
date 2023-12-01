@@ -3,8 +3,8 @@ using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
 
+using KeySwitchManager.Applications.Standalone.Core.KeySwitches.Commons;
 using KeySwitchManager.Commons.Data;
-using KeySwitchManager.Controllers.KeySwitches;
 using KeySwitchManager.Infrastructures.Storage.KeySwitches;
 using KeySwitchManager.Infrastructures.Storage.Spreadsheet.ClosedXml.KeySwitches.Export;
 using KeySwitchManager.Infrastructures.Storage.Yaml.KeySwitches.Export;
@@ -29,10 +29,10 @@ namespace KeySwitchManager.Applications.Standalone.Core.KeySwitches.Controllers
         #endregion
 
         #region To Stream
-        public void Execute( Stream targetStream, ICreatePresenter presenter, ExportSupportedFormat format )
+        public void Execute( Stream targetStream, ICreatePresenter presenter, ExportFormat format )
             => ExecuteAsync( targetStream, presenter, format ).GetAwaiter().GetResult();
 
-        public async Task ExecuteAsync( Stream targetStream, ICreatePresenter presenter, ExportSupportedFormat format, CancellationToken cancellationToken = default )
+        public async Task ExecuteAsync( Stream targetStream, ICreatePresenter presenter, ExportFormat format, CancellationToken cancellationToken = default )
         {
             var strategy = CreateStrategy( targetStream, format );
 
@@ -77,7 +77,7 @@ namespace KeySwitchManager.Applications.Standalone.Core.KeySwitches.Controllers
             return strategy;
         }
 
-        private static IExportStrategy CreateStrategy( Stream targetStream, ExportSupportedFormat format )
+        private static IExportStrategy CreateStrategy( Stream targetStream, ExportFormat format )
         {
             IExportContentFactory contentFactory;
             IExportContentWriterFactory contentWriterFactory = new ExportLeaveOpenedStreamContentWriterFactory( targetStream );
@@ -85,11 +85,11 @@ namespace KeySwitchManager.Applications.Standalone.Core.KeySwitches.Controllers
 
             switch( format )
             {
-                case ExportSupportedFormat.Yaml:
+                case ExportFormat.Yaml:
                     contentFactory = new YamlExportContentFactory();
                     strategy       = new SingleExportStrategy( contentWriterFactory, contentFactory );
                     break;
-                case ExportSupportedFormat.Xlsx:
+                case ExportFormat.Xlsx:
                     contentFactory = new ClosedXmlExportContentFactory();
                     strategy       = new SingleExportStrategy( contentWriterFactory, contentFactory );
                     break;

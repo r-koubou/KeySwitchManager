@@ -1,6 +1,6 @@
 @page "/create_db"
-@using KeySwitchManager.Controllers.KeySwitches
 @using KeySwitchManager.Applications.Blazor.Services
+@using KeySwitchManager.Applications.Standalone.Core.KeySwitches.Commons
 @using KeySwitchManager.Applications.Standalone.Core.KeySwitches.Controllers
 @using KeySwitchManager.Presenters.KeySwitches
 
@@ -19,9 +19,9 @@
     else
     {
         <MudStack Row="false">
-            <MudSelect @bind-value="Format" Margin="Margin.Dense" T=" ExportSupportedFormat " Variant="Variant.Text" Label="Format">
-                <MudSelectItem Value="@(ExportSupportedFormat.Yaml)"/>
-                <MudSelectItem Value="@(ExportSupportedFormat.Xlsx)"/>
+            <MudSelect @bind-value="Format" Margin="Margin.Dense" T=" ExportFormat " Variant="Variant.Text" Label="Format">
+                <MudSelectItem Value="@(ExportFormat.Yaml)"/>
+                <MudSelectItem Value="@(ExportFormat.Xlsx)"/>
             </MudSelect>
             <MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="@(OnCreateButtonClicked )">Create</MudButton>
         </MudStack>
@@ -30,7 +30,7 @@
 
 @code {
 
-    private ExportSupportedFormat Format { get; set; } = ExportSupportedFormat.Yaml;
+    private ExportFormat Format { get; set; } = ExportFormat.Yaml;
     private bool Processing { get; set; } = false;
     private CancellationTokenSource cts = new ();
 
@@ -46,8 +46,8 @@
 
         var outputFileName = Format switch
         {
-            ExportSupportedFormat.Yaml => "new_file.yaml",
-            ExportSupportedFormat.Xlsx => "new_file.xlsx",
+            ExportFormat.Yaml => "new_file.yaml",
+            ExportFormat.Xlsx => "new_file.xlsx",
             _                          => "unknown_file"
         };
 

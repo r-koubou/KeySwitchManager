@@ -1,9 +1,9 @@
 using CommandLine;
 
 using KeySwitchManager.Applications.CLI.Views;
+using KeySwitchManager.Applications.Standalone.Core.KeySwitches.Commons;
 using KeySwitchManager.Applications.Standalone.Core.KeySwitches.Controllers;
 using KeySwitchManager.Applications.Standalone.Core.KeySwitches.Helpers;
-using KeySwitchManager.Controllers.KeySwitches;
 using KeySwitchManager.Domain.KeySwitches.Models.Values;
 using KeySwitchManager.Presenters.KeySwitches;
 
@@ -44,7 +44,7 @@ namespace KeySwitchManager.Applications.CLI.Commands
                 option.Product,
                 option.Instrument,
                 option.OutputDirectory,
-                SupportedFormat,
+                Format,
                 sourceDatabase,
                 new ExportPresenter( new ConsoleLogView() )
             );
@@ -52,6 +52,6 @@ namespace KeySwitchManager.Applications.CLI.Commands
             return 0;
         }
 
-        protected abstract ExportSupportedFormat SupportedFormat { get; }
+        protected abstract ExportFormat Format { get; }
     }
 }

@@ -1,6 +1,6 @@
-﻿namespace KeySwitchManager.Controllers.KeySwitches
+﻿namespace KeySwitchManager.Applications.Standalone.Core.KeySwitches.Commons
 {
-    public enum ExportSupportedFormat
+    public enum ExportFormat
     {
         Yaml,
         Xlsx,

@@ -2,7 +2,6 @@ using System;
 using System.IO;
 
 using KeySwitchManager.Commons.Data;
-using KeySwitchManager.Controllers.KeySwitches;
 using KeySwitchManager.Infrastructures.Storage.Json.KeySwitches.Cakewalk;
 using KeySwitchManager.Infrastructures.Storage.KeySwitches;
 using KeySwitchManager.Infrastructures.Storage.Plist.KeySwitches.Logic;
@@ -44,7 +43,7 @@ namespace KeySwitchManager.Applications.Standalone.Core.KeySwitches.Commons
             return strategy;
         }
 
-        public static IExportStrategy CreateForDirectory( string outputDirectory, ExportSupportedFormat format )
+        public static IExportStrategy CreateForDirectory( string outputDirectory, ExportFormat format )
         {
             var outputDir = new DirectoryPath( outputDirectory );
             IExportContentFactory contentFactory;
@@ -53,43 +52,43 @@ namespace KeySwitchManager.Applications.Standalone.Core.KeySwitches.Commons
 
             switch( format )
             {
-                case ExportSupportedFormat.Yaml:
+                case ExportFormat.Yaml:
                     contentFactory       = new YamlExportContentFactory();
                     contentWriterFactory = new YamlExportContentFileWriterFactory( new YamlGroupedExportPathBuilder( outputDir ) );
                     strategy             = new GroupedExportStrategy( contentWriterFactory, contentFactory );
                     break;
 
-                case ExportSupportedFormat.Xlsx:
+                case ExportFormat.Xlsx:
                     contentFactory       = new ClosedXmlExportContentFactory();
                     contentWriterFactory = new ClosedXmlExportContentFileWriterFactory( outputDir );
                     strategy             = new MultipleExportStrategy( contentWriterFactory, contentFactory );
                     break;
 
-                case ExportSupportedFormat.XlsxCombined:
+                case ExportFormat.XlsxCombined:
                     contentFactory       = new ClosedXmlExportContentFactory();
                     contentWriterFactory = new ClosedXmlExportContentFileWriterFactory( new ClosedXmlGroupedExportPathBuilder( outputDir ) );
                     strategy             = new GroupedExportStrategy( contentWriterFactory, contentFactory );
                     break;
 
-                case ExportSupportedFormat.Cubase:
+                case ExportFormat.Cubase:
                     contentFactory       = new CubaseExportContentFactory();
                     contentWriterFactory = new CubaseExportContentFileWriterFactory( outputDir );
                     strategy             = new MultipleExportStrategy( contentWriterFactory, contentFactory );
                     break;
 
-                case ExportSupportedFormat.StudioOne:
+                case ExportFormat.StudioOne:
                     contentFactory       = new StudioOneExportContentFactory();
                     contentWriterFactory = new StudioOneExportContentFileWriterFactory( new StudioOneGroupedExportPathBuilder( outputDir ) );
                     strategy             = new GroupedExportStrategy( contentWriterFactory, contentFactory );
                     break;
 
-                case ExportSupportedFormat.Cakewalk:
+                case ExportFormat.Cakewalk:
                     contentFactory       = new CakewalkExportContentFactory();
                     contentWriterFactory = new CakewalkExportContentFileWriterFactory( outputDir );
                     strategy             = new MultipleExportStrategy( contentWriterFactory, contentFactory );
                     break;
 
-                case ExportSupportedFormat.Logic:
+                case ExportFormat.Logic:
                     contentFactory       = new LogicExportContentFactory();
                     contentWriterFactory = new LogicExportContentFileWriterFactory( outputDir );
                     strategy             = new MultipleExportStrategy( contentWriterFactory, contentFactory );
@@ -102,7 +101,7 @@ namespace KeySwitchManager.Applications.Standalone.Core.KeySwitches.Commons
             return strategy;
         }
 
-        public static IExportStrategy CreateForStream( Stream targetStream, ExportSupportedFormat format )
+        public static IExportStrategy CreateForStream( Stream targetStream, ExportFormat format )
         {
             IExportContentFactory contentFactory;
             IExportContentWriterFactory contentWriterFactory = new ExportLeaveOpenedStreamContentWriterFactory( targetStream );
@@ -110,11 +109,11 @@ namespace KeySwitchManager.Applications.Standalone.Core.KeySwitches.Commons
 
             switch( format )
             {
-                case ExportSupportedFormat.Yaml:
+                case ExportFormat.Yaml:
                     contentFactory = new YamlExportContentFactory();
                     strategy       = new SingleExportStrategy( contentWriterFactory, contentFactory );
                     break;
-                case ExportSupportedFormat.Xlsx:
+                case ExportFormat.Xlsx:
                     contentFactory = new ClosedXmlExportContentFactory();
                     strategy       = new SingleExportStrategy( contentWriterFactory, contentFactory );
                     break;

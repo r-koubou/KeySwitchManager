@@ -1,6 +1,6 @@
 using CommandLine;
 
-using KeySwitchManager.Controllers.KeySwitches;
+using KeySwitchManager.Applications.Standalone.Core.KeySwitches.Commons;
 
 namespace KeySwitchManager.Applications.CLI.Commands
 {
@@ -10,6 +10,6 @@ namespace KeySwitchManager.Applications.CLI.Commands
         public new class CommandOption : ExportDawArticulation.CommandOption
         {}
 
-        protected override ExportSupportedFormat SupportedFormat => ExportSupportedFormat.StudioOne;
+        protected override ExportFormat Format => ExportFormat.StudioOne;
     }
 }

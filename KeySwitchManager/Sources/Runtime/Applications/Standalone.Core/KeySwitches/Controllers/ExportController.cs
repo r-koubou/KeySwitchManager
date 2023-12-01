@@ -3,7 +3,6 @@ using System.Threading;
 using System.Threading.Tasks;
 
 using KeySwitchManager.Applications.Standalone.Core.KeySwitches.Commons;
-using KeySwitchManager.Controllers.KeySwitches;
 using KeySwitchManager.Domain.KeySwitches;
 using KeySwitchManager.Interactors.KeySwitches;
 using KeySwitchManager.UseCase.KeySwitches.Export;
@@ -18,7 +17,7 @@ namespace KeySwitchManager.Applications.Standalone.Core.KeySwitches.Controllers
             string productName,
             string instrumentName,
             IExportStrategy strategy,
-            ExportSupportedFormat format,
+            ExportFormat format,
             IKeySwitchRepository sourceRepository,
             IExportPresenter presenter )
             => ExecuteAsync( developerName, productName, instrumentName, strategy, format, sourceRepository, presenter, CancellationToken.None ).GetAwaiter().GetResult();
@@ -28,7 +27,7 @@ namespace KeySwitchManager.Applications.Standalone.Core.KeySwitches.Controllers
             string productName,
             string instrumentName,
             IExportStrategy strategy,
-            ExportSupportedFormat format,
+            ExportFormat format,
             IKeySwitchRepository sourceRepository,
             IExportPresenter presenter,
             CancellationToken cancellationToken = default )
@@ -55,7 +54,7 @@ namespace KeySwitchManager.Applications.Standalone.Core.KeySwitches.Controllers
             string productName,
             string instrumentName,
             string outputDirectory,
-            ExportSupportedFormat format,
+            ExportFormat format,
             IKeySwitchRepository sourceRepository,
             IExportPresenter presenter )
             => ExecuteAsync( developerName, productName, instrumentName, outputDirectory, format, sourceRepository, presenter, CancellationToken.None ).GetAwaiter().GetResult();
@@ -65,7 +64,7 @@ namespace KeySwitchManager.Applications.Standalone.Core.KeySwitches.Controllers
             string productName,
             string instrumentName,
             string outputDirectory,
-            ExportSupportedFormat format,
+            ExportFormat format,
             IKeySwitchRepository sourceRepository,
             IExportPresenter presenter,
             CancellationToken cancellationToken = default )
@@ -82,7 +81,7 @@ namespace KeySwitchManager.Applications.Standalone.Core.KeySwitches.Controllers
             string productName,
             string instrumentName,
             Stream outputStream,
-            ExportSupportedFormat format,
+            ExportFormat format,
             IKeySwitchRepository sourceRepository,
             IExportPresenter presenter )
             => ExecuteAsync( developerName, productName, instrumentName, outputStream, format, sourceRepository, presenter, CancellationToken.None ).GetAwaiter().GetResult();
@@ -92,7 +91,7 @@ namespace KeySwitchManager.Applications.Standalone.Core.KeySwitches.Controllers
             string productName,
             string instrumentName,
             Stream outputStream,
-            ExportSupportedFormat format,
+            ExportFormat format,
             IKeySwitchRepository sourceRepository,
             IExportPresenter presenter,
             CancellationToken cancellationToken = default )
