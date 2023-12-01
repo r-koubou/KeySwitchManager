@@ -1,52 +1,44 @@
-﻿using System;
+using System;
 using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
 
 using KeySwitchManager.Applications.Standalone.Core.KeySwitches.Commons;
 using KeySwitchManager.Commons.Data;
+using KeySwitchManager.Controllers.KeySwitches;
 using KeySwitchManager.Infrastructures.Storage.KeySwitches;
 using KeySwitchManager.Infrastructures.Storage.Spreadsheet.ClosedXml.KeySwitches.Export;
 using KeySwitchManager.Infrastructures.Storage.Yaml.KeySwitches.Export;
-using KeySwitchManager.Interactors.KeySwitches;
 using KeySwitchManager.UseCase.KeySwitches.Create;
 using KeySwitchManager.UseCase.KeySwitches.Export;
 
-namespace KeySwitchManager.Applications.Standalone.Core.KeySwitches.Controllers
+namespace KeySwitchManager.Applications.Standalone.Core.KeySwitches.Extensions.Controllers
 {
-    public sealed class CreateController
+    public static class CreateControllerExtension
     {
         #region To File
-        public void Execute( string outputFilePath, ICreatePresenter presenter )
-            => ExecuteAsync( outputFilePath, presenter, CancellationToken.None ).GetAwaiter().GetResult();
+        public static void Execute( this CreateController me, string outputFilePath, ICreatePresenter presenter )
+            => ExecuteAsync( me, outputFilePath, presenter, CancellationToken.None ).GetAwaiter().GetResult();
 
-        public async Task ExecuteAsync( string outputFilePath, ICreatePresenter presenter, CancellationToken cancellationToken )
+        public static async Task ExecuteAsync( this CreateController me, string outputFilePath, ICreatePresenter presenter, CancellationToken cancellationToken )
         {
             var strategy = CreateStrategy( outputFilePath );
 
-            await ExecuteImplAsync( strategy, presenter, cancellationToken );
+            await me.ExecuteAsync( strategy, presenter, cancellationToken );
         }
         #endregion
 
         #region To Stream
-        public void Execute( Stream targetStream, ICreatePresenter presenter, ExportFormat format )
-            => ExecuteAsync( targetStream, presenter, format ).GetAwaiter().GetResult();
+        public static void Execute( this CreateController me, Stream targetStream, ICreatePresenter presenter, ExportFormat format )
+            => ExecuteAsync( me, targetStream, presenter, format ).GetAwaiter().GetResult();
 
-        public async Task ExecuteAsync( Stream targetStream, ICreatePresenter presenter, ExportFormat format, CancellationToken cancellationToken = default )
+        public static async Task ExecuteAsync( this CreateController me, Stream targetStream, ICreatePresenter presenter, ExportFormat format, CancellationToken cancellationToken = default )
         {
             var strategy = CreateStrategy( targetStream, format );
 
-            await ExecuteImplAsync( strategy, presenter, cancellationToken );
+            await me.ExecuteAsync( strategy, presenter, cancellationToken );
         }
         #endregion
-
-        private static async Task ExecuteImplAsync( IExportStrategy strategy, ICreatePresenter presenter, CancellationToken cancellationToken )
-        {
-            var interactor = new CreateInteractor( presenter );
-            var inputData = new CreateInputData( strategy );
-
-            await interactor.HandleAsync( inputData, cancellationToken );
-        }
 
         #region Strategy Factory
         private static IExportStrategy CreateStrategy( string outputFilePath )
