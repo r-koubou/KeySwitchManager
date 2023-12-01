@@ -1,6 +1,6 @@
 @page "/create_db"
 @using KeySwitchManager.Controllers.KeySwitches
-@using KeySwitchManager.Views.LogView
+@using KeySwitchManager.Presenters.KeySwitches
 @using KeySwitchManager.Applications.Blazor.Services
 @using KeySwitchManager.Applications.Standalone.Core.KeySwitches.Controllers.Create
 
@@ -42,8 +42,7 @@
         await Task.Delay( 1 );
 
         var target = new MemoryStream();
-        var factory = new CreateToStreamControllerFactory();
-        var controller = factory.Create( target, Format, ILogTextView.Null );
+        var controller = CreateController.Create( target, Format, CreatePresenter.Null );
 
         var outputFileName = Format switch
         {
