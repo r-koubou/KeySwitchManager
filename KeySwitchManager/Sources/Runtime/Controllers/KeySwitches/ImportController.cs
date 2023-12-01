@@ -5,11 +5,10 @@ using KeySwitchManager.Domain.KeySwitches;
 using KeySwitchManager.Interactors.KeySwitches;
 using KeySwitchManager.UseCase.KeySwitches.Import;
 
-namespace KeySwitchManager.Applications.Standalone.Core.KeySwitches.Controllers
+namespace KeySwitchManager.Controllers.KeySwitches
 {
-    public sealed class ImportController
+    public class ImportController
     {
-        #region Import from specified content
         public void Execute(
             IContent content,
             IImportContentReader contentReader,
@@ -30,6 +29,5 @@ namespace KeySwitchManager.Applications.Standalone.Core.KeySwitches.Controllers
 
             await interactor.HandleAsync( inputData, cancellationToken );
         }
-        #endregion
     }
 }
