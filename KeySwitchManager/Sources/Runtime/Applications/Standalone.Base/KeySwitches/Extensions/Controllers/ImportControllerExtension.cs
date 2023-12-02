@@ -49,7 +49,7 @@ namespace KeySwitchManager.Applications.Standalone.Base.KeySwitches.Extensions.C
 
             var content = new FileContent( new FilePath( importFilePath ) );
 
-            await me.ExecuteAsync( repository, content, contentReader, presenter, cancellationToken );
+            await me.ImportAsync( repository, content, contentReader, presenter, cancellationToken );
         }
         #endregion
     }

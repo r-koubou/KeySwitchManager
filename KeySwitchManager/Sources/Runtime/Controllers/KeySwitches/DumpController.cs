@@ -11,13 +11,13 @@ namespace KeySwitchManager.Controllers.KeySwitches
 {
     public sealed class DumpController
     {
-        public void Execute(
+        public void Dump(
             IKeySwitchRepository repository,
             IExportStrategy strategy,
             IDumpPresenter presenter )
-            => ExecuteAsync( repository, strategy, presenter, CancellationToken.None ).GetAwaiter().GetResult();
+            => DumpAsync( repository, strategy, presenter, CancellationToken.None ).GetAwaiter().GetResult();
 
-        public async Task ExecuteAsync(
+        public async Task DumpAsync(
             IKeySwitchRepository repository,
             IExportStrategy strategy,
             IDumpPresenter presenter,

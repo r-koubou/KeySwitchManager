@@ -9,7 +9,10 @@ namespace KeySwitchManager.Controllers.KeySwitches
 {
     public sealed class CreateController
     {
-        public async Task ExecuteAsync( IExportStrategy strategy, ICreatePresenter presenter, CancellationToken cancellationToken )
+        public void Create( IExportStrategy strategy, ICreatePresenter presenter )
+            => CreateAsync( strategy, presenter ).GetAwaiter().GetResult();
+
+        public async Task CreateAsync( IExportStrategy strategy, ICreatePresenter presenter, CancellationToken cancellationToken = default )
         {
             var interactor = new CreateInteractor( presenter );
             var inputData = new CreateInputData( strategy );

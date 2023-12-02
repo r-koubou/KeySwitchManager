@@ -35,7 +35,7 @@ namespace KeySwitchManager.Applications.CLI.Commands
             var contentWriterFactory = new YamlExportContentFileWriterFactory( outputDirectory );
             var strategy = new SingleExportStrategy( contentWriterFactory, contentFactory );
 
-            controller.Execute(
+            controller.Dump(
                 database,
                 strategy,
                 new DumpPresenter( new ConsoleLogView() )

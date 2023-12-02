@@ -9,16 +9,16 @@ namespace KeySwitchManager.Applications.Standalone.Base.KeySwitches.Extensions.C
 {
     public static class DeleteControllerExtension
     {
-        public static void Execute(
+        public static void DeleteFromLocalDatabase(
             this DeleteController me,
             string databasePath,
             string developer,
             string product,
             string instrument,
             IDeletePresenter presenter )
-            => ExecuteAsync( me, databasePath, developer, product, instrument, presenter ).GetAwaiter().GetResult();
+            => DeleteFromLocalDatabaseAsync( me, databasePath, developer, product, instrument, presenter ).GetAwaiter().GetResult();
 
-        public static async Task ExecuteAsync(
+        public static async Task DeleteFromLocalDatabaseAsync(
             this DeleteController me,
             string databasePath,
             string developer,
@@ -29,7 +29,7 @@ namespace KeySwitchManager.Applications.Standalone.Base.KeySwitches.Extensions.C
         {
             using var repository = KeySwitchRepositoryFactory.CreateFileRepository( databasePath );
 
-            await me.ExecuteAsync( repository, developer, product, instrument, presenter, cancellationToken );
+            await me.DeleteAsync( repository, developer, product, instrument, presenter, cancellationToken );
         }
     }
 }

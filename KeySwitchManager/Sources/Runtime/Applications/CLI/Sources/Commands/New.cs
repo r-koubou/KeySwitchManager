@@ -23,7 +23,7 @@ namespace KeySwitchManager.Applications.CLI.Commands
 
             var controller = new CreateController();
             logView.Append( $"generating keyswitch template to {option.OutputPath}" );
-            controller.Execute( option.OutputPath, new CreatePresenter( new ConsoleLogView() ) );
+            controller.CreateToLocalFile( option.OutputPath, new CreatePresenter( new ConsoleLogView() ) );
 
             return 0;
         }

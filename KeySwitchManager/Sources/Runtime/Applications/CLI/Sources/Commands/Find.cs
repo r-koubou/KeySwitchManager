@@ -32,7 +32,7 @@ namespace KeySwitchManager.Applications.CLI.Commands
             using var repository = KeySwitchRepositoryFactory.CreateFileRepository( option.DatabasePath );
             var controller = new FindController();
 
-            controller.Execute( repository,
+            controller.Find( repository,
                                 option.Developer, option.Product, option.Instrument, new FindPresenter( new ConsoleLogView() )
             );
 

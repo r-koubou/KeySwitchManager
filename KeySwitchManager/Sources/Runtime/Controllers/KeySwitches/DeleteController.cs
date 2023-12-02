@@ -11,15 +11,15 @@ namespace KeySwitchManager.Controllers.KeySwitches
 {
     public sealed class DeleteController
     {
-        public void Execute(
+        public void Delete(
             IKeySwitchRepository repository,
             string developer,
             string product,
             string instrument,
             IDeletePresenter presenter )
-            => ExecuteAsync( repository, developer, product, instrument, presenter ).GetAwaiter().GetResult();
+            => DeleteAsync( repository, developer, product, instrument, presenter ).GetAwaiter().GetResult();
 
-        public async Task ExecuteAsync(
+        public async Task DeleteAsync(
             IKeySwitchRepository repository,
             string developer,
             string product,

@@ -35,7 +35,7 @@ namespace KeySwitchManager.Applications.CLI.Commands
             var controller = new DeleteController();
             var presenter = new DeletePresenter( logView );
 
-            controller.Execute( option.DatabasePath, option.Developer, option.Product, option.Instrument, presenter );
+            controller.DeleteFromLocalDatabase( option.DatabasePath, option.Developer, option.Product, option.Instrument, presenter );
 
             return 0;
         }

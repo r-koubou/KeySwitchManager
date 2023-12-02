@@ -9,14 +9,14 @@ namespace KeySwitchManager.Controllers.KeySwitches
 {
     public sealed class ImportController
     {
-        public void Execute(
+        public void Import(
             IKeySwitchRepository repository,
             IContent content,
             IImportContentReader contentReader,
             IImportFilePresenter presenter )
-            => ExecuteAsync( repository, content, contentReader, presenter, CancellationToken.None ).GetAwaiter().GetResult();
+            => ImportAsync( repository, content, contentReader, presenter, CancellationToken.None ).GetAwaiter().GetResult();
 
-        public async Task ExecuteAsync(
+        public async Task ImportAsync(
             IKeySwitchRepository repository,
             IContent content,
             IImportContentReader contentReader,

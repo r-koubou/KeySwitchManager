@@ -16,26 +16,26 @@ namespace KeySwitchManager.Applications.Standalone.Base.KeySwitches.Extensions.C
     public static class CreateControllerExtension
     {
         #region To File
-        public static void Execute( this CreateController me, string outputFilePath, ICreatePresenter presenter )
-            => ExecuteAsync( me, outputFilePath, presenter, CancellationToken.None ).GetAwaiter().GetResult();
+        public static void CreateToLocalFile( this CreateController me, string outputFilePath, ICreatePresenter presenter )
+            => CreateToLocalFileAsync( me, outputFilePath, presenter, CancellationToken.None ).GetAwaiter().GetResult();
 
-        public static async Task ExecuteAsync( this CreateController me, string outputFilePath, ICreatePresenter presenter, CancellationToken cancellationToken )
+        public static async Task CreateToLocalFileAsync( this CreateController me, string outputFilePath, ICreatePresenter presenter, CancellationToken cancellationToken )
         {
             var strategy = CreateStrategy( outputFilePath );
 
-            await me.ExecuteAsync( strategy, presenter, cancellationToken );
+            await me.CreateAsync( strategy, presenter, cancellationToken );
         }
         #endregion
 
         #region To Stream
-        public static void Execute( this CreateController me, Stream targetStream, ICreatePresenter presenter, ExportFormat format )
-            => ExecuteAsync( me, targetStream, presenter, format ).GetAwaiter().GetResult();
+        public static void CreateStream( this CreateController me, Stream targetStream, ICreatePresenter presenter, ExportFormat format )
+            => CreateToStreamAsync( me, targetStream, presenter, format ).GetAwaiter().GetResult();
 
-        public static async Task ExecuteAsync( this CreateController me, Stream targetStream, ICreatePresenter presenter, ExportFormat format, CancellationToken cancellationToken = default )
+        public static async Task CreateToStreamAsync( this CreateController me, Stream targetStream, ICreatePresenter presenter, ExportFormat format, CancellationToken cancellationToken = default )
         {
             var strategy = CreateStrategy( targetStream, format );
 
-            await me.ExecuteAsync( strategy, presenter, cancellationToken );
+            await me.CreateAsync( strategy, presenter, cancellationToken );
         }
         #endregion
 

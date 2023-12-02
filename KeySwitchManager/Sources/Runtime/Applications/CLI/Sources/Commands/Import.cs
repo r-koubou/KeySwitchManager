@@ -26,7 +26,7 @@ namespace KeySwitchManager.Applications.CLI.Commands
             var contentInfo = ImportContentFactory.CreateFromLocalFile( option.InputPath );
             var controller = new ImportController();
 
-            controller.Execute( repository,
+            controller.Import( repository,
                                 contentInfo.content, contentInfo.contentReader, new ImportPresenter( new ConsoleLogView() )
             );
 

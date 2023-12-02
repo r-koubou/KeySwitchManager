@@ -128,7 +128,7 @@ namespace KeySwitchManager.Xamarin.Mac
             var controller = new CreateController();
             var presenter = new CreatePresenter( LogView );
 
-            await ExecuteControllerAsync( async () => await controller.ExecuteAsync( path, presenter, CancellationToken.None ) );
+            await ExecuteControllerAsync( async () => await controller.CreateToLocalFileAsync( path, presenter, CancellationToken.None ) );
         }
 
         #endregion
@@ -226,7 +226,7 @@ namespace KeySwitchManager.Xamarin.Mac
             var controller = new DeleteController();
             var presenter = new DeletePresenter( LogView );
 
-            await ExecuteControllerAsync( async () => await controller.ExecuteAsync( databasePath, developer, product, instrument, presenter, CancellationToken.None ) );
+            await ExecuteControllerAsync( async () => await controller.DeleteFromLocalDatabaseAsync( databasePath, developer, product, instrument, presenter, CancellationToken.None ) );
         }
 
         #endregion
@@ -271,7 +271,7 @@ namespace KeySwitchManager.Xamarin.Mac
             var controller = new ExportController();
             var presenter = new ExportPresenter( LogView );
 
-            await ExecuteControllerAsync( async () => await controller.ExecuteAsync( databasePath, developer, product, instrument, output, format, presenter, CancellationToken.None ) );
+            await ExecuteControllerAsync( async () => await controller.ExportToLocalFileAsync( databasePath, developer, product, instrument, output, format, presenter, CancellationToken.None ) );
         }
 
         #endregion

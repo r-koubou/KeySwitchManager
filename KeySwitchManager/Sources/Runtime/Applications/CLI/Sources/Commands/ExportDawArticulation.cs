@@ -38,7 +38,7 @@ namespace KeySwitchManager.Applications.CLI.Commands
             var option = (CommandOption)opt;
             var controller = new ExportController();
 
-            controller.Execute(
+            controller.ExportToLocalFile(
                 option.DatabasePath,
                 option.Developer,
                 option.Product,

@@ -12,7 +12,7 @@ namespace KeySwitchManager.Applications.Standalone.Base.KeySwitches.Extensions.C
     public static class ExportControllerExtension
     {
         #region Export to local file
-        public static void Execute(
+        public static void ExportToLocalFile(
             this ExportController me,
             string databasePath,
             string developerName,
@@ -21,9 +21,9 @@ namespace KeySwitchManager.Applications.Standalone.Base.KeySwitches.Extensions.C
             string outputDirectory,
             ExportFormat format,
             IExportPresenter presenter )
-            => ExecuteAsync( me, databasePath, developerName, productName, instrumentName, outputDirectory, format, presenter, CancellationToken.None ).GetAwaiter().GetResult();
+            => ExportToLocalFileAsync( me, databasePath, developerName, productName, instrumentName, outputDirectory, format, presenter, CancellationToken.None ).GetAwaiter().GetResult();
 
-        public static async Task ExecuteAsync(
+        public static async Task ExportToLocalFileAsync(
             this ExportController me,
             string databasePath,
             string developerName,
@@ -37,12 +37,12 @@ namespace KeySwitchManager.Applications.Standalone.Base.KeySwitches.Extensions.C
             var strategy = ExportStrategyFactory.CreateForDirectory( outputDirectory, format );
             using var repository = KeySwitchRepositoryFactory.CreateFileRepository( databasePath );
 
-            await me.ExecuteAsync( repository, developerName, productName, instrumentName, strategy, presenter, cancellationToken );
+            await me.ExportAsync( repository, developerName, productName, instrumentName, strategy, presenter, cancellationToken );
         }
         #endregion
 
         #region Export to specified stream
-        public static void Execute(
+        public static void ExportToStream(
             this ExportController me,
             IKeySwitchRepository repository,
             string developerName,
@@ -51,9 +51,9 @@ namespace KeySwitchManager.Applications.Standalone.Base.KeySwitches.Extensions.C
             Stream outputStream,
             ExportFormat format,
             IExportPresenter presenter )
-            => ExecuteAsync( me, repository, developerName, productName, instrumentName, outputStream, format, presenter, CancellationToken.None ).GetAwaiter().GetResult();
+            => ExportToStreamAsync( me, repository, developerName, productName, instrumentName, outputStream, format, presenter, CancellationToken.None ).GetAwaiter().GetResult();
 
-        public static async Task ExecuteAsync(
+        public static async Task ExportToStreamAsync(
             this ExportController me,
             IKeySwitchRepository repository,
             string developerName,
@@ -66,7 +66,7 @@ namespace KeySwitchManager.Applications.Standalone.Base.KeySwitches.Extensions.C
         {
             var strategy = ExportStrategyFactory.CreateForStream( outputStream, format );
 
-            await me.ExecuteAsync( repository, developerName, productName, instrumentName, strategy, presenter, cancellationToken );
+            await me.ExportAsync( repository, developerName, productName, instrumentName, strategy, presenter, cancellationToken );
         }
         #endregion
     }

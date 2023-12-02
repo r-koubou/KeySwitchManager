@@ -56,7 +56,7 @@
 
         try
         {
-            await controller.ExecuteAsync( target, CreatePresenter.Null, Format, cts.Token );
+            await controller.CreateToStreamAsync( target, CreatePresenter.Null, Format, cts.Token );
 
             target.Seek( 0, SeekOrigin.Begin );
             await DownloadService.TriggerDownloadAsync( target.ToArray(), outputFileName );

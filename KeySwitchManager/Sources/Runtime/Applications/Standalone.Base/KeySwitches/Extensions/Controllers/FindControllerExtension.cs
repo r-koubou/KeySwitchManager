@@ -29,7 +29,7 @@ namespace KeySwitchManager.Applications.Standalone.Base.KeySwitches.Extensions.C
             CancellationToken cancellationToken = default )
         {
             using var repository = KeySwitchRepositoryFactory.CreateFileRepository( databasePath );
-            await me.ExecuteAsync( repository, developerName, productName, instrumentName, presenter, cancellationToken );
+            await me.FindAsync( repository, developerName, productName, instrumentName, presenter, cancellationToken );
         }
         #endregion
     }

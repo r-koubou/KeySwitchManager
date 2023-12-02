@@ -7,38 +7,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e8a92dc3-8619-429d-923f-36b8ce0d37fa" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../Blazor/Pages/CreateDatabaseFile.razor" beforeDir="false" afterPath="$PROJECT_DIR$/../Blazor/Pages/CreateDatabaseFile.razor" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../CLI/Sources/Commands/Delete.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../CLI/Sources/Commands/Delete.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../CLI/Sources/Commands/Dump.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../CLI/Sources/Commands/Dump.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../CLI/Sources/Commands/ExportDawArticulation.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../CLI/Sources/Commands/ExportDawArticulation.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../CLI/Sources/Commands/ExportDawCakewalkArticulation.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../CLI/Sources/Commands/ExportDawCakewalkArticulation.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../CLI/Sources/Commands/ExportDawCubaseArticulation.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../CLI/Sources/Commands/ExportDawCubaseArticulation.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../CLI/Sources/Commands/ExportDawLogicArticulation.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../CLI/Sources/Commands/ExportDawLogicArticulation.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../CLI/Sources/Commands/ExportDawStudioOneArticulation.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../CLI/Sources/Commands/ExportDawStudioOneArticulation.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../CLI/Sources/Commands/ExportXlsx.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../CLI/Sources/Commands/ExportXlsx.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../CLI/Sources/Commands/ExportYaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../CLI/Sources/Commands/ExportYaml.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../CLI/Sources/Commands/Find.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../CLI/Sources/Commands/Find.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../CLI/Sources/Commands/Import.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../CLI/Sources/Commands/Import.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../CLI/Sources/Commands/New.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../CLI/Sources/Commands/New.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Standalone.Base/Applications.Standalone.Base.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/../Standalone.Base/Applications.Standalone.Base.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Standalone.Base/KeySwitches/ExportFormat.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../Standalone.Base/KeySwitches/ExportFormat.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Standalone.Base/KeySwitches/Extensions/Controllers/CreateControllerExtension.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../Standalone.Base/KeySwitches/Extensions/Controllers/CreateControllerExtension.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Standalone.Base/KeySwitches/Extensions/Controllers/DeleteControllerExtension.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../Standalone.Base/KeySwitches/Extensions/Controllers/DeleteControllerExtension.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Standalone.Base/KeySwitches/Extensions/Controllers/ExportControllerExtension.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../Standalone.Base/KeySwitches/Extensions/Controllers/ExportControllerExtension.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Standalone.Base/KeySwitches/Helpers/ExportStrategyFactory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../Standalone.Base/KeySwitches/Helpers/ExportStrategyFactory.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Standalone.Base/KeySwitches/Helpers/ImportContentFactory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../Standalone.Base/KeySwitches/Helpers/ImportContentFactory.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Standalone.Base/KeySwitches/Helpers/KeySwitchRepositoryFactory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../Standalone.Base/KeySwitches/Helpers/KeySwitchRepositoryFactory.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Applications.Xamarin.Mac/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Applications.Xamarin.Mac/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Applications.Xamarin.Mac.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Applications.Xamarin.Mac.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Applications.Xamarin.Mac.sln" beforeDir="false" afterPath="$PROJECT_DIR$/Applications.Xamarin.Mac.sln" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Sources/UiKitView/LogTextView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Sources/UiKitView/LogTextView.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Sources/ViewController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Sources/ViewController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Controllers/KeySwitches/DeleteController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../../Controllers/KeySwitches/DeleteController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Controllers/KeySwitches/ExportController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../../Controllers/KeySwitches/ExportController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Controllers/KeySwitches/FindController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../../Controllers/KeySwitches/FindController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Controllers/KeySwitches/ImportController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../../Controllers/KeySwitches/ImportController.cs" afterDir="false" />
-    </list>
+    <list default="true" id="e8a92dc3-8619-429d-923f-36b8ce0d37fa" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -119,7 +88,7 @@
       <workItem from="1701180496289" duration="662000" />
       <workItem from="1701273458198" duration="420000" />
       <workItem from="1701334849403" duration="408000" />
-      <workItem from="1701515771714" duration="5101000" />
+      <workItem from="1701515771714" duration="5697000" />
     </task>
     <servers />
   </component>

@@ -9,16 +9,16 @@ namespace KeySwitchManager.Controllers.KeySwitches
 {
     public sealed class ExportController
     {
-        public void Execute(
+        public void Export(
             IKeySwitchRepository repository,
             string developerName,
             string productName,
             string instrumentName,
             IExportStrategy strategy,
             IExportPresenter presenter )
-            => ExecuteAsync( repository, developerName, productName, instrumentName, strategy, presenter, CancellationToken.None ).GetAwaiter().GetResult();
+            => ExportAsync( repository, developerName, productName, instrumentName, strategy, presenter, CancellationToken.None ).GetAwaiter().GetResult();
 
-        public async Task ExecuteAsync(
+        public async Task ExportAsync(
             IKeySwitchRepository repository,
             string developerName,
             string productName,
