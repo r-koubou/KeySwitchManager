@@ -1,7 +1,7 @@
 using CommandLine;
 
 using KeySwitchManager.Applications.CLI.Views;
-using KeySwitchManager.Applications.Standalone.Core.KeySwitches.Helpers;
+using KeySwitchManager.Applications.Standalone.Base.KeySwitches.Helpers;
 using KeySwitchManager.Controllers.KeySwitches;
 using KeySwitchManager.Domain.KeySwitches.Models.Values;
 using KeySwitchManager.Presenters.KeySwitches;
@@ -32,12 +32,8 @@ namespace KeySwitchManager.Applications.CLI.Commands
             using var repository = KeySwitchRepositoryFactory.CreateFileRepository( option.DatabasePath );
             var controller = new FindController();
 
-            controller.Execute(
-                option.Developer,
-                option.Product,
-                option.Instrument,
-                repository,
-                new FindPresenter( new ConsoleLogView() )
+            controller.Execute( repository,
+                                option.Developer, option.Product, option.Instrument, new FindPresenter( new ConsoleLogView() )
             );
 
             return 0;

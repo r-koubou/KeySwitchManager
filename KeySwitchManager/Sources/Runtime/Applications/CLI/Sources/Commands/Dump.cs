@@ -3,7 +3,7 @@ using System.IO;
 using CommandLine;
 
 using KeySwitchManager.Applications.CLI.Views;
-using KeySwitchManager.Applications.Standalone.Core.KeySwitches.Helpers;
+using KeySwitchManager.Applications.Standalone.Base.KeySwitches.Helpers;
 using KeySwitchManager.Commons.Data;
 using KeySwitchManager.Controllers.KeySwitches;
 using KeySwitchManager.Infrastructures.Storage.Yaml.KeySwitches.Export;

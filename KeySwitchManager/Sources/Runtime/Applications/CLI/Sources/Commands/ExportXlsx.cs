@@ -1,6 +1,6 @@
 using CommandLine;
 
-using KeySwitchManager.Applications.Standalone.Core.KeySwitches.Commons;
+using KeySwitchManager.Applications.Standalone.Base.KeySwitches;
 
 namespace KeySwitchManager.Applications.CLI.Commands
 {

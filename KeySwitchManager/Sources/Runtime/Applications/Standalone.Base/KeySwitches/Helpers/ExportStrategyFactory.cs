@@ -1,7 +1,6 @@
 using System;
 using System.IO;
 
-using KeySwitchManager.Applications.Standalone.Core.KeySwitches.Commons;
 using KeySwitchManager.Commons.Data;
 using KeySwitchManager.Infrastructures.Storage.Json.KeySwitches.Cakewalk;
 using KeySwitchManager.Infrastructures.Storage.KeySwitches;
@@ -12,7 +11,7 @@ using KeySwitchManager.Infrastructures.Storage.Xml.KeySwitches.StudioOne;
 using KeySwitchManager.Infrastructures.Storage.Yaml.KeySwitches.Export;
 using KeySwitchManager.UseCase.KeySwitches.Export;
 
-namespace KeySwitchManager.Applications.Standalone.Core.KeySwitches.Helpers
+namespace KeySwitchManager.Applications.Standalone.Base.KeySwitches.Helpers
 {
     public static class ExportStrategyFactory
     {

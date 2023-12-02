@@ -1,8 +1,7 @@
 using CommandLine;
 
 using KeySwitchManager.Applications.CLI.Views;
-using KeySwitchManager.Applications.Standalone.Core.KeySwitches.Commons;
-using KeySwitchManager.Applications.Standalone.Core.KeySwitches.Helpers;
+using KeySwitchManager.Applications.Standalone.Base.KeySwitches.Helpers;
 using KeySwitchManager.Controllers.KeySwitches;
 using KeySwitchManager.Presenters.KeySwitches;
 
@@ -27,11 +26,8 @@ namespace KeySwitchManager.Applications.CLI.Commands
             var contentInfo = ImportContentFactory.CreateFromLocalFile( option.InputPath );
             var controller = new ImportController();
 
-            controller.Execute(
-                contentInfo.content,
-                contentInfo.contentReader,
-                repository,
-                new ImportPresenter( new ConsoleLogView() )
+            controller.Execute( repository,
+                                contentInfo.content, contentInfo.contentReader, new ImportPresenter( new ConsoleLogView() )
             );
 
             return 0;

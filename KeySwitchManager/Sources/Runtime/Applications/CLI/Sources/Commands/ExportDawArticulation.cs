@@ -1,9 +1,9 @@
 using CommandLine;
 
 using KeySwitchManager.Applications.CLI.Views;
-using KeySwitchManager.Applications.Standalone.Core.KeySwitches.Commons;
-using KeySwitchManager.Applications.Standalone.Core.KeySwitches.Extensions.Controllers;
-using KeySwitchManager.Applications.Standalone.Core.KeySwitches.Helpers;
+using KeySwitchManager.Applications.Standalone.Base.KeySwitches;
+using KeySwitchManager.Applications.Standalone.Base.KeySwitches.Extensions.Controllers;
+using KeySwitchManager.Applications.Standalone.Base.KeySwitches.Helpers;
 using KeySwitchManager.Controllers.KeySwitches;
 using KeySwitchManager.Domain.KeySwitches.Models.Values;
 using KeySwitchManager.Presenters.KeySwitches;
@@ -36,17 +36,15 @@ namespace KeySwitchManager.Applications.CLI.Commands
         public virtual int Execute( ICommandOption opt )
         {
             var option = (CommandOption)opt;
-
-            using var sourceDatabase = KeySwitchRepositoryFactory.CreateFileRepository( option.DatabasePath );
             var controller = new ExportController();
 
             controller.Execute(
+                option.DatabasePath,
                 option.Developer,
                 option.Product,
                 option.Instrument,
                 option.OutputDirectory,
                 Format,
-                sourceDatabase,
                 new ExportPresenter( new ConsoleLogView() )
             );
 

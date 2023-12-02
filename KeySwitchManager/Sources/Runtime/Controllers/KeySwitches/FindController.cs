@@ -10,18 +10,18 @@ namespace KeySwitchManager.Controllers.KeySwitches
     public sealed class FindController
     {
         public void Execute(
+            IKeySwitchRepository repository,
             string developerName,
             string productName,
             string instrumentName,
-            IKeySwitchRepository repository,
             IFindPresenter presenter )
-            => ExecuteAsync( developerName, instrumentName, productName, repository, presenter, CancellationToken.None ).GetAwaiter().GetResult();
+            => ExecuteAsync( repository, developerName, productName, instrumentName, presenter, CancellationToken.None ).GetAwaiter().GetResult();
 
         public async Task ExecuteAsync(
-            string developerName,
-            string instrumentName,
-            string productName,
             IKeySwitchRepository repository,
+            string developerName,
+            string productName,
+            string instrumentName,
             IFindPresenter presenter,
             CancellationToken cancellationToken = default )
         {

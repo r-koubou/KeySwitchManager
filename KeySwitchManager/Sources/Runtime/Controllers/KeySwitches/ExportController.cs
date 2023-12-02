@@ -10,25 +10,25 @@ namespace KeySwitchManager.Controllers.KeySwitches
     public sealed class ExportController
     {
         public void Execute(
+            IKeySwitchRepository repository,
             string developerName,
             string productName,
             string instrumentName,
             IExportStrategy strategy,
-            IKeySwitchRepository sourceRepository,
             IExportPresenter presenter )
-            => ExecuteAsync( developerName, productName, instrumentName, strategy, sourceRepository, presenter, CancellationToken.None ).GetAwaiter().GetResult();
+            => ExecuteAsync( repository, developerName, productName, instrumentName, strategy, presenter, CancellationToken.None ).GetAwaiter().GetResult();
 
         public async Task ExecuteAsync(
+            IKeySwitchRepository repository,
             string developerName,
             string productName,
             string instrumentName,
             IExportStrategy strategy,
-            IKeySwitchRepository sourceRepository,
             IExportPresenter presenter,
             CancellationToken cancellationToken = default )
         {
             var interactor = new ExportInteractor(
-                sourceRepository,
+                repository,
                 strategy,
                 presenter
             );

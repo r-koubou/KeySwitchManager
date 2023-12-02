@@ -6,10 +6,10 @@
         <!-- Assembly -->
         <Copyright>R-Koubou</Copyright>
         <Company>R-Koubou</Company>
-        <AssemblyName>KeySwitchManager.Applications.Core</AssemblyName>
+        <AssemblyName>KeySwitchManager.Applications.Standalone.Base</AssemblyName>
         <Product>KeySwitchManager Application Core Library</Product>
         <Nullable>enable</Nullable>
-        <RootNamespace>KeySwitchManager.Applications.Standalone.Core</RootNamespace>
+        <RootNamespace>KeySwitchManager.Applications.Standalone.Base</RootNamespace>
     </PropertyGroup>
 
     <ItemGroup>

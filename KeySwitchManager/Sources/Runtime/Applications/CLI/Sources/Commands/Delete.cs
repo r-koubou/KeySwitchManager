@@ -1,8 +1,9 @@
 using CommandLine;
 
 using KeySwitchManager.Applications.CLI.Views;
-using KeySwitchManager.Applications.Standalone.Core.KeySwitches.Extensions.Controllers;
+using KeySwitchManager.Applications.Standalone.Base.KeySwitches.Extensions.Controllers;
 using KeySwitchManager.Controllers.KeySwitches;
+using KeySwitchManager.Presenters.KeySwitches;
 
 namespace KeySwitchManager.Applications.CLI.Commands
 {
@@ -32,7 +33,9 @@ namespace KeySwitchManager.Applications.CLI.Commands
             logView.Append( $"Developer=\"{option.Developer}\", Product=\"{option.Product}\", Instrument=\"{option.Instrument}\"" );
 
             var controller = new DeleteController();
-            controller.Execute( option.DatabasePath, option.Developer, option.Product, option.Instrument, logView );
+            var presenter = new DeletePresenter( logView );
+
+            controller.Execute( option.DatabasePath, option.Developer, option.Product, option.Instrument, presenter );
 
             return 0;
         }
