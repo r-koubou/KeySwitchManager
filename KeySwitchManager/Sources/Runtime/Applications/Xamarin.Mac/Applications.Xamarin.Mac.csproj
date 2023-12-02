@@ -76,8 +76,14 @@
         <InterfaceDefinition Include="Main.storyboard" />
     </ItemGroup>
     <ItemGroup>
-        <ProjectReference Include="..\Standalone.Core\Applications.Standalone.Core.csproj" />
+        <ProjectReference Include="..\..\Commons\Commons.csproj" />
+        <ProjectReference Include="..\..\Domain\Domain.csproj" />
         <ProjectReference Include="..\..\UseCases\UseCases.csproj" />
+        <ProjectReference Include="..\..\Controllers\Controllers.csproj" />
+        <ProjectReference Include="..\..\Interactors\Interactors.csproj" />
+        <ProjectReference Include="..\..\Presenters\Presenters.csproj" />
+        <ProjectReference Include="..\..\Views\Views.csproj" />
+        <ProjectReference Include="..\Standalone.Base\Applications.Standalone.Base.csproj" />
     </ItemGroup>
     <ItemGroup>
         <PackageReference Include="RkHelper" Version="0.0.10" />

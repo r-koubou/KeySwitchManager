@@ -2,17 +2,15 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 
-using KeySwitchManager.Applications.Standalone.Core.Controllers;
-using KeySwitchManager.Applications.Standalone.Core.Controllers.Create;
-using KeySwitchManager.Applications.Standalone.Core.Controllers.Delete;
-using KeySwitchManager.Applications.Standalone.Core.Controllers.Export;
-using KeySwitchManager.Applications.Standalone.Core.Controllers.Find;
-using KeySwitchManager.Applications.Standalone.Core.Controllers.Import;
-using KeySwitchManager.Applications.Standalone.Core.Presenters;
+using KeySwitchManager.Applications.Standalone.Base.KeySwitches;
+using KeySwitchManager.Applications.Standalone.Base.KeySwitches.Extensions.Controllers;
 using KeySwitchManager.Applications.WPF.WpfView;
+using KeySwitchManager.Controllers.KeySwitches;
+using KeySwitchManager.Presenters.KeySwitches;
 
 using Microsoft.Win32;
 using Microsoft.WindowsAPICodePack.Dialogs;
@@ -34,15 +32,15 @@ namespace KeySwitchManager.Applications.WPF
         #region UI Binding
         #endregion
 
-        private LogTextView LogTextView { get; }
-        private IList<ExportSupportedFormat> ExportSupportedFormatList { get; }
+        private LogTextView LogView { get; }
+        private IList<ExportFormat> ExportSupportedFormatList { get; }
 
         public MainWindow()
         {
             InitializeComponent();
 
-            LogTextView               = new LogTextView( LogTextBox, this.Dispatcher );
-            ExportSupportedFormatList = new List<ExportSupportedFormat>( Enum.GetValues<ExportSupportedFormat>() );
+            LogView               = new LogTextView( LogTextBox, this.Dispatcher );
+            ExportSupportedFormatList = new List<ExportFormat>( Enum.GetValues<ExportFormat>() );
 
             InitializeCustomComponent();
         }
@@ -69,7 +67,7 @@ namespace KeySwitchManager.Applications.WPF
         private void PreExecuteController()
         {
             Dispatcher.Invoke( () => {
-                LogTextView.Clear();
+                LogView.Clear();
                 ProgressBar.IsIndeterminate = true;
                 LogClearButton.IsEnabled    = false;
                 MainTabPanel.IsEnabled      = false;
@@ -87,12 +85,13 @@ namespace KeySwitchManager.Applications.WPF
             } );
         }
 
-        private async Task ExecuteControllerAsync( Func<IController> controllerFactory )
+        private async Task ExecuteControllerAsync( Func<Task> execute )
         {
             PreExecuteController();
 
-            await Task.Run( async () => {
-                    await ControlExecutor.ExecuteAsync( controllerFactory, LogTextView );
+            await Task.Run( async () =>
+                {
+                    await execute();
                 }
             );
 
@@ -186,10 +185,10 @@ namespace KeySwitchManager.Applications.WPF
                 return;
             }
 
-            ICreateFileControllerFactory factory = new CreateFileControllerFactory();
-            var presenter = new CreatePresenter( LogTextView );
+            var controller = new CreateController();
+            var presenter = new CreatePresenter( LogView );
 
-            await ExecuteControllerAsync( () => factory.Create( path, presenter ) );
+            await ExecuteControllerAsync( async () => await controller.CreateToLocalFileAsync( path, presenter, CancellationToken.None ) );
         }
         #endregion
 
@@ -214,8 +213,10 @@ namespace KeySwitchManager.Applications.WPF
                 return;
             }
 
-            IImportControllerFactory importControllerFactory = new ImportControllerFactory( LogTextView );
-            await ExecuteControllerAsync( () => importControllerFactory.Create( databasePath, importFilePath ) );
+            var controller = new ImportController();
+            var presenter = new ImportPresenter( LogView );
+
+            await ExecuteControllerAsync( async () => await controller.ExecuteAsync( databasePath, importFilePath, presenter, CancellationToken.None ) );
         }
         #endregion
 
@@ -247,7 +248,10 @@ namespace KeySwitchManager.Applications.WPF
                 return;
             }
 
-            await ExecuteControllerAsync( () => FindControllerFactory.Create( databasePath, developer, product, instrument, LogTextView ) );
+            var controller = new FindController();
+            var presenter = new FindPresenter( LogView );
+
+            await ExecuteControllerAsync( async () => await controller.ExecuteAsync( databasePath, developer, product, instrument, presenter, CancellationToken.None ) );
         }
 
         #endregion
@@ -275,8 +279,10 @@ namespace KeySwitchManager.Applications.WPF
                 return;
             }
 
-            await ExecuteControllerAsync( () => DeleteControllerFactory.Create( databasePath, developer, product, instrument, LogTextView ) );
+            var controller = new DeleteController();
+            var presenter = new DeletePresenter( LogView );
 
+            await ExecuteControllerAsync( async () => await controller.DeleteFromLocalDatabaseAsync( databasePath, developer, product, instrument, presenter, CancellationToken.None ) );
         }
         #endregion
 
@@ -310,17 +316,10 @@ namespace KeySwitchManager.Applications.WPF
             // Append a sub folder by format name
             output = Path.Combine( output, format.ToString() );
 
-            IExportControllerFactory controllerFactory = new ExportFileControllerFactory( databasePath, output );
+            var controller = new ExportController();
+            var presenter = new ExportPresenter( LogView );
 
-            await ExecuteControllerAsync(
-                () => controllerFactory.Create(
-                    developer,
-                    product,
-                    instrument,
-                    format,
-                    LogTextView
-                )
-            );
+            await ExecuteControllerAsync( async () => await controller.ExportToLocalFileAsync( databasePath, developer, product, instrument, output, format, presenter, CancellationToken.None ) );
         }
 
 
@@ -380,7 +379,7 @@ namespace KeySwitchManager.Applications.WPF
                     ImportDatabaseFileText.Text        = config.ImportDatabasePath;
                     FindDatabaseFileText.Text          = config.ExportDatabasePath;
                     ExportDirectoryText.Text           = config.ExportDirectory;
-                    ExportFormatCombobox.SelectedIndex = (int)EnumHelper.Parse( config.ExportFormat, ExportSupportedFormat.Xlsx );
+                    ExportFormatCombobox.SelectedIndex = (int)EnumHelper.Parse( config.ExportFormat, ExportFormat.Xlsx );
                 }
             );
         }

@@ -1,8 +1,9 @@
 @page "/create_db"
-@using KeySwitchManager.Applications.Standalone.Core.Controllers.Export
-@using KeySwitchManager.Applications.Standalone.Core.Views.LogView
+@using KeySwitchManager.Applications.Standalone.Base.KeySwitches.Extensions.Controllers
+@using KeySwitchManager.Controllers.KeySwitches
+@using KeySwitchManager.Presenters.KeySwitches
+@using KeySwitchManager.Applications.Standalone.Base.KeySwitches
 @using KeySwitchManager.Applications.Blazor.Services
-@using KeySwitchManager.Applications.Standalone.Core.Controllers.Create
 
 @inject FileDownloadService DownloadService
 
@@ -19,9 +20,9 @@
     else
     {
         <MudStack Row="false">
-            <MudSelect @bind-value="Format" Margin="Margin.Dense" T=" ExportSupportedFormat " Variant="Variant.Text" Label="Format">
-                <MudSelectItem Value="@(ExportSupportedFormat.Yaml)"/>
-                <MudSelectItem Value="@(ExportSupportedFormat.Xlsx)"/>
+            <MudSelect @bind-value="Format" Margin="Margin.Dense" T=" ExportFormat " Variant="Variant.Text" Label="Format">
+                <MudSelectItem Value="@(ExportFormat.Yaml)"/>
+                <MudSelectItem Value="@(ExportFormat.Xlsx)"/>
             </MudSelect>
             <MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="@(OnCreateButtonClicked )">Create</MudButton>
         </MudStack>
@@ -30,7 +31,7 @@
 
 @code {
 
-    private ExportSupportedFormat Format { get; set; } = ExportSupportedFormat.Yaml;
+    private ExportFormat Format { get; set; } = ExportFormat.Yaml;
     private bool Processing { get; set; } = false;
     private CancellationTokenSource cts = new ();
 
@@ -42,13 +43,12 @@
         await Task.Delay( 1 );
 
         var target = new MemoryStream();
-        var factory = new CreateToStreamControllerFactory();
-        var controller = factory.Create( target, Format, ILogTextView.Null );
+        var controller = new CreateController();
 
         var outputFileName = Format switch
         {
-            ExportSupportedFormat.Yaml => "new_file.yaml",
-            ExportSupportedFormat.Xlsx => "new_file.xlsx",
+            ExportFormat.Yaml => "new_file.yaml",
+            ExportFormat.Xlsx => "new_file.xlsx",
             _                          => "unknown_file"
         };
 
@@ -56,7 +56,7 @@
 
         try
         {
-            await controller.ExecuteAsync( cts.Token );
+            await controller.CreateToStreamAsync( target, CreatePresenter.Null, Format, cts.Token );
 
             target.Seek( 0, SeekOrigin.Begin );
             await DownloadService.TriggerDownloadAsync( target.ToArray(), outputFileName );

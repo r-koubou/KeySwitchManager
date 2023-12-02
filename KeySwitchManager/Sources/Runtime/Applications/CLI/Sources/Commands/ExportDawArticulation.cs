@@ -1,10 +1,12 @@
-using System.IO;
-
 using CommandLine;
 
-using KeySwitchManager.Applications.Standalone.Core.Controllers.Export;
-using KeySwitchManager.Applications.Standalone.Core.Views.LogView;
+using KeySwitchManager.Applications.CLI.Views;
+using KeySwitchManager.Applications.Standalone.Base.KeySwitches;
+using KeySwitchManager.Applications.Standalone.Base.KeySwitches.Extensions.Controllers;
+using KeySwitchManager.Applications.Standalone.Base.KeySwitches.Helpers;
+using KeySwitchManager.Controllers.KeySwitches;
 using KeySwitchManager.Domain.KeySwitches.Models.Values;
+using KeySwitchManager.Presenters.KeySwitches;
 
 namespace KeySwitchManager.Applications.CLI.Commands
 {
@@ -34,25 +36,21 @@ namespace KeySwitchManager.Applications.CLI.Commands
         public virtual int Execute( ICommandOption opt )
         {
             var option = (CommandOption)opt;
-            IExportControllerFactory controllerFactory = new ExportFileControllerFactory(
-                option.DatabasePath,
-                Path.Combine( option.OutputDirectory, SupportedFormat.ToString() )
-            );
-            ILogTextView logView = new ConsoleLogView();
+            var controller = new ExportController();
 
-            using var controller = controllerFactory.Create(
+            controller.ExportToLocalFile(
+                option.DatabasePath,
                 option.Developer,
                 option.Product,
                 option.Instrument,
-                SupportedFormat,
-                logView
+                option.OutputDirectory,
+                Format,
+                new ExportPresenter( new ConsoleLogView() )
             );
-
-            controller.Execute();
 
             return 0;
         }
 
-        protected abstract ExportSupportedFormat SupportedFormat { get; }
+        protected abstract ExportFormat Format { get; }
     }
 }

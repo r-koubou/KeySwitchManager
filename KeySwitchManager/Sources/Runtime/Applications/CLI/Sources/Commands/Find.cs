@@ -1,8 +1,10 @@
 using CommandLine;
 
-using KeySwitchManager.Applications.Standalone.Core.Controllers.Find;
-using KeySwitchManager.Applications.Standalone.Core.Views.LogView;
+using KeySwitchManager.Applications.CLI.Views;
+using KeySwitchManager.Applications.Standalone.Base.KeySwitches.Helpers;
+using KeySwitchManager.Controllers.KeySwitches;
 using KeySwitchManager.Domain.KeySwitches.Models.Values;
+using KeySwitchManager.Presenters.KeySwitches;
 
 namespace KeySwitchManager.Applications.CLI.Commands
 {
@@ -27,16 +29,13 @@ namespace KeySwitchManager.Applications.CLI.Commands
         public int Execute( ICommandOption opt )
         {
             var option = (CommandOption)opt;
+            using var repository = KeySwitchRepositoryFactory.CreateFileRepository( option.DatabasePath );
+            var controller = new FindController();
 
-            using var controller = FindControllerFactory.Create(
-                option.DatabasePath,
-                option.Developer,
-                option.Product,
-                option.Instrument,
-                new ConsoleLogView()
+            controller.Find( repository,
+                                option.Developer, option.Product, option.Instrument, new FindPresenter( new ConsoleLogView() )
             );
 
-            controller.Execute();
             return 0;
         }
     }
