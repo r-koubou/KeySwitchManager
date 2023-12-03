@@ -10,8 +10,8 @@ using CoreGraphics;
 
 using Foundation;
 
-using KeySwitchManager.Applications.Standalone.Base.KeySwitches;
-using KeySwitchManager.Applications.Standalone.Base.KeySwitches.Extensions.Controllers;
+using KeySwitchManager.Applications.Standalone.KeySwitches;
+using KeySwitchManager.Applications.Standalone.KeySwitches.Controllers.Extensions;
 using KeySwitchManager.Controllers.KeySwitches;
 using KeySwitchManager.Presenters.KeySwitches;
 using KeySwitchManager.Xamarin.Mac.UiKitView;

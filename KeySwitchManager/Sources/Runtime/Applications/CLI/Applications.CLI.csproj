@@ -18,7 +18,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\Standalone.Base\Applications.Standalone.Base.csproj" />
+      <ProjectReference Include="..\Standalone\Applications.Standalone.csproj" />
     </ItemGroup>
 
     <ItemGroup>

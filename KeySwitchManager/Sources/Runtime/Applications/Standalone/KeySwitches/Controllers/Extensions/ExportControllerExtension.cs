@@ -2,12 +2,12 @@
 using System.Threading;
 using System.Threading.Tasks;
 
-using KeySwitchManager.Applications.Standalone.Base.KeySwitches.Helpers;
+using KeySwitchManager.Applications.Standalone.KeySwitches.Helpers;
 using KeySwitchManager.Controllers.KeySwitches;
 using KeySwitchManager.Domain.KeySwitches;
 using KeySwitchManager.UseCase.KeySwitches.Export;
 
-namespace KeySwitchManager.Applications.Standalone.Base.KeySwitches.Extensions.Controllers
+namespace KeySwitchManager.Applications.Standalone.KeySwitches.Controllers.Extensions
 {
     public static class ExportControllerExtension
     {

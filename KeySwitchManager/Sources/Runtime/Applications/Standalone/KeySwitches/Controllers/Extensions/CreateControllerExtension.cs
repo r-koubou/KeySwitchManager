@@ -11,7 +11,7 @@ using KeySwitchManager.Infrastructures.Storage.Yaml.KeySwitches.Export;
 using KeySwitchManager.UseCase.KeySwitches.Create;
 using KeySwitchManager.UseCase.KeySwitches.Export;
 
-namespace KeySwitchManager.Applications.Standalone.Base.KeySwitches.Extensions.Controllers
+namespace KeySwitchManager.Applications.Standalone.KeySwitches.Controllers.Extensions
 {
     public static class CreateControllerExtension
     {
