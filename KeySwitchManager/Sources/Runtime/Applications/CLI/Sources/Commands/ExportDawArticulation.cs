@@ -1,9 +1,8 @@
 using CommandLine;
 
 using KeySwitchManager.Applications.CLI.Views;
-using KeySwitchManager.Applications.Standalone.Base.KeySwitches;
-using KeySwitchManager.Applications.Standalone.Base.KeySwitches.Extensions.Controllers;
-using KeySwitchManager.Applications.Standalone.Base.KeySwitches.Helpers;
+using KeySwitchManager.Applications.Standalone.KeySwitches;
+using KeySwitchManager.Applications.Standalone.KeySwitches.Controllers.Extensions;
 using KeySwitchManager.Controllers.KeySwitches;
 using KeySwitchManager.Domain.KeySwitches.Models.Values;
 using KeySwitchManager.Presenters.KeySwitches;

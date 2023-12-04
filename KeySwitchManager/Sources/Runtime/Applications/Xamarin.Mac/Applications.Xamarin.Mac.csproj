@@ -83,7 +83,7 @@
         <ProjectReference Include="..\..\Interactors\Interactors.csproj" />
         <ProjectReference Include="..\..\Presenters\Presenters.csproj" />
         <ProjectReference Include="..\..\Views\Views.csproj" />
-        <ProjectReference Include="..\Standalone.Base\Applications.Standalone.Base.csproj" />
+        <ProjectReference Include="..\Standalone\Applications.Standalone.csproj" />
     </ItemGroup>
     <ItemGroup>
         <PackageReference Include="RkHelper" Version="0.0.10" />

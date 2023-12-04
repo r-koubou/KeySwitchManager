@@ -6,8 +6,8 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 
-using KeySwitchManager.Applications.Standalone.Base.KeySwitches;
-using KeySwitchManager.Applications.Standalone.Base.KeySwitches.Extensions.Controllers;
+using KeySwitchManager.Applications.Standalone.KeySwitches;
+using KeySwitchManager.Applications.Standalone.KeySwitches.Controllers.Extensions;
 using KeySwitchManager.Applications.WPF.WpfView;
 using KeySwitchManager.Controllers.KeySwitches;
 using KeySwitchManager.Presenters.KeySwitches;

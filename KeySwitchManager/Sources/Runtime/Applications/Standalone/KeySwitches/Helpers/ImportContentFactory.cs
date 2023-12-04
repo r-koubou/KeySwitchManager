@@ -6,7 +6,7 @@ using KeySwitchManager.Infrastructures.Storage.Spreadsheet.ClosedXml.KeySwitches
 using KeySwitchManager.Infrastructures.Storage.Yaml.KeySwitches.Import;
 using KeySwitchManager.UseCase.KeySwitches.Import;
 
-namespace KeySwitchManager.Applications.Standalone.Base.KeySwitches.Helpers
+namespace KeySwitchManager.Applications.Standalone.KeySwitches.Helpers
 {
     public static class ImportContentFactory
     {

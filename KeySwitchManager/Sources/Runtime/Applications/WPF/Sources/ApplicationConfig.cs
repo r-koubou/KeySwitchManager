@@ -11,7 +11,7 @@ namespace KeySwitchManager.Applications.WPF
         public string ImportDatabasePath { get; set; } = string.Empty;
         public string ExportDatabasePath { get; set; } = string.Empty;
         public string ExportDirectory { get; set; } = string.Empty;
-        public string ExportFormat { get; set; } = KeySwitchManager.Applications.Standalone.Base.KeySwitches.ExportFormat.Xlsx.ToString();
+        public string ExportFormat { get; set; } = KeySwitchManager.Applications.Standalone.KeySwitches.ExportFormat.Xlsx.ToString();
     }
 
     public static class ApplicationConfig

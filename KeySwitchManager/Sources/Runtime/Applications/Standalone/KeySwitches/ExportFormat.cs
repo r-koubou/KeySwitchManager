@@ -1,4 +1,4 @@
-﻿namespace KeySwitchManager.Applications.Standalone.Base.KeySwitches
+﻿namespace KeySwitchManager.Applications.Standalone.KeySwitches
 {
     public enum ExportFormat
     {
