@@ -15,7 +15,12 @@ $(Product)
 
 ## Build At
 
-$([System.DateTime]::Now.ToString("yyyy-MM-dd HH:mm:ss %K"))
+$([System.DateTime]::UtcNow.ToString("yyyy-MM-ddTHH:mm:ss"))
+
+## Git
+
+- Branch: $(GitBranch)
+- Hash: $(GitCommitHash)
             </VersionText>
         </PropertyGroup>
 
