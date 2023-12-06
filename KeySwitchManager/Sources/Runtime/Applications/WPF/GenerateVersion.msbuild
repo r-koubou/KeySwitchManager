@@ -13,7 +13,7 @@ $(Product)
 
 %(MyAssemblyIdentities.Version)
 
-## Build At
+## Build On
 
 $([System.DateTime]::UtcNow.ToString("yyyy-MM-ddTHH:mm:ss"))
 
