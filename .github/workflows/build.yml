@@ -58,7 +58,7 @@ jobs:
         dotnet-version: ${{ env.DOTNET_SDK_VERSION }}
 
     - name: CLI Build
-      run: dotnet msbuild /nologo /t:Archive /p:Configuration=${{ inputs.build-configuration }} /p:PublishDir=${{ github.workspace }}/publish $ProjectFile
+      run: dotnet msbuild /nologo /t:Archive /p:Configuration=${{ inputs.build-configuration }} /p:PublishDir=${{ github.workspace }}/publish /p:GitBranch=${{ github.ref }} /p:GitCommitHash=${{ github.sha }} $ProjectFile
       shell: bash
       env:
         ProjectFile: KeySwitchManager/Sources/Runtime/Applications/CLI/publish.msbuild

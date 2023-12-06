@@ -1,5 +1,11 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
+    <!-- Set value from CI command -->
+    <PropertyGroup>
+        <GitBranch>N/A</GitBranch>
+        <GitCommitHash>N/A</GitCommitHash>
+    </PropertyGroup>
+
     <PropertyGroup>
         <!-- Assembly / Common -->
         <OutputType>Exe</OutputType>

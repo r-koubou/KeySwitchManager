@@ -16,6 +16,11 @@ $(Product)
 ## Build At
 
 $([System.DateTime]::Now.ToString("yyyy-MM-dd HH:mm:ss %K"))
+
+## Git
+
+- Brabch: $(GitBranch)
+- Hash: $(GitCommitHash)
             </VersionText>
         </PropertyGroup>
 
@@ -24,5 +29,6 @@ $([System.DateTime]::Now.ToString("yyyy-MM-dd HH:mm:ss %K"))
                 Overwrite="true"
                 Lines="$(VersionText)" />
     </Target>
+
 
 </Project>
