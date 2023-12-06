@@ -1,18 +1,25 @@
 <Project>
     <!-- Output assenbly version to text file for including on deploy by msbuild script. -->
     <Target Name="GenerateVersionText" AfterTargets="Build">
+        <GetAssemblyIdentity AssemblyFiles="$(TargetPath)">
+            <Output TaskParameter="Assemblies" ItemName="MyAssemblyIdentities" />
+        </GetAssemblyIdentity>
         <PropertyGroup>
             <VersionText>
 $(Product)
 ==============================
 
-## Version
+## Assembly Version
 
-$(Version)
+%(MyAssemblyIdentities.Version)
 
-## Build At
+## Build On
 
-$([System.DateTime]::Now.ToString("yyyy-MM-dd HH:mm:ss %K"))
+$([System.DateTime]::UtcNow.ToString("yyyy-MM-ddTHH:mm:ss"))
+
+## Build Configuration
+
+$(Configuration)
             </VersionText>
         </PropertyGroup>
 
