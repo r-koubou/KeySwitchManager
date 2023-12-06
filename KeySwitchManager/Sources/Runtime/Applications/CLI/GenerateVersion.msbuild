@@ -13,9 +13,18 @@ $(Product)
 
 %(MyAssemblyIdentities.Version)
 
-## Build At
+## Build On
 
-$([System.DateTime]::Now.ToString("yyyy-MM-dd HH:mm:ss %K"))
+$([System.DateTime]::UtcNow.ToString("yyyy-MM-ddTHH:mm:ss"))
+
+## Build Configuration
+
+$(Configuration)
+
+## Git
+
+- Branch: $(GitBranch)
+- Hash: $(GitCommitHash)
             </VersionText>
         </PropertyGroup>
 
