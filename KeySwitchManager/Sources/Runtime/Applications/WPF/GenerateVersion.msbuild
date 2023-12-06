@@ -17,6 +17,10 @@ $(Product)
 
 $([System.DateTime]::UtcNow.ToString("yyyy-MM-ddTHH:mm:ss"))
 
+## Build Configuration
+
+$(Configuration)
+
 ## Git
 
 - Branch: $(GitBranch)
