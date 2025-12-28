@@ -7,7 +7,7 @@
         <RootNamespace>KeySwitchManager.Applications.CLI</RootNamespace>
         <Company>R-Koubou</Company>
         <Product>KeySwitchManager CLI Application</Product>
-        <Version>0.5.3</Version>
+        <Version>0.6.0</Version>
         <Description>KeySwitchManager CLI Application</Description>
         <Nullable>enable</Nullable>
         <TargetFramework>net10.0</TargetFramework>
