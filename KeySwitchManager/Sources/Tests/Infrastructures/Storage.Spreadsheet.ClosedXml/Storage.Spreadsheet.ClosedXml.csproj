@@ -1,0 +1,33 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <LangVersion>9</LangVersion>
+        <TargetFramework>net6.0</TargetFramework>
+        <RootNamespace>KeySwitchManager.Testing.Storage.Spreadsheet.ClosedXml</RootNamespace>
+        <Nullable>enable</Nullable>
+        <IsPackable>false</IsPackable>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="nunit" Version="3.13.3" />
+        <PackageReference Include="NUnit3TestAdapter" Version="4.5.0" />
+        <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.7.2" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\..\..\Runtime\Infrastructures\Storage.Spreadsheet.ClosedXml\Storage.Spreadsheet.ClosedXml.csproj" />
+      <ProjectReference Include="..\..\..\Runtime\Infrastructures\Storage.Xml\Storage.Xml.csproj" />
+      <ProjectReference Include="..\..\Commons\Commons.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="TestData\" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Update="TestData\ImportTestData.xlsx">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </None>
+    </ItemGroup>
+
+</Project>

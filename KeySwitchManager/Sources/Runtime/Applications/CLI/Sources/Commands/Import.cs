@@ -1,6 +1,9 @@
 using CommandLine;
-using KeySwitchManager.Applications.Core.Controllers.Import;
-using KeySwitchManager.Applications.Core.Views.LogView;
+
+using KeySwitchManager.Applications.CLI.Views;
+using KeySwitchManager.Applications.Standalone.KeySwitches.Helpers;
+using KeySwitchManager.Controllers.KeySwitches;
+using KeySwitchManager.Presenters.KeySwitches;
 
 namespace KeySwitchManager.Applications.CLI.Commands
 {
@@ -19,14 +22,13 @@ namespace KeySwitchManager.Applications.CLI.Commands
         public int Execute( ICommandOption opt )
         {
             var option = (CommandOption)opt;
+            using var repository = KeySwitchRepositoryFactory.CreateFileRepository( option.DatabasePath );
+            var contentInfo = ImportContentFactory.CreateFromLocalFile( option.InputPath );
+            var controller = new ImportController();
 
-            using var controller = ImportControllerFactory.Create(
-                option.DatabasePath,
-                option.InputPath,
-                new ConsoleLogView()
+            controller.Import( repository,
+                                contentInfo.content, contentInfo.contentReader, new ImportPresenter( new ConsoleLogView() )
             );
-
-            controller.Execute();
 
             return 0;
         }

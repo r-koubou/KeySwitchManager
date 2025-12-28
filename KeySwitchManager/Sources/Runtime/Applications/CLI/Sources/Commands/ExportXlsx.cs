@@ -1,5 +1,6 @@
 using CommandLine;
-using KeySwitchManager.Applications.Core.Controllers.Export;
+
+using KeySwitchManager.Applications.Standalone.KeySwitches;
 
 namespace KeySwitchManager.Applications.CLI.Commands
 {
@@ -9,6 +10,6 @@ namespace KeySwitchManager.Applications.CLI.Commands
         public new class CommandOption : ExportDawArticulation.CommandOption
         {}
 
-        protected override ExportSupportedFormat SupportedFormat => ExportSupportedFormat.Xlsx;
+        protected override ExportFormat Format => ExportFormat.Xlsx;
     }
 }

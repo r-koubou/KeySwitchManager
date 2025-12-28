@@ -4,7 +4,7 @@
 
 - Windows 10 以降
 - .NET Runtime 7.x
-  - https://dotnet.microsoft.com/ja-jp/download/dotnet/7.0
+  - https://dotnet.microsoft.com/ja-jp/download/dotnet/10.0
 
 ## ドキュメント
 

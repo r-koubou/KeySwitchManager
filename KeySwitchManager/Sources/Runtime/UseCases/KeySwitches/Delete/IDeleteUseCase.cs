@@ -1,12 +1,6 @@
-using System.Threading.Tasks;
+using KeySwitchManager.UseCase.Commons;
 
 namespace KeySwitchManager.UseCase.KeySwitches.Delete
 {
-    public interface IDeleteUseCase
-    {
-        public DeleteResponse Execute( DeleteRequest request )
-            => ExecuteAsync( request ).GetAwaiter().GetResult();
-
-        public Task<DeleteResponse> ExecuteAsync( DeleteRequest request );
-    }
+    public interface IDeleteUseCase : IInputPort<DeleteInputData> {}
 }

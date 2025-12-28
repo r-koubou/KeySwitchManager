@@ -4,7 +4,7 @@ using System.Text;
 
 using CommandLine;
 
-using RkHelper.Text;
+using RkHelper.Primitives;
 
 namespace KeySwitchManager.Applications.CLI.Commands
 {

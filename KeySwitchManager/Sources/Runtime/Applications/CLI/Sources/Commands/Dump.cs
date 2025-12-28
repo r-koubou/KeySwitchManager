@@ -2,10 +2,12 @@ using System.IO;
 
 using CommandLine;
 
-using KeySwitchManager.Applications.Core.Controllers.Dump;
-using KeySwitchManager.Applications.Core.Views.LogView;
+using KeySwitchManager.Applications.CLI.Views;
+using KeySwitchManager.Applications.Standalone.KeySwitches.Helpers;
 using KeySwitchManager.Commons.Data;
-using KeySwitchManager.Infrastructures.Storage.Yaml.KeySwitches;
+using KeySwitchManager.Controllers.KeySwitches;
+using KeySwitchManager.Infrastructures.Storage.Yaml.KeySwitches.Export;
+using KeySwitchManager.Presenters.KeySwitches;
 using KeySwitchManager.UseCase.KeySwitches.Export;
 
 namespace KeySwitchManager.Applications.CLI.Commands
@@ -24,14 +26,21 @@ namespace KeySwitchManager.Applications.CLI.Commands
         public int Execute( ICommandOption opt )
         {
             var option = (CommandOption)opt;
+            var database = KeySwitchRepositoryFactory.CreateFileRepository( option.DatabasePath );
+            var controller = new DumpController();
 
-            using var controller = DumpFileControllerFactory.Create(
-                option.DatabasePath,
-                option.OutputPath,
-                new ConsoleLogView()
+            var outputDirectory = new DirectoryPath( Path.GetDirectoryName( option.OutputPath ) ?? string.Empty );
+
+            var contentFactory       = new YamlExportContentFactory();
+            var contentWriterFactory = new YamlExportContentFileWriterFactory( outputDirectory );
+            var strategy = new SingleExportStrategy( contentWriterFactory, contentFactory );
+
+            controller.Dump(
+                database,
+                strategy,
+                new DumpPresenter( new ConsoleLogView() )
             );
 
-            controller.Execute();
             return 0;
         }
     }

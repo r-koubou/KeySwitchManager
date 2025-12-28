@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 
+using KeySwitchManager.Commons.Data;
 using KeySwitchManager.Domain.KeySwitches.Models;
 using KeySwitchManager.Domain.KeySwitches.Models.Aggregations;
 using KeySwitchManager.Domain.KeySwitches.Models.Factory;
@@ -26,12 +27,14 @@ namespace KeySwitchManager.Domain.KeySwitches.Helpers
             IMidiNoteOnFactory midiNoteOnFactory,
             IMidiControlChangeFactory midiControlChangeFactory,
             IMidiProgramChangeFactory midiProgramChangeFactory )
-            => factory.Create(
+        {
+            var now = UtcDateTime.NowAsDateTime;
+            return factory.Create(
                 Guid.NewGuid(),
                 "Author",
                 "Description",
-                DateTime.Now,
-                DateTime.Now,
+                now,
+                now,
                 "Developer Name",
                 "Product name",
                 "Instrument name",
@@ -64,5 +67,6 @@ namespace KeySwitchManager.Domain.KeySwitches.Helpers
                     { "extra2 key", "extra2 value" },
                 }
             );
+        }
     }
 }

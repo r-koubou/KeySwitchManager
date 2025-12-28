@@ -7,6 +7,7 @@ namespace KeySwitchManager.Xamarin.Mac
     [Register( "AppDelegate" )]
     public class AppDelegate : NSApplicationDelegate
     {
+        // ReSharper disable once EmptyConstructor
         public AppDelegate()
         {
             /*caret*/

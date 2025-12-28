@@ -1,6 +1,9 @@
 using CommandLine;
-using KeySwitchManager.Applications.Core.Controllers.Create;
-using KeySwitchManager.Applications.Core.Views.LogView;
+
+using KeySwitchManager.Applications.CLI.Views;
+using KeySwitchManager.Applications.Standalone.KeySwitches.Controllers.Extensions;
+using KeySwitchManager.Controllers.KeySwitches;
+using KeySwitchManager.Presenters.KeySwitches;
 
 namespace KeySwitchManager.Applications.CLI.Commands
 {
@@ -18,9 +21,9 @@ namespace KeySwitchManager.Applications.CLI.Commands
             var option = (CommandOption)opt;
             var logView = new ConsoleLogView();
 
-            using var controller = CreateControllerFactory.Create( option.OutputPath, logView );
+            var controller = new CreateController();
             logView.Append( $"generating keyswitch template to {option.OutputPath}" );
-            controller.Execute();
+            controller.CreateToLocalFile( option.OutputPath, new CreatePresenter( new ConsoleLogView() ) );
 
             return 0;
         }

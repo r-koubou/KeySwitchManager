@@ -1,12 +1,6 @@
-using System.Threading.Tasks;
+using KeySwitchManager.UseCase.Commons;
 
 namespace KeySwitchManager.UseCase.KeySwitches.Find
 {
-    public interface IFindUseCase
-    {
-        public FindResponse Execute( FindRequest request )
-            => ExecuteAsync( request ).GetAwaiter().GetResult();
-
-        public Task<FindResponse> ExecuteAsync( FindRequest request );
-    }
+    public interface IFindUseCase : IInputPort<FindInputData> {}
 }

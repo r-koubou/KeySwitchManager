@@ -1,6 +1,9 @@
 using CommandLine;
-using KeySwitchManager.Applications.Core.Controllers.Delete;
-using KeySwitchManager.Applications.Core.Views.LogView;
+
+using KeySwitchManager.Applications.CLI.Views;
+using KeySwitchManager.Applications.Standalone.KeySwitches.Controllers.Extensions;
+using KeySwitchManager.Controllers.KeySwitches;
+using KeySwitchManager.Presenters.KeySwitches;
 
 namespace KeySwitchManager.Applications.CLI.Commands
 {
@@ -29,8 +32,10 @@ namespace KeySwitchManager.Applications.CLI.Commands
 
             logView.Append( $"Developer=\"{option.Developer}\", Product=\"{option.Product}\", Instrument=\"{option.Instrument}\"" );
 
-            using var controller = DeleteControllerFactory.Create( option.DatabasePath, option.Developer, option.Product, option.Instrument, logView );
-            controller.Execute();
+            var controller = new DeleteController();
+            var presenter = new DeletePresenter( logView );
+
+            controller.DeleteFromLocalDatabase( option.DatabasePath, option.Developer, option.Product, option.Instrument, presenter );
 
             return 0;
         }

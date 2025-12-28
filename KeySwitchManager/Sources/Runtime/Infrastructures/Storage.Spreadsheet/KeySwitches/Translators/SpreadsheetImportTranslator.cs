@@ -11,8 +11,6 @@ using KeySwitchManager.Domain.MidiMessages.Models.Values;
 using KeySwitchManager.Infrastructures.Storage.Spreadsheet.KeySwitches.Models;
 using KeySwitchManager.Infrastructures.Storage.Spreadsheet.KeySwitches.Models.Aggregations;
 
-using RkHelper.Time;
-
 namespace KeySwitchManager.Infrastructures.Storage.Spreadsheet.KeySwitches.Translators
 {
     public class SpreadsheetImportTranslator : IDataTranslator<Workbook, IReadOnlyCollection<KeySwitch>>
@@ -33,7 +31,7 @@ namespace KeySwitchManager.Infrastructures.Storage.Spreadsheet.KeySwitches.Trans
 
         private KeySwitch TranslateWorkSheet( Worksheet sheet, ICollection<Guid> parsedGuidList )
         {
-            var now = DateTimeHelper.NowUtc();
+            var now = UtcDateTime.NowAsDateTime;
             var articulations = new List<Articulation>();
             var extraData = new Dictionary<string, string>();
 

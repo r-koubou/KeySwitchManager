@@ -4,7 +4,7 @@ using AppKit;
 
 using Foundation;
 
-using KeySwitchManager.Applications.Core.Views.LogView;
+using KeySwitchManager.Views.LogView;
 
 namespace KeySwitchManager.Xamarin.Mac.UiKitView
 {

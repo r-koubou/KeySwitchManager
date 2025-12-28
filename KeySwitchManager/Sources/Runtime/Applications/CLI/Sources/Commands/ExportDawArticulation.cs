@@ -1,8 +1,11 @@
-using System.IO;
 using CommandLine;
-using KeySwitchManager.Applications.Core.Controllers.Export;
-using KeySwitchManager.Applications.Core.Views.LogView;
+
+using KeySwitchManager.Applications.CLI.Views;
+using KeySwitchManager.Applications.Standalone.KeySwitches;
+using KeySwitchManager.Applications.Standalone.KeySwitches.Controllers.Extensions;
+using KeySwitchManager.Controllers.KeySwitches;
 using KeySwitchManager.Domain.KeySwitches.Models.Values;
+using KeySwitchManager.Presenters.KeySwitches;
 
 namespace KeySwitchManager.Applications.CLI.Commands
 {
@@ -32,23 +35,21 @@ namespace KeySwitchManager.Applications.CLI.Commands
         public virtual int Execute( ICommandOption opt )
         {
             var option = (CommandOption)opt;
-            var logView = new ConsoleLogView();
+            var controller = new ExportController();
 
-            using var controller = ExportControllerFactory.Create(
+            controller.ExportToLocalFile(
+                option.DatabasePath,
                 option.Developer,
                 option.Product,
                 option.Instrument,
-                option.DatabasePath,
-                Path.Combine( option.OutputDirectory, SupportedFormat.ToString() ),
-                SupportedFormat,
-                logView
+                option.OutputDirectory,
+                Format,
+                new ExportPresenter( new ConsoleLogView() )
             );
-
-            controller.Execute();
 
             return 0;
         }
 
-        protected abstract ExportSupportedFormat SupportedFormat { get; }
+        protected abstract ExportFormat Format { get; }
     }
 }

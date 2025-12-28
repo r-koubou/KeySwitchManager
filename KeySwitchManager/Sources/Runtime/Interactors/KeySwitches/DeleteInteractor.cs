@@ -1,21 +1,18 @@
+using System.Threading;
 using System.Threading.Tasks;
 
-using KeySwitchManager.Domain.KeySwitches.Models;
+using KeySwitchManager.Domain.KeySwitches;
 using KeySwitchManager.Domain.KeySwitches.Models.Values;
 using KeySwitchManager.UseCase.KeySwitches.Delete;
 
-using RkHelper.Text;
+using RkHelper.Primitives;
 
 namespace KeySwitchManager.Interactors.KeySwitches
 {
-    public class DeleteInteractor : IDeleteUseCase
+    public sealed class DeleteInteractor : IDeleteUseCase
     {
         private IKeySwitchRepository Repository { get; }
         private IDeletePresenter Presenter { get; }
-
-        public DeleteInteractor( IKeySwitchRepository repository ) :
-            this( repository, new IDeletePresenter.Null() )
-        {}
 
         public DeleteInteractor(
             IKeySwitchRepository repository,
@@ -25,42 +22,46 @@ namespace KeySwitchManager.Interactors.KeySwitches
             Presenter  = presenter;
         }
 
-        async Task<DeleteResponse> IDeleteUseCase.ExecuteAsync( DeleteRequest request )
+        public async Task HandleAsync( DeleteInputData inputData, CancellationToken cancellationToken = default )
         {
-            var developerName = request.DeveloperName;
-            var productName = request.ProductName;
-            var instrumentName = request.InstrumentName;
+            var developerName = inputData.Value.DeveloperName;
+            var productName = inputData.Value.ProductName;
+            var instrumentName = inputData.Value.InstrumentName;
 
             var removedCount = 0;
 
-            Presenter.Present( $"Removing keyswitch: Developer={developerName}, Product={productName}, Instrument={instrumentName}" );
+            await Presenter.HandleDeleteBeginAsync( inputData, cancellationToken );
 
             if( !StringHelper.IsEmpty( developerName, productName, instrumentName ) )
             {
                 removedCount = await Repository.DeleteAsync(
                     new DeveloperName( developerName ),
                     new ProductName( productName ),
-                    new InstrumentName( instrumentName )
+                    new InstrumentName( instrumentName ),
+                    cancellationToken
                 );
             }
             else if( !StringHelper.IsEmpty( developerName, productName ) )
             {
                 removedCount = await Repository.DeleteAsync(
                     new DeveloperName( developerName ),
-                    new ProductName( productName )
+                    new ProductName( productName ),
+                    cancellationToken
                 );
             }
 
             if( removedCount > 0 )
             {
-                Presenter.Present( $"{removedCount} record(s) removed" );
-            }
-            else
-            {
-                Presenter.Present( $"record not found" );
+                await Repository.FlushAsync( cancellationToken );
             }
 
-            return new DeleteResponse( removedCount );
+            var outputData = new DeleteOutputData(
+                true,
+                new DeleteOutputValue( removedCount ),
+                null
+            );
+
+            await Presenter.HandleAsync( outputData, cancellationToken );
         }
     }
 }

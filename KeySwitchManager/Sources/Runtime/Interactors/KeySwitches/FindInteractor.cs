@@ -1,23 +1,18 @@
-using System.Collections.Generic;
+using System.Threading;
 using System.Threading.Tasks;
 
-using KeySwitchManager.Domain.KeySwitches.Models;
+using KeySwitchManager.Domain.KeySwitches;
 using KeySwitchManager.Domain.KeySwitches.Models.Values;
 using KeySwitchManager.UseCase.KeySwitches.Find;
 
-using RkHelper.Text;
+using RkHelper.Primitives;
 
 namespace KeySwitchManager.Interactors.KeySwitches
 {
-    public class FindInteractor : IFindUseCase
+    public sealed class FindInteractor : IFindUseCase
     {
         private IKeySwitchRepository Repository { get; }
         private IFindPresenter Presenter { get; }
-
-        public FindInteractor(
-            IKeySwitchRepository repository ) :
-            this( repository, new IFindPresenter.Null() )
-        {}
 
         public FindInteractor(
             IKeySwitchRepository repository,
@@ -27,22 +22,26 @@ namespace KeySwitchManager.Interactors.KeySwitches
             Presenter  = presenter;
         }
 
-        async Task<FindResponse> IFindUseCase.ExecuteAsync( FindRequest request )
+        public async Task HandleAsync( FindInputData inputData, CancellationToken cancellationToken = default )
         {
-            var developerName = request.DeveloperName;
-            var productName = request.ProductName;
-            var instrumentName = request.InstrumentName;
+            var developerName = inputData.Value.DeveloperName;
+            var productName = inputData.Value.ProductName;
+            var instrumentName = inputData.Value.InstrumentName;
 
             #region By Developer, Product, Instrument
             if( !StringHelper.IsEmpty( developerName, productName, instrumentName ) )
             {
                 var keySwitches = await Repository.FindAsync(
-                    new DeveloperName( request.DeveloperName ),
-                    new ProductName( request.ProductName ),
-                    new InstrumentName( request.InstrumentName )
+                    new DeveloperName( developerName ),
+                    new ProductName( productName ),
+                    new InstrumentName( instrumentName ),
+                    cancellationToken
                 );
 
-                return new FindResponse( keySwitches );
+                var output = new FindOutputData( new FindOutputValue( keySwitches ) );
+
+                await Presenter.HandleAsync( output, cancellationToken );
+                return;
             }
             #endregion
 
@@ -50,11 +49,15 @@ namespace KeySwitchManager.Interactors.KeySwitches
             if( !StringHelper.IsEmpty( developerName, productName ) )
             {
                 var keySwitches = await Repository.FindAsync(
-                    new DeveloperName( request.DeveloperName ),
-                    new ProductName( request.ProductName )
+                    new DeveloperName( developerName ),
+                    new ProductName( productName ),
+                    cancellationToken
                 );
 
-                return new FindResponse( keySwitches );
+                var output = new FindOutputData( new FindOutputValue( keySwitches ) );
+
+                await Presenter.HandleAsync( output, cancellationToken );
+                return;
             }
             #endregion
 
@@ -62,14 +65,16 @@ namespace KeySwitchManager.Interactors.KeySwitches
             if( !StringHelper.IsEmpty( developerName ) )
             {
                 var keySwitches = await Repository.FindAsync(
-                    new DeveloperName( request.DeveloperName )
+                    new DeveloperName( developerName ),
+                    cancellationToken
                 );
 
-                return new FindResponse( keySwitches );
+                var output = new FindOutputData( new FindOutputValue( keySwitches ) );
+
+                await Presenter.HandleAsync( output, cancellationToken );
+                return;
             }
             #endregion
-
-            return new FindResponse( new List<KeySwitch>() );
         }
     }
 }

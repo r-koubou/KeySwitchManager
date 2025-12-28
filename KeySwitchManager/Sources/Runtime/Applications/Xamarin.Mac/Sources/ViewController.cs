@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Threading;
 using System.Threading.Tasks;
 
 using AppKit;
@@ -9,16 +10,14 @@ using CoreGraphics;
 
 using Foundation;
 
-using KeySwitchManager.Applications.Core.Controllers;
-using KeySwitchManager.Applications.Core.Controllers.Create;
-using KeySwitchManager.Applications.Core.Controllers.Delete;
-using KeySwitchManager.Applications.Core.Controllers.Export;
-using KeySwitchManager.Applications.Core.Controllers.Find;
-using KeySwitchManager.Applications.Core.Controllers.Import;
+using KeySwitchManager.Applications.Standalone.KeySwitches;
+using KeySwitchManager.Applications.Standalone.KeySwitches.Controllers.Extensions;
+using KeySwitchManager.Controllers.KeySwitches;
+using KeySwitchManager.Presenters.KeySwitches;
 using KeySwitchManager.Xamarin.Mac.UiKitView;
 
 using RkHelper.Enumeration;
-using RkHelper.Text;
+using RkHelper.Primitives;
 
 namespace KeySwitchManager.Xamarin.Mac
 {
@@ -26,8 +25,8 @@ namespace KeySwitchManager.Xamarin.Mac
     {
         private LogTextView LogView { get; set; }
 
-        private IList<ExportSupportedFormat> ExportSupportedFormatList { get; }
-            = new List<ExportSupportedFormat>( EnumHelper.GetValues<ExportSupportedFormat>() );
+        private IList<ExportFormat> ExportSupportedFormatList { get; }
+            = new List<ExportFormat>( EnumHelper.GetValues<ExportFormat>() );
 
         #region Ctor
 #pragma warning disable 8618
@@ -89,12 +88,13 @@ namespace KeySwitchManager.Xamarin.Mac
             } );
         }
 
-        private async Task ExecuteControllerAsync( Func<IController> controllerFactory )
+        private async Task ExecuteControllerAsync( Func<Task> execute )
         {
             PreExecuteController();
 
-            await Task.Run( async () => {
-                    await ControlExecutor.ExecuteAsync( controllerFactory, LogView );
+            await Task.Run( async () =>
+                {
+                    await execute();
                 }
             );
 
@@ -125,7 +125,10 @@ namespace KeySwitchManager.Xamarin.Mac
                 return;
             }
 
-            await ExecuteControllerAsync( () => CreateControllerFactory.Create( path, LogView ) );
+            var controller = new CreateController();
+            var presenter = new CreatePresenter( LogView );
+
+            await ExecuteControllerAsync( async () => await controller.CreateToLocalFileAsync( path, presenter, CancellationToken.None ) );
         }
 
         #endregion
@@ -154,7 +157,11 @@ namespace KeySwitchManager.Xamarin.Mac
             {
                 return;
             }
-            await ExecuteControllerAsync( () => ImportControllerFactory.Create( databasePath, importFilePath, LogView ) );
+
+            var controller = new ImportController();
+            var presenter = new ImportPresenter( LogView );
+
+            await ExecuteControllerAsync( async () => await controller.ExecuteAsync( databasePath, importFilePath, presenter, CancellationToken.None ) );
         }
 
         #endregion
@@ -184,7 +191,10 @@ namespace KeySwitchManager.Xamarin.Mac
                 return;
             }
 
-            await ExecuteControllerAsync( () => FindControllerFactory.Create( databasePath, developer, product, instrument, LogView ) );
+            var controller = new FindController();
+            var presenter = new FindPresenter( LogView );
+
+            await ExecuteControllerAsync( async () => await controller.ExecuteAsync( databasePath, developer, product, instrument, presenter, CancellationToken.None ) );
         }
 
 
@@ -213,8 +223,10 @@ namespace KeySwitchManager.Xamarin.Mac
                 return;
             }
 
-            await ExecuteControllerAsync( () => DeleteControllerFactory.Create( databasePath, developer, product, instrument, LogView ) );
+            var controller = new DeleteController();
+            var presenter = new DeletePresenter( LogView );
 
+            await ExecuteControllerAsync( async () => await controller.DeleteFromLocalDatabaseAsync( databasePath, developer, product, instrument, presenter, CancellationToken.None ) );
         }
 
         #endregion
@@ -256,17 +268,10 @@ namespace KeySwitchManager.Xamarin.Mac
             // Append a sub folder by format name
             output = Path.Combine( output, format.ToString() );
 
-            await ExecuteControllerAsync(
-                () => ExportControllerFactory.Create(
-                    developer,
-                    product,
-                    instrument,
-                    databasePath,
-                    output,
-                    format,
-                    LogView
-                )
-            );
+            var controller = new ExportController();
+            var presenter = new ExportPresenter( LogView );
+
+            await ExecuteControllerAsync( async () => await controller.ExportToLocalFileAsync( databasePath, developer, product, instrument, output, format, presenter, CancellationToken.None ) );
         }
 
         #endregion
@@ -350,7 +355,7 @@ namespace KeySwitchManager.Xamarin.Mac
             label.Selectable      = false;
             label.Editable        = false;
             label.BackgroundColor = NSColor.Clear;
-            label.TextColor       = NSColor.LabelColor;
+            label.TextColor       = NSColor.Label;
 
             accessoryView.AddSubview( popup );
             accessoryView.AddSubview( label );
