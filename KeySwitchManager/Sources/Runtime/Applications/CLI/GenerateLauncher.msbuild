@@ -16,12 +16,12 @@ dotnet %~dp0\$(AssemblyName).dll %*
         </PropertyGroup>
 
         <WriteLinesToFile
-                File="$(OutDir)/ksm.sh"
+                File="$(OutputPath)/ksm.sh"
                 Overwrite="true"
                 Lines="$(BashLauncherText)"/>
 
         <WriteLinesToFile
-                File="$(OutDir)/ksm.bat"
+                File="$(OutputPath)/ksm.bat"
                 Overwrite="true"
                 Lines="$(DosLauncherText)"/>
 
