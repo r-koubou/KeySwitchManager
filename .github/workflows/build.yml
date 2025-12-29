@@ -1,7 +1,7 @@
 name: build
 
 env:
-  DOTNET_SDK_VERSION: '7.0.*'
+  DOTNET_SDK_VERSION: '10.0.*'
 
 on:
   workflow_call:
@@ -64,7 +64,7 @@ jobs:
         ProjectFile: KeySwitchManager/Sources/Runtime/Applications/CLI/publish.msbuild
 
     - name: Artifact CLI
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: KeySwitchManager.CLI-${{ inputs.build-configuration }}${{ inputs.custom-suffix }}
         path: ${{ github.workspace }}/publish/KeySwitchManager.CLI*/
@@ -95,7 +95,7 @@ jobs:
         ProjectFile: KeySwitchManager/Sources/Runtime/Applications/WPF/publish.msbuild
 
     - name: Artifact WPF
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: KeySwitchManager.WPF-${{ inputs.build-configuration }}${{ inputs.custom-suffix }}
         path: ${{ github.workspace }}/publish/KeySwitchManager.WPF*/
